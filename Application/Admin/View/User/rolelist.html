@@ -1,0 +1,158 @@
+<extend name="Public/base" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+<style>
+    .select2-container--default .select2-selection--single {
+            color: #000;
+        resize: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #a7b5bc #ced9df #ced9df #a7b5bc;
+        box-shadow: 0px 3px 3px #F7F8F9 inset;height:35px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height:35px;
+    }
+</style>
+	<!-- 标题栏 -->
+	<div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('User/index')}">用户</a></li>
+            <li><a href="{:U('Member/user_info')}">玩家组</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">玩家游戏中生成的角色信息（对接时需要CP提供相关接口参数）</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="cf top_nav_list">
+        <!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list">
+                <label>玩家账号：</label>
+                <input type="text" name="user_account" class="" value="{:I('user_account')}" placeholder="请输入玩家账号">&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="input-list input-list-game search_label_rehab">
+                <label>游戏名称：</label>
+                <select id="game_id" name="game_name" class="select_gallery" >
+                    <option value="">请选择游戏</option>
+                    <volist name=":get_game_list()" id="vo">
+                        <option game-id="{$vo.id}" value="{$vo.game_name}">{$vo.game_name}</option>
+                    </volist>
+                </select>   
+            </div>
+            <div class="input-list">
+                <label>角色名称：</label>
+                <input type="text" name="role_name" class="" value="{:I('role_name')}" placeholder="请输入角色名称">&nbsp;&nbsp;&nbsp;
+            </div>
+            
+			<div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('rolelist')}">搜索</a>
+            </div>
+             <div class="input-list"> 
+                <a class="sch-btn" href="{:U('Export/expUser',array(
+                'id'=>1,
+                'user_account'=>I('user_account'),
+                'game_name'=>I('game_name'),
+                'role_name'=>I('role_name'),
+                'role_name'=>I('role_name'),
+                ))}">导出</a>
+            </div>
+        </div>
+	</div>
+    <!-- 数据列表 -->
+    <div class="data_list">
+	<table class="">
+    <thead>
+        <tr>
+		<th class=""><input class="check-all" type="checkbox"/></th>
+		<th class="">玩家账号</th>
+		<th class="">游戏名称</th>
+		<th class="">游戏区服</th>
+		<th class="">角色名</th>
+		<th class="">游戏等级</th>
+		<th class="">最后登录时间</th>
+		<th class="">最后登录IP</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="list">
+		<volist name="list" id="data">
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
+			<td>{$data.user_account} </td>
+			<td>{$data.game_name}</td>
+			<td>{$data.server_name}</td>
+			<td>{$data.role_name}</td>
+			<td>{$data.role_level}</td>
+			<td>{$data.play_time|date='Y-m-d H:i:s',###}</td>
+			<td>{$data.play_ip}</td>
+			<td><a class="ajax-get" href="{:U('user_update',['ids'=>$data['id']])}">更新</a></td>
+
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+<script>
+<volist name=":I('get.')" id="vo">
+    Think.setValue('{$key}',"{$vo}");
+</volist>
+$(".select_gallery").select2();
+</script>
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+	<script type="text/javascript">
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&" + $('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:U('User/rolelist')}');
+    if('{$Think.get.game_name}'!=''){
+        $('#select2-game_id-container').text('{$Think.get.game_name}');
+    }
+    $(".jssearch").find(".drop-down1").hover(function(){
+        $("#sub-sch-menu").removeClass("hidden");
+    },function(){
+        $("#sub-sch-menu").addClass("hidden");
+    });
+	</script>
+</block>

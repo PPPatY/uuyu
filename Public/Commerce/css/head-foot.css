@@ -1,0 +1,41 @@
+
+
+
+
+
+
+/* 底部  */
+
+.footer {
+	min-width: 1200px;
+	height: 170px;
+	z-index: 4;
+	width: 100%;
+	background: #526782;
+}
+
+.footer_nav {
+	margin: 0 auto;
+	max-width: 1200px;
+	min-width: 1000px;
+	position: relative;
+	list-style-type: none;
+	color: #fff;
+	text-align: center;
+	padding-top: 20px;
+	font-size: 15px;
+}
+
+.footer_nav .b1 {
+	border-right: 1px solid #fff;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+.footer_nav .b2 {
+	padding-left: 5px;
+}
+
+.footer_nav li {
+	margin: 15px auto;
+}

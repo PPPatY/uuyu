@@ -1,0 +1,43 @@
+/* promote index */
+.promote-index-overview li {background:#FFF;border-radius:3px;float:left;width:18.26%;height:12.4vh;position: relative;border: 1px solid #E3E8EC;}
+.promote-index-overview li~li{margin-left:2%;}
+.promote-index-overview .index-user {text-align:center;}
+.promote-index-overview .index-user img {border-radius:100%;width:66px;height:66px;padding-top:12px;}
+.promote-index-overview .index-user p {margin:8px 0 0;}
+
+.promote-index-overview .icon {width:68px;height:68px;position:absolute;top:50%;margin-top:-34px;left: 22%;}
+.promote-index-overview .icon img{width: 100%;height: 100%;}
+.promote-index-overview .text {font-size:16px;color:#555;text-align:center;padding-top:33px;padding-left:80px;}
+.promote-index-overview .text p {margin-bottom:6px;color: #6A7082;}
+.promote-index-overview .text span {font-size:18px;color: #99B1CB;}
+
+.promote-index-list{background: #fff;margin-top: 2.4vh;border-radius: 3px;padding: 1.5% 1.7%;height: auto;position: relative;border: 1px solid #E3E8EC;}
+.promote-index-list .trunk-title-main{font-size: 16px;color: #6A7082;font-weight: 600;}
+.promote-index-list .trunk-title-main span{vertical-align: middle;margin-left: 8px;}
+.promote-index-list .trunk-content{padding-top: 1%;}
+.promote-index-list .trunk-content ul{min-height: 44vh;}
+.promote-index-list .trunk-content ul li{border-top: 1px solid #F3F5F9;padding: 1vh;}
+.promote-index-list .trunk-content ul li:nth-child(2n-1){background: #FAFAFC;}
+.article-type{vertical-align: middle;padding-right: 10px;}
+.article-title{width: 400px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block;vertical-align: middle;color: #515974;font-size: 13px;}
+.article-title:hover{color: #26c7db;}
+.article-time{vertical-align: middle;font-size: 13px;color: #a5a6bb;}
+
+.page-overview{width: 100%;}
+
+@media screen and (max-width: 1600px) {
+	.promote-index-overview .icon {left: 15%;}
+	.promote-index-overview li{width:18.25%;}
+}
+@media screen and (max-width: 1440px) {
+	.promote-index-overview .icon {left: 12%;}
+	.promote-index-overview li{width:18.23%;}
+}
+@media screen and (max-width: 1366px) {
+	.promote-index-overview li{width:18.2%;}
+}
+
+@media screen and (max-height: 800px) {
+	.promote-index-overview .text{padding-top: 25px;}
+}
+

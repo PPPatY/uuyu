@@ -1,0 +1,143 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<!-- 标题栏 -->
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('Spend/lists')}">充值</a>
+			</li>
+			<li>
+				<a href="{:U('Deposit/lists')}">平台币订单</a>
+			</li>
+			<li>
+				<a href="#">后台发放(推广员)</a>
+			</li>
+		</ul>
+		<p class="description_text" style="height: 40px;line-height: 40px;">说明：显示给推广员发放平台币的列表</p>
+	</div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+			<empty name="model.extend">
+				<div class="tools">
+					<a class=" " href="{:U('send',['promote_type'=>1])}"><span class="button_icon button_icon1"></span>给一级推广员发放</a>
+					<a class=" " href="{:U('send',['promote_type'=>2])}"><span class="button_icon button_icon1"></span>给二级推广员发放</a>
+				</div>
+			</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list input-list-game search_label_rehab">
+				<label>推广员帐号：</label>
+				<select name="promote_id" class="select_gallery" style="width:150px;">
+					<option value="">请选择推广员</option>
+					<volist name=":get_promote_list()" id="vo">
+						<option value="{$vo.id}">{$vo.account}</option>
+					</volist>
+				</select>
+			</div>
+			<div class="input-list">
+				<label>推广员等级：</label>
+				<select id="promote_type" name="promote_type" class="select_gallery" style="width:100px;">
+					<option value="">请选择</option>
+					<option value="1">一级推广员</option>
+					<option value="2">二级推广员</option>
+				</select>
+			</div>
+			<div class="input-list">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('send_lists','model='.$model['name'],false)}">搜索</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<div class="">
+			<table>
+				<!-- 表头 -->
+				<thead>
+					<tr>
+						<volist name="list_grids" id="field">
+							<if condition="$field.title neq '来源'">
+								<th>{$field.title}</th>
+							</if>
+							<if condition="$key eq 1">
+								<th>发放类型</th>
+							</if>
+						</volist>
+					</tr>
+				</thead>
+
+				<!-- 列表 -->
+				<tbody>
+				<notempty name="list_data">
+					<volist name="list_data" id="data">
+						<tr>
+							<volist name="list_grids" id="grid">
+								<if condition="$grid.title neq '来源'">
+									<td>{:get_list_field($data,$grid)}</td>
+								</if>
+								<if condition="$key eq 1">
+									<td>平台币</td>
+								</if>
+							</volist>
+						</tr>
+					</volist>
+					<tr class="data_summary">
+						<td colspan="9"><span style="margin-right: 10px;">汇总：</span><span>当页发放：{:null_to_0(array_sum(array_column($list_data,'num')))}个 ；今日发放：{$sum.to_day|default=0}个 ； 昨日发放：{$sum.yst_day|default=0}个 ； 累计发放：{$sum.all_num|default=0}个</span></td>
+
+					</tr>
+					<else />
+					<tr><td colspan="9">aOh! 暂时还没有内容!</td></tr>
+					</notempty>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="page">
+		{$_page|default=''}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		Think.setValue("promote_id", "{:I('promote_id')}");
+		Think.setValue("promote_type", "{:I('promote_type')}");
+
+		$(".select_gallery").select2();
+	</script>
+	<script type="text/javascript">
+		highlight_subnav('{:U('PromoteCoin/send_lists')}');
+		if('{$Think.get.game_name}' != '') {
+			$('#select2-game_id-container').text('{$Think.get.game_name}');
+		}
+		$(function() {
+			//搜索功能
+			$("#search").click(function() {
+				var url = $(this).attr('url');
+				var query = $('.jssearch').find('input').serialize();
+				query += "&" + $('.jssearch').find('select').serialize();
+				query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+				query = query.replace(/^&/g, '');
+				if(url.indexOf('?') > 0) {
+					url += '&' + query;
+				} else {
+					url += '?' + query;
+				}
+				window.location.href = url;
+			});
+
+			//回车自动提交
+			$('.jssearch').find('input').keyup(function(event) {
+				if(event.keyCode === 13) {
+					$("#search").click();
+				}
+			});
+
+		})
+	</script>
+</block>

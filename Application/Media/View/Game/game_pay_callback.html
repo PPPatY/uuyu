@@ -1,0 +1,18 @@
+<html>
+<title>充值回调</title>
+<body>
+	
+</body>
+<script src="__JS__/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/layer_mobile/layer.js"></script>
+<script>
+//loading带文字
+layer.open({
+type: 2
+});
+$pay_status = "{$data['pay_status']}";
+sta = $pay_status==1?1:0;
+parent.postMessage({event:"pay:payback",status:sta}, "*");
+setTimeout("location.href='"+"{$game_url}"+"';",1000);
+</script>
+</html>

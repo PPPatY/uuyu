@@ -1,0 +1,172 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/mixed.css" rel="stylesheet">
+</block>
+
+<block name="body">
+    <div class="page-form normal_list siteapply-index-form">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>联盟站点></span><span>站点申请</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_shenqing.png"><span class="title_main">站点申请</span>
+      </div>
+      <div class="trunk-content article" style="min-height: 63vh;">
+        <table class="desccontent">
+            <tr><td class="title" style="width: 45px;display: inline-block;">说明：</td><td class="det">系统分配站点只需申请，通过审核即可使用；自主添加站点需自行解析成功指向{$_SERVER['HTTP_HOST']}下的site.php文件，保证其可正常访问，否则无效。</td></tr>	
+            <tr><td></td><td class="det">推荐使用系统分配的域名链接，保证站点的稳定。</td></tr>
+        </table>
+								
+        <div class="trunk-list">
+            <form id="data" action="" novalidate="novalidate" method="post" >
+                <table class="table2">
+                    <tr>
+                        <td class="l" style="color: #6a7082;">选择站点来源：</td>
+                        <td class="r form-radio jspayradio">
+                            <switch name="apply['status']">
+                                <case value="-1">
+                                    <label><input type="radio" name="apply_domain_type" value="0" checked="checked" ><i></i><span>系统分配</span></label>
+                                    <label><input type="radio" name="apply_domain_type" value="1" ><i></i><span>自主添加</span></label>
+                                </case>
+                                <case value="0">
+                                    <label><input type="radio" name="apply_domain_type" value="0" disabled <if condition="$apply['apply_domain_type'] eq 0"> checked="checked" </if>><i></i><span>系统分配</span></label>
+                                    <label><input type="radio" name="apply_domain_type" value="1" disabled <if condition="$apply['apply_domain_type'] eq 1"> checked="checked" </if>><i></i><span>自主添加</span></label>
+                                </case>
+                                <default/>
+                                <label><input type="radio" name="apply_domain_type" value="0" disabled <if condition="$apply['apply_domain_type'] eq 0"> checked="checked" </if>><i></i><span>系统分配</span></label>
+                                <label><input type="radio" name="apply_domain_type" value="1" disabled <if condition="$apply['apply_domain_type'] eq 1"> checked="checked" </if>><i></i><span>自主添加</span></label>
+                            </switch>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l"></td>
+                        <td class="r">
+                            <if condition="$apply['status'] eq 1">
+                                <input id="url_ipt" type="text" name="site_url" class="name txt disabled" readonly value="{$apply.domain_url}" >
+                            <elseif condition="$apply['status'] eq -1"/>
+                                <input id="url_ipt" type="text" name="site_url" class="name txt disabled" readonly value="{$apply.domain_url}" >
+                            <else />
+                                <input id="url_ipt" type="text" name="site_url" class="name txt disabled" readonly value="{$apply.domain_url}" >
+                            </if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l"></td>
+                        <td class="r">
+                            <div class="siteapplybtn">
+                            <switch name="apply.status">
+                                <case value="-1">
+                                    <button type="button" class="tjbnt mixedbtn" onclick="check()">立即申请</button>
+                                </case>
+                                <case value="0">
+                                    <button type="button" class="tjbnt mixedbtn wait" disabled="disabled">等待审核</button>
+                                </case>
+                                <case value="1">
+                                        <div style="position: relative">
+                                            <a class="tjbnt mixedbtn download" target="_blank" href="{$apply.domain_url}">进入站点</a>
+                                            <a class="tjbnt mixedbtn download" id="copy" url="{$apply.domain_url}">复制链接</a>
+                                        </div>
+                                </case>
+                            </switch>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+      <div class="page-explain charge-agentPay-explain">
+      <div class="trunk-content article border_normal">
+        <table class="desccontent">
+            <tr><td class="title" style="width: 70px;display: inline-block;">联盟说明：</td><td class="det">联盟站点是联运平台为广大渠道商们提供的一站式便利合作栏目。在这您可以获得平台官方为您专门定制手游PC站，您可以获取一个链接，也可以使用自己的域名建站。可自由设置PC站的图片，游戏信息以及礼包信息等</td></tr>	           
+        </table>
+      </div>
+      </div>
+    </div>  
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/zeroclipboard/jquery.zclip.min.js"></script>
+<notempty name="msg">
+<script>
+    layer.msg('{$msg}');
+</script>
+</notempty>
+<script type="text/javascript">
+  var sub = true;
+  function check() {
+      if(!sub){
+          return false;
+      }
+      var data = $("#data").serialize();
+      $.ajax({
+          type: "post",
+          url: "{:U('apply_domain_url')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+                  setTimeout(function(){
+                  location.reload();
+                  },1500);
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.info, {icon: 2});
+                  return false;
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+  $(function () {
+      $('#copy').zclip({
+          path: '__STATIC__/zeroclipboard/ZeroClipboard.swf',
+          copy: function(){
+              return $("#copy").attr('url');
+          },
+          afterCopy: function(){
+              layer.msg("复制成功", {icon: 1});
+          }
+      }).hover(function(){$(this).addClass('hover');},function(){$(this).removeClass('hover');});
+
+      $("input[name='apply_domain_type']").click(function(){
+          var that = $(this);
+          var url = "{$apply.domain_url}";
+          if(that.val() == 0){
+              $("#url_ipt").val(url);
+              $("#url_ipt").addClass("disabled").prop('readonly',true);
+          }else{
+              $("#url_ipt").val('http://');
+              $("#url_ipt").removeClass("disabled").prop('readonly',false);
+          }
+      });
+      
+      $('.jspayradio input:checked').siblings('i').addClass('current');
+    
+      $('.jspayradio input').click(function() {
+          var that=$(this);
+          $('.jspayradio i').removeClass('current');
+          if (that.prop('checked')) {
+              that.siblings('i').addClass('current');
+          }
+      });
+      
+      $("#url_ipt").focus(function() {
+          var that = $(this);
+          if (that.hasClass('disabled')) {
+            that.select();
+          } else {
+            that.focusin();
+          }
+      });
+      
+  });
+
+  </script>
+</block>

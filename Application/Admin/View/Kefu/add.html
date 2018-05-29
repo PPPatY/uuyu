@@ -1,0 +1,47 @@
+<extend name="Public/base"/>
+<block name="body">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/media')}">双官网</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+	<form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+    <ul class="form_info form_info_channel">
+        <li class="futitle">
+            <label>分类标题</label>
+            <div class="form_main">
+                <select id="title" name="titleurl">
+                    <volist name=':get_kefu_lists(false)' id='vo'>
+                        <option value="{$key}">{$vo}</option>
+                    </volist>
+                </select>
+            </div>
+            <input type="hidden" name="istitle" value="2">
+            <i class="form_hint"></i>
+        </li>
+        <li class="zititle"><label>标题</label><div class="form_main"><input type="text" class="" name="zititle" value="" placeholder="子标题"></div><i class="form_hint"></i></li>
+        <li class="zititle"><label>内容</label><div class="form_main"><textarea name="contend"></textarea></div><i class="form_hint"></i></li>
+        <button type="submit" class=" submit_btn ajax-post" target-form="form-horizontal">确 定</button> 
+        </ul>
+	</form>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+	//导航高亮
+	highlight_subnav('{:U('Kefu/index')}');
+    if($('.istitle').prop('checked')){
+        $('.zititle').attr('style','display:none');
+    }
+    $('.istitle').click(function(){
+        if($('.istitle').prop('checked')){
+            $('.zititle').attr('style','display:none');
+        }else{
+            $('.zititle').attr('style','');
+        }
+    });
+</script>
+</block>

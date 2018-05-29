@@ -1,0 +1,129 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/platform.css" rel="stylesheet">
+    <style type="text/css">
+		@media screen and (max-width: 1480px) {
+			.form-group .submit{width: 55px;}
+		}
+		.pagenation{position: absolute;text-align: center;line-height: 5vh;}
+	</style>
+</block>
+
+<block name="body">
+    <div class="page-search normal_list promoteCoin-record-search">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>会长福利></span><span>转移记录</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_jilu.png"><span class="title_main">转移记录</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('PromoteCoin/record')}" method="post" enctype="multipart/form-data" class="clearfix">
+            	<div class="tab fl">
+	                <a href="{:U('shift')}" class="">给下级转移</a>
+	                <a href="#" class="current">转移记录</a>
+	            </div>
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">转移时间：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="timestart" value="{:I('timestart')}" placeholder="开始时间">
+                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="timeend" value="{:I('timeend')}" placeholder="结束时间">
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                
+              </div>
+              <div class="form-group fr">
+                    <label class="form-title select-title">选择子渠道：</label>
+                    <select id="promote_id" name="promote_id" class="reselect select_gallery" style="min-width:170px;">
+                        <option value="">全部子渠道</option>
+                        <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                    </select>
+              </div>
+            </form>
+            
+          </div>
+          <div class="trunk-list list_normal">
+            <table class="table normal_table">
+                <tr>
+                  <th>ID</th>
+                  <th>转移时间</th>
+                  <th>平台币数量</th>
+                  <th>转移帐号</th>
+                </tr>
+                <empty name="lists_data">
+                <tr><td colspan="4" style="text-align: center;height: 38vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                <else />
+                <volist name="lists_data" id="vo">
+                  <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+                    <td>{$vo.num}</td>
+                    <td>{:get_promote_account($vo['source_id'])}</td>
+                  </tr>
+                </volist>
+                </empty>
+            </table>
+            <div class="import fr">
+              <span class="txt"><span class="normal_tot">数据量：</span>{$count}条数据</span> 
+              <span class="btn"><a href="{:U('Export/expUser',array_merge(array('id'=>9),I()))}" >导出数据(excel格式)</a></span>
+            </div>
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div> 
+    
+</block>
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+setValue('promote_id',{$Think.request.promote_id|default="''"});
+  highlight_subnav('{:U('shift')}');
+$().ready(function(){
+    highlight_subnav('{:U('Charge/agent_pay_list')}');
+ $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+
+ $('.submit').click(function(){
+   var edate = $('#edate').val();
+   var sdate = $('#sdate').val();
+   if(Date.parse(sdate) > Date.parse(edate)){
+     layer.msg('开始时间必须小于等于结束时间');
+     return false;
+   }
+	 
+	 
+	 
+ });
+  $(".select_gallery").select2();
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+});
+</script>
+</block>
+  

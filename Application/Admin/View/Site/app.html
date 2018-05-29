@@ -1,0 +1,131 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<style>
+.navtab_list {background:#FFF;width:100%;border-bottom:1px solid #ddd;margin:0 0 15px;height:36px;padding-top:25px;}
+.navtab_list a,.tabnav1711 li {font-size:15px;border:1px solid transparent;display:block;width:140px;height:35px;line-height:35px;text-align:center;float:left;color:#333;}
+.navtab_list a.tabchose,.tabnav1711 li.current {border-color:#ddd;border-bottom-color:#FFF;background:#FFF;color:#3C95C8;border-top-left-radius:3px;border-top-right-radius:3px;}
+
+.tabnav1711 li a {color:inherit;}
+.tabcon1711 .submit_btn:visited,.tabcon1711 .submit_btn:active,.tabcon1711 .submit_btn:link {color:#FFF;}
+
+.tab_nav .tab-nav {}
+</style>
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/app')}">联运APP</a></li>
+            <li><a href="#">基本配置</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：针对联运APP的基本信息进行配置</p>
+    </div>
+    <div class="cf main-place top_nav_list navtab_list">
+        {:W('Index/navigation',array('value'=>'Site/app'))}
+    </div>
+    <div class="tab-wrap tab-list">
+		<div class="tab_nav jstabnav">
+    <ul>
+    	<volist name="Think.config.APP_CONFIG_GROUP_LIST" id="group">
+            <li <eq name="id" value="$key">class="current"</eq>><a href="{:U('app',array(cate_id=>I('cate_id'),group_id=>$key))}">{$group}配置</a></li>
+        </volist>
+		</ul></div>
+		<div class="tab-content tab_content">
+	<form action="{:U('save')}" method="post" class="form-horizontal">
+	<ul class="form_info form_info{:I('group_id',1)+20}">
+    <volist name="list" id="config">
+		<li>
+            <label>{$config.title}</label>
+            <div class="form_main">
+			<switch name="config.type">
+			<case value="0">
+			<input type="text" class="text input-small" name="config[{$config.name}]" value="{$config.value}">
+			</case>
+			<case value="1">
+			<input type="text" class="text input-large" name="config[{$config.name}]" value="{$config.value}">
+			</case>
+			<case value="2">
+				<textarea name="config[{$config.name}]">{$config.value}</textarea>
+			</case>
+			<case value="3">
+				<textarea name="config[{$config.name}]">{$config.value}</textarea>
+			</case>
+			<case value="4">
+			<select name="config[{$config.name}]">
+				<volist name=":parse_config_attr($config['extra'])" id="vo">
+					<option value="{$key}" <eq name="config.value" value="$key">selected</eq>>{$vo}</option>
+				</volist>
+			</select>
+			</case>
+			<case value="5">
+						<input type="file" id="upload_picture_{$config.name}">
+						<input type="hidden" name="config[{$config.name}]" id="cover_id_{$config.name}" value="{$config['value']}"/>
+						<div class="upload-img-box">
+						<notempty name="config['value']">
+							<div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+						</notempty>
+						</div>
+					
+					<script type="text/javascript">
+					//上传图片
+				    /* 初始化上传插件 */
+					$("#upload_picture_{$config.name}").uploadify({
+				        "height"          : 30,
+				        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+				        "fileObjName"     : "download",
+				        "buttonText"      : "上传图片",
+				        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+				        "width"           : 120,
+				        'removeTimeout'	  : 1,
+				        'fileTypeExts'	  : '*.jpg; *.png; *.gif; *.ico;',
+				        "onUploadSuccess" : uploadPicture{$field.name},
+                        'onFallback' : function() {
+                            alert('未检测到兼容版本的Flash.');
+                        }
+				    });
+					function uploadPicture{$field.name}(file, data){
+				    	var data = $.parseJSON(data);
+				    	var src = '';
+				        if(data.status){
+				        	$("#cover_id_{$config.name}").val(data.id);
+				        	src = data.url || '__ROOT__' + data.path;
+				        	$("#cover_id_{$config.name}").parent().find('.upload-img-box').html(
+				        		'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+				        	);
+				        } else {
+				        	updateAlert(data.info);
+				        	setTimeout(function(){
+				                $('#top-alert').find('button').click();
+				                $(that).removeClass('disabled').prop('disabled',false);
+				            },1500);
+				        }
+				    }
+					</script>	
+			</case>
+			</switch>
+				
+			</div>
+            <i class="form_hint">{$config.remark}</i>
+        </li>
+		</volist>
+        </ul>
+		<div class="form-item">
+			<label class="item-label"></label>
+			<div class="controls">
+				<empty name="list"><button type="submit" disabled class=" submit_btn disabled" target-form="form-horizontal">确 定</button><else/><button type="submit" class=" submit_btn ajax-post" target-form="form-horizontal">确 定</button></empty>
+				
+				
+			</div>
+		</div>
+	</form>
+			</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('Site/app')}');
+</script>
+</block>

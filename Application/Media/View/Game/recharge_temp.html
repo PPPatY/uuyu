@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <link href="style/css/common.css" rel="stylesheet" >
+    <link href="style/css/recharge.css" rel="stylesheet" >
+    <script src="style/js/jquery-1.11.1.min.js"></script>
+    
+	</head>
+	<body>
+    
+    <div class="" style="max-width:1242px;width:100%;"><img src="style/images/fq/rechargebg.jpg"></div>
+    
+    <div class="pop"></div>
+    <script src="style/js/pop.lwx.min.js"></script>
+    <script src="style/js/common.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+          
+          
+          pop.addClass('pop-pay-temp').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><div class="pop-title">充值成功</div><div class="pop-pay-info"><div class="pop-table"><div class="pop-row"><span class="pop-cell pm">订单编号：</span> <span class="pop-cell pv"><span>SP-201709260953464ZK3</span></span></div><div class="pop-row"><span class="pop-cell pm">充值金额：</span> <span class="pop-cell pv"><span>￥128</span></span></div></div></div><div class="pop-pay-notice">(您现在是游客登录，为了防止您下次登录时忘记账户密码，无法通过手机号找回密码，建议您绑定手机号，可直接用手机号登录，还可获得 500 积分哦)</div><div class="pop-butn-box"><a href="user_bind.html" class="pop-butn">去绑定</a></div></div>');
+          $('.pop-close').click(function() {pop.close(); return false;});
+          
+
+          
+        });
+        
+        
+        
+    </script>
+	</body>
+</html>

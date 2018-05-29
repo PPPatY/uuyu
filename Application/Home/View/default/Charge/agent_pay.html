@@ -1,0 +1,479 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/platform.css" rel="stylesheet">
+<style>
+	.trunk-list .table3 {width: 100%;}
+	.table3 tr td{border: 1px solid #E0E7EF;}
+	.pagenation{line-height: 6.5vh;text-align: right;}
+	.pagenation>div {text-align: right;}
+	.trunk-list .table3 tr {height: 4.2vh;}
+</style>
+</block>
+
+<block name="body">
+    <div class="page-search normal_list charge-agentPay-search">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>会长福利></span><span>会长代充</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_yve.png"><span class="title_main">账户余额</span>
+      </div>
+      <div class="trunk-content article" style="height: 622px;">
+      	<div class="trunk-search clearfix">
+              <div class="tab">
+                <a href="#" class="current">给玩家代充</a>
+                <a href="{:U('agent_pay_list')}" class="">代充记录</a>
+              </div>
+          </div>
+          <div class="trunk-list">
+            <table class="table3">
+                <tr>
+                	<td class="td1 nor_center">我的账户余额</td>
+                	<td colspan="10"><span class="money">{$pro.balance_coin}元</span></td>
+                </tr>
+                <if condition="get_fu_id(PID) eq 0">
+                <tr>
+                	<td class="td1 nor_center">下级渠道账号</td>
+                    <volist name="childData" id="vo">
+                        <td><span class="accounts">{$vo.account}</span></td>
+                    </volist>
+                </tr>
+                <tr>
+                	<td class="td1 nor_center">下级渠道余额</td>
+                	<volist name="childData" id="vo">
+                        <td><span class="accounts">{$vo.balance_coin}</span></td>
+                    </volist>
+                </tr>
+                </if>
+            </table>
+            <div class="pagenation clearfix" style="min-height:60px;">
+                {$_page}
+            </div>
+          </div>
+          
+          <div class="trunk-list">
+          <form id="form" action="{:U('agent_pay')}" method="post">
+            <table class="table2">
+            <tr>
+              <td class="l"><span style="color: red">*</span>充值用户名：</td>
+              <td class="r">
+                <select id="user_account" name="user_account" class="reselect select_gallery" style="min-width:170px;" >
+                    <option value="">请选择用户</option>
+                    <volist name="user" id="vo">
+                        <option user-id="{$vo.id}" value="{$vo.account}">{$vo.account}</option>
+                    </volist>
+                </select>
+                
+                <span class="noticetxt">(玩家必须为本渠道下玩家)</span>
+              </td>
+            </tr>
+            
+            <tr>
+              <td class="l"><span style="color: red">*</span>游戏名称：</td>
+              <td class="r">
+                <input style="display:none" id="gameid" name="gameid">
+                <select id="game_id" name="game_id" class="reselect select_gallery" style="min-width:170px;" >
+                    <option value="">请选择游戏</option>
+                </select>
+                
+              </td>
+            </tr>
+            
+            
+            <tr>
+              <td class="l"><span style="color: red">*</span>充值金额：</td>
+              <td class="r"><input type="text" class="txt" id="pay_fmoney" name="amount" autocomplete="on">
+                <span class="noticetxt">(请输入整数)</span>
+              </td>
+            </tr>
+            <tr class="zhe" style="display: none;">
+              <td class="l">折扣：</td>
+              <td class="r"><input type="text" class="txt" disabled id="disc" autocomplete="off">
+                <span class="noticetxt">()</span>
+              </td>
+            </tr>
+            <tr>
+            <td class="l">充值方式：</td>
+            <td  class="r form-radio jspayradio">
+              <label><input type="radio" value="alipay" name="pay_type" checked="checked" ><i class="current"></i><span>支付宝</span></label>
+              <label><input type="radio" value="swiftpass" name="pay_type"><i></i><span>微信</span></label>
+              <label><input type="radio" value="pingtaibi" name="pay_type"><i></i><span>平台币</span></label>
+            </td>
+            </tr>
+            <tr>
+            <td class="l">
+      	应付金额：</td><td class="r"><span style="font-size: 18px;color: #ff7d16;font-weight: 600;" id="shifu">0</span>
+              <input name="discount" value="" id="discount" type="hidden">
+            </td>
+            </tr>
+            <tr>
+            <td class="l">
+              实付金额：</td><td class="r"><span style="font-size: 18px;color: #ff7d16;font-weight: 600;" id="yingfu">0</span>
+              <input name="discount" value="" id="discount" type="hidden">
+            </td>
+            </tr>
+            <tr>
+              <td class="l"></td>
+              <td class="r">
+                <button type="button" class="tjbnt btn" onclick="check()" >确认</button>
+                
+                <input type="hidden" name="server_id"   value="0">
+                <input type="hidden" name="server_name" value="">
+                <input type="hidden" name="real_amount" id="real_amount" value="0"> 
+              </td>
+            </tr>
+            </table>
+          </form>
+          </div>
+      </div>
+    
+     <div class="page-explain charge-agentPay-explain">
+      <div class="trunk-content article border_normal">
+        <table class="desccontent">
+            <tr><td class="title" style="width: 100px;display: inline-block;">会长代充说明：</td><td class="det">会长代充功能是指，会长通过推广员后台给渠道下玩家折扣充值的功能；会长代充可使用账户平台币余额支付，亦可以下方支付方式现金支付；会长代充后将以绑定平台币的形式发放到玩家账户。</td></tr>	           
+        </table>
+      </div>
+    </div>
+    </div>  
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/layer/extend/layer.ext.js" ></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+  <script type="text/javascript">
+  var gameid =  $('#gameid').val();
+  window.onload = function(){ 
+		var uaccount = $('#user_account').val();
+		if (uaccount) {
+			$('#user_account').change();
+		}
+	
+	  $("#game_id").change();
+  }
+      function sub_from() {
+          $('#form').submit();
+      }
+      $("#game_id").change(function(){
+        gid = $("#game_id option:selected").val();
+        pid = "{:PID}";
+        if(gid){
+          $('#gameid').val(gid);
+          $.ajax({
+            url:"{:U('chec_disc')}",
+            type:'post',
+            data:{pid:pid,game_id:gid},
+            success:function(data){
+            
+              var hz = data.data.hz==1?'代充折扣':'统一折扣';
+              $("#disc").val(data.data.discount+'折').siblings('span.noticetxt').text('（'+hz+'）');;
+              $(".zhe").css('display','');
+              $("#discount").val(data.data.discount);
+              jsje($("#pay_fmoney"));
+              
+
+              var status = checkAccount();
+              var account = $('#account').val();  
+              if(account!=''){
+                if (status==-1) {
+                    layer.msg('此用户不属于您的渠道', {icon: 2});
+                }
+                if (status==0) {
+                    layer.msg('此用户没玩过这个游戏', {icon: 2});
+                }
+              } 
+              
+            },error:function(){
+              location.href = location.href;
+            }
+          });
+        }else{
+          $("#discount").val('');
+          jsje($("#pay_fmoney"));
+          $(".zhe").css('display','none');
+        }
+      });
+      function check() {
+          data = validation();
+          var pay_type = $("input[name='pay_type']:checked").val();
+          if (data.status != 1) {
+              layer.msg(data.msg, {icon: 2});
+              return false;
+          } else {
+              layer.prompt(
+                  {
+                      formType: 1,
+                      title: '请输入二级密码',
+                      value: ''
+                  },
+                  function (val,index) {
+                	 layer.close(index);
+                      $.ajax({
+                          url: '{:U("checkpwd")}',
+                          type: 'post',
+                          dataType: 'json',
+                          data: {'pwd': val},
+                          success: function (data) {
+                              if (data.status > 0) {
+								if(pay_type=="alipay") {
+									sub_from();
+								}else{
+									 $.ajax({
+				                          url: '{:U("agent_pay")}',
+				                          type: 'post',
+				                          dataType: 'json',
+				                          data: $('#form').serialize(),
+				                          success: function (datas) {
+				                        	  if (datas.status > 0) {
+				                        		  if(pay_type=="swiftpass"){
+				                        			  img_qrcode(datas.data);
+				                        		  }else{
+				                        			  layer.msg(datas.msg);
+				                        			  setTimeout(function(){
+				                        				  window.location.href="{:U('agent_pay_list')}";
+				                        			  },2000);
+				                        		  }
+				                        	  }else{
+				                        		  layer.msg(datas.msg); 
+				                        	  }
+				                          }
+				                      });
+								}             
+									 
+                              } else {
+                                  layer.msg(data.msg)
+                              }
+                          },
+                          error: function () {
+                              alert("错误");
+                          }
+                      });
+                  });
+          }
+      }
+
+      $("#pay_fmoney").keyup(function () {
+          jsje($(this));
+      });
+      function jsje(that){
+          var ratio = $("#discount").val();
+          var jine = that.val();
+          if (jine) {
+          if (/^\+?[1-9][0-9]*$/.test(jine)) {
+              $("#shifu").html(jine);
+            if (ratio >= 1) {
+                var real_amount = (jine * (ratio / 100) * 10).toFixed(2);
+                $("#yingfu").html(real_amount);
+                $("#real_amount").val(real_amount);
+            } else {
+                var money = that.val();
+                $("#yingfu").html(money);
+                $("#real_amount").val(money);
+            }
+          } else {
+              $("#yingfu").html(0);
+              layer.msg("充值金额必须是正整数");
+          }
+          } else {$("#yingfu").html(0);}
+      }
+      function validation() {
+          var json_data = "";
+          if ($.trim($('#user_account').val()).length == 0) {
+              return json_data = {'status': 0, 'msg': '请选择用户名'}
+          }
+          var limits = "{$pro['pay_limit']}";
+          if ($("#game_id").val() == '') {
+              return json_data = {'status': 0, 'msg': '请选择充值游戏'}
+          }
+          var status = checkAccount();
+          if (!status) {
+              if (status==-1) {
+            	  return json_data = {'status': 0, 'msg': '此用户不属于您的渠道'}
+              }
+              if (status==0) {
+            	  return json_data = {'status': 0, 'msg': '此用户没玩过这个游戏'}
+              }
+          }
+          if ($.trim($('#pay_fmoney').val()).length == 0 || $("#real_amount").val() == 0) {
+              return json_data = {'status': 0, 'msg': '充值金额不能为空'}
+          }
+
+          if (!intege($('#pay_fmoney').val())) {
+              return json_data = {'status': 0, 'msg': '充值金额必须是正整数'};
+          }
+          if (!checkSecond()) {
+              return json_data = {'status': 0, 'msg': '请设置二级密码'}
+          }
+          return json_data = {'status': 1, 'msg': '成功'};
+      }
+
+      $("#user_account").blur(function () {
+          var status = checkAccount();
+            var account = $('#user_account').val();  
+            if ($("#game_id").val() == '') {
+            	return false;
+            }
+            if(account!=''){
+                if (status==-1) {
+                    layer.msg('此用户不属于您的渠道', {icon: 2});
+                }
+              if (status==0) {
+                  layer.msg('此用户没玩过这个游戏', {icon: 2});
+              }
+            }        
+      })
+      function checkSecond() {
+          var status = 1;
+          $.ajax({
+              type: "post",
+              url: "{:U('checkSecond')}",
+              async: false,
+              dataType: "json",
+              success: function (data) {
+                  status = data.status;
+              }
+          });
+          return status;
+      }
+      function checkAccount() {
+          var status = 0;
+          $.ajax({
+              type: "post",
+              url: "{:U('checkAccount')}",
+              async: false,
+              data: {user_account: $("#user_account").val(), game_id: $("#game_id").val()},
+              dataType: "json",
+              success: function (data) {
+                  status = data.status;
+              }
+          });
+          // alert(status);
+          return status;
+      }
+
+      function intege(data) {
+          var re = /^[1-9]+[0-9]*]*$/;
+          if (!re.test(data)) {
+              return false;
+          }
+          else {
+              return true;
+          }
+      }
+
+      $(function(){
+          $("#promote_child").change();
+          
+          
+          $(".select_gallery").select2();
+          
+          $('#user_account').change(function() {
+            var that = $(this),userid = that.find('option:selected').attr('user-id');
+            if (userid) {
+            
+              $('#game_id option:gt(0)').remove();
+              
+              $.ajax({
+                  url:"{:U('get_game_list_by_user')}",
+                  data:{userid:userid},
+                  type:'post',
+                  dataType:'json',
+                  async:false,
+                  success:function(data){
+                    if (parseInt(data.status) ==1) {
+                      var html = '',select='';
+                      $.each(data.data,function(i,n) {
+                    	if(gameid == n.game_id){
+                    		select = "selected";
+                    		gameid = '';
+                    	}
+                        html += '<option game-id="'+n.game_id+'" value="'+n.game_id+'" '+select+'>'+n.game_name+'</option>';
+                        select= '';
+                      });
+                      $('#game_id').append(html);  
+                    }
+                    $('#game_id').select2();
+                  },
+                  errror:function(){
+                      layer.msg("服务器故障！");
+                  }
+              });
+              
+            } else {
+              
+            }
+            return false;
+          });
+          
+          $('.jspayradio input').click(function() {
+              var that=$(this);
+              $('.jspayradio i').removeClass('current');
+              if (that.prop('checked')) {
+                  that.siblings('i').addClass('current');
+              }
+          });
+      });
+
+      $("#promote_child").change(function(){
+          var coin = get_child_coin($(this).val());
+          $("#money").text(coin)
+      })
+
+      function get_child_coin(cid){
+          var coin = 0;
+          $.ajax({
+              url:"{:U('PromoteCoin/get_coin')}",
+              data:{id:cid},
+              type:'post',
+              async:false,
+              success:function(data){
+                  coin = data.coin;
+              },
+              errror:function(){
+                  layer.msg("服务器故障！");
+              }
+          });
+          if(coin == null){
+              coin = 0;
+          }
+          return coin;
+      }
+  </script>
+  <script type="text/javascript">
+      function img_qrcode(data) {
+		  var int =  setInterval("check_status('"+data.out_trade_no+"');",2000);
+          layer.open({
+              type: 1,
+              title: "微信扫码支付",
+              closeBtn: 1,
+              shadeClose: false,
+              skin: 'yourclass',
+              area: ['400px', '600px'],
+              btn:['确认充值','返回'],
+              content: '<div class="d_body" style="height:500px;text-align:center;"><div class="d_content"><div class="text_center"> <table class="list" align="right" width="100%"><tbody><tr><td class="text_right">订单号</td><td class="text_left">' + data.out_trade_no + '</td></tr><tr><td class="text_right">充值金额</td><td class="text_left">本次充值' + data.amount + '元，实际付款' + data.pay_money + '元</td></tr></tbody></table><img src="' + data.code_img_url + '" height="301" width="301"><img src="/Public/Media/images/wx_pay_tips.png"></div></div></div>',
+							end:function(){
+								/* window.location.href="{:U('agent_pay')}"; */
+								layer.closeAll();
+								window.clearInterval(int)
+								return false;
+							},
+					});
+          /* setTimeout("check_status('"+data.out_trade_no+"');",2000); */
+         
+      }
+      function check_status($order_num){
+        $url = "{:U('agent_pay_list')}";
+        $.ajax({
+          type:'post',
+          url:"{:U('check_status')}",
+          data:{order_num:$order_num},
+          async:true,
+          success:function(data){
+            if(data.status==1){
+                window.location.href=$url;
+            }else{
+            /*     check_status($order_num); */
+            }
+          }
+        });
+      }
+</script>
+</block>

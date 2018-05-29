@@ -1,0 +1,63 @@
+<extend name="Public/bases" />
+<block name="body" >
+
+<style>
+body{ height:100%;}
+.head{display: none;}
+.body_area{ background:#FFF;}
+.inbg{ border-bottom:none;}
+</style>
+<!--头部-->
+	<if condition="$type eq 1">
+		<div class="head_back"> <a onclick="window.history.back(-1)" class="back"><img src="__IMG__/back.png"></a> <span>活动详情</span>
+			<elseif condition="$type eq 2"/>
+			<div class="head_back"> <a onclick="window.history.back(-1)" class="back"><img src="__IMG__/back.png"></a> <span>新闻详情</span>
+				<else/>
+				<div class="head_back"> <a onclick="window.history.back(-1)" class="back"><img src="__IMG__/back.png"></a> <span>文章详情</span>
+	</if>
+
+<div class="headshare"><a data-toggle="modal" href="#share"><i></i></a></div>  
+  
+</div>
+<!--头部结束-->
+
+<div class="body_area"> 
+<div class="inbg newscont" style="word-wrap: break-word;">
+	<div class="act_tit"  style="text-align: center;">
+		<h3>{$doc.title}</h3>
+		<span>{:set_show_time($doc['update_time'])}发布</span>
+	</div>
+	<p>{$doc.content}</p>
+</div>
+</div>
+<!--弹窗-->
+<div class="modal" id="share">
+<ul>
+<li><a onclick="javascript:bShare.share(event,'weixin');return false;"  class="share_wx"><i></i><font>微信</font></a></li>
+<li><a onclick="javascript:bShare.share(event,'weixin');return false;" class="share_py"><i></i><font>朋友圈</font></a></li>
+<li><a onclick="javascript:bShare.share(event,'qqim');return false;" class="share_qq"><i></i><font>QQ</font></a></li>
+<li><a onclick="javascript:bShare.share(event,'qzone');return false;" class="share_kj"><i></i><font>QQ空间</font></a></li>
+<li><a onclick="javascript:bShare.share(event,'sinaminiblog');return false;" class="share_wb"><i></i><font>新浪微博</font></a></li>
+
+</ul>
+  <a class="close" data-dismiss="modal">取消</a>
+</div>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/jsshare/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/jsshare//bshareC0.js"></script>
+<script type="text/javascript" src="__JS__/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="__JS__/modal.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $("a.forgot").click(function(){
+    $("#lqcg").modal("hide");
+    $("#forgetform").modal({show:!0})
+  });
+  
+  $("#lqsb").modal("hide");
+  
+});
+</script>
+
+<!--弹窗结束-->
+</block>

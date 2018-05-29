@@ -1,0 +1,98 @@
+/**
+ * 混服样式
+ * @author 鹿文学
+ */
+/* common */
+button {border:none;}
+.right_container{background: #fff;}
+.trunk-content{margin: 20px 2% 0;}
+.trunk-search{padding-bottom: 20px;}
+.trunk-title span.title_main {
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+.page-form .table2 .form-radio label {position:relative;margin-right:20px;cursor:pointer;color: #6a7082;}
+.page-form .table2 .form-radio input {cursor:pointer;width:14px;height:14px;display:inline-block;position:absolute;top:0;left:0;margin:0;margin-top:2px;opacity:0;}
+.page-form .table2 .form-radio i {width:14px;height:14px;display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:5px;background:url(../../images/20180207/icon_normal_weixuanze.png) ;}
+.page-form .table2 .form-radio i.current {background-image:url(../../images/20180207/icon_xuanze.png);}
+.page-form .table2 .form-textarea textarea{height:120px;border:1px solid #E5E5E5;border-radius:5px;width:458px;padding-left: 3px;}
+
+.trunk-list .table2 tr{height: 56px;}
+.trunk-list .table2 .l {text-align:right;color: #8B8CA0;}
+.trunk-list .table2 .r {padding-left:20px;position:relative;}
+.trunk-list .table2 .r .txt {width:240px;height: 34px;color: #535875;}
+.trunk-list .table2 .mixedbtn {
+    line-height: 36px;
+    height: 36px;
+    padding: 0 33px;
+    background: #26C7DB;
+    display: inline-block;
+    border-radius: 3px;
+    color: #fff;
+}
+.trunk-list .table2 .mixedbtn:hover{background: #2bd8ed;}
+.trunk-list .table2 .mixedbtn.hover{background: #2bd8ed;}
+.trunk-list .table2 .mixedbtn:first-child{margin-right: 15px;}
+.trunk-list .table2 .btn {
+    width: 122px;
+    height: 36px;
+    background: #26C7DB;
+    color: #fff;
+    border-radius: 3px;
+}
+.trunk-list .table2 .btn:hover{background: #2bd8ed;}
+
+.trunk-list .table2 .siteapplybtn embed  {display:block;opacity:0;}
+.siteapply-index-form .trunk-list .table2 .txt[type=text] {width:420px;}
+.siteapply-index-form .trunk-list .table2 .txt[type=text][disabled],
+.siteapply-index-form .trunk-list .table2 .txt[type=text].disabled {border-color:transparent;background:transparent;}
+
+
+.trunk-list .uploadify {display:inline-block;color:#0099FF;margin-right:10px;width: auto !important;}
+.trunk-list .uploadify .uploadify-button {text-align:center;width: auto !important;}
+.trunk-list .uploadify-queue {position:absolute;bottom:40px;color:#FFF;}
+
+.trunk-search .submit {
+    display: inline-block;
+    width: 95px;
+    text-align: center;
+    background: #26C7DB;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    border-radius: 3px;
+}
+.trunk-search .submit:hover{background: #2bd8ed;}
+
+.trunk-list .table2 .r .back_btn {
+    width: 118px;
+    height: 36px;
+    line-height: 36px;
+    background: #E5E5E5;
+    color: #8B8CA0;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.siteGame-add-form .table2 .l {width:120px;white-space: nowrap;}
+
+
+.trunk-list .table .op {color:#1AAEEB;}
+.trunk-list .table .op a {padding:0 5px;}
+.trunk-list .table .op a.totop {
+    color: #596D88;
+    width: 66px;
+    display: inline-block;
+    text-align: right;
+}
+.trunk-list .table .op a img {height:14px;margin:-2px 2px 0;}
+
+
+.must_style{display: inline-block; color: red;vertical-align: middle;width: 10px;text-align: center;}
+
+
+
+

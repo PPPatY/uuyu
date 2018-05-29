@@ -1,0 +1,459 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<header class="header">
+  <section class="wrap">
+    <if condition="I('get.game_id') neq ''">
+      <a href="javascript:history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <else/>
+      <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    </if>
+    <div class="caption"><span class="table"><span class="table-cell">充值</span></span></div>
+  </section>
+</header>
+<div class="occupy"></div>
+
+<section class="trunker">
+  
+  <section class="inner">
+    <section class="contain">
+      <form id="payform" action="" method="post">
+      <div class="recharge-base recharge-same">
+        <div class="clearfix table">
+          <div class="row table-row">
+            <span class="table-cell cell1">充值账户</span>
+            <span class="table-cell cell2"><input type="text" class="txt" placeholder="请输入充值账户" name="" value="{$userinfo.nickname}"></span>
+          </div>
+          <div class="row table-row">
+            <span class="table-cell cell1">账户余额</span>
+            <span class="table-cell cell2"><span>{$userinfo.balance} 平台币</span></span>
+          </div>
+          <div class="row table-row">
+            <span class="table-cell cell1">充值金额</span>
+            <span class="table-cell cell2"><span class="money"><input type="text" id="money" class="txt" placeholder="充值金额需为整数" name="" value=""><span class="mark"><i class="money-mark">¥</i><i class="money-del"></i></span></span></span>
+          </div>
+        </div>
+        <div class="selectarea clearfix">
+          <div class="stop cell1">快速选择</div>
+          <div class="smiddle jsselected clearfix">
+              <a href="javascript:;" class="butn" data-value="1000">1000</a>
+              <a href="javascript:;" class="butn" data-value="500">500</a>
+              <a href="javascript:;" class="butn" data-value="300">300</a>
+              <a href="javascript:;" class="butn" data-value="100">100</a>
+          </div>
+          <div class="sbottom clearfix" id="flatcoin">
+            <span class="sbottomleft">您将获得<i id="number" class="number">0.00</i>平台币</span>
+            <span class="sbottomright">(兑换比例<i id="ratio" class="ratio" data-value="1">1:1</i>)</span>
+          </div>
+        </div>
+      </div>
+      <div class="recharge-way-title"><span>选择支付方式</span></div>
+      <div class="recharge-way recharge-same">
+        <div class="clearfix jsradio paytype table">
+        <if condition="($paytype['wei_xin'] eq 1) or ($paytype['weixin'] eq 1)">
+          <label class="item input-radio table-row " id="weixin">
+            <span class="table-cell item1"><img src="__IMG__/my_pay_weixin.png" class="icon"></span>
+            <span class="table-cell item2">微信支付</span>
+            <span class="table-cell item3 jsway"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio on" checked value=""><i class="icon-hook"></i></span></span>
+          </label>
+        </if>
+        <if condition="$paytype['alipay'] eq 1">
+          <label class="item input-radio table-row " id="alipay">
+            <span class="table-cell item1"><img src="__IMG__/my_pay_alipay.png" class="icon"></span>
+            <span class="table-cell item2">支付宝支付</span>
+            <span class="table-cell item3 jsway"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value=""><i class="icon-hook"></i></span></span>
+          </label>
+        </if>
+
+        <if condition="$paytype['goldpig'] eq 1">
+          <label class="item input-radio table-row " id="goldpig">
+            <span class="table-cell item1"><img src="__IMG__/goldpig.png" class="icon"></span>
+            <span class="table-cell item2">金猪支付</span>
+            <span class="table-cell item3 jsway"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value=""><i class="icon-hook"></i></span></span>
+          </label>
+        </if>
+        </div>
+      </div>
+      <div class="recharge-butn">
+        <input type="submit" class="butn jssubmit" value="立即充值">
+      </div>
+      </form>
+    </section>
+    
+  </section>
+</section>
+<div id="payiframe">
+    <iframe  src="" style="background-image:url({$game_load_page});" frameborder="0" class="payiframe"></iframe>
+</div>
+
+<div class="pop"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+<script>
+    var pop = $('.pop').pop();
+    $paynum = "{:I('get.pay_order_number')}";
+    if($('#money').val()!=''){
+      location.href = location.href;
+    }else{
+      $('.jsselected a:first-child').each(function(){
+        var that = $(this),value=that.attr('data-value');
+        var number = $('#number');
+        var ratio = $('#ratio').attr('data-value');
+        that.addClass('on').siblings().removeClass('on');
+        number.html((ratio*value).toFixed(2));
+        $('#money').val(value).addClass('on').siblings('.mark').find('i').fadeIn(200);
+        return false;
+      });
+    }
+    if($paynum){
+      pop.addClass('pop-load').open('','<div class="eloading"><span class="icon"></span><span>订单查询中...</span></div>');
+      $.ajax({
+        type:"POST",
+        data:{pay_order_number:$paynum},
+        url:"{:U('Subscriber/deposit_search')}",
+        dataType:"json",
+        success:function(res){
+            pop.removeClass();
+            if(res.status==1){
+              if(res.data.pay_status==1){
+                // 成功
+                pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">充值成功</div><div class="pop-table"><div class="pop-row"><div class="pop-cell">充值账户：</div><div class="pop-cell">'+res.data.user_account+'</div></div><div class="pop-row"><div class="pop-cell">充值金额：</div><div class="pop-cell">￥'+res.data.payamount+'</div></div></div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">关闭</a> <a href="javascript:;" class="pop-butn pop-comfirm again">继续充值</a></div>');
+                $('.jscancel').click(function() {
+                  location.href="{:U('Subscriber/user')}";
+                });
+                $('.again').click(function() {
+                  location.href="{:U('Subscriber/user_recharge')}";
+                });
+              }else{
+                // 失败
+                pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">充值失败</div><div class="pop-text">可能是网络延时，如24小时未充值完成，请联系网站客服</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">关闭</a> <a href="javascript:location.href = location.href;" class="pop-butn pop-comfirm ">重新查询</a></div>');
+                $('.jscancel').click(function() {
+                  location.href="{:U('Subscriber/user')}";
+                });
+              }
+            }else{  
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">订单不存在</div><div class="pop-text">如有疑问请联系网站客服</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">关闭</a></div>');
+              $('.jscancel').click(function() {
+                  location.href="{:U('Subscriber/user')}";
+              });
+            }
+        }
+      });
+    }
+    
+    $(function() {
+
+      $('.jsloginclick a').click(function() {
+        pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">暂未登录</div><div class="pop-text">您还未登录账号，暂时无法签到哦</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="login.html" class="pop-butn pop-comfirm ">去登录</a></div>');
+        $('.jscancel').click(function() {pop.close();});
+          
+        return false;
+      });
+      
+      $('#money').keyup(function() {
+        var that=$(this),val = that.val();
+        that.addClass('on');
+        if (val && val>0 && /^(0|[1-9][0-9]*)$/.test(val)) {
+          that.siblings('.mark').find('i').fadeIn(200);
+          var ratio = $('#ratio').attr('data-value');
+          $('#number').html((ratio*val).toFixed(2));
+        } else {$('#number').html('0.00');that.removeClass('on').val('').siblings('.mark').find('i').fadeOut(200);}
+        return false;
+      }).blur(function() {
+        var that=$(this),val = that.val();
+        val || that.removeClass('on').siblings('.mark').find('i').fadeOut(200);
+      });
+      
+      $('.money-del').click(function() {
+        var that=$(this),sib = that.siblings('.txt');
+        that.fadeOut(200);
+        $('#money').val('').removeClass('on');
+        that.siblings('.money-mark').fadeOut(200);
+        $('.jsselected a').removeClass('on');$('#number').html('0.00');
+      });
+      
+      
+      $('.jsselected a').click(function() {
+        var that = $(this),value=that.attr('data-value');
+        var number = $('#number');
+        var ratio = $('#ratio').attr('data-value');
+        that.addClass('on').siblings().removeClass('on');
+        number.html((ratio*value).toFixed(2));
+        $('#money').val(value).addClass('on').siblings('.mark').find('i').fadeIn(200);
+        return false;
+      });
+      
+      
+      
+      $('.jsradio .radio').change(function() {
+        var that=$(this),parent=that.closest('.jsradio');
+        if (that.prop('checked')) {
+          parent.find('.radio').removeClass('on');
+          that.addClass('on');
+        }
+      });
+      
+      
+      $('.jssubmit').click(function() {
+        paymoney = $("#flatcoin #number").text();
+        if(paymoney<1){
+          layer.msg('请输入充值金额');
+          return false;
+        }
+        var that = $(this);
+        $('.jsway input[name="way"]').each(function(){
+          if($(this).hasClass('on')){
+            $paytype = $(this).closest('.paytype label').attr('id');
+          }
+        });
+        try{
+          if($paytype==''){
+            layer.msg('请选择支付方式');
+            return false;
+          }
+        }catch(err){
+          layer.msg('请选择支付方式');
+          return false;
+        }
+
+        if($paytype==''){
+          layer.mag('请选择支付方式');
+          return false;
+        }else{
+          switch($paytype){
+            case 'weixin':
+              if (isWeiXin()) {
+                $type={:get_wx_type()};
+                if($type){
+                  $("#form1").attr('target',"_self");
+                  $("#form1").submit();
+                }else{
+                  get_wx_code();
+                }
+              }else if(IsPC()){
+                  wx_pay();
+                  return false;
+              }else{
+                  wx_wap_pay();
+                  return false;
+              }
+              break;
+            case 'alipay':
+              alipay();
+              break;
+            case 'jft':
+              jft();
+              break;
+            case 'goldpig':
+              goldpig();
+              break;
+            default:
+              layer.msg('请选择支付方式');
+              break;
+          } 
+        }
+        
+        $('.jscancel').click(function() {pop.close();});
+        
+        return false;
+      });
+    });
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function get_wx_code(){
+      pcloading=layer.load(0, {shade: false});
+      $game_id="{:base64_decode(I('game_id'))}";
+       $.ajax({
+          type:"POST",
+          data:{amount:$("#flatcoin #number").text(),game_id:$game_id},
+          url:"{:U('get_wx_code')}",
+          dataType:"json",
+          success:function(res){
+            if(res.status){
+          window.location.href=res.url; 
+            }else{
+              alert(res.msg);
+            }
+          },
+          error:function(){
+            layer.closeAll();
+          },
+          complete:function(){
+            layer.closeAll();
+          }
+        })
+      return;
+    }
+
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+                    "SymbianOS", "Windows Phone",
+                    "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+
+
+
+    function wx_pay(){
+      var index = layer.load(2, {shade: false}); //0代表加载的风格，支持0-2
+      $.ajax({
+        type:"POST",
+        url:"{:U('Pay/wx_pay')}",
+        data:{amount:$("#flatcoin #number").text()},
+        dataType:"json",
+        success:function(data){
+          layer.open({
+                id:'iframe', 
+                type:1,
+                title:'订单确认',
+                btn:['充值完成','返回'],
+                skin:'lay_pop',
+                style: ' background-color:#78BA32; color:#fff;',
+                content:data.html,
+                yes:function(index,layero) {
+                    var lay = $(layero.selector); 
+                    window.location.reload();
+                },
+                cancel:function(index) {                  
+                }
+            });
+            checkstatus(data.out_trade_no);
+        },
+        error:function(res){
+          // alert("服务器故障");
+        }
+      })
+    }
+    function checkstatus(data){
+      $.ajax({
+        type:"POST",
+        url:"{:U('checkstatus')}",
+        data:{out_trade_no:data},
+        dataType:"json",
+        success:function(data1){
+          if(data1.status==1){
+            $game_id="{:base64_decode(I('game_id'))}";
+            if(!isNaN($game_id)){
+              window.location.href='media.php?s=/Game/open_game/game_id/'+$game_id;
+            }else{
+              window.location.href="{:U('Subscriber/index')}";
+            }
+          }else{
+            checkstatus(data);
+          }
+        },
+        error:function(res){
+        }
+      })
+    }
+    function wx_wap_pay(){
+      $.ajax({
+        type:"POST",
+        url:"{:U('Pay/weixin_wap_pay')}",
+        data:{amount:$("#flatcoin #number").text()},
+        dataType:"json",
+        success:function(data){
+          if(data.status==1){
+            window.location=data.pay_info; 
+          }else if(data.status==0){
+            layer.msg(data.info);
+          }else{
+            layer.closeAll();
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">创建订单失败<div class="pop-text">'+data.info+'</div></div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+            $('.jscancel').click(function() {pop.close();});
+            return false;
+          }
+        },
+        error:function(res){
+            layer.closeAll();
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">服务器错误，请稍后再试</div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+            $('.jscancel').click(function() {location.href = location.href});
+            return false;
+        }
+      })
+    }
+
+    function alipay(){
+      layer.load();
+      $.ajax({
+        type:"POST",
+        url:"{:U('Pay/alipay')}",
+        data:{amount:$("#flatcoin #number").text()},
+        dataType:"json",
+        success:function(data){
+          layer.closeAll('loading');
+          if(data.status==1){
+            location.href = data.url;
+          }else{
+            layer.msg(data.msg);
+          }
+        },error:function(){
+
+        }
+      });
+    }
+    function jft(){
+      if($("#flatcoin #number").text()<1){
+        layer.msg('充值金额有误');
+        return false;
+      }
+      $.ajax({
+        type:"POST",
+        url:"{:U('Pay/jftpay')}",
+        data:{money:$("#flatcoin #number").text()},
+        dataType:"json",
+        success:function(data){
+          location.href = data.url;
+        },error:function(){
+
+        }
+      });
+    }
+    function goldpig(){
+      layer.load();
+      if($("#flatcoin #number").text()<1){
+        layer.msg('充值金额有误');
+        return false;
+      }
+      $.ajax({
+        type:"POST",
+        url:"{:U('Pay/recharge_pig')}",
+        data:{money:$("#flatcoin #number").text()},
+        dataType:"json",
+        success:function(data){
+          layer.closeAll('loading');
+          if(data.status==1){
+            location.href = data.url;
+          }else{
+            layer.msg(data.info);
+          }
+        },error:function(){
+          layer.msg('服务器忙，请稍后再试');
+          return false;
+        }
+      });
+    }
+</script>
+</block>

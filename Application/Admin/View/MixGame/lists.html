@@ -1,0 +1,223 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('MixPartner/lists')}">混服</a></li>
+            <li><a href="{:U('MixPartner/lists')}">混服管理</a></li>
+            <li><a href="#">混服游戏申请</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">混服游戏申请</span>
+                    <span class="">合作者在混服后台申请混服的游戏</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+                <a class=" ajax-post " target-form="ids" url="{:U("set_status",array("status"=>1))}"><span class="button_icon button_icon12"></span>开 启</a>
+                <a class=" ajax-post " target-form="ids" url="{:U("set_status",array("status"=>0))}"><span class="button_icon button_icon13"></span>关 闭</a>
+			</div>
+		</empty>
+		</div>
+
+        <!-- 高级搜索 -->
+        <div class="jssearch fr cf search_list">
+                <div class="input-list input-list-game search_label_rehab">
+                    <label>游戏名称：</label>
+                    <select id="game_id" name="game_name" class="select_gallery" >
+                        <option value="">请选择游戏</option>
+                        <volist name=":get_game_list()" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.game_name}">{$vo.game_name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="input-list input-list-channelstatus">
+                    <label>状态：</label>
+                    <select name="status">
+                        <option value="">全部</option>
+                        <option value="1">开启</option>
+                        <option value="0">关闭</option>
+                    </select>
+                </div>
+                <div class="input-list">
+                    <label>合作者账号：</label>
+                    <input type="text" name="partner_account" class="" value="{:I('partner_account')}">
+                </div>
+                <input type="hidden" name="" value="" class="sortBy">
+                <div class="input-list">
+                    <a class="sch-btn" href="javascript:;" id="search" url="{:U('MixGame/lists','model='.$model['name'],false)}">搜索</a>
+                </div>
+        </div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data-table">
+        <div class="data-table table-striped">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            <input class="check-all" type="checkbox">
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            游戏名称
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            混服账号
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            混服站点
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            申请时间
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            分成比例
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            状态
+                        </th>
+                        <th style="text-align:center"class="row-selected row-selected">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <!-- 列表 -->
+                <tbody class="dd">
+                    <volist name="list_data" id="data">
+
+                    <tr>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">
+                            <input class="ids" type="checkbox" value="{$data['id']}" name="ids[]">
+                        </td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.game_name}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.partner_account}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.domain}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.create_time|date="Y-m-d H:i:s",###}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.ratio}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center"><lable class="ss">{:mix_status($data['status'])}</lable></td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center"><a href="{:U('edit?id='.$data['id'])}">查看</a></td>
+                        
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script src="__STATIC__/layer/layer.js"></script>
+<script>
+<volist name=":I('get.')" id="vo">
+    Think.setValue('{$key}',"{$vo}");
+</volist>
+$(".select_gallery").select2();
+</script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('MixGame/lists')}');
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+    
+
+    //点击排序
+    $('.list_sort').click(function(){
+        var url = $(this).attr('url');
+        var ids = $('.ids:checked');
+        var param = '';
+        if(ids.length > 0){
+            var str = new Array();
+            ids.each(function(){
+                str.push($(this).val());
+            });
+            param = str.join(',');
+        }
+
+        if(url != undefined && url != ''){
+            
+            window.location.href = url.replace(".html","") + '/ids/' + param;
+        }
+    });
+    /* 状态搜索子菜单 */
+    $(".search-form").find(".status").hover(function(){
+        $("#sub-sch-menu-status").removeClass("hidden");
+    },function(){
+        $("#sub-sch-menu-status").addClass("hidden");
+    });
+    $("#sub-sch-menu-status li").find("a").each(function(){
+        $(this).click(function(){
+            var text = $(this).text();
+            $("#sch-status-txt").text(text).attr("data",$(this).attr("value"));
+            $("#sub-sch-menu-status").addClass("hidden");
+            $("#status").val($(this).attr("value"));//pay_way  pay-way
+        })
+    });
+
+    $(".drop-down22").on('click',function(event) {
+        var navlist = $(this).find('.i_list_li');
+        if (navlist.hasClass('hidden')) {
+            navlist.removeClass('hidden');
+            $('#i_list_id').focus().val('');            
+        } else {
+            navlist.addClass('hidden');
+        }
+        $(document).one("click", function(){
+            navlist.addClass('hidden');
+        });
+        event.stopPropagation();
+    });
+
+    $('#i_list_id').on('keyup',function(event) {
+        var val  = $.trim($(this).val()).toLowerCase();
+        $('#i_list_idh').val(val);
+    });
+    
+    $("#i_list_li").find("a").each(function(){
+        $(this).click(function(){
+            var text = $.trim($(this).text()).toLowerCase();
+            $("#i_list_id").val(text);
+            $('#i_list_idh').val(text);
+        })
+    });
+})
+</script>
+</block>

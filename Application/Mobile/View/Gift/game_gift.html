@@ -1,0 +1,301 @@
+<extend name="Public/bases" />
+<block name="body" >
+<style>
+.head{display: none;}
+.bottom{display: none;}
+#wlsb{margin-top: 0px;
+    top: 25%;}
+</style>
+<script type="text/javascript">
+$(function(){
+
+  $(".back_ser p").click(function(){
+    var ul=$(".backnew");
+    if(ul.css("display")=="none"){
+      ul.slideDown();
+    }else{
+      ul.slideUp();
+    }
+  });
+  
+})
+</script> 
+<!--头部-->
+<div class="head_back"> <a onclick="window.history.back(-1)" class="back"><img src="__IMG__/back.png">礼包</a> <span>游戏礼包</span>
+
+</div>
+<!--头部结束-->
+
+<div class="body_area"> 
+  <!--礼包-->
+  <div class="inbg">
+    <div class="gilist_de">
+      <table class="thead">
+        <tr>
+          <th width="20%"> <img src="{$gdata['icon']|get_cover='path'}"></th>
+          <td width="60%"><h3>{$gdata.game_name}</h3>
+            <span>{$gdata.game_type_name}</span><i>|</i><span><font>{:play_num($gdata['id'])}</font>人在玩</span><i>|</i><span>共<font>{:count($data)}</font>个礼包</span></td>
+          <td width="20%">
+          <if condition="$collect eq 1">
+            <a id="sc"><i class="scicon chose"></i>收藏</a>
+          <else/>
+            <a id="sc"><i class="scicon"></i>收藏</a>
+          </if>
+          </td>
+        </tr>
+      </table>
+      <table class="gamelq_list">
+        <volist name="data" id="data">
+        <tr>
+          <th width="70%">
+            <h3>[{$data['game_name']}]{$data['giftbag_name']}</h3>
+            <span class="lostgift" data-all="{$data['allcount_novice']}" data-wei="{$data['wnovice']}" data-code="{$data['is_unicode']}" data-novice="{$data['novice']}">
+            <if condition="$data['is_unicode'] eq 1">
+            <font style="margin-left:0px;">统一码：{$data['novice']}</font>
+            <else/>
+            <i><em style="width:{:$data['wnovice']/$data['allcount_novice']*100}%"></em></i>
+            <font>{$data['wnovice']}/{$data['allcount_novice']}</font>
+            </if>
+            </span>
+            <p class="p_font">有效期:{:set_show_time($data['start_time'],'')} 至 {:set_show_time($data['end_time'],'','forever')}</p>
+            <p>礼包内容:{$data.desribe}</p>
+             </th>
+          <td width="20%">
+          <a data-toggle="modal" data-giftid="{$data.id}" data-giftname="{$data.giftbag_name}" data-gameid="{$data.game_id}" data-gamename="{$data.game_name}"  class="getgiftbut">领取</a></td>
+        </tr>
+        </volist>
+      </table>
+    </div>
+  </div>
+  <!--礼包结束--> 
+</div>
+<!--弹窗-->
+<div class="modal gilqmo" id="lqcg">
+  <a class="close" data-dismiss="modal"><i></i></a>
+    <img src="__IMG__/lqcg.png">
+    <h3 class="h3tip"></h3>
+    <span class="span3tip"></span>
+    <span class="span1tip">您的礼包激活码为:<font id="card" class="fonttip"></font></span>
+    <span class="span2tip">可在<a href="{:U('/mygift','',true,'',true)}"><font>[我的礼包]</font></a>中查看</span>
+    <a class="lqstart" <if condition="is_mobile_request() neq true"> id="copybtn"<else/> id="mcopybtn"</if>>复制</a>
+</div>
+
+<div class="modal gilqmo" id="lqsb">
+  <a class="close" data-dismiss="modal"><i></i></a>
+    <img src="__IMG__/lqsb.png">
+    <h3>领取失败！</h3>
+    <div class="gettip">
+      <span></span>
+      <span></span>
+    </div>
+</div>
+<div class="modal gilqmo" id="wlsb">
+  <a class="close" data-dismiss="modal"><i></i></a>
+    <img src="__IMG__/lqsb.png">
+    <h3>领取失败！</h3>
+    <div class="gettip">
+      <span></span>
+      <span></span>
+    </div>
+</div>
+<div class="modal warnlogin" id="warnlogin">
+  <a class="close" data-dismiss="modal"><i></i></a>
+   <div class="wa_img">  <img src="__IMG__/warnlogin.png"></div>
+    <h3>您还未登录哦</h3>
+    <span>暂时无法收藏心爱的游戏~T_T~</span>
+    <div class="andiv"><a data-dismiss="modal" id="colse">稍后再说</a>
+     <a href="{:U('/subscriber','',true,'',true)}" class="golo">去登录</a></div>
+</div>
+<div class="modal warnlogin" id="warnerror">
+  <a class="close" data-dismiss="modal"><i></i></a>
+   <div class="wa_img">  <img src="__IMG__/warnlogin.png"></div>
+    <h3></h3>
+</div>
+
+<div class="modal warnlogin" id="sccg">
+  <a class="close" data-dismiss="modal"><i></i></a>
+    <img src="__IMG__/sccg.png">
+    <h3>收藏成功！</h3>
+    <span>在收藏夹中可快速找到该游戏</span>
+        <div class="andiv"><a href="{:U('/mygame',array('type'=>0),true,'',true)}">去收藏夹</a>
+     <a href="{:U('/opgm',array('game_id'=>$play_like['id']),true,'',true)}" class="golo">开始游戏</a></div>
+</div>
+
+<script type="text/javascript" src="__JS__/modal.js"></script>
+
+<!--弹窗结束-->
+<!--礼包底部-->
+<div class="gift_bottom"> <a href="{:U('/opgm',array('game_id'=>I('game_id')),true,'',true)}">开始游戏</a> </div>
+<!--礼包底部结束-->
+<script type="text/javascript" src="__JS__/jquery.zclip.min.js"></script>
+<script src="__JS__/clipboard.min.js"></script>
+<script type="text/javascript">
+$("#colse").click(function (){
+	$('.getgiftbut').removeClass('noget');
+	$('.getgiftbut').html('领取');
+});
+$(document).ready(function(){
+
+  $("a.forgot").click(function(){
+    $("#lqcg").modal("hide");
+    $("#forgetform").modal({show:!0})
+  });
+  
+  $("#lqsb").modal("hide");
+  //移动端复制
+  
+	  if($("#copybtn").val()){
+		  copybtn = $("#copybtn");
+		}else{
+			copybtn = $("#mcopybtn");
+		}
+	  copybtn.click(function(){
+      that = copybtn;
+      that.css("color", "#fff");
+      that.text('复制');
+      Copy($('#card').text(),that);
+  });
+  function Copy(str,that){
+    
+      text = str;
+      var clipboard = new Clipboard('.copy',{
+        text: function() {
+              return text;
+          }
+      });
+      clipboard.on('success', function(e) {
+        that.text('复制成功');
+        e.clearSelection();
+      });
+
+      clipboard.on('error', function(e) {
+       
+        that.text('复制完成');
+        alert('此浏览器不支持此操作，请长按礼包码复制');
+      });
+  }
+});
+$(function(){
+  $("#sc").on('click',function(){
+      game_id="{:I('game_id')}";
+      $.ajax({
+      type:"POST",
+      url:"{:U('Game/collection')}",
+      data:{game_id:game_id},
+      dataType:"json",
+      success:function(data){
+        switch(parseInt(data.status)) {
+            case 1:{
+                $('.scicon').addClass('chose');
+                $('#sccg').modal('show');
+            };break;
+            case 0:{
+                $('#warnerror').children('h3').text(data.msg);
+                $('#warnerror').modal("show");
+            };break;
+            default:{
+                $('#warnlogin').modal("show");
+            }   
+        }
+      },
+      error:function(res){
+        alert("服务器故障");
+      }
+    })
+  });
+});
+</script>
+<script>
+$("#wlsb").modal("hide");
+function get_linestatus(){
+	if(window.navigator.onLine!=true){
+		  $("#wlsb").addClass('noget');
+          $('.gettip').html('<span>您的网络出现问题，</br>请检查网络是否正常再来领取吧~</span>');
+          $("#wlsb").modal("show");
+          return false;
+	 }else{
+		 return true;
+	 }
+}
+$(function(){
+    $(".getgiftbut").click(function(){
+    	linestatus = get_linestatus();
+    	if(linestatus){
+  		  if($("#copybtn").val()){
+  			  copybtn = $("#copybtn");
+  			}else{
+  				copybtn = $("#mcopybtn");
+  			}
+    thatt = copybtn;
+    thatt.css("color", "#fff");
+    thatt.text('复制');
+    var that = this;
+    giftid = $(that).data('giftid');
+    giftname = $(that).data('giftname');
+    gameid = $(that).data('gameid');
+    gamename = $(that).data('gamename');
+    $.ajax({
+      async: false,
+      cache: false,
+      data:'giftid='+giftid+'&giftname='+giftname+'&gameid='+gameid+'&gamename='+gamename,
+      dataType:'json',
+      url:'__CONTROLLER__/getgift',
+      type:'post',
+      beforeSend:function() {
+        $(that).addClass('noget');
+        $(that).html('领取中');
+      },
+      success:function(data) {
+            switch (parseInt(data.status)) {
+                case 1: {
+                    $(that).removeClass('noget');
+                    $(that).html('已领');
+                    $('.h3tip').html('领取成功！');
+                    $('.span3tip').html(data.info);
+                    $('.fonttip').html(data.nvalue);
+                    $("#lqcg").modal("show");
+                    $all = $(that).parent().prev().children('.lostgift').attr('data-all');
+                    $wei = $(that).parent().prev().children('.lostgift').attr('data-wei');
+                    $code = $(that).parent().prev().children('.lostgift').attr('data-code');
+                    $novice = $(that).parent().prev().children('.lostgift').attr('data-novice');
+                    if($code == 1){
+                    	$html = '<font style="margin-left:0px;">统一码：'+$novice+'</font>';
+                    }else{
+                    	$html = '<i><em style="width:'+($wei-1)/$all*100+'%"></em></i><font>'+($wei-1)+'/'+$all+'</font>';
+                    }
+                    $(that).parent().prev().children('.lostgift').html($html);
+                };break;
+                case 2: {
+                    $(that).removeClass('noget');
+                    $(that).html('已领');
+                    $('.h3tip').html('您已经领取过了~');
+                    $('.span3tip').html(data.info);
+                    $('.fonttip').html(data.nvalue);
+                    $("#lqcg").modal("show");
+                };break;
+                case 3: {
+                    $(that).removeClass('noget');
+                    $(that).html('领取失败');
+                    $('.h3tip').html('领取失败！');
+                    $('.span3tip').html(data.info);
+                    $('.fonttip').html(data.nvalue);
+                    $("#lqcg").modal("show");
+                };break;
+                default:{
+                  $(that).addClass('noget');
+                  $('.gettip').html('<span>'+data.info+'</span>');
+                  $("#warnlogin").modal("show");
+                };
+            }
+      },
+      error:function(){
+        
+      }     
+    });
+  }
+    });
+  
+});
+</script>
+</block>
+

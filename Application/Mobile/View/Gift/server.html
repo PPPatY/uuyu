@@ -1,0 +1,103 @@
+<extend name="Public/bases" />
+<block name="body" >
+<!--切换-->
+  <script type="text/javascript" src="__JS__/tab.js"></script> <!--切换结束-->
+</head>
+
+<body>
+<div class="body_area"> 
+  
+  <!--首页导航-->
+  <div class="wel_nav">
+    <ul>
+      <li><a href="{:U('/gift','',true,'',true)}"><i class="welnav_01"></i><font>礼包</font><em></em></a></li>
+      <li  class="now"><a href="{:U('/server','',true,'',true)}"><i class="welnav_02"></i><font>开服</font><em></em></a></li>
+      <li><a href="{:U('/huodong','',true,'',true)}"><i class="welnav_03"></i><font>活动</font><em></em></a></li>
+      <li><a href="{:U('/news','',true,'',true)}"><i class="welnav_04"></i><font>新闻</font><em></em></a></li>
+      <div class="clear"></div>
+    </ul>
+  </div>
+  <!--首页导航结束--> 
+  
+  <!--轮播图-->
+  <div id="slideBox" class="slideBox">
+    <div class="bd">
+      <div class="tempWrap" style="overflow:hidden; position:relative;">
+        <ul style="width: 2560px; position: relative; overflow: hidden; padding: 0px; margin: 0px; transition-duration: 200ms; transform: translate(-2048px, 0px) translateZ(0px);">
+            <volist name="adv" id="vo">
+                <li style="display: table-cell; vertical-align: top; width: 512px;">
+                  <a href="{$vo.url}" target="{$vo.target}"><img src="{$vo.data|get_cover='path'}"></a>
+                </li>
+            </volist>
+        </ul>
+      </div>
+    </div>
+    <div class="hd">
+      <ul>
+        <li class="on">1</li>
+        <li class="">2</li>
+        <li class="">3</li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript" src="__JS__/TouchSlide.1.1.js"></script> 
+  <script type="text/javascript">
+	
+        TouchSlide({ 
+            slideCell:"#slideBox",
+            titCell:".hd ul", 
+            mainCell:".bd ul", 
+            effect:"leftLoop", 
+		        interTime:4000,
+            autoPage:true,
+            autoPlay:true,
+        });
+    </script> 
+  
+  <!--轮播图结束--> 
+ 
+  <!--礼包-->
+  <div class="inbg kfcont">
+  
+  <div id="tab1" class="kf_tab">
+	<div class="menu">
+		<ul>
+			<li id="one1" onclick="setTab('one',1)"><span>今日最新</span></li>
+			<li id="one2" onclick="setTab('one',2)"><span>未来一周</span></li>
+		</ul>
+	</div>
+	<div class="">
+		<div id="con_one_1">
+    <table>
+      <tbody>
+      <volist name="today" id="today">
+        <tr>
+          <th width="20%"><a href="{:U('Game/detail',array('id'=>$today['id']))}"><img src="{$today.icon|get_cover='path'}"></a></th>
+          <td width="60%"><h3>{$today.game_name}</h3><span>{$today.server_name}</span> <p>{$today.start_time|date='Y-m-d H:i:s',###}</p></td>
+          <td width="20%"><a href="{:U('/opgm',array('uid'=>get_uid(),game_id=>$today['id'],pid=>I('pid')),true,'',true)}">去玩</a></td>
+        </tr>
+      </volist>
+      </tbody>
+    </table>
+      </div>
+		<div id="con_one_2" style="display:none;">
+      <table>
+        <tbody>
+        <volist name="week" id="week">
+          <tr>
+            <th width="20%"><a href="{:U('Game/detail',array('id'=>$week['id']))}"><img src="{$week.icon|get_cover='path'}"></a></th>
+            <td width="50%"><h3>{$week.game_name}</h3><span>{$week.server_name}</span> <p>{$week.start_time|date='Y-m-d H:i:s',###}</p></td>
+          </tr>
+        </volist>
+        </tbody>
+        </table>
+      </div> 
+        
+	</div>
+</div>
+  
+  </div>
+  <!--礼包结束-->
+  
+</div>
+</block>

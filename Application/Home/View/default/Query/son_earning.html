@@ -1,0 +1,495 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/finance.css" rel="stylesheet">
+</block>
+
+<block name="body">
+	<style type="text/css">
+		@media screen and (max-width: 1370px) {
+			.trunk-search .select-time .txt{width: 100px;}
+			.form-group .submit{width: 55px;}
+		}
+	</style>
+    <if condition="$parent_id eq 0 ">  
+    <div class="page-search normal_list query-earning-search">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>财务管理></span><span>子渠道结算</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_jiesuan.png">
+      	<span class="title_main">子渠道结算</span>
+      </div>
+      <div class="trunk-content article">
+          <form action="{:U('Query/son_earning')}" method="post" enctype="multipart/form-data">
+          
+          <div class="trunk-search clearfix">
+          	<div class="tab fl">
+	            <a href="#" class="current">子渠道结算</a>
+	            <a href="{:U('Query/son_list')}" class="">结算记录</a>
+	          </div>
+              
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询" data-type='sett'>
+              </div>
+              
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">开始时间：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="timestart" placeholder="开始时间" value="{:I('timestart')}" >
+                </div>
+                 <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="timeend" placeholder="结束时间" value="{:I('timeend')}">
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                    <label class="form-title select-title"></label>
+                    <select id="ch_promote_id" name="ch_promote_id" class="reselect select_gallery" style="min-width:170px;">
+                        <option value="0">全部子渠道</option>
+                        <volist name=":get_promote_list_by_id()" id ="vo">
+                          <option value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                    </select>
+              </div>
+              
+              <div class="form-group fr">
+              	<label class="form-title select-title">参与结算设置：</label>				
+							<label class="form-title includes">
+			            <input type="checkbox" class="inp_radio" value="1" name="isbd">
+			        <i class="check_icon"></i>
+			        <span>包含绑币</span>
+		        </label>
+            </div>
+          </div>
+          </form>
+      </div>
+      
+    
+    <div class="page-list query-earning-list">
+      <div class="trunk-content article" style="margin-top: 0;min-height: 50vh;">
+          <div class="trunk-search clearfix">
+            <input type="button" class="submit btn_calc" value="结算" onclick="submitFrom()">
+          </div>
+          <div class="trunk-list">
+              <table class="table4 normal_table">
+                  <tr class="odd">
+                    <th>
+                        <label class="checked">
+							<input class="check-all" type="checkbox">
+							<i class="check_icon"></i>
+						</label>
+                    </th>
+                    <th>结算周期</th> 
+                    <th>游戏名称</th>
+                    <th>总充值</th>
+                    <th>总注册</th>
+                    <th>结算模式</th>
+                    <th>分成比例</th>
+                    <th>注册单价</th> 
+                    <th>结算金额(元)</th>
+                    <th>状态</th>
+                  </tr>
+                  <empty name="list_data">
+                  <tr><td colspan="10" style="text-align: center;height: 35vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                  <else />
+                  <volist name="list_data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                  <td>
+	                  <label class="checked">
+				        <input class="ids" type="checkbox" data-val="{$vo['game_id']}"data-reg="{$vo['total_number']},{$vo['total_amount']}"
+				        value="{$vo['game_id']},CPS,{$vo['ratio']},{$vo['money']},{$vo['total_number']},{$vo['total_amount']},{$vo['promote_id']}"
+				        name="ids[]">
+				        <i class="check_icon"></i>
+			        </label>
+                  </td>
+                  <td>{$starttime|date="Y-m-d",###}~{$endtime|date="Y-m-d",###}</td>
+                    <td>{$vo.game_name}</td>
+                    <td class="amount"><notempty name="vo.total_amount">{$vo.total_amount}<else />0</notempty></td>
+                     <td class="number"><notempty name="vo.total_number">{$vo.total_number}<else />0</notempty></td>
+                    <td class="coop">
+                      <select name="cooperation" class="cooperation" >
+                          <option value="CPS" selected>CPS</option>
+                          <option value="CPA">CPA</option>
+                      </select>
+                    </td>                  
+                   
+                    <td class="cps">                    
+                      <input type="text" placeholder="填写" value="{$vo.ratio}" /> %
+                    </td>
+                    <td class="cpa">                   
+                      <input type="text" placeholder="填写" value="{$vo.money}" /> 元
+                    </td>
+                    <td class="money">0</td>
+                    <td>可结算</td>
+                   
+                  </tr>
+                  </volist>
+                  <tr class="odd">
+                      <td colspan="8" style="font-weight: bold;">结算汇总(元)</td>
+                      <td id="total">0</td>
+                      <td></td>
+                  </tr>
+                  </empty>
+              </table>
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+      
+      <div class="page-explain query-my_earning-explain">
+	      <div class="trunk-content article border_normal">
+	        <table class="desccontent">
+	            <tr><td class="title" style="width: 112px;display: inline-block;">子渠道结算说明：</td><td class="det">二级渠道数据结算，由一级推广员自主完成以及打款；一级推广员通过推广员后台选择子渠道、游戏、结算方式，填写相关分成比例，系统自动计算出结算数据。</td></tr>
+	            <tr><td class="title">注意：</td><td class="det">1、推广结算只结算消费到游戏的所有订单记录。（系统默认全部排除绑币，可视情况自行勾选）</td></tr>
+                <tr><td></td><td class="det">2、包含绑币勾选请慎重，由于玩家账户部分绑币的来源属于后台发放或者会长代充等，涉及到成本盈亏，是否参与推广员结算请考虑清楚！</td></tr>
+                <tr><td></td><td class="det">3、推广结算时间请按规律时间统一结算，否则时间不统一容易导致个别游戏在统一时间内无法结算。</td></tr>
+	        </table>
+	      </div>
+	    </div>
+    </div>
+    </div>
+    <else />
+    <div class="page-search normal_list query-earning-search">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>财务管理></span><span>子渠道结算</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_jiesuan.png">
+      	<span class="title_main">子渠道结算</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('Query/son_earning')}" method="post" enctype="multipart/form-data">
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询" id="submit">
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">结束时间：</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt edate" name="time-end" placeholder="结束时间" value="{:I('time-end')}">
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">开始时间：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt sdate" name="time-start" placeholder="开始时间" value="{:I('time-start')}" >
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="pattern" name="pattern" class="reselect select_gallery" >
+                        <option value="">合作模式</option>
+                        <option value="0">CPS</option>
+                        <option value="1">CPA</option>
+                    </select>
+              </div>
+              <div class="form-group fr">
+                    <select id="game_id" name="game_id" class="reselect select_gallery"  style="max-width:180px;">
+                        <option game-id="0" value="0">请选择游戏</option>
+                        <volist name=":get_game_list()" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.game_name}</option>
+                        </volist>
+                    </select>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div> 
+    
+    
+    <div class="page-list query-earning-list">
+      <div class="trunk-content article">
+          <div class="trunk-list">
+              <table class="table4 normal_table">
+                  <tr class="odd">
+                    <th>结算周期</th>
+                    <th>结算单号</th>
+                    <th>总充值</th>
+                    <th>总注册</th>
+                    <th>结算金额</th>
+                    <th>结算范围</th>
+                    <th>结算时间</th>
+                    <th>结算单详情</th>                   
+                    <th>提现</th>
+                  </tr>
+                  <empty name="list_data">
+                  <tr><td colspan="9" style="text-align: center;height: 35vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                  <else />
+                  <volist name="list_data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td>{$vo.starttime|date="Y-m-d",###}至{$vo.endtime|date="Y-m-d",###}</td>
+                    <td>{$vo.settlement_number}</td>
+                    <td>{:get_son_settlemt_sum($vo['settlement_number'],'sum_money')}</td>
+                    <td>{:get_son_settlemt_sum($vo['settlement_number'],'reg_number')}</td>
+                    <td style="color:#ff6600;">{:get_son_settlemt_sum($vo['settlement_number'],'jie_money')}</td>
+                    <td><if condition="$vo['isbd'] eq 0">排除绑币<else />包含绑币</if></td>
+                    <td>{$vo.create_time|date="Y-m-d",###}</td>
+                    <td>
+                    	<a href="javascript:;" class="channel_pack" style="color:#46A3FF"url="{:U('son_settlemeng_detail',array('settlement_number'=>$vo['settlement_number']))}">查看</a>
+                    </td>
+                    <td>
+                    	<switch name="vo.ti_status" >
+	                        <case value="-1"><a href="javascript:;" id ="channel_son_settlement"data-num="{$vo['settlement_number']}" style="color:#46A3FF">申请提现</a></case>
+	                        <case value="0"><lable style="color:#D0D0D0">已申请</lable></case>
+	                        <case value="1"><lable style="color:#00DB00">已通过</lable></case>
+	                        <case value="2"><lable style="color:#FF0000">已驳回</lable></case>
+                      	</switch>
+                    </td>
+                  </tr>
+                  </volist>
+                  <tr class="odd">
+                    <td colspan="8" style="font-weight: bold;">结算汇总(元)</td>
+                    <td>{$total}</td>
+                  </tr>
+                  </empty>
+              </table>
+              
+              
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+      <div class="page-explain query-my_earning-explain">
+	      <div class="trunk-content article border_normal">
+	        <table class="desccontent">
+	            <tr><td class="title">子渠道结算说明：</td><td class="det">二级渠道数据结算，由一级推广员自主完成以及打款；一级推广员通过推广员后台选择子渠道、游戏、结算方式，填写相关分成比例，系统自动计算出结算数据。</td></tr>
+	            <tr><td class="title">注意：</td><td class="det">1、推广结算只结算消费到游戏的所有订单记录。（系统默认全部排除绑币，可视情况自行勾选）</td></tr>
+                <tr><td></td><td class="det">2、包含绑币勾选请慎重，由于玩家账户部分绑币的来源属于后台发放或者会长代充等，涉及到成本盈亏，是否参与推广员结算请考虑清楚！</td></tr>
+                <tr><td></td><td class="det">3、推广结算时间请按规律时间统一结算，否则时间不统一容易导致个别游戏在统一时间内无法结算。</td></tr>
+	        </table>
+	      </div>
+	    </div>
+    </div>
+</div> 
+    </if>
+</block>
+<block name="script">
+<if condition="$parent_id eq 0 ">
+<script type="text/javascript">
+setValue('ch_promote_id',{$Think.request.ch_promote_id|default=0});
+setValue('isbd',{$Think.request.isbd|default=0});
+$(function() {
+	$("#radio2").change(function (){
+		$("#isbd").val("1");
+	});
+	$("#radio1").change(function (){
+		$("#isbd").val("0");
+	});
+	$(".promote_settlemt").click(function(){
+		url = $(this).attr("url");
+		console.log(url);
+	});
+  $('.cps input').on('change',function() {
+      var cps = $(this).val();
+      if (cps == '') {layer.msg('请输入分成比例',{icon:2});return false;}
+      if (!/^\d+(\.\d{0,2})*$/.test(cps)) {layer.msg('请输入正确的数字',{icon:2});return false;}
+      var that = $(this).closest('.cps'),amount=0,
+          smoney=that.siblings('.money').text(),
+          total = $('#total').text()*100,
+      coom = $.trim(that.siblings('.coop').find('.cooperation :selected').val());
+     
+      if (coom === 'CPS') {
+          amount=that.siblings('.amount').text(),
+              money = Math.round(cps*100*amount*100/10000)/100,
+              total = ( total + (money-smoney)*100)/100;
+          that.siblings('.money').text(money.toFixed(2));
+          $('#total').text('').text(total.toFixed(2));
+      } else {
+
+      }  
+modifyvalue($(this).closest('tr'));			
+  });
+  $('.cps input').change();
+  $('.cps input').keyup(function(event) {if (event.keyCode ==13) $(this).change();});
+  $('.cpa input').on('change',function() {
+      var cpa = $(this).val();
+      if (cpa == '') {layer.msg('请输入注册单价',{icon:2});return false;}
+      if (!/^\d+(\.\d{0,2})*$/.test(cpa)) {layer.msg('请输入正确的数字',{icon:2});return false;}
+      var that = $(this).closest('.cpa'),amount=0,
+          smoney=that.siblings('.money').text(),
+          total = $('#total').text()*100,
+      coom = $.trim(that.siblings('.coop').find('.cooperation :selected').val());
+      
+      if (coom === 'CPA') {
+          anumber=that.siblings('.number').text(),
+              money = cpa*anumber,
+              total = ( total + (money-smoney)*100)/100;
+          that.siblings('.money').text(money.toFixed(2));
+          $('#total').text('').text(total.toFixed(2));
+      } else {
+      }
+      modifyvalue($(this).closest('tr'));
+  });
+  $('.cpa input').keyup(function(event) {if (event.keyCode ==13)  $(this).change();});
+  
+  $('.coop select').on('change',function() {
+      var val = $.trim($(this).val()),top = $(this).closest('.coop'),
+          smoney=top.siblings('.money').text(),total = $('#total').text()*100;
+			var money=0;
+      if (val == 'CPS') {
+          var cps = $.trim(top.siblings('.cps').find('input').val()),
+          amount=top.siblings('.amount').text();
+          if (cps == '') {cps=0;}
+          money = Math.round(cps*100 * amount*100/10000)/100;
+          total = ( total + (money-smoney)*100)/100;
+          top.siblings('.money').text(money.toFixed(2));
+          $('#total').text('').text(total.toFixed(2));
+					modifyvalue(top.closest('tr'));
+      } else if (val == 'CPA') {
+          var cpa = $.trim(top.siblings('.cpa').find('input').val()),
+          anumber=top.siblings('.number').text();
+          if (cpa == '') {cpa=0;} 
+          money = cpa * anumber;
+          total = ( total + (money-smoney)*100)/100;
+          top.siblings('.money').text(money.toFixed(2));
+          $('#total').text('').text(total.toFixed(2));   
+					modifyvalue(top.closest('tr'));					
+      } else {
+          layer.msg('误操作',{icon:2});
+      }
+  });
+  
+  $('.queren').on('click',function() {
+      var that = $(this).closest('.op'),
+          coop=$.trim(that.siblings('.coop').find('.cooperation :selected').val()),
+          cp=0;
+      if (coop == 'CPS') {
+          cp = that.siblings('.cps').find('input').val();
+          if (cp == '') {layer.msg('请输入分成比例',{icon:2});return false;}
+          if (!/^\d+$/.test(cp)) {layer.msg('请输入正确的数字',{icon:2});return false;}                                               
+      } else if (coop == 'CPA') {
+          cp = that.siblings('.cpa').find('input').val();
+          if (cp == '') {layer.msg('请输入注册单价',{icon:2});return false;}
+          if (!/^\d+(\.\d{1,2})*$/.test(cp)) {layer.msg('请输入正确的数字',{icon:2});return false;}                        
+      } else {
+          layer.msg('误操作',{icon:2});
+      }
+      if (that.hasClass('disabled')) {return false;}
+      var target = $(this).attr('url');
+      that.addClass('disabled').attr('autocomplete','off').prop('disabled',true);
+      $.post(target,{cp:cp,cooperation:coop}).success(function(data) {
+          if (data.status == 1) {
+              layer.msg(data.info,{icon:1,time:2000},function() {
+                  that.removeClass('disabled').prop('disabled',false);
+                  window.location.reload();
+              });
+          } else {
+              layer.msg(data.info,{icon:2},function() {
+                  that.removeClass('disabled').prop('disabled',false);
+              });
+          }
+      });
+  });
+});
+
+
+function modifyvalue(that) {
+	var coop = $.trim(that.find('.coop select').val());
+	var cps = $.trim(that.find('.cps input').val());
+	var cpa = $.trim(that.find('.cpa input').val());
+	var money = $.trim(that.find('.money').text());
+	var ids = that.find('.ids');
+	var value = $.trim(ids.val());
+	var reg = $.trim(ids.attr('data-reg'));
+	var gid = $.trim(ids.attr('data-val'));
+	var promoteid = $.trim($('#ch_promote_id').val());
+
+	var result = gid+','+coop+','+cps+','+cpa+','+reg+','+promoteid;
+
+	ids.val(result);
+}
+
+
+</script>
+<else />
+<script type="text/javascript">
+  setValue('game_id',{$Think.request.game_id|default=0});
+  setValue('pattern',{$Think.request.pattern|default="''"});
+</script>
+</if> 
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+//结算详情
+$(".channel_pack").click(function() {
+		$url = $(this).attr('url');
+		    layer.open({
+		        type: 2,
+		        title: "结算详情",
+		        shadeClose: false,
+		        shade: 0.6,
+		        area: ['92%', '62%'],
+		        content:[$url,'no']//iframe的url
+		    }); 
+	});
+
+$("#channel_son_settlement").click(function(){
+	var settlement_number = $(this).data('num');
+	$.ajax({
+	      url: '{:U("channel_son_settlement")}',
+	      type: 'POST',
+	      dataType: 'json',
+	      data: {settlement_number: settlement_number},
+	      success:function(data){
+	        if(data.status==0){
+	             layer.msg('请勿重复操作', {icon: 5});
+
+	        }else{
+	            layer.msg('申请成功', {icon: 6});
+	            setTimeout(function(){window.location.reload();},2000);
+	        }
+	      },
+	      error:function(){
+	        layer.msg('服务器故障', {icon: 4});
+	      }
+	    });
+});
+
+
+$().ready(function(){
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+  $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+		maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+		maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+    $('.submit').click(function(){
+		var chpid = $("#ch_promote_id").val();
+    var sdate = $('#sdate').val();
+    var edate = $('#edate').val();
+		if (chpid<=0) {layer.msg('请选择子渠道');return false;}
+    if(sdate =='' || edate ==''){
+      layer.msg('请完整时间搜索框');
+      return false;
+    }
+    if(Date.parse(sdate) > Date.parse(edate)){
+      layer.msg('开始时间必须小于等于结束时间');
+      return false;
+    }
+		
+		
+  });
+  $(".select_gallery").select2();
+
+});
+</script>
+</block>
+  

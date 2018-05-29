@@ -1,0 +1,58 @@
+/**
+ * 下载样式
+ * @author 鹿文学
+ */
+/* common */
+
+
+.container {max-width:1242px;overflow:hidden;margin:0 auto;width:100%;position:relative;background:url(../images/download_bg.png) center top no-repeat;position:relative;background-size:100% 100%;}
+.container .wrap {position:relative;}
+.container .downloadbox {margin:0 auto;text-align:center;position:relative;padding-top:1px;margin-top:-1px;}
+.container .downloadbox .right_click {display:none;position:absolute;top:0.2rem;right:0.48rem;width:5.41rem;height:2.21rem;}
+.container .downloadbox .h5_icon {width:3.4rem;height:3.4rem;display:block;margin:0 auto;margin-top:3.6rem;}
+.container .downloadbox .title {font-size:1.12rem;color:#FFF;margin:0.28rem 0 0;font-weight:normal;}
+.container .downloadbox .version {font-size:0.4rem;color:#CCFFFF;margin:0.1rem 0 0;}
+.container .downloadbox .butnbox {padding:3.76rem 0 1rem;}
+.container .downloadbox .butnbox .butn {width:8.32rem;height:1.72rem;display:block;margin:0 auto;font-size:0.6rem;color:#FFF;background:#23BBF3;position:relative;text-align:center;line-height:1.72rem;border-radius:1.72rem;}
+.container .downloadbox .butnbox .butn .icon {width:0.71rem;height:0.8rem;display:inline-block;margin-right:0.48rem;vertical-align:middle;margin-top:-0.32rem;}
+.container .downloadbox .butnbox .size {font-size:0.4rem;color:#CFF;margin:0.48rem 0 0;}
+.container .downloadbox .butnbox .butn .iconbox {overflow:hidden;width:0.8rem;height:0.8rem;display:inline-block;background:url(../images/guide_btn_download1.png) center bottom no-repeat;background-size:100% auto;position:relative;margin-right:0.48rem;vertical-align:middle;margin-top:-.3rem;}
+.container .downloadbox .butnbox .butn .icon-down {width:0.58rem;height:0.52rem;display:block;background:url(../images/guide_btn_download2.png) center center no-repeat;background-size:100% 100%;position:absolute;top:0;left:0;right:0;margin:0 auto;-webkit-animation:download 1.5s linear .1s infinite;animation:download 1.5s linear .1s infinite; }
+.container .downloadbox .butnbox .butn .textbox i{font-style:normal;margin:0 0 0 5px;}
+
+
+
+@keyframes download {
+  0% {top:0;}
+  40% {top:100%;opacity:1;}
+  43% {top:110%;visibility:hidden;}
+  55% {top:-110%;visibility:hidden;opacity:0;}
+  60% {top:-100%;opacity:0;}
+  65% {opacity:0.1;}
+  75% {opacity:0.6;}
+  100% {top:0%;visibility:visible;opacity:1;}
+}
+@-webkit-keyframes download {
+  0% {top:0;}
+  40% {top:100%;opacity:1;}
+  43% {top:110%;visibility:hidden;}
+  55% {top:-110%;visibility:hidden;opacity:0;}
+  60% {top:-100%;opacity:0;}
+  65% {opacity:0.1;}
+  75% {opacity:0.6;}
+  100% {top:0%;visibility:visible;opacity:1;}
+}
+
+@media screen and (max-width:660px) {
+  
+}
+@media screen and (max-width:540px) {
+ 
+}
+@media screen and (max-width:400px) {
+  
+}
+@media screen and (max-width:320px) {
+  
+}
+ 

@@ -1,0 +1,174 @@
+<extend name="Public/base" />
+
+<block name="body">
+<style>
+    .navtab_list{ width:100%; border-bottom:1px solid #ddd; margin: 15px 0px; height: 75px;}
+    .navtab_list a{ display:block; width:100px; height:35px; line-height:35px; text-align:center; float:left; margin-left:20px; background:#e0e0e0; border-radius:3px; color:#333; margin-top: 15px;}
+    .navtab_list a:first-child{ margin-left:0px;}
+    .navtab_list a:hover, .navtab_list a.tabchose{ text-decoration:none; border-bottom:none; background:rgb(0, 149, 248); color:#fff;}
+    .navtab_list_cs{ margin-top:20px;margin-left: 20px;}
+    .navtab_list_cs img{ margin:0px 8px;}
+    .navtab_list_cs img:not(:first-child){ margin:0px 8px;margin-left: 40px;}
+    .top_nav_list.navtab_list{border: 1px solid #ddd;background: #f0f0f0;border-radius: 5px;font-size: 12px;}
+    .data_list table td {
+        min-width: 50px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('PromoteWelfare/lists')}">福利管理</a></li>
+            <li><a href="{:U('PromoteWelfare/lists')}">渠道福利</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <!-- 标签页导航 -->
+<div class="tab-wrap">
+	<div class="formtitle" style="margin-bottom: 20px;"><span>编辑会长代充折扣</span><p class="description_text" style="line-height: 20px;">说明：设置返利对象，返利游戏，返利比例等</p></div>
+    <div class="cf top_nav_list navtab_list"> 
+        <div class="fl navtab_list_cs"> 
+            <span>注意①：此处的会长代充折扣，针对的对象全部推广员；设置推广员折扣，即代表该推广会长代充时享受独立的优惠折扣。</span><br>
+            <span>注意②：统一折扣代表该游戏全部推广员享受的会长代充折扣；当设置单个推广员折扣时，会长代充折扣以设置的推广员折扣值为准。</span>
+        </div>
+    </div>
+    <div class="tab-content tab_content">
+    <!-- 表单 -->
+    <form id="form" action="{:U('edit?model='.$model['id'])}" method="post" class="form-horizontal">
+        <!-- 基础文档模型 -->
+		<div id="tab1" class="tab-pane in tab1 tab_table">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <td class="l">推广员账号：</td>
+                    <td class="r">
+                    	<!--<input type="text" class="txt" name="account" value="" disabled="disabled">-->
+                        <select id="promote_id" name="promote_id" disabled="disabled" style="cursor: not-allowed;">
+                            <volist name=":get_promote_list()" id="vo">
+                                <option value="{$vo.id}">{$vo.account}</option>
+                            </volist>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l noticeinfo">
+                        <div class="noticemaintitle">游戏名称：</div>
+                    </td>
+                    <td class="r">
+                        <select id="game_id" name="game_id" disabled="disabled"  style="cursor: not-allowed;">
+                            <volist name=":get_game_list()" id="vo">
+                                <option value="{$vo.id}">{$vo.game_name}</option>
+                            </volist>
+                        </select>
+                        <input type="hidden" id="game_name" name="game_name" value="{$data.game_name}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l noticeinfo">
+                        <div class="noticemaintitle">统一折扣：</div>
+                    </td>
+                    <td class="r">
+                        <span id="game_discount_txt"></span>
+                        <input class="txt " name="game_discount" value="{$data.game_discount}" type="hidden"
+                               id="game_discount">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l noticeinfo">
+                        <div class="noticemaintitle">推广员折扣：</div>
+                    </td>
+                    <td class="r">
+                        <input type="text" class="txt " name="promote_discount" value="{$data.promote_discount}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l noticeinfo">
+                        <div class="noticemaintitle">代充状态：</div>
+                    </td>
+                    <td class="r table_radio">
+                    	<div class="radio radio-primary">
+								<input type="radio" id="radio1" value="0" name="recharge_status" >
+								<label for="radio1">关闭</label>
+							</div>
+							<div class="radio radio-primary">
+								<input type="radio" id="radio2" value="1" name="recharge_status" checked="ture" >
+								<label for="radio2">开启</label>
+							</div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="form-item cf">
+            <input type="hidden" name="id" value="{$data.id}">
+            <button class="submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('PromoteWelfare/lists')}');
+Think.setValue("promote_id", "{$data.promote_id|default = 0}");
+Think.setValue("game_id", "{$data.game_id|default = 0}");
+Think.setValue("recharge_status", "{$data.recharge_status|default = 0}");
+Think.setValue("promote_status", "{$data.promote_status|default = 0}");
+Think.setValue("cont_status", "{$data.cont_status|default = 0}");
+$('#submit').click(function(){
+    $('#form').submit();
+});
+
+$(function(){
+    $("#game_id").change();
+    $("#game_id").select2();
+    $("#promote_id").select2();
+    $(".select_2").select2();
+  $('.date').datetimepicker({
+      format: 'yyyy-mm-dd',
+      language:"zh-CN",
+      minView:2,
+      autoclose:true
+  });
+   $('.time').datetimepicker({
+        language:"zh-CN",
+        hour: 13,
+        minute: 15
+    });
+  showTab();
+});
+
+/*获取游戏名称*/
+$("#game_id").change(function() {
+    $("#game_name").val($("#game_id option:selected").text())
+    getDiscount();
+});
+
+function getDiscount() {
+    $.ajax({
+        url:"{:U('Ajax/getGameDiscount')}",
+        type:'post',
+        dataType:'json',
+        data:{game_id:$("#game_id").val()},
+        success:function(data){
+            $("#game_discount_txt").text(data.discount);
+            $("#game_discount").val(data.discount);
+        }
+    })
+}
+
+</script>
+</block>

@@ -1,0 +1,49 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+	<!-- 标签页导航 -->
+	<div class="tab-wrap">
+			<!-- 表单 -->
+			<form id="form" action="{:U('generate')}" method="post" class="form-horizontal doc-modal-form">
+            <div class="formtitle"><span>基本信息</span></div>
+            <ul class="form_info ">
+                <li><label>数据表</label><div class="form_main"><span class="form_select"><select name="table" class="select_gallery">
+                                    <volist name="tables" id="tb">
+                                        <option value="{$tb}">{$tb}</option>
+                                    </volist>
+                                </select></span></div><i class="form_hint">当前数据库的所有表</i></li>
+                <li><label>模型标识</label><div class="form_main"><input type="text" class="" name="name" value="" placeholder="请输入文档模型标识"></div><i class="form_hint">模型英文标识</i></li>
+                <li><label>模型名称</label><div class="form_main"><input type="text" class="" name="title" value="" placeholder="请输入模型的名称"></div><i class="form_hint">模型的名称</i></li>
+                <input type="hidden" name="id" value="{$id}"/>           
+                <li><label>&nbsp;</label><input type="submit" id="submit" value="生成" target-form="form-horizontal" class="form_btn ajax-post"><button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button></li>
+            </ul>
+				<!-- 基础 -->
+			</form>
+	</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    //导航高亮
+    highlight_subnav('{:U('Model/index')}');
+    $(".select_gallery").select2();
+	$(".select2-search--hide").select2({
+		minimumResultsForSearch: -1,
+	});
+
+    $(function(){
+        showTab();
+    })
+</script>
+</block>
+

@@ -1,0 +1,37 @@
+/**
+ * 活动样式
+ * @author 鹿文学
+ */
+/* common */
+.newspage {background:#FFF;}
+/* header */
+.header .caption {margin:0 16.2%;}
+.header .arrow-left {width:16%;}
+.header .arrow-left img{margin-left:.4rem;width:0.38rem;display:block;}
+.header .mall-share img {width:0.68rem;height:0.68rem;vertical-align:baseline;display:block;}
+.header .mall-share {margin-right:0.6rem;}
+
+
+.news-detail {padding:0.66rem 0.6rem .8rem;}
+.detail .title {font-size:0.56rem;color:#000;font-weight:normal;margin:0;padding:0;line-height:1.5;}
+.detail .date {font-size:0.42rem;color:#999;padding-top:0.38rem;}
+.detail .article {font-size:0.42rem;color:#000;padding-top:0.42rem;}
+.detail .article p {margin:0;padding:0;line-height:1.5;}
+.detail .article img {max-width:1080px;width:10.8rem;margin:0.32rem auto 0.28rem;display:block;}
+.detail .article .imgwrap {}
+
+
+@media screen and (max-width:660px) {
+  
+}
+@media screen and (max-width:540px) {
+  
+  
+}
+@media screen and (max-width:400px) {
+  
+}
+@media screen and (max-width:370px) {
+  
+}
+@media screen and (max-width:320px) {}

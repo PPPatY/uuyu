@@ -1,0 +1,37 @@
+
+.pay-box .pay-box-content .pay-box-title,.pay-box-pay-temp .pay-box-title,.pay-box-partir .pay-box-title {font-size:0.66rem;color:#000;padding-top:0.4rem;}
+.pay-box .pay-box-content .pay-box-pay-info {padding-left:0.7rem;padding-top:0.49rem;}
+.pay-box .pay-box-content .pay-box-pay-info .pay-box-row~.pay-box-row {border-top:2px solid #E7E7E7;}
+.pay-box .pay-box-content .pay-box-pay-info .pay-box-cell {height:1.68rem;max-height:168px;}
+.pay-box .pay-box-content .pay-box-pay-info .pm{font-size:0.52rem;text-align:left;}
+.pay-box .pay-box-content .pay-box-pay-info .pv {font-size:0.56rem;text-align:right;padding-right:0.7rem;}
+.pay-box .pay-box-content .pay-box-pay-info .pv .red {color:#D0021B;}
+.pay-box .pay-box-content .pay-box-pay-info .pv i {font-style:normal;font-size:0.72rem;}
+
+.pay-box .pay-box-content .pay-box-pay-qrcode {padding-top:0.78rem;}
+.pay-box .pay-box-content .pay-box-pay-qrcode img{width:5.4rem;height:5.4rem;display:block;margin:0 auto;}
+.pay-box .pay-box-content .pay-box-pay-qrcode p {font-size:0.48rem;margin:0;padding-top:0.28rem;padding-bottom:0.7rem;}
+
+.pay-box .pay-box-content .pay-box-pay-way-title {font-size:0.4rem;color:#666;height:1rem;line-height:1rem;background:#EDEDED;text-align:left;padding-left:0.7rem;}
+.pay-box .pay-box-content .pay-box-pay-way-select {font-size:.3rem;color:#999;text-align:left;padding-left:0.7rem;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item {border-bottom:2px solid #E7E7E7;max-height:158px;height:1.58rem;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item1 {width:1.14rem;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item1 .icon {width:0.74rem;height:0.74rem;display:block;} 
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item2 .way {font-size:0.52rem;display:block;color:#333;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item3 {width:0.7rem;padding-right:0.7rem;text-align:right;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item3 .icon-hook-wrap {position:relative;overflow:hidden;clear:both;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item3 .icon-arrow-right {width:0.3rem;height:0.54rem;display:block;float:right;background:url(../images/pop_pay_more.png);}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item3 .radio {position:absolute;opacity:0;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item3 .icon-hook {width:0.56rem;height:0.44rem;display:block;float:right;background-repeat:no-repeat;background-position:center center;background-size:100% 100%;}
+.pay-box .pay-box-content .pay-box-pay-way-select .item .item3 .radio.on~.icon-hook {background-image:url(../images/pop_pay_choose.png);}
+.pay-box .pay-box-butn-box {padding-top:0.78rem;}
+.pay-box .pay-box-butn-box .pay-box-butn,.pay-box-pay-temp .pay-box-butn-box .pay-box-butn {font-size:0.6rem;color:#FFF;background:#23BBF3;width:6.2rem;height:1.4rem;line-height:1.4rem;text-align:center;display:block;border-radius:0.08rem;border:none;margin:0 auto;}
+
+@media screen and (max-width:660px) {
+  
+  .pay-box .pay-box-content .pay-box-row{border-bottom-width:2px;}
+}
+@media screen and (max-width:540px) {
+  .pay-box .pay-box-content .pay-box-row{border-bottom-width:1px;}
+  .pay-box-pay .pay-box-content .pay-box-pay-info .pay-box-row~.pay-box-row {border-top-width:1px;}
+}

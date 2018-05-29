@@ -1,0 +1,68 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/app')}">APP站点</a></li>
+            <li><a href="#">APP助手上传</a></li>
+        </ul>
+        <div class="question">
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">APP助手上传</span>
+                    <span class="">用于上传相关app到服务器，便于用户下载</span>
+                </li>
+            </ul>
+            <p class="description_text" style="height: 40px;line-height: 40px;">说明：用于上传相关app到服务器，便于用户下载</p>
+        </div>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="formtitle" style="margin-top: 20px; margin-bottom: 0px;"><span>APP助手上传</span></div>
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+
+			</div>
+		</empty>
+		</div>
+		
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                     
+                        <volist name="list_grids" id="field">
+                            <th>{$field.title}</th>
+                        </volist>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                        <tr>
+                          
+                            <volist name="list_grids" id="grid">
+                                <td>{:get_list_field($data,$grid)}</td>
+                            </volist>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+

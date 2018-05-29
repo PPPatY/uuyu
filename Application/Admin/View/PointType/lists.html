@@ -1,0 +1,110 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Spend/lists')}">站点</a></li>
+            <li><a href="{:U('PointType/lists')}">积分商城</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <div class="question">
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">设置积分商城积分项目</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+        <!--显示状态搜索-->
+
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th >积分名称</th>
+                        <th >奖励积分</th>
+                        <th >说明</th>
+                        <th >操作</th>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                <empty name="data" >
+                <tr>
+                <td colspan="5" class="text-center"> aOh! 暂时还没有内容! </td>
+                </tr>
+                <else />
+                    <volist name="data" id="vo">
+                        <tr>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.point}</td>
+                            <td>{$vo.remark}</td>
+                            <td>
+                            <a href="{:U('edit',array('model'=>$model['id'],'id'=>$vo['id']))}">编辑</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    </empty>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav("{:U('lists')}");
+$(function(){
+    Think.setValue('status_show',"{:I('status_show')}");
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+
+})
+</script>
+</block>

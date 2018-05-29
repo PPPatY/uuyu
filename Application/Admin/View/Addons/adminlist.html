@@ -1,0 +1,97 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Addons/index')}">扩展</a></li>
+            <li><a href="{:U('Addons/index')}">扩展</a></li>
+            <li><a href="#">{$title}</a></li>
+        </ul>
+    </div>
+
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<eq name="model.extend" value="1">
+			<div class="tools">
+				<a class="" href="{:U('edit',array('name'=>$name))}"><span class="button_icon button_icon1"></span>新 增</a>
+				<a class=" ajax-post confirm" target-form="ids" url="{:U('del?name='.$name)}"><span class="button_icon button_icon2"></span>删 除</a>
+			</div>
+		</eq>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list">
+                <label>关键字：</label>
+				<input type="text" name="{$model['search_key']|default='title'}" class="search-input" value="{:I('title')}" placeholder="请输入关键字">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('adminList','name='.$name,false)}">搜索</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<empty name="custom_adminlist">
+			<!-- 数据列表 -->
+	        <table>
+				<thead>
+					<tr>
+						<th>
+						 	<input class="check-all" type="checkbox">序号
+	                    </th>
+						<volist name="list_grid" id="vo">
+							<th>{$vo.title}</th>
+						</volist>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name="_list" id="lv" key="vo">
+					<tr>
+						<td><input class="ids" type="checkbox" value="{$lv.id}" name="ids[]">{$lv.id}</td>
+						<volist name="list_grid" id="lk">
+							<td>{:get_addonlist_field($lv, $lk, $name)}</td>
+						</volist>
+					</tr>
+					</volist>
+				</tbody>
+			</table>
+		<else />
+			<present name="custom_adminlist">
+				{$custom_adminlist}
+			</present>
+		</empty>
+	</div>
+	<!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+        
+		$(function(){
+
+	        //搜索功能
+			$("#search").click(function(){
+				var url = $(this).attr('url');
+		        var query  = $('.jssearch').find('input').serialize();
+		        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+		        query = query.replace(/^&/g,'');
+		        if( url.indexOf('?')>0 ){
+		            url += '&' + query;
+		        }else{
+		            url += '?' + query;
+		        }
+				window.location.href = url;
+			});
+			$('.data-table th:last').attr('width',70);
+		    //回车自动提交
+		    $('.jssearch').find('input').keyup(function(event){
+		        if(event.keyCode===13){
+		            $("#search").click();
+		        }
+    		});
+		})
+	</script>
+</block>

@@ -1,0 +1,390 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/game.css" rel="stylesheet" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+
+<div class="galist">
+<style>
+.dropload-noData{
+  display:none;
+}.dropload-down {height:auto!important;}
+</style>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+    <section class="trunker">
+      <section class="inner">
+      
+        <section class="contain">
+          
+          
+            <div class="tab-scroll">
+              <div id="tab-slide">
+                <div class="s-container">
+                    <div class="s-wrapper tabpanel" >
+                        <div class="s-slide loaddiv" id="rjload" style="height: auto;display:block;">
+                          <ul class="hot list text-pic-list">
+                          </ul>
+                        
+                        </div>
+                        <div class="s-slide loaddiv" id="hotload">
+                          <ul class="hot list text-pic-list">
+                          </ul>
+                        </div>
+                        <div class="s-slide" id="fenlei">
+                          <ul class=" list text-class-list">
+                            <volist name="gamegroup" id="gg">
+                              <li data-type_id='{$gg.type_id}'>
+                                <a  class="item typeitem clearfix">
+                                  <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$gg.icon}" class="icon"></div>
+                                  <div class="butnbox"><span class="table"><span class="butn table-cell">{$gg.counts}<i class="icon icon-arrow-right"></i></span></span></div>
+                                  <div class="text">
+                                    <div class="title"><span class="name">{$gg.type_name}</span></div>
+                                  </div>
+                                </a>
+                              </li>
+                            </volist>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+              
+        </section>
+      </section>
+    </section>
+    
+    <div class="space"></div>
+    <script src="__JS__/common.js"></script>
+    <link href="__STATIC__/dist/dropload.css" rel="stylesheet" >
+    <script src="__STATIC__/dist/dropload.js"></script>
+    <script>
+      
+      $(document).ready(function () {
+        $('#fenlei ul li:first-child').click();
+        $('#fenlei ul li:first-child').find(".item").addClass("active");
+      })
+      var itemIndex = 0;
+      var tab1LoadEnd = false;
+      var tab2LoadEnd = false;
+        $(function() {
+          
+/* 标签切换 */
+				$('#tab-menu .s-slide').click(function() {
+					var that=$(this);
+					var index = that.index();
+					itemIndex = index;
+					that.siblings().removeClass('active');
+					that.addClass('active');
+					$('#tab-slide .tabpanel>.s-slide').hide().eq(index).show();
+					dataload(index);
+				});
+        
+        });
+        var counter = 0;
+        var counter1 = 0;
+        // dropload
+        var dropload = $('.loaddiv').dropload({
+            scrollArea : window,
+            threshold:100000,
+            loadDownFn : function(me){
+                var loadid = $('#tab-slide .s-container .s-slide').eq(itemIndex).attr('id');
+                // 加载菜单一的数据
+                if(itemIndex == '0'){
+                    var num = 10;
+                    counter++;
+                    data = loadajax(me,1,num,counter);
+                    var result = '';
+                    if(data.status==0){
+                      if(counter==1){
+                        result +='<div class="empty s-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>';
+                      }
+                      $("#"+loadid+' ul').append(result);
+                      tab1LoadEnd = true;
+                      // 锁定
+                      me.lock();
+                      // 无数据
+                      me.noData();
+                      me.resetload();
+                      return;
+                    }else{
+											var nnnum=0;
+											var nndata = data.data;
+											if(!jQuery.isArray( nndata )){
+												$.each(nndata,function(i,e){
+													nnnum=i;
+													result += '<li class="clearfix"><div class="item clearfix"><a href="'+e.play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+e.icon+'" class="icon"></a><div class="butnbox"><a href="'+e.play_url+'" class="butn butnlogin">开始</a></div><div class="text"><div class="title"><a href="'+e.play_detail_url+'"  class="name">'+e.game_name+'</a></div><p class="info"><span class="type">'+e.game_type_name+'</span><span class="number"><i class="">'+e.play_num+'</i>人在玩</span></p><p class="slogan">'+e.features+'</p></div></div></li>';
+                        
+												});
+											}else{
+												nnnum = nndata.length;
+                        for(var i = 0; i < nndata.length; i++){
+                            result += '<li class="clearfix"><div class="item clearfix"><a href="'+nndata[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+nndata[i].icon+'" class="icon"></a><div class="butnbox"><a href="'+nndata[i].play_url+'" class="butn butnlogin">开始</a></div><div class="text"><div class="title"><a  href="'+nndata[i].play_detail_url+'" class="name">'+nndata[i].game_name+'</a></div><p class="info"><span class="type">'+nndata[i].game_type_name+'</span><span class="number"><i class="">'+nndata[i].play_num+'</i>人在玩</span></p><p class="slogan">'+nndata[i].features+'</p></div></div></li>';
+                        }
+											}
+                        // 为了测试，延迟1秒加载
+                            $("#"+loadid+' ul').append(result);
+                            tab1LoadEnd = true;
+                            if(nnnum<num){
+                              // 锁定
+                              me.lock();
+                              // 无数据
+                              me.noData();
+                            }
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+
+                    }
+                // 加载菜单二的数据
+                }else if(itemIndex == '1'){
+                    var num = 10;
+                    counter1++;
+                    data = loadajax(me,2,num,counter1);
+                    var result = '';
+                    if(data.status==0){
+                      if(counter1==1){
+                        result +='<div class="empty s-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>';
+                      }
+                      $("#"+loadid+' ul').append(result);
+                      tab2LoadEnd = true;
+                      // 锁定
+                      me.lock();
+                      // 无数据
+                      me.noData();
+                      me.resetload();
+                      return;
+                    }else{
+											var nnnum=0;
+											var nndata = data.data;
+											if(!jQuery.isArray( nndata )){
+												$.each(nndata,function(i,e){
+													nnnum=i;
+													result += '<li class="clearfix"><div class="item clearfix"><a href="'+e.play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+e.icon+'" class="icon"></a><div class="butnbox"><a href="'+e.play_url+'" class="butn butnlogin">开始</a></div><div class="text"><div class="title"><a  href="'+e.play_detail_url+'" class="name">'+e.game_name+'</a></div><p class="info"><span class="type">'+e.game_type_name+'</span><span class="number"><i class="">'+e.play_num+'</i>人在玩</span></p><p class="slogan">'+e.features+'</p></div></div></li>';
+                        
+												});
+											}else{
+												nnnum = nndata.length;
+                        for(var i = 0; i < nndata.length; i++){
+                            result += '<li class="clearfix"><div class="item clearfix"><a href="'+nndata[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+nndata[i].icon+'" class="icon"></a><div class="butnbox"><a href="'+nndata[i].play_url+'" class="butn butnlogin">开始</a></div><div class="text"><div class="title"><a  href="'+nndata[i].play_detail_url+'" class="name">'+nndata[i].game_name+'</a></div><p class="info"><span class="type">'+nndata[i].game_type_name+'</span><span class="number"><i class="">'+nndata[i].play_num+'</i>人在玩</span></p><p class="slogan">'+nndata[i].features+'</p></div></div></li>';
+                        }
+											}
+                        // 为了测试，延迟1秒加载
+                            $("#"+loadid+' ul').append(result);
+                            tab2LoadEnd = true;
+                            if(nnnum<num){
+                              // 锁定
+                              me.lock();
+                              // 无数据
+                              me.noData();
+                            }
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                    }
+                }
+
+                $('#tab-slide .s-container .s-wrapper').css('height','auto');
+            }
+        });
+				
+				if('{:I('game_type_id')}'>0){
+           itemIndex=2;
+						$('#tab-menu .s-slide').removeClass('active').eq(itemIndex).addClass('active');
+						$('#tab-slide .tabpanel>.s-slide').hide().eq(itemIndex).show();
+						dataload(itemIndex);
+            $('#fenlei li').each(function(i,n) {
+              if($(this).attr('data-type_id') == '{:I('game_type_id')}'){
+                $(this).click();
+              }
+            });
+        }
+				
+				var fromnumb = location.hash;
+			if(fromnumb){
+				switch(fromnumb) {
+					case '#recom':itemIndex=0;break;
+					case '#hot':itemIndex=1;break;
+					case '#categroy':itemIndex=2;break;
+					default:itemIndex=0;
+				}
+				$('#tab-menu .s-slide').removeClass('active').eq(itemIndex).addClass('active');
+				$('#tab-slide .tabpanel>.s-slide').hide().eq(itemIndex).show();
+				dataload(itemIndex);
+			}
+
+        function loadajax(me,rec_status,num,counter){
+          var adddata ='';
+          $.ajax({
+              type: 'post',
+              url: '{:U("Index/more_game")}',
+              async:false,
+              data:{rec_status:rec_status,p:counter,limit:num},
+              dataType: 'json',
+              success: function(data){
+                  adddata = data;
+              },
+              error: function(xhr, type){
+              }
+          });
+          return adddata;
+        }
+
+        function dataload(itemIndex){
+          var loadid = $('#tab-slide .s-container .s-slide').eq(itemIndex).attr('id');
+          if(itemIndex == '0'){
+              // 如果数据没有加载完
+              if(!tab1LoadEnd){
+                  // 解锁
+                  dropload.unlock();
+                  dropload.noData(false);
+              }else{
+                  // 锁定
+                  dropload.lock('down');
+                  dropload.noData();
+              }
+          // 如果选中菜单二
+          }else if(itemIndex == '1'){
+              if(!tab2LoadEnd){
+                  // 解锁
+                  dropload.unlock();
+                  dropload.noData(false);
+              }else{
+                  // 锁定
+                  dropload.lock('down');
+                  dropload.noData();
+              }
+          }
+          dropload.resetload();
+        }
+    </script>
+    <script>
+    $('.typeitem').click(function(){
+      that = $(this);
+      parent = that.closest('ul');
+      parent.find('li').each(function(index,ele){
+        $(this).find('a').removeClass('active');
+      });
+      if(that.closest('li').attr('data-type_id')!=-1){
+        that.addClass('active');
+      }
+    });
+    </script>
+
+</div>
+<div class="gacatelist">
+    <!-- <header class="header ">
+      <section class="wrap">
+      <if condition="I('get.from') eq 'collec'">
+        <a href="javascript:history.go(-1);" class=" hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span><span class="table-cell word"></span></span></a>
+      <else/>
+        <a href="javascript:;" class="gacatelistht hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span><span class="table-cell word">分类</span></span></a>
+      </if>
+        <div class="caption">
+          <span class="table">
+            <span class="table-cell">
+            </span>
+          </span>
+        </div>
+      </section>
+    </header>
+    <div class="occupy"></div> -->
+    <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+    <section class="trunker">
+      <section class="inner">
+      
+        <section class="contain">
+            <div class="tab-scroll">
+                <ul class="hot list text-pic-list">
+                </ul>
+            </div>
+        </section>
+      </section>
+    </section>
+		<div class="space"></div>
+</div>
+
+<script type="text/javascript">
+$('#fenlei ul li').click(function(){
+    $.ajax({
+        type: 'post',
+        url: '{:U("Game/gamegrouplist")}',
+        data:{type_id:$(this).attr('data-type_id'),p:1,limit:10000},
+        dataType: 'json',
+        success: function(data){
+          console.log(data);
+          if(data.code==-1){
+            $('.gacatelist .caption .table-cell').append('未查询到该分类');
+            return false;
+          }else if(data.code==0){
+            alert('缺少type_id');
+          }else{
+            $('.gacatelist .caption .table-cell').append(data.type_name+'('+data.count+')');
+          }
+
+          result = '';
+          for(var i = 0; i < data.data.length; i++){
+              result += '<li class="clearfix"><div class="item clearfix"><a href="'+data.data[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data.data[i].icon+'" class="icon"></a><div class="butnbox"><a href="'+data.data[i].play_url+'" class="butn butnlogin">开始</a></div><div class="text"><div class="title"><a href="'+data.data[i].play_detail_url+'" class="name">'+data.data[i].game_name+'</a></div><p class="info"><span class="type">'+data.data[i].game_type_name+'</span><span class="number"><i class="">'+data.data[i].play_num+'</i>人在玩</span></p><p class="slogan">'+data.data[i].features+'</p></div></div></li>';
+          }
+          $('.gacatelist .contain ul').html("");
+          $('.gacatelist .contain ul').append(result);
+        },
+        error: function(xhr, type){
+          alert("出错了！！！1·")
+        }
+    });
+    $('.gacatelist').css('display','block');
+    // $('.galist').css('display','none');
+});
+$('.gacatelistht').click(function(){
+    $('.gacatelist').css('display','none');
+    $('.galist').css('display','block');
+    $('.gacatelist .caption .table-cell').html('');
+    $('.gacatelist .contain ul').html('');
+});
+
+// 新增签到相关代码：start- By:Patyl
+      
+$('.jssign').click(function() {
+  var that = $(this),span=that.find('span'),i = '+'+that.attr('data-score');
+  if (that.hasClass('disabled')) {return false;}
+  that.addClass('disabled');
+  if ($user>0) {
+    $.ajax({
+      type:'post',
+      url:"{:U('PointShop/user_sign_in')}",
+      success:function(data){
+        if(data.status==1){
+          span.addClass('hide');
+          setTimeout(function(){
+            span.empty().removeClass('hide');
+            $('<i style="top:100%;position:absolute;left:0;right:0;">'+i+'</i>').prependTo(span).animate({
+              top:0,
+            },500,function(){
+              that.find('.circle').fadeOut(550);
+              $(this).delay(250).animate({top:'-100%'},250,function() {
+                $(this).remove();
+                that.find('.circle').remove();
+                
+                $('<i style="display:none;">已签到</i>').appendTo(span).fadeIn("slow");
+              });
+            });
+          },250);
+        }else{
+          layer.msg(data.msg);
+        }
+      },error:function(){
+
+      }
+    })
+  } else {
+    // 未登录 则弹出登录框
+  pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">暂未登录</div><div class="pop-text">您还未登录账号，暂时无法签到哦</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm tologin">去登录</a></div>');
+  $('.jscancel').click(function() {pop.close();});
+  $('.tologin').click(function(){
+    pop.close();
+    $('.jslogin').click();
+  });
+  }
+});
+// :end
+</script>
+
+</block>

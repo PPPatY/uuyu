@@ -1,0 +1,215 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<style>
+		.navtab_list {
+			height: 36px;
+			border-bottom: solid 1px #d0dee5;
+			position: relative;
+			border-left: solid 1px #d3dbde;
+			margin: 15px 0px;
+		}
+		
+		.navtab_list a {
+			float: left;
+			height: 37px;
+			line-height: 37px;
+			background: url(__IMG__/itabbg.png) repeat-x;
+			border-right: solid 1px #d3dbde;
+			font-size: 14px;
+			color: #000;
+			padding-left: 25px;
+			padding-right: 25px;
+			text-decoration: none;
+		}
+		
+		.navtab_list a:hover {
+			border-bottom: 0;
+		}
+		
+		.navtab_list a.tabchose {
+			text-decoration: none;
+			border-bottom: none;
+			color: #000;
+			height: 37px;
+			display: block;
+			background: url(__IMG__/itabbg1.png) repeat-x;
+			font-weight: bold;
+		}
+		
+		.navtab_list_cs {
+			margin-top: 20px;
+			margin-left: 20px;
+		}
+		
+		.navtab_list_cs img {
+			margin: 0px 8px;
+		}
+		
+		.data_list table td {
+			min-width: 50px;
+		}
+	</style>
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<!-- 标题栏 -->
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('Spend/lists')}">充值</a>
+			</li>
+			<li>
+				<a href="{:U('Deposit/lists')}">平台币订单</a>
+			</li>
+			<li>
+				<a href="#">平台币收回</a>
+			</li>
+		</ul>
+	
+	</div>
+	<div class="cf top_nav_list navtab_list">
+		<a id='shbut1' <if condition="I('detype') neq 2">class="shbut tabchose"</if> href="{:U('deduct_lists')}">玩家收回</a>
+		<a id='shbut2' <if condition="I('detype') eq 2">class="shbut tabchose"</if> href="{:U('deduct_lists',array('detype'=>2))}">推广员收回</a>
+		<if condition="I('detype') neq 2"><p class="description_text" >说明：显示收回玩家平台币的记录列表</p></if>
+		<if condition="I('detype') eq 2"><p class="description_text" >说明：显示收回推广员平台币的记录列表</p></if>
+	</div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+			<empty name="model.extend">
+				<div class="tools">
+					<a class="tode" href="{:U('deduct',array('detype'=>I('detype')))}" hrefbut1="{:U('deduct',array('detype'=>1))}" hrefbut2="{:U('deduct',array('detype'=>2))}"><span class="button_icon button_icon1"></span>收回平台币</a>
+				</div>
+			</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<if condition="I('detype') neq 2">
+				<div class="input-list sebb shbut1">
+					<label>玩家账号：</label>
+					<input type="text" name="{$model['search_key']|default='user_account'}" class="" value="{:I('user_account')}" placeholder="请输入账号">
+				</div>
+				<else/>
+				<div class="input-list input-list-game search_label_rehab sebb shbut2">
+					<label>推广员帐号：</label>
+					<select name="promote_id" class="select_gallery" style="width:150px;">
+						<option value="">请选择推广员</option>
+						<volist name=":get_promote_list()" id="vo">
+							<option value="{$vo.id}">{$vo.account}</option>
+						</volist>
+					</select>
+				</div>
+				<div class="input-list sebb shbut2">
+					<label>推广员等级：</label>
+					<select id="promote_type" class="select_gallery" name="promote_type" style="width:100px;">
+						<option value="">请选择</option>
+						<option value="1">一级推广员</option>
+						<option value="2">二级推广员</option>
+					</select>
+				</div>
+			</if>
+			<div class="input-list">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('deduct_lists',array('detype'=>I('detype'),'model'=>$model['name']),false)}">搜索</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<div class="">
+			<table>
+				<!-- 表头 -->
+				<thead>
+					<tr>
+						<if condition="I('detype') neq 2">
+							<th>玩家账号</th>
+							<th>收回类型</th>
+						<else/>
+							<th>推广员帐号</th>
+							<th>推广员等级</th>
+						</if>
+						<th>收回数量</th>
+						<th>收回时间</th>
+						<th>收回人员</th>
+					</tr>
+				</thead>
+
+				<!-- 列表 -->
+				<tbody>
+				<notempty name="list_data">
+					<volist name="list_data" id="data">
+						<tr>
+							<volist name="list_grids" id="grid">
+								<td>{:get_list_field($data,$grid)}</td>
+							</volist>
+						</tr>
+					</volist>
+					<tr class="data_summary">
+						<td colspan="9"><span style="margin-right: 10px;">汇总：</span><span>当页收回：{:null_to_0(array_sum(array_column($list_data,'num')))}个 ； 今日收回：{$sum.to_day|default=0}个 ； 昨日收回：{$sum.yst_day|default=0}个 ； 累计收回：{$sum.all_num|default=0}个</span></td>
+					</tr>
+				<else />
+				<tr><td colspan="9">aOh! 暂时还没有内容!</td></tr>
+				</notempty>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="page">
+		{$_page|default=''}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		Think.setValue("promote_id", "{:I('promote_id')}");
+		Think.setValue("promote_type", "{:I('promote_type')}");
+
+		$(".select_gallery").select2();
+	</script>
+	<script type="text/javascript">
+		highlight_subnav('{:U('PromoteCoin/deduct_lists')}');
+		if('{$Think.get.game_name}' != '') {
+			$('#select2-game_id-container').text('{$Think.get.game_name}');
+		}
+		$(function() {
+			//搜索功能
+			$("#search").click(function() {
+				var url = $(this).attr('url');
+				var query = $('.jssearch').find('input').serialize();
+				query += "&" + $('.jssearch').find('select').serialize();
+				query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+				query = query.replace(/^&/g, '');
+				if(url.indexOf('?') > 0) {
+					url += '&' + query;
+				} else {
+					url += '?' + query;
+				}
+				window.location.href = url;
+			});
+
+			//回车自动提交
+			$('.jssearch').find('input').keyup(function(event) {
+				if(event.keyCode === 13) {
+					$("#search").click();
+				}
+			});
+			$('.shbut').click(function() {
+				$this = $(this);
+				$this.addClass('tabchose').siblings('.shbut').removeClass('tabchose');
+				$shbutid = $('.shbut.tabchose').attr('id');
+				$tode = $('.tode');
+				if($shbutid == 'shbut1') {
+					$tode.attr('href', $tode.attr('hrefbut1'));
+					$('.shbut1').css('display', 'block');
+					$('.shbut2').css('display', 'none');
+				} else {
+					$tode.attr('href', $tode.attr('hrefbut2'));
+					$('.shbut2').css('display', 'block');
+					$('.shbut1').css('display', 'none');
+				}
+			})
+
+		})
+	</script>
+</block>

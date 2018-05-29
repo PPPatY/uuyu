@@ -1,0 +1,124 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<style>
+		.navtab_list_con {
+		    width: 100%;
+		    margin: 15px 0px;
+		    background-color: #f0f0f0;
+		}
+		.navtab_list_cs {
+		    margin: 20px;
+		    font-size: 12px;
+		}
+		.navtab_list_cs span{line-height: 25px;}
+	</style>
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+	<div class="tab-wrap">
+		<div class="tab_nav jstabnav">
+		<ul>
+			<li data-tab="tab1" class="current"><a href="javascript:void(0);" >QQ登陆</a></li>
+            <li data-tab="tab2"><a href="javascript:void(0);" >微信扫码登陆</a></li>
+			<li data-tab="tab3"><a href="javascript:void(0);" >微博登陆</a></li>
+			<li data-tab="tab4"><a href="javascript:void(0);" >百度登陆</a></li>
+		</ul></div>
+		<div class="tab-content">
+		<div id="tab1" class="tab-pane in tab1">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal qq_login form_info_ml">
+			<ul class="form_info ">
+                <li><label>openid</label><input name="config[appid]" type="text" value="{$qq_login['appid']}" class=""><i class="form_hint">合作身份者id，以2088开头的16位纯数字</i></li>
+                <li><label>安全检验码</label><input name="config[key]" type="text" value="{$qq_login['key']}" class=""><i class="form_hint">安全检验码，以数字和字母组成的32位字符</i></li>
+                <li><label>启用状态</label><span class="form_radio">
+                    <label><input type="radio" name="status" value="0" <eq name="qq_login_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                    <label><input type="radio" name="status" value="1" <eq name="qq_login_data['status']" value="1">checked="checked"</eq>> 启用
+                </label></span><i class="form_hint">QQ登陆开启状态</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="qq_login"></input><input type="submit" id="submit" value="确认保存" target-form="qq_login" class="form_btn ajax-post"></li>
+            </ul>
+		</form>
+		</div>
+		</div>
+
+		<div class="tab-content">
+		<div id="tab2" class="tab-pane tab2">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal wx_login form_info_ml">
+			<ul class="form_info ">
+                <li><label>公众号ID</label><input name="config[appid]" type="text" value="{$wx_login['appid']}" class=""><i class="form_hint">微信提供的唯一识别码</i></li>
+                <li><label>APPSECRET</label><input name="config[appsecret]" type="text" value="{$wx_login['appsecret']}" class=""><i class="form_hint">应用注册成功后分配的KEY</i></li>
+                <li><label>启用状态</label><span class="form_radio">
+                    <label><input type="radio" name="status" value="0" <eq name="wx_login_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                    <label><input type="radio" name="status" value="1" <eq name="wx_login_data['status']" value="1">checked="checked"</eq>> 启用
+                </label></span><i class="form_hint">微信登陆开启状态</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="wx_login"></input><input type="submit" id="submit" value="确认保存" target-form="wx_login" class="form_btn ajax-post"></li>
+            </ul>
+		</form>
+		</div>
+		</div>
+        <div class="tab-content">
+        <div id="tab5" class="tab-pane tab5">
+        <form action="{:U('saveTool')}" method="post" class="form-horizontal wx_pc_login form_info_ml">
+            <ul class="form_info ">
+                <li><label>公众号ID</label><input name="config[appid]" type="text" value="{$wx_pc_login['appid']}" class=""><i class="form_hint">微信提供的唯一识别码</i></li>
+                <li><label>APPSECRET</label><input name="config[appsecret]" type="text" value="{$wx_pc_login['appsecret']}" class=""><i class="form_hint">应用注册成功后分配的KEY</i></li>
+                <li><label>启用状态</label><span class="form_radio">
+                    <label><input type="radio" name="status" value="0" <eq name="wx_pc_login_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                    <label><input type="radio" name="status" value="1" <eq name="wx_pc_login_data['status']" value="1">checked="checked"</eq>> 启用
+                </label></span><i class="form_hint">微信登陆开启状态</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="wx_pc_login"></input><input type="submit" id="submit" value="确认保存" target-form="wx_pc_login" class="form_btn ajax-post"></li>
+            </ul>
+        </form>
+        </div>
+        </div>
+
+		<div class="tab-content">
+			<div id="tab3" class="tab-pane tab3">
+				<form action="{:U('saveTool')}" method="post" class="form-horizontal wb_login form_info_ml">
+					<ul class="form_info ">
+                        <li><label>appkey</label><input name="config[appkey]" type="text" value="{$wb_login['appkey']}" class=""><i class="form_hint">微博appkey</i></li>
+                        <li><label>appsecret</label><input name="config[appsecret]" type="text" value="{$wb_login['appsecret']}" class=""><i class="form_hint">微博appsecret</i></li>
+                        <li><label>scope</label><input name="config[scope]" type="text" value="{$wb_login['scope']}" class=""><i class="form_hint"></i></li>
+                        <li><label>启用状态</label><span class="form_radio">
+                            <label><input type="radio" name="status" value="0" <eq name="wb_login_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                            <label><input type="radio" name="status" value="1" <eq name="wb_login_data['status']" value="1">checked="checked"</eq>> 启用
+                        </label></span><i class="form_hint">微博开启状态</i></li>
+                        <li><label>&nbsp;</label><input type="hidden" name="name" value="wb_login"></input><input type="submit" id="submit" value="确认保存" target-form="wb_login" class="form_btn ajax-post"></li>
+                    </ul>
+				</form>
+			</div>
+		</div>
+
+		<div class="tab-content">
+			<div id="tab4" class="tab-pane tab4">
+				<form action="{:U('saveTool')}" method="post" class="form-horizontal bd_login form_info_ml">
+					<ul class="form_info ">
+                        <li><label>appkey</label><input name="config[appkey]" type="text" value="{$bd_login['appkey']}" class=""><i class="form_hint">百度appkey</i></li>
+                        <li><label>appsecret</label><input name="config[appsecret]" type="text" value="{$bd_login['appsecret']}" class=""><i class="form_hint">百度appsecret</i></li>
+                        <!-- <li><label>scope</label><input name="config[scope]" type="text" value="{$bd_login['scope']}" class=""><i class="form_hint"></i></li> -->
+                        <li><label>启用状态</label><span class="form_radio">
+                            <label><input type="radio" name="status" value="0" <eq name="bd_login_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                            <label><input type="radio" name="status" value="1" <eq name="bd_login_data['status']" value="1">checked="checked"</eq>> 启用
+                        </label></span><i class="form_hint">百度开启状态</i></li>
+                        <li><label>&nbsp;</label><input type="hidden" name="name" value="bd_login"></input><input type="submit" id="submit" value="确认保存" target-form="bd_login" class="form_btn ajax-post"></li>
+                    </ul>
+				</form>
+			</div>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('Tool/thirdparty')}');
+	$(function(){
+		//支持tab
+		showTab();
+	})
+</script>
+</block>

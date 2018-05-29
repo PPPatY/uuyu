@@ -1,0 +1,162 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<style type="text/css">
+		.form_info li>label{width: 130px;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+        <ul>
+            <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >基本设置</a></li>
+            <li data-tab="tab2"><a href="javascript:void(0);" >消息设置</a></li>
+            <li data-tab="tab3"><a href="javascript:void(0);" >定义菜单</a></li>
+            <p class="description_text">说明：用于配置相关微信公众号参数用来后台绑定管理员账号绑定微信功能</p>
+        </ul></div>
+        <div class="tab-content">
+        <form action="{:U('saveTool')}" method="post" class="form-horizontal qq_login form_info_ml">
+        <div id="tab1" class="tab-pane in tab1">
+            <ul class="form_info ">
+                <li><label>接口URL：</label><input type="text" class="text input-large" value="{$wechat_url}"><i class="form_hint">请将此地址复制到微信公众平台接口URL项</i></li>
+
+                <li><label>微信AppId：</label><input type="text" class="text input-large" name="config[appid]" value="{$wechat['appid']}"><i class="form_hint">请与微信公众平台开发者凭据AppId保持一致</i></li>
+
+                <li><label>微信AppSecret：</label><input type="text" class="text input-large" name="config[appsecret]" value="{$wechat['appsecret']}"><i class="form_hint">请与微信公众平台开发者凭据AppSecret保持一致</i></li>
+
+                <li><label>微信Token：</label><input type="text" class="text input-large" name="config[token]" value="{$wechat['token']}"><i class="form_hint">请与微信公众平台Token保持一致</i></li>
+
+                <li><label>消息加密KEY：</label><input type="text" class="text input-large" name="config[key]" value="{$wechat['key']}"><i class="form_hint">请与微信公众平台EncodingAESKey保持一致(消息加解密密钥)</i></li>
+
+                <li><label>启用状态：</label><span class="form_radio table_radio">
+                	<div class="radio radio-primary">
+						<input type="radio" id="radio1" value="0" name="status" <eq name="wechat_data['status']" value="0">checked="checked"</eq>>
+						<label for="radio1">禁用</label>
+					</div>
+					<div class="radio radio-primary">
+						<input type="radio" id="radio2" value="1" name="status" <eq name="wechat_data['status']" value="1">checked="checked"</eq>>
+						<label for="radio2">启用</label>
+					</div>
+                    <!--<label><input type="radio" class="inp_radio" value="0" name="status" <eq name="wechat_data['status']" value="0">checked="checked"</eq>>禁用</label>
+                    <label><input type="radio" class="inp_radio" value="1" name="status" <eq name="wechat_data['status']" value="1">checked="checked"</eq>> 启用</label>-->
+                </span><i class="form_hint">微信公众号用状态</i></li>
+            </ul>
+        </div>
+        <div id="tab2" class="tab-pane in tab2">
+            <ul class="form_info ">
+                <li><label>公众号名称：</label><input type="text" class="text input-large" name="config[wechatname]" value="{$wechat['wechatname']}"></li>
+
+                <li><label>首次关注回复消息：</label><textarea style="width: 333px;height: 50px;" placeholder="目前只支持文本类型回复" class="textarea input-large" name="config[message][first_msg]">{$wechat['message']['first_msg']}</textarea></li>
+
+                <li><label>默认关注回复消息：</label><textarea style="width: 333px;height: 50px;" placeholder="目前只支持文本类型回复" class="textarea input-large" name="config[message][default_msg]">{$wechat['message']['default_msg']}</textarea></li>
+
+            </ul>
+        </div>
+        <div id="tab3" class="tab-pane in tab3">
+            <empty name="nav_data">
+            <div class="form-item channel pLi" >
+                <!-- <label class="item-label">接口URL<span class="check-tips">（请将此地址复制到微信公众平台接口URL项）</span> </label> -->
+                <div class="controls">
+                    <span class="">一级导航：</span><input type="text" class="text" name="template[nav][1][title][]"  value="">
+                    &nbsp;
+                    <span class="">URL链接： </span><input type="text input-large" class="text" name="template[nav][1][url][]" value="">
+                    <div class='pull-left i-list'>
+                        <a href="javascript:" title="添加一级导航" class="add-one">  <i class="icon icon-plus"></i></a>
+                        <a href="javascript:" title="移除一级导航" class="remove-li"><i class="icon icon-remove"></i></a>
+                        <a href="javascript:" title="添加二级导航" class="add-child"><i class="icon icon-sitemap"></i></a>
+                    </div>
+                </div>
+            </div>
+            </empty>
+            <foreach name="nav_data" item="nav1" key="k">
+            <div class="form-item channel pLi" >
+                <div class="controls">
+                    <span class="">一级导航：</span><input type="text" class="text" name="template[nav][1][title][]"  value="{$nav1['title']}">
+                    &nbsp;
+                    <span class="">URL链接： </span><input type="text input-large" class="text" name="template[nav][1][url][]" value="{$nav1['url']}">
+                    <div class='pull-left i-list'>
+                        <a href="javascript:" title="添加一级导航" class="add-one">  <i class="icon icon-plus"></i></a>
+                        <a href="javascript:" title="移除一级导航" class="remove-li"><i class="icon icon-remove"></i></a>
+                        <a href="javascript:" title="添加二级导航" class="add-child"><i class="icon icon-sitemap"></i></a>
+                    </div>
+                </div>
+                <foreach name="nav1[child]" item='nav2'>
+                <div class="form-item channel cLi" >
+                    <input name="template[nav][2][pid][]" class="pid" style="display: none">
+                    <div class="controls">
+                        <span class="">二级级导航：</span><input type="text" class="text" name="template[nav][2][title][]" value="{$nav2['title']}">
+                        &nbsp;
+                        <span class="">导航标示：</span><input type="text" class="text" name="template[nav][2][marak][]" value="{$nav2['marak']}">
+                        &nbsp;
+                        <span class="">URL链接：</span><input type="text" class="text" name="template[nav][2][url][]" value="{$nav2['url']}">
+                        <div class='pull-left i-list'>
+                            <a href="javascript:" title="添加二级导航" class="add-two">  <i class="icon icon-plus"></i></a>
+                            <a href="javascript:" title="移除二级导航" class="remove-li"><i class="icon icon-remove"></i></a>
+                        </div>
+                    </div>
+                </div>
+                </foreach>
+            </div>
+            </foreach>
+        </div>
+        <div class="form-item">
+            <label class="item-label"></label>
+            <div class="controls">
+                <input type="hidden" name="name" value="wechat"></input>
+                <button type="submit" class=" submit_btn ajax-post" target-form="form-horizontal" style="margin-left: 159px;">确 定</button>
+            </div>
+        </div>
+        </form>
+        </div>
+    </div>
+    <div id="one-nav" style="display: none;">
+        <div class="form-item channel pLi" >
+            <div class="controls">
+                <span class="">一级导航：</span><input type="text" class="text" name="template[nav][1][title][]"  value="">
+                &nbsp;
+                <span class="">URL链接： </span><input type="text input-large" class="text" name="template[nav][1][url][]" value="">
+                <div class='pull-left i-list'>
+                    <a href="javascript:" title="添加一级导航" class="add-one">  <i class="icon icon-plus"></i></a>
+                    <a href="javascript:" title="移除一级导航" class="remove-li"><i class="icon icon-remove"></i></a>
+                    <a href="javascript:" title="添加二级导航" class="add-child"><i class="icon icon-sitemap"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="two-nav" style="display: none;">
+        <div class="form-item channel cLi" >
+            <input name="template[nav][2][pid][]" class="pid" style="display: none">
+            <div class="controls">
+                <span class="">二级级导航：</span><input type="text" class="text" name="template[nav][2][title][]" value="">
+                &nbsp;
+                <span class="">导航标示： </span><input type="text" class="text" name="template[nav][2][marak][]" value="">
+                &nbsp;
+                <span class="">URL链接： </span><input type="text input-large" class="text" name="template[nav][2][url][]" value="">
+                <div class='pull-left i-list'>
+                    <a href="javascript:" title="添加二级导航" class="add-two">  <i class="icon icon-plus"></i></a>
+                    <a href="javascript:" title="移除二级导航" class="remove-li"><i class="icon icon-remove"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+<script src="__JS__/channel.js"></script>
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('Wechat/index')}');
+    $(function(){
+        //支持tab
+        showTab();
+        $('.firsttab').click();
+    })
+</script>
+</block>

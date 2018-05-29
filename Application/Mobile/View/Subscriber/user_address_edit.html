@@ -1,0 +1,148 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<link href="__CSS__/jquery.pickArea.css" rel="stylesheet" >
+<script src="__JS__/jquery.pickArea.js"></script>
+    <header class="header">
+      <section class="wrap">
+        <a href="{:U('user_address')}" class="hbtn left arrow-left jaarrow"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">编辑地址</span></span></div>
+        <a href="javascript:;" class="hbtn right user-save jssave"><span class="table"><span class="table-cell">保存</span></span></a>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+      <php>$shop_address_info = json_decode($userinfo['shop_address'],true)</php>
+      <section class="inner">
+        <section class="contain">
+          <form action="" class="">
+          <div class="address-info info-list jsauthinfo">
+            <div class="wrap">
+                <div class="item table">
+                  <span class="table-cell item1">收货人</span>
+                  <span class="table-cell item2"><div class="addressbox"><input type="text" name="consignee" class="txt" placeholder="不少于2个字符" data-default="{$shop_address_info['consignee']}" value="{$shop_address_info['consignee']}"></div></span>
+                </div>
+                <div class="item table">
+                  <span class="table-cell item1">联系电话</span>
+                  <span class="table-cell item2"><div class="addressbox"><input type="text" name="consignee_phone" class="txt" placeholder="手机或电话，电话需要区号，如0516-" data-default="{$shop_address_info['consignee_phone']}" value="{$shop_address_info['consignee_phone']}"></div></span>
+                </div>
+                <div class="item table">
+                <php>$shop_address= explode('-',$shop_address_info['consignee_address'])</php>
+                  <span class="table-cell item1">所在地区</span>
+                  <span class="table-cell item2 city"><div class="addressbox"><input type="hidden" name="consignee_address" data-default="{$shop_address[0]}"><div class="txt  area consignee_address" >{$shop_address[0]}</div></div><span class="iconbox"><i class="icon icon-right jseye"></i></span></span>
+                </div>
+                <div class="item table">
+                  <php>unset($shop_address[0]);$detail= implode('',$shop_address)</php>
+                  <span class="table-cell item1">详细地址</span>
+                  <span class="table-cell item2"><div class="addressbox"><input type="text" name="detailed_address" class="txt" data-default="{$detail}" placeholder="不少于5个字符，且不能全部为数字" value="{$detail}"></div></span>
+                </div>
+            </div>
+          </div>
+          
+          </form>
+
+        </section>
+        
+      </section>
+    </section>
+    
+    
+    <div class="pop"></div>
+    <script src="__JS__/pop.lwx.min.js"></script>
+    <script src="__JS__/common.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+          
+          $('.jaarrow').click(function() {
+            var that=$(this);
+						var url = that.attr('href');
+						var flag = false;
+						$('input').each(function() {
+							var tinput = $(this),val=$.trim(tinput.val());
+							if(tinput.attr('name')=='consignee_address') {
+								if (val != $.trim(tinput.siblings('.consignee_address').text())) flag=true;
+							} else {
+								if (val != $.trim(tinput.attr('data-default'))) flag=true;
+							}
+						});
+						if (flag) {
+							pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">确定返回？</div><div class="pop-text">修改信息还未保存，确认现在返回吗？</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="'+url+'" class="pop-butn pop-comfirm ">确定</a></div>');
+							$('.jscancel').click(function() {pop.close();});
+						} else {
+							window.location.href=url;
+						}
+            return false;
+          });
+          
+          $(".city").pickArea({
+              'speed':2
+          });
+          
+          $('.jssave').click(function() {
+            var that=$(this);
+            if (that.hasClass('disabled')) {return false;}
+            consignee = $('input[name="consignee"]').val();
+            if(consignee.length<2 || !/^(([a-zA-Z]+)|([\u4E00-\u9FA5\uF900-\uFA2D]+))$/.test(consignee)){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请输入正确的收货人姓名</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            consignee_phone = $('input[name="consignee_phone"]').val();
+            if(consignee_phone.length<7 || !/^(?:(\d{3,4}-\d{8})|(1\d{10}))$/.test(consignee_phone)){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请输入正确的联系电话</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            consignee_address = $('.consignee_address').text();
+            if(consignee_address==''){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请选择所在区域</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            detailed_address = $('input[name="detailed_address"]').val();
+            if(detailed_address.length<5||!isNaN(detailed_address)){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请输入正确的详细地址</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            that.addClass('disabled');
+            $.ajax({
+              type:'post',
+              url:"{:U('user_address_add')}",
+              data:{consignee:consignee,consignee_phone:consignee_phone,consignee_address:consignee_address,detailed_address:detailed_address},
+              success:function(data){
+                if(data.status==1){
+                  // 成功
+                  pop.addClass('pop-notice').open('','<div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_successful.png"><div class="pop-title">地址编辑成功！</div><a href="{:U('user_address')}" class="pop-btn">确认</a></div>');              
+                  $('.pop-close').click(function() {pop.close();that.removeClass('disabled');history.go(-1)});
+                }else{
+                  // 失败
+                  pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">可能是网络原因，请重新提交</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">重试</a></div>');
+                  $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+                  $('.pop-comfirm').click(function() {pop.close();that.removeClass('disabled');});
+                }
+              },error:function(){
+
+              }
+            });
+            return false;
+          });
+
+          
+        });
+        
+        
+        
+    </script>
+</block>

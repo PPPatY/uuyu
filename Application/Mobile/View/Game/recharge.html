@@ -1,0 +1,56 @@
+<extend name="Public/bases" />
+<block name="body" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<link href="__CSS__/recharge.css" rel="stylesheet" >
+
+<section class="trunker">
+  
+  <section class="inner">
+    <section class="contain">
+      
+      <div class="detail">
+        <div class="base">
+          <div class="wrap">
+            <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{:get_cover(get_game_entity(I('game_appid'))['icon'],'path')}" class="icon"></div>
+            <div class="textbox">
+              <div class="title">{:get_game_entity(I('game_appid'))['game_name']}</div>
+              <p class="rechargeinfo">充值金额：<span class="blue">￥{:I('amount')/100}元</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="other">
+          <div class="wrap">
+            <h2 class="notice-title">微信屏蔽了支付宝，通过以下方法可继续支付.</h2>
+            <p class="notice-text nt1">1、点击本页右上角“<span class="horizontal"><i></i><i></i><i></i></span>”或者“<span class="vertical"><i></i><i></i><i></i></span>”</p>
+            <div class="notice-pic np1 clearfix"><img src="__IMG__/inside_pay_step1.png"></div>
+            <p class="notice-text nt2">2、选择“<span class="blue">在浏览器中打开</span>”或是“<span class="blue">在 safari 中打开</span>”<span class="apple">(苹果设备)<span></p>
+            <div class="notice-pic np2 clearfix">
+              <img src="__IMG__/inside_pay_step2_1.png" class="first snp">
+              <img src="__IMG__/inside_pay_step2_2.png" class="second snp">
+              <img src="__IMG__/inside_pay_step2_3.png" class="third">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+  </section>
+</section>
+
+
+<div class="popleavepay"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script>
+    $(function() {
+      var poplev = $('.popleavepay').pop();
+      
+      
+    });
+</script>
+</block>

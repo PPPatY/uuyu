@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/>
+    <title>竣付通支付</title>
+    <meta name="description" content="jquery ajax tab选项卡通过鼠标点击导航条标签选项卡滑动切换，内容异步加载选项卡切换。简单的网页模板单页选项卡切换展示。"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/jftbase.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/jftindex.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/jftbase.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/jftstyle.css"/>
+    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="wrap">
+        <ul id="nav">
+            <li
+            <if condition="I('type') eq 'UnionPay'"> class="current"</if>
+            ><a class="J_menuItem"
+                href="{:U('pay_way',array('type'=>'UnionPay','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}">网银支付</a></li>
+            <li
+            <if condition="I('type') eq 'Quick'"> class="current"</if>
+            ><a class="J_menuItem"
+                href="{:U('pay_way',array('type'=>'Quick','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}">快捷支付</a></li>
+            <li
+            <if condition="I('type') eq 'Alipay'"> class="current"</if>
+            ><a class="J_menuItem"
+                href="{:U('pay_way',array('type'=>'Alipay','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}">支付宝</a></li>
+            <li
+            <if condition="I('type') eq 'WeChat'"> class="current"</if>
+            ><a class="J_menuItem"
+                href="{:U('pay_way',array('type'=>'WeChat','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}">微信支付</a></li>
+            <li
+            <if condition="I('type') eq 'QQ'"> class="current"</if>
+            ><a class="J_menuItem"
+                href="{:U('pay_way',array('type'=>'QQ','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}">QQ支付</a></li>
+            <li
+            <if condition="I('type') eq 'Jingdong'"> class="current"</if>
+            ><a class="J_menuItem"
+                href="{:U('pay_way',array('type'=>'Jingdong','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}">京东支付</a></li>
+        </ul>
+           <if condition="I('type') eq 'UnionPay'">
+              <div id="page-wrapper">
+                <div class="row J_mainContent" id="content-main">
+                    <iframe id="J_iframe" width="100%" height="100%"
+                            src="{:U('UnionPay',array('type'=>I('type'),'account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}"
+                            frameborder="0" data-id="index_v1" seamless=""></iframe>
+                </div>
+            </div>
+        
+
+            <elseif condition="I('type') neq ''"/>
+
+            <div id="content">
+                <form method="post" action="{:U('pay_way')}" target="_self">
+                    <div class="online-bank">
+                        <ul class="bank">
+                            <li>
+                              <if condition="I('type') eq 'Quick'">
+
+                                <input type="radio" class="radio" value="2" name="p9_paymethod"/ checked><img
+                                    src="__IMG__/Quick/kjzf.png"/>
+                                <elseif condition="I('type') eq 'Alipay'"/>
+                                <input type="radio" class="radio" value="4" name="p9_paymethod"/ checked> <img
+                                    src="__IMG__/Alipay/zp.png"/></a>
+                                <elseif condition="I('type') eq 'WeChat'"/>
+                                <input type="radio" class="radio" value="3" name="p9_paymethod"/ checked><img
+                                    src="__IMG__/WeChat/wp.png"/></a>
+                                <elseif condition="I('type') eq 'QQ'"/>
+                                <input type="radio" class="radio" value="11" name="p9_paymethod"/ checked><img
+                                    src="__IMG__/QQ/qp.png"/></a>
+                                <else/>
+                                <input type="radio" class="radio" value="12" name="p9_paymethod"/ checked><img
+                                    src="__IMG__/Jingdong/jp.png"/></a>
+                                    </if>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btnGroup">
+                        <input type="hidden" name="type" value="{:I('type')}"/>
+                        <input type="hidden" name="sign" value="{:I('sign')}"/>                        
+                        <input type="hidden" name="account" value="{:I('account')}"/>
+                        <input type="hidden" name="pay_amount" value="{:I('pay_amount')}"/>
+                        <input type="hidden" name="pay_order_number" value="{:I('pay_order_number')}"/>
+                        <button class="btn">点击提交</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </if>
+
+
+    </div>
+</div>
+
+</body>
+</html>

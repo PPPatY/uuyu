@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$meta_title}-个人中心</title>
+    <link href="__CSS__/20170831/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="__CSS__/20170831/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="__CSS__/20170831/common.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__JS__/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/layer/layer.js" ></script>
+      <link href="{:get_cover(C('CH_SET_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+    
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <![endif]-->
+    {:hook('pageHeader')}
+    <block name="css"></block>
+    <link href="__CSS__/20170831/mixed.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__JS__/20170831/common.js"></script>
+    <style>
+  .pagenation .rows{
+    width: 100px;
+  }
+</style>
+  </head>
+
+  <body>
+    <!--头部个人信息-->
+    <div class="header">
+      <div class="inner clearfix">
+        <a href="javascript:" class="headerLogo">
+          <if condition="get_cover(C('CH_LOGO_BACKSTAGE'),'path') neq ''">
+            <img src="{:get_cover(C('CH_LOGO_BACKSTAGE'),'path')}">
+          <else />
+            <img src="__IMG__/h5promote_logo.png">
+          </if>
+        </a>
+        <div class="header-right">
+          <span class="pinfo jstime">今天是：<span></span></span>
+          <span class="pinfo">您好：{:session('promote_auth.account')}！</span>
+          <a class="pinfo" href="{:U('Public/logout')}" ><img src="__IMG__/20170831/logout.png">{:L('Quit')}</a>
+        </div>
+      </div>
+    </div>
+    <!--结束 头部个人信息-->
+    <div class="nav">
+      <ul class="inner list clearfix">
+        <li><div class="wrap"><div class="mark"><i class="iconfont icon-manager"></i><p>管理中心</p></div><div class="menu"><div class="menubox"><a href="{:U('Promote/index')}">后台首页</a><a href="{:U('Promote/base_info')}">账户信息</a><eq name="parent_id" value="0"><a href="{:U('Promote/mychlid')}">二级渠道</a></eq></div></div></div></li>
+        <li><div class="wrap"><div class="mark"><i class="iconfont icon-data"></i><p>数据管理</p></div><div class="menu"><div class="menubox"><a href="{:U('Query/recharge')}">充值明细</a><a href="{:U('Query/register')}">注册明细</a><a href="{:U('Query/arpu_analysis')}">ARPU统计</a><a href="{:U('Query/retention_analysis')}">留存统计</a></div></div></div></li>
+        <li><div class="wrap"><div class="mark"><i class="iconfont icon-finance"></i><p>财务管理</p></div><div class="menu"><div class="menubox"><a href="<eq name='parent_id' value='0'>{:U('Query/my_earning')}<else />{:U('Query/son_earning')}</eq>">我的结算</a><eq name="parent_id" value="0"><a href="{:U('Query/son_earning')}">子渠道结算</a></eq></div></div></div></li>
+        <li><div class="wrap"><div class="mark"><i class="iconfont icon-game"></i><p>分包管理</p></div><div class="menu"><div class="menubox"><a href="{:U('Apply/app_index')}">APP分包</a><a href="{:U('Apply/index')}">申请游戏</a></div></div></div></li>
+        <li><div class="wrap"><div class="mark"><i class="iconfont icon-platform"></i><p>会长福利</p></div><div class="menu"><div class="menubox"><a href="{:U('Discount/index')}">会长福利</a><a href="{:U('Charge/agent_pay')}">会长代充</a><eq name="parent_id" value="0"><a href="{:U('PromoteCoin/shift')}">平台币转移</a></eq><a href="{:U('PromoteCoin/index')}">平台币入账记录</a></div></div></div></li>
+        <li><div class="wrap active"><div class="mark"><i class="iconfont icon-mixed"></i><p>联盟站点</p></div><div class="menu"><div class="menubox"><a href="{:U('Promote/apply_domain')}">站点申请</a><if condition="$applyunion['status'] eq 1"><a href="{:U('Promote/domain_set')}">站点配置</a></if></div></div></div></li>
+      </ul>
+    </div>
+    
+    <div class="location">
+      <div class="inner clearfix">     
+      <block name="location"></block>
+      </div>
+    </div>
+
+    <div class="trunk">
+      <div class="inner clearfix">
+
+        <div class="trank-container">
+          <block name="body"> </block>
+        </div>
+      </div>
+    </div>
+    <!--底部信息-->
+    <div class="footer">
+      <div class="inner">
+        <p class="customerService"  style="margin-top: 34px;">
+          <span>客服电话：{:C("CH_SET_SERVER_TEL")}</span>
+          <span>客服邮箱：{:C("CH_SET_SERVER_EMAIL")}</span>
+          <span>服务时间：{:C("CH_TIME")}</span>
+        </p>
+        <p class="copyright"><span>网络备案：{:C('CH_SET_FOR_THE_RECORD')}</span><span>网络文化经营许可证编号：{:C(CH_SET_LICENSE)}</span><span>版权所有：{:C('CH_SET_COPYRIGHT')}</span></p>
+      </div>
+    </div>
+    <!--结束 底部信息-->
+    <script>
+        var url = window.location.pathname + window.location.search;
+        url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+        $('.nav .menu').find("a[href='" + url + "']").addClass("active");
+    </script>
+    <block name="script"></block>
+  </body>
+</html>

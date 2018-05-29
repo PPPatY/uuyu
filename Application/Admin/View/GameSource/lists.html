@@ -1,0 +1,150 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Game/lists')}">游戏</a></li>
+            <li><a href="{:U('Game/lists')}">游戏管理</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">平台游戏原包上传的地方，游戏对接完成后需上传原包到系统里，实现后续玩家下载和渠道分包等操作</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+				<a class=" " href="{:U('add?model='.$model['id'])}"><span class="button_icon button_icon1"></span>新 增</a>
+				<a class=" ajax-post confirm " target-form="ids" url="{:U('del?model='.$model['id'])}"><span class="button_icon button_icon2"></span>删 除</a>
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list input-list-game search_label_rehab">
+                <label>游戏名称：</label>
+                <select id="game_id" name="game_name" class="select_gallery" >
+                    <option value="">请选择游戏</option>
+                    <volist name=":get_game_list()" id="vo">
+                        <option game-id="{$vo.id}" value="{$vo.game_name}">{$vo.game_name}</option>
+                    </volist>
+                </select>   
+            </div>
+            <div class="input-list input-list-platform">
+            <label>运营平台：</label>
+                <select id="sdk_version1" name="sdk_version1"  >
+                    <option value="">请选择</option>
+                    <volist name=":get_systems_list()" id="vo">
+                    <gt name="key" value="0">
+                    <option <if condition="$Thinkphp.get.sdk_version eq $key"> selected </if> value="{$key}">{$vo}</option>
+                    </gt>
+                    </volist>
+                    <input type="hidden" id="sdk_version" name="sdk_version" value="{:I('sdk_version')}"></input>
+                </select>  
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('GameSource/lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th>
+                            <input class="check-all" type="checkbox">
+                        </th>
+                        <volist name="list_grids" id="field">
+                            <th>{$field.title}</th>
+                        </volist>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                        <tr>
+                            <td><input class="ids" type="checkbox" value="{$data['id']},{$data.file_type},{$data['game_id']}" name="ids[]"></td>
+                            <volist name="list_grids" id="grid">
+                                <td>{:get_list_field($data,$grid)}</td>
+                            </volist>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script>
+<volist name=":I('get.')" id="vo">
+    Think.setValue('{$key}',"{$vo}");
+</volist>
+$(".select_gallery").select2();
+</script>
+<script type="text/javascript">
+highlight_subnav('{:U('GameSource/lists')}');
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+     $(".d_list").find(".drop-down13").hover(function(){
+        $(this).find(".nav-list").removeClass("hidden");
+    },function(){
+        $(this).find(".nav-list").addClass("hidden");
+    });
+
+    $(".drop-down13 .nav-list li").find("a").each(function(){
+        var that = $(".drop-down13");
+        $(this).click(function(){
+            var text = $(this).text(),val = $(this).attr("value");
+            that.find(".sort-txt").text(text).attr("data",val);
+            that.find(".nav-list").addClass("hidden");
+            that.siblings('.hiddenvalue').val(val);
+        })
+    });
+
+})
+</script>
+</block>

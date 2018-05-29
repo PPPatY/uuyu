@@ -1,0 +1,124 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+        <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">余额</span></span></div>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="list integral-record-list">
+            
+            
+            <div class="tab-scroll clearfix">
+              <div id="tab-menu">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper tabmenu">
+                        <div class="swiper-slide swiper-visible active"><a href="javascript:;">积分</a></div>
+                        <div class="swiper-slide swiper-visible"><a href="javascript:;">平台币</a></div>
+                        <div class="swiper-slide swiper-visible"><a href="javascript:;">绑定平台币</a></div>
+                    </div>
+                </div>
+              </div>
+              <div id="tab-slide">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper tabpanel">
+                      <div class="swiper-slide">
+                        <div class="text-show">
+                          <p class="name">账户积分</p>
+                          <p class="number">{:$userinfo['shop_point']>0?$userinfo['shop_point']:0;}</p>
+                          <div class="butnbox">
+                            <a href="{:U('PointShop/mall_integral',array('from'=>balance))}" class="butn gain">获取</a>
+                            <a href="{:U('PointShop/mall')}" class="butn defray">兑换</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="text-show">
+                          <p class="name">账户平台币</p>
+                          <p class="number">{:$userinfo['balance']>0?$userinfo['balance']:0;}</p>
+                          <div class="butnbox">
+                            <a href="{:U('user_recharge')}" class="butn gain">充值</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                      <empty name="binddata">
+                        <div class="empty">
+                          <img src="__IMG__/blank_bind.png" class="empty-icon">
+                          <p class="empty-text">暂无绑定平台币</p>
+                        </div>
+                      <else/>
+                        <ul class="list text-pic-list">
+                        <volist name="binddata" id="bd">
+                          <li class="clearfix">
+                            <div class="item clearfix">
+                              <a href="{$bd.play_detail_url}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$bd['icon']}" class="icon"></a>
+                              <div class="butnbox"><span class="table"><span class="table-cell">{$bd['bind_balance']}</span></span></div>
+                              <div class="text">
+                                <div class="title">{$bd['game_name']}</div>
+                              </div>
+                            </div>
+                          </li>
+                        </volist>
+                        </ul>
+                      </empty>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </section>
+    </section>
+    
+    <script src="__JS__/common.js"></script>
+    <script>
+        $(function() {
+          var viewSwiper = new Swiper('#tab-slide .swiper-container', {
+            onSlideChangeStart: function() {
+              updateNavPosition()
+            }
+          })
+
+          var previewSwiper = new Swiper('#tab-menu .swiper-container', {
+            visibilityFullFit: true,
+            slidesPerView: 'auto',
+            onlyExternal: true,
+            onTap: function() {
+              viewSwiper.slideTo(previewSwiper.clickedIndex)
+            }
+          })
+          
+          var updateNavPosition = function() {
+            $('#tab-menu .active').removeClass('active')
+            var activeNav = $('#tab-menu .swiper-slide').eq(viewSwiper.activeIndex).addClass('active')
+            if (!activeNav.hasClass('swiper-visible')) {
+              if (activeNav.index() > previewSwiper.activeIndex) {
+                var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+                previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
+              } else {
+                previewSwiper.slideTo(activeNav.index())
+              }
+            }
+          }
+          
+        });
+        
+        
+        
+    </script>
+</block>

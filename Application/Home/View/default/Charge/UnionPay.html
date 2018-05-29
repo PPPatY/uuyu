@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>竣付通</title>
+    <meta name="description" content="jquery ajax tabѡ???ͨ???????????????ѡ??????????????????????????????򵥵??ҳģ?嵥ҳѡ??????չʾ??"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/jftbase.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/jftstyle.css"/>
+</head>
+<!-- target="_blank"  -->
+<body>
+<div id="content">
+<form method="post" action="{:U('pay_way',array('type'=>'UnionPay'))}"  target="_self">
+    <div class="online-bank">
+        <ul class="bank">
+            <li>
+                <input type="radio" class="radio" value="ICBC" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/ICBC.png" />
+            </li>
+            <li>
+                <input type="radio" class="radio" value="CMB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/CMB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="CCB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/CCB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="CSH" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/CSH.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="ABC" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/ABC.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="COMM" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/COMM.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="ECITIC" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/ECITIC.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="PSBC" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/PSBC.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="PINGAN" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/PINGAN.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="HXB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/HXB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="BODL" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/BODL.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="BOGH" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/BOGH.png" />
+            </li>
+            <li>
+                <input type="radio" class="radio" value="BOJS" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/BOJS.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="BOWZ" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/BOWZ.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="CZB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/CZB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="CZRCB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/CZRCB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="HSB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/HSB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="NBBANK" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/NBBANK.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="NJCB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/NJCB.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="NJCB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/ICBC.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="QILUBANK" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/QILUBANK.png"/>
+            </li>
+            <li>
+                <input type="radio" class="radio" value="SCB" name="p10_paychannelnum"/><img src="__IMG__/UnionPay/SCB.png"/>
+            </li>
+
+        </ul>
+       <input type="hidden" name="type" value="UnionPay" />            
+      <input type="hidden" name="account" value="{:I('account')}" />  
+      <input type="hidden" name="sign" value="{:I('sign')}" />            
+      <input type="hidden" name="pay_amount" value="{:I('pay_amount')}" />            
+      <input type="hidden" name="pay_order_number" value="{:I('pay_order_number')}" />  
+    </div>
+    <div class="btnGroup">
+
+        <button class="btn">点击提交</button>
+    </div>
+    </form>
+</div>
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="__JS__/jftstyle.js"></script>
+
+
+</script>
+</body>
+</html>
+

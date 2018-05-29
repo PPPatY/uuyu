@@ -1,0 +1,92 @@
+<extend name="Public/mix_ base"/>
+<block name="location">
+<div class="location-container">当前位置：<span>联盟站点</span><span>游戏列表</span></div>
+</block>
+<block name="body">
+    <div class="page-list siteGame-index-list">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_game.png">游戏列表</div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <div class="tab">
+              <a href="{:U('add')}" class="submit" >添加游戏</a>
+            </div>
+          </div>
+          <div class="trunk-list">
+              <table class="table">
+                  <tr class="odd">
+                    <th>游戏名称</th>
+                    <th>游戏大小</th>
+                    <th>游戏类型</th>
+                    <th>版本号</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                  </tr>
+                  <empty name="data">
+                  <tr><td colspan="6">暂无数据<td></tr>
+                  <else />
+                  <volist name="data" id="vo" key="k">
+                      <tr id ="{$vo['id']}">
+                          <td>{$vo.game_name}</td>
+                          <td>{$vo.game_size} M</td>
+                          <td>{$vo.game_type}</td>
+                          <td>{$vo.version}</td>
+                          <td>{$vo.create_time|time_format}</td>
+                          <td class="op">
+                          <if condition="$vo['is_top'] eq '1'">
+                              <a class="totop" href="{:U('endtop',['id'=>$vo['id']])}"><img src="__IMG__/20170831/icon_top.png">取消置顶</a> |
+                          </if>
+                          <if condition="$vo['is_top']  neq '1'">
+                              <a class="totop" href="{:U('top',['id'=>$vo['id']])}"><img src="__IMG__/20170831/icon_top.png">置顶</a> |
+                          </if>
+                              <a class="edit" href="{:U('edit',['id'=>$vo['id']])}"><img src="__IMG__/20170831/icon_edit.png">编辑</a> |
+                              <a class="del_game" href="javascript:;" data-id ="{$vo['id']}"><img src="__IMG__/20170831/icon_del.png">删除</a>
+                          </td>
+                      </tr>
+                  </volist>
+                  </empty>
+              </table>
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script type="text/javascript">
+  $(document).ready(function() {
+  });
+	//删除操作
+	$('.del_game').click(function(){
+		var val = $(this).attr("data-id");
+		var url = "{:U('del')}";
+		del_action(val,url);
+	});
+  var sub = true;
+  function save() {
+      if(!sub){
+          return false;
+      }
+      var data = $("#data").serialize();
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('SiteBase/save')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.info, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+  </script>
+</block>

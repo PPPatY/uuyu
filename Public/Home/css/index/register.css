@@ -1,0 +1,63 @@
+@charset "utf-8";
+.main {background-color:#F9F9F9;padding:40px 0;min-height:660px;}
+
+.tab-pane .title {font-weight:400;margin-top:0;margin-bottom:25px;}
+.tab-pane .title .titletext {font-size:20px;}
+.tab-pane .title .titlebtn {font-size:12px;color:#6D6D6D;float:right;margin-top:7px;}
+.tab-pane .title .titlebtn a{color:#DF4938;}
+
+.tab-pane .form-group{margin-bottom:20px;}
+.tab-pane .input-group{position:relative;display:table;width:100%;border-collapse:separate;}
+.tab-pane .input-status{position:absolute;padding:0 0 2px 15px;padding-top:0;}
+.tab-pane .error,.tab-pane .success,.tab-pane .warn{padding-left:20px;}
+.tab-pane .error{background:url(../../images/20170913/error.png) left center no-repeat;background-size:auto 90%;color:#f11;}
+.tab-pane .success{background:url(../../images/20170913/success.png) left center no-repeat;background-size:auto 90%;color:#19bc9c;}
+.tab-pane .warn{background:url(../../images/20170913/warn.png) left center no-repeat;background-size:auto 90%;color:#ffac03;}
+.tab-pane .input-group-addon,.tab-pane .input-group-btn{width:1%;vertical-align:middle;white-space:nowrap;}
+.tab-pane .input-group-addon{position:absolute;top:14px;left:10px;z-index:5;width:20px;height:20px;color:#6c6c6c;text-align:center;font-weight:400;font-size:14px;line-height:1;}
+.tab-pane .has-error .input-group-addon{color:#f11;}
+.tab-pane .form-control{display:block;width:100%;height:44px;border:1px solid #ccc;border-radius:3px;background-color:#fff;background-image:none;box-shadow:inset 0 1px 1px rgba(0,0,0,.075);color:#6c6c6c;text-indent:44px;font-size:14px;line-height:1.42857143;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.tab-pane .input-group .form-control{position:relative;z-index:2;float:left;margin-bottom:0;width:100%;}
+.tab-pane .input-group .form-control,.tab-pane .input-group-btn{display:table-cell;}
+.tab-pane .has-error .form-control{border-color:#f11;box-shadow:inset 0 1px 1px rgba(0,0,0,.075);}
+.tab-pane .has-success .form-control{border-color:#26C7DB;box-shadow:inset 0 1px 1px rgba(0,0,0,.075);}
+.tab-pane .captchabox{position:relative;float:left;width:48%;min-height:1px;}
+.tab-pane .f-wsn{white-space:nowrap;word-wrap:normal;line-height:34px;text-align:right;}
+.tab-pane .f-wsn img{margin-left:10px;height:48px;vertical-align:middle;cursor:pointer;border-radius:3px;}
+.tab-pane .f-wsn .iconfont{color:#398aed;cursor:pointer;}
+.tab-pane .ff{margin-bottom:12px;font-size:13px;}
+.tab-pane .ff label{cursor:pointer;position:relative;}
+.tab-pane .ff label input{margin-right:3px;cursor:pointer;width:20px;height:20px;position:absolute;left:0;top:0;margin:0;opacity:0;filter:alpha(opacity=0);}
+.tab-pane .ff label i {width:16px;height:16px;display:inline-block;background:url(../../images/20170913/check.png) 0 0 no-repeat;vertical-align:middle;margin-top:-3px;margin-right:3px;}
+.tab-pane .ff label i.on {background-position:-20px 0;}
+.tab-pane .ff .forget_password  {float:right;}
+.tab-pane .tabbtnwrap{margin-top:25px;margin-bottom:0;}
+.tab-pane .tabbtn a{color:#5a90ee;}
+.tab-pane .btn{display:inline-block;margin-bottom:0;padding:6px 9pt;border:1px solid transparent;border-radius:4px;background-image:none;vertical-align:middle;text-align:center;white-space:nowrap;font-weight:400;font-size:14px;line-height:1.42857143;cursor:pointer;-ms-touch-action:manipulation;touch-action:manipulation;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+.tab-pane .btn_primary{padding:0 15px;width:100%;height:44px;border-color:#26C7DB;background-color:#26C7DB;color:#fff;font-size:15px;line-height:35px;}
+.tab-pane .input-group-addon .input_icon{display:block;width:20px;height:20px;background:url(../../images/20170913/login.png);background-repeat:no-repeat;}
+.tab-pane .input-group-addon .input_icon_user{background-position:0 0;}
+.tab-pane .has-success .input-group-addon .input_icon_user{background-position:-24px 0;}
+.tab-pane .input-group-addon .input_icon_lock{background-position:0 -26px;}
+.tab-pane .has-success .input-group-addon .input_icon_lock{background-position:-24px -26px;}
+.tab-pane .input-group-addon .input_icon_barcode{background-position:0 -52px;}
+.tab-pane .has-success .input-group-addon .input_icon_barcode{background-position:-24px -52px;}
+.tab-pane .infor{padding-top:15px;}
+.tab-pane .infor .item{float:left;width:50%;color:#9f9f9f;text-align:center;}
+.tab-pane .infor .item~.item{margin-left:-1px;border-left:1px solid #dfdfdf;}
+.tab-pane .infor .item i{color:#ff9b2c;font-style:normal;}
+
+.registerbox {width:70%;margin:0 auto 0 24%;}
+.registerbox .lrpane {padding:35px 35px 30px;font-size:14px;}
+.registerbox .lrpane.active {z-index:1;}
+.registerbox .title {width:60%;margin-bottom:35px;margin-top:10px;font-weight:400;}
+/* .registerbox .title .titletext {font-size:18px;}
+.registerbox .title .titlebtn {font-size:12px;color:#6D6D6D;float:right;margin-top:7px;}
+.registerbox .title .titlebtn a{color:#5A90EE;} */
+.tab-pane .input-group {width:58%;float:left;}
+.tab-pane .input-group.captchabox {width:36%;}
+.tab-pane .f-wsn{width:22%;float:left;}
+.tab-pane .input-status{width:36%;position:relative;float:left;padding:0 0 0 15px;line-height:45px;}
+.tab-pane .btn {width:60%;}
+.tab-pane .ff {font-size:14px;margin-bottom:10px;}
+.tab-pane .ff .input-status {line-height:20px;}

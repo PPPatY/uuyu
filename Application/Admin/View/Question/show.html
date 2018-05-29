@@ -1,0 +1,78 @@
+<extend name="Public/base" />
+
+<block name="body">
+<script src="__STATIC__/layer/layer.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('User/index')}">用户</a></li>
+            <li><a href="{:U('Member/user_info')}">玩家组</a></li>
+            <li><a href="#">用户留言</a></li>
+        </ul>
+    </div>
+    <!-- 标签页导航 -->
+<div class="tab-wrap">
+    <div class="tab-content zc_for" >
+        <!-- 基础文档模型 -->
+        <div style="height: 475px;overflow :auto">
+		<div id="tab1" class="tab-pane in tab1 tab-look"><div class="formtitle"><span>基本信息</span></div>
+            <table>
+                <volist name="user" id="data">
+                <tr>
+                    <td class="l">用户留言：</td>
+                    <td class="r" >
+                        <pre>{$data.question}</pre><pre style="float:right;">时间：{:set_show_time($data['create_time'])}</pre>
+                    </td>
+                    <td class="l">回复留言：</td>
+                    <td class="r" >
+                      <if condition="$data.answer eq ''">
+                        <input type="hidden" name="id" class="id" value="{$data.id}">
+                        <span id="huifu">点击回复</span>
+                      <else />
+                        <pre>{$data.answer}</pre><pre style="float:right;">时间：{:set_show_time($data['update_time'])}</pre>
+                      </if>
+                    </td>
+                </tr>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/layer/extend/layer.ext.js" ></script>
+<script src="__STATIC__/layer/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Question/lists')}');
+Think.setValue("prmoote_id_to", {$data.promote_id|default = 0});
+$('#submit').click(function(){
+    $('#form').submit();
+});
+
+$(function(){
+  var id=$(".id").val();
+  $("#huifu").click(function() {
+ layer.open({
+  type: 2,
+  title: '充值记录',
+  shadeClose: true,
+  shade: 0.8,
+  area: ['60%', '50%'],
+  content: 'admin.php?s=/Question/reply/id/'+id+''//iframe的url
+}); 
+});
+})
+</script>
+</block>

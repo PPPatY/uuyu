@@ -1,0 +1,146 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/mall.css" rel="stylesheet" >
+<style>
+.footer{
+  display:none;
+}
+</style>
+<header class="header mall-index">
+  <section class="wrap">
+    <if condition="I('get.from') eq ''">
+    <a href="{:U('mall')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span><span class="table-cell word">商城</span></span></a>
+    <else/>
+    <a href="javascript:history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    </if>
+    <div class="caption"><span class="table"><span class="table-cell">积分任务</span></span></div>
+    <!-- <a href="mall_rule.html" class="hbtn right mall-rule"><span class="table"><span class="table-cell"><img src="__IMG__/nav_mall_rule.png"></span></span></a>
+    <a href="mall_record.html" class="hbtn right mall-reco"><span class="table"><span class="table-cell"><img src="__IMG__/nav_mall_record.png"></span></span></a> -->
+  </section>
+</header>
+<div class="occupy"></div>
+
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+
+<section class="trunker">
+  
+  <section class="banner integral-banner">
+    <div class="inner">
+      <div class="myscore">我的积分：<span>{$userpoint}</span></div>
+    </div>
+  </section>
+  <section class="inner">
+    <section class="contain">
+      <div class="list integral-list">
+        <ul class="clearfix">
+          <li>
+            <div class="item">
+              <div class="iconbox"><img src="__IMG__/mall_task_sign.png" class="icon"></div>
+              <!-- 未签到 -->
+              <if condition='$issignin neq 1'>
+                <div class="butnbox"><span class="table"><span class="table-cell"><a href="javascript:;" data-url="{:U('mall_sign',array('from'=>'mall_integral'))}" data-msg="签到" class="butn signbutn jumpurl">去签到</a></span></span></div>
+                <div class="textbox">
+                  <div class="name">签到</div>
+                  <p class="info">今日签到可获积分</p>
+                  <p class="reward"><img src="__IMG__/mall_task_integral.png"><span>+{$addpoint}</span></p>
+                </div>
+               <else/> 
+              <!-- 已签到 hidden-->
+                <div class="butnbox"><span class="table"><span class="table-cell"><a href="{:U('mall_sign',array('from'=>'mall_integral'))}" class="butn signbutn disabled">已签到</a></span></span></div>
+                <div class="textbox">
+                  <div class="name">签到</div>
+                  <p class="info">明日签到可获积分</p>
+                  <p class="reward"><img src="__IMG__/mall_task_integral.png"><span>+{$topoint}</span></p>
+                </div>
+              </if>
+            </div>
+          </li>
+          <li>
+            <div class="item">
+              <div class="iconbox"><img src="__IMG__/mall_task_bind.png" class="icon"></div>
+              <if condition="$bindphone eq ''">
+                <!-- 未绑定 -->
+                <div class="butnbox"><span class="table"><span class="table-cell"><a href="javascript:;" data-url="{:U('Subscriber/user_bind_phone',array('from'=>'mall_integral'))}" data-msg="绑定手机号" class="butn bindbutn jumpurl">去绑定</a></span></span></div>
+              <else/>
+                <!-- 已绑定 -->
+                <div class="butnbox "><span class="table"><span class="table-cell"><a href="{:U('Subscriber/user_bind_phone',array('from'=>'mall_integral'))}" class="butn bindbutn disabled">已绑定</a></span></span></div>
+              </if>
+              <div class="textbox">
+                <div class="name">绑定手机号</div>
+                <p class="info">绑定手机号赠送积分</p>
+                <p class="reward"><img src="__IMG__/mall_task_integral.png"><span>+{$list['bind_phone']['point']}</span><span style="font-size:0.32rem;color:#999;display:inline-block;margin-top:-2%;vertical-align:middle;"> (每个手机号仅限首次绑定)</span></p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item">
+              <div class="iconbox"><img src="__IMG__/mall_task_first.png" class="icon"></div>
+              <if condition="$firstspend eq ''">
+              <!-- 未首充 -->
+              <div class="butnbox"><span class="table"><span class="table-cell"><a href="{:U('Game/index')}" class="butn frstbutn">开始</a></span></span></div>
+              <else/>
+              <!-- 已首充 -->
+              <div class="butnbox"><span class="table"><span class="table-cell"><a  class="butn frstbutn disabled">已首充</a></span></span></div>
+              </if>
+              <div class="textbox">
+                <div class="name">每日游戏首充</div>
+                <p class="info">每日首次充值任意一款游戏</p>
+                <p class="reward"><img src="__IMG__/mall_task_integral.png"><span>+{$list['share_game']['point']}</span>
+                <span style="font-size:0.32rem;color:#999;display:inline-block;margin-top:-2%;vertical-align:middle;"> (绑币除外)</span>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item">
+              <div class="iconbox"><img src="__IMG__/mall_task_pay.png" class="icon"></div>
+              <div class="butnbox"><span class="table"><span class="table-cell"><a href="{:U('Game/index')}" class="butn rechbutn">开始</a></span></span></div>
+              <div class="textbox">
+                <div class="name">游戏充值</div>
+                <p class="info">每充值1元即可获得{$list['share_article']['point']}积分</p>
+                <span style="font-size:0.32rem;color:#999;display:inline-block;margin-top:-2%;vertical-align:middle;"> 长期有效(绑币除外)</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    
+  </section>
+</section>
+<div class="popmsg"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script>
+    $(function() {
+			$user = "{:is_login()}";
+			var popmsg = $('.popmsg').pop();
+		function loginjs(type,msg){
+            if(type==1){
+              popmsg.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">暂未登录</div><div class="pop-text">您还未登录账号，暂时无法'+msg+'哦</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm tologinsss">去登录</a></div>');
+              $('.jscancel').click(function() {popmsg.close();});
+              popmsg.find('.tologinsss').click(function() {popmsg.close(1);setTimeout(function(){$('.jslogin').click();},10);});
+            }else{
+              $('.jslogin').click();
+            }
+            
+            return false;
+          }
+      $('.jumpurl').click(function() {
+				var that = $(this);
+				if($user<=0){
+					loginjs(2,that.attr('data-msg'));
+					return false;
+				} else {
+					window.location.href=that.attr('data-url');
+				}
+				
+				return false;
+			});
+      
+    });
+    
+    
+    
+</script>
+</block>

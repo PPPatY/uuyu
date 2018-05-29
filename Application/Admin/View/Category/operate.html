@@ -1,0 +1,35 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <form action="{:U($type)}" method="post" class="form-horizontal form_info_ml">
+        <ul class="form_info ">
+            <li><label>目标分类</label><div class="form_main"><select name="to" class="select_gallery select2-search--hide">
+								<volist name="list" id="vo">
+									<option value="{$vo.id}">{$vo.title}</option>
+								</volist>
+							</select></div><i class="form_hint">将{$operate}至的分类</i></li>
+            <li><label>&nbsp;</label><input type="hidden" name="from" value="{$from}"><input type="submit" id="submit" value="确认保存" target-form="form-horizontal" class="form_btn ajax-post"><button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button></li>
+        </ul>
+    </form>
+	
+</block>
+<block name="script">
+    <script>
+    highlight_subnav('{:U('Category/index')}');
+    $(".select_gallery").select2();
+	$(".select2-search--hide").select2({
+		minimumResultsForSearch: -1,
+	});
+	</script>
+</block>

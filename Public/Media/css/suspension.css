@@ -1,0 +1,145 @@
+/**
+ * 悬浮样式
+ * @author 鹿文学
+ */
+/* common */
+
+body,.main,.pc-wrap2 {margin:0;padding:0;}
+.pc-container2,.pc-wrap2{height:100vh;width:100%;}
+.pc-container2 {overflow:hidden;position:relative;background:url(../images/pc_bg.png) center top no-repeat;position:relative;background-size:100% 100%;}
+.pc-container2 .pc-wrap2 {background:url(../images/pc_line.png) center top repeat;position:relative;}
+.pc-container2 .pc-loadbox {max-width:90vw;margin:0 auto;text-align:center;position:relative;}
+.pc-container2 .pc-loadbox .pc-mark {padding-top:3.2rem;}
+.pc-container2 .pc-loadbox .pc-mark img{width:10.2rem;height:6.18rem;display:block;margin:0 auto;}
+.pc-container2 .pc-loadbox .pc-load {padding:3.22rem 0 3.4rem;z-index: 5;}
+.pc-container2 .pc-loadbox .pc-load img{width:2.9rem;height:0.5rem;display:black;margin:0 auto;}
+.pc-container2 .pc-loadbox .pc-notice {font-size:0.36rem;color:rgba(255,255,255,.8);padding-bottom:1.2rem;width:100%;margin:0;}
+.pc-game-box-wrap {position:absolute;top:0;left:0;right:0;height:100%;width:100vw;}
+.pcgboxbg {background:rgba(0,0,0,1);}
+.pc-game-box {position:relative;margin:0 auto;height:100%;width:14.313rem;overflow:hidden;}
+
+.gamestartbox {width:100%;height: 100%;}
+.suspensionbtn {width:1.48rem;height:1.48rem;position:absolute;top:30%;right:0;margin-right:-0.74rem;z-index:99;border-radius:50%;overflow: hidden;}
+.suspensionbtn img {width:100%;height:100%;display: block;}
+.suspensionbox {position:absolute;background:rgba(0,0,0,.7);width:100%;left:-100%;top:0;height:100%;max-height:100%;overflow:hidden;z-index:100;}
+.suspensionbox .wrap {width:12.6rem;background:#FFF;height:100%;max-height:100%;position:relative;}
+.suspensionbox .user-info {position:relative;max-height:190px;padding:0.3rem 0.3rem;}
+.suspensionbox .user-info .iconbox {float:left;width:1.1rem;height:1.1rem;position:relative;border-radius:50%;overflow:hidden;}
+.suspensionbox .user-info .iconbox .portrait {width:100%;position:relative;z-index:2;display:block;}
+.suspensionbox .user-info .butnbox {position:absolute;top:0;right:0.4rem;width:4.12rem;height:100%;font-size:0.36rem;}
+.suspensionbox .user-info .butnbox .sus-butn {text-align:center;display:block;float:right;width:1.7rem;height:0.8rem;line-height:0.8rem;border-radius:0.08rem;max-height:92px;max-width:170px;border:1px solid #23BBF3;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.suspensionbox .user-info .butnbox .sus-sign {color:#23BBF3;position:relative;}
+.suspensionbox .user-info .butnbox .sus-recharge {color:#FFF;background:#23BBF3;}
+.suspensionbox .user-info .butnbox .sus-butn .circle {right:-.12rem;top:-.12rem;}
+.suspensionbox .user-info .butnbox .sus-sign span {overflow:hidden;display:block;height:100%;width:100%;position:relative;}
+.suspensionbox .user-info .butnbox .sus-sign span i {font-style:normal;}
+.suspensionbox .user-info .butnbox .sus-sign.disabled {color:#999;border-color:#CCC;}
+.suspensionbox .user-info .textbox {height:1.1rem;float:left;margin-left:0.2rem;}
+.suspensionbox .user-info .textbox .name{font-size:0.38rem;color:#000;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.suspensionbox .user-info .textbox .score {font-size:0.32rem;color:#999;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.suspensionbox .user-info .textbox .score span {color:#FF3228;}
+
+.suspensionbox .user-other {overflow:hidden;height:91.5%;}
+.suspensionbox .user-other .tab {max-height:170px;height:1.7rem;border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;}
+.suspensionbox .user-other .tab li {width:25%;float:left;text-align:center;height:100%;}
+.suspensionbox .user-other .tab .tab-butn {font-size:0.36rem;color:#666;}
+.suspensionbox .user-other .tab li.active .tab-butn {background:#23BBF3;color:#FFF;}
+.suspensionbox .user-other .tab .tab-butn span{display:block;}
+.suspensionbox .user-other .tab .tab-butn .icon {width:0.66rem;height:0.52rem;display:inline-block;background-position:center center;background-repeat:no-repeat;background-size:100% 100%;}
+.suspensionbox .user-other .tab .tab-butn .icon-game {background-image:url(../images/nav_game_not.png);}
+.suspensionbox .user-other .tab li.active .tab-butn .icon-game {background-image:url(../images/invitate_btn_switch_game_selected.png);}
+.suspensionbox .user-other .tab .tab-butn .icon-gift {background-image:url(../images/invitate_btn_switch_gift.png);}
+.suspensionbox .user-other .tab li.active .tab-butn .icon-gift {background-image:url(../images/invitate_btn_switch_gift_selected.png);}
+.suspensionbox .user-other .tab .tab-butn .icon-mall {background-image:url(../images/invitate_btn_switch_mall.png);}
+.suspensionbox .user-other .tab .tab-butn .icon-cs {background-image:url(../images/invitate_btn_switch_service.png);}
+.suspensionbox .user-other .tab li.active .tab-butn .icon-cs {background-image:url(../images/invitate_btn_switch_service_selected.png);}
+
+.suspensionbox .user-other .pan {overflow:hidden;clear:both;height:89%;width:100%;}
+.suspensionbox .user-other .panitem {opacity:0;width:100%;float:left;overflow:hidden;height:100%;}
+.suspensionbox .user-other .panitem:first-child {opacity:1;}
+.suspensionbox .user-other .panitem:last-child {overflow-y:auto;}
+.suspensionbox .user-other .panitem .panitemservice {height: 100%;}
+.suspensionbox .user-other .panitem .panitemwrap {height:100%;overflow:hidden;}
+
+.suspensionbox .user-other .panitem .recently-play{position:relative;padding:0.2rem 0;width:100%;max-height:430px;background:#EDEDED;}
+.suspensionbox .user-other .panitem .recently-play .wrap{position:relative;height:100%;background:transparent;}
+.suspensionbox .user-other .panitem .recently-play-title{position:absolute;z-index:9;width:0.68rem;height:100%;color:#fff;font-size:0.36rem;}
+.suspensionbox .user-other .panitem .recently-play-title span{margin:0.7rem 0;height:2.4rem;}
+.suspensionbox .user-other .panitem .recently-play-title span i{border-top-right-radius:0.08rem;border-bottom-right-radius:0.08rem;background:#f70;text-align:center;font-style:normal;line-height:1.1;}
+
+.suspensionbox .user-other .panitem .play-scroll {position:relative;margin-left:1rem;height:100%;max-height:370px;text-align:center;}
+.suspensionbox .user-other .panitem .play-scroll .item{margin-top:-1px;padding:1px 0;width:90.5%;height:100%;background:#fff;}
+.suspensionbox .user-other .panitem .play-scroll .item a{-webkit-tap-highlight-color:transparent;}
+.suspensionbox .user-other .panitem .play-scroll .item .icon{position:relative;display:block;overflow:hidden;margin:0.3rem auto 0;width:1.40rem;height:1.40rem;max-width:140px;max-height:140px;border-radius:0.34rem;background:#e2e2e2;color:#bbbaba;font-size:0.33rem;}
+.suspensionbox .user-other .panitem .play-scroll .item .icon img{position:relative;z-index:2;width:100%;border-radius:0.4rem;}
+.suspensionbox .user-other .panitem .play-scroll .item .name{display:block;overflow:hidden;color:#333;text-overflow:ellipsis;padding:0.1rem 0;white-space:nowrap;font-size:0.34rem;}
+.suspensionbox .user-other .panitem .play-scroll .item .butn{display:block;margin:0 auto 0.22rem;width:1.10rem;height:0.6rem;text-align:center;border:1px solid #23bbf3;border-radius:0.08rem;color:#23bbf3;font-size:0.32rem;-webkit-box-sizing:border-box;box-sizing:border-box;}
+
+
+.suspensionbox .user-other .panitem .gift-list,.suspensionbox .user-other .panitem .game-list {padding:0 0.4rem;}
+.suspensionbox .user-other .panitem .gift-title,.suspensionbox .user-other .panitem .game-title{font-size:0.46rem;color:#333;padding:0.42rem 0 0.02rem;}
+.suspensionbox .user-other .panitem .gift-title span:before,.suspensionbox .user-other .panitem .game-title span:before {content:'';float:left;width:0.06rem;height:0.5rem;background:#23BBF3;margin-top:0.08rem;margin-right:0.3rem;}
+
+.suspensionbox .user-other .panitem .game-list li {padding:0.24rem 0;}
+.suspensionbox .user-other .panitem .game-list .item{position:relative;}
+.suspensionbox .user-other .panitem .game-list .iconbox{position:relative;float:left;display:block;overflow:hidden;margin:0;width:1.42rem;height:1.42rem;max-width:142px;max-height:142px;border-radius:0.26rem;background:#E2E2E2;color:#999;font-size:0.32rem;}
+.suspensionbox .user-other .panitem .game-list .iconbox .icon{position:relative;z-index:2;width:100%;}
+.suspensionbox .user-other .panitem .game-list .butnbox{position:absolute;top:0;right:0;width:1.7rem;height:100%;max-width:170px;}
+.suspensionbox .user-other .panitem .game-list .butnbox .butn{border:1px solid #23bbf3;border-radius:0.08rem;color:#23bbf3;font-size:0.34rem;width:1.3rem;height:0.7rem;display:block;line-height:0.7rem;text-align:center;float:right;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.suspensionbox .user-other .panitem .game-list .textbox{margin-right:1.7rem;margin-left:2.02rem;height:1.42rem;}
+.suspensionbox .user-other .panitem .game-list .textbox .title {line-height:1;overflow:hidden;font-size:0.8rem;}
+.suspensionbox .user-other .panitem .game-list .textbox .title span{display:inline-block;margin-right:5%;}
+.suspensionbox .user-other .panitem .game-list .textbox .title span:last-child{margin-right:0;}
+.suspensionbox .user-other .panitem .game-list .textbox .title .name{color:#333;font-size:0.38rem;overflow:hidden;white-space:nowrap;}
+.suspensionbox .user-other .panitem .game-list .textbox .title .mark{width:0.8rem;height:0.4rem;line-height:0.36rem;text-align:center;border:1px solid transparent;border-radius:0.08rem;vertical-align:middle;font-size:0.28rem;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.suspensionbox .user-other .panitem .game-list .textbox .title .gift-mark{border-color:#f70;color:#f70;}
+.suspensionbox .user-other .panitem .game-list .textbox .title .send-mark{border-color:#28cb60;color:#28cb60;}
+.suspensionbox .user-other .panitem .game-list .textbox .info{overflow:hidden;margin:0;color:#999;text-overflow:ellipsis;white-space:nowrap;font-size:0.32rem;}
+.suspensionbox .user-other .panitem .game-list .textbox .info .type{color:#23bbf3;}
+.suspensionbox .user-other .panitem .game-list .textbox .info .description{position:relative;margin-left:6%;}
+.suspensionbox .user-other .panitem .game-list .textbox .info .description:before{position:absolute;top:21%;left:-.23rem;display:block;width:.04rem;height:65.38%;background:#e0e0e0;content:'';}
+
+.suspensionbox .user-other .panitem .other-gift {border-top:1px solid #E7E7E7;}
+.suspensionbox .user-other .panitem .gift-content li {padding:0.35rem 0;}
+.suspensionbox .user-other .panitem .gift-content li~li {border-top:1px solid #E7E7E7;}
+.suspensionbox .user-other .panitem .gift-content .item{position:relative;}
+.suspensionbox .user-other .panitem .gift-content .butnbox {position:absolute;top:0;right:0;width:1.8rem;height:100%;}
+.suspensionbox .user-other .panitem .gift-content .butnbox .butn {display:block;float:right;width:1.3rem;height:0.7rem;line-height:0.7rem;border-radius:0.08rem;border:1px solid #23BBF3;font-size:0.34rem;color:#23BBF3;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.suspensionbox .user-other .panitem .gift-content .butnbox .butn.disabled {color:#999;border-color:#CCC;}
+.suspensionbox .user-other .panitem .gift-content .textbox {margin-right:1.8rem;}
+.suspensionbox .user-other .panitem .gift-content .textbox .title {font-size:0.38rem;color:#333;}
+.suspensionbox .user-other .panitem .gift-content .textbox .surplusbox  {font-size:0.3rem;padding:0.04rem 0 0;color:#999;}
+.suspensionbox .user-other .panitem .gift-content .textbox .surplusbox .surplus {vertical-align:middle;position:relative;overflow:hidden;height:0.08rem;width:41%;border-radius:0.08rem;background:#E5E5E5;display:inline-block;margin-right:0.16rem;}
+.suspensionbox .user-other .panitem .gift-content .textbox .surplusbox .surplus i {position:absolute;top:0;left:0;background:#28CB60;height:100%;border-radius:0.08rem;}
+.suspensionbox .user-other .panitem .gift-content .textbox .surplusbox .number i{font-style:normal;margin-left:0.1rem;color:#28CB60;}
+.suspensionbox .user-other .panitem .gift-content .textbox .info {font-size:0.3rem;color:#999;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin:0;}
+.suspensionbox .user-other .panitem .qq {padding-top:2.2rem;}
+.suspensionbox .user-other .panitem .qq .butn {background:#23BBF3;color:#FFF;font-size:0.46rem;display:block;width:6.94rem;height:1.26rem;line-height:1.26rem;text-align:center;border-radius:0.08rem;margin:0 auto;}
+.suspensionbox .user-other .panitem .qq .butn .icon-qq {width:0.54rem;height:0.6rem;margin-left:1rem;margin-right:0.2rem;display:inline-block;margin-top:-1%;}
+.suspensionbox .user-other .panitem .qq .butn .icon-arrow-right {width:0.3rem;height:0.54rem;margin-left:0.2rem;display:inline-block;margin-top:-2%;}
+.suspensionbox .user-other .panitem .qrcode {padding-top:1.2rem;}
+.suspensionbox .user-other .panitem .qrcode .icon-qrcode {width:4.26rem;height:4.26rem;display:block;margin:0 auto;}
+.suspensionbox .user-other .panitem .qrcode .text-qrcode {margin:0.28rem 0 0;text-align:center;font-size:0.42rem;color:#666;}
+
+.suspensionbox .sus-menu {position:absolute;top:0;right:-1.76rem;width:1.76rem;max-width:176px;height:100%;}
+.suspensionbox .sus-menu .sus-menu-box {position:relative;text-align:center;padding-top:1.75rem;}
+.suspensionbox .sus-menu .sus-menu-butn {padding:0.33rem 0;display:inline-block;}
+.suspensionbox .sus-menu .sus-menu-butn .icon {width:1.24rem;height:1.24rem;display:block;margin:0 auto;background-repeat:no-repeat;background-position:center center;background-size:100% 100%;}
+.suspensionbox .sus-menu .sus-menu-butn .icon-close {background-image:url(../images/invitate_btn_close.png);}
+.suspensionbox .sus-menu .sus-menu-butn .icon-refresh {background-image:url(../images/invitate_btn_refresh.png);}
+.suspensionbox .sus-menu .sus-menu-butn .icon-collection {background-image:url(../images/invitate_btn_collection.png);}
+.suspensionbox .sus-menu .sus-menu-butn.on .icon-collection {background-image:url(../images/invitate_img_collected.png);}
+.suspensionbox .sus-menu .sus-menu-butn span {display:block;font-size:0.36rem;color:#FFF;margin:0.11rem 0 0.08rem;padding:0;}
+.suspensionbox .sus-menu .sus-menu-butn.on span {color:#23BBF3;}
+
+
+
+.sus-menu-quit-box {text-align:center;width:100%;position: absolute;bottom:3rem;}
+.suspensionbox .sus-menu .sus-menu-quit {border:1px solid rgba(255,255,255,.7);border-radius: 0.08rem;color:rgba(255,255,255,.7);font-size:0.36rem;padding:0.2rem;}
+
+
+.empty {padding-top:1.5rem;}
+
+.empty .empty-icon {width:5rem;height:2.98rem;}
+
+.swiper-container {height:100%;overflow:hidden;}

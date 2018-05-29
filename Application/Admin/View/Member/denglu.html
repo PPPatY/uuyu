@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta charset="UTF-8">
+    <title>游戏登录列表|溪谷软件管理平台</title>
+    <link href="http://admin.vlcms.com/Public/icon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/module.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="__CSS__/default_color.css" media="all">
+</head>
+	<style>
+body{ padding: 0px; }
+	</style>
+<body>  
+    <div id="main" class="main" style="min-height: 342px;">       
+    <!-- 标题栏 -->
+    
+	<div class="cf">
+	
+	</div>
+
+    <!-- 数据列表 -->
+    <div class="data_list box_mt">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th>玩家账号</th>
+                        <th>游戏名称</th>
+                        <th>游戏区服</th>
+                        <th>角色名</th>
+                        <th>登录时间</th>
+                        <th>登录IP</th>                        
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                	<volist name="list_data" id="data">
+                        <tr>
+                            <td>{$data.user_account}</td>
+                            <td>{$data.game_name}</td>
+                            <td>{$data.server_name}</td>
+                            <td>{$data.game_player_name}</td>
+                            <td>{:set_show_time($data['login_time'])}</td>
+                            <td>{$data.login_ip}</td>                           
+                        </tr>
+                    </volist>
+                          </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+    {$_page}
+            </div>
+    ﻿         
+        </div>
+
+    </body>
+</html>

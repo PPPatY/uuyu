@@ -1,0 +1,726 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<style>
+		.select2-container{width: 150px !important;}
+		.navtab_list_con {
+			width: 100%;
+			margin: 15px 0px;
+			height: 65px;
+			background-color: #f0f0f0;
+		}
+		
+		.navtab_list {
+			height: 36px;
+			border-bottom: solid 1px #d0dee5;
+			position: relative;
+			border-left: solid 1px #d3dbde;
+			margin: 15px 0px;
+		}
+		
+		.navtab_list a {
+			float: left;
+			height: 37px;
+			line-height: 37px;
+			background: url(__IMG__/itabbg.png) repeat-x;
+			border-right: solid 1px #d3dbde;
+			font-size: 14px;
+			color: #000;
+			padding-left: 25px;
+			padding-right: 25px;
+			text-decoration: none;
+		}
+		
+		.navtab_list a:hover {
+			border-bottom: 0;
+		}
+		
+		.navtab_list a.tabchose {
+			text-decoration: none;
+			border-bottom: none;
+			color: #000;
+			height: 37px;
+			display: block;
+			background: url(__IMG__/itabbg1.png) repeat-x;
+			font-weight: bold;
+		}
+		
+		.navtab_list_cs {
+			margin-top: 20px;
+			margin-left: 20px;
+			font-size: 12px;
+		}
+		
+		.navtab_list_cs img {
+			margin: 0px 8px;
+		}
+		
+		.data_list table td {
+			min-width: 50px;
+		}
+	</style>
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<!-- 标题栏 -->
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('Promote/lists')}">推广员</a>
+			</li>
+			<li>
+				<a href="{:U('Promote/ch_reg_list')}">结算管理</a>
+			</li>
+			<li>
+				<a href="#">推广结算</a>
+			</li>
+		</ul>
+		
+	</div>
+	<div class="cf top_nav_list navtab_list">
+		<a <if condition="$group eq  '1'"> class="tabchose" </if> href="{:U('settlement')}">推广员结算</a>
+		<a <if condition="$group eq  '2'"> class="tabchose" </if> href="{:U('settlement',array('group'=>2))}">结算记录</a>
+		<if condition="$group eq  '1'"><p class="description_text">说明：此功能是针对推广员下面的用户注册充值进行结算，充值数据是指消费到游戏的所有订单记录</p></if>
+		<if condition="$group eq  '2'"><p class="description_text">说明：此功能是查看所有的推广员结算记录</p></if>
+	</div>
+	<if condition="$group eq  '1'">
+		<div class="cf top_nav_list navtab_list_con" style="height: 115px;">
+			<div class="fl navtab_list_cs table_radio">
+				参与结算设置：
+				<div class="radio radio-primary">
+					<input type="radio" class="isbdrt" id="radio1" value="0" name="iiss" <neq name="isbd" value='1'>checked </neq>>
+					<label for="radio1">排除绑币</label>
+				</div>
+				<div class="radio radio-primary">
+					<input type="radio" class="isbdrt" id="radio2" value="1" name="iiss" <eq name="isbd" value='1'>checked </eq>>
+					<label for="radio2">包含绑币</label>
+				</div><br>
+				<span>注意①：推广结算只结算消费到游戏的所有订单记录。（系统默认全部排除绑币，可视情况自行勾选）</span><br>
+				<span>注意②：包含绑币勾选请慎重，由于玩家账户部分绑币的来源属于后台发放或者会长代充等，涉及到成本盈亏，是否参与推广员结算请考虑清楚！</span><br>
+				<span>注意③：推广结算时间请按规律时间统一结算，否则时间不统一容易导致个别游戏再统一时间内无法结算。（结算时间只可选到前一天）</span>
+			</div>
+		</div>
+	</if>
+
+	<div class="cf top_nav_list">
+		<if condition="I('group') eq 1  or $group eq 1">
+			<div class="fl button_list">
+				<empty name="model.extend">
+			<div class="tools">
+				<a class=" ajax-post" target-form="ids" 
+				url="{:U('generatesettlement?model='.$model['id'],array('isbd'=>I('get.isbdbt'),'ids'=>$data['id'],'timestart' => I('timestart'),
+				'timeend'=>I('timeend'),'game_name'=>I('game_name'),'promote_account'=>I('promote_account'),'cooperation'=>I('cooperation'),'bill_number'=>I('bill_number')))}">
+				<span class="button_icon button_icon14"></span>结算</a>
+			</div>
+		</empty>
+			</div>
+		</if>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<input type="hidden" name="isbdbt" disabled="disabled" class="isbdbt">
+			<div class="input-list">
+				<label>结算周期：</label>
+				<input type="text" id="time-start" name="timestart" class="" <if condition="$Think.get.timestart eq '' and $Think.get.group neq 2">value="{:get_lastweek_name(7)}"
+				<else/> value="{:I('timestart')}" </if>placeholder="起始时间" />
+				<span style="color: #B3B3B5;font-weight: bold;">—</span>
+				<div class="input-append date"id="datetimepicker" style="display:inline">
+					<input type="text" id="time-end" name="timeend" class="" <if condition="$Think.get.timeend eq '' and $Think.get.group neq 2">value="{:get_lastweek_name(1)}"
+					<else/> value="{:I('timeend')}" </if> placeholder="结束时间" />
+					<span class="add-on"><i class="icon-th"></i></span>
+				</div>
+			</div>
+			<div class="input-list input-list-promote search_label_rehab">
+				<label>推广员账号：</label>
+				<select id="promote_id" name="promote_id" class="select_gallery">
+					<option value="">请选择推广员账号</option>
+					<volist name=":get_all_toppromote()" id="vo">
+						<option promote-id="{$vo.id}" value="{$vo.account}">{$vo.account}</option>
+					</volist>
+					<input type="hidden" id="promote_account" name="promote_account" value="{:I('promote_account')}"></input>
+				</select>
+			</div>
+			<input type="hidden" name="" value="" class="sortBy">
+			<if condition="I('group') eq 1  or $group eq 1">
+				
+				<div class="input-list">
+					<a class="sch-btn" href="javascript:;" id="searchlayer" url="{:U('Query/settlement?group=1','model='.$model['name'],false)}">搜索</a>
+				</div>
+			</if>
+			<if condition="I('group') eq 2  or $group eq 2">
+			
+				<div class="input-list">
+					<label>结算时间：</label>
+					<input type="text" id="stime-start" name="stimestart" class="" value="{:I('stimestart')}" placeholder="起始时间" />
+					<span style="color: #B3B3B5;font-weight: bold;">—</span>
+					<div class="input-append date" id="sdatetimepicker" style="display:inline-block">
+						<input type="text" id="stime-end" name="stimeend" class="" value="{:I('stimeend')}" placeholder="结束时间" />
+						<span class="add-on"><i class="icon-th"></i></span>
+					</div>
+				</div>
+				<input type="hidden" name="" value="" class="sortBy">
+				<div class="input-list">
+					<a class="sch-btn" href="javascript:;" id="search" url="{:U('Query/settlement?group=2','model='.$model['name'],false)}">搜索</a>
+				</div>
+				<div class="input-list">
+					<a class="export-btn" href="{:U('Export/expUser',array(
+            'id'=>22,
+            'promote_account'=>I('promote_account'),
+            'timestart'=>I('timestart'),
+            'timeend'=>I('timeend'),
+            'start'=>I('start'),
+            'end'=>I('end'),
+            'game_name'=>I('game_name'),
+            'settlement_number'=>I('settlement_number'),
+            ))}">导出</a>
+				</div>
+			</if>
+		</div>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<div class="">
+			<if condition="$group eq 1">
+				<table>
+				<if condition="I('get.promote_account') neq ''">
+					<thead>
+                    <tr>
+                        <th style="text-align: left" colspan="10">
+							<span style="margin-left: 20px;font-weight: bold;">当前推广员：{:I('get.promote_account')}</span>
+							<span>（结算模式默认CPS,可手动修改)</span>
+                     	</th>
+                    </tr>
+                    </thead>
+                </if>
+					<!-- 表头 -->
+					<thead>
+                    <tr>
+                        <th>
+                        <label class="checked">
+							<input class="check-all" type="checkbox">
+							<i class="check_icon"></i>
+						</label>
+                        </th>
+                        <th >结算周期</th>
+                        <th >游戏名称</th>
+                        <th ><a class="paixu" data-order='spay_amount'><if condition="$userarpu_order eq 4 and  $userarpu_order_type eq 'spay_amount'">总充值(元)▲<elseif condition="$userarpu_order eq 3 and $userarpu_order_type eq 'spay_amount'"/>总充值(元)▼<else />总充值(元) <img src="__IMG__/up-down.png" width="13px"></if></a></th>
+
+                        <th ><a class="paixu" data-order='unum'><if condition="$userarpu_order eq 4 and  $userarpu_order_type eq 'unum'">总注册▲<elseif condition="$userarpu_order eq 3 and $userarpu_order_type eq 'unum'"/>总注册▼<else />总注册 <img src="__IMG__/up-down.png" width="13px"></if></a></th>
+                        <!-- <th >总注册</th> -->
+                        <th >结算模式</th>
+                        <th >分成比例</th>
+                        <th >注册单价</th>
+                        <th >结算金额(元)</th>
+                        <th >状态</th>
+                    </tr>
+                </thead>
+					<!-- 列表 -->
+					<tbody>
+						<style>
+							.data-table thead th,
+							.data-table tbody td {
+								text-align: center
+							}
+							
+							.data-table tbody td {
+								border-right: 1px solid #DDDDDD;
+							}
+							
+							.d_list .drop-down ul {
+								z-index: 999;
+							}
+						</style>
+						<volist name="list_data" id="data">
+							<tr>
+								<td class="allch">
+									<label class="checked">
+								        <input class="ids" type="checkbox" data-val="{$data['game_id']},"data-reg="{$data['unum']|default=0},{$data['spay_amount']|default=0}"
+								        value="{$data['game_id']},CPS,{$data['ratio']},{$data['money']},{$data['unum']|default=0},{$data['spay_amount']}"
+								        name="ids[]">
+								        <i class="check_icon"></i>
+							        </label>
+								</td>
+								<td>{:I('timestart')}&nbsp;至&nbsp;{:I('timeend')}</td>
+								<td>{:get_game_name($data['game_id'])}</td>
+								<td class="recharge cps">{$data['spay_amount']|default=0}</td>
+								<td class="number cpa">{$data['unum']|default=0}</td>
+								<td class="cooperation">
+									<div style="width: 110px;margin: 0 auto;">
+										<div class="d_list">
+											<div class="drop-down limitwidth3 cooperwrap">
+												<span class="sort-txt" data="CPS">
+                                        		<span style="color: orange">CPS</span>
+												</span>
+												<i class="arrow arrow-down"></i>
+												<ul class="nav-list hidden">
+													<li>
+														<a href="javascript:;" value="CPS"><span style="color: orange">CPS</span></a>
+													</li>
+													<li>
+														<a href="javascript:;" value="CPA"><span style="color: green">CPA</span></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td class="ratio cp">
+									<span><notempty name="data.ratio">{$data.ratio}<else />0</notempty></span>%
+									<a href="javascript:;" id="ratiobtn" data-coom="CPS" data-notice="请输入0-100的数字,如:30即为30%" class="cpbtn">修改</a>
+								</td>
+								<td class="price cp">
+									<span><notempty name="data.money">{$data.money}<else />0</notempty></span>
+									<a href="javascript:;" id="ratiobtn1" data-coom="CPA" data-notice="请输入数字" class="cpbtn">修改</a>
+								</td>
+								<td class="money" style="color:orange;font-weight: bold;">
+									{:(round($data['spay_amount'] * $data['ratio']/100,2))}
+								</td>
+								<if condition="get_settlement(I('timestart'),I('timeend'),$data['pid'],$data['game_id']) eq true">
+									<td style="color:orange;">不可结算</td>
+									<else/>
+									<td>可结算</td>
+								</if>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+				<script>
+					$val = $("input[name='iiss']:radio:checked").val();
+					if($val == 1) {
+						$('.isbdbt').val($val);
+						$('.isbdbt').removeAttr('disabled');
+					} else {
+						$('.isbdbt').val('');
+						$('.isbdbt').prop('disabled', true);
+					}
+					$('.isbdrt').click(function() {
+						$val = $(this).val();
+						if($val == 1) {
+							$('.isbdbt').val($val);
+							$('.isbdbt').removeAttr('disabled');
+						} else {
+							$('.isbdbt').val('');
+							$('.isbdbt').prop('disabled', true);
+						}
+					});
+
+					function pop(text, classname) {
+						classname = classname ? classname : '';
+						updateAlert(text, classname);
+						setTimeout(function() {
+							$('#top-alert').find('button').click();
+						}, 1500);
+					}
+
+					$('.cooperwrap').hover(function() {
+						$(this).find('.nav-list').removeClass('hidden');
+					}, function() {
+						$(this).find('.nav-list').addClass('hidden');
+					});
+
+					$('.cooperwrap .nav-list li').find('a').each(function() {
+						var that = $(this).closest('.cooperwrap'),
+							top = $(this).closest('.cooperation');
+						$(this).click(function() {
+							var text = $(this).text(),
+								val = $(this).attr('value');
+							that.find('.sort-txt').text(text).attr('data', val);
+							that.find('.nav-list').addClass('hidden');
+
+							var ratio = top.siblings('.ratio').find('span').text(),
+								price = top.siblings('.price').find('span').text(),
+								ids = top.siblings('.allch').find('.ids'),
+								reg = ids.data('reg'),
+								money = 0;
+							
+							val = ids.data('val') + text + ',' + ratio + ',' + price + ','+reg;
+							ids.attr('value', val);
+							if(text == 'CPS') {
+								money = (ratio * top.siblings('.recharge').text()) / 100;
+								money = Math.round(money * 100) / 100;
+							} else {
+								money = price * top.siblings('.number').text();
+								money = Math.round(money * 100) / 100;
+							}
+							if(isNaN(money)) { money = 0; }
+							top.siblings('.money').text(money);
+						})
+					});
+
+					$('.cpbtn').on('click', function() {
+						var that = this,
+							placeholder = $(that).data('notice'),
+							cp = $.trim($(that).data('coom'));
+						html = '<div class="noticemsg " >';
+						html += '<div class="noticemain"><div class="noticeinput"><input placeholder="' + placeholder + '" type="text" class="txt" ></div>'
+						html += '<div class="noticebtn cpn"><a href="javascript:;">确定</a></div></div></div>';
+						$('body').append(html);
+						$('.noticebtn a').on('click', function() {
+							var val = $.trim($('.noticeinput input').val()),
+								closeste = $(that).closest('.cp');
+							if(val) {
+								if(!/^(\d|[1-9]\d|100)(\.\d{1,2})?$/.test(val)) { layer.msg('请输入0-100的数字'); return false; }
+								$(that).siblings('span').text(val);
+								var money = 0,
+									cooperation = $.trim(closeste.siblings('.cooperation').find('.sort-txt').text())
+									,reg = $.trim(closeste.siblings('.number').text())
+									,totalm = $.trim(closeste.siblings('.recharge').text());
+								if(cooperation === cp) {
+									money = val * closeste.siblings('.' + (cp.toLowerCase())).text();
+								}
+								if(cp == 'CPS') {
+									money = (money / 100).toFixed(2);
+									ratio = val;
+									price = closeste.siblings('.price').find('span').text();
+								} else {
+									ratio = closeste.siblings('.ratio').find('span').text();
+									price = val;
+								}
+								if(isNaN(money)) { money = 0; }
+								closeste.siblings('.money').text(money);
+
+								ids = closeste.siblings('.allch').find('.ids');
+								val = ids.data('val') + cp + ',' + ratio + ',' + price + ','+reg+ ','+totalm;
+								ids.attr('value', val);
+							}
+							$(this).closest('.noticemsg').remove();
+						});
+						$('.noticeinput input').keyup(function(event) {
+							if(event.keyCode == 13) {
+								$('.noticebtn a').click();
+							}
+						});
+					});
+
+					$('.confirmbtn').on('click', function() {
+						var that = $(this),
+							closeste = that.closest('.op'),
+							cooperation = $.trim(closeste.siblings('.cooperation').find('.sort-txt').text()),
+							ratio = closeste.siblings('.ratio').find('span').text(),
+							price = closeste.siblings('.price').find('span').text(),
+							url = $(this).data('val'),
+							index = url.lastIndexOf('.html');
+						if(index > 0)
+							url = url.substring(0, index) + '/cooperation/' + cooperation + '/cps_ratio/' + ratio + '/cpa_price/' + price + '.html';
+						else
+							url = url + '/cooperation/' + cooperation + '/cps_ratio/' + ratio + '/cpa_price/' + price + '.html';
+						$(this).siblings('.settlementbtn').attr('url', url).click();
+					});
+				</script>
+			</if>
+			<if condition="$group eq 2">
+				<table>
+					<!-- 表头 -->
+					<thead>
+						<tr>
+	                        <th>推广员账号</th>
+	                        <th>结算周期</th>
+							<th>结算单号</th>
+							<th>总充值(元)</th>
+							<th>总注册</th>
+							<th>结算金额(元)</th>
+							<th>结算范围</th>
+							<th>结算时间</th>
+							<th>详情</th>
+						</tr>
+					</thead>
+					<!-- 列表 -->
+					<tbody>
+					<notempty name="list_data">
+						<volist name="list_data" id="data">
+							<php>$total = $total+$data['sm']</php>
+							<tr>
+                        		<td>{:get_promote_name($data['promote_id'])}</td>
+                        		<td>{$data.starttime|date='Y-m-d',###}至{$data.endtime|date='Y-m-d',###}</td>
+								<td>{$data['settlement_number']}</td>
+								<td>{:get_settlemt_sum($data['settlement_number'],'total_money')}</td>
+			                    <td>{:get_settlemt_sum($data['settlement_number'],'total_number')}</td>
+			                    <td style="color:#ff6600;">{$data['sm']}</td>
+								<td><if condition="$data['isbd'] eq 0">排除绑币<else />包含绑币</if></td>
+								<td>
+									{$data.create_time|date='Y-m-d',###}
+								</td>
+								<td>
+									<a href="javascript:;" class="channel_pack" style="color:#46A3FF"url="{:U('settlemeng_detail',array('settlement_number'=>$data['settlement_number']))}">查看</a>
+								</td>
+							</tr>
+						</volist>
+						<tr class="data_summary">
+							<td colspan="11"><span style="margin-right: 10px;">汇总：</span><span>当页结算：{$total}元 ； 今日结算：{$ttotal}元 ； 昨日结算：{$ytotal}元 ； 累计结算：{$ztotal}元</span></td>
+						</tr>
+					<else />
+									<tr><td colspan="11">aOh! 暂时还没有内容!</td></tr>
+									</notempty>
+					</tbody>
+				</table>
+			</if>
+		</div>
+	</div>
+	<div class="page">
+		{$_page|default=''}
+	</div>
+</block>
+
+<block name="script">
+	<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+	<php>if(C('COLOR_STYLE')=='blue_color') echo '
+		<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+	<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+	<script src="__STATIC__/layer/layer.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(".select_gallery").select2();
+		$(".input-list-promote").click(function() {
+			$('#select2-promote_id-container').text('请选择推广员账号');
+			$("#promote_account").val('');
+			$("#promote_accountt").val('');
+		});
+		$("#promote_id").change(function() {
+			$("#promote_account").val($("#promote_id option:selected").val());
+			$("#promote_accountt").val($("#promote_id option:selected").attr('promote-id'));
+		});
+		$(".input-list-game").click(function() {
+			$('#select2-game_id-container').text('请选择游戏');
+			$("#game_name").val('');
+			$("#game_namee").val('');
+		});
+		$("#game_id").change(function() {
+			$("#game_name").val($("#game_id option:selected").val());
+			$("#game_namee").val($("#game_id option:selected").attr('game-id'));
+		});
+	</script>
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('Query/settlement')}');
+		if('{$Think.get.game_name}' != '') {
+			$('#select2-game_id-container').text('{$Think.get.game_name}');
+		}
+		if('{$Think.get.promote_account}' != '') {
+			$('#select2-promote_id-container').text('{$Think.get.promote_account}');
+		}
+		$(function() {
+			
+			 //结算详情
+			  $(".channel_pack").click(function() {
+					$url = $(this).attr('url');
+					    layer.open({
+					        type: 2,
+					        title: "结算详情",
+					        shadeClose: false,
+					        shade: 0.6,
+					        area: ['80%', '62%'],
+					        content:[$url,'no']//iframe的url
+					    }); 
+				});
+			$("#searchlayer").click(function() {
+				var url = $(this).attr('url');
+				that = $('.jssearch');
+				var query = that.find('input').serialize();
+				if(that.find('#promote_account').val() == '') {
+					layer.msg('请选择推广员账号', {
+						time: 1000,
+					});
+					return false;
+				};
+				if(that.find('#game_name').val() == '') {
+					layer.msg('请选择游戏', {
+						time: 1000,
+					});
+					return false;
+				};
+				starttime = that.find('#time-start').val();
+				endtime = that.find('#time-end').val();
+				checkEndTime(starttime, endtime);
+				query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+				query = query.replace(/^&/g, '');
+				if(url.indexOf('?') > 0) {
+					url += '&' + query;
+				} else {
+					url += '?' + query;
+				}
+				window.location.href = url;
+			});
+			//搜索功能
+			$("#search").click(function() {
+				var starttime = $.trim($('#time-start').val());
+				var sstarttime = $.trim($('#stime-start').val());
+				var endtime = $.trim($('#time-end').val());
+				var sendtime = $.trim($('#stime-end').val());
+				
+				if (starttime <= endtime && (sstarttime<=sendtime)) {
+					var url = $(this).attr('url');
+					var query = $('.jssearch').find('input').serialize();
+					query += "&" + $('.jssearch').find('select').serialize();
+					query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+					query = query.replace(/^&/g, '');
+					if(url.indexOf('?') > 0) {
+						url += '&' + query;
+					} else {
+						url += '?' + query;
+					}
+					window.location.href = url;
+				} else {
+					layer.msg('开始时间必须小于等于结束时间');
+				}
+				
+				return false;
+			});
+
+			function checkEndTime(startTime, endTime) {
+				if(startTime == '') {
+					layer.msg('请选择起始时间', {
+						time: 1000,
+					});;
+					exit;
+				}
+				if(endTime == '') {
+					layer.msg('请选择结束时间', {
+						time: 1000,
+					});;
+					exit;
+				}
+				var start = new Date(startTime.replace("-", "/").replace("-", "/"));
+				var end = new Date(endTime.replace("-", "/").replace("-", "/"));
+				if(end < start) {
+					layer.msg('结束时间要小于起始时间', {
+						time: 1000,
+					});;
+					exit;
+				}
+			}
+			$(".paixu").click(function() {
+				var that = $(this);
+				$data_order = that.attr('data-order');
+				$order_type = '{$userarpu_order}';
+				if($order_type == '' || $order_type == '4') {
+					$(".sortBy").attr('name', 'data_order');
+					val = '3,' + $data_order;
+					$(".sortBy").attr('value', val);
+					$("#searchlayer").click();
+				} else if($order_type == '3') {
+					$(".sortBy").attr('name', 'data_order');
+					val = '4,' + $data_order;
+					$(".sortBy").attr('value', val);
+					$("#searchlayer").click();
+				}
+			});
+			//回车自动提交
+			$('.jssearch').find('input').keyup(function(event) {
+				if(event.keyCode === 13) {
+					$("#searchlayer").click();
+				}
+			});
+			
+			//点击排序
+			$('.list_sort').click(function() {
+				var url = $(this).attr('url');
+				var ids = $('.ids:checked');
+				var param = '';
+				if(ids.length > 0) {
+					var str = new Array();
+					ids.each(function() {
+						str.push($(this).val());
+					});
+					param = str.join(',');
+				}
+
+				if(url != undefined && url != '') {
+
+					window.location.href = url.replace(".html", "") + '/ids/' + param;
+				}
+			});
+			var date = "{$setdate}";
+			$('#time-start').datetimepicker({
+				format: 'yyyy-mm-dd',
+				language: "zh-CN",
+				minView: 2,
+				autoclose: true,
+				endDate: date
+			});
+
+			$('#datetimepicker').datetimepicker({
+				format: 'yyyy-mm-dd',
+				language: "zh-CN",
+				minView: 2,
+				autoclose: true,
+				pickerPosition: 'bottom-left',
+				endDate: date
+			})
+			$('#stime-start').datetimepicker({
+				format: 'yyyy-mm-dd',
+				language: "zh-CN",
+				minView: 2,
+				autoclose: true,
+				endDate: date
+			});
+
+			$('#sdatetimepicker').datetimepicker({
+				format: 'yyyy-mm-dd',
+				language: "zh-CN",
+				minView: 2,
+				autoclose: true,
+				pickerPosition: 'bottom-left',
+				endDate: date
+			})
+
+			$('#game').on('click', function(event) {
+				var navlist = $(this).find('.nav-list');
+				if(navlist.hasClass('hidden')) {
+					navlist.removeClass('hidden');
+					$(this).find('.sort-txt').focus().val('');
+				} else {
+					navlist.addClass('hidden');
+				}
+				$(document).one('click', function() {
+					navlist.addClass('hidden');
+				});
+				event.stopPropagation();
+			});
+
+			$('#game .sort-txt').on('keyup', function(event) {
+				var val = $.trim($(this).val()).toLowerCase();
+				$('#game').siblings('input').val(val);
+			});
+
+			$('#game .nav-list').find("a").each(function() {
+				var that = $('#game');
+				$(this).click(function() {
+					var text = $.trim($(this).text()).toLowerCase();
+					that.find('.sort-txt').val(text);
+					that.siblings('input').val(text);
+				})
+			});
+
+			$('#promote').on('click', function(event) {
+				var navlist = $(this).find('.nav-list');
+				if(navlist.hasClass('hidden')) {
+					navlist.removeClass('hidden');
+					$(this).find('.sort-txt').focus().val('');
+				} else {
+					navlist.addClass('hidden');
+				}
+				$(document).one('click', function() {
+					navlist.addClass('hidden');
+				});
+				event.stopPropagation();
+			});
+
+			$('#promote .sort-txt').on('keyup', function(event) {
+				var val = $.trim($(this).val()).toLowerCase();
+				$('#promote').siblings('input').val(val);
+			});
+
+			$('#promote .nav-list').find("a").each(function() {
+				var that = $('#promote');
+				$(this).click(function() {
+					var text = $.trim($(this).text()).toLowerCase();
+					that.find('.sort-txt').val(text);
+					that.siblings('input').val(text);
+				})
+			});
+
+		})
+	</script>
+</block>

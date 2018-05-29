@@ -1,0 +1,84 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('User/index')}">用户</a>
+			</li>
+			<li>
+				<a href="{:U('User/index')}">管理组</a>
+			</li>
+			<li>
+				<a href="#">{$meta_title}</a>
+			</li>
+		</ul>
+		<p class="description_text" style="height: 40px;line-height: 40px;">说明：管理账号后台操作的记录列表</p>
+	</div>
+
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+			<a class="ajax-get confirm" url="{:U('clear')}"><span class="button_icon button_icon6"></span>清 空</a>
+			<a class="ajax-post confirm" target-form="ids" url="{:U('remove')}"><span class="button_icon button_icon2"></span>删 除</a>
+		</div>
+	</div>
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<table class="">
+			<thead>
+				<tr>
+					<th class="">
+						<label class="checked">
+								<input class="check-all" type="checkbox">
+								<i class="check_icon"></i>
+							</label>
+					</th>
+					<th class="">编号</th>
+					<th class="">行为名称</th>
+					<th class="">执行者</th>
+					<th class="">执行时间</th>
+					<th class="">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="_list">
+					<volist name="_list" id="vo">
+						<tr>
+							<td>
+								<label class="checked">
+								       <input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+								        <i class="check_icon"></i>
+							        </label>
+							</td>
+							<td>{$vo.id} </td>
+							<td>{:get_action($vo['action_id'],'title')}</td>
+							<td>{:get_nickname($vo['user_id'])}</td>
+							<td><span>{$vo.create_time|time_format}</span></td>
+							<td>
+								<a href="{:U('Action/edit?id='.$vo['id'])}">详细</a>
+								<a class="confirm ajax-get" href="{:U('Action/remove?ids='.$vo['id'])}">删除</a>
+							</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+	</div>
+	<!-- 分页 -->
+	<div class="page">{$_page}</div>
+	<!-- /分页 -->
+
+</block>
+<block name="script">
+	<script type="text/javascript">
+		$(function() {
+			$("#action_add").click(function() {
+				window.location.href = $(this).attr('url');
+			})
+		})
+	</script>
+</block>

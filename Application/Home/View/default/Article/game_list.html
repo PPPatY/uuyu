@@ -1,0 +1,48 @@
+<extend name="Public/bases" />
+<block name="css">
+    <link href="__CSS__/20170913/app.css" rel="stylesheet">
+</block>
+<block name="body">
+  <div class="banner">
+    <div class="inner clearfix">
+      <a href="{:U('Home/index/register')}" class="qqbtn">马上加入</a>      
+    </div>
+  </div>
+
+  <div class="page-list article-game_list-list">
+    <div class="inner clearfix">
+      <div class="page-title">游戏展示</div>
+      <div class="page-condition">
+        <div class="trunk-table">
+          <div class="trunk-row clearfix">
+            <div class="trunk-cell trunk-cell-first">游戏类型：</div>
+            <div class="trunk-cell trunk-cell-last">
+              <a class="trunk-item <empty name='Think.get.gt'>active</empty>" href="{:U('game_list',array('dt'=>I('dt')))}">不限</a>
+              <volist name=":get_game_type_all()" id="vo">
+              <a class="trunk-item <eq name='Think.get.gt' value='$vo.id'>active</eq>" href="{:U('game_list',array('gt'=>$vo['id'],'dt'=>I('dt')))}">{$vo.type_name}</a>
+              </volist>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trunk-list">
+        <ul class="clearfix">
+        <empty name="list_data">
+          <div class="empty-notice-pt" style="padding: 15% 0;text-align: center;">
+            <img class="empty-notice-icon" src="__IMG__/search_not.png">
+            <p class="empty-notice-text">抱歉 ~ 未搜索到相关游戏</p>
+          </div>
+        <else/>
+          <volist name="list_data" id="vo">
+          <li><div class="item clearfix"  title="{$vo.game_name}"><img class="icon" src="<empty name="vo['icon']">__IMG__/game_icon.png<else/>{$vo['icon']|get_cover='path'}</empty>"><div class="text"><a href="javascript:;" title="{$vo.game_name}">{$vo.game_name}</a><p><gt name="vo.sdk_version" value="0"><i class="i{$vo.sdk_version}"></i><else /><eq name="vo.sdk_version" value="0"><i class="i1"></i><i class="i2"></i></eq></gt><span title="{$vo.game_type_name}">{$vo.game_type_name}</span></p></div></div></li>
+          </volist>
+        </empty>
+        </ul>
+      </div>
+      <div class="page">{$_page}</div>
+    </div>
+  </div>
+</block>
+<block name="script">
+<script>highlight_subnav('{:U("Article/game_list")}');</script>
+</block>

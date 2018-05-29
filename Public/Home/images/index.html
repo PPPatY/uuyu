@@ -1,0 +1,289 @@
+﻿<extend name="Public/new_base" />
+<block name="title">游戏列表</block>
+<block name="js">
+<script src='__STATIC__/zeroclipboard/jquery.zclip.min.js'></script>
+</block>
+<block name="body">
+          <div class="userTable">
+               <div class="userTitle">
+                   <span>查询</span>
+               </div>
+
+              <div class="selectCount" >
+              	<form action="{:U('Apply/index')}" method="post" enctype="multipart/form-data" id="search_form">
+                   <div class="selectAuto">
+                        <input type="text" placeholder="请输入游戏名称" name="game_name" value="{:I('game_name')}"/>
+                        <button class="btn_qr" onclick="javascript:$('#search_form').submit();">查询</button>
+                   </div><!--selectAuto end-->
+				</form>
+              </div><!--selectCount end-->
+          </div>
+                 <div class="userTable">
+                     <div class="userTitle">
+                         <span>游戏列表</span>
+                     </div>
+                      <!--全部-->
+                         <div class="gameList">
+                             <table>
+                                 <thead>
+                                     <tr>
+										  <th></th>
+										  <th></th>
+								          <th>游戏名称</th>
+								          <th>版本号</th>
+								          <th>游戏类型</th>
+								          <th>游戏大小</th>
+								          <th>注册单价</th>
+								          <if condition="$parentid eq 0">
+								          	<th>分成比例</th>
+								          </if>
+								          <th>打包状态</th>
+								           <th>下载地址</th>
+								          <th>操作</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <volist name="list_data" id="vo">
+								        <tr class="vallist">
+								            <td><if condition='$vo["recommend_status"] eq 1'><div><img src="__IMG__/promote/006.gif" width="50"></div></if></td>
+								            <td></td>
+								            <td>
+												<div>
+	                                                 <img src="__ROOT__{$vo.icon|get_cover='path'}" width="50" height="50" align="middle">
+	                                                 <p>{$vo['game_name']}</p>
+	                                             </div>
+									        </td>
+								            <td>{$vo.version}</td>
+								            <td>{$vo['game_type_name']}</td>
+								            <td>{$vo.game_size}</td>
+								            <td>
+								              <if condition='$vo["money"] eq "" '>
+								                0
+								                <else/>{$vo.money}
+								              </if>
+								              <if condition="$parentid eq 0 ">
+								            </td>
+								            <td>
+								              <if condition='$vo["ratio"] eq "" '>
+								                0
+								                <else/>{$vo.ratio}
+								              </if>
+								            </td>
+								            <td class="pos">
+								                <switch name="vo['pack_status']">
+								                  <case value="0">
+								                      <if condition="$vo['sdk_version'] eq 1">
+								                          准备打包
+								                          <elseif condition="($vo['sdk_version'] eq 0) and ($vo['status'] eq 1)"/>
+								                         审核通过
+								                          <elseif condition="($vo['sdk_version'] eq 0) and ($vo['status'] eq 0)"/>
+								                          待审核
+								                      </if>
+
+								                  </case>
+								                  <case value="1">
+								                      <if condition="$vo['sdk_version'] eq 1">
+								                      打包成功
+								                      <elseif condition="($vo['sdk_version'] eq 0) and ($vo['status'] eq 1)"/>
+								                      审核通过
+								                      <elseif condition="($vo['sdk_version'] eq 0) and ($vo['status'] eq 0)"/>
+								                      待审核
+								                  </if></case>
+								                  <case value="2">正在打包</case>
+								                  <case value="3">打包失败</case>
+								                  <case value="4">正在打包</case>
+								                </switch>
+								            </td>
+								            <td>
+
+								                <if condition="$vo['sdk_version'] eq 1">
+								                    <if condition="$vo['pack_status'] eq 1">
+								                        <a href="javascript:;" class="td_btn bts copy" id="copy" data-url="{:get_apply_dow_url($vo['id'],$vo['promote_id'])}" >
+								                          复制下载地址</a>
+								                    </if>
+								                    <elseif condition="($vo['sdk_version'] eq 0) and ($vo['status'] eq 1) and ($vo['pack_url'] neq '')"/>
+								                        <a href="javascript:;" class="bts copy td_btn"  id="copy"  data-url="{:get_apply_dow_url($vo['id'],$vo['promote_id'])}" >
+								                          复制下载地址</a>
+								                </if>
+
+
+								            </td>
+								            <td>
+								            <if condition="find_apply($vo['id'],session('promote_auth.pid')) eq 1">
+								                <if condition="$vo['sdk_version'] eq 1">
+								                    <a href="javascript:void(0);" data-gid="{$vo['id']}" data-pid="{:session('promote_auth.pid')}" class="bts dd td_btn">打包</a>
+								                    <else/>
+								                    <a href="javascript:void(0);"  data-gid="{$vo['id']}" data-pid="{:session('promote_auth.pid')}"  class="bts ss td_btn">申请</a>
+								                </if>
+
+								            <elseif condition="find_apply($vo['id'],session('promote_auth.pid')) eq 2"/>
+								                <if condition="$vo['sdk_version'] eq 1">
+								                    <a href="javascript:void(0);" data-gid="{$vo['id']}" data-pid="{:session('promote_auth.pid')}" class="bts cc td_btn">重打包</a>
+								                    <else/>
+
+								                    <a href="javascript:void(0);"  data-gid="{$vo['id']}" data-pid="{:session('promote_auth.pid')}"  class="bts ccc td_btn">重申请</a>
+								                </if>
+								            </if>
+								            </td>
+								        </tr>
+								        </volist>
+                                 </tbody>
+                             </table>
+
+                             <div class="czNumber">
+                                  <div class="czNumber_fl fl" >
+                                  </div>
+
+                                  <div class="czNumber_page fr">
+                                      {$_page}
+                                  </div>
+                             </div><!--czNumber end-->
+
+
+                         </div><!--gameList end-->
+
+
+
+                </div><!--userTable end-->
+</block>
+<block name="jsDiv">
+    <script type="text/javascript">
+    highlight_subnav('{:U('Apply/index')}');
+    $(document).ready(function() {
+        $('#copy').zclip({
+            path: "__STATIC__/zeroclipboard/ZeroClipboard.swf",
+            copy: function () {
+              alert(1);
+                return $(this).attr('data-url');
+            },
+            beforeCopy: function () {
+              alert(2);
+                $(this).addClass("proc");
+            },
+            afterCopy: function () {
+              alert(3);
+                $(this).removeClass("copy");
+                if ($(this).attr('data-url') == "" || $(this).attr('data-url') == null) {
+                    layer.msg("素材包暂未上传", {icon: 2});
+                }
+                else {
+                    layer.msg("复制成功", {icon: 1});
+                }
+
+            }
+        });
+
+// $('a.copy').zclip({
+//       path: "/Public/static/zeroclipboard/ZeroClipboard.swf",
+//       copy: function(){
+//           return $(this).attr('data-url');
+//       },
+//       beforeCopy:function(){
+//         $(this).addClass("proc");
+//       },
+//       afterCopy:function(){
+//         $(this).removeClass("copy");
+//         if($(this).attr('data-url')=="" || $(this).attr('data-url')==null){
+//           layer.msg("游戏原包暂未上传",{icon:2});
+//         }
+//         else{
+//           layer.msg("复制成功",{icon:1});
+//         }
+
+//       }
+// });
+
+  $('.ss').click(function () {
+      var gid=$(this).data('gid');
+      $.ajax({
+          type: 'POST',
+          async: true,
+          dataType: 'json',
+          url: '{:U("apply")}',
+          data:{game_id:gid},
+          beforeSend: function() {
+              layer.alert('申请成功',{icon: 1});
+          },
+          success: function(data) {
+              if(data.status!==1){
+                  layer.alert(data.msg,{icon: 2});
+
+              }
+          },
+          error: function() {
+
+          },
+      });
+  })
+
+  $('.dd').click(function () {
+     var gid=$(this).data('gid');
+      $.ajax({
+          type: 'POST',
+          async: true,
+          dataType: 'json',
+          url: '{:U("apply")}',
+          data:{game_id:gid},
+          beforeSend: function() {
+              layer.alert('已加入打包队列,刷新此页面可查看当前打包状态',{icon: 1});
+          },
+          success: function(data) {
+                if(data.status!==1){
+                    layer.alert(data.msg,{icon: 2});
+
+                }
+          },
+          error: function() {
+
+          },
+      });
+  })
+
+
+  $('.cc').click(function () {
+      var gid=$(this).data('gid');
+      var pid=$(this).data('pid');
+      $.ajax({
+          type: 'POST',
+          async: true,
+          dataType: 'json',
+          url: '{:U("apply_to")}',
+          data:{game_id:gid,pid:pid,sdk_version:1},
+          success: function(data) {
+              if(data.status==1){
+                  layer.alert('已加入打包队列,刷新此页面可查看当前打包状态',{icon: 1});
+              }
+
+          },
+          error: function() {
+
+          },
+      });
+  })
+
+  $('.ccc').click(function () {
+      var gid=$(this).data('gid');
+      var pid=$(this).data('pid');
+      $.ajax({
+          type: 'POST',
+          async: true,
+          dataType: 'json',
+          url: '{:U("apply_to")}',
+          data:{game_id:gid,pid:pid},
+          success: function(data) {
+              if(data.status==1){
+                  layer.alert('申请成功',{icon: 1});
+              }
+
+          },
+          error: function() {
+
+          },
+      });
+  })
+
+})
+
+
+    </script>
+</block>

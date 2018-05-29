@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+  RewriteRule ^media/(.*)$ /media.php/$1 [L]
+  RewriteRule ^media2/(.*)$ /media2.php/$1 [L]
+  RewriteRule ^Pcweb/(.*)$ /Pcweb.php/$1 [L]
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>

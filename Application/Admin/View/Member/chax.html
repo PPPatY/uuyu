@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta charset="UTF-8">
+    <title>充值查询列表|溪谷软件管理平台</title>
+    <link href="http://admin.vlcms.com/Public/icon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/module.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="__CSS__/default_color.css" media="all">
+    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.mousewheel.js"></script>    
+</head>
+	<style>
+body{ padding: 0px; }
+	</style>
+<body>  
+    <div id="main" class="main" style="min-height: 342px;">
+	<div class="cf">
+	
+	</div>
+
+    <!-- 数据列表 -->
+    <div class="data_list box_mt">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th>玩家账号</th>
+                        <th>订单号</th>
+                        <th>游戏名称</th>
+                        <th>游戏区服</th>
+                        <th>角色名</th>
+                        <th>充值方式</th>
+                        <th>充值金额</th>
+                        <th>充值ip</th> 
+                        <th>充值时间</th>                      
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                	<volist name="list_data" id="data">
+                        <tr>
+                            <td>{$data.user_account}</td>
+                            <td>{$data.pay_order_number}</td>
+                            <td>{$data.game_name}</td>
+                            <td>{$data.server_name}</td>
+                            <td>{$data.game_player_name}</td>
+                            <td>{:get_pay_way($data['pay_way'])}</td>
+                            <td>{$data.pay_amount}</td>
+                            <td>{$data.spend_ip}</td>
+                            <td>{$data.pay_time|date='Y-m-d H:i:s',###}</td>
+                        </tr>
+                    </volist>
+                    <tr class="data_summary">
+                        <td>汇总</td>
+                        <td colspan="8">当页充值：{:null_to_0(array_sum(array_column($list_data,'pay_amount')))}元 ； 今日充值：{$ttotal}元 ； 昨日充值：{$ytotal}元 ； 累计充值：{$total}元</td>
+                    </tr>
+                          </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+    {$_page}
+            </div>
+    ﻿         
+        </div>
+</body>
+</html>
+    

@@ -1,0 +1,71 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<style>
+.navtab_list {background:#FFF;width:100%;border-bottom:1px solid #ddd;margin:0 0 15px;height:36px;padding-top:25px;}
+.navtab_list a,.tabnav1711 li {font-size:15px;border:1px solid transparent;display:block;width:140px;height:35px;line-height:35px;text-align:center;float:left;color:#333;}
+.navtab_list a.tabchose,.tabnav1711 li.current {border-color:#ddd;border-bottom-color:#FFF;background:#FFF;color:#3C95C8;border-top-left-radius:3px;border-top-right-radius:3px;}
+
+.tabnav1711 li a {color:inherit;}
+.tabcon1711 .submit_btn:visited,.tabcon1711 .submit_btn:active,.tabcon1711 .submit_btn:link {color:#FFF;}
+
+.tab_nav .tab-nav {}
+</style>
+	<style type="text/css">
+		.form_info input[type=text].txt2 {width: 450px;}
+		.form_info textarea{width: 430px;height: 75px;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/media')}">双官网</a></li>
+            <li><a href="#">SEO设置</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：设置双官网的站点SEO</p>
+    </div>
+	<div class="tab-wrap">
+		<div class="tab_nav jstabnav">
+    <ul>
+            <volist name="lists" id="vo">
+            <li data-tab="tab{$i}" class="<eq name='i' value='1' >current</eq>"><a href="javascript:void(0);" >{$vo.title}</a></li>
+            </volist>
+		</ul></div>
+        <div class="infomation">
+            <p><strong>提示:</strong></p>
+            <p>插入的变量两边必须包括百分号" %变量% "，当游戏范围不支持该变量时，该变量
+            将不会在前台显示（变量后边的分隔符也不会显示）。以下是可用SEO变量：</p>
+            <p><strong>站点名称：</strong><span> %webname% </span></p>
+            <p><strong>游戏名称：</strong><span> %gamename% </span></p>
+            <p><strong>礼包名称：</strong><span> %giftname% </span></p>
+            <p><strong>资讯名称：</strong><span> %newsname% </span></p>
+            <p><strong>游戏类型：</strong><span> %gametype% </span></p>
+        </div>
+        <volist name="lists" id="vo">
+        <div class="tab-content ">
+            <div id="tab{$i}" class="tab-pane <eq name='i' value='1' >in</eq> tab{$i}">
+                <form action="{:U('save')}" method="post" class="form-horizontal {$vo.name}">
+                    <ul class="form_info form_info_seo">
+                    <li><label>Title：</label><input name="seo_title" value="{$vo.seo_title}" type="text" class="txt2"><i class="form_hint">{$vo.title}标题</i></li>
+                    <li><label>Keyword：</label><textarea name="seo_keyword" class="" >{$vo.seo_keyword}</textarea><i class="form_hint">{$vo.title}关键字</i></li>
+                    <li><label>Description：</label><textarea name="seo_description" class="" >{$vo.seo_description}</textarea><i class="form_hint">{$vo.title}描述</i></li>
+                    <li><label>&nbsp;</label><input type="hidden" name="name" value="{$vo.name}"></input>
+           <input type="hidden" name="module" value="media"></input><input type="submit" id="submit" value="确认保存" target-form="{$vo.name}" class="form_btn ajax-post"></li>    
+                    </ul>
+                </form>
+            </div>
+        </div>
+        </volist>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U("Seo/media")}');
+	$(function(){
+		//支持tab
+		showTab();
+	})
+</script>
+</block>

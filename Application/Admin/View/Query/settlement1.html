@@ -1,0 +1,541 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>[结算] 列表</h2>
+    </div>
+    <ul class="tab-nav nav">
+        <li class="<eq name='group' value='1'>current</eq>"><a href="{:U('settlement')}">渠道结算</a></li>
+        <li class="<eq name='group' value='2'>current</eq>" ><a href="{:U('settlement?group=2')}">结算账单</a></li>
+    </ul>
+    <div class="cf top_nav_list">
+        <if condition="I('group') eq 1  or $group eq 1">
+        <div class="fr button_list">
+		<empty name="model.extend">
+			<div class="tools">
+				<button class="btn ajax-post gre" target-form="ids" url="{:U('generatesettlement?model='.$model['id'],array('ids'=>$data['id'],'game_name'=>I('game_name'),'promote_account'=>I('promote_account'),'cooperation'=>I('cooperation'),'bill_number'=>I('bill_number')))}">批量结算</button>
+			</div>
+		</empty> 
+		</div>
+        </if>
+        <!-- 高级搜索 -->
+        <div class="search-form fl cf">
+            <div class="input-list">
+                <label>结算周期：</label>
+                <input type="text" id="time-start" name="timestart" class="text input-2x" value="{:I('timestart')}" placeholder="起始时间" /> 
+                -
+                <div class="input-append date" id="datetimepicker" style="display:inline">
+                <input type="text" id="time-end" name="timeend" class="text input-2x" value="{:I('timeend')}" placeholder="结束时间" />
+                <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+            <div class="input-list input-list-promote">
+            <label>渠道账号：</label>
+                <select id="promote_id" name="promote_id" class="select_gallery" style="width:150px;">
+                    <option value="">请选择渠道账号</option>
+                    <volist name=":get_promote_list(1)" id="vo">
+                        <option promote-id="{$vo.id}" value="{$vo.account}">{$vo.account}</option>
+                    </volist>
+                    <input type="hidden" id="promote_account" name="promote_account" value="{:I('promote_account')}"></input>
+                </select>  
+            </div>
+            <div class="input-list input-list-game">
+            <label>游戏名称：</label>
+                <select id="game_id" name="game_id" class="select_gallery" style="width:150px;">
+                    <option value="">请选择游戏</option>
+                    <volist name=":get_game_list()" id="vo">
+                        <option game-id="{$vo.id}" value="{$vo.game_name}">{$vo.game_name}</option>
+                    </volist>
+                    <input type="hidden" id="game_name" name="game_name" value="{:I('game_name')}"></input>
+                </select>  
+            </div> 
+           <input type="hidden" name="" value="" class="sortBy">
+            <if condition="I('group') eq 1  or $group eq 1">
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('Query/settlement?group=1','model='.$model['name'],false)}">搜索</a>
+            </div>
+            </if>
+            <if condition="I('group') eq 2  or $group eq 2">
+            <div class="input-list">
+                <label>结算时间：</label>
+                <input type="text" id="stime-start" name="stimestart" class="text input-2x" value="{:I('stimestart')}" placeholder="起始时间" /> 
+                -
+                <div class="input-append date" id="sdatetimepicker"  style="display:inline-block">
+                <input type="text" id="stime-end" name="stimeend" class="text input-2x" value="{:I('stimeend')}" placeholder="结束时间" />
+                <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+            <input type="hidden" name="" value="" class="sortBy">
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('Query/settlement?group=2','model='.$model['name'],false)}">搜索</a>
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="{:U('Export/expUser',array(
+            'id'=>5,
+            'promote_account'=>I('promote_account'),
+            'timestart'=>I('timestart'),
+            'timeend'=>I('timeend'),
+            'start'=>I('start'),
+            'end'=>I('end'),
+            'game_name'=>I('game_name'),
+            'settlement_number'=>I('settlement_number'),
+            ))}">导出</a>
+            </div>
+            </if>
+        </div>
+    </div>
+
+
+    <!-- 数据列表 -->
+    <div class="data-table">
+        <div class="data-table table-striped">
+        <if condition="$group eq 1">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th  class="row-selected row-selected">
+                            <input class="check-all" type="checkbox">
+                        </th>
+                        <th >结算周期</th>
+                        <th >渠道账号</th>
+                        <th >游戏名称</th>
+                        <th ><a class="paixu" data-order='spay_amount'><if condition="$userarpu_order eq 4 and  $userarpu_order_type eq 'spay_amount'">总充值▲<elseif condition="$userarpu_order eq 3 and $userarpu_order_type eq 'spay_amount'"/>总充值▼<else />总充值<img src="__IMG__/up-down.png" width="13px"></if></a></th>
+
+                        <th ><a class="paixu" data-order='unum'><if condition="$userarpu_order eq 4 and  $userarpu_order_type eq 'unum'">总注册▲<elseif condition="$userarpu_order eq 3 and $userarpu_order_type eq 'unum'"/>总注册▼<else />总注册<img src="__IMG__/up-down.png" width="13px"></if></a></th>
+                        <th >合作模式</th>
+                        <th >分成比例</th>
+                        <th >注册单价</th>
+                        <th >结算金额</th>
+                        <th >状态</th>
+                        <th >操作</th>                        
+                    </tr>
+                </thead>
+                <!-- 列表 -->
+                <tbody>
+                    <style>
+                        .data-table thead th, .data-table tbody td{text-align:center}
+                        .data-table tbody td{border-right:1px solid #DDDDDD;}
+                        .d_list .drop-down ul {z-index:999;}
+                    </style>
+                    <volist name="list_data" id="data">
+                    <tr> 
+                        <td class="allch">
+                            <input class="ids" type="checkbox" data-val="{$data['id']}," value="{$data['id']},CPS,{$data['ratio']},{$data['price']}" name="ids[]">
+                        </td>
+                        <td >{:I('timestart')}&nbsp;至&nbsp;{:I('timeend')}</td>
+                        <td >{:get_promote_name($data['pid'])}</td>
+                        <td >{:get_game_name($data['game_id'])}</td>
+                        <td class="recharge cps">{$data['spay_amount']}</td>
+                        <td class="number cpa">{$data['unum']}</td>
+                        <td class="cooperation">
+                            <div style="width: 110px;margin: 0 auto;">
+                            <div class="d_list" >
+                                <div class="drop-down limitwidth3 cooperwrap" >
+                                    <span  class="sort-txt" data="CPS" >
+                                        <span style="color: orange">CPS</span>
+                                    </span>
+                                    <i class="arrow arrow-down"></i>
+                                    <ul  class="nav-list hidden">
+                                        <li><a href="javascript:;" value="CPS" ><span style="color: orange">CPS</span></a></li>
+                                        <li><a href="javascript:;" value="CPA" ><span style="color: green">CPA</span></a></li>   
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </td>
+                        <td class="ratio cp">
+                            <span><notempty name="data.ratio">{$data.ratio}<else />0</notempty></span>
+                            <a href="javascript:;" id="ratiobtn" data-coom="CPS" data-notice="请输入1-100的数字,如:30即为30%" class="cpbtn">修改</a>
+                        </td>
+                        <td class="price cp">
+                            <span><notempty name="data.money">{$data.money}<else />0</notempty></span>
+                            <a href="javascript:;" id="ratiobtn" data-coom="CPA" data-notice="请输入数字" class="cpbtn">修改</a>
+                        </td>
+                        <td class="money">
+                            {$data['total_money'] * $data['ratio']/100}
+                        </td>
+                        <if condition="get_settlement(I('timestart'),$data['pid'],$data['game_id']) eq true">
+                        <td>不可结算</td>
+                        <td class="op">
+                            结算
+                        </td>
+                        <else/>
+                            <td>可结算</td>
+                        <td class="op">
+                            <div class="partakebtn">
+                            <a  class="confirmbtn" data-val="{:U('generatesettlement',array('game_id'=>$data['game_id'],'promote_id'=>$data['pid'],'spay_amount'=>$data['spay_amount'],'unum'=>$data['unum'],'starttime'=>$_REQUEST['timestart'],'endtime'=>$_REQUEST['timeend']))}" >结算</a>
+                            <a  class="settlementbtn hidden ajax-post" target-form="ids" ></a>
+                            </div>
+                        </td>
+                        </if>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <script>
+                function pop(text,classname) {
+                    classname = classname?classname:'';
+                    updateAlert(text,classname);
+                    setTimeout(function(){
+                        $('#top-alert').find('button').click();
+                    },1500);
+                }
+                    
+                $('.cooperwrap').hover(function(){
+                    $(this).find('.nav-list').removeClass('hidden');
+                },function(){
+                    $(this).find('.nav-list').addClass('hidden');
+                });
+                
+                $('.cooperwrap .nav-list li').find('a').each(function(){
+                    var that = $(this).closest('.cooperwrap'),top = $(this).closest('.cooperation');
+                    $(this).click(function(){
+                        var text = $(this).text(),val=$(this).attr('value');
+                        that.find('.sort-txt').text(text).attr('data',val);
+                        that.find('.nav-list').addClass('hidden');
+                        
+                        var ratio = top.siblings('.ratio').find('span').text(),
+                        price = top.siblings('.price').find('span').text(),
+                        ids = top.siblings('.allch').find('.ids'),money=0;
+                        val = ids.data('val')+text+','+ratio+','+price+',';
+                        ids.attr('value',val);
+                        if (text == 'CPS') {
+                            money = (ratio * top.siblings('.recharge').text())/100;
+                        } else {
+                            money = price * top.siblings('.number').text();
+                        }
+                        if (isNaN(money)) {money=0;}
+                        top.siblings('.money').text(money);
+                    })
+                });
+                
+                $('.cpbtn').on('click',function() {
+                    var that = this,placeholder = $(that).data('notice'),cp = $.trim($(that).data('coom'));
+                    html = '<div class="noticemsg " >';   
+                    html += '<div class="noticemain"><div class="noticeinput"><input placeholder="'+placeholder+'" type="text" class="txt" ></div>'
+                    html += '<div class="noticebtn cpn"><a href="javascript:;">确定</a></div></div></div>';
+                    $('body').append(html);        
+                    $('.noticebtn a').on('click',function() {
+                        var val = $.trim($('.noticeinput input').val()),closeste = $(that).closest('.cp');
+                        if (val) {
+                            if (!/^\d+(\.\d{1})?$/.test(val)) {pop('请输入正确的数字');return false;} 
+                            $(that).siblings('span').text(val);
+                            var money=0,cooperation = $.trim(closeste.siblings('.cooperation').find('.sort-txt').text());
+                            
+                            if (cooperation === cp) {                         
+                                money = val * closeste.siblings('.'+(cp.toLowerCase())).text();
+                            }
+                            if (cp == 'CPS') {
+                                money=money/100;
+                                ratio = val;
+                                price = closeste.siblings('.price').find('span').text();
+                            } else {
+                                ratio = closeste.siblings('.ratio').find('span').text();
+                                price = val;
+                            }
+                            if (isNaN(money)) {money=0;}
+                            closeste.siblings('.money').text(money);
+                            
+                            ids = closeste.siblings('.allch').find('.ids');
+                            val = ids.data('val')+cooperation+','+ratio+','+price+',';
+                            ids.attr('value',val);
+                        }
+                        $(this).closest('.noticemsg').remove();
+                    }); 
+                    $('.noticeinput input').keyup(function(event) {
+                        if (event.keyCode == 13) {
+                            $('.noticebtn a').click();
+                        }
+                    });
+                });
+                
+                $('.confirmbtn').on('click',function() {
+                    var that = $(this),closeste = that.closest('.op'),
+                        cooperation = $.trim(closeste.siblings('.cooperation').find('.sort-txt').text()),
+                        ratio = closeste.siblings('.ratio').find('span').text(),
+                        price = closeste.siblings('.price').find('span').text(),
+                        url =  $(this).data('val'),index = url.lastIndexOf('.html');
+                        if (index > 0)
+                            url = url.substring(0,index)+'/cooperation/'+cooperation+'/cps_ratio/'+ratio+'/cpa_price/'+price+'.html';
+                        else 
+                            url = url+'/cooperation/'+cooperation+'/cps_ratio/'+ratio+'/cpa_price/'+price+'.html';
+                        $(this).siblings('.settlementbtn').attr('url',url).click();               
+                });
+            </script>
+        </if>
+        <if condition="$group eq 2">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr> 
+                        <!-- <th  style="text-align:center"class="row-selected row-selected">
+                            <input class="check-all" type="checkbox">
+                        </th> -->
+                        <th style="text-align:center">结算单号</th>
+                        <th style="text-align:center">结算周期</th>
+                        <th style="text-align:center">渠道账号</th>
+                        <th style="text-align:center">游戏名称</th>
+                        <th style="text-align:center">总充值</th>
+                        <th style="text-align:center">总注册</th>
+                        <th style="text-align:center">合作模式</th>
+                        <th style="text-align:center">分成比例</th>
+                        <th style="text-align:center">注册单价</th>
+                        <th style="text-align:center">结算金额</th>
+                        <th style="text-align:center">结算时间</th>                        
+                    </tr>
+                </thead>
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                    <tr> 
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.settlement_number}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.starttime|date='Y-m-d',###}至{$data.endtime|date='Y-m-d',###}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{:get_promote_name($data['promote_id'])}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{:get_game_name($data['game_id'])}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.total_money}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.total_number}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{:get_pattern($data['pattern'])}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.ratio}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.money}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">
+                            <span style="color: orange">{$data.sum_money}</span>
+                        </td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">
+                            {$data.create_time|date='Y-m-d',###}
+                        </td>
+                    </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </if>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $(".select_gallery").select2();
+    $(".input-list-promote").click(function(){
+        $('#select2-promote_id-container').text('请选择渠道账号');
+        $("#promote_account").val('');
+        $("#promote_accountt").val('');
+    });
+    $("#promote_id").change(function() {
+        $("#promote_account").val($("#promote_id option:selected").val());
+        $("#promote_accountt").val($("#promote_id option:selected").attr('promote-id'));
+    });
+    $(".input-list-game").click(function(){
+        $('#select2-game_id-container').text('请选择游戏');
+        $("#game_name").val('');
+        $("#game_namee").val('');
+    });
+    $("#game_id").change(function() {
+        $("#game_name").val($("#game_id option:selected").val());
+        $("#game_namee").val($("#game_id option:selected").attr('game-id'));
+    });
+</script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Query/settlement')}');
+if('{$Think.get.game_name}'!=''){
+    $('#select2-game_id-container').text('{$Think.get.game_name}');
+}
+if('{$Think.get.promote_account}'!=''){
+    $('#select2-promote_id-container').text('{$Think.get.promote_account}');
+}
+$(function(){
+    $ssds="{:$_SERVER['PATH_INFO']}";
+    if($ssds=='Query/settlement'){
+        alert('‘结算周期、所属渠道’为必选项');
+    }
+    //搜索功能
+    $("#search").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+    $(".paixu").click(function(){
+        var that=$(this);
+        $data_order=that.attr('data-order');
+        $order_type='{$userarpu_order}';
+        if($order_type==''||$order_type=='4'){
+            $(".sortBy").attr('name','data_order');
+            val='3,'+$data_order;
+            $(".sortBy").attr('value',val);
+            $("#search").click();
+        }else if($order_type=='3'){
+            $(".sortBy").attr('name','data_order');
+            val='4,'+$data_order;
+            $(".sortBy").attr('value',val);
+            $("#search").click();
+        }
+    });
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+    $(".paixu").click(function(){
+        $ddd=$(this).attr('date-url');
+        $spay_amount="{:I('spay_amount')}";
+        $unum = "{:I('unum')}";
+        $sss="{:I('group')}";
+        if($ddd=='spay_amount'&&$sss){
+            if($spay_amount==1){
+                $(".sortBy").attr('name','spay_amount');
+                $(".sortBy").attr('value',2);
+                $("#search").click();
+            }else{
+                $(".sortBy").attr('name','spay_amount');
+                $(".sortBy").attr('value',1);
+                $("#search").click();
+            }
+        }
+        if($ddd=='unum'&&$sss){
+            if($unum==1){
+                $(".sortBy").attr('name','unum');
+                $(".sortBy").attr('value',2);
+                $("#search").click();
+            }else{
+                $(".sortBy").attr('name','unum');
+                $(".sortBy").attr('value',1);
+                $("#search").click();
+            }
+        }
+    })
+    //点击排序
+    $('.list_sort').click(function(){
+        var url = $(this).attr('url');
+        var ids = $('.ids:checked');
+        var param = '';
+        if(ids.length > 0){
+            var str = new Array();
+            ids.each(function(){
+                str.push($(this).val());
+            });
+            param = str.join(',');
+        }
+
+        if(url != undefined && url != ''){
+            
+            window.location.href = url.replace(".html","") + '/ids/' + param;
+        }
+    });
+    var date="{$setdate}";
+    $('#time-start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        endDate:date
+    });
+
+    $('#datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left',
+        endDate:date
+    })
+    $('#stime-start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        endDate:date
+    });
+
+    $('#sdatetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left',
+        endDate:date
+    })
+    
+    $('#game').on('click',function(event) {
+        var navlist = $(this).find('.nav-list');
+        if (navlist.hasClass('hidden')) {
+            navlist.removeClass('hidden');
+            $(this).find('.sort-txt').focus().val('');            
+        } else {
+            navlist.addClass('hidden');
+        }
+        $(document).one('click', function(){
+            navlist.addClass('hidden');
+        });
+        event.stopPropagation();
+    });
+
+    $('#game .sort-txt').on('keyup',function(event) {
+        var val  = $.trim($(this).val()).toLowerCase();
+        $('#game').siblings('input').val(val);
+    });
+    
+    $('#game .nav-list').find("a").each(function(){
+        var that = $('#game');
+        $(this).click(function(){
+            var text = $.trim($(this).text()).toLowerCase();
+            that.find('.sort-txt').val(text);
+            that.siblings('input').val(text);
+        })
+    });
+    
+    
+    $('#promote').on('click',function(event) {
+        var navlist = $(this).find('.nav-list');
+        if (navlist.hasClass('hidden')) {
+            navlist.removeClass('hidden');
+            $(this).find('.sort-txt').focus().val('');            
+        } else {
+            navlist.addClass('hidden');
+        }
+        $(document).one('click', function(){
+            navlist.addClass('hidden');
+        });
+        event.stopPropagation();
+    });
+
+    $('#promote .sort-txt').on('keyup',function(event) {
+        var val  = $.trim($(this).val()).toLowerCase();
+        $('#promote').siblings('input').val(val);
+    });
+    
+    $('#promote .nav-list').find("a").each(function(){
+        var that = $('#promote');
+        $(this).click(function(){
+            var text = $.trim($(this).text()).toLowerCase();
+            that.find('.sort-txt').val(text);
+            that.siblings('input').val(text);
+        })
+    });
+    
+    
+
+})
+</script>
+</block>

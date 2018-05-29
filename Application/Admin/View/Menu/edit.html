@@ -1,0 +1,74 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+    	<div class="formtitle"><span>后台菜单信息</span></div>
+        <ul class="form_info form_info_menu">
+            <li><label>标题</label><div class="form_main"><input type="text" class="" name="title" value="{$info.title|default=''}" placeholder="请输入标题"></div><i class="form_hint">用于后台显示的配置标题</i></li>
+            <li><label>排序</label><div class="form_main"><input type="text" class="" name="sort" value="{$info.sort|default=0}" placeholder="请输入排序"></div><i class="form_hint">用于分组显示的顺序</i></li>
+            <li><label>链接</label><div class="form_main"><input type="text" class="" name="url" value="{$info.url|default=''}" placeholder="请输入链接"></div><i class="form_hint">U函数解析的URL或者外链</i></li>
+            <li><label>上级菜单</label><div class="form_main"><span class="form_select"><select name="pid" class="select_gallery">
+                    <volist name="Menus" id="menu">
+                        <option value="{$menu.id}">{$menu.title_show}</option>
+                    </volist>
+                </select></span></div><i class="form_hint">所属的上级菜单</i></li>
+            <li><label>分组</label><div class="form_main"><input type="text" class="" name="group" value="{$info.group|default=''}" placeholder="请输入分组"></div><i class="form_hint">用于左侧分组二级菜单</i></li>
+            <li><label>是否隐藏</label>
+            	<div class="form_main">
+            		<span class="form_radio table_radio">
+            			<div class="radio radio-primary">
+							<input type="radio" id="radio1" value="1" name="hide" >
+							<label for="radio1">是</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio2" value="0" name="hide" >
+							<label for="radio2">否</label>
+						</div>
+            		</span>
+            	</div><i class="form_hint"></i></li>
+            <li><label>仅开发者模式可见</label>
+            	<div class="form_main">
+            		<span class="form_radio table_radio">
+            			<div class="radio radio-primary">
+							<input type="radio" id="radio3" value="1" name="is_dev" >
+							<label for="radio3">是</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio4" value="0" name="is_dev" >
+							<label for="radio4">否</label>
+						</div>
+            		</span></div><i class="form_hint"></i></li>
+            <li><label>说明</label><div class="form_main"><input type="text" class="" name="tip" value="{$info.tip|default=''}" placeholder="请输入说明"></div><i class="form_hint">菜单详细说明</i></li>
+            
+        </ul>
+        <div class="form-item">
+            <input type="hidden" name="id" value="{$info.id|default=''}">
+            <button class=" submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        Think.setValue("pid", {$info.pid|default = 0});
+        Think.setValue("hide", {$info.hide|default = 0});
+        Think.setValue("is_dev", {$info.is_dev|default = 0});
+        //导航高亮
+        highlight_subnav('{:U('index')}');
+        $(".select_gallery").select2();
+		$(".select2-search--hide").select2({
+			minimumResultsForSearch: -1,
+		});
+    </script>
+</block>

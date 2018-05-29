@@ -1,0 +1,51 @@
+/**
+ * 平台币样式
+ * @author 鹿文学
+ */
+/* common */
+.trunk-search form {float:left;}
+.trunk-search .form-group {margin-right:15px;}
+
+.trunk-search .form-title i {color:red;display:inline-block;width:10px;font-style:normal;}
+.trunk-search .select-time {float:left;}
+.trunk-search .select-time .txt {width:140px;}
+
+.page-list{margin-top:20px;}
+.page-list .article{padding:30px 20px;}
+
+.page-list .article .import {text-align:right;font-size:16px;padding:10px 20px;}
+.page-list .article .import .txt {color:#526782;margin-right:30px;}
+.page-list .article .import .btn {color:#1893F3;}
+.page-list .article .import .tot {margin-right:30px;}
+
+.page-list .trunk-list .table tr {border-bottom:1px solid #DCE0E3;}
+
+.page-list .trunk-search .tab {float:left;}
+.page-list .trunk-search .tab a{display:inline-block;margin-right:20px;background:#E3E5E4;border-radius:5px;width:124px;height:36px;text-align:center;line-height:36px;font-size:16px;}
+.page-list .trunk-search .tab a:after {content:'';display:block;width:0;height:0;border:8px solid transparent;border-top-width:12px;left:0;right:0;margin:0 auto;}
+.page-list .trunk-search .tab a.current {background:#526782;color:#FFF;}
+.page-list .trunk-search .tab a.current:after {border-top-color:#526782;}
+
+/* charge agent_pay_list */
+.charge-agentPayList-list .article {padding-top:0;}
+
+
+.trunk-list .table2 .btn {width:80px;}
+
+.charge-agentPay-search .article {padding:20px 20px 50px;}
+
+.charge-agentPay-search .trunk-list .table3 .money {color:#E22122;}
+.charge-agentPay-search .trunk-list .table3 select~.money {margin-left:10px;}
+.charge-agentPay-search .trunk-list .table3 .td1 {width:110px;}
+.charge-agentPay-list .trunk-list .table2 .txt {width:220px;}
+.charge-agentPay-list .trunk-list .table2 .reselect {width:242px;}
+
+
+
+
+.charge-agentPay-list .table2 .form-radio label {position:relative;margin-right:20px;cursor:pointer;}
+.charge-agentPay-list .table2 .form-radio input {cursor:pointer;width:16px;height:16px;display:inline-block;position:absolute;top:0;left:0;margin:0;margin-top:2px;opacity:0;}
+.charge-agentPay-list .table2 .form-radio i {width:16px;height:16px;display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:5px;background:url(../../images/20170831/icon_pay1.png) ;}
+.charge-agentPay-list .table2 .form-radio i.current {background-image:url(../../images/20170831/icon_pay2.png);}
+
+.charge-agentPay-search,.promoteCoin-shift-search {margin-top:20px;}

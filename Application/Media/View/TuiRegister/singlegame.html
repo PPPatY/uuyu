@@ -1,0 +1,334 @@
+<extend name="Public/sbases" />
+<block name="body" >
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0"> 
+<link rel="stylesheet" type="text/css" async="true" href="__CSS__/egretopen.css" />
+<iframe id="url_mainframe" frameborder="0" scrolling="yes" name="main" src="" 
+    style="height:100vh; visibility: inherit; width: 100vw;max-width:640px; z-index: 1;overflow: visible;position:absolute;background-repeat:no-repeat;background-size:cover;"></iframe>
+<div>
+<style>
+body{ background: transparent; }
+#qrcode{display: none!important;}
+</style>
+<egretdiv id="egretMask" class="egretMask"></egretdiv> 
+<egretdiv id="egretBox" class="egretBox" style="top: 50%;margin-top: -124px;"> 
+  <egretdiv class="blUserCenter"> 
+  <!-- 报错开始 -->
+  <egretdiv id="blTagIdRegeditBg" class="regeditBg" style="display: none;"> 
+      <egretdiv id="blTagIdRegeditSucceed" style="display:block;" class="regeditSucceed">
+      </egretdiv> 
+  </egretdiv> 
+  <egretdiv id="wjblTagIdRegeditBg" class="regeditBg" style="display: none;"> 
+      <egretdiv id="wjblTagIdRegeditSucceed" style="display:block;" class="regeditSucceed">
+      </egretdiv> 
+  </egretdiv> 
+  <!-- 报错结束 -->
+
+  <!-- 登录注册开始 -->
+  <egretdiv id="blTagIdLoginDiv" class="loginDiv" style="display: none;"> 
+   <p id="blTagIdHeaderTab" class="header">
+      <span egret-data="userLoginPage" id="blTagIdLogin" class="checked">登录</span>
+      <span egret-data="userRegedit" id="blTagIdSignUp" style="float:right" class="noChecked">注册</span> 
+    <egretdiv id="tagIdVisitorBack" class="visitorBack"></egretdiv></p> 
+
+    <!-- 提示绑定开始 -->
+  <egretdiv class="loginContent" style="display: block;"> 
+    <p class="PayHeader" style="display: none;font-size: 12px;text-align: left;padding-top:15px;color:#999;line-height: 16px;"><span style="color: red;">您当前是游客身份，</span>为了账号安全，请尽快绑定账号！</p> 
+  <egretdiv class="userParent"> 
+      <!-- 登录 用户账号框开始 -->
+      <input  type="text" class="content_padding userIcon" placeholder="手机号/用户名" id="lblTagIdUserName" maxlength="15" value="" />
+      <!-- 登录 用户账号框结束  -->
+      <!-- × 清空输入框 -->
+      <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;"></egretdiv>
+      <egretdiv class="userParent"> 
+          <input autocomplete="off" type="password" class="content_padding userPWDIcon" placeholder="输入6-15位密码" id="lblTagIdUserPwd" maxlength="15" />
+          <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;right:8em;"></egretdiv>
+          <span id="zblTagIdForgetPwd" class="forgetP" style="display: block;">
+            <a egret-data="forgetPass" class="zblTagIdForgetPwd" style=" text-decoration: none; color: #66cc99;">忘记密码?</a>
+          </span>
+      </egretdiv>
+      <egretdiv egret-data="userLogin" class="loginButton" id="blTagIdLoginBtn" style="display: block;">
+      登录
+      </egretdiv>
+      <egretdiv  class="userParent" id="blTagIdLoginMethods" style="display: block;">
+          <egretdiv class="otherLogin">
+              <span style=" ">其他登录方式</span>
+              <a onclick="register('weixin')" id="blTagIdWeiXinLogin" style="display: none;"  class="weiixnx" type="weixin">
+              <egretdiv egret-data="WXLogin" class="bg"></egretdiv><img src="__IMG__/icon_wx@3x.png" alt="" /></a>
+
+              <a onclick="register('qq')" id="blTagIdQQLogin" name="blTagNameQQLogin" type="qq">
+              <egretdiv egret-data="QQLogin" class="bg"></egretdiv><img src="__IMG__/icon_qq@3x.png" alt="" /></a>
+
+          </egretdiv>
+          <span class="tipsIconYk">选择&quot;游客登录&quot;，可能会导致游戏角色无法保存</span>
+      </egretdiv>
+  </egretdiv> 
+  </egretdiv> 
+
+  <egretdiv class= "regContent" style="display: none;">
+      <!-- 注册 用户账号框开始 -->
+      <egretdiv class="userParent"> 
+          <input autocomplete="off" type="text" class="content_padding userIcon" placeholder="输入手机号或6-15位用户名" id="zblTagIdUserName" maxlength="15" style=" border: 1px solid rgb(235, 235, 235);" />
+          <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;"></egretdiv>
+      </egretdiv>
+      <!-- 注册 用户账号框结束 -->
+      <egretdiv style="position: relative;" class="userParent">
+          <input autocomplete="off" type="password" class="content_padding userPWDIcon" placeholder="设置6-15位密码" id="zblTagIdUserPwd" maxlength="15" />
+          <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;"></egretdiv>
+      </egretdiv>
+      <!-- 手机验证码开始 -->
+      <egretdiv id="blTagIdSecurityCodegretDiv" class="sendNum userParent" style="display: block;">
+          <input type="tel" id="zblTagIdSecurityCode" placeholder="输入验证码" maxlength="6" style="line-height: normal;" class="inputText" />
+          <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;right: 9.5em;"></egretdiv>
+          <egretdiv egret-data="userGetNum" id="zblTagIdSendSecurityCode" style="" class="inputBtn">
+           获取验证码
+          </egretdiv>
+      </egretdiv>
+      <!-- 手机验证码结束 -->
+  <input type="hidden" name="zhucetype" value="1" class="zhucetype">
+       <!-- 图片验证码开始 -->
+      <egretdiv style="position: relative;margin-bottom:10px;height:43px;width:100%;overflow:hidden;display:none;" class="userParent" id="blTagIdPicCodeDiv">
+          <input id="zblTagIdPicCodeInput" autocomplete="off" type="tel" class="content_padding userPWDIcon" placeholder="图片验证码" maxlength="4" style="width:55%;float:left;" />
+          <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;right: 10em;"></egretdiv>
+          <img id="zblTagIdPicCodeImg" style="width: 107px;height: 43px" src="__MODULE__/Subscriber/verify" />
+      </egretdiv>
+     <!-- 图片验证码结束 -->
+
+      <egretdiv class="loginBtnFg">
+          <span class="errorTips" id="blTagIdMsgTips"></span>
+      </egretdiv> 
+      <egretdiv class="loginButton" id="blTagIdSignupBtn" egret-data="userSubmit" style="display: block;">
+      提交
+      </egretdiv>
+      <egretdiv class="visitorLogin">
+          <egretdiv class="cancelBtns" id="blTagIdVisitorPaySignupCancel">
+           取消
+          </egretdiv>
+          <egretdiv class="loginBtn" id="blTagIdVisitorPaySignup">
+           登录
+          </egretdiv>
+      </egretdiv>
+      <egretdiv id="blTagIdSignUpMethods" style="display: block; text-align: left;margin-bottom: 10px;">
+          <span style="color: #999;padding-left: 10px;">注册即是同意</span>
+          <span class="tipsIcon" id="userAgree">《白鹭服务协议》</span>
+      </egretdiv>
+  </egretdiv> 
+  <!-- 提示绑定结束 -->
+  </egretdiv> 
+
+  <!-- 登录注册开始 -->
+
+  <!-- 已登陆开始 -->
+  <egretdiv id="blTagIdWelcomegretDiv" style="display: none;"> 
+   <egretdiv class="welcomeHead">
+     欢迎回来 
+    <egretdiv class="sign_in_game" id="blTagIdCloseInLoadGames"></egretdiv> 
+   </egretdiv> 
+   <egretdiv class="clear-fix egretUserInfoContend"> 
+    <egretdiv class="egretUserInfo"> 
+  <a href="javascript:void(0);">
+    <empty name="headpic">
+        <img src="__IMG__/pic_userhead@3x.png" alt="" id="blTagIdUserIcon_Welcome" />
+      <else />
+        <img src="{$headpic}" alt="" id="blTagIdUserIcon_Welcome" />
+      </empty>
+  </a> 
+    </egretdiv> 
+    <span class="userName" id="blTagIdUserInfo_Welcome"><span style="font-size: 14px;color: #444;">昵称：</span><span>{$user['nickname']}</span> 
+     <egretdiv class="phoneicon userPhoneNo"></egretdiv></span> <!-- 绑定为userPhone -->
+    <span class="welcomeText" id="blTagIdLoginTime_Welcome">最近登录：{:set_show_time($user['login_time'],'time','other')}</span> 
+   </egretdiv> 
+   <egretdiv egret-data="inGame" class="inGameBtn sign_in_game" id="blTagIdPlayGames">
+     进入游戏 
+   </egretdiv> 
+   <egretdiv id="blTagIdIsBindStategretDiv_Welcome"> 
+   <!-- 未绑定手机号 开始 -->
+   <div class="nobindphone" style="display: block;">
+      <egretdiv class="userOther" style="display: block;"> 
+          <egretdiv class="btnOne changeaccount" id="blTagIdNoBindSignOutBtn_Welcome">
+              更改账号 
+          </egretdiv> 
+          <egretdiv egret-data="userSafety" id="blTagIdAccountSecurityBLBtn_Welcome" class="btnTow">
+           账号安全 
+          </egretdiv> 
+      </egretdiv> 
+      <egretdiv class="safety" style="display: block;">
+          账号安全过低，请进行安全设置！ 
+      </egretdiv>
+   </div>
+   <!-- 未绑定手机号 结束 -->
+    
+  <egretdiv egret-data="changeUser" class="userSafety changeaccount" id="blTagIdIsBindSignOutBtn_Welcome" style="display: none;">
+      更改账号 
+  </egretdiv> 
+   </egretdiv> 
+  </egretdiv> 
+  <!-- 已登录结束 -->
+
+  <!--忘记 绑定手机号后 重置密码开始 -->
+  <egretdiv id="blTagIdForgetPwdDiv" class="resetPass" style="display:none;"> 
+   <egretdiv class="reset-head">
+     重置密码 
+   </egretdiv> 
+   <span class="resetNum" style="display:none;">验证码发送至：<span id="blTagIdUserPhone_ForgetPwd"></span></span> 
+   <egretdiv class="send"> 
+    <egretdiv class="sendContend"> 
+      <input type="tel" placeholder="输入验证码" id="blTagIdSecurityCode_ForgetPwd" maxlength="8" /> 
+      <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;"></egretdiv>
+    </egretdiv> 
+    <egretdiv egret-data="resetGetNum" class="sendBtn" id="blTagIdSendSecurityCode_ForgetPwd">
+      获取验证码 
+    </egretdiv> 
+   </egretdiv> 
+   <egretdiv class="newPass"> 
+      <input id="blTagIdUserPwd_ForgetPwd" type="password" placeholder="设置6-15位新密码" maxlength="15" /> 
+      <egretdiv name="blTagNameClear" class="deleteUser" style="display:block;"></egretdiv>
+   </egretdiv> 
+   <egretdiv id="blTagIdMsgTips_ForgetPwd" class="errors"></egretdiv> 
+   <egretdiv class="btn"> 
+    <egretdiv egret-data="resetSubmit" id="blTagIdUpdatePwdBtn_ForgetPwd" class="subBtn">
+      提交 
+    </egretdiv> 
+    <egretdiv egret-data="" id="blTagIdCancelBtn_ForgetPwd" class="cancelBtn quxiao">
+      取消 
+    </egretdiv> 
+   </egretdiv> 
+  </egretdiv> 
+  <!-- 重置密码结束 -->
+
+
+  <!-- 账号安全开始 -->
+  <egretdiv id="blTagIdBindPhonegretDiv" class="bindNum" style="display:none;"> 
+   <egretdiv class="welcomeHead">
+     绑定账号 
+    <egretdiv class="quxiao" id="blTagIdDivClose_BindBL"></egretdiv> 
+   </egretdiv> 
+   <egretdiv style="position: relative;" class="user userParent"> 
+    <input id="blTagIdUserPhone_BindBL" type="tel" placeholder="输入绑定的手机号" maxlength="11" /> 
+    <egretdiv name="blTagNameClear" class="deleteUser" style="display: block;"></egretdiv> 
+   </egretdiv> 
+   <egretdiv class="sendContend"> 
+    <egretdiv class="inputF"> 
+     <input id="blTagIdSecurityCode_BindBL" placeholder="输入验证码" type="tel" style="line-height: normal;" maxlength="6" /> 
+     <egretdiv name="blTagNameClear" class="deleteUser" style="display: block;"></egretdiv> 
+    </egretdiv> 
+    <egretdiv egret-data="bindGetNum" id="blTagIdSendSecurityCode_BindBL" class="sendBtn">
+      获取验证码 
+    </egretdiv> 
+   </egretdiv> 
+   <egretdiv id="blTagIdMsgTips_BindBL" class="errors"></egretdiv> 
+   <!-- <egretdiv class="newPass"> 
+    <input id="blTagIdSetPassword_BindBL" type="password" placeholder="设置6-15位新密码" maxlength="15" /> 
+    <egretdiv name="blTagNameClear" class="deleteUser" style="display: block;"></egretdiv> 
+   </egretdiv> --> 
+   <egretdiv class="btn"> 
+    <egretdiv egret-data="bindSubmit" id="blTagIdBindPhoneBtn_BindBL" class="subBtn">
+      提交 
+    </egretdiv> 
+    <egretdiv egret-data="bindCancel" id="blTagIdBindPhoneCancelBtn_BindBL" class="cancelBtn quxiao">
+      取消 
+    </egretdiv> 
+   </egretdiv> 
+   <span style="text-align: left;padding-left: 10px;" class="prompt">绑定成功的手机号，可用于登录和找回密码</span> 
+  </egretdiv> 
+  <!-- 账号安全结束 -->
+
+  </egretdiv>  -->
+  </egretdiv> 
+</egretdiv> 
+</div>
+<script src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript">
+$("#userAgree").click(function(){
+  xieyi = "{:U('Subscriber/agreement')}";
+  var index = layer.open({
+    type: 2,
+    title: '用户注册协议',
+    shadeClose: true,
+    shade: 0.8,
+    area: ['100%', '100%'],
+    content: xieyi //iframe的url
+  }); 
+});
+function isWeiXin(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                return true;
+            }else{
+                return false;
+            }
+        }
+  var browser={
+    versions:function(){
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {         //移动终端浏览器版本信息
+                 trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+         }(),
+         language:(navigator.browserLanguage || navigator.language).toLowerCase()
+}
+$(function(){
+    if(!browser.versions.mobile||isWeiXin()){
+        $(".weiixnx").attr('style','');
+    }
+})
+</script>
+<script>
+  var login = "{:session('user_auth.user_id')}";
+  var bindphone = "{$user['phone']}";
+  var gid = "{$game_id}";
+  var pid = '';
+  loginurl = "{:U('Subscriber/login')}";
+  zhuceurl = "{:U('Subscriber/register')}";
+  sendcodeurl="{:U('Subscriber/telsvcode')}";
+  checkaccount="{:U('Subscriber/checkaccount')}";
+  checkphoneexsite = "{:U('Subscriber/checkphoneexsite')}";
+  zhucepurl="{:U('Subscriber/check_tel_code')}";
+  signingamepurl="{:U('Subscriber/siginingame')}";
+  thirdloginurl = "{:U('Subscriber/thirdlogin')}";
+  window.addEventListener('message', function(e){
+      var event_type = e.data.event;
+      var event_data = e.data.data;
+      var event_status = e.data.status;
+      $.ajax({
+          type: "POST",
+          url: "{:U('sdkloginVerify')}",
+          async:true,
+          data: {data:event_data},
+          // dataType: "json",
+          success: function(data){
+            if(data.status!=1){
+                errorshow(data.msg);
+                if(data.status==-1){
+                  setTimeout('top.location.reload();',1000);
+                }
+                e.source.postMessage({status:data.status}, e.origin);
+                return false;
+            }
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+           alert("服务器错误");
+         }
+      });
+  }, false); 
+  // 图片验证码
+  $('#zblTagIdPicCodeImg').on('click',function() {
+    var e = (new Date).getTime();
+    codeurl="__MODULE__/Subscriber/verify/t/";
+    $(this).attr('src', codeurl + e);
+  });
+</script>
+<script type="text/javascript" src="__JS__/h5sdkajax.js"></script>
+<script type="text/javascript" src="__JS__/h5sdkshow.js"></script>
+<script type="text/javascript" src="__JS__/register.js"></script>
+</block>

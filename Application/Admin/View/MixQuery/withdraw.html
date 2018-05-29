@@ -1,0 +1,238 @@
+<extend name="Public/base"/>
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('MixPartner/lists')}">混服</a></li>
+            <li><a href="{:U('MixPartner/lists')}">混服管理</a></li>
+            <li><a href="#">混服提现列表</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">混服提现列表</span>
+                    <span class="">记录所有混服的提现的数据</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="cf top_nav_list">
+        <div class="fl button_list">
+            <div class="tools">
+                <a class=" ajax-post " target-form="ids" url="{:U('set_withdraw_status',array('settlement_status'=>2))}"><span class="button_icon button_icon12"></span>通 过</a>
+                <a class=" ajax-post " target-form="ids" url="{:U('set_withdraw_status',array('settlement_status'=>3))}"><span class="button_icon button_icon13"></span></span>驳 回</a>
+            </div>
+        </div>
+        <!-- 高级搜索 -->
+        <div class="jssearch fr cf search_list">
+            <div class="input-list input-list-game search_label_rehab">
+                <label>混服账号：</label>
+                <select id="mix_user_idh" name="partner_id" class="select_gallery">
+                    <option value="">请选择混服账号</option>
+                    <volist name=":get_mix_partner_lists()" id="vo">
+                        <option game-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                    </volist>
+                </select>   
+            </div>
+            <div class="input-list input-list-channelstatus">
+                    <label>提现状态</label>
+                    <select name="settlement_status">
+                        <option value=" ">所  有</option>
+                        <option value="0">未申请</option>
+                        <option value="1">审核中</option>
+                        <option value="2">已通过</option>
+                        <option value="3">已驳回</option>
+                    </select>
+            </div>
+                <div class="input-list">
+                    <label>提现单号：</label>
+                    <input type="text" name="bill_number" class="" value="{:I('bill_number')}">
+                </div>
+            <div class="input-list search_item">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('MixQuery/withdraw','model='.$model['name'],false)}">查 询</a>
+            </div>
+            <div class="input-list search_item">
+                <a class="sch-btn" id="search" href="javascript:;" url="{:U('Export/expUser',array(
+            'id'=>6,
+            'timestart'=>I('timestart'),
+            'timeend'=>I('timeend'),
+            'start'=>I('start'),
+            'end'=>I('end'),
+            'status'=>I('status'),
+            'promote_account'=>I('promote_account'),
+            'settlement_number'=>I('settlement_number'),
+            ))}">导出</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 数据列表 -->
+    <div class="data-table">
+        <div class="data-table table-striped">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th class="row-selected row-selected">
+                            <input class="check-all" type="checkbox">
+                        </th>
+                        <th style="text-align:center">提现单号</th>
+                        <th style="text-align:center">提现金额</th>
+                        <th style="text-align:center">所属混服方</th>
+                        <th style="text-align:center">申请时间</th>
+                        <th style="text-align:center">完成时间</th>
+                        <th style="text-align:center">提现状态</th>
+                        <th style="text-align:center">操作</th>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                    <tr>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">
+                            <eq name="data.settlement_status" value="1">
+                            <input class="ids" type="checkbox" value="{$data['id']}" name="ids[]">
+                            <else />
+                            <input class="ids disabled" disabled="disabled" type="checkbox" value="{$data['id']}" name="ids[]">
+                            </eq>
+                        </td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.bill_number}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.settlement_amount}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{:get_mix_partner_name($data['partner_id'])}</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center"><notempty name="data.create_time">{$data.create_time|date='Y-m-d H:i:s',###}<else />---</notempty></td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center"><notempty name="data.end_time">{$data.end_time|date='Y-m-d H:i:s',###}<else />---</notempty></td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">
+                            <eq name="data.settlement_status" value="0">未申请</eq>
+                            <eq name="data.settlement_status" value="1">审核中</eq>
+                            <eq name="data.settlement_status" value="2">已通过</eq>
+                            <eq name="data.settlement_status" value="3">已驳回</eq>
+                        </td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">
+                            <div class="partakebtn">
+                            <eq name="data.settlement_status" value="1">
+                                <a  class="ajax-post" target-form="ids" url="{:U('set_withdraw_status',array('ids'=>$data['id'],'settlement_status'=>2))}" >通过</a>
+                                <a  class="ajax-post" target-form="ids" url="{:U('set_withdraw_status',array('ids'=>$data['id'],'settlement_status'=>3))}" >驳回</a>
+                            <else />
+                                <a  class="ajax-post disabled" disabled="disabled">通过</a>
+                                <a  class="ajax-post disabled" disabled="disabled">驳回</a>
+                            </eq>
+                            </div>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="2" style="border-right:1px solid #DDDDDD;text-align:center" >提现汇总</td>
+                        <td style="border-right:1px solid #DDDDDD;text-align:center">{$sum}</td>
+                        <td colspan="5"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('MixQuery/withdraw')}');
+$(".select_gallery").select2();
+$(function(){
+    //搜索功能
+    $("#search").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+    $('#time-start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+
+    $('#datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left'
+    })
+     
+    $('#partner_id').on('click',function(event) {
+        var navlist = $(this).find('.nav-list');
+        if (navlist.hasClass('hidden')) {
+            navlist.removeClass('hidden');
+            $(this).find('.sort-txt').focus().val('');            
+        } else {
+            navlist.addClass('hidden');
+        }
+        $(document).one('click', function(){
+            navlist.addClass('hidden');
+        });
+        event.stopPropagation();
+    });
+
+    $('#partner_id .sort-txt').on('keyup',function(event) {
+        var val  = $.trim($(this).val()).toLowerCase();
+        $('#partner_id').siblings('input').val(val);
+    });
+    
+    $('#partner_id .nav-list').find("a").each(function(){
+        var that = $('#partner_id');
+        $(this).click(function(){
+            var text = $.trim($(this).text()).toLowerCase();
+            that.find('.sort-txt').val(text);
+            var value = $.trim($(this).attr("value"));
+            console.log(value);
+            that.siblings('input').val(value);
+        })
+    });
+    
+    $('#status').hover(function(){
+        $(this).find('.nav-list').removeClass('hidden');
+    },function(){
+        $(this).find('.nav-list').addClass('hidden');
+    });
+    
+    $('#status .nav-list li').find('a').each(function(){
+        var that = $('#status');
+        $(this).click(function(){
+            var text = $(this).text(),val=$(this).attr('value');
+            that.find('.sort-txt').text(text).attr('data',val);
+            that.find('.nav-list').addClass('hidden');
+            that.siblings('input').val(val);
+        })
+    });
+})
+</script>
+</block>

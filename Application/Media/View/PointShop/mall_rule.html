@@ -1,0 +1,92 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/mall.css" rel="stylesheet" >
+</block>
+<block name="header">
+    <header class="header">
+      <section class="wrap">
+        <a href="javascript:history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">积分规则</span></span></div>
+         <if condition="$union_set eq ''">
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={:C(PC_SET_SERVER_QQ)}&amp;site=qq&amp;menu=yes" class="hbtn right mall-rule-service"><span class="table"><span class="table-cell"><img src="__IMG__/mall_rule_service.png"></span></span></a>
+        <else/>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$union_set['cust_qq']}&amp;site=qq&amp;menu=yes" class="hbtn right mall-rule-service"><span class="table"><span class="table-cell"><img src="__IMG__/mall_rule_service.png"></span></span></a>
+        </if>
+      </section>
+    </header>
+</block>
+<block name="iframe" >
+<div class="mainer">
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div id="rule" class="list integral-rule-list">
+            <ul class="clearfix">
+              <!-- <li>
+                <a href="javascript:;" class="item jstabbar clearfix">
+                  <div class="wrap">
+                    <div class="butnbox"><span class="table"><span class="butn table-cell"><i class="icon icon-arrow-right"></i></span></span></div>
+                    <div class="text">
+                      <div class="title"><span class="name">什么是积分？</span></div>
+                    </div>
+                  </div>
+                </a>
+                <div class="rule-content jstabpan ">
+                  <div class="wrap">
+                    <h4>1、每日签到</h4>
+                    <p>进入游戏中心“个人”界面或者积分商城界面，点击签到，即可获得对应的积分奖励。</p>
+                    <h4>2、游戏充值</h4>
+                    <p>在溪谷游戏平台任意游戏内每充值1元即可获得10积分。</p>
+                    <h4>3、显示活动</h4>
+                    <p>每隔一段时间都会开放积分获取的限时活动，小伙伴们别错过哦~</p>
+                  </div>
+                </div>
+              </li> -->
+              <volist name='data' id="da">
+              <li>
+                <a href="javascript:;" class="item jstabbar clearfix">
+                  <div class="wrap">
+                    <div class="butnbox"><span class="table"><span class="butn table-cell"><i class="icon icon-arrow-right"></i></span></span></div>
+                    <div class="text">
+                      <div class="title"><span class="name">{$da.title}</span></div>
+                    </div>
+                  </div>
+                </a>
+                <div class="rule-content jstabpan ">
+                  <div class="wrap">
+                    <p>{:str_replace(array("\\r\\n", "\\r", "\\n"),"<br>",$da['content'])}</p>
+                  </div>
+                </div>
+              </li>
+              </volist>
+            </ul>
+          </div>
+        </section>
+        
+      </section>
+    </section>
+</div>
+</block>
+
+<block name="script">
+<script>
+    $(function() {
+      $('#rule .jstabbar').click(function() {
+        var that = $(this),sib=that.siblings('.jstabpan');
+        if (that.hasClass('active')) {that.removeClass('active');sib.slideUp();return false;}
+        $('#rule .jstabpan').stop(true).slideUp();
+        $('#rule .jstabbar').removeClass('active');
+        sib.slideDown();that.addClass('active');
+        
+        return false;
+      });
+      
+    });
+    
+    
+    
+</script>
+</block>

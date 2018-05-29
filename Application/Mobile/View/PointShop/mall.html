@@ -1,0 +1,286 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/mall.css" rel="stylesheet" >
+<style>
+.dropload-down{
+  display:none;
+}
+</style>
+<section class="trunker">
+  
+  <section class="banner">
+    <div class="inner">
+      <div class="user-content-p">
+        <if condition="is_login() gt 0">
+          <p class="integral-title">可用积分 :</p>
+          <span class="integral-score">{$point}</span>
+        <else/>
+          <p class="integral-title"></p>
+          <span class="integral-score integral-small">您还未登录</span>
+        </if>
+        <div class="sign-up">
+          <if condition="$issignin neq 1">
+            <a href="javascript:;" class="butn jssign"><if condition="is_login() gt 0"><span>签到 <i>+{$loginpont}</i></span><else/><span>登录签到</span></if><if condition="$issignin eq 0"><i class="circle"></i></if></a>
+          <else/>
+            <a href="javascript:;" class="butn jssign disabled"><span class=""><i style="font-style: normal;">已签到</i></span></a>
+          </if>
+        </div>
+      </div>
+      <ul class="integral-butnbox table">
+        <li class="table-cell">
+          <a href="{:U('mall')}" class="butn">
+            <span class="icon-mall-store common-icon"></span>
+            <span>积分商城</span>
+          </a>
+        </li>
+        <li class="table-cell">
+          <a href="{:U('mall_integral')}" class="butn">
+            <span class="icon-mall-task common-icon"></span>
+            <span>积分任务</span>
+          </a>
+        </li>
+        <li class="table-cell">
+          <a href="{:U('mall_record')}" class="butn">
+            <span class="icon-mall-record common-icon"></span>
+            <span>积分记录</span>
+          </a>
+        </li>
+        <li class="table-cell">
+          <a href="{:U('mall_rule')}" class="butn">
+            <span class="icon-mall-rull common-icon"></span>
+            <span>积分规则</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="inner" style="padding-top: 0">
+    <section class="contain">
+      <notempty name="record['data']">
+      <div class="mall-message">
+        <div class="iconbox"><span class="table"><span class="table-cell"><img class="icon" src="__IMG__/mall_news.png"></span></span></div>
+        <div class="message-scroll">
+          <div id="message-slide" class="swiper-container">
+            <div class="swiper-wrapper">
+              <volist name="record['data']" id="record">
+                <div class="swiper-slide">
+                  <div class="item">
+                    <a href="#" class="title"><span class="name">{:substr($record['account'],0,4)}**</span><span class="thing">兑换了【{$record['good_name']}】</span></a>
+                  </div>
+                </div>
+              </volist>
+            </div>
+          </div>
+        </div>
+      </div>
+      </notempty>
+      <div class="goods-type-p">
+        <div class="goods-type-cont-p">
+          <a href="{:U('mall',array('short'=>I('get.short')))}" class="butn <if condition='(I("type") neq 1) and I("type") neq 2'> active</if>">全部</a>
+          <a href="{:U('mall',array('type'=>1,'short'=>I('get.short')))}" class="butn <if condition='(I("type") eq 1)'> active</if>">实物商品</a>
+          <a href="{:U('mall',array('type'=>2,'short'=>I('get.short')))}" class="butn <if condition='(I("type") eq 2)'> active</if>">虚拟商品</a>
+        </div>
+      </div>
+      <div class="goods-type-p" style="padding-top: .2rem;">
+          <div class="goods-type-cont-p">
+              <div class="table-cell">按首字母：</div>
+              <div class="table-cell-all">
+                <div class="list-item letter">
+                  <a href="{:U('mall',array('type'=>I('get.type')))}" class="butn <if condition='I("short") eq ""'> active</if>">全部</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'ABCD'))}" class="butn <if condition='I("short") eq "ABCD"'> active</if>">ABCD</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'EFGH'))}" class="butn <if condition='I("short") eq "EFGH"'> active</if>">EFGH</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'IJKL'))}" class="butn <if condition='I("short") eq "IJKL"'> active</if>">IJKL</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'MNOP'))}" class="butn <if condition='I("short") eq "MNOP"'> active</if>">MNOP</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'QRST'))}" class="butn <if condition='I("short") eq "QRST"'> active</if>">QRST</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'UVWX'))}" class="butn <if condition='I("short") eq "UVWX"'> active</if>">UVWX</a>
+                  <a href="{:U('mall',array('type'=>I('get.type'),'short'=>'YZ'))}" class="butn <if condition='I("short") eq "YZ"'> active</if>">YZ</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      <div class="list-table">
+        <div class="list mall-list loaddiv">
+          <ul class="clearfix jsmore"><assign name="dcount" value="$data.count" />
+          <if condition="$data.count elt 0">
+            <div class="empty swiper-categroy" style="height: auto;"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>
+          <else/>
+              <volist name="data['data']" id="data" key='k'>
+                <li class="<lt name='k' value='3'>ml</lt>">
+                  <div class="item <if condition='$k%2 eq 0'>nth2</if>">
+                    <a href="{:U('mall_detail',array('id'=>$data['id']))}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$data['cover']}" class="icon"></a>
+                    <div class="textbox">
+                      <a href="{:U('mall_detail',array('id'=>$data['id']))}" class="name">{:mb_substr($data['good_name'],0,24,'utf-8')}</a>
+                      <p class="info">
+                        <span class="price"><img src="__IMG__/mall_integral.png"><span>{$data['price']}</span></span>
+                        <span class="score">剩余：<span>{$data['number']}</span></span>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </volist>
+							<if condition="$dcount eq 1 ">
+								<li class="ml"></li>
+							</if>
+          </if>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+  </section>
+</section>
+
+<div class="space"></div>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+<div class="popmsg">
+</div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<link href="__STATIC__/dist/dropload.css" rel="stylesheet" >
+<script src="__STATIC__/dist/dropload.js"></script>
+<script>
+    var itemIndex = 0;
+    var tab1LoadEnd = false;
+    var counter = 1;
+    $(function() {
+      var popmsg = $('.popmsg').pop();
+      new Swiper('#message-slide', {autoplay:3000,loop:true,direction: 'vertical'});
+      
+      $('.sign-up .jssign').click(function() {
+        var that = $(this),span=that.find('span'),i = that.find('i').text();
+        if (that.hasClass('disabled')) {return false;}
+        that.addClass('disabled');
+        $user = "{:is_login()}";
+        if ($user>0) {
+          $.ajax({
+            type:'post',
+            url:"{:U('PointShop/user_sign_in')}",
+            success:function(data){
+              if(data.status==1){
+                $('.jsshopmall i.icon').find('.circle').remove();
+                span.addClass('hide');
+                setTimeout(function(){
+                  span.empty().removeClass('hide');
+                  $('<i style="top:100%;position:absolute;left:0;right:0;">'+i+'</i>').prependTo(span).animate({
+                    top:0,
+                  },300,function(){
+                    $nowpoint = $('.integral-score').text();
+                    $add = "{$loginpont}";
+                    $('.integral-score').text(parseInt($nowpoint)+parseInt($add));
+                    $('.inte-score .inte-num').text(parseInt($nowpoint)+parseInt($add));
+                    that.find('.circle').fadeOut(550);
+                    $(this).delay(150).animate({top:'-100%'},250,function() {
+                      $(this).remove();
+                      that.find('.circle').remove();
+                      $('<i style="display:none;">已签到</i>').appendTo(span).fadeIn("slow");
+                    });
+                  });
+                },150);
+              }else{
+                layer.msg(data.msg);
+              }
+            },error: function(xhr, type){
+
+            }
+          })
+          
+        } else {
+          popmsg.close(1);setTimeout(function(){$('.jslogin').click();},10);
+          that.removeClass('disabled');
+        }
+        
+      });
+      
+      
+      $(window).scroll(function() {
+        var top = $(this).scrollTop();
+        var height = $('.banner').height();
+        if ((top/height)*100>=20) {
+          $('.inte').fadeIn();
+        } else {
+          $('.inte').fadeOut();
+        }
+        return false;
+      });
+      var dropload = $('.loaddiv').dropload({
+            scrollArea : window,
+            threshold:300,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                if(itemIndex == '0'){
+                    num = 10;
+                    counter++;
+                    type = "{:I('get.type')}";
+                    short = "{:I('get.short')}";
+                    data = loadajax(me,type,short,counter);
+                    var result = '';
+                    if(data.status==0){
+                      // if(counter==1){
+                      //   result +='<div class="empty swiper-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>';
+                      // }
+                      // $("#"+loadid+' ul').append(result);
+                      tab1LoadEnd = true;
+                      // 锁定
+                      me.lock();
+                      // 无数据
+                      me.noData();
+                      me.resetload();
+                      return;
+                    }else{
+                        for(var i = 0; i < data.data.data.length; i++){
+                            result += '<li><div class="item';
+                            if((i%2)==1){
+                              result += ' nth2';
+                            }
+                            result+='';
+                            result+='"><a href="';
+                            result+="{:U('mall_detail','',false)}"+'/id/'+data.data.data[i].id;
+                            result+='" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data.data.data[i].cover+'" class="icon"></a><div class="textbox"><a href="mall_detail.html" class="name">'+data.data.data[i].good_name+'</a><p class="info"><span class="price"><img src="__IMG__/mall_integral.png"><span>'+data.data.data[i].price+'</span></span><span class="score">剩余：<span>'+data.data.data[i].number+'</span></span></p></div></div></li>';
+                        }
+                        // 为了测试，延迟1秒加载
+                        // setTimeout(function(){
+                            $('.jsmore').append(result);
+                            tab1LoadEnd = true;
+                            if(data.data.length<num){
+                              // 锁定
+                              me.lock();
+                              // 无数据
+                              me.noData();
+                            }
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+
+                        // },1);
+                    }
+                }
+
+                // $('#tab-slide .swiper-container .swiper-wrapper').css('height','auto');
+            }
+        });
+
+        function loadajax(me,type,short,counter){
+          //type = 0 全部 1实物  2  虚拟
+          //short = 0 全部  其他 对应首字母
+          var adddata ='';
+          $.ajax({
+              type: 'post',
+              url: '{:U("mall")}',
+              async:false,
+              data:{type:type,short:short,p:counter},
+              dataType: 'json',
+              success: function(data){
+                  adddata = data;
+              },
+              error: function(xhr, type){
+                  me.resetload();
+              }
+          });
+          return adddata;
+        }
+      
+    });
+    
+    
+    
+</script>
+</block>

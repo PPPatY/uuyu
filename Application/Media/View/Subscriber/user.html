@@ -1,0 +1,316 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/user.css" rel="stylesheet" >
+</block>
+<block name="header">
+<header class="header user-index">
+  <section class="wrap">
+    <div class="caption"><span class="table"><span class="table-cell">我的</span></span></div>
+    <if condition="is_login() gt 0">
+      <a href="javascript:;" class="hbtn right user-logout jslogout"><span class="table"><span class="table-cell"><img src="__IMG__/my_quit.png"></span></span></a>
+      <a href="{:U('user_message')}" class="hbtn right user-mege "><span class="table"><span class="table-cell"><span class="picwrap"><img src="__IMG__/my_news.png"><if condition="$newmsg eq 1"><i class="circle"></i></if></span></span></span></a>
+    </if>
+  </section>
+</header>
+</block>
+<block name="iframe" >
+<div class="mainer">
+<div class="occupy"></div>
+
+<section class="trunker">
+  
+  <section class="banner">
+    <div class="inner">
+      <div class="wrap">
+      <if condition="is_login() elt 0">
+        <div class="loginbox no ">
+          <img src="__IMG__/my_head.png" class="portrait">
+          <div class="textbox jsloginclick">
+            <a href="javascript:;" class="butn loginbtn">登录</a>
+            <a href="javascript:;" class="butn registerbtn">注册</a>
+          </div>
+        </div>
+      <else/>
+        <div class="loginbox yes">
+          <if condition="$userinfo['head_icon'] neq ''">
+            <img src="{$userinfo['head_icon']}" class="portrait">
+          <else/>
+            <img src="__IMG__/my_head.png" class="portrait">
+          </if>
+          <div class="butnbox"><span class="table"><span class="table-cell"><a href="javascript:;" class="butn jssign <if condition='$issignin eq 1 '> issignin</if>" data-score="{$addpoint}"><span>签到</span><i class="circle"></i></a></span></span></div>
+          <div class="textbox clearfix">
+            <p class="name clearfix"><span>{$userinfo.nickname}</span><a href="{:U('user_nickname')}" ><!-- <img src="__IMG__/my_modify.png" class="icon"> --></a></p>
+            <p class="uid">UID:1000{$userinfo.id}</p>
+          </div>
+        </div>
+      </if>
+    </div>
+    </div>
+  </section>
+  <section class="inner">
+    <section class="contain">
+      <div class="user-money clearfix">
+        <a href="javascript:;" data-href="{:U('user_recharge')}" class="butn rechargebtn"><img src="__IMG__/my_pay.png"><span>充值</span></a>
+        <a href="<if condition='is_login() gt 0'>{:U('user_balance')}<else />javascript:;</if>" class="butn balancebtn <if condition='is_login() elt 0'>jsbalancebtn</if>"><img src="__IMG__/my_balance.png"><span>余额</span></a>
+      </div>
+      <div class="user-base user-same">
+        <div class="clearfix table">
+        <if condition="$userinfo['real_name'] eq ''">
+            <!-- 未认证 -->
+            <a data-href="{:U('user_auth')}" class="butn table-row" id="userauth">
+              <span class="table-cell butn1"><img src="__IMG__/my_real.png" class="icon"></span>
+              <span class="table-cell butn2">实名认证</span>
+              <span class="table-cell butn3"><span class="non-notice">未认证</span></span>
+              <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+            </a>
+        <else/>
+          <!-- 已认证 -->
+          <a data-href="{:U('user_auth')}" class="butn table-row" id="userauth">
+            <span class="table-cell butn1"><img src="__IMG__/my_real.png" class="icon"></span>
+            <span class="table-cell butn2">实名认证</span>
+            <span class="table-cell butn3"><span class="authed"><img src="__IMG__/my_real_head.png">已实名</span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+        </if>
+        <if condition="$userinfo['phone'] eq ''">
+          <!-- 未绑定 -->
+          <a data-href="{:U('user_bind_phone')}" class="butn table-row" id="bindphone">
+            <span class="table-cell butn1"><img src="__IMG__/my_bind.png" class="icon"></span>
+            <span class="table-cell butn2">绑定手机</span>
+            <span class="table-cell butn3"><span class="non-notice">首次绑定送{$bindpoint}积分</span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+        <else/>
+          <!-- 已绑定 -->
+          <a data-href="{:U('user_bind_phone')}" class="butn table-row" id="bindphone">
+            <span class="table-cell butn1"><img src="__IMG__/my_bind.png" class="icon"></span>
+            <span class="table-cell butn2">绑定手机</span>
+            <span class="table-cell butn3"><span class="binded">{:substr($userinfo['phone'],0,3)}<i>*****</i>{:substr($userinfo['phone'],-3)}</span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+        </if>
+        <if condition="$userinfo['register_way'] elt 2">
+          <a data-href="{:U('user_password')}" class="butn table-row" id="userpassword">
+            <span class="table-cell butn1"><img src="__IMG__/my_password.png" class="icon"></span>
+            <span class="table-cell butn2">修改密码</span>
+            <span class="table-cell butn3"><span class="non-notice"></span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+        </if>
+          <a data-href="{:U('user_address')}" class="butn table-row" id="useraddress">
+            <span class="table-cell butn1"><img src="__IMG__/my_address.png" class="icon"></span>
+            <span class="table-cell butn2">添加地址</span>
+            <span class="table-cell butn3"><span class="non-notice"></span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+        </div>
+      </div>
+      <div class="user-other user-same">
+        <div class="clearfix table">
+          <!-- 有礼包 -->
+          <a href="user_gifted.html" class="butn mygiftbut table-row">
+            <span class="table-cell butn1"><img src="__IMG__/my_gift.png" class="icon"></span>
+            <span class="table-cell butn2">我的礼包</span>
+            <span class="table-cell butn3"><span class="non-notice"></span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+          <!-- 有收藏 -->
+          <a href="user_collection.html" class="butn mycollbut table-row">
+            <span class="table-cell butn1"><img src="__IMG__/my_collection.png" class="icon"></span>
+            <span class="table-cell butn2">我的收藏</span>
+            <span class="table-cell butn3"><span class="non-notice"></span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+          <a href="user_contact.html" class="butn table-row">
+            <span class="table-cell butn1"><img src="__IMG__/my_contact.png" class="icon"></span>
+            <span class="table-cell butn2">联系我们</span>
+            <span class="table-cell butn3"><span class="non-notice"></span></span>
+            <span class="table-cell butn4"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+  </section>
+</section>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+<div class="space"></div>
+</div>
+</block>
+<block name="footer">
+<div class="pop"></div>
+<include file="Public:footer" />
+</block>
+<block name="script">
+<script>
+    var pop = $('.pop').pop();
+    function nologin(msg){
+      pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">暂未登录</div><div class="pop-text"'+msg+'</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm tologin">去登录</a></div>');
+      $('.jscancel').click(function() {pop.close();});
+      $('.tologin').click(function(){
+        pop.close();
+        $('.jslogin').click();
+      });
+    }
+    $(function() {
+      userbind = "{$userbind}";
+      phone = "{$userinfo['phone']}";
+      if(userbind>0&&!phone){
+        pop.addClass('pop-bind').open(200,'<a href="javascript:;" class="pop-close2 jsbindbox"></a><div class="pop-content"><img src="__IMG__/pop_binding.png"><span class="text">送'+"{$bindpoint}"+'积分</span><a href="'+"{:U('user_bind_phone')}"+'" class="bindbutn jsbindbutn">去绑定</a></div>');
+      }
+      
+      $('.jsbindbox').click(function() {pop.close(200);});
+      
+      $('.jsloginclick a').click(function() {
+        $('.jslogin').click();
+        if($(this).hasClass('registerbtn')){
+          qiehuan($('.jspoptab a').eq(1),10);
+          return false;
+        }
+          
+        return false;
+      });
+      $user = "{:is_login()}";
+      $(".rechargebtn").click(function(){
+          if($user>0){
+            location.href = $(this).attr('data-href');
+          }else{
+            nologin('>您还未登录账号，暂时无法充值哦');
+            return false;
+          }
+      });
+			
+			$('.jsbalancebtn').click(function() {
+					
+        nologin('>您还未登录账号，暂时无法进入余额哦');
+        return false;
+          
+			});
+			
+      $('.mygiftbut').click(function() {
+        if(($user>0)==false){    
+          nologin('>您还未登录账号，暂时无法进入我的礼包');
+          return false;
+        }
+          
+      });
+      $('.mycollbut').click(function() {
+        if(($user>0)==false){  
+          nologin('>您还未登录账号，暂时无法进入我的收藏');
+          return false;
+        }
+          
+      });
+
+      $('#userauth').click(function(){
+          if($user>0){
+            location.href = $(this).attr('data-href');
+          }else{
+            nologin('>您还未登录账号，暂时无法认证哦');
+            return false;
+          }
+      });
+      $('#bindphone').click(function(){
+          if($user>0){
+            location.href = $(this).attr('data-href');
+          }else{
+            nologin('>您还未登录账号，暂时无法绑定哦');
+            return false;
+          }
+      });
+      $('#userpassword').click(function(){
+          if($user>0){
+            location.href = $(this).attr('data-href');
+          }else{
+            nologin('>您还未登录账号，暂时无法修改哦');
+            return false;
+          }
+      });
+      $('#useraddress').click(function(){
+          if($user>0){
+            location.href = $(this).attr('data-href');
+          }else{
+            nologin('>您还未登录账号，暂时无法添加哦');
+            return false;
+          }
+      });
+      $('.jslogout').click(function() {
+        var that=$(this);
+        
+        pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">确认退出？</div><div class="pop-text" style="text-align:left;">退出后不会删除任何历史数据，下次登录依然可以使用本账号。</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm jscomfirm">确定</a></div>');
+        
+        $('.jscancel').click(function() {pop.close();});
+        
+        $('.jscomfirm').click(function() {
+          $.ajax({
+            type:'post',
+            url:"{:U('logout')}",
+            success:function(data){
+              location.href = location.href;
+            },error:function(){
+              layer.msg('服务器错误');
+              location.href = location.href;
+            }
+          });
+        });
+        
+      });
+      ttt= $('.jssign');
+      sss=ttt.find('span')
+      $is_sign = ttt.hasClass('issignin');
+      if($is_sign){
+        if (ttt.hasClass('disabled')) {return false;}
+        ttt.addClass('disabled');
+        ttt.find('.circle').remove();
+        sss.text('已签到');
+      }
+      
+      $('.jssign').click(function() {
+        var that = $(this),span=that.find('span'),i = '+'+that.attr('data-score');
+        if (that.hasClass('disabled')) {return false;}
+        that.addClass('disabled');
+        if ($user>0) {
+            $.ajax({
+              type:'post',
+              url:"{:U('PointShop/user_sign_in')}",
+              success:function(data){
+                if(data.status==1){
+                  span.addClass('hide');
+                  setTimeout(function(){
+                    span.empty().removeClass('hide');
+                    $('<i style="top:100%;position:absolute;left:0;right:0;">'+i+'</i>').prependTo(span).animate({
+                      top:0,
+                    },500,function(){
+                      that.find('.circle').fadeOut(550);
+                      $(this).delay(250).animate({top:'-100%'},250,function() {
+                        $(this).remove();
+                        that.find('.circle').remove();
+                        
+                        $('<i style="display:none;">已签到</i>').appendTo(span).fadeIn("slow");
+                      });
+                    });
+                  },250);
+                }else{
+                  layer.msg(data.msg);
+                }
+              },error:function(){
+
+              }
+            })
+            
+        } else {
+          // 未登录 则弹出登录框
+          pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">暂未登录</div><div class="pop-text">您还未登录账号，暂时无法签到哦</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm tologin">去登录</a></div>');
+          $('.jscancel').click(function() {pop.close();});
+          $('.tologin').click(function(){
+            pop.close();
+            $('.jslogin').click();
+          });
+        }
+        
+      });
+      
+    });
+    
+</script>
+</block>

@@ -1,0 +1,69 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/game.css" rel="stylesheet" >
+    <style>
+      body {background:#FFF;}
+      .empty {padding-top:3.24rem;}
+      .empty .empty-icon {width:5rem;height:2.98rem;}
+      .empty .empty-text {color:#333;margin:0.4rem 0;}
+      .empty .empty-back {font-size:0.4rem;color:#666;text-align:center;margin-top:0.8rem;}
+      .empty .empty-back-time {color:#23BBF3;}
+      .footer{display: none;}
+    </style>
+    <header class="header">
+      <section class="wrap">
+     
+        <div class="caption"><span class="table"><span class="table-cell">游戏错误</span></span></div>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="list gift-list">
+            
+            <div class="empty">
+              <img src="__IMG__/no_date.png" class="empty-icon">
+              <p class="empty-text">~ 游戏不见了 ~</p>
+              <p class="empty-back"><span class="empty-back-time" id="ebt">2s</span>后自动返回</p>
+            </div>
+            
+            
+            
+          </div>
+        </section>
+        
+      </section>
+    </section>
+    
+    <script>
+        (function() {
+          $mt = "{:get_device_type()}";
+          var ebt = $('#ebt');
+          var t = 2;
+          var a = setInterval(function() {
+            ebt.text(t+'s');
+            t--;
+            if (t<0){
+              try{
+                if($mt=='ios'){
+                  ebt.text('0s');
+                  window.webkit.messageHandlers.gameErrBack.postMessage(1111111);
+                  window.clearTimeout(a);
+                }else if($mt!='ios'){
+                  window.mengchuang.finish()
+                  window.clearTimeout(a);
+                }
+              }catch(err){
+                history.go(-1);
+                $index = "{:U('Index/index')}";
+                setTimeout('location.href="'+$index+'";',100);
+                window.clearTimeout(a);
+              }
+            }
+          },1000);
+        })();
+    </script>
+</block>

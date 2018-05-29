@@ -1,0 +1,122 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/game.css" rel="stylesheet" >
+</block>
+
+<block name="body">
+    <div class="page-list normal_list apply-app_apply-list">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>分包管理></span><span>APP分包</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_app.png"><span class="title_main">APP列表</span>
+      </div>
+      <div class="trunk-content article" style="min-height: 65vh;">
+          <div class="tab">
+              <a href="{:U('Apply/app_index')}" class=" <eq name='Think.get.version' value=''>current</eq>">全部</a>
+              <a href="{:U('Apply/app_index',['version'=>1])}" class=" <eq name='Think.get.version' value='1'>current</eq>">安卓</a>
+              <a href="{:U('Apply/app_index',['version'=>2])}" class="wxnavbtn <eq name='Think.get.version' value='2'>current</eq>">苹果</a>
+          </div>
+          <div class="tabcon">
+            <table class="table normal_table">
+                <tr class="odd">
+                  <th class="first"></th>
+                  <th>APP名称</th>
+                  <th>APP大小</th>
+                  <th>运用平台</th>
+                  <th class="last">申请状态</th>
+                </tr>
+                <volist name="data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                      <td class="first">
+                        <span></span>
+                      </td>
+                      <td>
+                          <span class="name_a">{$vo.name}</span>
+                        </a>
+                      </td>
+                      <td>{$vo.file_size}</td>
+                      <td>
+                          <if condition="$vo['app_version'] eq 1">安卓</if>
+                          <if condition="$vo['app_version'] eq 0">苹果</if>
+                      </td>
+                      <td class="pos wxlistbtnwrap">
+                          <switch name="vo['apply_status']">
+                              <case value="0"><a href="javascript:;" class="applybtn disabled wait">审核中</a></case>
+                              <case value="1">
+                                  <a <if condition="$vo['dow_url'] eq '' "><else/>download=""</if>  href="<if condition="$vo['dow_url'] eq '' ">#<else/><if condition="$vo['plist_url'] eq ''">{$vo.dow_url}<else/>{$vo.plist_url}</if></if>"
+                                     class="applybtn download notice">下载</a>
+                              </case>
+                              <case value="2"><a href="javascript:;" class="applybtn disabled fall">审核失败</a></case>
+                              <default/>
+                              <a href="javascript:;" class="applybtn" onclick="app_apply({$vo.id},this)">马上申请</a>
+                          </switch>
+                      </td>
+                  </tr>
+                </volist>
+            </table>
+          </div>
+      </div>
+      <div class="page-explain apply-app_apply-explain">
+      <div class="trunk-content article border_normal">
+        <table class="desccontent">
+            <tr><td class="title" style="width: 126px;display: inline-block;">APP申请功能说明：</td><td class="det">渠道只需申请一个APP，即可通过APP推广本平台的所有游戏；如需推广单个游戏，可到游戏分包里操作，申请单个游戏推广包。</td></tr>           
+        </table>
+      </div>
+    </div>
+    </div>
+    
+    
+</block>
+<block name="script">
+  <script type="text/javascript">
+  highlight_subnav('{:U('Apply/app_index')}');
+  $(document).ready(function() {
+
+  });
+  $('.notice').click(function(){
+    var href = $(this).attr('href');
+    if(href == '#' || href =="javascript:"){
+      layer.msg('暂无下载内容', {icon: 2});
+    }
+  });
+
+  function app_apply(app_id,obj) {
+      $.ajax({
+          type: "post",
+          url: "{:U('Apply/apply_app')}",
+          dataType: "json",
+          data: {app_id: app_id},
+          success: function (res) {
+              if (res.status == 1) {
+                  $(obj).attr("onclick", "").html("审核中").addClass("proc wait");
+                  layer.msg(res.msg, {icon: 1});
+              }
+              else {
+                  layer.msg(res.msg, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+  function appPack($appid){
+    $.ajax({
+      type:"post",
+      url:"{:U('Apply/app_package')}",
+      dataType:"json",
+      data:{appid:$appid},
+      success:function($result){
+        var iconType = $result.status == 0?2:1;
+        layer.msg($result.info,{icon:iconType},function(){location.reload();});
+      },
+      error:function(){
+        layer.msg('解析错误');
+      }
+    })
+  }
+  </script>
+</block>

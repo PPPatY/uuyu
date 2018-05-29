@@ -1,0 +1,28 @@
+/*.trunk-search {padding-bottom: 20px;}*/
+.trunk-content {margin: 20px 2% 0;}
+
+.trunk-search .select-time{display: inline-block;}
+.trunk-search .select-time .txt{height: 34px;width: 120px;color: #515974;}
+
+.select2-container--default .select2-selection--single{width: 143px;}
+.select2-container--default .select2-selection--single .select2-selection__rendered{color: #a5a6bb;}
+.select2-container{width: auto !important;}
+.select2-container--focus .select2-selection--single .select2-selection__rendered{color: #535875;}
+
+
+label.includes{cursor:pointer;line-height: 37px;}
+label.includes input[type="checkbox"] {position: absolute;clip: rect(0, 0, 0, 0);}
+label.includes .check_icon {display: inline-block;width: 16px; height: 16px;margin: -3px auto;}
+label.includes input[type="checkbox"]+.check_icon {
+    background: url(../../images/20180207/btn_normal_weixuanzhong.png) no-repeat;
+    background-color: #fff;
+}
+label.includes input[type="checkbox"]:checked+.check_icon {
+    background: url(../../images/20180207/btn_selected_xuanzhong.png) no-repeat;
+    background-color: #fff;
+}
+
+.tab a{display: inline-block;margin-right: 10px; width: 88px;height: 34px;border: 1px solid #E5E5E5;color: #a5a6bb;border-radius: 4px;line-height: 34px;text-align: center;}
+.tab a.current{border: 1px solid #26C7DB;color: #26C7DB;}
+
+.btn_calc{width: 96px;height: 36px;display: block;background: #3A97FF;color: #fff;line-height: 36px;text-align: center;border-radius: 4px;border: none;}

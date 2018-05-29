@@ -1,0 +1,105 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<style type="text/css">
+		.tab-wrap{margin-top: 70px;}
+		.formtitle{margin-bottom: 0;}
+		.data_list table td,.data_list table th{height: 25px;line-height: 25px;}
+	</style>
+    <!-- 标题栏 -->
+    <div class="tab-wrap">
+    <div class="formtitle"><span>[{$model['title']}] 列表</span></div>
+    </div>
+    <div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+				<a href="{:U('add?model='.$model['id'])}"><span class="button_icon button_icon1"></span>新 增</a>
+				<a class="ajax-post confirm " target-form="ids" url="{:U('del?model='.$model['id'])}"><span class="button_icon button_icon2"></span>删 除</a>
+            </div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list" style="margin-bottom:-15px;">
+            <!--游戏类型搜索END-->
+            <div class="input-list input-list-game search_label_rehab">
+                <input type="text" name="{$model['search_key']|default='title'}" class="search-input" value="{:I('title')}" placeholder="请输入关键字">
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('Game/lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+    
+    <!-- 数据列表 -->
+    <div class="data-table data_list ">
+        <div class="data-table table-striped">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th class="row-selected row-selected">
+                            <label class="checked">
+								<input class="check-all" type="checkbox">
+								<i class="check_icon"></i>
+							</label>
+                        </th>
+                        <volist name="list_grids" id="field">
+                            <th>{$field.title}</th>
+                        </volist>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                        <tr>
+                            <td>
+                            	<label class="checked">
+									<input class="ids" type="checkbox" value="{$data['id']}" name="ids[]">
+									<i class="check_icon"></i>
+								</label>
+                            </td>
+                            <volist name="list_grids" id="grid">
+                                <td>{:get_list_field($data,$grid)}</td>
+                            </volist>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	//导航高亮
+    highlight_subnav('{:U('Model/index')}');
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+})
+</script>
+</block>

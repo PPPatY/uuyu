@@ -1,0 +1,184 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/finance.css" rel="stylesheet">
+</block>
+
+<block name="body">
+    
+    <div class="page-list normal_list  query-my_earning-search">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>财务管理></span><span>我的结算</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_my.png">
+      	<span class="title_main">我的结算</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('Query/my_earning')}" method="post" enctype="multipart/form-data">
+              
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              <div class="form-group normal_space fr">
+                  结算单号：<input type="text" name="settlement_number" class="txt normal_txt" id="uid" placeholder="请输入结算单号" value="{:trim(I('settlement_number'))}">
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">结算周期：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="timestart" placeholder="开始时间" value="{:I('timestart')}" >
+                </div>
+                 <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="timeend" placeholder="结束时间" value="{:I('timeend')}">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="trunk-list list_normal" style="min-height: 59vh;">
+              <table class="table4 normal_table">
+                  <tr class="odd">
+                    <th>结算周期</th>
+                    <th>结算单号</th>
+                    <th>总充值</th>
+                    <th>总注册</th>
+                    <th>结算金额</th>
+                    <th>结算范围</th>
+                    <th>结算时间</th>
+                    <th>结算单详情</th>
+                    <th>提现</th>
+                  </tr>
+                  <empty name="list_data">
+                  <tr><td colspan="10">暂无数据</td></tr>
+                  <else />
+                  <volist name="list_data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td>{$vo.starttime|date="Y-m-d",###}至{$vo.endtime|date="Y-m-d",###}</td>
+                    <td>{$vo.settlement_number}</td>
+                    <td>{:get_settlemt_sum($vo['settlement_number'],'total_money')}</td>
+                    <td>{:get_settlemt_sum($vo['settlement_number'],'total_number')}</td>
+                    <td style="color:#ff6600;">{:get_settlemt_sum($vo['settlement_number'],'sum_money')}</td>
+                    <td><if condition="$vo['isbd'] eq 0">排除绑币<else />包含绑币</if></td>
+                    <td>{$vo.create_time|date="Y-m-d",###}</td>
+                    <td>
+                    		<a href="javascript:;" class="channel_pack" style="color:#46A3FF"url="{:U('settlemeng_detail',array('settlement_number'=>$vo['settlement_number']))}">查看</a>
+                    </td>
+                    <td> 
+                    	<switch name="vo.ti_status" >
+	                        <case value="-1"><a href="javascript:;" onclick="tixian({$vo.id})"style="color:#46A3FF">申请提现</a></case>
+	                        <case value="0"><lable style="color:#333">审核中</lable></case>
+	                        <case value="1"><lable style="color:#00DB00">已通过</lable></case>
+	                        <case value="2"><lable style="color:#FF0000"><span class="noback"><span >已驳回</span><a href="javascript:;" onclick="tixian({$vo.id},1)" style="color:#46A3FF;">申请提现</a></span></lable></case>
+                      	</switch>
+                    </td>
+                  </tr>
+                  </volist>
+                  <tr class="odd">
+                    <td colspan="5" style="text-align: center;">结算汇总(元)</td>
+                    <td  colspan="5" style="text-align: center;">{$sum_money}</td>
+                  </tr>
+                  <if condition="$parent_id eq 0">
+                  <tr>          
+                    <td colspan="5" style="text-align: center;">未提现汇总(元)</td>                
+                    <td  colspan="5" style="text-align: center;">{$w_money}</td>
+                  </tr>
+                  <tr class="odd">
+                    <td colspan="5" style="text-align: center;">成功提现汇总(元)</td>                
+                    <td  colspan="5" style="text-align: center;">{$y_money}</td>
+                  </tr>
+                  </if>
+                  </empty>
+              </table>
+              
+              
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+      <div class="page-explain query-my_earning-explain">
+	    <div class="trunk-content article border_normal">
+	        <table class="desccontent">
+	            <tr><td class="title" style="width: 100px;display: inline-block;">我的结算说明：</td><td>一级推广员由平台商务/财务结算；当平台结算完成后，推广员可以通过推广后台查看我的结算记录；每笔结算单可以申请提现，由平台商务/财务审核以及后续打款。</td></tr>
+	        </table>
+	    </div>
+	  </div>
+    </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+  <script>
+	highlight_subnav('{:U("my_earning")}');
+  setValue('game_id',{$Think.request.game_id|default=0});
+  setValue('pattern',{$Think.request.pattern|default="''"});
+  setValue('ti_status',{$Think.request.ti_status|default="''"});
+  
+  $(function() {
+      $(".select_gallery").select2();
+      $('#sdate').datetimepicker({scrollMonth:false,
+    	    lang:'ch',
+    	    format:'Y-m-d',
+    	    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    	    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+    	  });
+    	  
+    	  $('#edate').datetimepicker({scrollMonth:false,
+    	    lang:'ch',
+    	    format:'Y-m-d',
+    	    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    	    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+    	  });
+    	  
+  });
+ //结算详情
+  $(".channel_pack").click(function() {
+		$url = $(this).attr('url');
+		    layer.open({
+		        type: 2,
+		        title: "结算详情",
+		        shadeClose: false,
+		        shade: 0.6,
+		        area: ['92%', '62%'],
+		        content:[$url,'no']//iframe的url
+		    }); 
+	});
+  
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+  var ss="{:U('my_earning')}";
+    function tixian(id,t) {
+      $.ajax({
+        url: '{:U("apply_withdraw")}',
+        type: 'POST',
+        dataType: 'json',
+        data: {'id': id,'op':t},
+        success:function(data){console.log(data);
+          if(data.status==0){
+               layer.msg('请勿重复操作', {icon: 5});
+
+          }else{
+              layer.msg('申请成功', {icon: 6});
+              setTimeout(function(){location.href=ss;},2000);
+          }
+        },
+        error:function(){
+          layer.msg('服务器故障', {icon: 4});
+        }
+      });
+
+      
+    }
+  </script>
+</block>
+  

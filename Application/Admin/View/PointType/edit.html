@@ -1,0 +1,412 @@
+<extend name="Public/base" />
+
+<block name="body">
+<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap.min.css" media="all">
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/webuploader/webuploader.css" media="all">
+<script src="__STATIC__/md5.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="__STATIC__/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <style type="text/css">
+        .file_view { position:absolute; left:9px; width:66px; top:9px; height:28px; filter:alpha(opacity=0); opacity:0; cursor: pointer }
+        .file_upload { float:left; z-index:1; width:66px; height:28px; line-height:28px; background:#3B95C9;color: #fff; text-align:center; cursor: pointer;border-radius: 4px; }
+        .inputfiles { border:0 !important; width:280px !important; float:left !important; height:28px !important; line-height:28px!important; background:#FFF; z-index:99; }
+        /*上传封面*/
+        .upload_picture_cover{float: left;margin-top: 10px;}
+        .upload-img-box{float: left;}
+        #upload_picture_cover{float: left;margin-top: 5px;width: 70px !important;margin-left: 5px;}
+        #upload_picture_cover-button{width: 70px !important;}
+        #form .txt_area{width: 338px;height: 76px;}
+        #form .txt_area2{width: 338px;height: 76px;}
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Spend/lists')}">站点</a></li>
+            <li><a href="{:U('PointType/lists')}">积分商城</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <!-- 标签页导航 -->
+<div class="tab-wrap">
+	<div class="formtitle" style="margin-bottom: 0;"><span>编辑积分规则</span></div>
+    <div class="tab-content tab_content">
+    <!-- 表单 -->
+    <form id="form" action="{:U('edit')}" method="post" class="form-horizontal">
+        <!-- 基础文档模型 -->
+        <div id="tab1" class="tab-pane in tab1 tab_table">
+    		<table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td class="l">积分名称：</td>
+                    <td class="r">
+                        {$data.name}
+                    </td>
+                  </tr>
+                  <eq name="data.key" value="sign_in">
+                  <tr>
+                    <td class="l">每日递增值</td>
+                    <td class="r" colspan='1'>
+                        <input type="text" class="txt"  name="time_of_day" value="{$data['time_of_day']}">
+                    </td>
+                  </tr>
+                  </eq>
+                   <tr>
+                     <td class="l"><eq name="data.key" value="sign_in">基础积分：<else />积分奖励：</eq></td>
+                    <td class="r">
+                        <input type="text" class="txt"  name="point" value="{$data['point']}">
+                    </td>
+                  </tr>
+                   <tr>
+                     <td class="l">积分说明：</td>
+                    <td class="r">
+                        <textarea class="txt_area" name="remark" style="width: 338px;height: 76px;">{$data.remark}</textarea>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-item cf">
+        <input type="hidden" name="id" value="{$data.id}">
+            <button class="submit_btn ajax-post  " id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+//导航高亮
+Think.setValue("game_id", {$data.game_id|default = 0});
+highlight_subnav('{:U('PointType/lists')}');
+$('#submit').click(function(){
+    $('#form').submit();
+});
+
+$(function(){
+    $("#game_name").val($("#game_id option:selected").text());
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    $('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    showTab();
+
+});
+
+
+
+//上传游戏封面
+/* 初始化上传插件 */
+$("#upload_picture_cover").uploadify({
+    "height"          : 30,
+    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+    "fileObjName"     : "download",
+    "buttonText"      : "上传封面",
+    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+    "width"           : 120,
+    'removeTimeout'   : 1,
+    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+    "onUploadSuccess" : upload_picture_cover{$field.name},
+'onFallback' : function() {
+    alert('未检测到兼容版本的Flash.');
+}
+});
+function upload_picture_cover{$field.name}(file, data){
+    console.log(data);
+    var data = $.parseJSON(data);
+    var src = '';
+    if(data.status){
+        $("#cover_id_cover").val(data.id);
+        src = data.url || '__ROOT__' + data.path;
+        $("#cover_id_cover").parent().find('.upload-img-box').html(
+                '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+        );
+    } else {
+        updateAlert(data.info);
+        setTimeout(function(){
+            $('#top-alert').find('button').click();
+            $("#upload_picture_cover").removeClass('disabled').prop('disabled',false);
+        },1500);
+    }
+}
+
+
+
+/*获取游戏名称*/
+$("#game_id").change(function() {
+    $("#game_name").val($("#game_id option:selected").text());
+});
+var ratio_type=$("input[type=radio]:checked").val();
+if(ratio_type == 1){
+    var file_type="apk";
+}else if(ratio_type == 2){
+    var file_type="ipa";
+}
+$(".inp_radio").click(function(){
+    var ratio_type=$("input[type=radio]:checked").val();
+    if(ratio_type == 1){
+    var file_type="apk";
+    }else if(ratio_type == 2){
+    var file_type="ipa";
+    }
+    location.reload()
+});
+var userInfo = {userId:"kazaff", md5:""};   //用户会话信息
+var chunkSize = 5000 * 1024;        //分块大小
+var uniqueFileName = null;          //文件唯一标识符
+var md5Mark = null;
+var backEndUrl = "{:U('File/shard_upload',array('session_id'=>session_id()))}";
+WebUploader.Uploader.register({
+    "before-send-file" : "beforeSendFile", 
+    "before-send"      : "beforeSend", 
+    "after-send-file"  : "afterSendFile"
+}, {
+    beforeSendFile: function(file){
+        //秒传验证
+        var task = new $.Deferred();
+        var start = new Date().getTime();
+        (new WebUploader.Uploader()).md5File(file, 0, 10*1024*1024).progress(function(percentage){
+            //console.log(percentage);
+        }).then(function(val){
+            //console.log("总耗时: "+((new Date().getTime()) - start)/1000);
+            md5Mark = val;
+            userInfo.md5 = val;
+            $.ajax({
+                type: "POST"
+                , url: backEndUrl
+                , data: {status: "md5Check", md5: val}
+                , cache: false
+                , timeout: 1000 //todo 超时的话，只能认为该文件不曾上传过
+                , dataType: "json"
+            }).then(function(data, textStatus, jqXHR){
+                alert(data.chunk);
+                //console.log(data);
+                if(data.ifExist){   //若存在，这返回失败给WebUploader，表明该文件不需要上传
+                    task.reject();
+                    uploader.skipFile(file);
+                    file.path = data.path;
+                }else{
+                    task.resolve();
+                    //拿到上传文件的唯一名称，用于断点续传
+                    uniqueFileName = md5(''+userInfo.userId+file.name+file.type+file.lastModifiedDate+file.size);
+                }
+            }, function(jqXHR, textStatus, errorThrown){    //任何形式的验证失败，都触发重新上传
+                task.resolve();
+                //拿到上传文件的唯一名称，用于断点续传
+                uniqueFileName = md5(''+userInfo.userId+file.name+file.type+file.lastModifiedDate+file.size);
+            });
+        });
+        return $.when(task);
+    }
+    , beforeSend: function(block){
+        //分片验证是否已传过，用于断点续传
+        var task = new $.Deferred();
+        $.ajax({
+            type: "POST"
+            , url: backEndUrl
+            , data: {
+                status: "chunkCheck"
+                , name: uniqueFileName
+                , chunkIndex: block.chunk
+                , size: block.end - block.start
+            }
+            , cache: false
+            , timeout: 1000 //todo 超时的话，只能认为该分片未上传过
+            , dataType: "json"
+        }).then(function(data, textStatus, jqXHR){
+            if(data.ifExist){   //若存在，返回失败给WebUploader，表明该分块不需要上传
+                task.reject();
+            }else{
+                task.resolve();
+            }
+        }, function(jqXHR, textStatus, errorThrown){    //任何形式的验证失败，都触发重新上传
+            task.resolve();
+        });
+
+        return $.when(task);
+    }
+    , afterSendFile: function(file){
+        var chunksTotal = 0;
+        if((chunksTotal = Math.ceil(file.size/chunkSize)) > 1){
+            //合并请求
+            var task = new $.Deferred();
+            $.ajax({
+                type: "POST"
+                , url: backEndUrl
+                , data: {
+                    status: "chunksMerge"
+                    , name: uniqueFileName
+                    , chunks: chunksTotal
+                    , ext: file.ext
+                    , md5: md5Mark
+                }
+                , cache: false
+                , dataType: "json"
+            }).then(function(data, textStatus, jqXHR){
+                //todo 检查响应是否正常
+                task.resolve();
+                file.path = data.path;
+                $("#file_name").val(data.name);
+                $("#file_url").val(data.path);
+                $("#file_size").val(file.size);
+            }, function(jqXHR, textStatus, errorThrown){
+                task.reject();
+            });
+            return $.when(task);
+        }else{
+            //UploadComlate(file);
+        }
+    }
+});
+var uploader = WebUploader.create({
+    // 选完文件后，是否自动上传。
+    auto: true,
+    // swf文件路径
+    swf: '__STATIC__/webuploader/Uploader.swf',
+    // 文件接收服务端。
+    server: "{:U('File/shard_upload',array('session_id'=>session_id()))}",
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: {id:'#picker'},
+    //dnd: "#theList",
+    paste: document.body,
+    // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+    resize: false,
+    accept:{extensions: file_type,mimeTypes:'.'+file_type},
+    disableGlobalDnd: true,
+    fileNumLimit:1,
+    threads:3,
+    compress: false,
+    prepareNextFile: true,
+    formData: function(){return $.extend(true, {}, userInfo);},
+    duplicate:true,
+    chunked:true,
+    chunkSize: 5*1000*1024,
+    duplicate: true
+});
+// 当有文件被添加进队列的时候
+uploader.on( 'fileQueued', function( file ) {
+    $("#thelist").append( '<div id="' + file.id + '" class="item">' +
+        '<h4 class="info">' + file.name + '</h4>' +
+        '<p class="state">等待上传...</p>' +
+    '</div>' );
+});
+
+// 文件上传过程中创建进度条实时显示。
+uploader.on( 'uploadProgress', function( file, percentage ) {
+    var $li = $( '#'+file.id ),
+        $percent = $li.find('.progress .progress-bar');
+    // 避免重复创建
+    if ( !$percent.length ) {
+        $percent = $('<div class="progress progress-striped active">' +
+          '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+          '</div>' +
+        '</div>').appendTo( $li ).find('.progress-bar');
+    }
+    $li.find('p.state').text('上传中');
+    $percent.css( 'width', percentage * 100 + '%' );
+    $percent.text( (percentage * 100).toFixed(0) + '%' );
+});
+
+uploader.on( 'uploadSuccess', function( file , response) {
+    $( '#'+file.id ).find('p.state').text('已上传');
+    //alert(JSON.stringify(response));
+
+    if(!response.chunk){
+        $("#file_name").val(response.name);
+        $("#file_url").val(response.path);
+        $("#file_size").val(response.size);
+    }
+    //alert($("#file_name").val()+";"+$("#file_url").val()+";"+$("#file_size").val())
+});
+
+uploader.on( 'uploadError', function( file ) {
+    $( '#'+file.id ).find('p.state').text('上传出错');
+});
+
+uploader.on( 'uploadComplete', function(file) {
+    $( '#'+file.id ).find('.progress').fadeOut();
+});
+
+//苹果
+var uploader = WebUploader.create({
+    // 选完文件后，是否自动上传。
+    auto: true,
+    // swf文件路径
+    swf: '__STATIC__/webuploader/Uploader.swf',
+    // 文件接收服务端。
+    server: "{:U('File/shard_upload',array('session_id'=>session_id(),'typee'=>1))}",
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: {id:'#picker2'},
+    //dnd: "#theList",
+    paste: document.body,
+    // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+    resize: false,
+    accept:{extensions:"mobileprovision",mimeTypes:'.mobileprovision'},
+    disableGlobalDnd: true,
+    fileNumLimit:1,
+    threads:3,
+    compress: false,
+    prepareNextFile: true,
+    formData: function(){return $.extend(true, {}, userInfo);},
+    duplicate:true,
+    chunked:true,
+    chunkSize: 5*1000*1024,
+    duplicate: true
+});
+// 当有文件被添加进队列的时候
+uploader.on( 'fileQueued', function( file2 ) {
+    $("#thelist2").append( '<div id="' + file2.id + '" class="item">' +
+        '<h4 class="info">' + file2.name + '</h4>' +
+        '<p class="state">等待上传...</p>' +
+    '</div>' );
+});
+
+// 文件上传过程中创建进度条实时显示。
+uploader.on( 'uploadProgress', function( file2, percentage2 ) {
+    var $li = $( '#'+file2.id ),
+        $percent = $li.find('.progress .progress-bar');
+    // 避免重复创建
+    if ( !$percent.length ) {
+        $percent = $('<div class="progress progress-striped active">' +
+          '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+          '</div>' +
+        '</div>').appendTo( $li ).find('.progress-bar');
+    }
+    $li.find('p.state').text('上传中');
+    $percent.css( 'width', percentage2 * 100 + '%' );
+    $percent.text( (percentage2 * 100).toFixed(0) + '%' );
+});
+
+uploader.on( 'uploadSuccess', function( file2 , response2) {
+    $( '#'+file2.id ).find('p.state').text('已上传');
+    // alert(JSON.stringify(response2));
+
+    if(!response2.chunk){
+        $("#file_name2").val(response2.name);
+        $("#file_url2").val(response2.path);
+    }
+});
+
+uploader.on( 'uploadError', function( file2 ) {
+    $( '#'+file2.id ).find('p.state').text('上传出错');
+});
+
+uploader.on( 'uploadComplete', function(file2) {
+    $( '#'+file2.id ).find('.progress').fadeOut();
+});
+</script>
+</block>

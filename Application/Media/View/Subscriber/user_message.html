@@ -1,0 +1,53 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/user.css" rel="stylesheet" >
+</block>
+<block name="header">
+<header class="header">
+  <section class="wrap">
+    <a href="user.html" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">消息</span></span></div>
+  </section>
+</header>
+</block>
+<block name="iframe" >
+<div class="mainer user-message">
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="list message-list">
+            
+            <empty name="msg">
+            <div class="empty ">
+              <img src="__IMG__/blank_news.png" class="empty-icon">
+              <p class="empty-text">暂无消息通知</p>
+            </div>
+            <else/>
+            <div class="list message-text-list">
+              <ul class="">
+                <volist name="msg" id="mg">
+                <li>
+                  <div class="item clearfix">
+                    <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$mg['icon']}" class="icon"></div>
+                    <div class="textbox">
+                      <div class="title clearfix"><span class="name"><if condition="$mg.type eq 3">预约通知<else/>开服通知</if></span><span class="date">{:set_show_time($mg['create_time'],'','other')}</span></div>
+                      <p class="info">{$mg['content']}</p>
+                    </div>
+                  </div>
+                </li>
+                </volist>
+              </ul>
+            </div>
+            </if>
+           </empty>
+          </div>
+        </section>
+        
+      </section>
+    </section>
+</div>
+    
+</block>

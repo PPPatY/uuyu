@@ -1,0 +1,64 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<script src="__JS__/clipboard.min.js"></script>
+<style>
+.footer{
+  display: none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+        <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">我的礼包</span></span></div>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="list gift-list">
+            
+            <div class="empty">
+              <img src="__IMG__/blank_gift.png" class="empty-icon">
+              <p class="empty-text">暂无礼包</p>
+            </div>
+            <notempty name="giftlist">
+            <div class="hot-gift">
+              <div class="hot-gift-title"><span>推荐礼包</span><a href="{:U('Gift/index')}" class="more"><img src="__IMG__/ma_more.png" class="icon-right"></a></div>
+              <ul class="list text-pic-list">
+              <volist name='giftlist' id="gift">
+                <li class="clearfix">
+                  <div class="item clearfix">
+                    <a href="{$gift.play_detail_url}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$gift.icon}" class="icon"></a>
+                    <div class="butnbox"><span class="table"><span class="table-cell"><a href="{:U('Gift/giftdetail',array('gift_id'=>$gift['gift_id']))}" class="butn">去领取</a></span></span></div>
+                    <div class="textbox">
+                      <a href="{:U('Gift/giftdetail',array('gift_id'=>$gift['gift_id']))}" class="title">《{$gift['game_name']}》{$gift.giftbag_name}</a>
+                      <div class="surplusbox"><span class="surplus"><i style="width:{:round($gift['novice_surplus']/$gift['novice_all']*100,2)}%"></i></span><span class="number">剩余<i>{:round($gift['novice_surplus']/$gift['novice_all']*100,2)}%</i></span></div>
+                      <p class="validitytime">有效期：{:set_show_time($gift['start_time'],'date','forever')}~{:set_show_time($gift['end_time'],'date','forever')}</p>
+                    </div>
+                  </div>
+                </li>
+              </volist>
+              </ul>
+            </div>
+            </notempty>
+          </div>
+        </section>
+        
+      </section>
+    </section>
+    
+    <script src="__JS__/common.js"></script>
+    <script>
+        $(function() {
+          
+          
+        });
+        
+        
+        
+    </script>
+</block>

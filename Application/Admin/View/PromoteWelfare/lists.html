@@ -1,0 +1,165 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Spend/lists')}">充值</a></li>
+            <li><a href="{:U('Rebate/lists')}">返利折扣</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：设置单个渠道单个游戏享受的代充折扣</p>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+				<a class=" " href="{:U('add?model='.$model['id'])}"><span class="button_icon button_icon1"></span>新 增</a>
+				<a class=" ajax-post confirm " target-form="ids" url="{:U('del?model='.$model['id'])}"><span class="button_icon button_icon2"></span>删 除</a>
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list input-list-game search_label_rehab">
+                <label>推广员帐号：</label>
+                <select name="promote_account" class="select_gallery" style="width:150px;">
+                    <option value="">请选择推广员</option>
+                    <volist name=":get_promote_list()" id="vo">
+                        <option  value="{$vo.id}">{$vo.account}</option>
+                    </volist>
+                </select>
+            </div>
+			<div class="input-list input-list-game search_label_rehab">
+                <label>游戏名称：</label>
+                <select  name="game_id" class="select_gallery" >
+                    <option value="">请选择游戏</option>
+                    <volist name=":get_game_list()" id="vo">
+                        <option  value="{$vo.id}">{$vo.game_name}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="input-list input-list-insteadstatus">
+            <label>折扣状态：</label>
+                <select id="sdk_version1" name="recharge_status" class="select_gallery select2-search--hide">
+                    <option value="">请选择</option>
+                    <option value="1">开启</option>
+                    <option value="0">关闭</option>
+                </select>
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th>
+                            <label class="checked">
+								<input class="check-all" type="checkbox">
+								<i class="check_icon"></i>
+							</label>
+                        </th>
+                        <volist name="list_grids" id="field">
+                            <th>{$field.title}</th>
+                        </volist>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <empty name="list_data">
+                    <td colspan="10">暂无数据</td>
+                    <else/>
+                    <volist name="list_data" id="data">
+                        <tr>
+                            <td>
+                            	<label class="checked">
+								        <input class="ids" type="checkbox" value="{$data['id']},{$data.file_type},{$data['game_id']}" name="ids[]">
+								        <i class="check_icon"></i>
+							        </label>
+                            </td>
+                            <volist name="list_grids" id="grid">
+                                <if condition="strpos($grid['field'][0],'promote_status') !== false">
+                                <eq name="data.promote_status" value="0">
+                                <td><span class="disabled_status">{:get_list_field($data,$grid)}</span></td>
+                                <else />
+                                <td>{:get_list_field($data,$grid)}</td>
+                                </eq>
+                                <elseif condition="strpos($grid['field'][0],'recharge_status') !== false" />
+                                <eq name="data.recharge_status" value="0">
+                                <td><span class="disabled_status">{:get_list_field($data,$grid)}</span></td>
+                                <else />
+                                <td>{:get_list_field($data,$grid)}</td>
+                                </eq>
+                                <else />
+                                <td>{:get_list_field($data,$grid)}</td>
+                                </if>
+                            </volist>
+                        </tr>
+                    </volist>
+                    </empty>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+
+    Think.setValue("promote_account","{:I('promote_account')}");
+    Think.setValue("game_id","{:I('game_id')}");
+    Think.setValue("recharge_status","{:I('recharge_status')}");
+    Think.setValue("promote_status","{:I('promote_status')}");
+
+    $(".select_gallery").select2();
+    $(".select2-search--hide").select2({
+		minimumResultsForSearch: -1,
+	});
+</script>
+<script type="text/javascript">
+highlight_subnav('{:U('PromoteWelfare/lists')}');
+if('{$Think.get.game_name}'!=''){
+    $('#select2-game_id-container').text('{$Think.get.game_name}');
+}
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+})
+</script>
+</block>

@@ -1,0 +1,33 @@
+<extend name="Public/bases" />
+<block name="body" >
+<div class="body_area" style="height:100%; overflow:hidden;"> 
+  
+  <!--首页导航-->
+  <div class="wel_nav">
+    <ul>
+      <li><a href="{:U('/gift','',true,'',true)}"><i class="welnav_01"></i><font>礼包</font><em></em></a></li>
+      <li><a href="{:U('/server','',true,'',true)}"><i class="welnav_02"></i><font>开服</font><em></em></a></li>
+      <li><a href="{:U('/huodong','',true,'',true)}"><i class="welnav_03"></i><font>活动</font><em></em></a></li>
+      <li  class="now"><a href="{:U('/news','',true,'',true)}"><i class="welnav_04"></i><font>新闻</font><em></em></a></li>
+      <div class="clear"></div>
+    </ul>
+  </div>
+  <!--首页导航结束--> 
+  
+  <!--活动-->
+  <div class="inbg newcont">
+   
+   <table>
+      <volist name="data" id="vo">
+        <tr><th width="35%"><a href="{:U('/huodongde',array('id'=>$vo['id']),true,'',true)}"><img src="{$vo['cover_id']|get_cover='path'}"></a></th>
+        <td width="62%"><a href="{:U('/huodongde',array('id'=>$vo['id']),true,'',true)}"><h3>{$vo.title}</h3><span>{:format_date($vo['update_time'])}</span></a></td>
+        </tr>
+      </volist>
+   </table>
+  
+  
+  </div>
+  <!--活动结束-->
+  
+</div>
+</block>

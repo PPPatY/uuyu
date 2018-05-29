@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+	<meta property="qc:admins" content="71472552776166367">
+
+	<meta property="qc:admins" content="0500007726643536375">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<meta name="apple-mobile-app-status-bar-style" content="black">
+	<meta http-equiv="Pragma" content="no-cache"> 
+	<meta http-equiv="Cache-Control" content="no-cache"> 
+	<meta http-equiv="Expires" content="0"> 
+
+	<meta name="format-detection" content="telephone=no">
+
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1,minimal-ui">
+
+	<meta name="full-screen" content="yes">
+
+	<block name="title"><title>{:C(PC_SET_TITLE)}</title></block>
+
+	<link href="{:get_cover(C('PC_SET_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+
+	<script src="__JS__/jquery-1.10.2.min.js"></script>
+
+
+
+</head>
+
+<body id="body3">
+
+<block name="body"></block>	
+
+<script>
+
+$(".page_back").on('click',function() {
+
+	window.history.back(-1);
+
+});
+
+$(".page_index_back").on('click',function() {
+
+	location.href ="{:U('Subscriber/u_findpwd_1')}";
+
+});
+
+if(IsPC()){
+
+		$("#qrcode").attr('style','display:block;');
+
+	}
+
+	function IsPC() {
+
+        var userAgentInfo = navigator.userAgent;
+
+        var Agents = ["Android", "iPhone",
+
+                    "SymbianOS", "Windows Phone",
+
+                    "iPad", "iPod"];
+
+        var flag = true;
+
+        for (var v = 0; v < Agents.length; v++) {
+
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+
+                flag = false;
+
+                break;
+
+            }
+
+        }
+
+        return flag;
+
+    }
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+

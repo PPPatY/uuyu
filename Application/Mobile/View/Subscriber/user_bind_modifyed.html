@@ -1,0 +1,103 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+        <a href="{:U('user_bind_modify')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">绑定新手机号</span></span></div>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+      
+      <section class="inner">
+        <section class="contain">
+
+          <form action="" class="">
+          <div class="bind-modify-info info-table jsauthinfo">
+            <div class="wrap">
+                <div class="item table">
+                  <span class="table-cell item1">新手机号</span>
+                  <span class="table-cell item2"><input type="text" id="mobile" name="" class="txt" placeholder="请输入您的手机号" value=""></span>
+                </div>
+                <div class="item table codewrap">
+                    <span class="table-cell item1">验证码</span>
+                    <span class="table-cell item2"><input type="text" name="" class="txt" placeholder="请输入验证码" value=""></span>
+                    <span class="table-cell item3"><a href="javascript:;" class="btn getcode">获取验证码</a></span>
+                </div>
+            </div>
+          </div>
+          <div class="bind-butn info-input-butn">
+            <input type="submit" class="butn disabled jssubmit" value="提交">
+            <p class="error-text auth-error hidden">手机号已被绑定，不可重复绑定</p>
+          </div>
+          </form>
+          
+        </section>
+        
+      </section>
+    </section>
+    
+    
+    <div class="pop"></div>
+    <script src="style/js/pop.lwx.min.js"></script>
+    <script src="style/js/common.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+          
+          $('.jsauthinfo .txt').keyup(function() {
+            
+            $('.jsauthinfo .txt').each(function(i,n) {
+              if ($(n).val().length<1) {$('.jssubmit').addClass('disabled');return false;}
+              else {$('.jssubmit').removeClass('disabled');}
+            });
+            
+            
+            return false;
+          });
+          
+          $('.getcode').click(function() {
+            var that=$(this);
+            if (that.hasClass('disabled')) {return false;}
+            
+            var mobile = $.trim($('#mobile').val());
+            
+            if (mobile) {
+            
+              clock('.getcode');
+            
+            }
+            
+            return false;
+          });
+          
+          
+          $('.jssubmit').click(function() {
+            var that=$(this);
+            if (that.hasClass('disabled')) {return false;}
+            that.addClass('disabled');
+
+            // 失败
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">绑定失败</div><div class="pop-text">可能是网络原因，请重新提交</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">重试</a></div>');
+            $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+            $('.pop-comfirm').click(function() {pop.close();that.removeClass('disabled');});
+            
+            
+            
+            return false;
+          });
+
+          
+        });
+        
+        
+        
+    </script>
+</block>

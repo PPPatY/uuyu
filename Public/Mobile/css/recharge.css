@@ -1,0 +1,56 @@
+/**
+ * 我的样式
+ * @author 鹿文学
+ */
+/* common */
+body{background:#FFF;}
+
+/* header */
+.header {background-color:#23BBF3;}
+.header .caption {margin:0 16.2%;}
+.header .arrow-left {width:16%;}
+.header .arrow-left img{margin-left:.4rem;width:0.38rem;margin-top:-10%;}
+.header .word {font-size:0.48rem;display:inline-block;margin-left:1%;}
+.header .user-slightly img{width:0.66rem;height:0.66rem;vertical-align:baseline;display:block;}
+.header .user-slightly{margin-right:0.6rem;}
+
+.detail .base {background:#FFF;padding:0.4rem 0.6rem;}
+.detail .base .wrap{position:relative;}
+.detail .base .iconbox {width:1.64rem;height:1.64rem;max-height:164px;max-width:164px;float:left;position:relative;border-radius:0.4rem;overflow:hidden;background:#E2E2E2;color:#BBBABA;font-size:0.34rem;}
+.detail .base .iconbox .icon {position:relative;z-index:2;width:100%;}
+.detail .base .textbox {margin:0 0rem 0 1.94rem;height:1.64rem;}
+.detail .base .textbox .title {font-size:0.44rem;padding-top:0.2rem;color:#000;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.detail .base .textbox .rechargeinfo {margin:0;margin-top:.05rem;font-size:.36rem;color:#999;white-space:nowrap;text-overflow:ellipsis;}
+.detail .base .textbox .rechargeinfo .blue {color:#23BBF3;}
+
+.detail .other {background:#FFF;border-top:0.3rem solid #EDEDED;padding:0.68rem 0.6rem;}
+.detail .other .notice-title {font-weight:normal;font-size:0.48rem;color:#FF3228;margin:0;}
+.detail .other .notice-text {font-size:0.44rem;color:#000;margin:0;}
+.detail .other .notice-text .blue {color:#23BBF3;}
+.detail .other .notice-text .apple {color:#666;display:block;text-indent:0.6rem;}
+.detail .other .notice-text.nt2 {padding-top:0.4rem;}
+.detail .other .notice-text.nt1 {padding-top:0.6rem;}
+.detail .other .notice-text.nt1 span {display:inline-block;}
+.detail .other .notice-text.nt1 span i{display:inline-block;width:0.09rem;height:0.09rem;background:#23BBF3;border-radius:50%;margin:0.08rem 0.04rem;vertical-align:middle;} 
+.detail .other .notice-text.nt1 .vertical {vertical-align:middle;}
+.detail .other .notice-text.nt1 .vertical i {display:block;}
+
+.detail .other .notice-pic {padding:0.5rem 0.7rem;}
+.detail .other .notice-pic img {display:block;margin:0;padding:0;}
+.detail .other .notice-pic.np1 img,
+.detail .other .notice-pic.np2 .snp {width:1.18rem;height:1.18rem;max-height:118px;max-width:118px;}
+.detail .other .notice-pic.np2 .snp {float:left;margin-right:0.7rem;}
+.detail .other .notice-pic.np2 .third {clear:both;padding-top:0.8rem;width: 100%;}
+
+
+
+@media screen and (max-width:660px) {
+  
+}
+@media screen and (max-width:540px) {
+  
+}
+@media screen and (max-width:400px) {
+  
+}
+@media screen and (max-width:320px) {}

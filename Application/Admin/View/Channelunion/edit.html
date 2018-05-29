@@ -1,0 +1,33 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a><notempty name="pid">
+			&nbsp;&nbsp;[&nbsp;父导航：<a href="{:U('index','pid='.$pid)}">{$parent.title}</a>&nbsp;]
+			</notempty></li>
+        </ul>
+    </div>
+	<form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+		<input type="hidden" name="pid" value="{$pid}">
+		<ul class="form_info form_info_channel">
+            <li><label>导航标题</label><div class="form_main"><input type="text" class="" name="title" value="{$info.title|default=''}" placeholder="请输入导航标题"></div><i class="form_hint">用于显示的文字</i></li>
+            <li><label>导航连接</label><div class="form_main"><input type="text" class="" name="url" value="{$info.url|default=''}" placeholder="请输入导航连接"></div><i class="form_hint">用于调转的URL，支持带http://的URL或U函数参数格式</i></li>
+            <li><label>新窗口打开</label><div class="form_main"><span class="form_select"><select name="target">
+				<option value="0" <eq name="info.target" value="0" >selected</eq>>否</option>
+				<option value="1" <eq name="info.target" value="1" >selected</eq>>是</option>
+                </select></span></div><i class="form_hint">是否新窗口打开链接</i></li>
+            <li><label>优先级</label><div class="form_main"><input type="text" class="" name="sort" value="{$info.sort|default='0'}" placeholder="请输入优先级"></div><i class="form_hint">导航显示顺序</i></li>
+            <li><label>&nbsp;</label><input type="hidden" name="id" value="{$info.id|default=''}"><input type="submit" class="form_btn ajax-post" value="确定" target-form="form-horizontal"></li>
+        </ul>
+	</form>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+	//导航高亮
+	highlight_subnav('{:U('index')}');
+</script>
+</block>

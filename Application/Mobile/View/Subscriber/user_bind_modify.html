@@ -1,0 +1,161 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<header class="header">
+  <section class="wrap">
+    <a href="{:U('user_bind_phone')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">验证原手机号</span></span></div>
+  </section>
+</header>
+<div class="occupy"></div>
+
+<section class="trunker">
+  
+  <section class="inner">
+    <section class="contain">
+
+      <form action="" class="">
+      <div class="bind-modify-info info-table jsauthinfo">
+        <div class="wrap">
+            <div class="item table">
+              <span class="table-cell item1">原手机号</span>
+              <span class="table-cell item2"><input type="text" id="mobile" name="" disabled="disabled" class="txt" placeholder="请输入您的手机号" value="{:substr($userinfo['phone'],0,3)}******{:substr($userinfo['phone'],-3)}"></span>
+            </div>
+            <div class="item table codewrap">
+                <span class="table-cell item1">验证码</span>
+                <span class="table-cell item2"><input type="text" name="" id="codenum" class="txt" placeholder="请输入验证码" value=""></span>
+                <span class="table-cell item3"><a href="javascript:;" class="btn getcode">获取验证码</a></span>
+            </div>
+        </div>
+      </div>
+      <div class="bind-butn info-input-butn">
+        <input type="submit" class="butn disabled jssubmit" value="提交">
+        <p class="error-text auth-error hidden"></p>
+      </div>
+      <p class="bind-modify-notice">
+        手机停用？<a href="{:U('Subscriber/user_contact')}" class="callservice">联系客服<i class="icon-right"><i></a>
+      </p>
+      </form>
+      
+    </section>
+    
+  </section>
+</section>
+
+
+<div class="pop"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script>
+    $(function() {
+      var pop = $('.pop').pop();
+      
+      $('.jsauthinfo .txt').keyup(function() {
+        
+        $('.jsauthinfo .txt').each(function(i,n) {
+          if ($(n).val().length<1) {$('.jssubmit').addClass('disabled');return false;}
+          else {$('.jssubmit').removeClass('disabled');}
+        });
+        
+        
+        return false;
+      });
+      
+      $('.getcode').click(function() {
+        var that=$(this),parent=that.closest('form');
+        if (that.hasClass('disabled')) {return false;}
+        var phone = "{$userinfo['phone']}";
+        parent.find('.auth-error').stop(true).fadeOut(200).addClass('hidden').text('');
+        if (phone && /^1[34578][0-9]{9}$/.test(phone)) {
+          // ajax
+          $.ajax({
+            type: "POST",
+            url: checkphoneexsite,
+            data: {phone:phone},
+            dataType: "json",
+            success: function(data){
+              if(data.code==0){
+                parent.find('.auth-error').stop(true).fadeIn(200).removeClass('hidden').text('手机号不可用，请联系客服');
+                return false;
+              }else{
+                  $.ajax({
+                      type: "POST",
+                      url: sendcodeurl,
+                      data: {phone:phone,way:2},
+                      dataType: "json",
+                      success: function(data){
+                        if(data.status){
+                          clock(that);
+                        }else{
+                          parent.find('.auth-error').stop(true).fadeIn(200).removeClass('hidden').text(data.msg);
+                        }
+                      },
+                      error:function(){
+                          errorshow("服务器错误");
+                          return false;
+                      }
+                  });
+              }
+            },
+            error:function(){
+                errorshow("服务器错误");
+                return false;
+            }
+          });
+        } else {
+          parent.find('.auth-error').stop(true).fadeIn(200).removeClass('hidden').text('手机号错误，请联系客服');
+        }
+        return false;
+      });
+      
+      
+      $('.jssubmit').click(function() {
+        var that=$(this);
+        parent=that.closest('form');
+        if (that.hasClass('disabled')) {return false;}
+        verify = $("#codenum").val();//验证码
+        if(!verify){
+          parent.find('.auth-error').stop(true).fadeIn(200).removeClass('hidden').text('请输入短信验证码');
+          return false;
+        }
+        var phone = "{$userinfo['phone']}";
+        $.ajax({
+            type: "POST",
+            url: zhucepurl,
+            data: {account:phone,type:'',verify:verify,way:4},
+            dataType: "json",
+            success: function(data){
+              if(data.status==0){
+                parent.find('.auth-error').stop(true).fadeIn(200).removeClass('hidden').text(data.msg);
+                return false;
+              }else if(data.status){
+                //成功
+                $msg = '<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_bind_successfully.png"><div class="pop-title" style="font-style:normal">';
+                $msg +='解绑成功！</div></div>';
+                pop.addClass('pop-notice').open('',$msg);
+                pop.find('.pop-close').click(function() {location.reload();});
+                
+              }
+            },
+            error:function(){
+                // // 失败
+                pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title" style="font-style:normal">解绑失败</div><div class="pop-text">可能是网络原因，请重新提交</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 refresh">重试</a></div>');
+                $('.refresh').click(function() {location.reload();});
+                return false;
+            }
+        });
+        return false;
+      });
+
+      
+    });
+    
+    
+    
+</script>
+</block>

@@ -1,0 +1,226 @@
+<extend name="Public/mix_ base"/>
+<block name="css">
+</block>
+<block name="location">
+<div class="location-container">当前位置：<span>联盟站点</span><span>游戏列表</span><span>编辑游戏</span></div>
+</block>
+<block name="body">
+    <div class="page-form siteGame-add-form">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_game.png">{$meta_title}</div>
+      <div class="trunk-content article">
+        <div class="trunk-list">
+          <form action="" novalidate="novalidate" method="post" id="data">
+              <table class="table2">
+                  <tr>
+                      <td class="l">游戏来源：</td>
+                      <td class="r form-radio jspayradio">
+                          <label><input type="radio" name="game_source" class="" value="1" disabled="disabled"><i></i><span>平台官方</span></label>
+                          <label><input type="radio" name="game_source" class="" value="2" disabled="disabled"><i></i><span>第三方游戏</span></label>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">游戏名称：</td>
+                      <td class="r">
+                          <eq name="data.game_source" value="1">
+                          <select name="game_id" id="game_id" class="reselect select_gallery" disabled="disabled" style="min-width:220px;">
+                              <option value="">请选择游戏</option>
+                              <volist name="game" id="vo">
+                              <option value="{$vo.game_id}">{$vo.game_name}</option>
+                              </volist>
+                          </select>
+                          <else />
+                          <input name="game_name" value="{$data.game_name}" type="text" class="name txt">
+                          </eq>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">游戏类型：</td>
+                      <td class="r">
+                          <input name="game_type" class="name txt" id="game_type">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">开放类型：</td>
+                      <td class="r">
+                          <input name="open_type" class="name txt" id="open_type">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">游戏大小：</td>
+                      <td class="r">
+                          <input name="game_size" class="name txt" id="game_size">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">游戏版本号：</td>
+                      <td class="r">
+                          <input name="version" id="version" class="name txt">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">游戏图标：</td>
+                      <td class="r">
+                          <div class="upload-img-box">
+                              <notempty name="data['game_icon']">
+                                  <div class="upload-pre-item"><img src="{:get_cover($data['game_icon'],'path')}"></div>
+                              </notempty>
+                          </div>
+                          <input type="file" id="icon_game">
+                          <input type="hidden" name="game_icon" id="game_icon" value="" />
+                          (120*120)
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">游戏广告图：</td>
+                      <td class="r">
+                          <div class="upload-img-box">
+                              <notempty name="data['game_img']">
+                                  <div class="upload-pre-item"><img src="{:get_cover($data['game_img'],'path')}"></div>
+                              </notempty>
+                          </div>
+                          <input type="file" id="img_game">
+                          <input type="hidden" name="game_img" id="game_img" value="" />
+                          (1000*255)
+                      </td>
+                  </tr>
+                  <eq name="data.game_source" value="2">
+                  <tr id="dow_url">
+                      <td class="l">游戏下载地址：</td>
+                      <td class="r">
+                          <input name="game_dow_url" id="game_dow_url" class="name txt">
+                      </td>
+                  </tr>
+                  </eq>
+                  <tr>
+                      <td class="l"></td>
+                      <td class="r">
+                          <input name="id" hidden="hidden" value="{$data.id}">
+                          <button type="button" class="tjbnt btn" onclick="save()">保存</button>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+  <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+  <script type="text/javascript">
+  <volist name="data" id="vo">
+    setValue("{$key}","{$vo}");
+  </volist>
+  </script>
+  <script type="text/javascript">
+      $(function() {
+
+
+
+          $(".select_gallery").select2();
+          
+          $('.jspayradio input:checked').siblings('i').addClass('current');
+          
+          
+      });
+
+      /* 初始化上传插件 */
+      $("#icon_game").uploadify({
+          "height"          : 30,
+          "swf"             : "__STATIC__/uploadify/uploadify.swf",
+          "fileObjName"     : "download",
+          "buttonText"      : "上传图片",
+          "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+          "width"           : 120,
+          'removeTimeout'   : 1,
+          'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+          "onUploadSuccess" : upload_icon_game,
+          'onFallback' : function() {
+              alert('未检测到兼容版本的Flash.');
+          }
+      });
+      function upload_icon_game(file, data){
+          var data = $.parseJSON(data);
+          var src = '';
+          if(data.status){
+              $("#game_icon").val(data.id);
+              src = data.url || '__ROOT__' + data.path;
+              $("#game_icon").parent().find('.upload-img-box').html(
+                  '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+              );
+          } else {
+              updateAlert(data.info);
+              setTimeout(function(){
+                  $('#top-alert').find('button').click();
+                  $(that).removeClass('disabled').prop('disabled',false);
+              },1500);
+          }
+      }
+      /* 初始化上传插件 */
+      $("#img_game").uploadify({
+          "height"          : 30,
+          "swf"             : "__STATIC__/uploadify/uploadify.swf",
+          "fileObjName"     : "download",
+          "buttonText"      : "上传图片",
+          "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+          "width"           : 120,
+          'removeTimeout'   : 1,
+          'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+          "onUploadSuccess" : upload_img_game,
+          'onFallback' : function() {
+              alert('未检测到兼容版本的Flash.');
+          }
+      });
+      function upload_img_game(file, data){
+          var data = $.parseJSON(data);
+          var src = '';
+          if(data.status){
+              $("#game_img").val(data.id);
+              src = data.url || '__ROOT__' + data.path;
+              $("#game_img").parent().find('.upload-img-box').html(
+                  '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+              );
+          } else {
+              updateAlert(data.info);
+              setTimeout(function(){
+                  $('#top-alert').find('button').click();
+                  $(that).removeClass('disabled').prop('disabled',false);
+              },1500);
+          }
+      }
+
+  var sub = true;
+  function save() {
+      if(!sub){
+          return false;
+      }
+      var data = $("#data").serialize();
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('edit')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+                  setTimeout(function () {
+                      location.href = "{:U('index')}";
+                  },1000)
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.info, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+  //导航高亮
+  highlight_subnav('{:U('SiteGame/index')}');
+  </script>
+</block>

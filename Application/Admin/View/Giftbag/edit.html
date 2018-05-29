@@ -1,0 +1,315 @@
+<extend name="Public/base" />
+
+<block name="body">
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<style type="text/css">
+	.tab_content {padding-top: 0;}
+	.select2-container{width: 367px !important;}
+	.tab_content input[type=text]{width: 365px;}
+	#form .txt_area2 {width: 358px;height: 70px;}
+	#form .txt_area1 {width: 358px;height: 70px;}
+</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Game/lists')}">游戏</a></li>
+            <li><a href="{:U('Giftbag/lists')}">礼包管理</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <!-- 标签页导航 -->
+<div class="tab-wrap">
+	<div class="formtitle" style="margin-bottom: 10px;"><span>编辑礼包</span></div>
+    <div class="tab-content tab_content">
+    <!-- 表单 -->
+    <form id="form" action="{:U('edit?id='.$data['id'])}" method="post" class="form-horizontal">
+        <!-- 基础文档模型 -->
+        <div id="tab1" class="tab-pane in tab1 tab_table">
+            <table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td class="l"><span style="color: red;">* </span>游戏名称：</td>
+                    <td class="r" >
+                       <select id="game_id" name="game_id" disabled="disabled">
+                            <option value="0" selected="">请选择游戏</option>
+                            <volist name=':get_game_list()' id='vo'>
+                                <option value="{$vo.id}" sdk_version="{$vo.sdk_version}">{$vo.game_name}</option>
+                            </volist>
+                        </select>
+                       <input type="hidden" id="game_name" name="game_name" value="">
+                       <input type="hidden"  name="game_id" value="{$data.game_id}">
+                    </td>
+                    </tr>
+                    <tr>
+                    	<td class="l"><span style="color: red;">* </span>礼包名称：</td>
+                    <td class="r" >
+                        <input type="text" class="txt " name="giftbag_name" value="{$data['giftbag_name']}" placeholder=" 输入礼包名称">
+                    </td>
+                    </tr>
+                  <tr>
+                    <td class="l">礼包状态：</td>
+                    <td class="r table_radio">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio1" value="0" name="status" <eq name="data['status']" value="0">checked="checked"</eq>>
+							<label for="radio1">关闭</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio2" value="1" name="status" <eq name="data['status']" value="1">checked="checked"</eq>>
+							<label for="radio2">开启</label>
+						</div>
+                    </td>
+                    </tr>
+                    <tr>
+                    	<td class="l">礼包类型：</td>
+                    <td class="r table_radio">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio3" value="0" name="giftbag_type">
+							<label for="radio3">不推荐</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio4" value="1" name="giftbag_type" checked="checked">
+							<label for="radio4">推荐</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio5" value="2" name="giftbag_type">
+							<label for="radio5">热门</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio6" value="3" name="giftbag_type">
+							<label for="radio6">最新</label>
+						</div>
+                    </td>
+                    </tr>
+                <tr>
+                    <td class="l">适用区服：</td>
+                    <td class="r">
+                       <select id="server_id" name="server_id">
+                        <option value="">请选择区服</option>
+                       </select>
+                       <input type="hidden" id="server_name" name="server_name" value=""></input>
+                    </td>
+                  <tr>
+                    <td class="l"><span style="color: red;">* </span>有效时间：</td>
+                    <td class="r table_time">
+                        <input type="text" class="txtt time" name="start_time" value="{:set_show_time($data['start_time'],'time')}" placeholder="输入开启时间 不能空"> 至
+                        <input type="text" class="txtt time" name="end_time" <if condition="$data.end_time neq ''"> value="{:set_show_time($data['end_time'],'time','other')}" </if> placeholder="输入结束时间 不填表示 永久">
+                    </td>
+                  </tr>
+                  <tr>
+                  	 <td class="l">激活码类型：</td>
+                    <td class="r table_radio">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="no_unicode" value="0" name="is_unicode" <eq name="data['is_unicode']" value="0">checked="checked"</eq>>
+							<label for="no_unicode">普通码</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="is_unicode" value="1" name="is_unicode" <eq name="data['is_unicode']" value="1">checked="checked"</eq>>
+							<label for="is_unicode">统一码</label>
+						</div>
+                    </td> 
+                  </tr>
+                  <tr>
+                    <td class="l"><span style="color: red;">*</span><span class="codet">普通码：</span></td>
+                    <td class="r">
+                        <textarea name="novice" class="no_unicode novice txt_area2" <eq name="data['is_unicode']" value="1">style="display: none;" </eq> placeholder="输入普通码，一行一个">{:str_replace(",","\\r\\n",$data['novice'])}</textarea>
+                        <input type="text" class="is_unicode novice txtt" name="novice" <eq name="data['is_unicode']" value="0">style="display: none;" disabled="disabled" </eq>   value="{$data['novice']}" placeholder="输入统一码号">
+                    </td>
+                  </tr>
+                  <tr>
+                  	<td class="l">剩余数量：</td>
+                    <td class="r" >
+                        <div <eq name="data['is_unicode']" value="1">style="display: none;" </eq> >
+                            <input type="text" class="novcount no_unicode txt" name="" value="{:arr_count($data['novice'])}" disabled style="cursor: not-allowed;" placeholder="根据领取数自动计算礼包剩余数量，不可修改">
+                        </div>
+                        <div <eq name="data['is_unicode']" value="0">style="display: none;" </eq> >
+                            <input type="text" class="novcount is_unicode txt nodisabled" name="unicode_num" value="{$data.unicode_num}"   placeholder="请输入统一码数量">
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">领取方法：</td>
+                    <td class="r" colspan='3'>
+                        <textarea name="digest" class="txt_area1" placeholder="输入领取方式描述">{$data['digest']}</textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">礼包内容：</td>
+                    <td class="r" colspan='3'>
+                        <textarea name="desribe" class="txt_area1" placeholder="输入礼包内容描述">{$data['desribe']}</textarea>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+        <div class="form-item cf">
+            <input type="hidden" name='id' value="{$data['id']}">
+            <button class=" submit_btn ajax-post " id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="__JS__/select2.min.js"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Giftbag/lists')}');
+if ("{$Think.get.game_id}" =="") {
+    Think.setValue("game_id", {$data.game_id|default = 0});
+}else{
+    Think.setValue("game_id", {$Think.get.game_id|default = 0});
+}
+Think.setValue("server_id", {$data.area_id|default = 0});
+Think.setValue("giftbag_type", {$data.giftbag_type|default = 1});
+Think.setValue("level", {$data.level|default = 0});
+$('#submit').click(function(){
+    $('#form').submit();
+});
+if($("#game_id").val()){
+    fun_ajax($("#game_id").val());
+}
+$(function(){
+    $("#game_name").val($("#game_id option:selected").text());
+
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    $('.time').datetimepicker({
+    language:"zh-CN",
+     hour: 13,
+       minute: 15
+    });
+    showTab();
+     Initialize();
+     $("#game_id").select2();
+     $("#server_id").select2();
+});
+
+/*获取区服名称*/
+$("#server_id").change(function() {
+    $("#server_name").val($("#server_id option:selected").text());
+});
+/*获取游戏名称*/
+var trid = $('.js-typeradio:checked').siblings('input').css({'display':'none'}).attr('id');
+$('.'+trid).hide();
+var ratio_type=$("input[type=radio]:checked").val();
+if(ratio_type == 1){
+    var file_type="apk";
+}else if(ratio_type == 2){
+    var file_type="ipa";
+}
+$("#game_id").change(function(){
+    $(".inp_radio").click();
+});
+$(".inp_radio").click(function(){
+    if($("#game_id option:selected").val()==0){
+        alert('请选择游戏');
+        return false;
+    }
+    var ratio_type=$("#game_id").children('option:selected').attr('sdk_version');
+    if (ratio_type == '') {
+        ratio_type =0;
+    }
+    if(ratio_type == 1){
+    var file_type="apk";
+    }else if(ratio_type == 2){
+    var file_type="ipa";
+    }
+    var str = location.href,game_id=$("#game_id option:selected").val();
+    str = str.replace('.html','');
+    str = str+'/game_id/'+game_id+'/ratio_type/'+ratio_type;
+    window.location.href=str;
+});
+function Initialize(){
+    $server_name = "{:get_area_name($data['server_id'])}";
+    $("#server_id").html("<option value='{$data.server_id}'>"+$server_name+"</option>");
+    $("#server_name").val($("#server_id option:selected").text());
+}
+var url = "{:U('Giftbag/get_ajax_area_list')}";
+/*获取游戏名称*/
+$("#game_id").change(function(){
+  var ratio_type=$("#game_id").children('option:selected').attr('sdk_version');
+  $("#game_name").val($("#game_id option:selected").text());
+  $("input[name='server_version']").val('ratio_type');
+  if(ratio_type==2){
+    $(".server_version_name").html('<input type="radio" class="inp_radio" checked value="2" name="giftbag_version" > 苹果');
+  }else{
+    $(".server_version_name").html('<input type="radio" class="inp_radio" checked value="1" name="giftbag_version" > 安卓');
+  }
+});
+
+function fun_ajax(gid){
+    var url = "{:U('Giftbag/get_ajax_area_list')}";
+    $.ajax({
+        type:"post",
+        url:url,
+        dataType:"json",
+        data:{game_id:gid},
+        success:function(data){
+            fun_html(data);
+            $("#server_name").val($("#server_id option:selected").text());
+        },
+        error:function(){
+            layer.msg('服务器异常',{icon:5});
+        }
+    })
+}
+
+function fun_html(data){
+    var server_id = "{$data['server_id']}";
+    var area='';
+    if(data == null){
+        $("#server_id").html('<option value="">请选择区服</option>');
+    }else{
+        area+="<option value=''>请选择区服</option>";
+        for (var i = 0; i<data.length; i++){
+            area+='<option';
+            if(data[i]['id']==server_id){
+                area+=' selected';
+            }
+            area+=' value="'+data[i]['id']+'">'+data[i]['server_name']+'</option>';
+        }
+        $("#server_id").html(area);
+    }
+}
+$("input[name='is_unicode']").click(function(){
+    that = $(this);
+    $class = that.attr('id');
+    $nov = $(".novice."+$class);
+    $nov.siblings().css('display','none').prop('disabled',true);
+    $nov.css('display','').prop('disabled',false);
+    $novcount = $(".novcount."+$class);
+    $novcount.parent().siblings().css('display','none').children('input').css('display','none').prop('disabled',true);
+    $novcount.parent().css('display','');
+    if($novcount.hasClass('nodisabled')){
+        $novcount.css('display','').prop('disabled',false);
+        $('.codet').text('统一码：');
+    }else{
+        $('.codet').text('普通码：');
+        $novcount.css('display','').prop('disabled',true);
+    }
+});
+$("input[name='is_unicode']").each(function(ele,index){
+    if($(this).prop('checked')==true){
+        $che = $(this).attr('id');
+        if($che=='is_unicode'){
+            $("input[name='is_unicode']:last").click();
+        }
+    }
+});
+</script>
+</block>

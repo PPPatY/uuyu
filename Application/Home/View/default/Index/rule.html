@@ -1,0 +1,24 @@
+<extend name="Public/bases" />
+<block name="body">
+<div class="ctitle"></div>
+<style type="text/css">
+	.news_detail{
+		min-height: 700px;
+		background: #f3f3f3;
+		padding-top: 40px;
+	}
+   .location{ width:1062px; margin:0 auto; height:40px; line-height:40px; font-size:14px;}
+   .location i{ background:#5a90ee; float:left; width:2px; height:20px; float:left; margin-top:10px; margin-right:10px;}
+   .location a{ color:#5a90ee;}
+   .location font{ margin:0px 8px;}
+</style>
+<div  class="news_detail" >
+  <div class="location"> <i></i><span>注册</span><font>></font><a>用户协议</a></div>
+	<div class="detail container" style="width: 60%;margin-left:20%">
+		<h2>{$docu.title}</h2></br>
+		{$article.content}
+		<div class="cons">
+		</div>
+	</div>
+</div>
+</block>

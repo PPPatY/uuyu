@@ -1,0 +1,201 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/manager.css" rel="stylesheet" >
+</block>
+
+<block name="body">
+	<style>
+		@media screen and (max-width: 1500px) {
+			.normal_form{padding-top: 45px;}
+			.trunk-search .normal_txt {width: 100px}
+			.select2-container--default .select2-selection--single {width: 125px;}
+			.trunk-search .select-time .txt{width: 100px;}
+			.form-group .submit{width: 55px;}
+		}
+		.tabcon {min-height: 56vh;}
+	</style>
+    <div class="page-search normal_list query-recharge-search">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>数据管理></span><span>充值明细</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_chongzhi.png">
+      	<span class="title_main">充值明细</span>
+      	<span class="details">对所有渠道用户玩家产生的充值信息，进行记录的功能</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix ">
+						<div class="tab normal_tab">
+							<a href="{:U('Query/recharge')}" class="normal_change <neq name='Think.get.isbd' value='1'>current</neq>">常规消费</a>
+							<a href="{:U('Query/recharge',['isbd'=>1])}" class="normal_change wxnavbtn <eq name='Think.get.isbd' value='1'>current</eq>">绑币消费</a>
+						</div>
+
+            <form action="{:U('Query/recharge',array('isbd'=>I('isbd')))}" method="post" enctype="multipart/form-data" class="normal_form">
+              <div class="form-group normal_space fr" >
+                <input type="button" class="submit" id="search" value="查询" url="{:U('Query/recharge',array('isbd'=>I('isbd')))}">
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">充值时间：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="time_start" placeholder="开始时间" value="{:I('time_start')}" >
+                </div>
+                <label class="form-title select-title zhi_color">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="time_end" placeholder="结束时间" value="{:I('time_end')}">
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="promote_id" name="promote_id" class="reselect select_gallery" style="min-width:150px;">
+                        <option game-id="0" value="0">全部渠道</option>
+                        <option game-id="{:session('promote_auth.pid')}" value="{:session('promote_auth.pid')}">自己</option>
+                        <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                    </select>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="game_id" name="game_appid" style="width:180px;" class="reselect select_gallery" >
+                        <option game-id="0" value="">请选择游戏</option>
+                        <volist name=":get_apply_game_list2(PID)" id="vo">
+                            <option game-id="{$vo.game_appid}" value="{$vo.game_appid}">{$vo.game_name}</option>
+                        </volist>
+                    </select>
+              </div>
+              <div class="form-group normal_space fr">
+                  <input type="text" name="pay_order_number" class="txt normal_txt" id="" style="width:128px;" placeholder="请输入订单号" value="{:trim(I('pay_order_number'))}">
+              </div>
+              <div class="form-group normal_space fr">
+                  <input type="text" name="user_account" class="txt normal_txt" id="uid" style="width:128px;" placeholder="请输入玩家账号" value="{:trim(I('user_account'))}">
+              </div>
+              <!-- <input type="hidden" name="isbd" value="{:I('isbd')}"> -->
+            </form>
+          </div>
+      </div>
+      <div class="page-list apply-app_apply-list query-recharge-list">
+      <div class="trunk-content article">
+          <div class="trunk-list tabcon">
+            <table class="table  normal_table">
+                <tr class="odd">
+									
+                  <th>玩家账号</th>
+                  <th>订单号</th>
+                  <th>游戏名称</th>
+									
+									
+                  <th>实付金额</th>
+                  <th>充值时间</th>
+                  <th>充值方式</th>
+                  <th>推广员账号</th>
+                </tr>
+                <empty name="list_data">
+                <tr><td colspan="10" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                <else />
+                <volist name="list_data" id="s" mod="2">
+                <tr class="<eq name='mod' value='1'>odd</eq>">
+									
+                  <td>{$s.user_account}</td>
+                  <td>{$s.pay_order_number}</td>
+                  <td title="{$s['game_name']}">{:msubstr2($s['game_name'],0,10)}</td>
+									
+									
+									<td>{$s.pay_amount}</td>
+                  <td>{$s.pay_time|date="Y-m-d H:i:s",###}</td>
+                  <td>
+                    <switch name='s.pay_way'>
+                      <case value="-1">绑币</case>
+                      <case value="0">平台币</case>
+                      <case value="1">支付宝</case>
+                      <case value="2">微信</case>
+                    </switch>
+                  </td>
+                  <td>{:get_promote_name($s['promote_id'])}</td>
+                </tr>
+                </volist>
+                </empty>
+            </table>
+            <div class="import fr">
+							
+              <span class="tot"><span class="normal_tot">实付总计：</span>￥{$pay_amount|default=0}</span>
+              <span class="txt"><span class="normal_tot">数据量：</span>{$count}条数据</span>
+              <span class="btn"><a href="{:U('Export/expUser',array(
+            'id'=>4,
+            'user_account'=>I('user_account'),
+            'game_appid'=>I('game_appid'),
+            'time-start'=>I('time_start'),
+            'time-end'=>I('time_end'),
+            'start'=>I('start'),
+            'end'=>I('end'),
+            'isbd'=>I('isbd'),
+            'promote_id'=>I('promote_id'),
+            ))}" >导出数据(excel格式)</a>
+            </span>
+            </div>
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+
+<script type="text/javascript">
+highlight_subnav('{:U("recharge")}');
+setValue('promote_id',{$Think.request.promote_id|default=0});
+setValue('game_appid','{$Think.request.game_appid|default=''}');
+$().ready(function(){
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+   
+   $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+
+	$("#search").click(function() {
+		var sdate =$('#sdate').val();
+	    var edate =$('#edate').val();
+	    if(Date.parse(sdate) > Date.parse(edate)){
+	      layer.msg('开始时间必须小于等于结束时间');
+	      return false;
+	    }
+	  var that = $(this); 
+		var url = that.attr('url');
+		var query = that.closest('form').find('input,select').serialize();
+		query += "&" + $('.jssearch').find('select').serialize();
+		query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+		query = query.replace(/^&/g, '');
+		if(url.indexOf('?') > 0) {
+			url += '&' + query;
+		} else {
+			url += '?' + query;
+		}
+		window.location.href = url;
+	});
+	
+  $(".select_gallery").select2();
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+});
+</script>
+    
+</block>
+  

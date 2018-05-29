@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-app-status-bar-style" content="black">
+<link rel="apple-touch-icon-precomposed" href="__IMG__/icon_9g.png">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+<meta http-equiv="expires" content="0">
+<block name="title"><title>{:C(PC_SET_TITLE)}</title></block>
+<link href="{:get_cover(C('PC_SET_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1,minimal-ui">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="full-screen" content="yes">
+		<link rel="stylesheet" type="text/css" href="__CSS__/base.css">
+
+		<script src="__JS__/jquery-1.8.3.min.js"></script>
+	</head>
+	<body style="max-width: 640px; margin: 0px auto;height:100vh">
+	<block name="body"></block>
+    <div id="qrcode" style="display: none;">		
+		<p align="center" style="color:#fff;">
+			<img src="{:get_cover(C('PC_SET_QRCODE'),'path')}" id="qrcodeImg" width="150">
+			<br><span style="font-size:14px">马上玩</span>
+		</p>
+		<p align="center" style="color:#fff;">
+			<img src="{:U('Base/downQrcode',array('url'=>base64_encode(base64_encode(U('Base/downapp')))))}" id="qrcodeImg" width="150">
+			<br>APP下载
+		</p>
+	</div>
+	<script>
+	if(IsPC()){
+		$("#qrcode").attr('style','display:block;');
+	}
+	function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+                    "SymbianOS", "Windows Phone",
+                    "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,142 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<style>
+.navtab_list {background:#FFF;width:100%;border-bottom:1px solid #ddd;margin:0 0 15px;height:36px;padding-top:25px;}
+.navtab_list a,.tabnav1711 li {font-size:15px;border:1px solid transparent;display:block;width:140px;height:35px;line-height:35px;text-align:center;float:left;color:#333;}
+.navtab_list a.tabchose,.tabnav1711 li.current {border-color:#ddd;border-bottom-color:#FFF;background:#FFF;color:#3C95C8;border-top-left-radius:3px;border-top-right-radius:3px;}
+
+.tabnav1711 li a {color:inherit;}
+.tabcon1711 .submit_btn:visited,.tabcon1711 .submit_btn:active,.tabcon1711 .submit_btn:link {color:#FFF;}
+
+.tab_nav .tab-nav {}
+</style>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/app')}">联运APP</a></li>
+            <li><a href="#">广告管理</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：设置APP的相关广告图片</p>
+
+    </div>
+<div class="cf main-place top_nav_list navtab_list">
+    {:W('Index/navigation',array('value'=>'Site/app'))}
+    <h3 class="page_title"></h3>
+</div>
+<div class="tab_nav jstabnav box_mt">
+<ul>
+    <li class="current">
+        <a href="{:U('Adv/app_adv_pos_lists')}">广告位列表</a>
+    </li>
+    <li class="">
+        <a href="{:U('Adv/app_adv_lists')}">广告列表</a>
+    </li>
+</ul></div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list">
+                <label>标题：</label>
+				<input type="text" name="{$model['search_key']|default='title'}" class="search-input" value="{:I('title')}" placeholder="请输入标题">
+			</div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('Adv/app_adv_pos_lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th>
+                            <label class="checked">
+								<input class="check-all" type="checkbox">
+								<i class="check_icon"></i>
+							</label>
+                        </th>
+                        <th>编号</th>
+                        <th>标题</th>
+                        <th>标识</th>
+                        <th>模块</th>
+                        <th>广告类型</th>
+                        <th>宽度</th>
+                        <th>高度</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                <volist name="list_data" id="data">
+                    <tr>
+                        <td>
+                        	<label class="checked">
+								<input class="ids" type="checkbox" value="{$data['id']}" name="ids[]">
+								<i class="check_icon"></i>
+							</label>
+                        </td>
+                        <td>{$data['id']}</td>
+                        <td>{$data['title']}</td>
+                        <td>{$data['name']}</td>
+                        <td>{$data['module']}</td>
+                        <td>{:get_adv_type($data['type'])}</td>
+                        <td>{$data['width']}</td>
+                        <td>{$data['height']}</td>
+                        <td>
+                            <a href="{:U('edit_app_adv_pos',array('id'=>$data['id'],'model'=>$model['id']))}">设置</a>
+                            <a href="{:U('add_app_adv',array('model'=>$model['id'],'pos_id'=>$data['id']))}">添加广告</a>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Site/app')}');
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+})
+</script>
+</block>

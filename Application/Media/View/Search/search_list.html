@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <link href="style/css/swiper.min.css" rel="stylesheet" >
+    <link href="style/css/common.css" rel="stylesheet" >
+    <link href="style/css/search.css" rel="stylesheet" >
+    <script src="style/js/jquery-1.11.1.min.js"></script>
+    <script src="style/js/swiper-3.4.2.jquery.min.js"></script>
+	</head>
+	<body class="searchpage">
+    <header class="header">
+      <section class="wrap">
+        <a href="search_yes.html" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="style/images/nav_search_return.png"></span></span></a>
+        <div class="searchbox list">
+          <form class="search-input table" >
+            <span class="table-cell">
+              <a href="javascript:;" class="iconbox jssearch"><span class="table"><span class="table-cell"><i class="icon icon-search"></i></span></span></a>
+              <a href="javascript:;" class="iconbox jsdel"><span class="table"><span class="table-cell"><i class="icon icon-del"></i></span></span></a>
+              <div class="input-group">
+              <input type="text" class="txt jskeywords" name="keywords" value="仙" placeholder="大家都在搜楚乔传" />
+              </div>
+            </span>
+          </form>
+        </div>
+        <a href="index.html" class="hbtn right search-cancel jsscancel"><span class="table"><span class="table-cell">取消</span></span></a>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="list search-list">
+            <div class="search-item">
+              <div class="search-item-title">游戏</div>
+              <div class="serrch-item-content">
+                <ul>
+                  <li class="list-item clearfix">
+                    <div class="item clearfix">
+                      <a href="gamedetail.html" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="style/images/fq/search_game1.png" class="icon"></a>
+                      <div class="butnbox"><a href="gamedetail.html" class="butn">开始</a></div>
+                      <div class="textbox">
+                        <a href="gamedetail.html" class="srtitle gamename"><span>仙</span>魔飞<span>仙</span></a>
+                        <p class="info"><span class="type">角色</span><span class="description">相亲相爱，不如来互相伤害！</span></p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-item clearfix">
+                    <div class="item clearfix">
+                      <a href="gamedetail.html" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="style/images/fq/search_game1.png" class="icon"></a>
+                      <div class="butnbox"><a href="gamedetail.html" class="butn">开始</a></div>
+                      <div class="textbox">
+                        <a href="gamedetail.html" class="srtitle gamename"><span>仙</span>魔飞<span>仙</span></a>
+                        <p class="info"><span class="type">角色</span><span class="description">相亲相爱，不如来互相伤害！</span></p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-item clearfix">
+                    <div class="item clearfix">
+                      <a href="gamedetail.html" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="style/images/fq/search_game1.png" class="icon"></a>
+                      <div class="butnbox"><a href="gamedetail.html" class="butn">开始</a></div>
+                      <div class="textbox">
+                        <a href="gamedetail.html" class="srtitle gamename"><span>仙</span>魔飞<span>仙</span></a>
+                        <p class="info"><span class="type">角色</span><span class="description">相亲相爱，不如来互相伤害！</span></p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            
+            
+          </div>
+        </section>
+        
+      </section>
+    </section>
+    
+    <script src="style/js/common.js"></script>
+    <script>
+        $(function() {
+          
+          var kw = $('.jskeywords');
+          
+          if ($.trim(kw.val()).length>0) {kw.closest('form').find('.jsdel').addClass('on');}
+          
+          $('.jsdel').click(function() {
+            var that=$(this);
+            
+            that.removeClass('on').closest('form').find('input').val('').focus();
+
+            return false;
+          });
+          
+          kw.keyup(function() {
+            var that = $(this),val=$.trim(that.val()),parent=that.closest('form');
+
+            if (val) {
+            
+              parent.find('.jsdel').addClass('on');
+
+            }
+            
+            return false;
+          });
+          
+          
+          $('.jssearch').click(function() {
+            $(this).closest('form').submit();
+          });
+          
+          
+        });
+    </script>
+	</body>
+</html>

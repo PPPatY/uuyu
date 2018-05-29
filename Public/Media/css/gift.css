@@ -1,0 +1,87 @@
+/**
+ * 礼包样式
+ * @author 鹿文学
+ */
+/* common */
+
+/* header */
+.header .caption {margin:0 17%;}
+.header .giftindex{margin-left:8.1%;}
+.header .hbtn {width:17%;}
+.header .search{right:.6rem;width:0.66rem;}
+.header .search img{width:0.66rem;margin-top:-35%;}
+.header .caption #tab-menu,.tab-scroll>div{width:100%;}
+.header .caption #tab-menu .s-container {border-top:1px solid #FFF;border-bottom:1px solid #FFF;border-radius:1rem;}
+.header .caption .tabmenu {box-sizing:border-box;border-radius:1rem;height:1rem;line-height:1rem;overflow:hidden;clear:both;}
+.header .caption .tabmenu .s-slide {color:#FFF;width:25%;border-radius:1rem;box-sizing:border-box;-webkit-box-sizing:border-box;position:relative;float:left;}
+.header .caption .tabmenu .s-slide.active {background:#FFF;color:#23BBF3;}
+.header .caption .tabmenu .s-slide:first-child{border-left:1px solid #FFF;}
+.header .caption .tabmenu .s-slide:last-child{border-right:1px solid #FFF;}
+.header .caption .tabmenu .s-slide:not(.active):not(:first-child):before,
+.header .caption .tabmenu .s-slide:not(.active):not(:last-child):after{content:'';display:block;background:#18b1ea;width:22%;height:100%;position:absolute;top:0;}
+.header .caption .tabmenu .s-slide:not(.active):not(:first-child):before {left:0;}
+.header .caption .tabmenu .s-slide:not(.active):not(:last-child):after {right:0;}
+
+.tab-scroll {}
+.tab-scroll .tabpanel>.s-slide {display:none;}
+.tab-scroll .second-list {}
+.second-list li{background:#FFF;margin-top:0.3rem;}
+.second-list li:first-child {padding-top:.22rem;margin-top:0;}
+.second-list .item .game-info {margin-left:0.4rem;padding:.44rem 0.4rem 0 0;}
+.second-list .item .game-info .iconbox {position:relative;float:left;display:block;overflow:hidden;margin:0 3.4% 0 0;font-size:0.32rem;border-radius:0.4rem;width:1.52rem;height:1.52rem;max-height:152px;max-width:152px;background:#e2e2e2;color:#bbbaba;} 
+.second-list .item .game-info .iconbox .icon {position:relative;z-index:2;width:100%;}
+.second-list .item .game-info .text {margin-left:16%;height:1.52rem;}
+.second-list .item .game-info .text .title {font-size:0.42rem;color:#000;padding-top:.7%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.second-list .item .game-info .text p{font-size:0.34rem;margin:.2% 0 0;}
+.second-list .item .game-info .text p span{color:#23BBF3;}
+
+.second-list .item .gift-list {padding:0.08rem 0 0 0rem;}
+.second-list .item .gift-list .subitem {display:none;border-bottom:1px solid #E7E7E7;padding:2.8% 0.4rem 2.8% 0.4rem;}
+.second-list .item .gift-list .subitem.active{display:block;position:relative;}
+.second-list .item .gift-list .subitem.active:last-child {border-bottom:none;}
+.second-list .item .gift-list .butnbox{position:absolute;top:0;right:0.4rem;height:100%;width:22%;max-width:180px;text-align:right;}
+.second-list .item .gift-list .butnbox .butn{border:1px solid #23bbf3;border-radius:.08rem;color:#23bbf3;font-size:0.34rem;width:1.3rem;height:0.7rem;display:block;float:right;line-height:0.7rem;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.second-list .item .gift-list .butnbox .butn.disabled {color:#999;border-color:#CCC;}
+.second-list .item .gift-list .text{margin-right:22.5%;}
+.second-list .item .gift-list .text .title {overflow:hidden;font-size:0.42rem;color:#000;}
+.second-list .item .gift-list .text .title .name{display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:99%;}
+.second-list .item .gift-list .text .introduction {color:#999;font-size:0.34rem;margin:0;line-height:1.6;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.second-list .moregift {font-size:0.34rem;cursor:pointer;color:#999;display:block;text-align:center;height:1.1rem;line-height:1.1rem;max-height:110px;}
+.second-list .moregift img {width:0.38rem;height:0.2rem;display:inline-block;vertical-align:middle;margin-left:0.2rem;}
+
+/* detail */
+.header .arrow-left img{margin-left:.4rem;width:0.38rem;display:block;}
+.header .word {font-size:0.42rem;margin-left:1%;}
+
+.detail .base {background:#FFF;padding:0.6rem 0.4rem 0.6rem 0.4rem;}
+.detail .base .wrap{position:relative;}
+.detail .base .iconbox {width:2.16rem;height:2.16rem;max-height:216px;max-width:216px;float:left;position:relative;border-radius:0.45rem;overflow:hidden;background:#E2E2E2;color:#BBBABA;font-size:0.46rem;}
+.detail .base .iconbox .icon {position:relative;z-index:2;width:100%;}
+.detail .base .butnbox {position:absolute;top:0;right:0;height:100%;width:18%;text-align:right;}
+.detail .base .butnbox .butn {font-size:0.34rem;color:#23bbf3;border:1px solid #23BBF3;border-radius:0.08rem;width:1.3rem;height:0.7rem;display:block;float:right;line-height:0.7rem;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.detail .base .butnbox .butn.disabled {color: #999;border-color: #CCC;}
+.detail .base .textbox {margin-left:2.6rem;margin-right:19%;font-size:0.72rem;}
+.detail .base .textbox .title{font-size:0.42rem;display:inline-block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#000;}
+.detail .base .textbox .surplusbox  {font-size:0.36rem;margin-top:-.2%;color:#999;}
+.detail .base .textbox .surplusbox .surplus {vertical-align:middle;position:relative;overflow:hidden;height:0.2rem;width:50%;border-radius:0.2rem;background:#E5E5E5;display:inline-block;margin-right:0.16rem;}
+.detail .base .textbox .surplusbox .surplus i {position:absolute;top:0;left:0;background:#3BC97E;height:100%;border-radius:0.2rem;}
+.detail .base .textbox .surplusbox .number {}
+.detail .base .textbox .surplusbox .number i{font-style:normal;margin-left:0.1rem;color:#3BC97E;}
+.detail .base .textbox .validitytime {font-size:0.36rem;color:#999;margin:0;padding:.18rem 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+.detail .samething {background:#FFF;margin-top:.3rem;}
+
+.detail .samething .cntitle {height:1.42rem;padding:0 0.4rem;position:relative;}
+.detail .samething .cntitle .name {font-size:0.4rem;line-height:1.42rem;display:block;}
+.detail .samething .cntitle .name .icon{display:inline-block;vertical-align:middle;width:0.52rem;height:0.52rem;max-height:52px;max-width:52px;background-position:center center;background-repeat:no-repeat;background-size:100% 100%;margin-right:0.2rem;margin-top:-.9%;}
+.detail .samething .cntitle .name .icon-desc {background-image:url(../images/gift_details_content.png);}
+.detail .samething .cntitle .name .icon-time {background-image:url(../images/gift_details_time.png);}
+.detail .samething .cntitle .name .icon-way {background-image:url(../images/gift_details_method.png);}
+
+.detail .samething .content {font-size:0.34rem;color:#999;line-height:1.74;margin-top:-0.18rem;padding:0 0.4rem 0.42rem 1.12rem;word-break: break-all;}
+.detail .samething .content p {margin:0;text-indent:0;}
+
+.detail .payment .content {padding-bottom:0.85rem;}
+
+.start-game {position:absolute;bottom:0;left:0;width:100%;z-index: 3;}
+.start-game .btn {height:1.28rem;line-height:1.28rem;text-align:center;display:block;background:#23BBF3;color:#FFF;font-size:.46rem;}

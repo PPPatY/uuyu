@@ -1,0 +1,529 @@
+<extend name="Public/base" />
+
+<block name="body">
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/webuploader/webuploader.css" media="all">
+    <script src="__STATIC__/md5.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__STATIC__/webuploader/webuploader.js"></script>
+
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Game/lists')}">游戏</a></li>
+            <li><a href="{:U('Game/lists')}">游戏管理</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <!-- 标签页导航 -->
+<div class="tab-wrap">
+    <div class="tab_nav jstabnav">
+    <ul>
+        <li data-tab="tab1" class="current"><a href="javascript:void(0);">基础信息</a></li>
+    </ul>
+    </div>
+    <div class="tab-content tab_content">
+    <!-- 表单 -->
+    <form id="form" action="{:U('third_add')}" method="post" class="form-horizontal">
+        <!-- 基础 -->
+        <div id="tab1" class="tab-pane in tab1 tab_table ">
+            <table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td class="l">游戏名称：</td>
+                    <td class="r">
+                        <input type="text" class="txt " name="game_name" value="" placeholder="请输入游戏名称">
+                        <input type="hidden"  name="game_appid" value="">
+                    </td>
+                    <td class="l">游戏类型：</td>
+                    <td class="r">
+                        <select id="game_type_id" name="game_type_id">                            
+                            <option value="">请选择游戏类型</option>
+                            <volist name=":get_game_type_all()" id="vo">
+                            <option value="{$vo.id}">{$vo.type_name}</option>
+                            </volist>
+                        </select>
+                        <input type="hidden" id="game_type_name" name="game_type_name" value=""></input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">游戏属性：</td>
+                    <td class="r" >
+                        <input type="radio" class="inp_radio" value="1" name="game_attribute" checked >网游
+                        <input type="radio" class="inp_radio" value="2" name="game_attribute" <eq name="data.game_attribute"
+                            value="2"> checked </eq> >单机
+                    </td>
+                    <td class="l">运营状态：</td>
+                    <td class="r">
+                        <volist name=":get_opentype_all()" id="vo">
+                            <input type="radio" class="inp_radio" value="{$vo.id}" <eq name='key' value='0'>checked</eq> name="category" >{$vo.open_name}&nbsp;
+                        </volist>
+                    </td>
+                    </td>
+                  </tr>
+                <tr>
+                    <td class="l">显示状态：</td>
+                    <td class="r">
+                        <label class="inp_radio">
+                            <input type="radio" class="inp_radio" value="0" name="game_status" >关闭
+                            <input type="radio" class="inp_radio" value="1" name="game_status" checked="checked">开启
+                        </label>
+                    </td>
+                    <td class="l">推荐状态：</td>
+                    <td class="r">
+                        <label class="inp_radio">
+                            <input type="radio" class="inp_radio" value="0" name="recommend_status">不推荐
+                            <input type="radio" class="inp_radio" value="1" name="recommend_status" checked="checked">推荐
+                            <input type="radio" class="inp_radio" value="2" name="recommend_status">热门
+                            <input type="radio" class="inp_radio" value="3" name="recommend_status">最新
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">游戏排序：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="sort" value="" placeholder="排序必须是数字">
+                    </td>
+                    <td class='l'>游戏在玩人数：</td>
+                    <td class='r'><input type="text" class='txt' name='play_count' value=""></td>
+                </tr>
+                <tr>
+                    <td class="l">游戏评分：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="game_score" value="" placeholder="请输入0-10的数字">
+                    </td>
+                    <td class="l">游戏开发商：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="developers" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">一句话简介：</td>
+                    <td class="r" colspan="3">
+                        <input type="text" class="txt txt_title" name="features" style="" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">详细介绍：</td>
+                    <td class="r" colspan='3'>
+                        <textarea name="introduction" class="txt_area"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">游戏ICON：<span class="infonotice2">(尺寸：115*115px)</span> </td>
+                    <td class="r">
+                        <input type="file" id="upload_picture_icon">
+                        <input type="hidden" name="icon" id="cover_id_icon"/>
+                        <div class="upload-img-box">
+                        <notempty name="data['icon']">
+                            <div class="upload-pre-item"><img src="{$data['icon']|get_cover='path'}"/></div>
+                        </notempty>
+                        </div> 
+                                               
+                    </td>
+                    <td class="l">游戏推荐图：<span class="infonotice2">(尺寸：275*160px)</span>   </td>
+                    <td class="r">
+                        <input type="file" id="upload_picture_cover">
+                        <input type="hidden" name="cover" id="cover_id_cover"/>
+                        <div class="upload-img-box">
+                        <notempty name="data['cover']">
+                            <div class="upload-pre-item"><img src="{$data['cover']|get_cover='path'}"/></div>
+                        </notempty>
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="l">游戏截图：<span class="infonotice2">(尺寸：210*350px)</span>   </td>
+                    <td class="r" >
+                      {:hook('UploadImages', array('name'=>'screenshot','value'=>''))}
+                    </td>
+                    <td class="l"></td>
+                    <td class="r" ></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 设置 -->
+        <div id="tab3" class="tab-pane  tab3 tab_table">
+            <table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td class="l">推广充值CPS比例：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="ratio" value="" placeholder="输入0-100之间的数字"> %
+                    </td>
+                    <td class="l">推广注册CPA单价：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="money" value="" placeholder="请输入大于0的数值"> 元
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">会长代充折扣比例：</td>
+                    <td class="r">
+                        <input type="text" class="txt txt_title" name="discount" value="" placeholder="输入0-10之间的数字">折
+                    </td></tr>
+                  <tr>
+                    <td class="l">游戏登陆通知地址：</td>
+                    <td class="r">
+                        <input type="text" class="txt txt_title" name="login_notify_url" value="" placeholder="输入游戏登录通知地址">
+                    </td>
+                    <td class="l">游戏支付通知地址：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="pay_notify_url" value="" placeholder="支付时通知CP方所用的地址">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">游戏key：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="game_key" value="" placeholder="输入游戏key">
+                    </td>
+                    <td class="l">游戏支付Appid：</td>
+                    <td class="r">
+                        <input type="text" class="txt" name="game_pay_appid" value="" disabled="disabled" style="cursor: not-allowed;" placeholder="自动生成（游戏支付时用的的AppId）">
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-item cf">
+            <button class="submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            
+        </div>
+    </form>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Game/lists')}');
+$('#submit').click(function(){
+    $('#form').submit();
+});
+// $(".js-device").click();
+$(function(){
+    $("input[name='game_appid']").val("{:generate_game_appid()}");
+    $("#game_type_name").val($("#game_type_id option:selected").text());
+    
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    $('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    showTab();
+
+});
+$(document).ready(function(){
+    if($(".js-device").val()==1){
+        $('.android').show();
+        $('.ios').hide();
+    }else if($(this).val()==2){
+        $('.ios').show();
+        $('.android').hide();
+    }
+    $(".js-device").click(function(){
+        if($(this).val()==1){
+            $('.android').show();
+            $('.ios').hide();
+        }else if($(this).val()==2){
+            $('.ios').show();
+            $('.android').hide();
+        }
+    });
+});
+/*获取游戏类型名称*/
+$("#game_type_id").change(function() {
+    $("#game_type_name").val($("#game_type_id option:selected").text());
+});
+
+//上传游戏图标
+/* 初始化上传插件 */
+$("#upload_picture_icon").uploadify({
+    "height"          : 30,
+    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+    "fileObjName"     : "download",
+    "buttonText"      : "上传图标",
+    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+    "width"           : 120,
+    'removeTimeout'   : 1,
+    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+    "onUploadSuccess" : upload_picture_icon{$field.name},
+    'onFallback' : function() {
+        alert('未检测到兼容版本的Flash.');
+    }
+});
+function upload_picture_icon{$field.name}(file, data){
+    var data = $.parseJSON(data);
+    var src = '';
+    if(data.status){
+        $("#cover_id_icon").val(data.id);
+        src = data.url || '__ROOT__' + data.path;
+        $("#cover_id_icon").parent().find('.upload-img-box').html(
+            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+        );
+    } else {
+        updateAlert(data.info);
+        setTimeout(function(){
+            $('#top-alert').find('button').click();
+            $(that).removeClass('disabled').prop('disabled',false);
+        },1500);
+    }
+}
+
+
+//上传游戏封面
+/* 初始化上传插件 */
+$("#upload_picture_cover").uploadify({
+    "height"          : 30,
+    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+    "fileObjName"     : "download",
+    "buttonText"      : "上传封面",
+    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+    "width"           : 120,
+    'removeTimeout'   : 1,
+    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+    "onUploadSuccess" : upload_picture_cover{$field.name},
+    'onFallback' : function() {
+        alert('未检测到兼容版本的Flash.');
+    }
+});
+function upload_picture_cover{$field.name}(file, data){
+    var data = $.parseJSON(data);
+    var src = '';
+    if(data.status){
+        $("#cover_id_cover").val(data.id);
+        src = data.url || '__ROOT__' + data.path;
+        $("#cover_id_cover").parent().find('.upload-img-box').html(
+            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+        );
+    } else {
+        updateAlert(data.info);
+        setTimeout(function(){
+            $('#top-alert').find('button').click();
+            $(that).removeClass('disabled').prop('disabled',false);
+        },1500);
+    }
+}
+
+//上传游戏详情背景
+/* 初始化上传插件 */
+$("#upload_picture_detail").uploadify({
+    "height"          : 30,
+    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+    "fileObjName"     : "download",
+    "buttonText"      : "上传封面",
+    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+    "width"           : 120,
+    'removeTimeout'   : 1,
+    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+    "onUploadSuccess" : upload_picture_detail{$field.name},
+    'onFallback' : function() {
+        alert('未检测到兼容版本的Flash.');
+    }
+});
+function upload_picture_detail{$field.name}(file, data){
+    var data = $.parseJSON(data);
+    var src = '';
+    if(data.status){
+        $("#detail_id_icon").val(data.id);
+        src = data.url || '__ROOT__' + data.path;
+        $("#detail_id_icon").parent().find('.upload-img-box').html(
+            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+        );
+    } else {
+        updateAlert(data.info);
+        setTimeout(function(){
+            $('#top-alert').find('button').click();
+            $(that).removeClass('disabled').prop('disabled',false);
+        },1500);
+    }
+}
+var userInfo = {userId:"kazaff", md5:""};   //用户会话信息
+var chunkSize = 5000 * 1024;        //分块大小
+var uniqueFileName = null;          //文件唯一标识符
+var md5Mark = null;
+var backEndUrl = "{:U('File/shard_upload',array('type'=>1,'session_id'=>session_id()))}";
+WebUploader.Uploader.register({
+    "before-send-file" : "beforeSendFile",
+    "before-send"      : "beforeSend",
+    "after-send-file"  : "afterSendFile"
+}, {
+    beforeSendFile: function(file){
+        //秒传验证
+        var task = new $.Deferred();
+        var start = new Date().getTime();
+        (new WebUploader.Uploader()).md5File(file, 0, 10*1024*1024).progress(function(percentage){
+            //console.log(percentage);
+        }).then(function(val){
+            //console.log("总耗时: "+((new Date().getTime()) - start)/1000);
+            md5Mark = val;
+            userInfo.md5 = val;
+            $.ajax({
+                type: "POST"
+                , url: backEndUrl
+                , data: {status: "md5Check", md5: val}
+                , cache: false
+                , timeout: 1000 //todo 超时的话，只能认为该文件不曾上传过
+                , dataType: "json"
+            }).then(function(data, textStatus, jqXHR){
+                alert(data.chunk);
+                //console.log(data);
+                if(data.ifExist){   //若存在，这返回失败给WebUploader，表明该文件不需要上传
+                    task.reject();
+                    uploader.skipFile(file);
+                    file.path = data.path;
+                }else{
+                    task.resolve();
+                    //拿到上传文件的唯一名称，用于断点续传
+                    uniqueFileName = md5(''+userInfo.userId+file.name+file.type+file.lastModifiedDate+file.size);
+                }
+            }, function(jqXHR, textStatus, errorThrown){    //任何形式的验证失败，都触发重新上传
+                task.resolve();
+                //拿到上传文件的唯一名称，用于断点续传
+                uniqueFileName = md5(''+userInfo.userId+file.name+file.type+file.lastModifiedDate+file.size);
+            });
+        });
+        return $.when(task);
+    }
+    , beforeSend: function(block){
+        //分片验证是否已传过，用于断点续传
+        var task = new $.Deferred();
+        $.ajax({
+            type: "POST"
+            , url: backEndUrl
+            , data: {
+                status: "chunkCheck"
+                , name: uniqueFileName
+                , chunkIndex: block.chunk
+                , size: block.end - block.start
+            }
+            , cache: false
+            , timeout: 1000 //todo 超时的话，只能认为该分片未上传过
+            , dataType: "json"
+        }).then(function(data, textStatus, jqXHR){
+            if(data.ifExist){   //若存在，返回失败给WebUploader，表明该分块不需要上传
+                task.reject();
+            }else{
+                task.resolve();
+            }
+        }, function(jqXHR, textStatus, errorThrown){    //任何形式的验证失败，都触发重新上传
+            task.resolve();
+        });
+
+        return $.when(task);
+    }
+    , afterSendFile: function(file){
+        var chunksTotal = 0;
+        if((chunksTotal = Math.ceil(file.size/chunkSize)) > 1){
+            //合并请求
+            var task = new $.Deferred();
+            $.ajax({
+                type: "POST"
+                , url: backEndUrl
+                , data: {
+                    status: "chunksMerge"
+                    , name: uniqueFileName
+                    , chunks: chunksTotal
+                    , ext: file.ext
+                    , md5: md5Mark
+                }
+                , cache: false
+                , dataType: "json"
+            }).then(function(data, textStatus, jqXHR){
+                //todo 检查响应是否正常
+                task.resolve();
+                file.path = data.path;
+                $("#file_name").val(data.name);
+                $("#file_url").val(data.path);
+                $("#file_size").val(file.size);
+            }, function(jqXHR, textStatus, errorThrown){
+                task.reject();
+            });
+            return $.when(task);
+        }else{
+            //UploadComlate(file);
+        }
+    }
+});
+var uploader = WebUploader.create({
+    // 选完文件后，是否自动上传。
+    auto: true,
+    // swf文件路径
+    swf: '__STATIC__/webuploader/Uploader.swf',
+    // 文件接收服务端。
+    server: backEndUrl,
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: {id:'#picker'},
+    //dnd: "#theList",
+    paste: document.body,
+    // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+    resize: false,
+    disableGlobalDnd: true,
+    fileNumLimit:1,
+    threads:3,
+    compress: false,
+    prepareNextFile: true,
+    formData: function(){return $.extend(true, {}, userInfo);},
+    duplicate:true,
+    chunked:true,
+    chunkSize: 5*1000*1024,
+    duplicate: true
+});
+// 当有文件被添加进队列的时候
+uploader.on( 'fileQueued', function( file ) {
+    $("#thelist").append( '<div id="' + file.id + '" class="item">' +
+        '<h4 class="info">' + file.name + '</h4>' +
+        '<p class="state">等待上传...</p>' +
+        '</div>' );
+});
+
+// 文件上传过程中创建进度条实时显示。
+uploader.on( 'uploadProgress', function( file, percentage ) {
+    var $li = $( '#'+file.id ),
+        $percent = $li.find('.progress .progress-bar');
+    // 避免重复创建
+    if ( !$percent.length ) {
+        $percent = $('<div class="progress progress-striped active">' +
+            '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+            '</div>' +
+            '</div>').appendTo( $li ).find('.progress-bar');
+    }
+    $li.find('p.state').text('上传中');
+    $percent.css( 'width', percentage * 100 + '%' );
+    $percent.text( (percentage * 100).toFixed(0) + '%' );
+});
+
+uploader.on( 'uploadSuccess', function( file , response) {
+    $( '#'+file.id ).find('p.state').text('已上传');
+    //alert(JSON.stringify(response));
+
+    if(!response.chunk){
+        var url = response.path + "/" +response.name;
+//        $("#file_name").val(response.name);
+        $("#file_url").val(url);
+//        $("#file_size").val(response.size);
+    }
+    //alert($("#file_name").val()+";"+$("#file_url").val()+";"+$("#file_size").val())
+});
+
+uploader.on( 'uploadError', function( file ) {
+    $( '#'+file.id ).find('p.state').text('上传出错');
+});
+
+uploader.on( 'uploadComplete', function(file) {
+    $( '#'+file.id ).find('.progress').fadeOut();
+});
+</script>
+</block>

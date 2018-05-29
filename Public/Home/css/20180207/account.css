@@ -1,0 +1,52 @@
+
+/* common */
+.right_container{background: #fff;}
+.trunk-content{margin: 20px 2% 0;}
+.page-list .trunk-search .tab a{
+    display: inline-block;
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    background:#F6F7F9;
+    color: #535875;
+}
+
+.page-list .trunk-search .tab td {border:1px solid #ddd;display: inline-block;margin-right: -5px;}
+.page-list .trunk-search .tab td.first_border{border-top-left-radius: 3px;border-bottom-left-radius: 3px;}
+.page-list .trunk-search .tab td.last_border{border-top-right-radius: 3px;border-bottom-right-radius: 3px;}
+.page-list .trunk-search .tab td.current {border-color:#26C7DB;}
+.page-list .trunk-search .tab td.current a{background: #26C7DB;color:#FFF;}
+
+
+.page-list .tabpan {display:none;}
+.page-list .tabpan.current {display:block;}
+.baseInfo{margin-top: 1%;}
+.trunk-list .table2 tr{height: 54px;}
+.trunk-list .table2 .l {text-align:right;color: #8B8CA0;width: 95px;}
+.trunk-list .table2 .l .req {color:red;display:inline-block;width:10px;text-align:center;}
+.trunk-list .table2 .r {padding-left:15px;color: #535875;}
+.trunk-list .table2 .r .formtxt {padding:0 10px;}
+.trunk-list .table2 .r input{width: 230px;height: 32px;padding-left: 10px; border: 1px solid #E5E5E5;border-radius: 4px;line-height: 32px;color: #535875;}
+.trunk-list .table2 .r .tj{cursor:pointer;width: 118px;height: 36px;line-height:36px;background: #26C7DB;color: #fff;border-radius: 4px;border: none;padding: 0;}
+.trunk-list .table2 .r .tj:hover{background: #2bd8ed;}
+.trunk-list .table2 .r .back_btn{width: 118px;height: 36px;line-height:36px;background: #E5E5E5;color: #8B8CA0;border-radius: 4px;display: inline-block;text-align: center;margin-left: 20px;}
+.trunk-list .table2 .form-radio label {margin-right:20px;cursor:pointer;} 
+.trunk-list .table2 .form-radio input[type=radio] {width:15px;height:15px;vertical-align:middle;margin-right:5px;cursor:pointer;} 
+
+
+/*二级渠道*/
+.page-list .trunk-search {padding-bottom: 20px;}
+.promote-mychlid-list form a.btn {display:inline-block;width:135px;height:36px;line-height: 36px; text-align:center;background: #3A97FF;color: #fff;border-radius: 4px;}
+.promote-mychlid-list form a.btn:hover{background: #449DFF;}
+.promote-mychlid-list form a .add_qudao{width: 20px;height: 20px;display: inline-block;vertical-align: middle;margin-right: 5px;background: url(../../images/20180207/icon_normal_tianjia.png) no-repeat;}
+.promote-mychlid-list .form-group .txt{width: 180px;height: 34px;}
+
+.border_normal{border-top: 1px dashed #E3E3E3;}
+.border_normal .desccontent span{color: #6a7082;}
+.border_normal .desccontent p{color: #ADAEC2;padding-top: 1.5%;}
+.promote-mychlid-list .table .editbtn {color:#4A90F0;}
+.promote-mychlid-list .table .editbtn:hover {color:#4ACDDF;}
+
+.list_normal {min-height:58vh;}

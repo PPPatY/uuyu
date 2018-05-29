@@ -1,0 +1,71 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/mall.css" rel="stylesheet" >
+<style>
+.footer{
+  display:none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+        <a href="javascript:history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">积分规则</span></span></div>
+        <!-- <if condition="$union_set eq ''">
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={:C(PC_SET_SERVER_QQ)}&amp;site=qq&amp;menu=yes" class="hbtn right mall-rule-service"><span class="table"><span class="table-cell"><img src="__IMG__/mall_rule_service.png"></span></span></a>
+        <else/>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$union_set['cust_qq']}&amp;site=qq&amp;menu=yes" class="hbtn right mall-rule-service"><span class="table"><span class="table-cell"><img src="__IMG__/mall_rule_service.png"></span></span></a>
+        </if> -->
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div id="rule" class="list integral-rule-list">
+            <ul class="clearfix">
+           
+              <volist name='data' id="da">
+              <li>
+                <a href="javascript:;" class="item jstabbar clearfix">
+                  <div class="wrap">
+                    <div class="butnbox"><span class="table"><span class="butn table-cell"><i class="icon icon-arrow-right"></i></span></span></div>
+                    <div class="text">
+                      <div class="title"><span class="name">{$da.title}</span></div>
+                    </div>
+                  </div>
+                </a>
+                <div class="rule-content jstabpan ">
+                  <div class="wrap">
+                    <p>{:str_replace(array("\\r\\n", "\\r", "\\n"),"<br>",$da['content'])}</p>
+                  </div>
+                </div>
+              </li>
+              </volist>
+            </ul>
+          </div>
+        </section>
+        
+      </section>
+    </section>
+    
+    <script src="style/js/common.js"></script>
+    <script>
+        $(function() {
+          $('#rule .jstabbar').click(function() {
+            var that = $(this),sib=that.siblings('.jstabpan');
+            if (that.hasClass('active')) {that.removeClass('active');sib.slideUp();return false;}
+            $('#rule .jstabpan').stop(true).slideUp();
+            $('#rule .jstabbar').removeClass('active');
+            sib.slideDown();that.addClass('active');
+            
+            return false;
+          });
+          
+        });
+        
+        
+        
+    </script>
+</block>

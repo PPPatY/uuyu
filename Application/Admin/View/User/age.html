@@ -1,0 +1,98 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>防沉迷设置</h2>
+    </div>
+    <div class="tab-wrap">
+        <ul class="tab-nav nav">
+            <li data-tab="tab1" class="current"><a href="javascript:void(0);" >防沉迷设置</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane in tab1">
+                <form action="{:U('User/age')}" method="post" class="form-horizontal alipay">
+
+                    <div class="form-item">
+                        <label class="item-label">防沉迷开关<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <input type="radio" class="inp_radio" value="1" name="status" <eq name="data.status" value="1">checked="checked"</eq>>禁用
+                            <input type="radio" class="inp_radio" value="0" name="status" <eq name="data.status" value="0">checked="checked"</eq>>启用
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">未实名认证提示时间<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <input type="text" class="text input-large" name="hours" value="{$data['hours']}">
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">未实名认证提示内容<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <textarea name="contents_off" type="text" class="text input-large" value="{$data['contents_off']}" >{$data.contents_off}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">未满18岁防沉迷时间<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <input placeholder="第一次" style="width:120px;" name="hours_off_one" type="text" value="{$data['hours_off_one']}" class="">小时<input placeholder="第二次" style="width:120px;" name="hours_off_two" type="text" value="{$data['hours_off_two']}" class="">小时
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">第一次提示内容<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <textarea name="contents_one" type="text" class="text input-large" value="{$data.contents_one}" >{$data.contents_one}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">第二次提示内容<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <textarea name="contents_two" type="text" class="text input-large" value="{$data.contents_two}" >{$data.contents_two}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">是否强制下线<span class="check-tips"></span> </label>
+                        <div class="controls">
+                            <input type="radio" class="inp_radio" value="0" name="bat" <eq name="data.bat" value="0">checked="checked"</eq>>是
+                            <input type="radio" class="inp_radio" value="1" name="bat" <eq name="data.bat" value="1">checked="checked"</eq>>否
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <label class="item-label">未实名认证提示时间<span class="check-tips">（合作身份者id，以2088开头的16位纯数字）</span> </label>
+                        <div class="controls">
+                            <input name="hours_cover" type="text" value="{$data['hours_cover']}" class="text input-large">
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <div class="controls">
+                            <input type="hidden" name="name" value="age_prevent"></input>
+                            <!-- <button type="submit" class="btn submit-btn" target-form="form-horizontal-oss">确 定</button> -->
+                            <button type="submit" class="btn submit-btn ajax-post" target-form="alipay">确 定</button>
+                            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Tool/thirdparty')}');
+        $(function(){
+            //支持tab
+            showTab();
+        })
+    </script>
+</block>
+

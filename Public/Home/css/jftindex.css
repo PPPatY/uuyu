@@ -1,0 +1,67 @@
+﻿
+/* CSS Document */
+html,body{ height: 100%;}
+body{ background: #eee;}
+.container {
+    width: 1000px;
+    height: 85%;
+    padding-top: 3%;
+    margin:auto;
+}
+.ico {
+    display: inline-block;vertical-align: middle;
+}
+.ico-warning {
+    width: 20px;
+    height: 20px;
+    background: url( ../images/warning.png) no-repeat;
+    background-size: 100%;
+    margin-top: -2px;
+    margin-right: 3px;
+}
+.wrap {
+    width: 100%;
+    height: 90%;
+    margin-top: 10px;
+    background: #fff;
+    border: 1px solid #d6d6d6;
+    border-top: 10px solid #b2d1ff;
+}
+#nav{display:block;width: 100%;height:43px;text-transform:capitalize;margin-top: 20px;border-bottom: 1px solid #d6d6d6;}
+#nav li{float: left;width: 13%;text-align: center;/*border-bottom: 1px solid #d6d6d6;*/margin: 0 2px;}
+#nav li:first-child {
+    margin-left: 10px;
+}
+#nav li a{display:block;padding:8px 20px;color:#333;text-decoration:none;font-size: 16px;margin: 3px;}
+#nav li a:hover {
+    background:#d8f1ff;
+}
+#nav .current {
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    border-bottom: 0;
+}
+#nav .current a {
+    font-weight: 600;
+}
+#nav .current a:hover {
+    background: #fff;
+}
+#page-wrapper {
+    height: -moz-calc(100% - 60px);
+    height: -webkit-calc(100% - 60px);
+    height: calc(100% - 60px);
+}
+#content-main {
+    height: 100%;
+}
+.war {
+    background: #f5dfd5;    
+    color: #ff6666;
+    padding: 3px 0;
+    padding-left: 23px;
+    margin: 5px 0 10px;
+}
+
+
+

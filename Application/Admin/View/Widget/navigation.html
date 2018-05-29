@@ -1,0 +1,6 @@
+<div class="fr">
+
+<volist name="data" id='vo'>
+	<a <if condition="$vo.url eq $currentUrl"> class="tabchose" </if>  href="{:U($vo["url"])}">{$vo.title}</a>
+</volist>
+</div>

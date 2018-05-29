@@ -1,0 +1,335 @@
+/**
+ * 游戏样式
+ * @author 鹿文学
+ */
+/* common */
+
+/* header */
+.header .caption {margin:0 16.2%;}
+.gacatelist .header .caption {width:62%;margin:0 auto;}
+.gacatelist .header .caption .table {table-layout: fixed;}
+.gacatelist .header .caption .table  .table-cell {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header .hbtn {width:16%;}
+.header .search{right:.6rem;width:0.66rem;}
+.header .search img{width:0.66rem;margin-top:-35%;}
+.header .caption #tab-menu,.tab-scroll>div{width:100%;}
+.header .caption .tabmenu {border-top:3px solid #FFF;border-bottom:3px solid #FFF;border-radius:1rem;height:1rem;overflow:hidden;clear:both;}
+.header .caption .tabmenu .s-slide {color:#FFF;width:33.33333333%;height:1rem;border-radius:1rem;box-sizing:border-box;-webkit-box-sizing:border-box;position:relative;float:left;}
+.header .caption .tabmenu .s-slide.active {background:#FFF;color:#23BBF3;}
+.header .caption .tabmenu .s-slide:first-child{border-left:3px solid #FFF;}
+.header .caption .tabmenu .s-slide:last-child{border-right:3px solid #FFF;}
+.header .caption .tabmenu .s-slide:not(.active):not(:first-child):before,.header .caption .tabmenu .s-slide:not(.active):not(:last-child):after{content:'';display:block;background:#18b1ea;width:22%;height:100%;position:absolute;top:0;}
+.header .caption .tabmenu .s-slide:not(.active):not(:first-child):before {left:0;}
+.header .caption .tabmenu .s-slide:not(.active):not(:last-child):after {right:0;}
+
+.tab-scroll {background:#FFF;}
+.tab-scroll .tabpanel>.s-slide {display:none;}
+.tab-scroll .text-pic-list{padding-top:.2rem;}
+.text-pic-list li{max-height:272px;}
+.text-pic-list .item{position:relative;margin:0 3.22%;height:100%;border-bottom:1px solid #e7e7e7;}
+.text-pic-list .iconbox{position:relative;float:left;display:block;overflow:hidden;margin:3.4% 3.4% 3.4% 0;width:1.92rem;height:1.92rem;max-width:192px;max-height:192px;border-radius:0.48rem;background:#e2e2e2;color:#bbbaba;font-size:0.4rem;}
+.text-pic-list .iconbox .font{position:absolute;top:0;left:0;z-index:0;width:100%;height:100%;text-align:center;}
+.text-pic-list .iconbox .icon{position:relative;z-index:2;width:100%;}
+.text-pic-list .butnbox{float:right;width:22%;height:100%;max-width:180px;text-align:right;margin-top:3.4%;}
+.text-pic-list .butnbox .butn{border:3px solid #23bbf3;border-radius:0.08rem;color:#23bbf3;font-size:0.4rem;width:1.6rem;height:0.88rem;display:inline-block;line-height:0.88rem;text-align:center;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.text-pic-list .text{margin-right:22.5%;margin-left:19%;padding-top:1%;}
+.text-pic-list .text .title {overflow:hidden;line-height:1;}
+.text-pic-list .text .title .name{display:inline-block;font-size:0.46rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:100%;line-height: 1.3;}
+.text-pic-list .text .info{line-height:1.6;overflow:hidden;margin:0;text-overflow:ellipsis;white-space:nowrap;font-size:0.36rem;}
+.text-pic-list .text .info .type{}
+.text-pic-list .text .info .number{position:relative;margin-left:0.6rem;color:#666;}
+.text-pic-list .text .info .number:before{position:absolute;top:21%;left:-0.3rem;display:block;width:.8%;height:65.38%;background:#e0e0e0;content:'';}
+.text-pic-list .text .info .number i{font-style:normal;color:#23BBF3;}
+.text-pic-list .text .slogan {line-height:1.5;font-size:0.36rem;color:#999;margin:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+
+.text-class-list li:first-child{margin-top:.2rem;}
+.text-class-list li{border-bottom:1px solid #e7e7e7;}
+.text-class-list .item{position:relative;display:block;margin:0 1.61% 0 4.83%;height:100%;padding:0.3rem 0;}
+.text-class-list .iconbox{position:relative;float:left;display:block;overflow:hidden;width:1.16rem;height:1.16rem;max-width:116px;max-height:116px;border-radius:0.28rem;background:#e2e2e2;color:#bbbaba;font-size:0.28rem;}
+.text-class-list .iconbox .icon{position:relative;z-index:2;width:100%;}
+.text-class-list .butnbox{position:absolute;top:0;right:0;width:25%;height:100%;max-width:280px;text-align:right;}
+.text-class-list .butnbox .butn{color:#666;font-size:0.48rem;text-align:right;}
+.text-class-list .butnbox .butn .icon {width:.26rem;height:0.46rem;margin-right:.2rem;background:url(../images/game_classify_more.png) center center no-repeat;background-size:100% 100%;display:inline-block;vertical-align:middle;margin-top:-5%;margin-left:.3rem;}
+.text-class-list .text{margin-right:25.5%;margin-left:12.8%;line-height:1.16rem;}
+.text-class-list .text .title {font-size:0.48rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.text-class-list .text .title .name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.text-class-list .text .title .on {color:#23BBF3;}
+.text-class-list .item.active .butn {color:#23BBF3;}
+.text-class-list .item.active .butn .icon {background-image:url(../images/game_classify_selected.png);}
+.text-class-list .item.active .title .name {color:#23BBF3;}
+
+/* list */
+.header .arrow-left img{margin-left:.4rem;width:0.38rem;display:block;}
+.header .word {font-size:0.44rem;margin-left:1%;}
+.gacatelist {display: none;}
+/* detail */
+.gamedetailheader .caption .table {table-layout:fixed;}
+.detailgamename {width:100%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.detail {height:100%;height:100vh;}
+.detail .base {background:#FFF;padding:0.4rem 0.48rem 0.4rem 0.4rem;}
+.detail .base .wrap{position:relative;}
+.detail .base .iconbox {width:2.16rem;height:2.16rem;max-height:216px;max-width:216px;float:left;position:relative;border-radius:0.52rem;overflow:hidden;background:#E2E2E2;color:#BBBABA;}
+.detail .base .iconbox .icon {position:relative;z-index:2;width:100%;}
+.detail .base .iconbox .font {font-size:0.5rem;}
+.detail .base .butnbox {position:absolute;right:0;top:0;height:100%;width:1.2rem;color:#23BBF3;font-size:0.36rem;}
+.detail .base .butnbox .butn {}
+.detail .base .butnbox .butn .icon-star{display:block;margin:0 auto;width:0.56rem;height:0.56rem;background:url(../images/game_details_collection.png) center center no-repeat;background-size:100% 100%;margin-bottom:.12rem;}
+.detail .base .butnbox .butn .icon-star.on {background-image:url(../images/game_details_collected.png);}
+.detail .base .butnbox .butn .icon-star~span{display:block;width:100%;text-align:center;}
+.detail .base .butnbox .butn .icon-star.on~span{color:#FF3228;}
+.detail .base .textbox {margin:0 .8rem 0 2.6rem;height:2.16rem;}
+.detail .base .textbox .title {height:1.08rem;line-height:0.8rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.detail .base .textbox .title .name {font-size:.48rem;margin-right:.1rem;}
+.detail .base .textbox .title .type {font-size:.4rem;color:#999;}
+.detail .base .textbox .info {font-size:.36rem;margin:0;white-space:nowrap;text-overflow:ellipsis;}
+.detail .base .textbox .info span{position:relative;}
+.detail .base .textbox .info span i {font-size:.38rem;color:#23BBF3;font-style:normal;}
+.detail .base .textbox .info span~span:before{position:absolute;top:21%;left:-.3rem;display:block;width:.04rem;height:65.38%;background:#e0e0e0;content:'';}
+.detail .base .textbox .info span:not(:first-child){margin-left:.6rem;}
+.detail .base .textbox .slogan {margin:0;margin-top:.05rem;font-size:.36rem;color:#999;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+
+.detail .screenshot {background:#FFF;margin-top:0.3rem;padding:0.4rem 0;}
+.detail .screenshot .wrap {width:100%;}
+.detail .screenshot .iconbox {height:7.48rem;margin-left:0.4rem;width:4.2rem;font-size:0.52rem;color:#BBBABA;position:relative;background:#E2E2E2;}
+.detail .screenshot .iconbox .icon {width:100%;height:100%;position:relative;z-index:2;}
+
+.detail .description,.detail .gift,.detail .active,.detail .play {background:#FFF;margin-top:.3rem;}
+
+.detail .samething .cntitle {height:1.48rem;padding:0 0.4rem;position:relative;}
+.detail .samething .cntitle .name {font-size:0.44rem;line-height:1.68rem;display:block;}
+.detail .samething .cntitle .name .icon{display:inline-block;vertical-align:middle;width:0.52rem;height:0.52rem;max-height:52px;max-width:52px;background-position:center center;background-repeat:no-repeat;background-size:100% 100%;margin-right:0.2rem;margin-top:-.9%;}
+.detail .samething .cntitle .name .icon-desc {background-image:url(../images/game_details_introduce.png);}
+.detail .samething .cntitle .name .icon-gift {background-image:url(../images/game_details_gift.png);}
+.detail .samething .cntitle .name .icon-active {background-image:url(../images/game_details_activity.png);}
+.detail .samething .cntitle .name .icon-play {background-image:url(../images/game_details_all.png);}
+
+.detail .samething .cntitle .more {float:right;font-size:0.36rem;color:#666;line-height:1.48rem;}
+.detail .samething .cntitle .more .icon-arrow-right {margin-left:0.2rem;display:inline-block;width:0.18rem;height:0.32rem;background:url(../images/game_details_activity_more.png) center center no-repeat;background-size:100% 100%;}
+
+.detail .description .content .showarticle {color:#23BBF3;position:absolute;bottom:0;right:0;background:#FFF;text-indent:0;padding:0;margin:0;white-space:nowrap;border:none;width:3rem;text-align:left;text-indent:0.2rem;}
+.detail .description .content {font-size:0.36rem;color:#666;line-height:1.82;margin-top:-0.16rem;padding:0 0.4rem 0.42rem;text-indent:0.88rem;}
+.detail .description .content .article {height:2.55rem;overflow:hidden;position:relative;}
+.detail .description .content .article .mark {width:1px;height:1px;display:inline-block;}
+.detail .gift .content,.detail .active .content {border-top:1px solid #E7E7E7;}
+
+.detail .gift .text-list {padding-bottom:0.6rem;}
+.detail .gift .text-list li{padding:0.4rem 0.52rem 0;}
+.detail .gift .text-list .item {position:relative;background:url(../images/game_details_gift_bg.png) center center no-repeat;background-size:100% 100%;}
+.detail .gift .text-list .item .butnbox {position:absolute;top:0;right:0;height:100%;width:14.2%;}
+.detail .gift .text-list .item .butnbox .butn {font-size:0.48rem;color:#FFF;}
+.detail .gift .text-list .item .butnbox .butn .getgift {width: 0.54rem;display: block;margin: 0 auto;line-height:1.2;}
+.detail .gift .text-list .item .text {margin-left:11%;margin-right:15%;font-size:0.84rem;}
+.detail .gift .text-list .item .text .title{font-size:0.44rem;display:inline-block;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.detail .gift .text-list .item .text .surplusbox  {font-size:0.36rem;margin-top:-1.2%;}
+.detail .gift .text-list .item .text .surplusbox .surplus {vertical-align:middle;position:relative;overflow:hidden;height:0.1rem;width:42%;border-radius:0.1rem;background:#E5E5E5;display:inline-block;margin-right:0.16rem;}
+.detail .gift .text-list .item .text .surplusbox .surplus i {position:absolute;top:0;left:0;background:#3BC97E;height:100%;border-radius:0.1rem;}
+.detail .gift .text-list .item .text .surplusbox .number {}
+.detail .gift .text-list .item .text .surplusbox .number i{font-style:normal;color:#3BC97E;margin-left:0.1rem}
+.detail .gift .text-list .item .text .validitytime {font-size:0.36rem;color:#999;margin:0;padding:.1rem 0 0.32rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+.detail .active .text-pic-list .item {padding:0.1rem 0;}
+.detail .active .text-pic-list li:last-child .item {border:none;}
+.detail .active .text-pic-list .iconbox {border-radius:0;width:1.72rem;height:1.72rem;max-height:172px;max-width:172px;margin-left:1%;}
+.detail .active .text-pic-list .butnbox {float:none;position:absolute;right:0;top:0;height:100%;margin:0;}
+.detail .active .text-pic-list .butnbox .butn {display:block;float:right;}
+.detail .active .text-pic-list .text {padding:0;margin-left:19.3%;margin-left:0;height:1.72rem;}
+.detail .active .text-pic-list .text .title {font-size:0.44rem;line-height:1.4;padding-top:0.2rem;}
+.detail .active .text-pic-list .text .title .name {font-size:inherit;margin-left:-3.2%;margin-left:-2.2%;}
+.detail .active .text-pic-list .text .title .name .heightlight {color:#23BBF3;font-style:normal;}
+.detail .active .text-pic-list .text .info {margin:0 0 1.8%;padding:2px 0;}
+.detail .active .text-pic-list .text .info .cate {padding:0 0.9%;line-height:1.4;display:inline-block;margin-top:-1%;margin-right:0.2rem;border:3px solid transparent;border-radius:0.08rem;vertical-align:middle;font-size:0.3rem;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.detail .active .text-pic-list .text .info .cate-notice {color:#23BBF3;border-color:#23BBF3;}
+.detail .active .text-pic-list .text .info .cate-active {color:#FF7700;border-color:#FF7700;}
+.detail .active .text-pic-list .text .info .catchword {font-size:0.4rem;color:#999;}
+
+.detail .play .content {padding:0 0.14rem;}
+.detail .play .content ul {width:100%;}
+.detail .play .content li {width:25%;float:left;}
+.detail .play .item{text-align:center;padding-bottom:1px;margin-bottom:-1px;width:88%;margin:0 auto;}
+.detail .play .item a{-webkit-tap-highlight-color:transparent;}
+.detail .play .item .iconbox{position:relative;display:block;overflow:hidden;margin:0 auto 8%;width:1.72rem;height:1.72rem;max-width:172px;max-height:172px;border-radius:0.4rem;background:#e2e2e2;color:#bbbaba;}
+.detail .play .item .iconbox .icon{position:relative;z-index:2;width:100%;border-radius:0.4rem;}
+.detail .play .item .iconbox .font{font-size:0.36rem;}
+.detail .play .item .namebox{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.42rem;}
+.detail .play .item .butnbox{display:block;margin:10% auto 33%;width:1.64rem;height:0.66rem;line-height:0.66rem;text-align:center;border:3px solid #23bbf3;border-radius:0.08rem;color:#23bbf3;font-size:0.4rem;}
+
+
+.detail .start-game {position:fixed;bottom:0;width:100%;z-index: 3;background:#23BBF3;height: 1.44rem;line-height: 1.44rem}
+.detail .start-game .btn  {width: 60%;cursor:pointer;text-align:center;display:block;color:#FFF;font-size:.46rem;float: right;}
+.detail .start-game .btn_weiduan{width: 37%;cursor:pointer;text-align:center;display:block;color:#FFF;font-size:.46rem;border-right: 1px solid #fff;float: left;}
+
+
+@media screen and (max-width:660px) {
+  .header .caption .tabmenu .s-slide:first-child {border-left-width:2px;}
+  .header .caption .tabmenu .s-slide:last-child {border-right-width:2px;}
+  .header .caption .tabmenu,.text-pic-list .butnbox .butn,.detail .active .text-pic-list .text .info .cate,.detail .play .item .butnbox {border-width:2px;}
+  
+  
+}
+@media screen and (max-width:540px) {
+  .header .caption .tabmenu .s-slide:first-child {border-left-width:1px;}
+  .header .caption .tabmenu .s-slide:last-child {border-right-width:1px;}
+  .header .caption .tabmenu,.text-pic-list .butnbox .butn,.detail .active .text-pic-list .text .info .cate,.detail .play .item .butnbox{border-width:1px;}
+
+  
+  
+}
+
+
+/*新增修改css：start-By:PatY*/
+.text-class-list{
+  padding: 0 5%;
+  display: inline-block;
+  width: 90%;
+  box-sizing: content-box;
+}
+.text-class-list li{
+  width: 20%;
+  height: 2.5rem;
+  float: left;
+}
+.text-class-list .butnbox{
+  display: none;
+}
+.text-class-list .item{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.text-class-list li{
+  border-bottom: none;
+}
+.text-class-list li .iconbox{
+  float: none;
+  display: inline-block;
+  margin-top: 18%;
+  background-size: 100%;
+}
+.text-class-list li:nth-child(1) .iconbox{
+  background: url("../images/game-list-new.png") no-repeat;
+  background-size: 100%;
+}
+.text-class-list li:nth-child(2) .iconbox{
+  background: url("../images/game-list-2.png") no-repeat;
+  background-size: 100%;
+}
+.text-class-list li:nth-child(3) .iconbox{
+  background: url("../images/game-list-girl.png") no-repeat;
+  background-size: 100%;
+}
+.text-class-list li:nth-child(4) .iconbox{
+  background: url("../images/game-list-fight.png") no-repeat;
+  background-size: 100%;
+}
+.text-class-list li:nth-child(5) .iconbox{
+  background: url("../images/game-list-last.png") no-repeat;
+  background-size: 100%;
+}
+.text-class-list .iconbox span{
+  display: none;
+}
+.text-class-list .text{
+  margin: 0;
+  float: none;
+  line-height: normal;
+}
+.text-class-list .item.active .title .name{
+  color: #fd7510;
+}
+.text-pic-list .text .info .type{
+  color: #fd750f;
+  border: .5px solid;
+  padding: 0 5px;
+  border-radius: 2px;
+}
+.tab-scroll #tab-slide{
+  border-top: 0!important;
+}
+.space{
+  height: .25rem;
+}
+.text-class-list li:first-child{margin-top:0;}
+
+.text-class-list .iconbox .icon{display: none;}
+
+.detail .base .textbox .info span i{
+  color: #ff7c00;
+}
+.detail .base .textbox .title{
+  max-width: 100%;
+}
+.detail .base .textbox .title .name{
+  max-width: 73%;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: .68rem;
+}
+.detail .base .textbox .title .type{
+  border: 1px solid #23bbf3;
+  border-radius: 3px;
+  /*line-height: 0.28rem;*/
+  margin-left: .25rem;
+  padding: 0 .16rem;
+  line-height: .5rem;
+  display: inline-block;
+  font-size: .3rem;
+  vertical-align: middle;
+}
+.detail .base .butnbox{
+  height: 45%;
+}
+.detail .base .wrap .but-begin{
+  text-align: center;
+  padding: .5rem 0 0;
+}
+.detail .base .wrap .but-begin .beginlogin{
+  display: inline-block;
+  width: 60%;
+  background: linear-gradient(to right, #3ac0f4, #0084ff);
+  margin: 0 auto;
+  color: #fff;
+  font-size: .7rem;
+  line-height: 1.2rem;
+  border-radius: .25rem;
+  box-shadow: 0 4px 16px #9bd5fd;
+}
+
+.detail .gift .text-list .item{
+  background: none;
+}
+.detail .gift .text-list .item .text{
+  margin: 0;
+}
+.detail .gift .text-list .item .text .surplusbox .surplus i{
+  background: #FF7700;
+}
+.detail .gift .text-list .item .text .surplusbox .number i{
+  color: #FF7700;
+}
+.detail .gift .text-list .item .butnbox{
+  width: 18%;
+}
+.detail .gift .text-list .item .butnbox .butn{
+  display: inline-block;
+  width: 100%;
+  height: 40%;
+  background: #23b8f3;
+  margin-top: 40%;
+  text-align: center;
+  box-shadow: 0 4px 12px #b0e5fb;
+  border-radius: 5px;
+}
+.detail .gift .text-list .item .butnbox .butn .table-cell{
+  display: block;
+  height: 100%;
+}
+.detail .gift .text-list .item .butnbox .butn .getgift{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: .9rem;
+}
+
+/*新增修改css：end-By:PatY*/

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <link href="style/css/common.css" rel="stylesheet" >
+    <link href="style/css/user.css" rel="stylesheet" >
+    <script src="style/js/jquery-1.11.1.min.js"></script>
+    
+	</head>
+	<body class="user-bind">
+    <header class="header">
+      <section class="wrap">
+        <a href="user.html" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="style/images/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">绑定手机号</span></span></div>
+        <a href="javascript:;" class="hbtn right user-unbind jsunbind"><span class="table"><span class="table-cell"><img src="style/images/my_bind_already_relieve.png"></span></span></a>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+      
+      <section class="inner">
+        <section class="contain">
+
+          <div class="binded-info">
+            <img src="style/images/my_bind_already.png" class="pic">
+            <div class="title">您绑定的手机号：15265932567</div>
+            <p class="binded-info-text">
+              绑定手机后，您可以通过手机号找回密码<br/>同时提高账户安全性
+            </p>
+            <div class="butnbox">
+              <a href="user_bind_modify.html" class="butn">更换手机号</a>
+            </div>
+          </div>
+          
+        </section>
+        
+      </section>
+    </section>
+    
+    
+    <div class="pop"></div>
+    <script src="style/js/pop.lwx.min.js"></script>
+    <script src="style/js/common.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+          
+          /* 解绑 */
+          $('.jsunbind').click(function() {
+            
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">解除绑定？</div><div class="pop-text">解除绑定后将无法通过手机号找回密码</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">确定</a></div>');
+            $('.jscancel').click(function() {pop.close();});
+            
+            $('.pop-comfirm').click(function() {
+              
+              pop.close();
+              
+              setTimeout(function(){
+              
+                pop.addClass('pop-message').msg('<img class="pop-image" src="style/images/pop_completed.png"><p class="pop-text">已解除绑定</p>',1000,250);
+                
+                setTimeout(function() {
+                  window.location.href="user_bind.html";
+                },1500);
+              },810);
+              
+              return false;
+            });
+            
+            return false;
+          });
+          
+
+          
+        });
+        
+        
+        
+    </script>
+	</body>
+</html>

@@ -1,0 +1,193 @@
+<extend name="Public/bases" />
+<block name="css"> 
+  <link href="__CSS__/20170913/register.css" rel="stylesheet" >
+</block>
+<block name="body">
+        <div class="main clearfix">
+            <div class="inner clearfix">
+                <div class="registerbox">
+                    <div class="lrpane tab-pane fade active in" id="lr-register">
+                        <h4 class="title"><span class="titletext">欢迎加入！</span><span class="titlebtn">已加入联盟？<a href="{:U('Index/index')}" >立即登录</a></span></h4>
+                        <form id="regForm" class="form-horizontal" method="post" action="" novalidate="novalidate">
+                        
+                            <div class="form-group clearfix">
+                                <div class="input-group input-format">
+                                    <span class="input-group-addon"><i class="input_icon input_icon_user" ></i></span>
+                                    <input type="text" name="account" class="account form-control" placeholder="账号必须是6~30位字符串" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-status"></div>
+                            </div>
+                          
+                            <div class="form-group clearfix">
+                                <div class="input-group input-format ">
+                                    <span class="input-group-addon"><i class="input_icon input_icon_lock"></i></span>
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="请输入登录密码" aria-describedby="basic-addon1">
+                                </div>
+                                
+                                <div class="input-status"></div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="input-group input-format ">
+                                    <span class="input-group-addon"><i class="input_icon input_icon_lock"></i></span>
+                                    <input type="password" id="compassword" name="repassword" class="form-control" placeholder="请输入确认密码" aria-describedby="basic-addon1">
+                                </div>
+                                
+                                <div class="input-status"></div>
+                            </div>
+                            
+                            <div class="form-group clearfix">
+                                <div class="input-group input-format">
+                                    <span class="input-group-addon"><i class="input_icon input_icon_contacts" ></i></span>
+                                    <input type="text" name="real_name" class="form-control" placeholder="请输入联系人" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-status"></div>
+                            </div>
+                            
+                            <div class="form-group clearfix">
+                                <div class="input-group input-format">
+                                    <span class="input-group-addon"><i class="input_icon input_icon_telephone" ></i></span>
+                                    <input type="text" name="mobile_phone" class="form-control" placeholder="请输入联系电话" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-status"></div>
+                            </div>
+                            
+                            <div class="form-group ff clearfix">
+                                <div class="input-group input-format">
+                                <label class="tabbtn"><input type="checkbox" id="remember" name="remember" checked ><i class="on"></i><span>我已阅读并接受<a href="{:U('Index/rule')}">《用户注册协议》</a></span></label>
+                                </div>
+                                <div class="input-status"></div>
+                            </div>
+                            
+                            <div >
+                            <input id="loginButton" type="submit" class="btn btn_primary" value="立 即 注 册">
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="gotop"><img src="__IMG__/index/gotop.png"></div>
+</block>
+<block name="script">        
+        
+            <script>
+            
+var regLogin = "";
+// 如果登录有错误
+
+$(document).ready(function(){
+    $('#remember').change(function() {
+        var that = $(this);
+        if (that.prop('checked')) {
+          that.siblings('i').addClass('on');
+        } else {
+          that.siblings('i').removeClass('on');
+        }
+    });
+
+    /**
+     * 新增验证方法
+    */
+    $.validator.addMethod("numOrLetter", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9_\.]+$/.test(value);
+    }, '只能是字母或数字');
+    $.validator.addMethod("ismobile", function(value, element) {
+        var length = value.length;     
+        var mobile = /^1[34578]\d{9}$/;     
+        return (length == 11 && mobile.exec(value))? true:false;  
+    }, "请正确填写您的手机号码");
+    // 注册验证
+    $("#regForm").validate({
+        //定义规则
+        rules:{
+            account:{
+                required:true,
+                rangelength:[6,30],
+                numOrLetter:true,
+                remote:{
+					url: "{:U('Index/checkAccountt')}",     //后台处理程序 
+					type: "post",               //数据发送方式
+					data: {account:function() {return $(".account").val();}}
+				}
+                
+            },
+            password:{
+                required:true,
+                minlength:6
+            },
+            repassword:{
+                required:true,
+                minlength:6,
+                equalTo: "#password"
+            },
+            real_name:{
+                required:true,
+            },
+            mobile_phone:{
+                required:true,
+                ismobile:true,
+            },
+            remember:{
+                required:true,
+            }
+        },
+        //定义错误消息
+        messages:{
+            account:{
+                required:"请输入登录账号",
+                rangelength:"账号必须是6~30位字符串",
+                remote:"用户名已经存在",
+            },
+            password:{
+                required:"请输入登录密码",
+                minlength:"登录密码不能小于6位字符"
+            },
+            repassword:{
+                required:"请输入确认密码",
+                minlength:"登录密码不能小于6位字符",
+                equalTo:"登录密码和确认密码不一致！"
+            },
+            real_name:{
+                required:"请输入联系人",
+            },
+            mobile_phone:{
+                required:"请输入联系电话",
+            },
+            remember:{
+                required:"请勾选用户注册协议",
+            }
+        },
+        submitHandler:function(form){
+            data = $('#regForm').serialize();
+            $.ajax({
+                type:'post',
+                url:"{:U('register')}",
+                data:data,
+                success:function(data){
+                    if(data.status==1){
+                    	if(data.check_status){
+                    		layer.msg('您已注册成功，正在跳转登录页面', {icon: 1});
+                    	}else{
+                    		layer.msg('您已注册成功，请等待审核通过后再登录', {icon: 1});
+                    	}
+                        
+                      setTimeout(function(){
+                        window.location.href=data.url;
+                        },1500);
+                    }else{
+                        setTimeout(function(){
+                        layer.msg('注册失败', {icon: 2});
+                        },1500);
+                    }
+                },error:function(){
+
+                }
+            });
+        }
+    });
+});
+
+</script>
+</block>

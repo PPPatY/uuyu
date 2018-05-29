@@ -1,0 +1,137 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+	<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<style type="text/css">
+	.form_main{display: inline-block;}
+</style>
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('Member/lists')}">用户</a>
+			</li>
+			<li>
+				<a href="{:U('Busier/lists')}">商务专员组</a>
+			</li>
+			<li>
+				<a href="#">{$meta_title}</a>
+			</li>
+		</ul>
+	</div>
+	<!-- 标签页导航 -->
+	<div class="tab-wrap">
+		<div class="jstabnav">
+			<div class="formtitle" style="margin-bottom: 0;"><span>{$meta_title}</span></div>
+
+		</div>
+		<div class="tab-content tab_content">
+			<!-- 表单 -->
+			<form id="form" action="{:U('edit?id='.$data['id'])}" method="post" class="form-horizontal">
+				<!-- 基础文档模型 -->
+				<div id="tab1" class="tab-pane in tab1 tab_table">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td class="l"><span style="color: red;">* </span>商务专员账号：</td>
+								<td class="r">
+									<input type="text" id="busier_account" name="busier_account" value="{$data['busier_account']}" placeholder="输入商务专员账户" />
+									<span class="notice-text">账号由管理后台创建，发放给商务专员</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="l"><span style="color: red;">* </span>登录密码：</td>
+								<td class="r">
+									<input type="password" class="password" name="password" value="{$data['password']}" placeholder="输入密码">
+								</td>
+							</tr>
+							<tr>
+								<td class="l"><span style="color: red;">* </span>姓名：</td>
+								<td class="r table_radio">
+									<input type="text" id="real_name" name="real_name" value="{$data['real_name']}" placeholder="输入姓名" />
+								</td>
+								
+							</tr>
+							<tr>
+								<td class="l"><span style="color: red;">* </span>联系电话：</td>
+								<td class="r">
+									<input type="text" id="phone" name="phone" value="{$data['phone']}" placeholder="输入联系电话" />
+								</td>
+							</tr>
+							<tr>
+								<td class="l">QQ号：</td>
+								<td>
+									<input type="text" id="qq" name="qq" value="<if condition=" $data[ 'qq'] neq 0 ">{$data['qq']}</if>" placeholder="输入QQ">
+								</td>
+								
+							</tr>
+							<tr>
+								<td class="l">账号状态：</td>
+								<td class="r table_radio">
+									<div class="form_main" style="width: 347px;">
+										<div class="radio radio-primary">
+											<input type="radio" value="1" id="radio1" name="status" checked="ture">
+											<label for="radio1">正常</label>
+										</div>
+										<div class="radio radio-primary">
+											<input type="radio" value="0" id="radio2"  name="status">
+											<label for="radio2">禁用</label>
+										</div>
+									</div>
+									<span class="notice-text">禁用状态，账号则无法登陆</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="l">旗下推广员数量：</td>
+								<td>
+									<input type="text" style="color: #3C95C8;" id="promote_user" name="promote_user" value="{:get_busier_num($data['id'])}" disabled="disabled">
+									<span class="notice-text">数量无法修改，根据推广员所属商务专员自动显示</span>
+								</td>
+								
+							</tr>
+							<tr>
+								<td class="l">创建时间：</td>
+								<td>
+									<input type="text" id="promote_user" name="promote_user" value="{:date('Y-m-d H:i:s',$data['create_time'])}" disabled="disabled">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-item cf">
+					<button class="submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+					<button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script>
+		//导航高亮
+		highlight_subnav('{:U('Busier/lists')}');
+		$('#submit').click(function() {
+			$('#form').submit();
+		});
+
+		function fun_ajax(gid) {
+			var url = "{:U('Giftbag/get_ajax_area_list')}";
+			$.ajax({
+				type: "post",
+				url: url,
+				dataType: "json",
+				data: { game_id: gid },
+				success: function(data) {
+					fun_html(data);
+					$("#server_name").val($("#server_id option:selected").text());
+				},
+				error: function() {
+					layer.msg('服务器异常', { icon: 5 });
+				}
+			})
+		}
+	</script>
+</block>

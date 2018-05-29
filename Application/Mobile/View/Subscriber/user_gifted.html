@@ -1,0 +1,87 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<script src="__JS__/clipboard.min.js"></script>
+<style>
+.footer{
+  display: none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+        <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">我的礼包</span></span></div>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="gift-list">
+            
+            <ul class="list second-list">
+            <volist name="mygift" id="gift">
+              <li class="clearfix">
+                <div class="item clearfix">
+                  <div class="game-info">
+                    <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$gift['icon']}" class="icon"></div>
+                    <div class="textbox">{$gift['game_name']}</div>
+                  </div>
+                  <div class="giftbag-list">
+                  <volist name="gift['gblist']" id="gb">
+                    <div class="subitem">
+                      <div class="butnbox"><span class="table"><span class="table-cell"><a href="javascript:;" class="butn copybutn" data-code="{$gb['novice']}">复制</a></span></span></div>
+                      <div class="textbox">
+                        <div class="title"><a href="{:U('/Gift/giftdetail',array('gift_id'=>$gb['gift_id']))}">[{$gb['gift_name']}]</a></div>
+                        <div class="giftcode"><span>礼包码：</span><div class="txt code">{$gb['novice']}</div></div>
+                        <p class="introduction">{$gb.desribe}</p>
+                      </div>
+                    </div>
+                  </volist>
+                  </div>
+                </div>
+              </li>
+            </volist>
+          </ul></div>
+        </section>
+        
+      </section>
+    </section>
+    <div class="pop"></div>
+    <script src="__JS__/pop.lwx.min.js"></script>
+    <script src="__JS__/common.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+        
+ 
+          
+          $('.copybutn').click(function() {
+            var that=$(this),text = that.attr('data-code');
+            
+            var clipboard = new Clipboard('.copybutn',{
+              text: function() {
+                    return text;
+                }
+            });
+            clipboard.on('success', function(e) {
+              pop.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已复制</p>',1000,250);
+              e.clearSelection();
+            });
+
+            clipboard.on('error', function(e) {
+              pop.addClass('pop-cue').msg('<div class="pop-content"><div class="pop-title">复制失败</div><div class="pop-text">此浏览器不支持此操作，请长按礼包码复制</div></div>',2000);
+            });
+            
+            
+          });
+          
+          
+        });
+
+        
+        
+    </script>
+</block>

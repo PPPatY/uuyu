@@ -1,0 +1,249 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link rel="stylesheet" href="__CSS__/UploadImages.css">
+<link href="__CSS__/20180207/mixed.css" rel="stylesheet">
+</block>
+
+<block name="body">
+    <div class="page-form normal_list siteBase-index-form">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>联盟站点></span><span>基本信息</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_xinxi.png"><span class="title_main">基本信息</span>
+      </div>
+      <div class="trunk-content article">
+        <div class="trunk-list">
+            <form id="data" action="" novalidate="novalidate" method="post" >
+                <table class="table2">
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>网站标题：</td>
+                        <td class="r"><input type="text" name="site_name" class="name txt" maxlength ="20" value="{$data.site_name}" placeholder="网站标题"></td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>客服QQ：</td>
+                        <td class="r"><input type="text" name="cust_qq" class="name txt" maxlength ="20" value="{$data.cust_qq}" placeholder="客服QQ"></td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>客服电话：</td>
+                        <td class="r"><input type="text" name="cust_tel" class="name txt" maxlength ="20" value="{$data.cust_tel}" placeholder="客服电话"></td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>QQ群：</td>
+                        <td class="r"><input type="text" name="qq_group" class="name txt" maxlength ="20" value="{$data.qq_group}" placeholder="QQ群"></td>
+                    </tr>
+										<tr>
+                        <td class="l"><span class="must_style">*</span>QQ群地址：</td>
+                        <td class="r"><input type="text" name="qq_group_url" class="name txt" maxlength ="20" value="{$data.qq_group_url}" placeholder="QQ群地址"><span class="noticetxt">(到这里 http://qun.qq.com/index.html 去生成群地址)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>商务合作：</td>
+                        <td class="r"><input type="text" name="business" class="name txt" maxlength ="20" value="{$data.business}" placeholder="商务合作"></td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>官方网站：</td>
+                        <td class="r"><input type="text" name="pr_site" class="name txt" maxlength ="20" value="{$data.pr_site}" placeholder="官方网站"></td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>pc logo：</td>
+                        <td class="r">
+                            <div class="upload-img-box" >
+                                <notempty name="data['pc_logo']" >
+                                    <div class="upload-pre-item"  >
+                                      <img src="{:get_cover($data['pc_logo'],'path')}"  >
+                                      <span class="btn-close btn-close-pc" title="删除图片"></span>
+                                    </div>
+                                </notempty>
+                            </div>
+                            <input type="file" id="pc_logo">
+                            <input type="hidden" name="pc_logo" id="background_id" value="{$data.pc_logo}" />
+                            <span class="noticetxt">(建议尺寸：168*52px)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l"><span class="must_style">*</span>wap logo：</td>
+                        <td class="r">
+                            <div class="upload-img-box">
+                                <notempty name="data['wap_logo']">
+                                    <div class="upload-pre-item"><img src="{:get_cover($data['wap_logo'],'path')}">
+                                    <span class="btn-close btn-close-wap" title="删除图片"></span></div>
+                                </notempty>
+                            </div>
+                            <input type="file" id="wap_logo">
+                            <input type="hidden" name="wap_logo" id="logo_id" value="{$data.wap_logo}" />
+                            <span class="noticetxt">(建议尺寸：290*90px)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l"></td>
+                        <td class="r">
+                            <button type="button" class="tjbnt btn" onclick="save()">确认</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+  <script type="text/javascript" src="__JS__/UploadImages.js"></script>
+  
+  <script type="text/javascript">
+  $(document).ready(function() {
+  });
+//删除图片
+function btnclosepc() {
+$('.btn-close-pc').click(function(event) {
+    event.preventDefault();
+    $(this).parent().remove();console.log(111);
+    picsbox = $("#pc_logo").siblings('.upload-img-box');
+    picArr = [];
+    for (var i = 0; i < picsbox.children().length ; i++) {
+        picArr.push(picsbox.children('.upload-pre-item:eq('+i+')').find('img').attr('data-id'));
+    };
+    picStr = picArr.join(',');
+    $('#background_id').val(picStr);
+});
+}
+//删除图片
+function btnclosewap() {
+$('.btn-close-wap').click(function(event) {
+    event.preventDefault();
+    $(this).parent().remove();
+    picsbox = $("#wap_logo").siblings('.upload-img-box');
+    picArr = [];
+    for (var i = 0; i < picsbox.children().length ; i++) {
+        picArr.push(picsbox.children('.upload-pre-item:eq('+i+')').find('img').attr('data-id'));
+    };
+    picStr = picArr.join(',');
+    $('#logo_id').val(picStr);
+});
+}
+btnclosepc();
+btnclosewap();
+  /* 初始化上传插件 */
+  $("#pc_logo").uploadify({
+      "height"          : 38,
+      "swf"             : "__STATIC__/uploadify/uploadify.swf",
+      "fileObjName"     : "download",
+      "buttonText"      : "上传图片",
+      "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+      "width"           : 120,
+      'removeTimeout'   : 1,
+      'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+      "onUploadSuccess" : upload_pc_logo{$field.name},
+  'onFallback' : function() {
+      alert('未检测到兼容版本的Flash.');
+  }
+  });
+  function upload_pc_logo{$field.name}(file, data){
+      var data = $.parseJSON(data);
+      var src = '';
+      if(data.status){
+          $("#background_id").val(data.id);
+          src = data.url || '__ROOT__' + data.path;
+          if(src ==''){
+            layer.msg('站点背景图不能为空');
+          }
+          $("#background_id").parent().find('.upload-img-box').html(
+              '<div class="upload-pre-item"><img style="width: 100%;height: 100%;" src="' + src + '"/><span class="btn-close btn-close-pc" title="删除图片"></span></div>'
+          );
+          
+          btnclosepc();
+      } else {
+          updateAlert(data.info);
+          setTimeout(function(){
+              $('#top-alert').find('button').click();
+              $(that).removeClass('disabled').prop('disabled',false);
+          },1500);
+      }
+  }
+  /* 初始化上传插件 */
+  $("#wap_logo").uploadify({
+      "height"          : 38,
+      "swf"             : "__STATIC__/uploadify/uploadify.swf",
+      "fileObjName"     : "download",
+      "buttonText"      : "上传图片",
+      "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+      "width"           : 120,
+      'removeTimeout'   : 1,
+      'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+      "onUploadSuccess" : upload_wap_logo{$field.name},
+  'onFallback' : function() {
+      alert('未检测到兼容版本的Flash.');
+  }
+  });
+  function upload_wap_logo{$field.name}(file, data){
+      var data = $.parseJSON(data);
+      var src = '';
+      if(data.status){
+          $("#logo_id").val(data.id);
+          src = data.url || '__ROOT__' + data.path;
+          if(src ==''){
+            layer.msg('站点icon不能为空');
+          }
+          $("#logo_id").parent().find('.upload-img-box').html(
+              '<div class="upload-pre-item" ><img style="width: 100%;height: 100%;" src="' + src + '"/><span class="btn-close btn-close-wap" title="删除图片"></span></div>'
+          );
+          
+          btnclosewap();
+      } else {
+          updateAlert(data.info);
+          setTimeout(function(){
+              $('#top-alert').find('button').click();
+              $(that).removeClass('disabled').prop('disabled',false);
+          },1500);
+      }
+  }
+
+  var sub = true;
+  function save() {
+      var data = $("#data").serialize();
+      if($("input[name='site_name']").val() == ""){
+    	  layer.msg("网站标题不能为空！");return false;
+      }
+      if($("input[name='cust_qq']").val() == ""){
+    	  layer.msg("客服QQ不能为空！");return false;
+      }
+      if($("input[name='cust_tel']").val() == ""){
+    	  layer.msg("客户电话不能为空！");return false;
+      }
+      if($("input[name='qq_group']").val() == ""){
+    	  layer.msg("QQ群不能为空！");return false;
+      }
+			if($("input[name='qq_group_url']").val() == ""){
+    	  layer.msg("QQ群地址不能为空！");return false;
+      }
+      if($("input[name='business']").val() == ""){
+    	  layer.msg("商务合作不能为空！");return false;
+      }
+      if($("input[name='pr_site']").val() == ""){
+    	  layer.msg("官方网站不能为空！");return false;
+      }
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('domain_set')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.msg, {icon: 1});
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.msg, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+
+  </script>
+</block>

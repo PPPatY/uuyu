@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$meta_title}-个人中心</title>
+    <link href="__CSS__/20170831/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="__CSS__/20170831/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="__CSS__/20180207/common.css" rel="stylesheet" type="text/css">
+    <link href="{:get_cover(C('CH_SET_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+    <script type="text/javascript" src="__JS__/jquery-1.11.1.min.js"></script>
+    
+     <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <![endif]-->
+    {:hook('pageHeader')}
+    <script type="text/javascript" src="__STATIC__/layer/layer.js" ></script>
+    <block name="css"></block>
+    <script type="text/javascript" src="__JS__/20170831/common.js"></script>
+    
+  </head>
+
+  <body>
+  	
+  	<!--左侧导航栏 开始-->
+		<div class="nav_new fl">
+			<div class="logo_picture">
+				<img src="__IMG__/20180207/logo.png" />
+			</div>
+			<div class="subNavBox">
+						<div class="subNav jssubNav"><i class="prev_icon icon_guanli"></i><span>管理中心</span><i class="arrow_icon"></i></div>
+						<div class="navContent jsnavContent">
+							<a href="{:U('Promote/index')}" class="<if condition='CONTROLLER_NAME eq Promote and ACTION_NAME eq index '>active</if> ">后台首页</a>
+							<a href="{:U('Promote/base_info')}" class="<if condition='CONTROLLER_NAME eq Promote and ACTION_NAME eq base_info '>active</if> ">账户信息</a>
+							<eq name="parent_id" value="0"><a href="{:U('Promote/mychlid')}" class="<if condition='CONTROLLER_NAME eq Promote and (ACTION_NAME eq mychlid or ACTION_NAME eq add_chlid or ACTION_NAME eq edit_chlid) '>active</if> ">二级渠道</a></eq>
+						</div>
+						<div class="subNav jssubNav"><i class="prev_icon icon_shujvi"></i><span>数据管理</span><i class="arrow_icon"></i></div>
+						<div class="navContent jsnavContent">
+							<a href="{:U('Query/recharge')}" class="<if condition='CONTROLLER_NAME eq Query and ACTION_NAME eq recharge '>active</if> ">充值明细</a>
+							<a href="{:U('Query/register')}" class="<if condition='CONTROLLER_NAME eq Query and ACTION_NAME eq register '>active</if> ">注册明细</a>
+							<a href="{:U('Query/arpu_analysis')}" class="<if condition='CONTROLLER_NAME eq Query and ACTION_NAME eq arpu_analysis '>active</if> ">ARPU统计</a>
+							<a href="{:U('Query/retention_analysis')}" class="<if condition='CONTROLLER_NAME eq Query and ACTION_NAME eq retention_analysis '>active</if> ">留存统计</a>
+						</div>
+						<div class="subNav jssubNav"><i class="prev_icon icon_caiwu"></i><span>财务管理</span><i class="arrow_icon"></i></div>
+						<div class="navContent jsnavContent">
+							<eq name='parent_id' value='0'>
+							<a href="{:U('Query/my_earning')}" class="<if condition='CONTROLLER_NAME eq Query and ACTION_NAME eq my_earning '>active</if> ">我的结算</a>
+							<else />
+							<a href="{:U('Query/son_earning')}" class="<if condition='CONTROLLER_NAME eq Query and ACTION_NAME eq son_earning '>active</if> ">我的结算</a>
+							</eq>
+							<eq name="parent_id" value="0">
+								<a href="{:U('Query/son_earning')}" class="<if condition='CONTROLLER_NAME eq Query and (ACTION_NAME eq son_earning or ACTION_NAME eq son_list)'>active</if> ">子渠道结算</a>
+							</eq>
+						</div>
+						<div class="subNav jssubNav"><i class="prev_icon icon_fenbao"></i><span>分包管理</span><i class="arrow_icon"></i></div>
+						<div class="navContent jsnavContent">
+							<a href="{:U('Apply/app_index')}" class="<if condition='CONTROLLER_NAME eq Apply and ACTION_NAME eq app_index '>active</if> ">APP分包</a>
+							<a href="{:U('Apply/index')}" class="<if condition='CONTROLLER_NAME eq Apply and (ACTION_NAME eq index or ACTION_NAME eq my_game)'>active</if> ">游戏分包</a>
+						</div>
+						<div class="subNav jssubNav"><i class="prev_icon icon_fuli"></i><span>会长福利</span><i class="arrow_icon"></i></div>
+						<div class="navContent jsnavContent">
+							<a href="{:U('Discount/index')}" class="<if condition='CONTROLLER_NAME eq Discount and (ACTION_NAME eq index or ACTION_NAME eq child_promote) '>active</if> ">会长福利</a>
+							<a href="{:U('Charge/agent_pay')}" class="<if condition='CONTROLLER_NAME eq Charge and (ACTION_NAME eq agent_pay or ACTION_NAME eq agent_pay_list) '>active</if> ">会长代充</a>
+							<eq name="parent_id" value="0">
+								<a href="{:U('PromoteCoin/shift')}" class="<if condition='CONTROLLER_NAME eq PromoteCoin and (ACTION_NAME eq shift or ACTION_NAME eq record) '>active</if> ">平台币转移</a>
+							</eq>
+							<a href="{:U('PromoteCoin/index')}" class="<if condition='CONTROLLER_NAME eq PromoteCoin and ACTION_NAME eq index '>active</if> ">平台币入账记录</a>
+						</div>
+						<div class="subNav jssubNav"><i class="prev_icon icon_zhandian"></i><span>联盟站点</span><i class="arrow_icon"></i></div>
+						<div class="navContent jsnavContent">
+							<a href="{:U('Promote/apply_domain')}" class="<if condition='CONTROLLER_NAME eq Promote and ACTION_NAME eq apply_domain '>active</if> ">站点申请</a>
+							<if condition="$applyunion['status'] eq 1"><a href="{:U('Promote/domain_set')}" class="<if condition='CONTROLLER_NAME eq Promote and ACTION_NAME eq domain_set '>active</if> ">站点配置</a></if>
+						</ul>
+					</div>
+		</div>
+    </div>
+
+    <div class="trunk">
+    	<div class="trunk_con">
+	    	<!--头部个人信息-->
+		    <div class="header">
+	        
+	        <div class="header-right">
+	          <span class="pinfo jstime">今天是：<span></span></span>
+	          <span class="pinfo">您好！{:session('promote_auth.account')}</span>
+	          <a class="pinfo" href="{:U('Public/logout')}" ><img src="__IMG__/20180207/icon_normal_tuichu.png"><!--{:L('Quit')}--></a>
+	        </div>
+		    </div>
+		    <!--结束 头部个人信息-->
+	      <div class="trunk-container">
+		        <!--右侧内容 开始-->
+			    	<div class="right_container">
+			    		<div class="location">
+					      <block name="location"></block>
+					    </div>
+			    		<block name="body"> </block>
+			    	</div>
+	      </div>
+	      <!--底部信息-->
+		    <div class="footer">
+		      <div class="inner" >
+		        <p class="customerService" style="margin-top:.8%;">
+		          <span>客服电话：{:C("CH_SET_SERVER_TEL")}</span>
+		          <span>客服邮箱：{:C("CH_SET_SERVER_EMAIL")}</span>
+		          <span>服务时间：{:C("CH_TIME")}</span>
+		        </p>
+		        <p class="copyright"><span>网络备案：{:C('CH_SET_FOR_THE_RECORD')}</span><span>网络文化经营许可证编号：{:C(CH_SET_LICENSE)}</span><span>版权所有：{:C('CH_SET_COPYRIGHT')}</span></p>
+		      </div>
+		    </div>
+		    <!--结束 底部信息-->
+	    </div>
+    </div>
+    
+    <script>
+        var url = window.location.pathname+"?s=/Home/" + "{$Think.CONTROLLER_NAME}"+ "/" + "{$Think.ACTION_NAME}"+".html";
+        url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+        $('.nav .menu').find("a[href='" + url + "']").addClass("active").closest('.wrap').addClass('active');
+        
+        $(function() {
+        	$('.jsnavContent').find('.active').closest('.jsnavContent').css('display','block');
+        	$('.jsnavContent').find('.active').closest('.jsnavContent').prev('.jssubNav').addClass('currentDd');
+					$(".jssubNav").click(function() {
+						$(this).toggleClass("currentDd").siblings(".jssubNav").removeClass("currentDd");
+						$(this).next(".jsnavContent").slideToggle(300).siblings(".jsnavContent").slideUp(500); 
+					});
+				});
+    </script>
+    <block name="script"></block>
+  </body>
+</html>

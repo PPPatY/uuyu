@@ -1,0 +1,88 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">[{:get_model_by_id($model_id)}] 属性列表(不含继承属性)</a></li>
+        </ul>
+    </div>
+    <div class="cf top_nav_list">
+		<div class="fl button_list">
+            <div class="tools">
+                <a class="" href="{:U('Attribute/add?model_id='.$model_id)}"><span class="button_icon button_icon1"></span>新 增</a>
+            </div>
+        </div>
+    </div>
+	<!-- 数据列表 -->
+	<div class="data_list">
+        <div class="">
+	<table class="">
+    <thead>
+        <tr>
+		<th ><label class="checked">
+								<input class="check-all" type="checkbox">
+								<i class="check_icon"></i>
+							</label></th>
+		<th class="">编号</th>
+		<th class="">字段</th>
+		<th class="">名称</th>
+		<th class="">数据类型</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td>
+            	<label class="checked">
+					<input class="ids" type="checkbox" name="id[]" value="{$vo.id}" />
+					<i class="check_icon"></i>
+				</label>
+        	</td>
+			<td>{$vo.id} </td>
+			<td>{$vo.name}</td>
+			<td><a data-id="{$vo.id}" href="{:U('Attribute/edit?id='.$vo['id'])}">{$vo.title}</a></td>
+			<td><span>{:get_attribute_type($vo['type'])}</span></td>
+			<td><a href="{:U('Attribute/edit?id='.$vo['id'])}">编辑</a>
+				<a class="confirm ajax-get" href="{:U('Attribute/remove?id='.$vo['id'])}">删除</a>
+                </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+    <script type="text/javascript">
+  	//导航高亮
+    highlight_subnav('{:U('Model/index')}');
+    $(function(){
+    	$("#search").click(function(){
+    		var url = $(this).attr('url');
+    		var status = $('select[name=status]').val();
+    		var search = $('input[name=search]').val();
+    		if(status != ''){
+    			url += '/status/' + status;
+    		}
+    		if(search != ''){
+    			url += '/search/' + search;
+    		}
+    		window.location.href = url;
+    	});
+})
+</script>
+</block>

@@ -1,0 +1,55 @@
+@charset "utf-8";
+.header {background:rgba(0,0,0,.1);position:absolute;top:0;left:0;right:0;width:100%;z-index:20;}
+
+.banner {background:url(../../images/20170913/banner_news.png) center 0 no-repeat;height:360px;position:relative;}
+
+.page-list,.page-detail {background:#F3F3F3;min-height:500px;padding-bottom:40px;margin-top:-4em;}
+
+.page-list .inner,.page-detail .inner {background:#FFF;}
+
+.page-list .inner .wrap,.page-detail .inner .wrap {padding:5px 30px;}
+
+.trunk-tab {border-bottom:1px solid #EBEBEB;font-size:#555;font-size:18px;font-weight:100;}
+.trunk-tab li {width:150px;float:left;text-align:center;}
+.trunk-tab li a {border-bottom:3px solid transparent;line-height:2.8;padding:.65em 5px;}
+
+.trunk-tab li.active a {border-bottom-color:#26C7DB;color:#26C7DB;font-weight:600;}
+
+.trunk-list .list{padding-top:5px;min-height:400px;}
+.trunk-list .list .article-list li {border-bottom:1px dashed #EFEFEF;color: #6c6c6c;white-space: nowrap;
+    overflow: hidden;  
+    text-overflow: ellipsis;line-height:4;font-size:14px;position:relative;}
+.trunk-list .list .article-list li .dot {display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #e2e2e2;
+    border-radius: 6px;
+    margin: 0 7px 2px 16px;}
+
+.trunk-list .list .article-list li a {display: inline-block;color: #6c6c6c;}
+.trunk-list .list .article-list li .time {display:inline-block;position:absolute;right:0;top:0em;}
+
+.trunk-list .list .article-list li:hover {background-color:#F2FCFD;}
+.trunk-list .list .article-list li:hover .dot{background-color:#26C7DB;}
+.trunk-list .list .article-list li:hover a{color:#26C7DB;}
+.trunk-list .list .article-list li:hover .time{color:#26C7DB;}
+
+
+.page {margin-bottom:30px;}
+
+
+.article-content {padding:1px 0;min-height:340px;}
+.article-content img,.article-content p img {max-width:100%;}
+
+.trunk-article {position:relative;}
+.trunk-article .article-title {line-height:2.8;font-size:18px;border-bottom:1px solid #EBEBEB;padding-left:20px;padding-right: 140px;}
+.trunk-article .article-voice {position:absolute;right:20px;top:1.2em;font-size:13px;}
+
+.detail-tab {padding:20px 30px;border-top:1px solid #f2f4f5;}
+.detail-tab a {width:42%;display:block;float:left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.detail-tab a:hover {color:#26C7DB;}
+.detail-tab a.next {text-align:right;float:right;}

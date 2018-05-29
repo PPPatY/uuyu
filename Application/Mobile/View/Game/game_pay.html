@@ -1,0 +1,364 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/gamepay.css" rel="stylesheet">
+
+<header class="header">
+  <section class="wrap">
+    <a href="{$game_url}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">充值</span></span></div>
+  </section>
+</header>
+<div class="occupy"></div>
+
+<section class="trunker">
+  
+  <section class="inner">
+    <section class="contain">
+
+
+<style>
+.footer{
+  display: none;
+}
+.iframepay{display: none;}
+.iframepay #jjspay_url_mainframe{
+    height: 100%;
+    visibility: inherit;
+    width: 100%;
+    overflow: visible;
+    position: absolute;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2000;
+    left: 0;
+    top: 0%;
+}
+.iframepay .iframecolse{
+  display: none;
+  z-index: 2001;
+  top: -13px;
+  position: fixed;
+  right: 0;
+  width: 22px;
+  height: 22px;
+}
+.pop-pay .pop-box, .pop-partir .pop-box{
+  border-radius:0;
+  width: 100%;
+  height: 100%;
+}
+
+.pay-box-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.pay-box-row {
+    display: table-row;
+}
+.pay-box-cell {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+}
+</style>
+
+
+<div class="pay-box">
+  <div class="pay-box-content">
+    <form action="">
+      <input type="hidden" name="" value="">
+      <div class="pay-box-pay-info">
+        <div class="pay-box-table">
+          <div class="pay-box-row">
+            <span class="pay-box-cell pm">充值金额</span><span class="pay-box-cell pv"><span class="red">￥<i>{:$data['amount']/100}</i></span></span>
+          </div>
+          <div class="pay-box-row">
+            <span class="pay-box-cell pm">购买商品</span><span class="pay-box-cell pv"><span>{$data['props_name']}</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="pay-box-pay-way">
+        <div class="pay-box-pay-way-title">
+          选择支付方式
+        </div>
+        <div class="pay-box-pay-way-select">
+          <div class="clearfix jsradio table">
+          <if condition="($paytype['wei_xin'] eq 1) or ($paytype['weixin'] eq 1)">
+            <label class="item table-row jsweixin"><span class="table-cell item1"><img src="/Public/Mobile/images/my_pay_weixin.png" class="icon"></span><span class="table-cell item2"><span class="way">微信支付</span><span class="text">推荐微信用户使用</span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value="weixin"><i class="icon-hook"></i><!--<i class="icon-arrow-right">--></span></span></label>
+          </if>
+          <if condition="$paytype['alipay'] eq 1">
+            <label class="item input-radio table-row"><span class="table-cell item1"><img src="/Public/Mobile/images/my_pay_alipay.png" class="icon"></span><span class="table-cell item2"><span class="way">支付宝支付</span><span class="text"></span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio on" checked="" value="alipay"><i class="icon-hook"></i></span></span></label>
+          </if>
+            <label class="item input-radio table-row"><span class="table-cell item1"><img src="/Public/Mobile/images/pop_pay_platform.png" class="icon"></span><span class="table-cell item2"><span class="way">平台币支付</span><span class="text">平台币余额：{$ptb['balance']}</span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value="ptb"><i class="icon-hook"></i></span></span></label>
+
+            <label class="item input-radio table-row"><span class="table-cell item1"><img src="/Public/Mobile/images/pop_pay_bind.png" class="icon"></span><span class="table-cell item2"><span class="way">绑定平台币支付</span><span class="text">绑定平台币余额：{$ptb['bind_balance']}</span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value="bind_ptb"><i class="icon-hook"></i></span></span></label>
+          </div>
+        </div>
+      </div>
+      <div class="pay-box-butn-box">
+        <input type="submit" value="立即付款" class="pay-box-butn jspaysubmit">
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="iframepay">
+  <a title="关闭" class="iframecolse"><img style="background: rgba(0,0,0,.5);" src="__IMG__/close_white.png" alt=""></a>
+  <iframe id="jjspay_url_mainframe" frameborder="0" scrolling="yes" name="main" src="">
+  </iframe>
+</div>
+<link href="__CSS__/recharge.css" rel="stylesheet" >
+<form id="form1" action="{:U('Game/game_pay_sdk')}" method="post" target="_top" style="display: none;">
+    <input type="hidden" id="body" name="name" value="{$data['props_name']}" />
+    <input type="hidden" name="price" value="{$data['amount']}" />
+    <input type="hidden" name="num" value="1" />
+    <input type="hidden" name="payway" id="payway" value="alipay" />
+    <input type="hidden" name="user_id"    id="user_id"    value="{$data['user_id']}" />
+    <input type="hidden" name="props_name" id="props_name" value="{$data['props_name']}" />
+    <input type="hidden" name="amount"     id="amount"     value="{$data['amount']}" />
+    <input type="hidden" name="trade_no"   id="trade_no"   value="{$data['trade_no']}" />
+    <input type="hidden" name="game_appid"   id="game_appid"   value="{$data['game_appid']}" />
+    <input type="hidden" name="sign"       id="sign"   value="{$data['sign']}" />
+    <input type="hidden" name="server_id"   id="server_id"   value="{$data['server_id']}" />
+    <input type="hidden" name="server_name"   id="server_name"   value="{$data['server_name']}" />
+    <input type="hidden" name="role_id"   id="role_id"   value="{$data['role_id']}" />
+    <input type="hidden" name="role_name"   id="role_name"   value="{$data['role_name']}" />
+  </form>
+<div class="poppay"></div>
+<div class="poptip"></div>
+<script>
+    var poptip = $('.poptip').pop();
+    var poppay = $('.poppay').pop();
+    $(function() {
+
+      if (isWeiXin()) {
+        <if condition="($paytype['wei_xin'] neq 1) and ($paytype['weixin'] neq 1) ">//微信中  不支持微信默认平台币
+          $('.jsradio input[value="alipay"]').removeClass('on').removeAttr('checked');
+          $('.jsradio input[value="ptb"]').addClass('on').attr('checked','checked');
+          $("#payway").val('ptb');
+        <else/>
+          $('.jsradio input[value="alipay"]').removeClass('on').removeAttr('checked');
+          $('.jsradio input[value="weixin"]').addClass('on').attr('checked','checked');
+          $("#payway").val('weixin');
+        </if>
+      }else{
+        <if condition="($paytype['wei_xin'] neq 1) and ($paytype['weixin'] neq 1) and ($paytype['alipay'] neq 1)">//不支持微信、支付宝默认平台币
+          $('.jsradio input[value="alipay"]').removeClass('on').removeAttr('checked');
+          $('.jsradio input[value="ptb"]').addClass('on').attr('checked','checked');
+          $("#payway").val('ptb');
+        <elseif condition="$paytype['alipay'] neq 1"/>
+          $('.jsradio input[value="alipay"]').removeClass('on').removeAttr('checked');
+          $('.jsradio input[value="weixin"]').addClass('on').attr('checked','checked');
+          $("#payway").val('weixin');
+        </if>
+      }
+    });
+</script>
+<script>      
+    $(function() {
+      $('.jsradio .radio').change(function() {
+        var that=$(this),parent=that.closest('.jsradio');
+        if (that.prop('checked')) {
+          parent.find('.radio').removeClass('on');
+          that.addClass('on');
+          $("#payway").val(that.val());
+        }
+      });
+      
+      $('.jspaysubmit').click(function() {
+
+        var paytype = $('.jsradio .radio.on').val();
+        if (isWeiXin()) {
+          if (paytype =='alipay') {
+            $mt = "{:get_device_type()}";
+            if($mt=='ios'){
+              $url = "{:U('Game/recharge','','')}"+"&from=wxgzh&"+$("#form1").serialize();
+              location.href = $url;
+              return;
+            }
+              var $local = location.href;
+              $url = "{:U('Game/game_pay_sdk','','')}"+"&from=wxgzh&"+$("#form1").serialize();
+              var url = '{:U("Game/recharge")}';
+              window.history.pushState('forward', null, $url);
+              var index = layer.open({
+                type: 2,
+                content: url,
+                area: ['320px', '195px'],
+                cancel: function(){
+                  window.history.pushState('forward', null, $local);
+                  $(".iframecolse").click();
+                }
+                // maxmin: true
+              });
+              layer.full(index);
+              // $('.iframepay').css('display','block');
+              // $('.iframepay #jjspay_url_mainframe').attr('src',url);
+              return false;
+          }
+      }
+      switch(paytype){
+          case 'weixin':
+              if (isWeiXin()) {
+                  $type={:get_wx_type()};
+                  if($type){
+                      $("#payway").val(paytype);
+                      $("#form1").attr('target',"_self");
+                      $("#form1").submit();
+                  }else{
+                      get_wx_code();
+                  }
+              }else if(IsPC()){
+                  wx_pay();
+                  return false;
+              }else{
+                  wx_wap_pay();
+                  return false;
+              }
+          break;
+          case 'ptb':
+              ptb();
+          break;
+          case 'bind_ptb':
+              ptb();
+          break;
+          case 'jft':
+         
+          break;
+          default:
+              if(paytype=='alipay'){
+                $("#form1").submit();
+                return false;
+            
+              }else{
+                $("#payway").val(paytype);
+                $("#form1").submit();
+              }
+          break;
+      }
+
+        return false;
+       
+      });
+      
+      
+    });
+    //关闭支付宝iframe
+    $(".iframecolse").click(function(){
+        parent.postMessage({event:"sdk:pay_result",status:-100,data:"关闭支付页面"}, "*");
+    });
+    function isWeiXin(){
+      var ua = window.navigator.userAgent.toLowerCase();
+      if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+          return true;
+      }else{
+          return false;
+      }
+    }
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+                    "SymbianOS", "Windows Phone",
+                    "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+    function ptb(){
+      $.ajax({
+        type:"POST",
+        url:"{:U('Game/game_pay_sdk')}",
+        data:$("#form1").serialize(),
+        dataType:"json",
+        success:function(data){
+          if(data.status==1){
+            layer.closeAll();
+            poptip.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">充值成功<div class="pop-text">'+''+'</div></div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">回到游戏</a></div>');
+            $('.jscancel').click(function(){
+              location.href = "{$game_url}";
+            });
+          }else{
+            layer.closeAll();
+            poptip.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">创建订单失败<div class="pop-text">'+data.msg+'</div></div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+            $('.jscancel').click(function() {poptip.close();});
+            return false;
+          }
+        },
+        error:function(res){
+            layer.closeAll();
+            poptip.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">服务器错误，请稍后再试</div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+            $('.jscancel').click(function() {poptip.close();});
+            return false;
+        }
+      });
+    }
+    function wx_wap_pay(){
+      $.ajax({
+        type:"POST",
+        url:"{:U('Game/weixin_wap_pay')}",
+        data:{game_appid:$('#game_appid').val(),trade_no:$('#trade_no').val(),props_name:$('#props_name').val(),amount:$('#amount').val(),user_id:$('#user_id').val()},
+        dataType:"json",
+        success:function(data){
+          if(data.status==1){
+            window.location=data.pay_info; 
+          }else if(data.status==0){
+            layer.msg(data.info);
+          }else{
+            layer.closeAll();
+            poptip.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">创建订单失败<div class="pop-text">'+data.info+'</div></div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+            $('.jscancel').click(function() {poptip.close();});
+            return false;
+          }
+        },
+        error:function(res){
+            layer.closeAll();
+            poptip.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">服务器错误，请稍后再试</div></div><div class="pop-butn-box"><a  class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+            $('.jscancel').click(function() {poptip.close();});
+            return false;
+        }
+      })
+    }
+    function get_wx_code(){
+         $.ajax({
+          type:"POST",
+          data:{game_appid:$('#game_appid').val(),trade_no:$('#trade_no').val(),props_name:$('#props_name').val(),amount:$('#amount').val(),user_id:$('#user_id').val(),server_id:$('#server_id').val(),server_name:$('#server_name').val(),role_id:$('#role_id').val(),role_name:$('#role_name').val(),referer_pay:1,sign:$('#sign').val()},
+          url:"{:U('Game/get_wx_code')}",
+          dataType:"json",
+          success:function(res){
+            console.log(res);
+            if(res.package){
+                self.postMessage({event:"pay:wxgzh_pay",status:1,data:res}, "*");
+            }else if(res.status==-100){
+              top.location.href=res.url; 
+            }else{
+                alert('支付调起失败');
+            }
+          },
+          error:function(){
+            // alert('服务器故障！');
+        }
+        })
+        return;
+    }
+</script>
+
+</section>
+    
+  </section>
+</section>
+
+</block>

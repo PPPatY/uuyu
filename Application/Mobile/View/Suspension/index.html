@@ -1,0 +1,917 @@
+<script type="text/javascript" src="__JS__/suspension/jquery.min.js"></script>
+
+<script type="text/javascript" src="__JS__/suspension/top_game.min.js"></script>
+
+<!-- 悬浮按钮 -->
+<div>
+<div id="game_menu_box" class="mean_box" style=" position: fixed;z-index: 10;"><!-- <if condition="session('user_auth.user_id') eq '' ">display:none;</if> -->
+
+    <div class="suspension icon_mean" style="opacity: 0.5;">
+
+         <img style="width:120%;" src="__IMG__/suspension/menu.png">
+
+    </div>
+
+</div>
+<script>
+$(".icon_mean").click(function(){
+    $.ajax({
+        url:"{:U('Subscriber/now_session')}",
+        type:'post',
+        success:function(data){
+            console.log(data);
+            try{
+                $user_id = data.user_auth.user_id;
+                $nickname = data.user_auth.nickname;
+            }catch(error){
+                if($(".name_limit").text()){
+                    alert('登录信息已过期，请重新登录');
+                }
+                 return ;
+            }
+            try{
+                $headimgurl = data.wechat_token.headimgurl;
+            }catch(err){
+                $headimgurl = '';
+            }
+            if($user_id){
+                $(".personalcenter_head_pic").html('');
+                $('.youke_sigin').remove();
+                $(".nnnick").html('');
+                if($headimgurl){
+                    $html = "<img src='"+$headimgurl+"' />";
+                }else{
+                    $html = "<img src='__IMG__/pro/game04.png' />";
+                }
+                $(".personalcenter_head_pic").html($html);
+                $html1 = "<h1 class='name_text col_ff3'><i class='name_limit'>"+$nickname+"</i></h1>";
+                $("#nnnick").html($html1);
+            }
+        }
+    });
+});
+</script>
+<div style="position: relative; width: 100%;height: 100%;" id="game_play" data-level="0" data-land="0">
+
+    <div class="levitate_box " style="height: 736px;">
+
+        <!-- 用户返回 提示弹窗 -->
+
+        <div id="popup_back" class="popup_bg" style="display: none;">
+
+            <div class="popup_back" style="margin-top:-195px;">
+
+                <h1>
+
+                    {:C('BITMAP')}游戏平台
+
+                    <span id="popup_close"><img src="__IMG__/suspension/close_gray.png"></span>
+
+                </h1>
+
+                    <div class="ewm_pic"><em><img src="{:get_cover(C('PC_SET_QRCODE'),'path')}"></em></div>
+
+                    <div class="text_tishi text_tishi_v2"><em>微信[扫一扫]关注</em></div>
+
+                    <div class="tip_text tip_text_v2">
+
+                    </div>
+
+                <div class="popup_back_wrap">
+
+                    <volist name="sjgame" id="sj">
+
+                        <div class="popup_back_list popup_more_gamesList start-game">
+
+                            <em><a href="{:U('/opgm',array('game_id'=>$sj['id']),true,'',true)}"><img src="{$sj.icon|get_cover='path'}"></a></em>
+
+                            <span>{$sj.game_name}</span>
+
+                        </div>
+
+                    </volist>
+
+                    <div class="popup_back_list popup_more_game">
+
+                        <em><a href="{:U('index')}"><img src="__IMG__/suspension/menu.png"></a></em>
+
+                        <span>更多游戏</span>
+
+                    </div>
+
+                </div>
+
+
+
+                    <div class="pop_btn_two mt20">
+
+                        <a id="popup-fav-game" class="on">收藏游戏</a>
+
+                        <a id="popup-leave-game">离开游戏</a>
+
+                    </div>
+
+
+
+            </div>
+
+        </div>
+
+        <!-- 悬浮弹框 -->
+
+        <div id="game_popup_side" class="game_popup_box" style="height: 736px;">
+
+            <!-- 游戏 -->
+
+            <div class="game_popup" num="0">
+
+            <div class="game_popup_head" style="height:initial;">
+
+                <!-- 弹层头部 -->
+
+                    <div class="game_popup_top">
+
+                            <div class="back_home" id="game_popup_backHome"><em><img src="__IMG__/suspension/back_0.png"></em><a style="color: black;" href="{:U('Index/index')}">首页</a></div>
+
+                        <!-- 第二名head_second_bg -->   <!-- 第三名head_third_bg -->   <!-- 加class="head_top_kong"是正常用户 -->
+
+                        <div class="pop_head head_top_kong">
+                            <div class="personalcenter_head_pic">
+                              <if condition="$user eq ''">
+                                <img src="__IMG__/suspension/menu.png">
+                              <else/>
+                                <empty name="headpic">
+                                    <img src="__IMG__/pro/game04.png" />
+                                <else />
+                                    <img src="{$headpic}" />
+                                </empty>
+                              </if>
+                            </div>
+                            <if condition="$user eq ''">
+                                <div class="youke_sigin"><a class="visit-login">登录</a></div>
+                                <div class="personalcenter_head_text dib" id="nnnick"></div>
+                            <else/>
+                                <div class="personalcenter_head_text dib" id="nnnick">
+                                    <h1 class="name_text col_ff3"><i class="name_limit">{$user.nickname}</i>
+                                    <!-- <b class="vip_icon_pic vip_icon0"></b> -->
+                                    </h1>
+                                </div>
+                            </if>
+                        </div>
+
+                        <div class="game_title fr">
+
+                                <em class="collect-game"><b><img src="__IMG__/suspension/collect_f.png"></b>收藏</em>
+
+                        </div>
+
+                    </div>
+
+
+
+                <!-- 弹层nav -->
+
+                <div class="game_popup_nav posi_btn4"><!-- posi_btn4  4个 -->
+
+                    <ul>
+
+                        <li class="libao_btn on" id="tab1">
+
+                            <a>
+
+                                <em class="icon_02"></em>
+
+                                <span>游戏</span>
+
+                            </a>
+
+                        </li>
+
+                        <li class="libao_btn" id="tab2">
+
+                            <a>
+
+                                <em class="icon_03"></em>
+
+                                <span>礼包</span>
+
+                            </a>
+
+                        </li>
+
+                        <!-- <li class="youxi_btn" id="tab3">
+
+                            <a>
+
+                                <em class="icon_02"></em>
+
+                                <span>游戏</span>
+
+                            </a>
+
+                        </li> -->
+
+                        <li class="kefu_btn" id="tab4">
+
+                            <a>
+
+                                <em class="icon_07"></em>
+
+                                <span>客服</span>
+
+                            </a>
+
+                        </li>
+
+                        <li class="ptbcz_btn">
+
+                            <a>
+
+                                <em class="icon_04"></em>
+
+                                <span>充值</span>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-- 弹层内容 -->
+
+            <div class="game_popup_con" style="top: 129px; height: 607px;">
+
+
+
+                <!-- 游戏 -->
+
+                <div class="tab1 game_popup_main" id="game-list-container">
+
+                    <if condition="$user_play neq null">
+
+                        <!-- 最近在玩 -->
+
+                        <div class="game_wrap">
+
+                            <div class="title"><span></span>最近在玩<!-- <a>更多 ></a> --></div>
+
+                            <div class="game_type">
+
+                                <volist name="user_play" id="up">
+
+                                    <div class="game_type_list start-game" data-code="{$up.short}" data-game="{$up.short}" data-title="{$up.game_name}" data-desktop="1">
+
+                                        <a href="{:U('open_game',array('game_id'=>$up['game_id']))}">
+
+                                            <em><img src="{$up.icon|get_cover='path'}"></em>
+
+                                            <span>{$up.game_name}</span>
+
+                                        </a>
+
+                                    </div>
+
+                                </volist>
+
+                            </div>
+
+                        </div>
+
+                    </if>
+
+                    <div class="game_wrap game_list_hot">
+
+                        <div class="title"><span></span>热门游戏</div>
+
+                        <div id="popup-gameList-container">
+
+                        <if condition="$hot neq null">
+
+                            <div>
+
+                                <volist name="hot" id="hot">
+
+                                    <div class="game_list_box">
+
+                                        <em><img src="{$hot.icon|get_cover='path'}"></em>
+
+                                        <div class="game_list_text">
+
+                                            <h1>{$hot.game_name}</h1>
+
+                                            <h2>{$hot.features}</h2>
+
+                                        </div>
+
+                                        <div class="game_begin start-game" data-desktop="1"><a href="{:U('open_game',array('game_id'=>$hot['id']))}">开始</a></div>
+
+                                    </div>
+
+                                </volist>
+
+                            </div>
+
+                            <div id="loading-panel" class="load_box" style="visibility: visible">
+
+
+                                <p id="loading-panel-text">加载完成</p>
+
+                            </div>
+
+                        <else/>
+
+                            <div class="package_empty">
+
+                                <span><img src="__IMG__/suspension/package_empty.png"></span>
+
+                                <p>暂无热门游戏，敬请期待</p>
+
+                            </div>
+
+                        </if>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                 <!-- 礼包 -->
+
+                <div class="tab2 game_popup_main dn" id="game-pack-container">
+
+                    <if condition="$gift neq null">
+
+                    <!-- 游戏礼包 -->
+
+                        <div class="game_wrap game_line">
+
+                            <div class="title"><span></span>游戏礼包</div>
+
+                            <div class="game_img game_img_box2">
+
+                                <volist name="gift" id="gift">
+
+                                    <div class="package package_v2">
+
+                                        <div class="package_num">
+
+                                            <h1><i class="col6">《{$gift.game_name}》{$gift.giftbag_name}</i></h1>
+
+                                            <h2>{$gift.desribe}</h2>
+
+                                            <div class="package_num_img_box">
+
+                                                <div class="package_num_img">
+
+                                                    <span style="width: {$gift['wnovice']/$gift['wnovice']*100}%"></span>
+
+                                                </div>
+
+                                                <div class="package_num_tip">剩余{:round($gift['wnovice']/$gift['allcount_novice'],4)*100}%</div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="receive receive-now" wget="{$gift.wnovice}" aget="{$gift.allcount_novice}" giftid="{$gift.id}" game_name="{$gift.game_name}" gameid="{$gift.game_id}" giftname="{$gift.giftbag_name}" giftdesribe="{$gift.desribe}" giftdigest="{$gift.digest}"><a>领取</a></div>
+
+                                    </div>
+
+                                </volist>
+
+                            </div>
+
+                        </div>
+
+                    <else/>
+
+                        <div class="package_empty">
+
+                            <span><img src="__IMG__/suspension/package_empty.png"></span>
+
+                            <p>暂无本游戏礼包，敬请期待</p>
+
+                        </div>
+
+                    </if>
+
+                    <!-- 其他游戏礼包 -->
+
+                    <div class="game_wrap">
+
+                        <if condition="$othergift neq null">
+
+                            <div class="title">
+
+                                <span></span>其他游戏礼包
+
+                            </div>
+
+                            <div class="game_img game_img_box2">
+
+                                <volist name="othergift" id="ogift">
+
+                                    <div class="package package_v2">
+
+                                        <div class="package_num">
+
+                                            <h1><i class="col6">《{$ogift.game_name}》{$ogift.giftbag_name}</i></h1>
+
+                                            <h2>{$ogift.desribe}</h2>
+
+                                            <div class="package_num_img_box">
+
+                                                <div class="package_num_img">
+
+                                                    <span style="width: {$ogift['wnovice']/$ogift['wnovice']*100}%"></span>
+
+                                                </div>
+
+                                                <div class="package_num_tip">剩余<font>{:round($ogift['wnovice']/$ogift['allcount_novice'],4)*100}%</font></div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="receive receive-now" wget="{$ogift.wnovice}" aget="{$ogift.allcount_novice}" giftid="{$ogift.id}" game_name="{$ogift.game_name}" gameid="{$ogift.game_id}" giftname="{$ogift.giftbag_name}" giftdesribe="{$ogift.desribe}" giftdigest="{$ogift.digest}"><a>领取</a></div>
+
+                                    </div>
+
+                                </volist>
+
+                            </div>
+
+                        <else/>
+
+                            <div class="package_empty">
+
+                                <span><img src="__IMG__/suspension/package_empty.png"></span>
+
+                                <p>暂无其他游戏礼包，敬请期待</p>
+
+                            </div>
+
+                        </if>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+                <!-- 客服 -->
+
+                <div class="tab4 game_popup_main dn" id="game-kefu-container">
+
+                        <div>
+
+                            <div class="popup_con browser">
+
+                                <h5>在线客服</h5>
+
+                                <div class="active_num">
+
+                                    <if condition="$union_set eq ''">
+                                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={:C('PC_SET_SERVER_QQ')}&amp;site=qq&amp;menu=yes">{:C('PC_SET_SERVER_QQ')}</a>
+                                    <else/>
+                                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin={$union_set['cust_qq']}&amp;site=qq&amp;menu=yes">{:C('PC_SET_SERVER_QQ')}</a>
+                                    </if>
+                                </div>
+
+                                <h2><img src="__IMG__/suspension/up_icon.png">点击咨询客服</h2>
+
+                            </div>
+
+                            <div class="kefu_ewm_img">
+
+                                <em><img src="{:get_cover(C('PC_SET_QRCODE'),'path')}"></em>
+
+                                <span><em>微信[扫一扫]关11注</em></span>
+
+                            </div>
+
+                        </div>
+
+                </div>
+
+            </div>
+
+            <!-- 按钮 -->
+
+            <div class="game_popup_btn">
+
+                <a id="game_popup_back" class="back_btn"><img src="__IMG__/suspension/back.png">返回</a>
+
+                <a id="game_popup_refresh" class="refresh_btn"><img src="__IMG__/suspension/refresh_b.png">刷新</a>
+
+            </div>
+
+        </div>
+
+        </div>
+
+
+
+        <!-- 关注二维码 -->
+
+        <div id="qr-popup" class="popup_bg" style="display: none;">
+
+        <div class="popup_back" style="margin-top: -158px;">
+
+            <h1 class="guanzhu_tit">关注游戏金榜公众号<br>更多游戏等你玩<span><img src="__IMG__/suspension/close_gray.png"></span></h1>
+
+            <div class="kefu_ewm_img">
+
+                <em>
+
+                    <img src="__IMG__/suspension/toph5games_n.jpg">
+
+                </em>
+
+                <span>长按识别客服微信二维码</span>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    </div>
+
+</div>
+
+<div class="popup_bg" id="mobile-safari-pay">
+
+    <div class="receive_success" style="margin-top: -130px;">
+
+        <h1>支付失败</h1>
+
+        <em class="close"><img src="__IMG__/suspension/close_gray.png"></em>
+
+        <div class="fail_text_tip">由于ios政策调整，支付系统已关闭。</div>
+
+        <div class="fail_text_tip">如有问题请添加QQ群【574415708】联系客服。</div>
+
+        <div class="fail_text_tip">给大家带来的不便，敬请谅解！</div>
+
+        <div class="receive_btn"><a>我知道了</a></div>
+
+    </div>
+
+</div>
+
+ <!-- 收藏弹层 android -->
+
+<div id="mobile-browser-favorite" style="z-index:999;display:block;">
+
+    <!-- 搜狗、百度 -->
+
+        <div class="collect_box dn" style="left: 50%; margin-left: -94px; display: none;">
+
+            <b class="sma_arrow" style="left:50%; margin-left:-3px;"></b>
+
+            <div class="collect_box_con">
+
+                <span><img src="__IMG__/suspension/menu.png"></span>
+
+                <em class="close"><img src="__IMG__/suspension/close_gray.png"></em>
+
+                <if condition="is_mobile_request eq true">
+
+                    <div class="collect_text">方便下次再玩<br>请添加书签<br>长按书签可发送到桌面哦</div>
+
+                <else/>
+
+                    <div class="collect_text">方便下次再玩<br>请添加书签<br>CTRL+D快速添加书签</div>
+
+                </if>
+
+            </div>
+
+        </div>
+
+</div>
+
+
+
+<!-- 领取礼包 -->
+
+<div class="popup_bg" id="pack-info-dialog" style="display: none;">
+
+    <div class="receive_success" style=" margin-top: -202px;">
+
+        <div class="get_img"><img src="__IMG__/suspension/get_img.png"></div>
+
+        <em class="close"><img src="__IMG__/suspension/close_gray.png"></em>
+
+        <div class="novice_bag">
+
+            <h5></h5><!-- 礼包名称 -->
+
+            <div class="novice_bag_detail"></div><!-- 礼包内容 -->
+
+            <div class="novice_bag_rule"></div><!-- 领取方式 -->
+
+        </div>
+
+        <div class="novice_bag_num">
+
+             <div class="active_num"><p></p></div><!-- 礼包号码 -->
+
+                <h2><img src="__IMG__/suspension/up_icon.png">长按上方复制激活码</h2>
+
+                <h2 id="getgifttip" style="color:red;padding-top: 10px;font-size: 10px;"></h2>
+
+
+        </div>
+
+        <div class="receive_btn confirm-btn"><a>确定</a></div>
+
+    </div>
+
+</div>
+</div>
+<script src="__STATIC__/layer_mobile/layer.js"></script>
+
+<script>
+
+    $(function(){
+        Game.gamePlay();
+
+        // 收藏游戏
+
+        $(".collect-game").click(function(){
+
+            $(".collect_box").css('display','block');
+
+        });
+
+        $(".collect_box").click(function(){
+
+            $(".collect_box").css('display','none');
+
+        });
+
+    });
+
+
+    //监测是否点击返回
+
+    window.history.pushState({
+
+        title: document.title,
+
+        url: location.href
+
+    },
+
+    document.title, location.href),
+
+    setTimeout(function() {
+        window.addEventListener("popstate",
+        function(a) {
+            $(".popup_back_wrap").load(location.href+" .popup_back_wrap");//局部div刷新
+            try{
+                if(top.location.href==a.state.url||!a.state){
+                    $("#sdkdiv2").hide();
+                    $("#popup_back").show();
+                }
+                var asu = top.location.href;
+            }catch(err){
+                if(top.location.href==asu||!a.state){
+                    $("#sdkdiv2").hide();
+                    $("#popup_back").show();
+                }
+            }
+        })
+    },
+    1e3);
+
+
+    //平台币充值
+
+    $('.ptbcz_btn').click(function(){
+
+        //询问框
+
+        layer.open({
+
+        content: '您确定要前往个人中心充值平台币吗？'
+
+        ,shade: 0.8
+
+        ,shadeClose:false
+
+        ,btn: ['是的', '不要']
+
+        ,yes: function(index){
+
+            game_id="{:base64_encode(I('game_id'))}";
+
+            url='mobile.php?s=/Subscriber/pay/game_id/'+game_id;
+
+            window.location.href=url;
+
+            layer.close(index);
+
+        }
+
+        });
+
+    });
+
+    // 收藏游戏
+
+    $("#popup-fav-game").click(function(){
+
+            $(".collect_box").css('display','block');
+
+        });
+
+    //离开游戏
+
+    $("#popup-leave-game").on("click",function() {
+
+        try{
+            window.Browser.finish();//浏览器项目
+        }catch(err){
+            jsmodel = "{:MODULE_NAME}";
+
+            jsmodel = jsmodel.toLowerCase();
+
+            $("#today-do-not-remind").size() > 0 && $("#today-do-not-remind").find("em").hasClass("select") && $.setClientInfo("todayDonotRemind", "1", $.getTime()),
+
+            $("#popup_back").hide(),location.href="{:U('Index/index')}"
+        }
+
+    });
+
+
+
+    //关闭离开弹窗
+
+    $("#popup_close").on("click",function() {
+
+        window.history.pushState({
+
+            title: document.title,
+
+            url: location.href
+
+        },
+
+        document.title, location.href),
+
+        $("#popup_back").hide();
+        $("#sdkdiv2").show();
+
+    })
+
+    $(".game_popup_nav ul li").click(function(){
+
+        $(this).addClass('on').siblings().removeClass('on');
+
+        $id = $(this).attr('id');
+
+        $("."+$id).removeClass('dn').siblings().addClass('dn');
+
+    });
+
+
+
+    //关闭领取礼包
+
+    $("#pack-info-dialog .close").click(function(){
+
+        $("#pack-info-dialog").css('display','none');
+
+    });
+
+    $("#pack-info-dialog .receive_btn").click(function(){
+
+        $("#pack-info-dialog").css('display','none');
+
+    });
+
+    $("#game_popup_refresh").click(function(){
+
+        document.location.reload();
+
+    });
+
+    //领取礼包
+
+    $('.receive').click(function(){
+
+        $('#pack-info-dialog').css('display','block');
+
+        var wget = $(this).attr('wget');
+
+        var aget = $(this).attr('aget');
+
+        gameid = $(this).attr('gameid');
+
+        giftid = $(this).attr('giftid');
+
+        gamename = $(this).attr('game_name');
+
+        giftname = $(this).attr('giftname');
+
+        giftdesribe = $(this).attr('giftdesribe');
+
+        giftdigest = $(this).attr('giftdigest');
+
+        $('.novice_bag_detail').text(giftdesribe);
+
+        $('.novice_bag_rule').text(giftdigest);
+
+        var that = this;
+
+        $.ajax({
+
+          async: false,
+
+          cache: false,
+
+          data:{giftid:giftid,giftname:giftname,gameid:gameid,gamename:gamename},
+
+          dataType:'json',
+
+          url:'{:U('Gift/getgift')}',
+
+          type:'post',
+
+          beforeSend:function() {
+
+            $(that).html('领取中');
+
+          },
+
+          success:function(data) {
+
+            console.log(data);
+
+                switch (parseInt(data.status)) {
+
+                    case 1: {
+
+                        $(that).bind('click').html('已领');
+
+                        $('.novice_bag_num .active_num p').text(data.nvalue);
+
+                        $("#getgifttip").text(data.info);
+
+                        $(that).prev('.package_num').find('.package_num_img_box').html(
+
+                                ' <div class="package_num_img"><span style="width:'+((wget-1)/aget*100)+'%"></span></div><div class="package_num_tip">剩余'+((wget-1)/aget*100)+'%</div>'
+
+                            );
+
+
+                    };break;
+
+                    case 2: {
+
+                        $(that).bind('click').html('已领');
+
+                        $('.novice_bag_num .active_num p').text(data.nvalue);
+
+                        $("#getgifttip").text(data.info);
+
+                    };break;
+
+                    default:{
+
+                        $(that).unbind('click').html('领完了');
+
+                        $('.novice_bag_num .active_num p').text(data.info);
+
+
+                    };
+
+                }
+
+          },
+
+          error:function(){
+
+            
+
+          }     
+
+        });
+
+    });
+
+</script>

@@ -1,0 +1,307 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/game.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<header class="header gamedetailheader">
+  <section class="wrap">
+    <a href="javascript:;" onclick="history.go(-1)" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption">
+      <span class="table">
+        <span class="table-cell">
+          <div class="detailgamename">{$data.game_name}</div>
+        </span>
+      </span>
+    </div>
+  </section>
+</header>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+<section class="trunker">
+  <section class="inner">
+  
+    <section class="contain">
+      <div class="detail">
+<div class="occupy"></div>
+        <div class="base">
+          <div class="wrap">
+            <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$data.icon}" class="icon"></div>
+            <div class="butnbox"><span class="table"><a href="javascript:;" class="butn table-cell setcollection"><i data-collection="{$data.collect_status}" data-game_id="{$data.id}" class="icon-star <if condition='$data.collect_status eq 1'> on collect_status1<else/>collect_status0</if>"></i><span><if condition='$data.collect_status eq 1'>已</if>收藏</span></a></span></div>
+            <div class="textbox">
+              <div class="title"><span class="name"><if condition="mb_strlen($data['game_name']) gt 8 ">{:mb_substr($data['game_name'],0,8,'utf-8')}...<else />{$data.game_name}</if></span><span class="type">{$data.game_type_name}</span></div>
+              <p class="info"><span class="play-num"><i>{$data.play_num}</i>人在玩</span><span class="coll-num"><i>{$data.collect_num}</i>人收藏</span></p>
+              <p class="slogan" title="{$data.features}">{$data.features}</p>
+            </div>
+            <div class="but-begin">
+              <a data-href="{$data['play_url']}" class="btn beginlogin" onclick="jslogin1()">开始游戏</a>
+            </div>
+          </div>
+        </div>
+        <notempty name="data['screenshots']">
+          <div class="screenshot">
+            <div class="wrap">
+              <div id="screenshot" class="swiper-container">
+                <div class="swiper-wrapper">
+                  <volist name="data['screenshots']" id="sc" key='k'>
+                    <div class="swiper-slide iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$sc}" class="icon"></div>
+                  </volist>
+                </div>
+            </div>
+            </div>
+          </div>
+        </notempty>
+        <div class="description samething">
+          <div class="wrap">
+            <div class="cntitle"><span class="name"><i class="icon icon-desc"></i>游戏介绍</span></div>
+            <div class="content">
+              <div class="article">
+                {:str_replace("~~","<br>",$data['introduction'])}
+               <if condition="strlen($data['introduction']) gt 400"> <a href="javascript:;" class="showarticle">...全文</a><i class="mark"></i></if>
+              </div>
+            </div>
+          </div>
+        </div>
+        <notempty name="gamegift">
+          <div class="gift samething">
+            <div class="wrap">
+              <div class="cntitle"><span class="name"><i class="icon icon-gift"></i>活动礼包</span></div>
+              <div class="content">
+                <ul class="text-list">
+                  <volist name="gamegift" id="gift">
+                  <li>
+                    <div class="item">
+                      <div class="butnbox"><a href="javascript:;" class="butn table"><span class="table-cell"><span data-gift_id="{$gift['gift_id']}" data-game_id="{$gift['game_id']}" class="getgift"><if condition="$gift.received eq 1">已</if>领取</span></span></a></div>
+                      <div class="text">
+                        <a  class="title">[{$gift['game_name']}]{$gift['giftbag_name']}</a>
+                        <div class="surplusbox"><span data-all="{$gift['novice_all']}" data-wei="{$gift['novice_surplus']}" class="surplus"><i style="width:{:round($gift['novice_surplus']/$gift['novice_all']*100,2)}%;"></i></span><span class="number">剩余<i>{:round($gift['novice_surplus']/$gift['novice_all']*100,2)}%</i></span></div>
+                        <p class="validitytime">有效期：{:set_show_time($gift['start_time'],'date','forever')}~{:set_show_time($gift['end_time'],'date','forever')}</p>
+                      </div>
+                    </div>
+                  </li>
+                  </volist>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </notempty>
+        <notempty name="gameactive">
+          <div class="active samething">
+            <div class="wrap">
+              <div class="cntitle"><span class="name"><i class="icon icon-active"></i>活动</span></div>
+              <div class="content">
+                <ul class="list text-pic-list">
+                  <volist name="gameactive" id="active">
+                  <li class="clearfix">
+                    <div class="item clearfix">
+                      <div class="butnbox"><span class="table"><span class="table-cell"><a href="{:U('Article/detail',array('id'=>$active['id']))}" class="butn">查看</a></span></span></div>
+                      <div class="text">
+                        <div class="title"><a href="newsdetail.html" class="name">《{$active.belong_game}{$active.title}</a></div>
+                        <p class="info"><if condition="$active.type neq 'wap_huodong'"><span class="cate cate-notice">公告</span><else/><span class="cate cate-active">活动</span></if><span class="catchword">{$active.title}</span></p>
+                      </div>
+                    </div>
+                  </li>
+                  </volist>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </notempty>
+        <div class="play samething">
+          <div class="wrap">
+            <div class="cntitle"><a href="{:U('index#categroy')}" class="more">更多<i class="icon-arrow-right"></i></a><span class="name"><i class="icon icon-play"></i>大家都在玩</span></div>
+            <div class="content">
+              <ul class="clearfix">
+              <volist name="gamelike" id="like">
+                <li>
+                  <div class="item">
+                    <a href="{$like['play_detail_url']}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$like['icon']}" class="icon" /></a>
+                    <a  class="namebox">{$like['game_name']}</a>
+                    <a href="{$like['play_url']}" class="butnbox"><span class="table"><span class="table-cell">开始</span></span></a>
+                  </div>
+                </li>
+               </volist> 
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="start-game-position"></div>
+        <!-- <div class="start-game">
+          <if condition="$data['and_dow_address'] neq '' "> 
+          <a href="{$data['and_dow_address']}" class="btn_weiduan">微端下载</a>
+          <elseif condition="$data['ios_dow_address'] neq '' "/>
+          <a href="{$data['ios_dow_address']}" class="btn_weiduan">微端下载</a>
+          <else/>
+           <a href="#" class="btn_weiduan" style="background: #B0BBC1">微端下载</a>
+          </if>
+          <a data-href="{$data['play_url']}" class="btn beginlogin" onclick="jslogin1()">开始游戏</a>
+        </div> -->
+      </div>  
+        
+    </section>
+    
+  </section>
+</section>
+<div class="popmsg"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script src="__JS__/clipboard.min.js"></script>
+<script>
+
+  function jslogin1(){
+    res=jslogin();
+    if(res){
+      location.href = $('.beginlogin').data('href');
+    }
+  }
+  function nologintc(popmsg,msg){
+    if(msg==''||msg==undefined){
+      msg='暂时无法收藏心爱的游戏~T_T~';
+    }
+    popmsg.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_unlisted.png"><div class="pop-title">您还未登录</div><p class="pop-text">'+msg+'</p><a href="javascript:;" class="pop-btn tologin">去登录</a></div>'); 
+    popmsg.find('.pop-close').click(function() {popmsg.close();});
+    popmsg.find('.tologin').click(function() {popmsg.close();$('.jslogin').click()});
+  }
+  function Copy(str,that){
+    
+      text = str;
+      var clipboard = new Clipboard('.copy',{
+        text: function() {
+              return text;
+          }
+      });
+      clipboard.on('success', function(e) {
+        that.text('复制成功');
+        e.clearSelection();
+      });
+
+      clipboard.on('error', function(e) {
+ 
+        that.text('复制完成');
+        alert('此浏览器不支持此操作，请长按礼包码复制');
+      });
+  }
+    $(function() {
+      var popmsg = $('.popmsg').pop();
+      new Swiper('#screenshot', {slidesPerView: 'auto',freeMode: true});
+      var $user = "{:is_login()}";
+      $('.setcollection').click(function() {
+        var that = $(this),star = that.find('.icon-star'),textbox = that.closest('.butnbox').siblings('.textbox');
+        var coll_num = parseInt(textbox.find('p.info span.coll-num i').text());
+        // 是否登录
+        if ($user) {
+          $.ajax({
+              type: 'post',
+              url: '{:U("Game/collection")}',
+              async:false,
+              data:{collect_status:star.attr('data-collection'),game_id:star.data('game_id')},
+              dataType: 'json',
+              success: function(data){
+                  if(data.code==1){
+                    if(data.data==1){
+                        popmsg.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已收藏</p>',1000,250);
+                        star.attr('data-collection',1)
+                        star.addClass('on').siblings('span').text('已收藏');
+                        textbox.find('p.info span.coll-num i').text(coll_num+1);
+                    }else{
+                        popmsg.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">收藏已取消</p>',1000,250);
+                        star.attr('data-collection',0)
+                        star.removeClass('on').siblings('span').text('收藏');
+                        if(coll_num-1<0){
+                          coll_nums = 0
+                        }else{
+                          coll_nums = coll_num-1;
+                        }
+                        textbox.find('p.info span.coll-num i').text(coll_nums);
+                    }
+                  }else if(data.code==-1){
+                      nologintc(popmsg);
+                  }
+              },
+              error: function(xhr, type){
+                  
+              }
+          });
+        } else {
+          nologintc(popmsg);
+        }
+        
+      });
+      
+      $('.getgift').click(function() {
+        that = $(this);
+        // 是否登录
+        if ($user>0) {
+          $.ajax({
+              type: 'post',
+              url: '{:U("Gift/getgift")}',
+              async:false,
+              data:{gameid:that.attr('data-game_id'),giftid:that.attr('data-gift_id')},
+              dataType: 'json',
+              success: function(data){
+                  if(data.code==1){
+                    // 成功
+                    that.text('已领取');
+                    popmsg.addClass('pop-hint').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_successful.png"><div class="pop-title">领取成功！</div><div class="pop-code pop-table"><span class="pop-cell pop-input"><input type="text" readonly class="code pop-txt" value="'+data.nvalue+'"></span></div><p class="pop-text">可在[我的礼包]中查看</p><a href="javascript:;" class="copy pop-btn">复制</a></div>');
+                    bfp =that.closest('div.butnbox').siblings('div.text');
+                    surplusbox = bfp.find('.surplusbox');
+                    all = surplusbox.find('.surplus').attr('data-all');
+                    wei1 = surplusbox.find('.surplus').attr('data-wei');
+                    wei2 = surplusbox.find('.surplus').attr('data-wei',wei1-1);
+                    wei = surplusbox.find('.surplus').attr('data-wei');
+                    baifen = (wei/all*100).toFixed(2);
+                    surplusbox.find('i').css('width',baifen+'%');
+                    surplusbox.find('.number i').html(baifen+'%');
+                    popmsg.find('.pop-close').click(function() {popmsg.close();});
+                    popmsg.find('.copy').click(function() {
+                        //移动端复制
+                        that = $(this);
+                        $(".copy").css("color", "#14b4c3");
+                        $(".copy").text('复制');
+                        Copy($('.code').val(),that);
+												popmsg.close(400);
+												setTimeout(function(){
+													popmsg.open().addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已复制</p>',1000,250);
+												},440);
+                      });
+                  }else{
+                    // 失败
+										var butn = '';
+										if (data.code!='-2') {butn += '<a  class="pop-btn jsfresh">重试</a>';}
+                    popmsg.addClass('pop-hint').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_fail.png"><div class="pop-title">领取失败！</div><p class="pop-text">'+data.msg+'</p>'+butn+'</div>');
+                    popmsg.find('.jsfresh').click(function(){popmsg.close();});
+                    popmsg.find('.pop-close').click(function() {popmsg.close();});
+                  }
+              },
+              error: function(xhr, type){
+                  alert('服务器错误');
+              }
+          });
+        } else {
+          nologintc(popmsg,'暂时无法领取礼包~T_T~');
+        }
+        
+      });
+			
+			if (!$.trim($('.article').html())) {
+				$('.article').css({'height':'.8rem'});
+			}
+      
+      $('.showarticle').click(function() {
+        var that=$(this),parent = that.closest('.article');
+        var position = parent.find('.mark').position();
+        var height = parseInt($('html').css('font-size'))*2.55;
+        var num = position.top;
+        (position.left>(parent.width()*0.6))?(num+=29):(num += 24);
+        if (that.hasClass('on')) {
+          that.text('...全文').removeClass('on');
+          parent.css({'height':height+'px'});
+        } else {
+          parent.css({'height':(num)+'px'});
+          that.text('收起').addClass('on');
+        }
+      });
+    });
+</script>
+</block>

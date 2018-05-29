@@ -1,0 +1,237 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/mall.css" rel="stylesheet" >
+</block>
+<block name="header">
+<header class="header">
+  <section class="wrap">
+    <a href="javascript:;" onclick="history.go(-1)" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">积分记录</span></span></div>
+    <a href="{:U('mall_rule')}" class="hbtn right mall-rule"><span class="table"><span class="table-cell"><img src="__IMG__/nav_mall_rule.png"></span></span></a>
+  </section>
+</header>
+</block>
+<block name="iframe" >
+<div class="mainer integral-record">
+  <div class="occupy"></div>
+
+  <section class="trunker">
+
+    <section class="inner">
+      <section class="contain">
+        <div class="list integral-record-list">
+          <if condition="0"><!-- $data eq '' -->
+            <div class="empty">
+              <img src="__IMG__/blank_record.png" class="empty-icon">
+              <p class="empty-text">暂无记录</p>
+            </div>
+          <else/>
+          <div class="tab-scroll clearfix">
+            <div id="tab-menu">
+              <div class="swiper-container">
+                  <div class="swiper-wrapper tabmenu">
+                      <div class="swiper-slide swiper-visible active"><a href="javascript:;">全部</a></div>
+                      <div class="swiper-slide swiper-visible"><a href="javascript:;">获取</a></div>
+                      <div class="swiper-slide swiper-visible"><a href="javascript:;">兑换</a></div>
+                  </div>
+              </div>
+            </div>
+            <div id="tab-slide">
+              <div class="swiper-container mallrecordlist">
+                  <div class="swiper-wrapper tabpanel">
+                    <div class="swiper-slide">
+                      <notempty name="data.all">
+                      <ul class="list text-pic-list">
+                      <volist name="data['all']" id="da">
+                        <li class="clearfix">
+                          <div class="item clearfix">
+                            <if condition="$da['key'] eq 'sign_in'">
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="__IMG__/mall_record_sign.png" class="icon"></a>
+                            <elseif condition="$da['key'] eq 'bind_phone'"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="__IMG__/mall_record_bind.png" class="icon"></a>
+                            <elseif condition="$da['key'] eq 'share_game'"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{:getgameicon($da['game_id'])}" class="icon"></a>
+                            <elseif condition="$da['key'] eq 'share_article'"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{:getgameicon($da['game_id'])}" class="icon"></a>
+                            <elseif condition="$da['type'] elt 0"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$da.cover}" class="icon"></a>
+                            </if>
+                            <if condition='$da["type"] gt 0'>
+                              <div class="butnbox">
+                              <span class="table">
+                              <span class="table-cell">+{$da.point}</span>
+                              </span>
+                              </div>
+                              <div class="text">
+                                <if condition='$da["key"] eq "share_game"'>
+                                  <div class="title"><span class="name">《{:get_game_name($da['game_id'])}》充值</span></div>
+                                <else/>
+                                  <div class="title"><span class="name">{$da.name}</span></div>
+                                </if>
+                                <p class="info">{:set_show_time($da['create_time'],'time','other')}</p>
+                              </div>
+                            <else/>
+                              <div class="butnbox">
+                              <span class="table">
+                              <span class="table-cell reduce-score">-{$da.pay_amount}</span>
+                              </span>
+                              </div>
+                              <div class="text">
+                                <div class="title"><span class="name">{$da['good_name']}兑换</span></div>
+                                <p class="info">{:set_show_time($da['create_time'],'time','other')}</p>
+                              </div>
+                            </if> 
+                            
+                          </div>
+                        </li>
+                      </volist>
+                      </ul>
+                      <else />
+                      <div class="empty">
+                        <img src="__IMG__/blank_record.png" class="empty-icon">
+                        <p class="empty-text">暂无记录</p>
+                      </div>
+                      </notempty>
+                    </div>
+                    <div class="swiper-slide">
+                      <notempty name="data.pointrecord">
+                      <ul class="list text-pic-list">
+                        <volist name="data['pointrecord']" id="pr">
+                        <li class="clearfix">
+                          <div class="item clearfix">
+                            <if condition="$pr['key'] eq 'sign_in'">
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="__IMG__/mall_record_sign.png" class="icon"></a>
+                            <elseif condition="$pr['key'] eq 'bind_phone'"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="__IMG__/mall_record_bind.png" class="icon"></a>
+                            <elseif condition="$pr['key'] eq 'share_game'"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{:getgameicon($pr['game_id'])}" class="icon"></a>
+                            <elseif condition="$pr['key'] eq 'share_article'"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="" class="icon"></a>
+                            <elseif condition="$pr['type'] elt 0"/>
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$pr.cover}" class="icon"></a>
+                            </if>
+                            <div class="butnbox">
+                            <if condition='$pr["type"] gt 0'>
+                              <span class="table">
+                              <span class="table-cell">+{$pr.point}</span>
+                              </span></div>
+                              <div class="text">
+                                <if condition='$pr["key"] eq "share_game"'>
+                                  <div class="title"><span class="name">《{:get_game_name($pr['game_id'])}》充值</span></div>
+                                <else/>
+                                  <div class="title"><span class="name">{$pr.name}</span></div>
+                                </if>
+                                <p class="info">{:set_show_time($pr['create_time'],'time','other')}</p>
+                              </div>
+                            </if> 
+                            
+                          </div>
+                        </li>
+                      </volist>
+                      </ul>
+                      <else />
+                      <div class="empty">
+                        <img src="__IMG__/blank_record.png" class="empty-icon">
+                        <p class="empty-text">暂无记录</p>
+                      </div>
+                      </notempty>
+                    </div>
+                    <div class="swiper-slide">
+                      <notempty name="data.pointshoprecord">
+                      <ul class="list text-pic-list tpl3">
+                        <volist name="data['pointshoprecord']" id="psr">
+                        <li class="clearfix">
+                          <div class="item clearfix">
+                            <if condition="$psr['type'] elt 0">
+                              <a  class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$psr.cover}" class="icon"></a>
+                            </if>
+                            <div class="butnbox">
+                            <if condition='$psr["type"] elt 0'>
+                              <span class="table">
+                              <span class="table-cell reduce-score">-{$psr.pay_amount}</span>
+                              </span></div>
+                              <div class="text">
+                                <div class="title"><span class="name">{$psr['good_name']}兑换</span></div>
+                                <p class="info">{:set_show_time($psr['create_time'],'time','other')}</p>
+                              </div>
+                            </if> 
+                            
+                          </div>
+													<php>$good_key = json_decode($psr['good_key'],true);</php>
+                        <div class="addressbox">
+                            <div class="table"><div class="table-cell"><if condition="$psr['good_type'] eq 2"><a href="javascript:;" class="copy address-butn" data-value="{$good_key[0]}">复制</a>{$good_key[0]}<else/><notempty name="psr.real_name">{$psr['real_name']},</notempty><notempty name="psr.phone">{$psr['phone']},</notempty>{$psr['address']}</if></div></div>
+                          </div>
+                        </li>
+                      </volist>
+                      </ul>
+                      <else />
+                      <div class="empty">
+                        <img src="__IMG__/blank_record.png" class="empty-icon">
+                        <p class="empty-text">暂无记录</p>
+                      </div>
+                      </notempty>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </if>
+        </div>
+      </section>
+      
+    </section>
+  </section>
+</div>
+</block>
+
+<block name="script">
+<script>
+		function Copy(str,that){
+				var save = function(e){
+						e.clipboardData.setData('text/plain', str);
+						e.preventDefault();
+				}
+				
+				document.addEventListener('copy', save);
+				document.execCommand('copy');
+				document.removeEventListener('copy',save);
+				
+		}
+    $(function() {
+      var viewSwiper = new Swiper('#tab-slide .swiper-container', {
+        autoHeight:true,
+        onSlideChangeStart: function() {
+          updateNavPosition()
+        }
+      })
+
+      var previewSwiper = new Swiper('#tab-menu .swiper-container', {
+        visibilityFullFit: true,
+        slidesPerView: 'auto',
+        onlyExternal: true,
+        onTap: function() {
+          viewSwiper.slideTo(previewSwiper.clickedIndex)
+        }
+      })
+      
+      var updateNavPosition = function() {
+        $('#tab-menu .active').removeClass('active')
+        var activeNav = $('#tab-menu .swiper-slide').eq(viewSwiper.activeIndex).addClass('active')
+        if (!activeNav.hasClass('swiper-visible')) {
+          if (activeNav.index() > previewSwiper.activeIndex) {
+            var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+            previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
+          } else {
+            previewSwiper.slideTo(activeNav.index())
+          }
+        }
+      }
+			
+			$('.copy').on('click',function() {
+				$(this).text('已复制');
+				Copy($(this).attr('data-value'),$(this));
+			});
+      
+    });
+</script>
+</block>

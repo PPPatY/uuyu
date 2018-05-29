@@ -1,0 +1,258 @@
+<extend name="Public/head-foot"/>
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+<!--头部导航end-->
+<style>
+    .navtab_list{ width:100%;  margin: 15px 0px; height: 65px;}
+    .navtab_list a{ display:block;text-decoration:none;width:100px; height:35px; line-height:35px; text-align:center; float:left; margin-left:20px; background:#e0e0e0; border-radius:3px; color:#333; margin-top: 15px;}
+    .navtab_list a:first-child{ margin-left:0px;}
+    .navtab_list a:hover, .navtab_list a.tabchose{ 
+    background: #526782;
+    color: #FFF;
+}
+.navtab_list a:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-width: 12px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.navtab_list a.tabchose:after {
+    border-top-color: #526782;
+}
+    .navtab_list_cs{ margin-top:20px;margin-left: 20px;}
+    .navtab_list_cs img{ margin:0px 8px;}
+    .data_list table td {
+        min-width: 50px;
+    }
+</style>
+
+<style>
+
+    .select2-container--default .select2-selection--single {
+            color: #000;
+        resize: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ddd;
+        box-shadow: 0px 3px 3px #F7F8F9 inset;height:35px;
+        height:35px;border-radius:3px;font-size: 14px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height:35px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height:35px;
+    }
+    .select2-container--default .select2-search--dropdown .select2-search__field {
+      height:35px;line-height:31px;font-size: 14px;
+    }
+    .select2-results__option[aria-selected] {font-size: 14px;}
+
+		.rctime {width:110px;height:35px;line-height:35px;}
+</style>
+
+<!--内容start-->
+<div class="containers">
+	<div class="search-container jssearch">
+		<div class="left-nav">
+			<a href="{:U(registsearch)}" class="current topborder">注册查询</a>
+			<a href="{:U(buydetail)}" class=" ">充值明细</a>
+			<a href="{:U(summary)}" class="bottomborder current">数据汇总</a>
+		</div>
+		<div class="rightcontainer">
+			<div class="rightcontainer-search">
+				<div class="search-top">
+					<i class="iconfont icon-search" style="color:#526782; font-size: 20px;"></i>
+					<span>查询</span>
+				</div>
+				<div class="serch_2">
+				<div class="search-input2">
+					<input type="text" name="username" class="user-input" id="username" placeholder="请输入用户名" value="{:I('username')}">
+				</div>
+					<div class="search-select">
+						<select id="game_id" name="game_id" class="select_gallery" style="width:150px;height:31px;border-radius: 5px;">
+	                    	<option value="" id="game_data" selected="true">全部游戏</option>
+	                    <volist name="game_list" id="vo">
+	                        <option value="{$vo.game_id}" <if condition="I('game_id') eq $vo['game_id']" > selected="true" </if> > {$vo.game_name}</option>
+	                    </volist>.............................................................................................................................................
+	                </select>														
+				</div>	
+					<a  style="margin-left: 20px; float: left;">
+					
+					<select id="promote_id" name="promote_id" class="select_gallery" style="width:150px;height:31px;border-radius: 5px;">
+                        <option value="" selected="true">全部推广员</option>
+                    <volist name=":get_busier_promote_list($uid)" id="vo">
+                        <option value="{$vo.id}" <if condition="I('promote_id') eq $vo['id']" > selected="true" </if> > {$vo.account}</option>
+                    </volist> 
+	                </select>
+					</a>															
+					<div class="textdetail2" style="width:360px;">
+					
+					<span class="txt2">充值时间:</span>
+					<input type="text" name="begtime" class="time-input1 rctime" id="sdate" value="{:I('begtime')}" placeholder="开始时间">
+					
+					<span class="txt3" style="margin-left: 120px;">到</span>
+					<input type="text" name="endtime" class="time-input2 rctime" id="edate" value="{:I('endtime')}" placeholder="结束时间">
+				</div>	
+        <div class="search-select" style="margin-left:0;">
+					
+					<a url="{:U('Buydetail/buydetail','model='.$model['name'],false)}" class="searchbtn1" href="javascript:;" id="search" >查询</a>
+				</div>
+				</div>
+			</div>
+			<div class="rightcontainer-detail" style="height:830px">
+				<div class="search-top">
+					<i class="iconfont icon-chongzhi" style="color:#526782; font-size: 20px;"></i>
+					<span>充值记录</span><small style="font-size: xx-small;">&nbsp&nbsp实时充值：对所有渠道用户玩家产生的充值信息，进行记录的功能</small>
+				</div>
+			      <div class="cf top_nav_list navtab_list"> 
+			          <a style="margin-left: 50px;" <if condition="I('isbd') neq  '1'"> class="ppp tabchose"<else/> class="ppp" </if> href="{$url}">常规消费</a>
+			          <a <if condition="I('isbd') eq  '1'"> class="ppp tabchose"<else/> class="ppp" </if> href="{$url1}">绑币消费</a>
+			      </div>
+				<table>
+					<tr class="num1">
+						<td>用户帐号</td>
+						<td>订单号</td>
+						<td>游戏名称</td>
+						<td>应付金额</td>
+						<td>实付金额</td>
+						<td>支付方式</td>
+						<td>充值时间</td>
+						<td>充值状态</td>
+						<td>推广员</td>
+					</tr>
+					<notempty name="list_data">
+                <volist name="list_data" id="data">
+					<tr class="num2">
+						<td>{$data.user_account}</td>
+						<td>{$data.order_number}</td>
+						<td>{$data.game_name}</td>
+						<td>{$data.cost}</td>
+						<td>{$data.pay_amount}</std>
+						<td>
+							<?php 
+								if($data['pay_way'] == -1)echo '绑定平台币';
+								if($data['pay_way'] == 0)echo '平台币';
+								if($data['pay_way'] == 1)echo '支付宝';
+								if($data['pay_way'] == 2)echo '微信(扫码)';
+								if($data['pay_way'] == 3)echo '微信app';
+								if($data['pay_way'] == 4)echo '富通 ';
+								if($data['pay_way'] == 5)echo '聚宝云';
+								if($data['pay_way'] == 6)echo '竣付通';
+							?>
+							</td>
+						<td><?php echo date("Y-m-d H:i:s",$data['pay_time'])?></td>
+						<td> 
+							<?php echo $data['pay_status'] == 1?'已充值':'未充值'; ?>
+						</td>
+						<td>{$data.promote_account}</td>
+					</tr>
+                </volist>
+					</notempty>
+				</table>
+				<empty name="list_data">
+				<div style="height:50px;line-height:50px;width:1085px;margin:-20px auto 20px;border-bottom: 1px solid #E3E7EA;text-align:center;">暂无数据</div>
+				</empty>
+				<div class="totalnum">{$_page}</div>
+				<div class="totalnum">
+					<span>实付总计：&yen;{:$pay_amount_num}</span>
+					<span>数据量：{:$count}条数据</span>
+					
+					<span>
+						<a href="javascript:" url="{:U('Buydetail/exportSpendDetail',array('p'=>$_GET['p']))}" id="exportData">导出数据(excel格式)</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	    <div style="clear:both;"></div>
+	</div>
+
+</div>
+<!--内容end-->
+</block>
+
+<block name="script">
+<!-- 时间格式文件 -->
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+$(".select_gallery").select2();		
+$('#sdate').datetimepicker({
+	lang:'ch',
+	format:'Y-m-d',
+	formatDate:'Y-m-d',
+	timepicker:false
+});
+
+$('#edate').datetimepicker({
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+});
+
+		  //搜索功能
+$("#search").click(function(){
+  	var sdate= $("#sdate").val();
+  	var edate= $("#edate").val();
+  	if(sdate!="" && edate!="" && sdate > edate){
+  		layer.msg("开始时间必须小于等于结束时间");
+  		return false;
+  	}
+
+	var url = $(this).attr('url');
+    var query  = $('.jssearch').find('input').serialize();
+    query  += "&" + $('.jssearch').find('select').serialize();
+    query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+    query = query.replace(/^&/g,'');
+    if( url.indexOf('?')>0 ){
+        url += '&' + query;
+    }else{
+        url += '?' + query;
+    }
+	window.location.href = url;
+	return false;
+});
+
+//导出数据
+$("#exportData").click(function(){
+	var url = $(this).attr('url');
+	
+	console.log(url);
+    var query  = $('.jssearch').find('input').serialize();
+    query  += "&" + $('.jssearch').find('select').serialize();
+    query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+    query = query.replace(/^&/g,'');
+    if( url.indexOf('?')>0 ){
+        url += '&' + query;
+    }else{
+        url += '?' + query;
+    }
+	window.location.href = url;
+});
+//退出登录
+$('.loginout').click(function(){
+	     $.ajax({
+          type:"POST",
+          url:"{:U('Index/logout')}",
+          success:function(res){
+          		if(res.status == 3){
+          			layer.msg('退出成功', {icon: 1,});
+          			  setTimeout(function(){
+                     window.location.href="{:U('Index/index')}";
+                    },1500);
+          		}
+          },
+          error:function(){
+        	  layer.msg('退出失败');
+          }
+        })
+    });	
+		</script>
+</block>

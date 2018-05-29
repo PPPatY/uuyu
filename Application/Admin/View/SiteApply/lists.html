@@ -1,0 +1,134 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Game/lists')}">渠道</a></li>
+            <li><a href="{:U('Giftbag/lists')}">渠道管理</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">混服站点是联运平台为广大渠道商们提供的一站式便利合作栏目。在这您可以获得平台官方为您专门定制手游PC站，您可以免费获取一个二级域名PC官网，也可以使用自己的域名建站。可自由设置PC站的图片，LOGO，游戏信息以及礼包信息等</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="cf top_nav_list">
+        <div class="fl button_list">
+            <empty name="model.extend">
+                <div class="tools">
+                    <a class="ajax-post" target-form="ids" url="{:U('check?model='.$model['id'])}"><span class="button_icon button_icon9"></span>审 核</a>
+                    <a class="ajax-post confirm" target-form="ids" url="{:U('del?model='.$model['id'])}"><span class="button_icon button_icon2"></span>删 除</a>
+                </div>
+            </empty>
+        </div>
+        <!-- 高级搜索 -->
+        <div class="jssearch fr cf search_list">
+            <div class="input-list input-list-game search_label_rehab">
+                <label>渠道帐号：</label>
+                <select id="promote_id" name="promote_id" class="select_gallery" >
+                    <option value="">请选择渠道帐号</option>
+                    <volist name=":promote_lists(I('promote_type'))" id="vo">
+                        <option coin-yue='{$vo.balance_coin}' value="{$vo.id}">{$vo.account}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="input-list input-list-platform">
+                <label>站点来源：</label>
+                <select name="url_type">
+                    <option value="">全部</option>
+                    <option value="1">系统分配</option>
+                    <option value="2">自主添加</option>
+                </select>
+            </div>
+            <div class="input-list search_item input-list-displaystatus">
+                <label>审核状态：</label>
+                <select name="status">
+                    <option value="">全部</option>
+                    <option value="1">通过</option>
+                    <option value="2">未审核</option>
+                </select>
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('SiteApply/lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                <tr>
+                    <th>
+                        <input class="check-all" type="checkbox">
+                    </th>
+                    <volist name="list_grids" id="field">
+                        <th>{$field.title}</th>
+                    </volist>
+                </tr>
+                </thead>
+                <!-- 列表 -->
+                <tbody>
+                <volist name="list_data" id="data">
+                    <tr>
+                        <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
+                        <volist name="list_grids" id="grid">
+                            <td>{:get_list_field($data,$grid)}</td>
+                        </volist>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        <volist name=":I('get.')" id="vo">
+            Think.setValue('{$key}',"{$vo}");
+        </volist>
+        $(".select_gallery").select2();
+        //导航高亮
+        highlight_subnav('{:U('SiteApply/lists')}');
+        $(function(){
+            //搜索功能
+            $("#search").click(function(){
+                var url = $(this).attr('url');
+                var query  = $('.jssearch').find('input').serialize();
+                query  += "&"+$('.jssearch').find('select').serialize();
+                query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+                query = query.replace(/^&/g,'');
+                if( url.indexOf('?')>0 ){
+                    url += '&' + query;
+                }else{
+                    url += '?' + query;
+                }
+                window.location.href = url;
+            });
+
+            //回车自动提交
+            $('.jssearch').find('input').keyup(function(event){
+                if(event.keyCode===13){
+                    $("#search").click();
+                }
+            });
+        })
+    </script>
+</block>

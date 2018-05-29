@@ -1,0 +1,49 @@
+<block name="css">
+<link href="__CSS1__/20170831/finance.css" rel="stylesheet">
+<link href="__CSS1__/20170831/iconfont.css" rel="stylesheet" type="text/css">
+<link href="__CSS1__/20170831/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="__CSS1__/20170831/common.css" rel="stylesheet" type="text/css">
+</block>
+<block name="body">
+	<style>
+		.table4{width: 100%;border-collapse: collapse; border-spacing: 0;text-align: center;}
+		.table4 tr{height: 35px;}
+		.table4 tr th,td{border: 1px solid #D3D3D3;}
+		.trunk-list{height: 430px;overflow: auto;}
+	</style>
+    <div class="page-list query-register-list">
+      <div class="trunk-content article">
+          <div class="trunk-list">
+              <table class="table4">
+                  <tr class="odd">
+                    <th>结算周期</th>
+                    <th>游戏名称</th>
+                    <th>总充值(元)</th>
+                    <th>总注册(人)</th>
+                    <th>结算模式</th>
+                    <th>分成比例(%)</th>
+                    <th>注册单价(元)</th>
+                    <th>结算金额(元)</th>
+                  </tr>
+                  <empty name="list_data">
+                  <tr><td colspan="10">暂无数据</td></tr>
+                  <else />
+                  <volist name="list_data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td>{$vo.starttime|date="Y-m-d",###}至{$vo.endtime|date="Y-m-d",###}</td>
+                    <td>{$vo.game_name}</td>
+                    <td>{$vo.total_money}</td>
+                    <td>{$vo.total_number}</td>
+                    <td><if condition="$vo['pattern'] eq 0">CPS<else />CPA</if></td>
+                    <td>{$vo.ratio}</td>
+                    <td>{$vo.money}</td>
+                    <td style="color:#ff6600;font-weight:bold;">{$vo.sum_money}</td>
+                  </tr>
+                  </volist>
+                  </empty>
+                  <tr><td colspan="8"  style="padding-left: 88%;">汇总：{$sum_money}(元)</td></tr>
+              </table>
+          </div>
+      </div>
+    </div>
+</block>

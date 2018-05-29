@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>拖拽</title>
+<style>
+body {
+    font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, sans-serif;
+    margin:0;padding:0;
+}
+.container {border-radius:4px;}
+.container .scb1 ul,.container .scb2 ul {*min-height:250px;
+    display: block;clear:both;overflow:hidden;
+    margin:0;padding:0;}
+.container .scb1 {   
+    padding: 28px;
+    background-color:#B9F0FA;
+    background-position:0 0;
+    
+    background-image: -webkit-radial-gradient(circle, #CCF5F9,#A8E0F3 50%, #B3E9F2);
+
+    background-image: -moz-radial-gradient(circle, #CCF5F9,#A8E0F3 50%, #B3E9F2);
+
+    background-image: -ms-radial-gradient(circle, #CCF5F9,#A8E0F3 50%, #B3E9F2);
+
+    
+    
+    background-repeat:no-repeat;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-top-left-radius: 4px;
+    -moz-border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.container .scb2 {
+    background-color: #F9FBFF;
+    border-bottom: 1px solid #EBEFF6;
+    -webkit-box-shadow: 0 -1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 -1px 2px rgba(0, 0, 0, .05);
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, .05);
+    padding: 18px 20px 28px;
+}
+.container ul li{
+    display: block;
+    width: 10%;
+    float:left; 
+    border-radius: 4px; 
+    padding: 0;margin:0;
+    list-style: none;
+    -moz-user-select: none;
+    user-select: none;
+    color: #555;position:relative;
+    text-align:center;
+}
+
+.container ul li:focus .shortcutminus {display:none;}
+/*.container .scb1 li {
+    background: url(__IMG__/index.png) no-repeat 30px -34px;}
+*/
+.container .shortcutmenu {    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    float: left;
+    padding: 14px 22px;
+    border: 1px dashed transparent;
+    position: relative;
+    text-align: center;}
+    
+.container .scb1 .shortcutmenu {
+    padding: 14px 23px;
+    border: 0 none;
+}
+.container .scb2 li:hover .shortcutmenu {
+    border-color: #91CF31;
+}
+.container scb1 .shortcutmenu {
+    border: 0 none;
+    position: absolute;
+    position:relative;
+}
+.container .shortcutminus,.container .shortcutplus {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: url(__IMG__/index.png) no-repeat;
+    z-index:3;
+}
+.container .shortcutminus {
+	top: 6px;
+    right: 22px;
+    background-position: -190px 0;
+}
+.container .shortcutplus {
+	top: -1px;
+	right: -10px;
+    background-position: -160px 0;
+    display: none;
+}
+.container .scb2 li:hover .shortcutplus {display:block;}
+.container .shortcutmenu .shortcutmenuicon img{
+    width:64px;height:64px;
+    max-width: 100%;
+    width: auto\9;
+    vertical-align: middle;
+}
+.container .shortcutmenu .shortcutmenutitle {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 10px;
+    padding:0;
+    margin: 8px 0 0;
+    width: 74px;
+    height: 20px;line-height:20px;
+    /*background-color: #91A3AE;
+    background-color: rgba(56, 60, 65, .4);*/
+    font-size: 12px;
+    color: #3B91C3;white-space:nowrap;overflow:hidden;
+}
+
+.container .scb2 .shortcutmenu .shortcutmenutitle{color: #404040;}
+.container .scb2 h5{    margin: 0 0 10px;
+    font-size: 14px;color:#82939e;
+    font-weight: 700;}
+
+
+
+.container ul li font{ display:block; width:100%; height:30px;font-size: 14px; font-weight: bold;}
+.container ul h3{ color: #0c8fff;
+    display: block;
+    height: 20px;
+    margin: 0 auto;
+    padding-left: 10px;
+    border-left: 3px solid #0c8fff;}
+    
+.shortcutbtn{clear:both;overflow:hidden;
+    padding: 10px 20px;}
+
+.shortcutbtn .defaultbtn {float:right;
+    padding: 9px 20px;
+    font-size: 14px;
+    font-family: Arial, "Microsoft Yahei";
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #dadce6;
+    border-radius: 4px;
+    white-space: nowrap;
+    
+    background-color: #f8f8f8;
+    border-color: #dadce6;
+    color: #fff;
+    -webkit-transition: background linear 0.1s;
+    -moz-transition: background linear 0.1s;
+    -o-transition: background linear 0.1s;
+    transition: background linear 0.1s;
+    -webkit-box-shadow: inset 0 1px 0 #ffffff;
+    box-shadow: inset 0 1px 0 #ffffff;
+    color: #82939e;
+}
+.shortcutbtn .primatybtn {    background-color: #3497db;
+    border-color: #2081c7;
+    color: #fff;
+    -webkit-transition: background linear 0.1s;
+    -moz-transition: background linear 0.1s;
+    -o-transition: background linear 0.1s;
+    transition: background linear 0.1s;
+    -webkit-box-shadow: inset 0 1px 0 #75b8e7;
+    box-shadow: inset 0 1px 0 #75b8e7;
+    margin-left:5px;
+}
+
+.shortcutbox {}
+
+.shortcut li {width: 20%;
+    float: left;
+    text-align: center;
+    height: 120px;margin-top:5px;}
+.shortcut li a {display:block;padding-top:16px;color:#404040;}
+.shortcut li a:hover {border:none;color:#3EAFE1;}
+.shortcut li img {width:50px;height:50px;}
+.shortcut li font {    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;}
+
+
+</style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class=" shortcutbox scb1">
+            <ul class="weise jsws" style="height:122px;">            
+            <volist name=":get_kuaijie(1)" id="my">
+                <li data-v="{$my.id}">
+                    <div class="jsshortcut shortcutmenu" >
+                    <a href="javascript:;" class="shortcutminus jsminus"></a>
+                        <div class="shortcutmenuicon" title="{$my.title}">
+                            <img src="{:get_cover($my['value'],'path')}">
+                        </div>
+                        <p class="shortcutmenutitle">{$my.title}</p>
+                    </div>
+                </li>
+            </volist>
+            </ul>
+    </div>
+    
+    <div class=" shortcutbox scb2" >
+            <h5>未添加的模块</h5>
+            <ul class="jss">
+            <volist name=":get_kuaijie(2)" id="wei">
+                <li data-v="{$wei.id}">
+                    <div class="jsshortcut shortcutmenu" >
+                    <a href="javascript:;" class="shortcutplus jsplus"></a>
+                        <div class="shortcutmenuicon" title="{$wei.title}">
+                            <img src="{:get_cover($wei['value'],'path')}">
+                        </div>
+                        <p class="shortcutmenutitle">{$wei.title}</p>
+                    </div>
+                </li>
+            </volist>
+            </ul>
+    </div>
+    <div class="shortcutbtn"><a id="save" class="defaultbtn primatybtn">保存设置</a><a id="huifu" class="defaultbtn">恢复原定义设置</a></div>
+</div>
+
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<script src="__STATIC__/layer/layer.js" type="text/javascript"></script>
+<script type="text/javascript">
+function plus(that,index) {
+    var jspp = that.closest('li'),jsws = $('.jsws');
+        if (jsws.find('li').length<10) {
+            var jp = jspp.clone(),jss = $('.jss');
+            jp.find('.jsplus').removeClass('shortcutplus jsplus').addClass('shortcutminus jsminus');
+            jspp.remove();
+            jp.on('click',function(){minus($(this),index);return false;});
+            jsws.append(jp);
+            if (jss.find('li').length>10) {jss.height(244);}
+            else {jss.height(122);}
+            parent.layer.iframeAuto(index);
+        } 
+}
+function minus(that,index){
+    var jsmp = that.closest('li'),jss = $('.jss');
+        var jm = jsmp.clone();
+        jm.find('.jsminus').removeClass('shortcutminus jsminus').addClass('shortcutplus jsplus');
+        jsmp.remove();
+        jm.on('click',function(){plus($(this),index);return false;});
+        jss.append(jm);
+        
+        if (jss.find('li').length>10) {jss.height(244);}
+        else {jss.height(122);}
+        parent.layer.iframeAuto(index);
+}
+$(function(){
+    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    
+    parent.layer.iframeAuto(index);
+    
+    //出入允许拖拽节点的父容器，一般是ul外层的容器
+    if($('.jss li').length>10){
+        $(".jss").attr('style','height:244px;');parent.layer.iframeAuto(index);
+    }
+    $('.container li').delegate('.jsminus','click',function(){
+        minus($(this),index);
+        return false;
+    });
+    $('.container li').delegate('.jsplus','click',function() {
+        plus($(this),index);
+        return false;
+    });
+    $("#huifu").click(function(){
+        location.reload();
+    });
+    $("#save").click(function(){
+        var $sees='',num=0;
+        $(".weise li").each(function(){
+            $sees=$sees+$(this).attr('data-v')+',';num++;
+        });
+        if (num<10) {layer.msg('必须选10个');return false;}
+        $.ajax({
+            type: "post",
+            url: '{:U("Index/savekuaijie")}',
+            data: {kuaijie:$sees},
+            dataType: "json",
+            success: function(data){
+                if(data.status){
+                    layer.msg('保存成功');
+                }else{
+                    layer.msg('保存失败');
+                }
+                top.location.reload();
+            },
+            error:function(){
+                alert('服务器错误');
+            }
+        });
+    });
+});
+
+
+/** 拖拽功能实现原理和说明：
+
+1、说明：拖拽实现一般有两种方式，一种是使用html的新特性dragable，但是由于在火狐浏览器上dragable每拖拽一次会打开一个新的标签，
+尝试阻止默认行为和冒泡都无法解决，所以使用第二种方法来实现拖拽。第二种方法是使用js监听鼠标三个事件，配合节点操作来实现。
+
+2、实现原理：
+    01-在允许拖拽的节点元素上，使用on来监听mousedown(按下鼠标按钮)事件，鼠标按下后，克隆当前节点
+    02-监听mousemove(鼠标移动)事件，修改克隆出来的节点的坐标，实现节点跟随鼠标的效果
+    03-监听mouseup(放开鼠标按钮)事件，将原节点克隆到鼠标放下位置的容器里，删除原节点，拖拽完成。
+
+3、优势：
+    01-可动态添加允许拖拽的节点(因为使用了on委托事件)
+    02-可获取到原节点，跟随节点，目标节点的对象，可根据需要进行操作。
+    03-使用js实现，兼容性好。
+**/
+
+
+//拖拽
+var drag = {
+
+    class_name : null,  //允许放置的容器
+    permitDrag : false, //是否允许移动标识
+
+    _x : 0,             //节点x坐标
+    _y : 0,             //节点y坐标
+    _left : 0,          //光标与节点坐标的距离
+    _top : 0,           //光标与节点坐标的距离
+
+    old_elm : null,     //拖拽原节点
+    tmp_elm : null,     //跟随光标移动的临时节点
+    new_elm : null,     //拖拽完成后添加的新节点
+
+    //初始化
+    init : function (className){
+
+        //允许拖拽节点的父容器的classname(可按照需要，修改为id或其他)
+        drag.class_name = className;
+
+        //监听鼠标按下事件，动态绑定要拖拽的节点（因为节点可能是动态添加的）
+        $('.' + drag.class_name).on('mousedown', 'ul li', function(event){
+            //当在允许拖拽的节点上监听到点击事件，将标识设置为可以拖拽
+            drag.permitDrag = true;
+            //获取到拖拽的原节点对象
+            drag.old_elm = $(this);
+            //执行开始拖拽的操作
+            drag.mousedown(event);
+            return false;
+        });
+
+        //监听鼠标移动
+        $(document).mousemove(function(event){
+            //判断拖拽标识是否为允许，否则不进行操作
+            if(!drag.permitDrag) return false;
+            //执行移动的操作
+            drag.mousemove(event);
+            return false;
+        });
+
+        //监听鼠标放开
+        $(document).mouseup(function(event){
+            //判断拖拽标识是否为允许，否则不进行操作
+            if(!drag.permitDrag) return false;
+            //拖拽结束后恢复标识到初始状态
+            drag.permitDrag = false;
+            //执行拖拽结束后的操作
+            drag.mouseup(event);
+            return false;
+        });
+
+    },
+
+    //按下鼠标 执行的操作
+    mousedown : function (event){
+
+        //console.log('我被mousedown了');
+        //1.克隆临时节点，跟随鼠标进行移动
+        drag.tmp_elm = $(drag.old_elm).clone();
+        //2.计算 节点 和 光标 的坐标
+        drag._x = $(drag.old_elm).offset().left;
+        drag._y = $(drag.old_elm).offset().top;
+
+        var e = event || window.event;
+        drag._left = e.pageX - drag._x;
+        drag._top = e.pageY - drag._y;
+
+        //3.修改克隆节点的坐标，实现跟随鼠标进行移动的效果
+        $(drag.tmp_elm).css({
+            'position' : 'absolute',
+            // 'background-color' : '#FF8C69',
+            'left' : drag._x-5,
+            'top' : drag._y-30,
+        });
+        
+        $(drag.tmp_elm).find('.jsminus').removeClass('shortcutminus jsminus').addClass('shortcutplus jsplus');
+
+        //4.添加临时节点
+        tmp = $(drag.old_elm).parent().append(drag.tmp_elm);
+        drag.tmp_elm = $(tmp).find(drag.tmp_elm);
+        $(drag.tmp_elm).css('cursor', 'move');
+
+    },
+
+    //移动鼠标 执行的操作
+    mousemove : function (event){
+
+        //console.log('我被mousemove了');
+
+        //2.计算坐标
+        var e = event || window.event;
+        var x = e.pageX - drag._left;
+        var y = e.pageY - drag._top;
+        var maxL = $(document).width() - $(drag.old_elm).outerWidth();
+        var maxT = $(document).height() - $(drag.old_elm).outerHeight();
+        //不允许超出浏览器范围
+        x = x < 0 ? 0: x;
+        x = x > maxL ? maxL: x;
+        y = y < 0 ? 0: y;
+        y = y > maxT ? maxT: y;
+
+        //3.修改克隆节点的坐标
+        $(drag.tmp_elm).css({
+            'left' : x-5,
+            'top' : y-30,
+        });
+
+        //判断当前容器是否允许放置节点
+        $.each($('.' + drag.class_name + ' ul'), function(index, value){
+            //获取容器的坐标范围 (区域)
+            var box_x = $(value).offset().left;     //容器左上角x坐标
+            var box_y = $(value).offset().top;      //容器左上角y坐标
+            var box_width = $(value).outerWidth();  //容器宽
+            var box_height = $(value).outerHeight();//容器高
+            
+            //给可以放置的容器加背景色
+            /*if(e.pageX > box_x && e.pageX < box_x-0+box_width && e.pageY > box_y && e.pageY < box_y-0+box_height){
+
+                //判断是否不在原来的容器下（使用坐标进行判断：x、y任意一个坐标不等于原坐标，则表示不是原来的容器）
+                if($(value).offset().left !== drag.old_elm.parent().offset().left 
+                || $(value).offset().top !== drag.old_elm.parent().offset().top){
+                    
+                    //$(value).css('background-color', '#FFEFD5');
+                }
+            }else{
+                //恢复容器原背景色
+                //$(value).css('background-color', '#FFFFF0');
+            }*/
+
+        });
+
+    },
+
+    //放开鼠标 执行的操作
+    mouseup : function (event){
+
+        //console.log('我被mouseup了');
+        //移除临时节点
+        $(drag.tmp_elm).remove();
+
+        //判断所在区域是否允许放置节点
+        var e = event || window.event;
+
+        $.each($('.' + drag.class_name + ' ul'), function(index, value){
+
+            //获取容器的坐标范围 (区域)
+            var box_x = $(value).offset().left;     //容器左上角x坐标
+            var box_y = $(value).offset().top;      //容器左上角y坐标
+            var box_width = $(value).outerWidth();  //容器宽
+            var box_height = $(value).outerHeight();//容器高
+            //判断放开鼠标位置是否想允许放置的容器范围内
+            if(e.pageX > box_x && e.pageX < box_x-0+box_width && e.pageY > box_y && e.pageY < box_y-0+box_height){
+                //判断是否不在原来的容器下（使用坐标进行判断：x、y任意一个坐标不等于原坐标，则表示不是原来的容器）
+                // &&$('.weise li').length<10
+                //console.log($(this).attr('class'));
+                //console.log($('.weise li').length);
+                //console.log($('.jss li').length);
+                if($(this).attr('class')=='jss'&&$('.jss li').length>=10){
+                    $(".jss").attr('style','height:380px');
+                }else if($(this).attr('class')=='weise'&&$('.weise li').length<=10&&$('.jss li').length<=11){
+                    $(".jss").attr('style','height:195px');
+                }
+
+                if($(this).attr('class')=='weise'&&$('.weise li').length>=10){
+                    //console.log('超过10个了');
+                    //layer.msg('添加的模块已超过10个了，如要添加，请去掉后再添加');
+                }else{
+                    if($(value).offset().left !== drag.old_elm.parent().offset().left 
+                    || $(value).offset().top !== drag.old_elm.parent().offset().top){
+                        //向目标容器添加节点并删除原节点
+                        tmp = $(drag.old_elm).clone();
+                        var newObj = $(value).append(tmp);
+                        $(drag.old_elm).remove();
+                        //获取新添加节点的对象
+                        drag.new_elm = $(newObj).find(tmp);
+                    }
+                }
+            }
+            //恢复容器原背景色
+           // $(value).css('background-color', '#fbfbfd');
+        });
+
+    },
+
+};
+
+</script>
+
+</body>
+</html>

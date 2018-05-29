@@ -1,0 +1,481 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<script src="__JS__/clipboard.min.js"></script>
+<style>
+.footer{
+  display: none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+        <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+        <div class="caption"><span class="table"><span class="table-cell">我的收藏</span></span></div>
+				<if condition="count($coll) gt 0 || count($foot) gt 0">
+					<a href="javascript:;" class="hbtn right user-del jsdel jsdelsh"><span class="table"><span class="table-cell"><span class="delbox"><img src="__IMG__/nav_btn_delete.png" class="icon"><div class="deltxt">完成</div></span></span></span></a>
+				</if>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    
+      <section class="inner">
+        <section class="contain">
+          <div class="list collection-list">
+            
+            
+            <div class="tab-scroll clearfix">
+              <div id="tab-menu">
+                <div class="s-container">
+                    <div class="s-wrapper tabmenu">
+                        <div class="s-slide s-visible active"><a href="#collection">我的收藏</a></div>
+                        <div class="s-slide s-visible"><a href="#print">我的足迹</a></div>
+                    </div>
+                </div>
+              </div>
+              <div id="tab-slide">
+                <div class="s-container s-no-swiping">
+                    <div class="s-wrapper tabpanel">
+                    <notempty name="coll">
+                      <div class="s-slide s-no-swiping" style="display:block;">
+                        <ul class="list text-icon-list jscollection jstype jstil">
+                        <volist name="coll" id="da">
+                          <li class="itembox" data-behavior_id="{$da.bid}">
+                            <div class="item clearfix">
+                              <a href="{$da.play_detail_url}" class="iconbox"><label class="input-checkbox"><input type="checkbox" name="ids" class="checkbox ids" value="1"><i class="icon"></i></label><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$da.icon}" class="icon"></a>
+                              <div class="butnbox"><span class="table"><span class="table-cell"><a href="{$da.play_url}" class="butn toplay">去玩</a><a href="{:U('Game/index',array('game_type_id'=>$da['game_type_id'],'from'=>'collec'))}" class="butn similar">找相似</a></span></span></div>
+                              <div class="textbox">
+                                <a href="{$da.play_detail_url}" class="title">{$da.game_name}</a>
+                                <p class="info"><span class="type">{$da.game_type_name}</span><span class="number"><i class="">{$da.play_num}</i>人在玩</span></p>
+                              </div>
+                            </div>
+                            
+                            <div class="jitem swiper-container">
+                              <div class="swiper-wrapper jjj">
+                                  <div class="swiper-slide content "></div>
+                                  <div class="swiper-slide menu jsitemdel" data-id="1"><img src="__IMG__/my_collection_delete.png"></div>
+                              </div>
+                            </div>
+                          </li>
+                        </volist>  
+                        </ul>
+                        
+                      </div>
+                    <else/>
+                      <div class="s-slide s-no-swiping"  style="display:block;">
+                        <div class="empty">
+                          <img src="__IMG__/blank_collect.png" class="empty-icon">
+                          <p class="empty-text">暂无收藏</p>
+                        </div>
+												<notempty name="recgame">
+                        <div class="hot-game">
+                          <div class="hot-game-title"><span>推荐游戏</span><a href="{:U('Game/index#categroy')}" class="more"><img src="__IMG__/ma_more.png" class="icon-right"></a></div>
+                          <ul class="list text-pic-list">
+                          <volist name="recgame" id="hot">
+                            <li class="clearfix">
+                              <div class="item clearfix">
+                                <a href="{$hot.play_detail_url}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$hot.icon}" class="icon"></a>
+                                <div class="butnbox"><span class="table"><span class="table-cell"><a href="javascript:;" class="butn jscollection setcollection" data-collection="0" data-game_id="{$hot.id}">收藏</a></span></span></div>
+                                <div class="textbox">
+                                  <a href="{$hot.play_detail_url}" class="title">{$hot.game_name}</a>
+                                  <p class="info"><span class="type">{$hot.game_type_name}</span><span class="number"><i class="">{$hot.collect_num}</i>人收藏</span></p>
+                                  <p class="slogan">{$hot.features}</p>
+                                </div>
+                              </div>
+                            </li>
+                          </volist>
+                          </ul>
+                        </div> 
+												</notempty>
+                      </div>
+                    </notempty>
+                    <notempty name="foot">
+                      <div class="s-slide s-no-swiping">
+                      
+                        <ul class="list text-img-list jsprint jstype">
+                        <volist name="foot" id='dat'>
+                          <li class="itembox clearfix">
+                            <div class="print-title"><span class="table"><span class="table-cell"><label class="input-checkbox"><input type="checkbox" class="checkbox print-all" ><i class="icon"></i></label><span class="date">{$key}</span></span></span></div>
+                            <div class="print-content clearfix">
+                            <volist name="dat" id='da'>
+                              <a href="{$da.play_detail_url}" class="butn" data-behavior_id="{$da.bid}"><div class="iconbox"><label class="input-checkbox"><input type="checkbox" class="checkbox print-ids"><i class="icon"></i></label><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$da.icon}" class="icon"></div><p class="title">{$da.game_name}</p></a>
+                            </volist>
+                            </div>
+                
+                          </li>
+                        </volist> 
+                        </ul>
+                      </div>
+                    <else/>
+                      <div class="s-slide s-no-swiping">
+                        <div class="empty">
+                          <img src="__IMG__/blank_footprint.png" class="empty-icon">
+                          <p class="empty-text">暂无浏览足迹</p>
+                        </div>
+                        <notempty name="recgame">
+                        <div class="hot-game">
+                          <div class="hot-game-title"><span>推荐游戏</span><a href="{:U('Game/index#categroy')}" class="more"><img src="__IMG__/ma_more.png" class="icon-right"></a></div>
+                          <ul class="list text-pic-list">
+                            <volist name="recgame" id="hot">
+                            <li class="clearfix">
+                              <div class="item clearfix">
+                                <a href="gamedetail.html" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$hot.icon}" class="icon"></a>
+                                <div class="butnbox"><span class="table"><span class="table-cell"><a href="{$hot.play_detail_url}" class="butn jscollection">去玩</a></span></span></div>
+                                <div class="textbox">
+                                  <a href="{$hot.play_detail_url}" class="title">{$hot.game_name}</a>
+                                  <p class="info"><span class="type">动作</span><span class="number"><i class="">{$hot.play_num}</i>人在玩</span></p>
+                                  <p class="slogan">{$hot.features}</p>
+                                </div>
+                              </div>
+                            </li>
+                          </volist>
+                          </ul>
+                        </div>
+                        </notempty>
+                      </div>
+                    </notempty>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </section>
+    </section>
+    
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+    <div class="collection-delbox">
+      <div class="table">
+        <label class="input-checkbox2 jsallchecked"><input type="checkbox" class="checkbox check-all"><i class="icon"></i><span>全选</span></label>
+        <div class="butnbox table-cell">
+          <a href="javascript:;" class="butn jsdelall">删除</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pop"></div>
+    <script src="__JS__/pop.lwx.min.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+					var itemIndex=0;
+        
+					/* 标签切换 */
+					$('#tab-menu .s-slide').click(function() {
+						var that=$(this);
+						var index = that.index();
+						itemIndex = index;
+						var hash = that.closest('.tabmenu').find('.active a').attr('href');
+						if (that.find('a').attr('href') == hash) {return false;}
+						that.siblings().removeClass('active');
+						that.addClass('active');
+						$('#tab-slide .tabpanel>.s-slide').hide().eq(index).show();
+						
+						$('.jsdel').removeClass('on').find('.deltxt').stop(true).fadeOut(200).siblings('.icon').delay(400).fadeIn(200);
+              
+              
+              $('.jsprint .itembox').removeClass('delmark').find('.input-checkbox,.input-checkbox2').fadeOut();
+              $('.jscollection .itembox .similar').fadeIn();
+              $('.jscollection .itembox').removeClass('delmark').find('.input-checkbox').fadeOut();
+              $('.collection-delbox').fadeOut().find('.jsallchecked').fadeOut();
+							$('.jscollection .itembox .item a').each(function(){
+								var that_a = $(this);
+								if(that_a.attr('data-url'))
+									that_a.attr('href',that_a.attr('data-url'));
+							});
+							$('.jsprint .itembox a').each(function(){
+								var that_a = $(this);
+								if(that_a.attr('data-url'))
+									that_a.attr('href',that_a.attr('data-url'));
+							});
+              var len = $('#tab-slide .tabpanel>.swiper-slide').eq(index).find('.empty').length;
+							if(len>0) {$('.jsdelsh').hide();}
+							else {$('.jsdelsh').show();}
+						
+					});
+          
+					if ($('#tab-slide .jstil').length<1) {
+						$('.jsdelsh').hide();
+					}
+          
+          new Swiper('.jitem', {
+            noSwiping:false,
+            slidesPerView: 'auto'
+            , initialSlide: 0
+            , resistanceRatio: .00000000000001
+            ,onTransitionStart:function(slider){
+              var parent = slider.wrapper.closest('.jitem');
+              var butn = parent.siblings('.item').find('.butnbox');
+              if(slider.progress>0){
+                (butn.addClass('hide'),parent.addClass('cur'))
+                $('ul.jstype li').each(function(index,ele){
+                  if($(this).find('.jjj').attr('style')!=undefined){
+                    $(this).find('.jjj').removeAttr('style');
+                    $(this).find('.butnbox').removeClass('hide');
+                  }
+                });
+              }else{
+                (butn.removeClass('hide'),parent.removeClass('cur'))
+              };
+              
+            }
+          });
+        
+          $('.jsitemdel').click(function() {
+            var that=$(this),id=that.attr('data-id');
+            $ids = that.closest('.jstype').find('li').attr('data-behavior_id');
+            if(id==1){
+              mmsg='收藏';
+            }else{
+              mmsg='足迹';
+            }
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">确定要删除该'+mmsg+'吗？</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">确定</a></div>');
+            $('.jscancel').click(function() {pop.close();});
+            $('.pop-comfirm').click(function() {
+              pop.close();
+              // ajax
+              setTimeout(function() {
+                $.ajax({
+                  type:'post',
+                  url:"{:U('optionBehavior')}",
+                  data:{ids:$ids,type:id},
+                  success:function(data){
+                    if(data.status==1){
+                      // 成功
+                      pop.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已删除</p>',1000,250);
+                      that.closest('li').remove();
+                      if(that.parent('ul li').length<1){
+                        location.href = location.href;
+                      }
+                    }else{
+                      // 失败
+                      pop.addClass('pop-cue').msg('<div class="pop-content"><div class="pop-title">删除失败</div><div class="pop-text">可能网络错误，请重新操作</div></div>',1000,250);
+                    }
+                  },error:function(){
+                    // 失败
+                    pop.addClass('pop-cue').msg('<div class="pop-content"><div class="pop-title">删除失败</div><div class="pop-text">可能网络错误，请重新操作</div></div>',1000,250);
+                    location.href= location.href;
+                  }
+                });
+                
+                
+                
+              },810);
+              return false;
+            });
+            
+            return false;
+          });
+          function nologintc(popmsg){
+            popmsg.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_unlisted.png"><div class="pop-title">您还未登录</div><p class="pop-text">暂时无法收藏心爱的游戏~T_T~</p><a href="javascript:;" class="pop-btn tologin">去登录</a></div>'); 
+            popmsg.find('.pop-close').click(function() {popmsg.close();});
+            popmsg.find('.tologin').click(function() {popmsg.close();$('.jslogin').click()});
+          }
+          var popmsg = pop;
+          var $user = "{:is_login()}";
+          $('.setcollection').click(function() {
+            var that = $(this),star = that;
+            // 是否登录
+            if ($user) {
+              $.ajax({
+                  type: 'post',
+                  url: '{:U("Game/collection")}',
+                  async:false,
+                  data:{collect_status:star.attr('data-collection'),game_id:star.data('game_id')},
+                  dataType: 'json',
+                  success: function(data){
+                      if(data.code==1){
+                        if(data.data==1){
+                            popmsg.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已收藏</p>',1000,250);
+                            star.attr('data-collection',1)
+                            star.addClass('on').siblings('span').text('已收藏');
+                            setTimeout('location.href = location.href',1000);
+                        }else{
+                            popmsg.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">收藏已取消</p>',1000,250);
+                            star.attr('data-collection',0)
+                            star.removeClass('on').siblings('span').text('收藏');
+                        }
+                      }else if(data.code==-1){
+                          nologintc(popmsg);
+                      }
+                  },
+                  error: function(xhr, type){
+                      
+                  }
+              });
+            } else {
+              nologintc(popmsg);
+            }
+            
+          });
+          $('.jsdelall').click(function() {var that;
+            $('.tabmenu .s-slide').each(function(i){
+              if($(this).hasClass('active')){
+                that = $('.tabpanel>.s-slide').eq(i);
+                if(i==0){
+                  id = 1;
+                }else{
+                  id = 2;
+                }
+              }
+            });
+            var $ids='';
+            that.find('li .checkbox').each(function(j){
+              if($(this).hasClass('on')){
+                if(id==1){
+                  $ii = $(this).closest('li').attr('data-behavior_id');
+                  if($ii>0){
+                    $ids += $ii+',';
+                  }
+                }else{
+                  $ii = $(this).closest('li a.butn').attr('data-behavior_id');
+                  if($ii>0){
+                    $ids += $ii+',';
+                  }
+                }
+              }
+            });
+            if($ids==''){
+							layer.msg('请选择需要操作的数据');
+              return false;
+            }else{
+              $ids = $ids.substring(0,$ids.length-1);
+            }
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">确定要删除选中的数据吗？</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">确定</a></div>');
+            $('.jscancel').click(function() {pop.close();});
+            $('.pop-comfirm').click(function() {
+              pop.close();
+              // ajax
+              setTimeout(function() {
+                $.ajax({
+                  type:'post',
+                  url:"{:U('optionBehavior')}",
+                  data:{ids:$ids,type:id},
+                  success:function(data){
+                    console.log(data);
+                    if(data.status==1){
+                      // 成功
+                      pop.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已删除</p>',1000,250);
+                      setTimeout(function(){window.location.reload();},2000);
+                    }else{
+                      // 失败
+                      pop.addClass('pop-cue').msg('<div class="pop-content"><div class="pop-title">删除失败</div><div class="pop-text">可能网络错误，请重新操作</div></div>',1000,250);
+                    }
+                  },error:function(){
+                    // 失败
+                    pop.addClass('pop-cue').msg('<div class="pop-content"><div class="pop-title">删除失败</div><div class="pop-text">可能网络错误，请重新操作</div></div>',1000,250);
+                    setTimeout(function(){window.location.reload();},2000);
+                  }
+                });
+                
+                
+                
+              },810);
+              return false;
+            });
+            
+            return false;
+          });
+          
+          $('.jsdel').click(function() {
+            var that=$(this);
+            $('ul.jstype li').each(function(index,ele){
+              if($(this).find('.jjj').attr('style')!=undefined){
+                $(this).find('.jjj').removeAttr('style');
+                $(this).find('.butnbox').removeClass('hide');
+              }
+            });
+						var index = $('#tab-menu .tabmenu .s-slide.active').index();
+						
+            if (that.hasClass('on')) {
+              that.removeClass('on').find('.deltxt').stop(true).fadeOut(200).siblings('.icon').delay(400).fadeIn(200);
+              
+              if (index==0) {
+                $('.jscollection .itembox').removeClass('delmark').find('.input-checkbox').fadeOut();
+                $('.jscollection .itembox .similar').fadeIn();
+                $('.collection-delbox').fadeOut().find('.jsallchecked').fadeOut();
+								$('.jscollection .itembox .item a').each(function(){
+									var that_a = $(this);
+									if (that_a.attr('data-url'))
+										that_a.attr('href',that_a.attr('data-url'));
+								});
+              } else {
+                $('.jsprint .itembox').removeClass('delmark').find('.input-checkbox,.input-checkbox2').fadeOut();
+                $('.collection-delbox').fadeOut();
+								$('.jsprint .itembox a').each(function(){
+									var that_a = $(this);
+									if (that_a.attr('data-url'))
+										that_a.attr('href',that_a.attr('data-url'));
+								});
+              }
+              
+            } else {
+              that.addClass('on').find('.icon').stop(true).fadeOut(200).siblings('.deltxt').delay(400).fadeIn(200);
+              
+              if (index==0) {
+                $('.jscollection .itembox').addClass('delmark').find('.input-checkbox').fadeIn();
+                $('.jscollection .itembox .similar').fadeOut();
+                $('.collection-delbox').fadeIn().find('.jsallchecked').fadeIn();
+								$('.jscollection .itembox .item a').each(function(){
+									var that_a = $(this);
+									that_a.attr('data-url',that_a.attr('href'));
+									that_a.attr('href','javascript:;');
+								});
+              } else {
+                $('.jsprint .itembox').addClass('delmark').find('.input-checkbox,.input-checkbox2').fadeIn();
+                $('.collection-delbox').fadeIn();
+								$('.jsprint .itembox a').each(function(){
+									var that_a = $(this);
+									that_a.attr('data-url',that_a.attr('href'));
+									that_a.attr('href','javascript:;');
+								});
+              }
+            }
+            return false;
+          });
+          
+          $(".print-all").click(function(){
+            var that = $(this).toggleClass('on');
+            var ids = that.closest('.itembox').find('.print-ids');
+            this.checked?(ids.addClass('on')):(ids.removeClass('on'));
+            ids.prop("checked", this.checked);
+          });
+          $(".print-ids").click(function(){
+            var that = $(this).toggleClass('on');
+            var parent = that.closest('.itembox');
+            var option = parent.find(".print-ids");
+            var all = parent.find('.print-all');
+            option.each(function(i){
+              if(!this.checked){
+                all.prop("checked", false).removeClass('on');
+                return false;
+              }else{
+                all.prop("checked", true).addClass('on');
+              }
+            });
+          });
+					
+					
+					
+					var fromnumb = location.hash;
+					if(fromnumb){
+						switch(fromnumb) {
+							case '#collection':itemIndex=0;break;
+							case '#print':itemIndex=1;break;
+							default:itemIndex=0;
+						}
+						$('#tab-menu .s-slide').removeClass('active').eq(itemIndex).addClass('active');
+						$('#tab-slide .tabpanel>.s-slide').hide().eq(itemIndex).show();
+						
+					}
+          
+          
+          
+        });
+        
+        
+        
+    </script>
+</block>

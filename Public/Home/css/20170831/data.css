@@ -1,0 +1,31 @@
+/**
+ * 平台币样式
+ * @author 鹿文学
+ */
+/* common */
+.trunk-search form {float:left;}
+.trunk-search .form-group {margin-right:15px;}
+.trunk-search .form-group2 {margin-bottom:15px;}
+
+.trunk-search .form-title i {color:red;display:inline-block;width:10px;font-style:normal;}
+.trunk-search .select-time {float:left;}
+.trunk-search .select-time .txt {width:130px;}
+
+.page-list{margin-top:20px;}
+.page-list .article{padding:30px 20px;}
+
+.page-list .article .import {text-align:right;font-size:16px;padding:10px 20px;}
+.page-list .article .import .txt {color:#526782;margin-right:30px;}
+.page-list .article .import .btn {color:#1893F3;}
+.page-list .article .import .tot {margin-right:30px;}
+
+.page-list .trunk-list .table tr {border-bottom:1px solid #DCE0E3;}
+
+.page-list .trunk-search .tab {float:left;}
+.page-list .trunk-search .tab a{display:inline-block;margin-right:20px;background:#E3E5E4;border-radius:5px;width:124px;height:36px;text-align:center;line-height:36px;font-size:16px;}
+.page-list .trunk-search .tab a:after {content:'';display:block;width:0;height:0;border:8px solid transparent;border-top-width:12px;left:0;right:0;margin:0 auto;}
+.page-list .trunk-search .tab a.current {background:#526782;color:#FFF;}
+.page-list .trunk-search .tab a.current:after {border-top-color:#526782;}
+
+
+.page-list .table .lookbtn {color:#1893F3;}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="UTF-8">
+		<title>渠道分发记录|溪谷软件管理平台</title>
+		<link href="http://admin.vlcms.com/Public/icon.ico" type="image/x-icon" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
+		<link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
+		<link rel="stylesheet" type="text/css" href="__CSS__/module.css">
+		<link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+		<link rel="stylesheet" type="text/css" href="__CSS__/default_color.css" media="all">
+		<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+		<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+		<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+		<script type="text/javascript" src="__JS__/select2.min.js"></script>
+		<script src="__STATIC__/layer/layer.js"></script>
+		<script type="text/javascript" src="__STATIC__/layer/extend/layer.ext.js"></script>
+	</head>
+	<style>
+		body {
+			padding: 0px;
+		}
+		
+		html {
+			height: 100%;
+			overflow-y: scroll;
+			min-width: 100% !important;
+		}
+		
+		.data_list table td.l_con {
+			text-align: right;
+			border: 0;
+			margin-left: 10px;
+		}
+		
+		.data_list table td.r_con {
+			text-align: left;
+			padding-left: 10px;
+			border: 0;
+		}
+		
+		.data_list table td.r_b {
+			font-weight: bold;
+			color: #000;
+		}
+		
+		.data_list table tbody tr.nohover:hover {
+			background: none;
+		}
+		
+		.data_list table tbody tr.nohover td {
+			line-height: 70px;
+		}
+		
+		.data_list table tbody .nohover .l_con.inblock {
+			display: inline-block;
+			width: 120px;
+		}
+		.edit_sort{border: 1px solid #DDDEE0;}
+		.edit_sort span{line-height: 50px;border: 0;margin-bottom: 11px;background: #DDDEE0;}
+		.edit_sort{width: 360px !important;height: 263px;}
+		.dragsort li{border: 0;background: none;}
+		.edit_sort ul{height: 213px !important;}
+		.data_list table tbody tr.nohover label{position: relative;}
+		.search_icon{display: block;position: absolute;background: url(__IMG__/bg_icon.png) no-repeat;background-position: -48px 0px;width: 18px;height: 18px;top: 0;right: 10px;}
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+::-webkit-scrollbar  
+{  
+    width: 16px;  
+    height: 16px;  
+    background-color: #CDCED0;  
+}  
+  
+/*定义滚动条轨道 内阴影+圆角*/  
+::-webkit-scrollbar-track  
+{  
+    background-color: #CDCED0;  
+}  
+  
+/*定义滑块 内阴影+圆角*/  
+::-webkit-scrollbar-thumb  
+{ 
+    background-color: #979DAD;  
+}  
+
+	</style>
+
+	<body>
+		<div id="main">
+			<!-- 数据列表 -->
+			<div class="data_list box_mt">
+				<div class="">
+					<form id="form" action="{:U('channel_config')}" method="post" class="form-horizontal">
+						<table border="0" cellspacing="0" cellpadding="0" style="width:70%;margin:auto;">
+							<tbody>
+								<tr class="nohover">
+									<td class="l_con">商务专员账号：</td>
+									<td class="r_con r_b" colspan="3">
+										{:$data['busier_account']}
+									</td>
+								</tr>
+								<tr class="nohover">
+									<td class="l_con inblock">旗下推广员列表：</td>
+									<td class="r_con" colspan="3">
+
+										<div class="form-item cf edit_sort edit_sort_l form_field_sort" style="width: 300px;">
+											<span class="span-tit">
+	                                    <!--<i style="float:left; font-style: normal;">推广员列表</i>-->
+	                                    <label>
+										<input class="txt" type="text" id="busier_account" name="busier_account" value="" placeholder="请输入关键字" style="width: 260px;height: 38px;margin-top: 6px;padding-left: 15px;border: 0;border-radius: 3px;">
+										<i class="search_icon"></i>
+	                                    </label>
+	                                    <a class="del_promote"  href="#"  id = "{:$data['id']}" data_type="all" style="float:right; display:block;margin-top:17px;margin-right:10px;font-weight: normal;">清空全部</a>
+                                    </span>
+											<ul class="dragsort" style="margin-top: -11px;">
+												<div id="search_user">
+													<volist name=":get_busier_user($data['id'])" id="field">
+														<li style="text-align: left;">
+															<em><label>{$field['account']} </label><img data_type="{:$field['id']}" id = "{:$data['id']}"  class="del_promote" src="__IMG__/u301.png" style="float:right;padding-top: 5px;"></em>
+														</li>
+													</volist>
+												</div>
+											</ul>
+                                            <div style="color: #999;margin-left: 263px;">总计<i style="font-style: normal;">{:get_busier_num($data['id'])}</i>个推广员</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+							
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function() {
+			$('#busier_account').bind(' input propertychange ', function() {
+				var busier_account = $(this).val();
+				var id = "{:$data['id']}";
+				var url = "{:U('Busier/search_busier_user')}";
+				var $html = '';
+				$.ajax({
+					type: "post",
+					url: url,
+					dataType: "json",
+					data: { account: busier_account, busier_id: id },
+					success: function(data) {
+						var pro_data = data.data;
+						if(pro_data == null) {
+
+						} else {
+							for(i = 0; i < pro_data.length; i++) {
+								console.log(pro_data[i].account);
+								$html += '<li style="text-align: left;">' +
+									'<em ><label>' + pro_data[i].account + '</label><img id="' + pro_data[i].id + '" class="del_promote" src="__IMG__/u301.png" style="float:right;"></em>' +
+									'</li>';
+							}
+							$("#search_user").empty();
+							$('#search_user').append($html);
+						}
+					},
+					error: function() {
+						layer.msg('服务器异常', { icon: 5 });
+					}
+				})
+			});
+			$(".del_promote").click(function() {
+				var id = $(this).attr("id");
+				var data_type = $(this).attr("data_type");
+				console.log(id);
+				//询问框
+				layer.confirm('确定要删除', {
+					btn: ['确定', '取消'] //按钮
+				}, function() {
+					var url = "{:U('Busier/del_busier')}";
+					$.ajax({
+						type: "post",
+						url: url,
+						dataType: "json",
+						data: { id: id, type: data_type },
+						success: function(data) {
+							if(data.status == 1) {
+								layer.msg("删除成功", { time: 500 });
+								// parent.layer.closeAll();
+								setTimeout('top.location.href=top.location.href',500);
+							} else {
+								layer.msg("删除失败", { time: 500 });
+							}
+						},
+						error: function() {
+							layer.msg('服务器异常', { icon: 5 });
+						}
+					})
+					//layer.msg('的确很重要', {icon: 1});
+				}, function() {
+					/* 			   layer.msg('也可以这样', {
+								     time: 20000, //20s后自动关闭
+								     btn: ['明白了', '知道了']
+								   }); */
+				});
+			});
+
+		});
+	</script>
+
+</html>

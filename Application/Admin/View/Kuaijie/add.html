@@ -1,0 +1,108 @@
+<extend name="Public/base"/>
+<block name="body">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<style type="text/css">
+	table.form_info td:first-child {padding-right: 20px; width: 150px;text-align: right;font-size: 12px;font-weight: 600;}
+	table.form_info tr{height: 50px;}
+	.uploadify-button{width: 90px !important;}
+	.form-horizontal .form-item{margin-top: 20px;}
+	.submit_btn {margin-left: 188px;}
+	.notice-text {
+	    font-size: 12px;
+	    color: #999;
+	    margin-left: 30px;
+	    line-height: 30px;
+	    height: 30px;
+	    white-space: pre-wrap;
+	}
+</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+    <div class="formtitle"><span>新增快捷方式</span></div>
+    </div>
+	<form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+		<table border="0" cellspacing="0" cellpadding="0" class="form_info">
+          <tbody>
+            <tr class="form_main">
+                <td class="l noticeinfo">快捷方式名称</td>
+                <td class="r table_radio">
+                    <input type="text" class="" name="title" value="" placeholder="请输入快捷方式名称">
+                    <span class="notice-text">用于显示的文字</span>
+                </td>
+            </tr>
+            <tr class="form_main">
+                <td class="l noticeinfo">快捷方式URL</td>
+                <td class="r table_radio">
+                    <input type="text" class="" name="url" value="" placeholder="快捷方式URL">
+                    <span class="notice-text">用于跳转的链接</span>
+                </td>
+            </tr>
+            <tr class="picbox form_main">
+                <td class="l noticeinfo">快捷图标</td>
+                <td class="r table_radio">
+                    <input type="file" id="upload_picture_{$config.name}">
+	                <input type="hidden" name="config" id="cover_id_{$config.name}" value=""/>
+			        <div class="upload-img-box">
+				        <notempty name="config['value']">
+				            <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				        </notempty>
+			        </div>
+			    </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-item cf">
+            <button class="submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+        
+        <script type="text/javascript">
+        //上传图片
+        /* 初始化上传插件 */
+        $("#upload_picture_{$config.name}").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传快捷图标",
+            "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif; *.ico;',
+            "onUploadSuccess" : uploadPicture{$field.name},
+            'onFallback' : function() {
+                alert('未检测到兼容版本的Flash.');
+            }
+        });
+        function uploadPicture{$field.name}(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if(data.status){
+                $("#cover_id_{$config.name}").val(data.id);
+                src = data.url || '__ROOT__' + data.path;
+                $("#cover_id_{$config.name}").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+        </script>  
+	</form>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+	//导航高亮
+	highlight_subnav('{:U('index')}');
+</script>
+</block>

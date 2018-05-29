@@ -1,0 +1,723 @@
+body {/* padding-top: 62px;  *//* background-color: #edf0f2;  */color: #555;}
+
+a,.btn-link{ color: #00aeef;}
+a:hover,.btn-link:hover{ color: #00aeef;}
+.input-status{ padding: 5px 0 0 15px;}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    color: #666 !important;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+     opacity: .65;
+}
+
+
+.egretNavService h5 {font-size: 16px;}
+.egretNavService ul {clear: both; overflow: hidden; margin-top: 15px;}
+.egretNavService ul li {float: left; margin: 0 10px;}
+
+.m-progress li .step i,.m-progress-detail i,.m-progress-detail .detail-list a{ background: url("../../images/icon_main.png?v=1") no-repeat;}
+
+.egretRank caption {text-align: center; border-radius: 5px 5px 0 0; color: white;}
+
+.titleEdit{margin-bottom: 10px;}
+
+.has-feedback .form-control { padding-right: 12px;}
+
+
+/*全局颜色样式*/
+.s-c-blue{ color: #00aeef;}
+.s-c-green{ color: #37beba;}
+.s-bg-blue{ background-color: #00aeef;}
+.s-bg-green{ background-color: #37beba;}
+.s-red{ color: #fb5f5f;}
+.s-bs{box-shadow: 1px 1px 2px #d9d9d9;}
+.color-grey{ color: #bbb;}
+
+/*全局原件样式*/
+.u-file { position: relative;  display: inline-block;  background: #D0EEFF;  border: 1px solid #99D3F5;  border-radius: 4px;  padding: 4px 12px;  overflow: hidden;  color: #1E88C7;  text-decoration: none;  text-indent: 0;  line-height: 20px;
+}
+.u-file input {  cursor: pointer;  position: absolute;  font-size: 100px;  right: 0;  top: 0;  opacity: 0;  }
+.u-file:hover {  background: #AADFFD;  border-color: #78C3F3;  color: #004974;  text-decoration: none;  }
+.u-lines-y{ width: 1px; height: 180px; background: url("../../images/lines_y.gif") no-repeat 0 center;}
+.u-btn,.u-btn2,.u-btn3{ width: 200px; height: 50px; line-height: 50px; padding: 0; text-align: center; border: none; background-color: #00adf2 !important; font-size: 20px;}
+.u-btn:hover,.u-btn:focus,.u-btn2:hover,.u-btn2:focus,.u-btn3:hover,.u-btn3:focus{ background-color: #009ad3 !important; box-shadow: none;}
+.u-btn2{ width: 140px; height: 35px; line-height: 35px; font-size: 14px;}
+.u-btn3{ width: auto; height: 35px; line-height: 35px; font-size: 14px; padding: 0 15px;}
+.u-btn-default,.u-btn-default:focus{ width: auto; height: 35px; line-height: 35px; font-size: 14px; padding: 0 15px; background-color: #f2f2f2; color: #555; border: solid 1px #e6e6e6; box-shadow: none;}
+.u-btn4,.u-btn4:focus{ height: auto; line-height: 1.42857143; padding: 6px 12px;}
+.u-btn5,.u-btn5:focus{ height: auto; line-height: 1.5; padding: 5px 10px; font-size: 12px; border-radius: 3px;}
+
+
+/*按钮组*/
+.m-btn-group .btn-default,.m-btn-group .btn-default:focus{width: auto; height: 35px; line-height: 35px; font-size: 14px; padding: 0 15px; background-color: #f2f2f2; color: #555; border: solid 1px #e6e6e6; box-shadow: none;}
+.m-btn-group .btn-default:hover{ background-color: #e7e7e7;}
+.m-btn-group .active,.m-btn-group .active:focus{ background-color: #00adf2; color: #fff; border: solid 1px #00adf2;}
+.m-btn-group .active:hover{ background-color: #009ad3; border: solid 1px #00adf2;}
+
+/*表单验证样式*/
+.error{ color: #a94442;}
+
+/*文本样式*/
+.text-format{ text-align: center; padding: 100px 0; color: gray;}
+
+/*hr线条样色*/
+hr{ border-top-color: #dee5ea;}
+
+/*模块公共样式*/
+.m-box{ background-color: #fff; border-radius: 4px; margin-bottom: 10px; padding: 25px;}
+.m-box2{ padding-top: 0;}
+.m-box2 .title{ min-height: 50px; border-bottom: solid 1px #e6e6e6; margin-bottom: 60px;}
+.m-box2 .title h3{ font-size: 14px; color: #555; line-height: 50px; font-weight: bold; float: left;}
+.m-box2 .title .other{ margin-top: 15px;}
+
+/*自定义图标*/
+.icon-custom2{ width: 80px; height: 80px; display: inline-block !important; background: url("../../images/icon_main.png?v=1") no-repeat;}
+.icon-cloud2{ background-position: -80px 0;}
+.icon-service2{ background-position: -160px 0;}
+.icon-channel2{ background-position: -240px -180px;}
+
+/*顶部导航*/
+
+/*面包屑导航*/
+.m-breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #00aeef;
+    content: ">";
+}
+.m-breadcrumb{ min-height: 50px; line-height: 50px; padding: 0 0 0 20px;}
+.m-breadcrumb a,.m-breadcrumb .glyphicon{ color: #00aeef;}
+.m-breadcrumb .glyphicon{ margin-right: 8px;}
+
+/*游戏下拉标题*/
+.egretGameChanTitle{ position: relative; margin-bottom: -4px; padding: 0; z-index: 99;}
+.egretGameChanTitle+.m-subnav .list-group-item:first-child{ padding-top: 16px;}
+.egretGameChanTitle h4 { width: 100%; padding: 16px 0; text-align: center; border-radius: 5px 5px 0 0; background-color: #006287; color: #fff; border-bottom: 1px solid white;}
+.egretGameChanTitle a.btn {position: absolute; top: 0; right: 0;}
+
+/*侧边子导航*/
+.m-subnav .list-group-item{ margin-bottom: 0; padding: 12px 15px; border: none; border-bottom: solid 1px #eaeaea;}
+.m-subnav>a.active,.m-subnav>a.active:hover,.m-subnav>a.active:focus{ background-color: #00aeef; border-color: #00aeef;}
+.m-subnav>a span:first-child[class*=icon]{ width:23px; text-align:center; margin-right: 10px; font-size: 20px; display:inline-block; vertical-align:middle;}
+.m-subnav>a span:last-child[class*=icon]{ border: none; font-size: 20px;}
+.m-subnav>a:last-child{ border: none;}
+.m-subnav .list-group{ margin: 0; display: none;}
+.m-subnav .list-group-item:last-child{ border-radius: 0;}
+.m-subnav>.list-group-item:last-child{ border-bottom-right-radius:4px; border-bottom-left-radius:4px; }
+.m-subnav .list-group .list-group-item{ padding: 12px 20px 12px 40px; color: #999999;}
+.m-subnav .list-group .active{ border-radius: 0; background-color: #fff; color: #00aeef;}
+.m-subnav .list-group .active:hover,.m-subnav .list-group .active:focus{ border-color: #eaeaea;}
+.m-subnav .list-group .list-group .list-group-item{ padding: 8px 20px 8px 60px;}
+.m-subnav .icon-custom{ vertical-align: middle; display: inline-block; width: 23px; height: 20px; background: url("../../images/icon_subnav.png") no-repeat;}
+.m-subnav .active .icon-developer{ background-position: -23px 0;}
+.m-subnav .icon-game{ background-position: 0 -20px;}
+.m-subnav .active .icon-game{ background-position: -23px -20px;}
+.m-subnav .icon-service{ background-position: 0 -40px;}
+.m-subnav .active .icon-service{ background-position: -23px -40px;}
+.m-subnav .list-group-item.active >.badge{ background-color: #00aeef; color: #fff;}
+.m-subnav .icon-globe{ font-size: 24px !important;}
+
+/*动态数据*/
+/* .m-channel-data{ min-height: 103px; margin-left: 0; margin-right: 0; text-align: center; padding: 20px 0 0;}
+.m-channel-data div{ margin-bottom: 20px; border-right: solid 1px #e5e5e5;width: 11%;float: left;}
+.m-channel-data div:last-child {border:none;}
+.m-channel-data div:nth-child(6n){ border: none;}
+.m-channel-data2 div:nth-child(5n){ border: none;}
+.m-channel-data2 div{ width: 20%;}
+.m-channel-data strong{ font-size: 26px; display: block;}
+.m-channel-data strong small{ font-size: 18px;}
+
+.m-channel-data .col-md-2 dl {clear: both; overflow: hidden;}
+.m-channel-data .col-md-2 dl dt, .m-channel-data .col-md-2 dl dd {float: left; font-weight: normal; font-size: 12px;}
+ */
+/*面板模块*/
+.m-panel{ margin-right:-10px; margin-left: 0; font-size: 12px;}
+.m-panel>div{ padding-left: 0; padding-right: 10px;}
+.m-panel strong{ display: block; font-size: 24px;}
+.m-panel .m-box{ min-height: 188px; padding: 0;}
+.m-panel .m-box .title{ margin: 0 10px 10px; min-height: 35px; border-bottom: solid 1px #eaeaea; position: relative; z-index: 2;}
+.m-panel .m-box .title h3{ font-size: 14px; font-weight: bold; float: left; margin: 12px 0 0 5px;}
+.m-panel .m-box .title .add{ width: 18px; height: 18px; display: block; position: absolute; top: 11px; right: 5px; text-decoration: none;}
+.m-panel .m-box .title .icon-plus-sign{ vertical-align: top; font-size: 18px;}
+.m-panel .m-box .title .add:hover{ text-decoration: none;}
+.m-panel .m-box .title .add .tips{ color: #fff; text-align: center; display: none; font-size: 14px; line-height: 40px; width: 90px; height: 40px; position: absolute; top: 25px; right: -10px; background-color: #555; border-radius: 6px;}
+.m-panel .m-box .title .add .glyphicon-triangle-top{ position: absolute; top: -9px; right: 13px; color: #555;}
+.m-panel .m-box .title .add:hover .tips{ display: block;}
+.m-panel .icon-custom2{ margin-top: 18px;}
+.m-panel .row{ text-align: center; margin-left: 0;}
+.m-panel .row .row:first-child{ border-bottom: solid 1px #eaeaea;}
+.m-panel .row .row{ padding-bottom: 10px; margin-bottom: 10px; margin-left: -20px; margin-right: 5px;}
+.m-panel .row .row div{ border-right: solid 1px #eaeaea;}
+.m-panel .row .row div:last-child{ border-right: none;}
+.m-panel .carousel-indicators{ left: inherit; right: 0; bottom: -10px; width: 80px;}
+.m-panel .carousel-indicators li{ background-color: #ccc;}
+.m-panel .carousel-indicators .active{ background-color: #00aeef;}
+.m-panel .carousel-inner{ overflow: inherit;}
+
+/*图表*/
+.m-chart{ min-height: 467px;}
+.m-chart .chart-color{ font-size: 12px; padding-left: 80px; margin-bottom: 10px;}
+.m-chart .chart-color span{ margin-right: 30px;}
+.m-chart .chart-color i{ width: 16px; height: 4px; margin-right: 6px; display: inline-block; vertical-align: middle;}
+.m-chart .chart-body { height:400px;padding-top:10px;float:left; }
+.nav-pills{ display: inline-block; margin-bottom: 10px;}
+.nav-pills > li + li{ margin-left: 0;}
+/* .nav-pills li a{ padding: 8px 10px; margin-right: 8px; color: #555; background-color: #f2f2f2; border: solid 1px #e6e6e6;}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {  background-color: #00aeef;}
+ */
+.nav-pills li a{ margin-right: 8px; color: #555; background: #dedede;color: #7c7c7c;background-image: -moz-linear-gradient(top, #D0D5D8 0%,#CFD5D9 50%, #CED5D9 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D0D5D8),color-stop(50%,#CFD5D9), color-stop(100%,#CED5D9));
+    background-image: -webkit-linear-gradient(top, #D0D5D8 0%,#CFD5D9 50%,#CED5D9 100%);
+    background-image: -o-linear-gradient(top, #D0D5D8 0%,#CFD5D9 50%,#CED5D9 100%);
+    background-image: -ms-linear-gradient(top, #D0D5D8 0%,#CFD5D9 50%,#CED5D9 100%);
+    background-image: linear-gradient(to bottom, #D0D5D8 0%,#CFD5D9 50%,#CED5D9 100%);
+    border:none;border-radius: 4px;width: 68px;text-align:center;
+    height: 33px;
+    line-height: 33px;}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus { background: #3E96C9;color: #fff;background-image: -moz-linear-gradient(top, #449ACB 0%,#3C95C8 50%, #3591C6 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#449ACB),color-stop(50%,#3C95C8), color-stop(100%,#3591C6));
+    background-image: -webkit-linear-gradient(top, #449ACB 0%,#3C95C8 50%,#3591C6 100%);
+    background-image: -o-linear-gradient(top, #449ACB 0%,#3C95C8 50%,#3591C6 100%);
+    background-image: -ms-linear-gradient(top, #449ACB 0%,#3C95C8 50%,#3591C6 100%);
+    background-image: linear-gradient(to bottom, #449ACB 0%,#3C95C8 50%,#3591C6 100%);}
+
+
+
+/*详细数据*/
+.m-detail{ min-height: 300px; padding-top: 30px;}
+.m-detail .title{ height: 45px; padding-bottom: 10px;}
+.m-detail .title h3{ float: left; font-size: 14px; line-height: 32px; font-weight: bold;}
+.table-container .table-responsive{ border-radius: 4px;}
+.table-container table{ margin-bottom: 0;}
+.table-container .table > thead > tr > th{ text-align: center; padding-top: 10px; padding-bottom: 10px; border-bottom: none; background-color: #76c2a3; color: #fff;}
+.table-container .table > tbody > tr > td{ text-align: center; padding-top: 7px; padding-bottom: 7px;}
+.table-container tbody tr:nth-of-type(odd) {background-color: #f4f4f4;}
+.table-container tbody tr:nth-of-type(odd):hover { background-color: #e8e8e8;}
+.table-container tbody tr:hover{background-color: #e8e8e8;}
+.table-container .table > thead > tr .f-tal,.table-container .table > tbody > tr .f-tal{ text-align: left; padding-left: 25px;}
+.table-container .table > thead > tr .f-tar,.table-container .table > tbody > tr .f-tar{ text-align: right; padding-right: 25px;}
+
+th.header {
+    background-image: url(http://misc.egret.com/jquery/tablesorter/default/default.gif);
+    cursor: pointer;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: center right;
+    margin-left: -1px;
+}
+th.headerSortDown {background-image: url(http://misc.egret.com/jquery/tablesorter/default/desc.gif);}
+th.headerSortUp {background-image: url(http://misc.egret.com/jquery/tablesorter/default/asc.gif); }
+th a{color: #fff; }
+
+/*游戏进度*/
+.m-game-progress{ min-height: 180px; padding: 0 10px;}
+.m-game-progress .game{ width: 305px; float: left; margin-right: 15px;}
+/*.m-game-progress .game .title{ padding: 0 5px; margin-bottom: 28px; height: 35px; border-bottom: solid 1px #eaeaea;}
+.m-game-progress .game .title h3{ font-size: 14px; line-height: 35px; float: left; font-weight: bold;}
+.m-game-progress .game .title span{ font-size: 24px; margin: 5px 5px 0 0;}*/
+.m-game-progress .game dl{ padding: 35px 5px 0;}
+.m-game-progress .game dt{ float: left;}
+.m-game-progress .game dd{ float: left; width: 60%; margin-left: 13px;}
+.m-game-progress .game dd b{ display: block;}
+.m-game-progress .game dd div{ margin-bottom: 10px;}
+.m-game-progress .m-progress{ float: left; margin-left: 18px; padding-top: 48px;}
+
+/*进度模块*/
+.m-progress .tips{ margin-top: 20px; text-align: right; padding-right: 10px; color: #676767;}
+.m-progress li{ float: left; margin-bottom: 10px;}
+.m-progress li .step{ width: 50px; text-align: center; font-size: 12px; color: #1a1a1a; font-weight: bold; float: left; margin-left: -4px;white-space:nowrap;}
+.m-progress li .step i{ width: 30px; height: 30px; margin: 0 auto 10px; font-size: 16px; font-style: normal; text-align: center; line-height: 30px; display:block; color: #fff; background-position: -300px 0;}
+.m-progress li .bar,.m-progress li .bar span{ width: 100px; height: 12px; display: block; background: url("../../images/bar_x.png") no-repeat;}
+.m-progress li .bar{ float: left; margin: 9px 0 0 -4px;}
+.m-progress li .bar span{ background-position: 0 -12px; width: 0%;}
+.m-progress .active .step i{ background-position: -240px 0;}
+.m-progress .active .bar span{width: 100%;}
+.m-progress .current .step i{ background-position: -270px 0;}
+
+.m-progress2{ width: 900px; margin: 0 auto 35px auto;}
+.m-progress2 li .step{ width: 70px; font-size: 18px;}
+.m-progress2 li .step i{ width: 44px; height: 44px; font-size: 25px; line-height: 44px; background-position: -418px 0;}
+.m-progress2 li .bar,.m-progress2 li .bar span{ width: 144px; height: 17px;}
+.m-progress2 li .bar{ margin: 14px 0 0 -4px; background-position: 0 -24px;}
+.m-progress2 li .bar span{ background-position: 0 -41px; width: 0%;}
+.m-progress2 .active .step i{ background-position: -330px 0;}
+.m-progress2 .current .step i{ background-position: -374px 0;}
+
+.m-progress3{ padding-left: 15px;}
+.m-progress3 li .step{ width: 75px; margin-left: -15px;}
+.m-progress3 li .bar,.m-progress3 li .bar span{ width: 170px;}
+.m-progress3 li .bar{ background-position: 0 -58px; margin-left: -15px;}
+.m-progress3 li .bar span{ background-position: 0 -70px;width: 0%;}
+
+/*详细进度*/
+.m-progress-detail{ min-height: 580px; padding: 0 20px;}
+.m-progress-detail>ul{ padding-top: 50px; width: 927px; margin: 0 auto;}
+.m-progress-detail>ul>li{ float: left; margin-bottom: 15px;}
+.m-progress-detail .step{ width: 60px; text-align: center; font-size: 14px; color: #1a1a1a; font-weight: bold; float: left; margin-left: -5px;}
+.m-progress-detail .step i{ width: 50px; height: 50px; margin: 8px auto 0; display: block;}
+.m-progress-detail .bar,.m-progress-detail .bar span{ width: 120px; height: 6px; display: block; }
+.m-progress-detail .bar{ float: left; margin: 50px 0 0 -5px; background-color: #e6e6e6;}
+.m-progress-detail .bar span{ background-color: #51d0ff; width: 0%;}
+.m-progress-detail .active .bar span{width: 100%;}
+.m-progress-detail .step .i1{ background-position: -164px -80px;}
+.m-progress-detail .step .i2{ background-position: -214px -80px;}
+.m-progress-detail .step .i3{ background-position: -264px -80px;}
+.m-progress-detail .step .i4{ background-position: -314px -80px;}
+.m-progress-detail .step .i5{ background-position: -364px -80px;}
+.m-progress-detail .step .i6{ background-position: -414px -80px; border: dashed 1px #d9d7d7;}
+.m-progress-detail .active .step .i1{ background-position: -164px -130px;}
+.m-progress-detail .active .step .i2{ background-position: -214px -130px;}
+.m-progress-detail .active .step .i3{ background-position: -264px -130px;}
+.m-progress-detail .active .step .i4{ background-position: -314px -130px;}
+.m-progress-detail .active .step .i5{ background-position: -364px -130px;}
+.m-progress-detail .active .step .i6{ background-position: -414px -130px; border: dashed 1px #51d0ff;}
+.m-progress-detail .detail-list .bar-y{ width: 6px; height: 20px; display: block; margin-left: 23px; background-color: #e6e6e6;}
+.m-progress-detail .detail-list a{ position: relative; cursor: pointer; width: 150px; height: 46px; display: block; background-position: 0 -130px; text-indent: 55px; font-size: 12px; line-height: 46px; color: #1a1a1a;}
+.m-progress-detail .detail-list a:hover{text-decoration: none;}
+.m-progress-detail .detail-list .active .bar-y{ background-color: #51d0ff;}
+.m-progress-detail .detail-list .active a{ background-position: 0 -80px; color: #fff;}
+.m-progress-detail .detail-list .conduct a{ background-position: -342px -226px; color: #fff;}
+.m-progress-detail .detail-list .conduct .bar-y{ background-color: #37beba;}
+.m-progress-detail .detail-list .wait a{ background-position: -342px -180px; color: #fff;}
+.m-progress-detail .detail-list .wait .bar-y{ background-color: #ffbc48;}
+.m-progress-detail .detail-list i{ width: 46px; height: 46px; text-align: center; text-indent: 0; position: absolute; font-size: 30px; left: 0; background: none;}
+.m-progress-detail .icon-service{ width: 46px; height: 46px; display: block; position: absolute; background-position: -240px -34px;}
+
+    /*列表信息样式*/
+.m-list-info li{ padding-bottom: 35px; clear: both;}
+.m-list-info label{ height: 100%; text-align: right; width: 30%; margin-right: 10px; float: left;}
+.m-list-info p{ width: 60%; float: left;}
+
+/*游戏图标*/
+.gameIcons .item-icon{ text-align: center; margin-bottom: 10px; display: inline-block; float: none; margin-left: -4px;}
+.gameIcons .item-icon span{ display: block; margin-bottom: 15px;}
+.gameIcons .item-icon img{ margin: 0 auto;}
+
+/* 表中表查看样式 */
+#manageUI {background: #f1f1f1;}
+#manageUI .egregManageUIDiv {background: #fff; padding: 10px; border-radius: 5px; border-width: 1px; border-style: solid; border-color: #eee;}
+#manageUI .titleEdit {padding: 10px; margin: 0; border-bottom: 1px solid #ccc; background-color: #fbfbfb;}
+#manageUI .titleEdit a {text-decoration: none; font-size: 13px;}
+#manageUI .dlTable {clear: both; overflow: hidden; padding: 10px 0 15px 0; margin: 5px 0 0 0;}
+#manageUI .dlTable dt, #manageUI .dlTable dd {float: left;}
+#manageUI .dlTable dt {width: 100px; text-align: right;}
+#manageUI .dlTable dd {margin-right: 15px;}
+#manageUI .smallTd th {background: white; color: #333;}
+#manageUI .smallTd td {padding: 7px 10px;}
+#manageUI .smallTd a {font-size: 12px;}
+
+/*游戏截图*/
+/* clear fix */
+.grid:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+    text-align: center;
+    width: 33.333%;
+    margin-bottom: 20px;
+}
+
+.grid-item {
+    float: left;
+}
+
+.grid-item a{ margin-top: 10px;}
+
+.grid-item img {
+    display: block;
+    margin: 0 auto;
+    max-width: 98%;
+}
+
+/* 已上线渠道列表 */
+.egretChannelItemsBox {padding: 0 5px;}
+.egretChannelItems {border: 1px solid #ddd; border-radius: 5px; margin-top: 10px; background: white; box-shadow: 0 1px 1px #ccc; min-height: 300px;}
+.egretChannelItems .row {padding: 10px 10px 0 10px;}
+.egretChannelItems .col-sm-4, .egretChannelItems .col-sm-8 {float: left;}
+.egretChannelItems .col-sm-4 img {border-radius: 5px; border: 1px solid #f0f0f0;}
+.egretChannelItems .col-sm-8 label {padding-bottom: 0; margin-top: 5px;}
+.egretChannelItems .col-sm-8 a {color: black; font-size: 13px; margin: 2px 0 3px;}
+.egretChannelItems .dataNumber ul {display: block; width: 100%; margin: 0; padding: 0; font-size: 12px; clear: both; overflow: hidden;}
+.egretChannelItems .dataNumber ul li {float: left; list-style: none;}
+.egretChannelItems .dataNumber ul li.caption {text-align: right; min-width: 86px;}
+.egretChannelItems .dataNumber ul li.captionTop {margin-top: 7px;}
+.egretChannelItems .dataNumber ul li span {font-weight: bold; font-size: 20px; display: block; width: 100px;}
+.egretChannelItems .dataNumber hr {margin: 10px 0 3px 0; border-top-color: #ccc; border-top-style: dashed;}
+.egretChannelItems .options {text-align: center; width: 100%; background: #f6f6f6; margin: 17px auto 0 auto; padding: 5px; border-radius: 0 0 3px 3px;}
+.egretChannelItems .options a {padding: 5px; font-size: 14px;}
+.egretChannelItems .options a:hover {text-decoration: none;}
+
+/*分页样式*/
+.paging{ text-align: center; margin-top: 30px; margin-bottom: 30px;}
+.paging a,.paging b{ display: inline-block; padding: 0 10px; height: 28px; line-height: 28px; color: #999; border: solid 1px #999; margin: 0 5px;}
+.paging b,.pagination .active a{ background-color: #2bb0e9; border-color: #2bb0e9; color: #fff;}
+.pagination li a{ color: #2bb0e9;}
+.pagination li a:hover{ color: #009ad3;}
+.pagination .active a:hover{ background-color: #009ad3; border-color: #009ad3;}
+
+/*测试进度样式*/
+.egretStep{ padding-left: 0;}
+.egretStep li span {
+    display: block;
+    padding: 8px 15px;
+    text-align: center;
+}
+
+.egretStep li.first {
+    border-radius: 5px 0 0 5px;
+}
+.egretStep li.first {
+    border-radius: 5px 0 0 5px;
+}
+.egretStep li.first {
+    border-radius: 5px 0 0 5px;
+}
+.egretStep li.currentGreen {
+    background: #388e03 none repeat scroll 0 0;
+}
+.egretStep li.current, .egretStep li.currentGreen, .egretStep li.completedGreen {
+    color: white;
+}
+.egretStep li.completedGreen{ color: green;}
+.egretStep li {
+    width: 20%;
+}
+.egretStep li {
+    width: 20%;
+}
+.egretStep li {
+    width: 20%;
+}
+.egretStep li {
+    background: #f0f0f0 none repeat scroll 0 0;
+    float: left;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 游戏 */
+.egretGameBox {padding: 0;}
+.egretGameItems {border: 1px solid #f1f1f1; border-radius: 5px; margin: 5px; box-shadow: 0 1px 1px #eee; position: relative; min-height: 143px;}
+.egretGameItems .iconName {padding: 8px 8px 0 8px;}
+.egretGameItems .col-xs-4, .egretGameItems .col-xs-8 {float: left;}
+.egretGameItems .col-xs-4 {padding-right: 5px;}
+.egretGameItems .col-xs-4 img {box-shadow: 0 2px 2px #ccc; border-radius: 5px; border: 1px solid #f0f0f0;}
+.egretGameItems .col-xs-8 {padding-left: 5px; color: #999; font-size: 14px;}
+.egretGameItems .col-xs-8 label, .egretGameItems .col-xs-8 span {display: block;  min-height: 20px;}
+.egretGameItems .col-xs-8 label {padding-bottom: 0; margin-bottom: 0px; font-size: 16px;}
+.egretGameItems .col-xs-8 label a{ color: #000;}
+.egretGameItems .col-xs-8 span {margin: 5px 0;}
+.egretGameItems .col-xs-8 font a {margin-left: 20px;}
+.egretGameItems .options {text-align: center; width: 100%; margin: 15px auto 0 auto; padding: 6px 0; border-radius: 0 0 3px 3px; color: #999;}
+.egretGameItems .options a {padding: 2px; color: #00aeef; margin: 0 5px; font-size: 12px;}
+.egretGameItems .options a:hover {text-decoration: none;}
+.egretGameItems .totalData { width:100%; height: 154px; font-size: 12px;}
+.egretGameItems .totalData tr{ border-bottom: solid 1px #eaeaea;}
+.egretGameItems .totalData tr:last-child{ border: none;}
+.egretGameItems .totalData td{ border-left: solid 1px #eaeaea; padding: 10px 0 10px 10px;}
+.egretGameItems .totalData td:first-child{ text-align: center; width: 80px; font-weight: bold; color: #000; padding-left: 0;}
+
+.gameTable {padding: 0 20px; margin-top: 5px; margin-bottom: 20px;}
+.gameTable .egretTableBox {border: 1px solid #eaeaea; border-radius: 5px; clear: both; overflow: hidden;}
+.gameTable .col-lg-4, .gameTable .col-lg-8, .gameTable .col-lg-6{margin: 0; padding: 0;}
+.gameTable .gameTableData tr{ border-bottom: 1px solid #eaeaea;}
+.gameTable .gameTableData tr:last-child{ border: none;}
+.gameTable .gameTableData tbody tr:nth-of-type(odd) {background-color: #f4f4f4;}
+.gameTable .gameTableData tbody tr:hover{background-color: #eaeaea;}
+.gameTable .gameTableData { margin: 0; width: 100%; height: 154px;}
+.gameTable .gameTableData td, .gameTable .gameTableData th { font-size: 12px; border-left: 1px solid #eaeaea; text-align: center; color: #999;}
+.gameTable .gameTableData th{ padding: 10px 0; border-bottom: 1px solid #eaeaea; color: #000; font-weight: bold;}
+
+/* 帐号中心 */
+.panel {box-shadow: 0 2px 2px #ddd; background-image: linear-gradient(#f1f1f1, #ffffff);}
+.panel hr {border-top: 1px solid #ccc; border-bottom: 1px solid #fff;}
+.egret_member_container {border-left: 1px dotted #f1f1f1;}
+.egret_member_container img {vertical-align: bottom;}
+.egret_member_container .egretTitle {padding: 0; margin: 8px 0; clear: both; overflow: hidden;}
+.egret_member_container .egretTitle li {float: left; padding: 0; margin: 0; list-style: none;}
+.egret_member_container .egretTitle li div {padding: 5px 0 0 10px; font-size: 18px; font-weight: bold;}
+.egret_alert {text-align: center;}
+.egret_alert p {font-size: 16px; margin-bottom: 30px; color: gray;}
+.egret_alert a {padding: 7px 15px;}
+.egretDCData{ }
+.egretDCData .panel-heading a {float: right; font-size: 13px; color: #0e70a8;}
+.egretDCData .panel-body {background-color: white; min-height: 300px;}
+.egretDCData dl {margin: -10px 0; clear: both; overflow: hidden;}
+.egretDCData dl dt, .egretDCData dl dd {float: left; margin: 0;}
+.egretDCData dl dt {margin: 15px 30px;}
+.egretDCData dl dd span {font-weight: bold; font-size: 30px; margin-right: 10px;}
+
+.egretMsgTable {font-size: 13px; margin-top: 10px;}
+.egretMsgTable .icon-circle {color: #3a86d5; font-size: 10px;}
+
+.egretCaption {background: #f0f0f0; padding: 8px 10px; border-bottom: 1px solid #ccc; margin-bottom: 10px;}
+.egretCaption a {font-size: 12px; display: block; background: #1189ce; color: white; padding: 3px 10px; border-radius: 5px; text-decoration: none;}
+
+.egretMemberMenu a.list-group-item {padding: 15px;}
+.egretMemberMenu a.egretLastFMenu {border-radius: 0 0 5px 5px;}
+
+.egretFloatRight {float: right;}
+.egretNavPills li {margin-right: 15px;}
+.egretNavPills li a {padding: 5px 20px; font-size: 12px; background-color: #f0f0f0;}
+
+.egretCountData {clear: both; overflow: hidden; padding-top: 1px;}
+.egretCountData div {float: left; text-align: center; padding: 10px 0;}
+.egretCountData div.icon {width: 40%; color: white;}
+.egretCountData div.value {width: 60%; background-color: #fff; min-height: 60px;}
+.egretCountData div.value span {font-size: 14px;}
+.egretCountData div.value .label {color: black; display: block; width: 100%; font-size: 22px;}
+.egretTotalIncome .icon {background-color: #ff5500;}
+.egretTotalIncome .value span.label {color: #ff5500;}
+.egretTotalGameIncome .icon {background-color: #387c0f;}
+.egretTotalGameIncome .value span.label {color: #387c0f;}
+.egretTotalChannelIncome .icon {background-color: #b68a12;}
+.egretTotalChannelIncome .value span.label {color: #b68a12;}
+
+.egretBalanceList tbody tr td {vertical-align: middle; font-size: 13px;}
+
+.auxiliaryGameItem {text-align: center; display: block;}
+.auxiliaryGameItem img {width: 80px; margin-bottom: 5px;}
+
+.auxiliaryChanItem {text-align: center; display: block; padding: 8px; border: 1px solid #ccc; border-radius: 5px;}
+.auxiliaryChanItem:hover, .auxiliaryGameItem:hover {text-decoration: none;}
+
+/*数据统计面板*/
+.count-panel{ padding: 0 10px;}
+.count-panel>div{ padding: 0 5px;}
+.count-panel .frame{ border-radius: 3px; border: solid 1px #e6e6e6; padding: 14px 0; width: 100%; display: table; clear: both;}
+.count-panel small{ color: #3f3f3f; font-size: 14px; font-weight: bold; display: block;}
+.count-panel strong{font-size: 30px; font-weight: bold; display: block;}
+.count-panel .multi-row{ margin: -10px 0 -15px;}
+.count-panel .multi-row strong{font-size: 20px; font-weight: bold; display: block; margin-bottom: 5px; border-bottom: dashed 1px #ccc;}
+.count-panel .multi-row strong:last-child{ border: none;}
+
+.icon-user2{ background-position: 0 -180px;}
+.icon-user3{ background-position: -80px -180px;}
+.icon-money2{ background-position: -160px -180px;}
+.icon-clock2{ background: url("../../images/clock.png") no-repeat;}
+
+/*内联表单*/
+.input-inline select,.input-inline input{ margin-left: 10px;}
+
+/*账户概况样式*/
+.icon-game3{ width: 96px; height: 71px; background-position: 0 -260px;}
+.icon-channel{ width: 75px; height: 100px; background-position: -192px -260px;}
+.m-account-profile{ text-align: center; min-height: 540px; line-height: 540px; padding: 0; vertical-align: middle;}
+.m-account-profile .item-panel{ cursor: pointer; text-decoration: none; width: 220px; height: 330px; line-height: normal; position: relative; color: #b2b2b2; overflow: hidden; border: solid 1px #eaeaea; display: inline-block; border-radius: 5px; margin: 0 25px; vertical-align: middle;}
+.m-account-profile .item-panel:hover{ width: 240px; height: 360px; color: #00aeef; border-color: #00aeef;}
+.m-account-profile .left-panel:hover{ margin-left: 5px; right: -10px;}
+.m-account-profile .right-panel:hover{ margin-right: 5px; left: -10px;}
+.m-account-profile .left-panel:hover .icon-game3{ background-position: -96px -260px;}
+.m-account-profile .right-panel:hover .icon-channel{ background-position: -267px -260px;}
+.m-account-profile .step{ text-align: left; font-size: 16px; position: absolute; top: 20px; left: 20px;}
+.m-account-profile .icon-game3{ position: absolute; top: 100px; left: 50%; margin-left: -48px;}
+.m-account-profile .icon-channel{ position: absolute; top: 85px; left: 50%; margin-left: -37px;}
+.m-account-profile .text{ width: 100%; font-size: 24px; font-weight: bold; position: absolute; top: 270px;}
+
+/*修改日历样式*/
+.ui-widget-header{ background: #00adf2; border-color: #ccc;}
+.ui-icon,
+.ui-widget-header .ui-icon {
+    background-image: url("../../js/jquery-ui/images/ui-icons_ffffff_256x240.png");
+}
+
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+    background-image: url("../../js/jquery-ui/images/ui-icons_228ef1_256x240.png");
+}
+
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+    color: #1c94c4;
+    text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    border: 1px solid #0A9AF2;
+    background: #fdf5ce url("../../js/jquery-ui/images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
+    font-weight: bold;
+    color: #0A9AF2;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+    color: #1c94c4;
+    text-decoration: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+    border: 1px solid #1c94c4;
+    background: #00adf2 url("images/ui-bg_glass_65_ffffff_1x400.png") 50% 50% repeat-x;
+    font-weight: bold;
+    color: #fff;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+    color: #1c94c4;
+    text-decoration: none;
+}
+
+
+/*全局功能样式*/
+.f-pr-0{ padding-right: 0;}
+.f-pl-0{ padding-left: 0;}
+.f-pl-10{ padding-left: 10px;}
+.f-pl-20{ padding-left: 20px;}
+.f-pr-25{ padding-right: 25px;}
+.f-pt-25{ padding-top: 25px;}
+.f-pt-20{ padding-top: 20px;}
+.f-pb-40{ padding-bottom: 40px;}
+.f-mlr-0{ margin-left: 0; margin-right: 0;}
+.f-plr-0{ padding-left: 0; padding-right: 0;}
+.f-mt-10{ margin-top: 10px;}
+.f-mt-60{ margin-top: 60px;}
+.f-mt-40{ margin-top: 40px;}
+.f-mb-10{ margin-bottom: 10px;}
+.f-mb-20{ margin-bottom: 20px;}
+.f-mb-30{ margin-bottom: 30px;}
+.f-mb-40{ margin-bottom: 40px;}
+.f-mt--30{ margin-top: -30px;}
+.f-mt--25{ margin-top: -25px;}
+.f-mt--40{ margin-top: -40px;}
+.f-mb--15{ margin-bottom: -15px;}
+.f-mr-10{ margin-right: 10px;}
+.f-mr-15{ margin-right: 15px;}
+.f-mr-5{ margin-right: 5px;}
+.f-pt-45{ padding-top: 45px;}
+.f-plr-50{ padding-left: 50px; padding-right: 50px;}
+.f-mlrauto{ margin-left: auto; margin-right: auto;}
+.f-w-140{ width: 140px !important;}
+.f-ml-10{ margin-left: 10px;}
+.f-mh-550{ min-height: 550px;}
+.f-pt-7{ padding-top: 7px;}
+
+
+/*超小屏幕（手机，小于 768px）*/
+@media screen and (max-width: 768px)
+{
+    .m-account-profile{ line-height: 400px; min-height: 0;}
+
+    .egretGameItems .col-xs-8 {padding-left: 20px;font-size: 12px;}
+}
+
+/*小屏幕（平板，大于等于 768px）*/
+@media screen and (min-width: 768px)
+{
+
+}
+
+/*中等屏幕（桌面显示器，小于等于 992px）*/
+@media screen and (max-width: 992px)
+{
+    .f-pr-0{ padding-right: 15px;}
+    .f-pl-10{ padding-left: 15px;}
+    .m-channel-data div{ padding-bottom: 20px; border-right: none; border-bottom: solid 1px #e5e5e5;}
+    .gameIcons .item-icon{ display: block;}
+
+    .m-channel-data2 div{ width: 100%;}
+}
+
+/*大屏幕（大桌面显示器，小于 1200px）*/
+@media screen and (max-width: 1200px)
+{
+    .m-game-progress .game{ width: auto; float: none; margin-right: 0; padding-bottom: 15px; border-bottom: solid 1px #eaeaea;}
+    .m-game-progress .u-lines-y{ display: none;}
+    .m-game-progress .m-progress{ float: none; padding-top: 30px; padding-bottom: 10px;}
+
+    .m-progress-detail>ul{ width: auto;}
+    .m-progress-detail>ul>li{ width: 100%;}
+    .m-progress-detail .bar{ width:-moz-calc(100% - 60px); width:-webkit-calc(100% - 60px); width:calc(100% - 60px);}
+
+    .m-progress2{ width: auto;}
+    .f-plr-50{ padding-left: 15px; padding-right: 15px;}
+
+    .egretGameItems .totalData tr:first-child{ border-top: solid 1px #eaeaea;}
+    .egretGameItems .totalData tr:last-child{ border-bottom: solid 1px #eaeaea;}
+    .egretGameItems .totalData td{ border-left: solid 1px #eaeaea; padding: 10px 0 10px 10px;}
+    .egretGameItems .totalData td:first-child{ border: none; text-align: center; width: 60px; font-weight: bold; color: #000; padding-left: 0;}
+
+    .gameTable .gameTableData td:first-child,.gameTable .gameTableData th:first-child{ border: none;}
+
+    .input-inline select,.input-inline input{ width: 100% !important; margin-left: 0;}
+    .input-inline .pull-right,.input-inline .pull-left{ float: none !important;}
+    .input-inline .form-group,.input-inline .input-group{ width: 100%; }
+    .input-inline label,.input-inline .btn{ margin-left: 0 !important;}
+}
+
+/*大屏幕（大桌面显示器，大于等于 1200px）*/
+@media screen and (min-width: 1200px)
+{
+    .container {
+        width: 1200px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.openegretmain {background-color:#fff;}
+.main_content {box-sizing:border-box;overflow:hidden;padding:10px 40px 0;background:#fff;}
+.main_content_item,.main_content_item2 {background-color: #fff;
+    border-radius: 4px;/*border:1px solid #d9d9d9;*/
+    margin-bottom: 10px;}
+.main_content_title {line-height:34px;height:34px;border-top-left-radius:4px;border-top-right-radius:4px;}
+.main_content_title span{padding-left:20px;}
+
+.main_content_main {clear:both;overflow:hidden;}
+
+.m-channel-data{/*  min-height: 103px; */ margin-left: 0; margin-right: 0; text-align: left; padding: 3px 0 ;background: #FDF5F2;border: 1px solid #d9d9d9;}
+.m-channel-data .main_content_main_item{width: 11.11111111%;float: left;}
+.m-channel-data .main_content_main_item:last-child {border:none;}
+.m-channel-data .main_content_main_item:nth-child(6n){ border: none;}
+/* .m-channel-data .main_content_main_item>div {margin:5px;border:1px solid #00aeef;border-radius:4px;padding:10px 0;}
+ */
+.m-channel-data2 div:nth-child(5n){ border: none;}
+.m-channel-data2 div{ width: 20%;}
+.m-channel-data strong{ font-size: 23px; display: block;}
+.m-channel-data strong small{ font-size: 18px;}
+
+.main_content_main_item>div{border-right:1px solid #ebebeb;padding: 10px 0 10px 20px;font-size: 13px;color: #777;}
+.main_content_main_item:last-child>div{border:none;}
+
+.main_content_platform strong {/*color:#0c85ca;color:#00aeef;*/color: #3C95C8;}
+/* 
+.m-channel-data .col-md-2 dl {clear: both; overflow: hidden;}
+.m-channel-data .col-md-2 dl dt, .m-channel-data .col-md-2 dl dd {float: left; font-weight: normal; font-size: 12px;}
+ */
+
+/* .main_content_realtime .mcmi1>div,.main_content_realtime .mcmi2>div,.main_content_realtime .mcmi3>div{border-color:#0c85ca;}
+.main_content_realtime .mcmi4>div,.main_content_realtime .mcmi5>div,.main_content_realtime .mcmi6>div{border-color:#499c06;}
+.main_content_realtime .mcmi7>div,.main_content_realtime .mcmi8>div,.main_content_realtime .mcmi9>div{border-color:#f1b410;}
+ */
+.main_content_realtime .mcrt1,.main_content_realtime .mcrt2,.main_content_realtime .mcrt3 {color:#3C95C8;}
+.main_content_realtime .mcrt4,.main_content_realtime .mcrt5,.main_content_realtime .mcrt6 {color:#499c06;}
+.main_content_realtime .mcrt7,.main_content_realtime .mcrt8,.main_content_realtime .mcrt9 {color:#f1b410;}
+
+
+.main_content_time caption { height: 40px; line-height:40px;}
+.main_content_time .mct1 caption {background-color: #3C95C8;}
+.main_content_time .mct2 caption {background-color: #499c06;}
+.main_content_time .mct3 caption {background-color: #f1b410;}
+.main_content_time .table tr{border-bottom:1px solid #DDDDDD;}
+.main_content_time .table th,.main_content_time .table td {border-right:1px solid #DDDDDD;text-align:center;line-height:40px;height:40px;}
+.main_content_time .table th:first-child,.main_content_time .table td:first-child {border-left:1px solid #DDDDDD;}
+
+.main_content_dataoverview {padding-top:20px;}

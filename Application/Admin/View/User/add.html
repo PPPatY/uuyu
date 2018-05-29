@@ -1,0 +1,127 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style>
+		.select2-container{width: 347px !important;}
+		.select2-container--default .select2-selection--single {
+			color: #000;
+			resize: none;
+			border: 1px solid #D3D8DE;
+			border-radius: 3px;
+			height: 38px;
+			box-shadow: none;
+		}
+		
+		.select2-container--default .select2-selection--single .select2-selection__rendered {
+			line-height: 35px;
+		}
+		
+		.navtab_list {
+			width: 100%;
+			border-bottom: 1px solid #ddd;
+			margin: 15px 0px;
+			height: 65px;
+		}
+		
+		.navtab_list a {
+			display: block;
+			width: 100px;
+			height: 35px;
+			line-height: 35px;
+			text-align: center;
+			float: left;
+			margin-left: 20px;
+			background: #e0e0e0;
+			border-radius: 3px;
+			color: #333;
+			margin-top: 15px;
+		}
+		
+		.navtab_list a:first-child {
+			margin-left: 0px;
+		}
+		
+		.navtab_list a:hover,
+		.navtab_list a.tabchose {
+			text-decoration: none;
+			border-bottom: none;
+			background: rgb(0, 149, 248);
+			color: #fff;
+		}
+		
+		.navtab_list_cs {
+			margin-top: 20px;
+			margin-left: 20px;
+		}
+		
+		.navtab_list_cs img {
+			margin: 0px 8px;
+		}
+		
+		.data_list table td {
+			min-width: 50px;
+		}
+	</style>
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('User/index')}">用户</a>
+			</li>
+			<li>
+				<a href="{:U('User/index')}">管理组</a>
+			</li>
+			<li>
+				<a href="#">{$meta_title}</a>
+			</li>
+		</ul>
+	</div>
+	<form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+		<div class="formtitle"><span>新增管理员</span></div>
+		<ul class="form_info ">
+			<li><label><span style="color: red;">* </span>管理员账号：</label><input name="username" type="text" class="" placeholder="用于管理后台登录"><i class="form_hint">管理员账号用于管理后台登录</i>
+				<!--<i class="form_hint">管理员账号用于管理后台登录</i>--></li>
+			<li><label><span style="color: red;">* </span>管理员密码：</label><input name="password" type="password" class="" placeholder="密码长度不能少于6位"><i class="form_hint">管理员密码不能少于6位</i>
+				<!--<i class="form_hint">管理员密码不能少于6位</i>--></li>
+			<li><label><span style="color: red;">* </span>确认密码：</label><input name="repassword" type="password" class="" placeholder="密码长度不能少于6位"><i class="form_hint">密码长度不能少于6位</i>
+				<!--<i class="form_hint">管理员密码不能少于6位</i>--></li>
+			<li><label><span style="color: red;">* </span>二级密码：</label><input name="second_pwd" type="password" class="" placeholder="用于账号验证，修改用户平台币操作"><i class="form_hint">用于账号验证，修改用户平台币操作</i>
+				<!--<i class="form_hint">用于账号验证，修改用户平台币操作</i>--></li>
+			<li class="search_list">
+				<label><span style="color: red;">* </span>角色类型：</label>
+				<select name="auth" id="authid" class="select_gallery select2-search--hide">
+					<volist name="lists" id="sd">
+						<option value="{$sd['id']}">{$sd['title']}</option>
+					</volist>
+				</select>
+				<i class="form_hint">角色类型不同，管理权限也不同</i>
+			</li>
+			<li><label><span style="color: red;">* </span>邮箱：</label><input name="email" type="text" class="" placeholder="用于找回密码等安全操作">
+				<i class="form_hint"></i></li>
+			<li>
+				<label>&nbsp;</label>
+				<input type="submit" id="submit" value="确认保存" target-form="form-horizontal" class="form_btn ajax-post">
+				<button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+			</li>
+		</ul>
+	</form>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('User/index')}');
+		$(function() {
+	    <volist name=":I('get.')" id="vo">
+            Think.setValue('{$key}',"{$vo}");
+        </volist>
+			$(".select_gallery").select2();
+			$(".select2-search--hide").select2({
+				minimumResultsForSearch: -1,
+			});
+		})
+	</script>
+</block>

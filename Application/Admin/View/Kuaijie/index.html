@@ -1,0 +1,76 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+            <a class="" href="{:U('add','pid='.$pid)}"><span class="button_icon button_icon1"></span>新 增</a>
+        </div>
+	</div>
+
+	<div class="data_list">
+		<table style="text-align:center">
+			<thead>
+				<tr>
+					<th style="text-align:center">ID</th>
+					<th style="text-align:center">快捷方式名称</th>
+					<th style="text-align:center">URL</th>
+					<th style="text-align:center">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="list">
+				<volist name="list" id="channel">
+					<tr>
+						<td>{$channel.id}</td>
+						<td>{$channel.title}</td>
+						<td>{$channel.url}</td>
+						<td>
+							<a title="编辑" href="{:U('edit?id='.$channel['id'].'&pid='.$pid)}">编辑</a>
+							<a class="confirm ajax-get" title="删除" href="{:U('del?id='.$channel['id'])}">删除</a>
+						</td>
+					</tr>
+				</volist>
+				<else/>
+				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Kuaijie/index')}');
+    $(function() {
+    	//点击排序
+    	$('.list_sort').click(function(){
+    		var url = $(this).attr('url');
+    		var ids = $('.ids:checked');
+    		var param = '';
+    		if(ids.length > 0){
+    			var str = new Array();
+    			ids.each(function(){
+    				str.push($(this).val());
+    			});
+    			param = str.join(',');
+    		}
+
+    		if(url != undefined && url != ''){
+    			window.location.href = url + '/ids/' + param;
+    		}
+    	});
+    });
+</script>
+</block>

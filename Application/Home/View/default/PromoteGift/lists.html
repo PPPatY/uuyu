@@ -1,0 +1,85 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20170831/game.css" rel="stylesheet" >
+</block>
+<block name="body">
+    <div class="page-list promoteGift-lists-list list-promotegift">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_welfare.png">渠道礼包列表</div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('lists')}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="请输入游戏名称" class="txt" name="game_name" value="{:I('game_name')}">
+              </div>
+            </form>
+          </div>
+          <div class="trunk-list">
+            <table class="table">
+              <tr class="odd">
+                <th class="th1">ID</th>
+                <th class="th2">游戏名称</th>
+                <th class="th3">礼包名称</th>
+                <th class="th4">礼包内容</th>
+                <th class="th5">剩余礼包数量</th>
+                <th class="th6">可领取礼包数量</th>
+                <th class="th7">操作</th>
+              </tr>
+              <empty name="list_data">
+              <tr><td colspan="7">暂无数据</td></tr>
+              <else />
+              <volist name="list_data" id="vo" mod="2">
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.game_name}</td>
+                        <td>{$vo.giftbag_name}</td>
+                        <td class="td4"><span title="{$vo.desribe}">{$vo.desribe}</span></td>
+                        <td>{:arr_count1($vo['novice'])}</td>
+                        <td>{$vo.novice_num}</td>
+                        <td class="operation">
+                            <a class="look"  href="javascript:get_novice({:session('promote_auth.pid')},{$vo.game_id},1)">查看
+                            <a class="receive"  href="javascript:get_novice({:session('promote_auth.pid')},{$vo.game_id},0)">领取</a>
+                        </td>
+                    </tr>
+                </volist>
+                </empty>
+            </table>
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('PromoteGift/lists')}');
+        function get_novice(promote_id,game_id,status){
+            $.ajax({
+                type: "post",
+                url: "{:U('PromoteGift/getNovice')}",
+                data:{
+                    promote_id:promote_id,
+                    game_id:game_id,
+                    status:status,
+                },
+                dataType:"json",
+                success:function(data){
+                    if(data.status == 0){
+                        layer.alert('暂无可领取礼包');
+                    }else{
+                        var novice = data.novice;
+                        var h= '';
+                        for (var k in novice){
+                            h+= "<li>"+ novice[k].novice+"</li>";
+                        }
+                        layer.alert(h,function(){
+                            layer.close(location.reload());
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+</block>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<head>
+	<meta property="qc:admins" content="71472552776166367">
+	<meta property="qc:admins" content="0500007726643536375">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-app-status-bar-style" content="black">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+	<meta http-equiv="expires" content="0">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1,minimal-ui">
+	<meta name="full-screen" content="yes">
+
+<title>微信安全支付</title>
+<style>
+body,html{ margin:0px; padding:0px; font-family: tahoma,"microsoft yahei","\5FAE\8F6F\96C5\9ED1"!important;}
+.top{ background:#4cb12e; width:100%;text-align:center;}
+.top img{ text-align:center; margin: 50px 0px;}
+.che input{ border:1px solid #a8a9a8;}
+.che{ color:#a8a9a8;  margin: 10px 5px;}
+.paybtn{ text-align:center; margin:30px 0px;}
+.paybtn  button{ background: #4cb12e;
+    color: #fff;
+    width: 90%;
+    height: 40px;
+    border: none;
+    margin: 0 auto; border-radius:5px; font-size:20px;}
+.bottom{ color:#a8a9a8; font-size:12px; text-align:center; width:100%; display:block; position:fixed; bottom:50px;}
+
+</style>
+
+</head>
+
+<body>
+<div class="top">
+<img src="__IMG__/topimg.png">
+
+</div>
+
+<div class="midl">
+<div class="che">
+<input type="checkbox"  checked="checked" disabled="disabled" style="color: blue"><label>已开启支付安全</label></div>
+<div class="paybtn"><button type="submit" onclick="callpay()">确认支付</button></div>
+</div>
+
+
+<font class="bottom">支付安全由中国人民财产保险股份有限公司承保</font>
+<script type="text/javascript">
+   //调用微信JS api 支付
+   		setTimeout("callpay()",200);
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                <?php echo $jsApiParameters; ?>,
+                function(res){
+                  
+            	  if(res.err_msg == "get_brand_wcpay_request:ok"){
+                    history.go(-1)
+                   }
+                }
+            );
+        }
+        function callpay()
+        {
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }else{
+                jsApiCall();
+            }
+        }
+
+</script>
+</body>
+</html>

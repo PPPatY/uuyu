@@ -1,0 +1,55 @@
+/**
+ * 平台币样式
+ * @author 鹿文学
+ */
+/* common */
+.trunk-search form {float:left;}
+.trunk-search .form-group {margin-right:15px;}
+
+.trunk-search .form-title i {color:red;display:inline-block;width:10px;font-style:normal;}
+.trunk-search .select-time {float:left;}
+.trunk-search .select-time .txt {width:140px;}
+
+.page-list{margin-top:20px;}
+/* .page-list .article{padding:30px 20px;} */
+
+.page-list .article .import {text-align:right;font-size:16px;padding:10px 20px;}
+.page-list .article .import .txt {color:#526782;margin-right:30px;}
+.page-list .article .import .btn {color:#1893F3;}
+.page-list .article .import .tot {margin-right:30px;}
+
+.page-list .trunk-list .table tr {border-bottom:1px solid #DCE0E3;}
+
+.page-list .trunk-search .tab {float:left;}
+.page-list .trunk-search .tab a{display:inline-block;margin-right:20px;background:#E3E5E4;border-radius:5px;width:124px;height:36px;text-align:center;line-height:36px;font-size:16px;}
+.page-list .trunk-search .tab a:after {content:'';display:block;width:0;height:0;border:8px solid transparent;border-top-width:12px;left:0;right:0;margin:0 auto;}
+.page-list .trunk-search .tab a.current {background:#526782;color:#FFF;}
+.page-list .trunk-search .tab a.current:after {border-top-color:#526782;}
+
+/* charge agent_pay_list */
+
+.charge-agentPayList-list .article {padding-top:0;}
+
+
+.trunk-list .table2 .btn {width:80px;}
+
+.query-my_earning-search .trunk-search .reselect,.query-earning-search .trunk-search .reselect {min-width:170px;}
+
+.page-list .table4 {border:1px solid #DBE0E3;}
+
+.page-list .table4 td,.page-list .table4 th {border:1px solid #DBE0E3;}
+
+
+.query-son_list-search .trunk-search .txt {}
+.query-son_list-search .trunk-search .reselect {min-width:90px;}
+
+
+.query-earning-list .article,.query-son_list-list .article{padding-top:10px;}
+
+.query-my_earning-search,.query-earning-search {margin-top:20px;}
+
+
+
+
+
+

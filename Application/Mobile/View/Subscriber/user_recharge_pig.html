@@ -1,0 +1,249 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<if condition="I('get.goldpay') neq 1">
+<header class="header">
+  <section class="wrap">
+      <a href="javascript:;" class="hbtn goldpay left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+
+    <div class="caption"><span class="table"><span class="table-cell">充值</span></span></div>
+  </section>
+</header>
+
+<section class="trunker pig-page">
+<div class="occupy"></div>
+ <else/>
+<section class="trunker pig-page">
+ </if> 
+  <section class="inner">
+    <section class="contain">
+      
+			
+			<form name="form1" class="pig-box" id="goodsForm" action="http://357p.com/loading.asp" method="post">
+				<div class="viewwrap">
+						
+						<div class="selectPayType pig-recharge-money"><span>充值金额：<font id="jinea" color="red pig-recharge-money-number">{$money}元</font></span>  </div>
+						
+						<div class="pig-pay-way-title">支付方式：</div>
+						
+						<div class="payContent pig-pay-way">
+								
+								
+									<div title="26" class="payContentSubed"><i class="pig-pay-icon pig-pay-icon-alipay"></i><p>支付宝</p></div>
+									<div title="27" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-tenpay"></i><p>财付通</p></div>
+									<div title="28" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-wechatscan"></i><p>微信扫码</p></div>
+									<div title="29" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-wechat"></i><p>微信支付</p></div>
+									<div title="24" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-easyown"></i><p>神州行充值卡</p></div>
+									<div title="3" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-unicom"></i><p>联通充值卡</p></div>
+									<div title="4" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-telecom"></i><p>中国电信</p></div>
+									<div title="5" class="payContentSub"><i class="pig-pay-icon pig-pay-icon-junka"></i><p>骏网一卡通</p></div>
+								
+								
+						</div>
+
+						
+						<div class="payMoneyTitle pig-pay-money-title">支付金额：</div>
+						
+						<div class="payMoney pig-pay-money">
+								<a title="5" class="<eq name='money' value='5'>moneySelected<else />moneySelect</eq>" href="#"><span>5元</span></a>
+								<a title="10" class="<eq name='money' value='10'>moneySelected<else />moneySelect</eq>" href="#"><span>10元</span></a>
+								<a title="15" class="<eq name='money' value='15'>moneySelected<else />moneySelect</eq>" href="#"><span>15元</span></a>
+								<a title="20" class="<eq name='money' value='20'>moneySelected<else />moneySelect</eq>" href="#"><span>20元</span></a>
+								<a title="30" class="<eq name='money' value='30'>moneySelected<else />moneySelect</eq>" href="#"><span>30元</span></a>
+								<a title="50" class="<eq name='money' value='50'>moneySelected<else />moneySelect</eq>" href="#"><span>50元</span></a>
+								<a title="100" class="<eq name='money' value='100'>moneySelected<else />moneySelect</eq>" href="#"><span>100元</span></a>
+								<a title="200" class="<eq name='money' value='200'>moneySelected<else />moneySelect</eq>" href="#"><span>200元</span></a>
+								<a title="300" class="<eq name='money' value='300'>moneySelected<else />moneySelect</eq>" href="#"><span>300元</span></a>
+								<a title="350" class="<eq name='money' value='350'>moneySelected<else />moneySelect</eq>" href="#"><span>350元</span></a>
+								<a title="500" class="<eq name='money' value='500'>moneySelected<else />moneySelect</eq>" href="#"><span>500元</span></a>
+								<a title="1000" class="<eq name='money' value='1000'>moneySelected<else />moneySelect</eq>" href="#"><span>1000元</span></a>
+								<a title="2000" class="<eq name='money' value='2000'>moneySelected<else />moneySelect</eq>" href="#"><span>2000元</span></a>    
+						</div>
+					
+						<div id="kalei" class="viewwrapb pig-recharge-user">
+
+							<div class="userCard pig-recharge-account">
+									<div class="userCardSub">
+											<i class="bg_user"></i><i class="bg_split"></i><input id="cardNum" name="mobile" type="text" placeholder="请输入充值卡的卡号">
+									</div>
+							</div>
+							<div class="userCard pig-recharge-password">
+									<div class="userCardSub">
+											<i class="bg_pass"></i><i class="bg_split"></i><input id="cardPass" name="password" class="passInput" type="password" placeholder="请输入充值卡的密码">
+									</div>
+							</div>
+						</div>
+					
+					<input type="hidden" name="userid" value="{:C('goldpig.partner')}">
+					<input type="hidden" name="wooolID" value="{:C('goldpig.appid')}">
+					<input type="hidden" name="UserName" value="{$data.UserName}">
+					<input type="hidden" name="jinzhua" value="{$data.jinzhua}">
+					<input type="hidden" name="jinzhub" value="{$data.jinzhub}">
+					<input type="hidden" name="jinzhuc" value="">
+					<input type="hidden" name="gamename" value="">
+					<input type="hidden" name="qudaoname" value="">
+					<input id="zffs" type="hidden" name="PayID" value="26">
+					<input id="paymoney" type="hidden" name="Price" value="{$money}">
+					<input id="nameyc" type="hidden" name="nameyc" value="">
+					<input id="qqyc" type="hidden" name="qqyc" value="">
+					<input id="zhidu" type="hidden" name="zhidu" value="">
+					<input id="ka_type" type="hidden" name="ka_type" value="">
+						<input id="shouji" type="hidden" name="shouji" value="123456">
+					<div class="submitButton pic-recharge-butn">
+					<input id="subBtn" type="button" class="moneySelectec" value="确定充值">
+					</div>
+				</div>
+
+
+			</form>
+			
+			
+			
+			
+			
+			
+			
+			
+    </section>
+    
+  </section>
+</section>
+
+<div class="pop"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+<script>
+	$('.goldpay').click(function(){
+		try{
+	    	$mt = "{:get_device_type()}";
+	        if($mt=='ios'){
+	          window.webkit.messageHandlers.historyBack.postMessage(1);
+	        }else if($mt!='ios'){
+	          history.back(-1);
+	        }
+      	}catch(err){
+	        history.back(-1);
+      	}
+	});
+    var pop = $('.pop').pop();
+    
+		
+		
+		
+		
+		$(document).ready(function(){
+
+			$("#subBtn").val("确定充值")
+
+		})
+
+
+    $('.moneySelect,.moneySelected').on('click',function(){
+        var nowA=this;
+        $('.payMoney').children().each(function(i,e){
+            if(e==nowA){
+                $(e).attr("class","moneySelected");
+
+				$("#paymoney").val($(e).attr("title")); 
+				$("#jinea,#jineb").html($(e).attr("title")+"元"); 
+				$("#subBtn,#subBtnb").val("确定充值");
+            }else {
+                $(e).attr("class","moneySelect");
+            }
+        })
+ 
+		
+        return false;
+    })
+	
+	
+	
+    $('.payContentSub,.payContentSubed').on('click',function(){
+        var nowImg=this;
+        $('.payContent').children().each(function(i,e){
+            if(e==nowImg){
+                $(e).attr("class","payContentSubed");
+				$("#zffs").val($(e).attr("title")); 
+				
+				var payType=$(e).attr("title");//支付方式
+				                  //如果是点卡
+	        if (payType != "26" && payType != "27" && payType != "28" && payType != "29") {
+			$(".payMoney").show(200);
+			$("#kalei").show(200);
+			$('.payMoneyTitle').show(190);
+
+			}else {
+			    $("#paymoney").val({$money}); 
+				$("#jinea,#jineb").html("{$money}元"); 
+				$("#subBtn,#subBtnb").val("确定充值"); 
+
+			$(".payMoney").hide(500);
+			$("#kalei").hide(500);
+			$('.payMoneyTitle').hide(510);
+
+			}
+				
+				
+				
+            }else {
+                $(e).attr("class","payContentSub")
+				
+            }
+			 
+        })
+    })
+    $('.moneySelectec').on('click',function(){
+		var payType=$('#zffs').val();//支付方式
+		var payAmount = $("#paymoney").val();//金额
+		
+		if (payAmount == "") {
+				 $("#paymoney").val("100"); 
+							}
+		var payAmountb = {$money};
+					if (payAmount<payAmountb){
+				 alert("对不起，面值不能小于"+payAmountb+"元");
+									return;
+			}
+				
+				
+										//如果是点卡
+						if (payType != "26" && payType != "27" && payType != "28" && payType != "29") {
+				if (payType=="24") {
+								 $("#ka_type").val("000101"); 
+							}
+					if (payType=="3") {
+								 $("#ka_type").val("000201"); 
+							}
+				 if (payType=="4") {
+								 $("#ka_type").val("000301"); 
+							}		
+				 if (payType=="5") {
+								 $("#ka_type").val("000501"); 
+							}	
+				 if (payType=="6") {
+								 $("#ka_type").val("000601"); 
+							}	
+					
+									var ka_type = $("#ka_type").val();
+								$("#ka_type").val(ka_type+payAmount); 
+
+							}
+				$("#subBtn").val("提交中,请稍后...")
+		$("#goodsForm").submit();
+									return;
+			})
+		
+		
+		
+		
+		
+		
+		
+</script>
+</block>

@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>{:C('WEB_SITE_TITLE')}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+     
+        <script src="__JS__/jquery-3.0.0.min.js" ></script>
+    
+    </head>
+
+   <body>
+<iframe id="jsurl_mainframe" frameborder="0" scrolling="yes"  name="jsmain" src="http://newh5.vlcms.com/media.php?s=/Game/singlegame" style="top:0px;height:100vh; display: none; visibility: inherit; width: 100vw;max-width:1000px; z-index: 1;overflow: visible;position:absolute;background-repeat:no-repeat;background-size:cover;"></iframe>
+
+   </body>
+</html>
+<script type="text/javascript">
+window.onload=function(){
+    var data = {$data};
+          if(!data.user_id){
+            var userdata = JSON.stringify({$data});
+            var ifr = document.querySelector('#jsurl_mainframe');
+            ifr.style.display= "";
+            loginparam = {"event":"login","data":userdata,"status":0};
+            alert(userdata)
+            ifr.contentWindow.postMessage(loginparam, 'http://newh5.vlcms.com');
+          }
+}
+window.addEventListener('message',function(e){
+ console.log(e);
+if(e.data.event == 'login'&&e.data.status == 1){
+            var obj = document.getElementById("jsurl_mainframe");
+            obj.style.display= "none";
+          }
+
+})
+
+</script>
+

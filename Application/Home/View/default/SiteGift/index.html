@@ -1,0 +1,85 @@
+<extend name="Public/mix_ base"/>
+<block name="location">
+<div class="location-container">当前位置：<span>联盟站点</span><span>礼包列表</span></div>
+</block>
+<block name="body">
+    <div class="page-list siteGift-index-list">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_welfare.png">礼包列表</div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <div class="tab">
+              <a href="{:U('add')}" class="submit" >添加礼包</a>
+            </div>
+          </div>
+          <div class="trunk-list">
+              <table class="table">
+                  <tr class="odd">
+                    <th>游戏名称</th>
+                    <th>礼包名称</th>
+                    <th>剩余数量</th>
+                    <th>礼包状态</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                  </tr>
+                  <empty name="data">
+                  <tr><td colspan="5">暂无数据<td></tr>
+                  <else />
+                  <volist name="data" id="vo">
+                      <tr id ="{$vo['id']}">
+                          <td>{$vo.game_name}</td>
+                          <td>{$vo.gift_name}</td>
+                          <td>{:get_site_gift_num($vo['id'])}</td>
+                          <td>{:get_info_status($vo['status'],26)}</td>
+                          <td>{$vo.create_time|time_format}</td>
+                          <td class="op">
+                              <a class="edit" href="{:U('edit',['id'=>$vo['id']])}"><img src="__IMG__/20170831/icon_edit.png">编辑</a> |
+                              <a class="del_gift" href="javascript:;" data-id ="{$vo['id']}"><img src="__IMG__/20170831/icon_del.png">删除</a>
+                          </td>
+                      </tr>
+                  </volist>
+                  </empty>
+              </table>
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script type="text/javascript">
+
+  var sub = true;
+  function save() {
+      if(!sub){
+          return false;
+      }
+      var data = $("#data").serialize();
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('SiteBase/save')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.info, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+	//删除操作
+	$('.del_gift').click(function(){
+		var val = $(this).attr("data-id");
+		var url = "{:U('del')}";
+		del_action(val,url);
+	});
+
+  </script>
+</block>

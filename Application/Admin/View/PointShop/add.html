@@ -1,0 +1,241 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap.min.css" media="all">
+	<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+
+	<script src="__STATIC__/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<style>
+		.file_view { position:absolute; left:0; width:66px; top:24px; height:28px; filter:alpha(opacity=0); opacity:0; cursor: pointer } 
+        .file_upload { float:left; z-index:1; width:66px; height:28px; line-height:28px; background:#3B95C9;color: #fff; text-align:center; cursor: pointer;border-radius: 4px; } 
+        .inputfiles { border:0 !important; width:280px !important; float:left !important; height:28px !important; line-height:28px!important; background:#FFF; z-index:99; } 
+	    #form .txt_area{width: 338px;height: 76px;}
+	    /*上传封面*/
+        .upload_picture_cover{float: left;margin-top: 10px;}
+        .upload-img-box{float: left;}
+        #upload_picture_cover,#upload_picture_detail_cover{float: left;margin-top: 5px;width: 70px !important;margin-left: 5px;}
+        #upload_picture_cover-button,#upload_picture_cover-button{width: 70px !important;}
+	</style>
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('Site/config_index')}">站点</a>
+			</li>
+			<li>
+				<a href="{:U('lists')}">积分商城</a>
+			</li>
+			<li>
+				<a href="{:U('lists')}">{$meta_title}</a>
+			</li>
+		</ul>
+	</div>
+	<!-- 标签页导航 -->
+	<div class="tab-wrap">
+		<div class="formtitle" style="margin-bottom: 0;"><span>新增积分商品</span></div>
+		<div class="tab-content tab_content">
+			<!-- 表单 -->
+			<form id="form" action="{:U('add')}" method="post" class="form-horizontal">
+				<!-- 基础文档模型 -->
+				<div id="tab1" class="tab-pane in tab1 tab_table">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td class="l"><span style="color:red;">* </span>商品名称：</td>
+								<td class="r">
+									<input type="text" class="txt" name="good_name" value="{$data['good_name']}">
+								</td>
+							</tr>
+							<tr>
+								<td class="l"><span style="color:red;">* </span>商品价格：</td>
+								<td class="r">
+									<input type="text" class="txt" name="price" value="{$data['price']}">
+								</td>
+							</tr>
+							<tr>
+								<td class="l">商品封面：<span class="infonotice2">(尺寸：566*306px)</span></td>
+								<td class="r" colspan='1'>
+									<div class="upload-img-box">
+                                    <notempty name="data['cover']">
+                                    </notempty>
+                                </div>
+                                <input type="file" id="upload_picture_cover">
+                                <input type="hidden" name="cover" id="cover_id_cover" value="{$data.cover}" />
+
+								</td>
+							</tr>
+							<tr>
+								<td class="l">商品详情封面：<span class="infonotice2">(尺寸：390*390px)</span></td>
+								<td class="r" colspan='1'>
+									<div class="upload-img-box">
+                                    <notempty name="data['detail_cover']">
+                                    </notempty>
+                                </div>
+                                <input type="file" id="upload_picture_detail_cover">
+                                <input type="hidden" name="detail_cover" id="cover_id_detail_cover" value="{$data.detail_cover}" />
+
+								</td>
+							</tr>
+							<tr>
+								<td class="l">商品类型：</td>
+								<td class="r table_radio">
+									<div class="radio radio-primary">
+										<input type="radio" id="radio1" class="inp_radio good_type" value="1" name="good_type" checked="checked">
+										<label for="radio1">实物</label>
+									</div>
+									<div class="radio radio-primary">
+										<input type="radio" id="radio2" class="inp_radio good_type" value="2" name="good_type">
+										<label for="radio2">虚拟物品</label>
+									</div>
+								</td>
+							</tr>
+							<tr class="good_num">
+								<td class="l">商品数量：</td>
+								<td class="r" colspan='1'>
+									<input type="text" class="txt" name="number" value="{$data['number']}">
+								</td>
+							</tr>
+							<tr class="good_key hidden">
+								<td class="l">商品兑换码：</td>
+								<td class="r" colspan='1'>
+									<textarea class="txt_area2" name="good_key" placeholder="一行一个">{$data.good_key}</textarea>
+								</td>
+							</tr>
+							<tr class="good_usage hidden">
+								<td class="l">使用方法：</td>
+								<td class="r">
+									<textarea class="txt_area" name="good_usage">{$data.good_usage}</textarea>
+								</td>
+							</tr>
+							<tr>
+								<td class="l">商品详情：</td>
+								<td class="r">
+									<textarea class="txt_area" name="good_info">{$data.good_info}</textarea>
+								</td>
+							</tr>
+							<tr>
+								<td class="l">状态：</td>
+								<td class="r table_radio">
+									<div class="radio radio-primary">
+										<input type="radio" id="radio3" class="inp_radio" value="1" name="status" checked="checked">
+										<label for="radio3">开启</label>
+									</div>
+									<div class="radio radio-primary">
+										<input type="radio" id="radio4" class="inp_radio" value="2" name="status">
+										<label for="radio4">关闭</label>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-item cf">
+					<input type="hidden" name="id" value="{$data.id}">
+					<button class="submit_btn ajax-post  " id="submit" type="submit" target-form="form-horizontal">确 定</button>
+					<button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav("{:U('lists')}");
+		$('#submit').click(function() {
+			$('#form').submit();
+		});
+
+		$(function() {
+			good_type();
+			$(".good_type").click(function() {
+				good_type();
+			});
+		});
+
+		function good_type() {
+			var type = $(":input[name='good_type']:checked").val();
+			if(type == 1) {
+				$(".good_usage").hide();
+				$(".good_key").hide();
+				$(".good_num").show();
+			} else {
+				$(".good_usage").show();
+				$(".good_key").show();
+				$(".good_num").hide();
+			}
+		}
+
+		//上传游戏封面
+		/* 初始化上传插件 */
+		$("#upload_picture_cover").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传封面",
+            "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : upload_picture_cover{$field.name},
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+        });
+		function upload_picture_cover{$field.name}(file, data){
+            console.log(data);
+            var data = $.parseJSON(data);
+            var src = '';
+            if(data.status){
+                $("#cover_id_cover").val(data.id);
+                src = data.url || '__ROOT__' + data.path;
+                $("#cover_id_cover").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $("#upload_picture_cover").removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+				
+						/* 初始化上传插件 */
+		$("#upload_picture_detail_cover").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传封面",
+            "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : upload_picture_detail_cover{$field.name},
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+        });
+		function upload_picture_detail_cover{$field.name}(file, data){
+            console.log(data);
+            var data = $.parseJSON(data);
+            var src = '';
+            if(data.status){
+                $("#cover_id_detail_cover").val(data.id);
+                src = data.url || '__ROOT__' + data.path;
+                $("#cover_id_detail_cover").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $("#upload_picture_detail_cover").removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+	</script>
+</block>

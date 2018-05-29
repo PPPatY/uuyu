@@ -1,0 +1,102 @@
+<extend name="Public/basestow" />
+<block name="css">
+<link href="__STATIC__/dist/dropload.css" rel="stylesheet" >
+<link href="__CSS__/suspension.css" rel="stylesheet" >
+</block>
+<block name="body" >
+  <div class="pc-container2 " >
+    <div class="pc-wrap2">
+  <div class="pc-game-box-wrap jsgbw">
+  <div class="pc-game-box ">
+    <div id="sdkdiv">
+      {$paysdk}
+    </div>
+    <iframe id="op_url_mainframe" src="{$login_url}" style="background:url({$game_load_page}) center center no-repeat;" frameborder="0" class="gamestartbox hidden"></iframe>
+    <div class="pc-wrap jsloadpic">
+      <div class="pc-inner">
+        <div class="pc-loadbox">
+          <div class="pc-mark"><img src="__IMG__/slogan.png"></div>
+          <div class="pc-load"><img src="__IMG__/loading.gif"></div>
+          <p class="pc-notice">进入本游戏意味着您已阅读并同意本公司在“游戏中心”的用户条例</p>
+        </div>
+      </div>
+    </div>
+
+    <if condition="is_login() gt 0">
+    {:W('Game/suspension')}<!-- 悬浮窗 -->
+    </if>
+  </div>
+  </div>
+  </div>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+</div>
+<div class="pop"></div>
+
+</block>
+<block name="script">
+<script src="__STATIC__/dist/dropload.js"></script>
+<script src="__STATIC__/xigusdk/xgh5sdkuse.js?time={:time()}"></script> 
+<script>
+    screen = "{$screentype}";
+    login = "{:is_login()}";
+    game_load_page = "{$game_load_page}";
+    var popplog = $('.pop').pop();
+    var ykway = "{$yk['register_way']}";
+    var ykphone = "{$yk['phone']}";
+    ttt= $('.jssussign');
+    sss=ttt.find('span');
+    issignin = "{$issignin}";
+    user_no_auth = "{$user_no_auth}";
+    stop_play = "{$stop_play}";
+    if(issignin==1){
+      ttt.addClass('disabled');
+      ttt.find('.circle').remove();
+      sss.text('已签到');
+    }
+    
+    var iframe = $('.gamestartbox')[0];
+    if(login>0){
+      console.log('noload');
+      if (iframe.attachEvent){ 
+        
+          iframeload(); 
+
+      } else { 
+
+          console.log('loading');
+          iframeload();
+     
+      };
+    }else {
+      setTimeout(function(){
+        $(iframe).removeClass('hidden').closest('.jsgbw').addClass('pcgboxbg');
+        $('body').find('.pc-footer').hide();
+        res = jslogin();
+        return ;
+      },1500);
+    }
+    
+    function iframeload() {
+      setTimeout(function(){
+        if(user_no_auth){
+          if(stop_play){
+            popplog.addClass('pop-login').open('','<div class="tembox"><div class="pop-title">实名认证</div><div class="pop-content"><p class="temporary-text" style="text-align: center;">'+"{$name_auth_tip}"+'</p></div><div class="pop-butn-box"><a href="{:U("Subscriber/user_auth")}" class="pop-bindbutn">去认证</a></div></div>');
+          }else{
+            $(iframe).removeClass('hidden').closest('.jsgbw').addClass('pcgboxbg');
+            $('body').find('.pc-footer').hide();
+            $('.suspensionbtn').removeClass('hidden');
+            $('.jsloadpic').addClass('hidden');
+            popplog.addClass('pop-login').open('','<div class="tembox"><a href="javascript:;" class="pop-close"></a><div class="pop-title">实名认证</div><div class="pop-content"><p class="temporary-text" style="text-align: center;">'+"{$name_auth_tip}"+'</p></div><div class="pop-butn-box"><a href="{:U("Subscriber/user_auth")}" class="toAuth pop-bindbutn">去认证</a></div></div>');
+              $('.pop-close').click(function() {popplog.close(); return false;});
+          }
+        }else{console.log('authed');
+            $(iframe).removeClass('hidden').closest('.jsgbw').addClass('pcgboxbg');
+            $('body').find('.pc-footer').hide();
+            $('.suspensionbtn').removeClass('hidden');
+            $('.jsloadpic').addClass('hidden');
+        }
+        console.log('loaded');
+      },1500);
+    }
+</script>
+</block>

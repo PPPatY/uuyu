@@ -1,0 +1,54 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">用于配置邮件相关参数的功能</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="tab-wrap">
+		<div class="tab_nav jstabnav">
+		<ul>
+			<li class="current"><a href="javascript:" >邮件设置</a></li>
+		</ul></div>
+		<div class="tab-content">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal form_info_ml">
+			<ul class="form_info ">
+                <li><label>SMTP</label><input name="config[smtp]" type="text" value="{$email_set['smtp']}" class=""><i class="form_hint">SMTP 服务器</i></li>
+                <li><label>SMTP端口</label><input name="config[smtp_port]" type="text" value="{$email_set['smtp_port']}" class=""><i class="form_hint">SMTP服务器端口，默认25</i></li>
+                <li><label>SMTP用户名</label><input name="config[smtp_account]" type="text" value="{$email_set['smtp_account']}" class=""><i class="form_hint">SMTP服务器用户名，填写完整用户名</i></li>
+                <li><label>SMTP密码</label><input name="config[smtp_password]" type="text" value="{$email_set['smtp_password']}" class=""><i class="form_hint">SMTP服务器密码，填写您的密码</i></li>
+                <li><label>邮件发送测试</label><input name="config[smtp_test]" type="text" value="{$email_set['smtp_test']}" class=""><i class="form_hint">填写测试邮件地址</i></li>
+                <li><label>启用状态</label><span class="form_radio">
+                    <label><input type="radio" name="status" value="0" <eq name="email_set_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                    <label><input type="radio" name="status" value="1" <eq name="email_set_data['status']" value="1">checked="checked"</eq>> 启用
+                </label></span><i class="form_hint">启用状态</i></li>
+                <li><label>邮件模板</label><span class="form_textarea_edit"><textarea name="template">{$email_set['template']}</textarea>
+					{:hook('adminArticleEdit', array('name'=>'template','value'=>$email_set_data['template']))}
+                    </span><i class="form_hint">邮件模板</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="email_set"></input><input type="submit" id="submit" value="确认保存" target-form="form-horizontal" class="form_btn ajax-post"></li>
+            </ul>
+		</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('Tool/email')}');
+</script>
+</block>

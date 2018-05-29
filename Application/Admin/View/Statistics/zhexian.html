@@ -1,0 +1,145 @@
+    <!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="__CSS__/open-egret.css">
+    </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main" style="height:500px"></div>
+        <!-- ECharts单文件引入 -->
+        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+        <script type="text/javascript">
+            // 路径配置
+            require.config({
+                paths: {
+                    echarts: 'http://echarts.baidu.com/build/dist'
+                }
+            });
+     
+            // 使用
+            require(
+                [
+                    'echarts',
+                    'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                    'echarts/chart/line'
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('main')); 
+                   
+                    option = {
+  
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['{$title0}','{$title1}','{$title2}','{$title3}','{$title4}']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        splitLine :{
+            show :false,
+        },
+        boundaryGap: false,
+        data: ['{$day6}','{$day5}','{$day4}','{$day3}','{$day2}','{$day1}','{$day0}']
+    },
+    yAxis: {
+        type: 'value'
+    },
+   
+    series: [
+    <if condition="$title0 neq ''">
+        {
+            name:'{$title0}',
+            type:'line',
+            stack: '总量',
+            data:[
+            '{:$dayy[$day6][$title0]==""?0:$dayy[$day6][$title0]}', 
+            '{:$dayy[$day5][$title0]==""?0:$dayy[$day5][$title0]}', 
+            '{:$dayy[$day4][$title0]==""?0:$dayy[$day4][$title0]}',  
+            '{:$dayy[$day3][$title0]==""?0:$dayy[$day3][$title0]}',  
+            '{:$dayy[$day2][$title0]==""?0:$dayy[$day2][$title0]}', 
+            '{:$dayy[$day1][$title0]==""?0:$dayy[$day1][$title0]}',  
+            '{:$dayy[$day0][$title0]==""?0:$dayy[$day0][$title0]}', ]
+        },
+    </if> 
+    <if condition="$title1 neq ''">  
+        {
+            name:'{$title1}',
+            type:'line',
+            stack: '总量',
+            data:[
+            '{:$dayy[$day6][$title1]==""?0:$dayy[$day6][$title1]}', 
+            '{:$dayy[$day5][$title1]==""?0:$dayy[$day5][$title1]}', 
+            '{:$dayy[$day4][$title1]==""?0:$dayy[$day4][$title1]}',  
+            '{:$dayy[$day3][$title1]==""?0:$dayy[$day3][$title1]}',  
+            '{:$dayy[$day2][$title1]==""?0:$dayy[$day2][$title1]}', 
+            '{:$dayy[$day1][$title1]==""?0:$dayy[$day1][$title1]}',  
+            '{:$dayy[$day0][$title1]==""?0:$dayy[$day0][$title1]}', ]
+        },
+    </if> 
+    <if condition="$title2 neq ''">  
+        {
+            name:'{$title2}',
+            type:'line',
+            stack: '总量',
+            data:[
+            '{:$dayy[$day6][$title2]==""?0:$dayy[$day6][$title2]}', 
+            '{:$dayy[$day5][$title2]==""?0:$dayy[$day5][$title2]}', 
+            '{:$dayy[$day4][$title2]==""?0:$dayy[$day4][$title2]}',  
+            '{:$dayy[$day3][$title2]==""?0:$dayy[$day3][$title2]}',  
+            '{:$dayy[$day2][$title2]==""?0:$dayy[$day2][$title2]}', 
+            '{:$dayy[$day1][$title2]==""?0:$dayy[$day1][$title2]}',  
+            '{:$dayy[$day0][$title2]==""?0:$dayy[$day0][$title2]}', ]
+        },
+    </if> 
+    <if condition="$title3 neq ''">  
+        {
+            name:'{$title3}',
+            type:'line',
+            stack: '总量',
+            data:[
+            '{:$dayy[$day6][$title3]==""?0:$dayy[$day6][$title3]}', 
+            '{:$dayy[$day5][$title3]==""?0:$dayy[$day5][$title3]}', 
+            '{:$dayy[$day4][$title3]==""?0:$dayy[$day4][$title3]}',  
+            '{:$dayy[$day3][$title3]==""?0:$dayy[$day3][$title3]}',  
+            '{:$dayy[$day2][$title3]==""?0:$dayy[$day2][$title3]}', 
+            '{:$dayy[$day1][$title3]==""?0:$dayy[$day1][$title3]}',  
+            '{:$dayy[$day0][$title3]==""?0:$dayy[$day0][$title3]}', ]
+        },
+    </if> 
+    <if condition="$title4 neq ''">  
+        {
+            name:'{$title4}',
+            type:'line',
+            stack: '总量',
+            data:[
+            '{:$dayy[$day6][$title4]==""?0:$dayy[$day6][$title4]}', 
+            '{:$dayy[$day5][$title4]==""?0:$dayy[$day5][$title4]}', 
+            '{:$dayy[$day4][$title4]==""?0:$dayy[$day4][$title4]}',  
+            '{:$dayy[$day3][$title4]==""?0:$dayy[$day3][$title4]}',  
+            '{:$dayy[$day2][$title4]==""?0:$dayy[$day2][$title4]}', 
+            '{:$dayy[$day1][$title4]==""?0:$dayy[$day1][$title4]}',  
+            '{:$dayy[$day0][$title4]==""?0:$dayy[$day0][$title4]}', ]
+        }
+    </if> 
+    ]
+};
+
+                    // 为echarts对象加载数据 
+                    myChart.setOption(option); 
+                }
+            );
+        </script>
+    </body>

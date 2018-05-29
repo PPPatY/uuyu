@@ -1,0 +1,81 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<header class="header">
+  <section class="wrap">
+    <a href="{:U('user')}" class="hbtn left arrow-left jaarrow"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">修改昵称</span></span></div>
+    <a href="javascript:;" class="hbtn right user-save jssave"><span class="table"><span class="table-cell">确定</span></span></a>
+  </section>
+</header>
+<div class="occupy"></div>
+
+<section class="trunker">
+  
+  <section class="inner">
+    <section class="contain">
+      <form action="" class="">
+      <div class="info-table info-table2 jsauthinfo">
+        <div class="wrap">
+            <div class="item table">
+              <span class="table-cell sitem"><div class="txtbox"><input type="text" name="" class="txt" placeholder="请输入昵称" value=""></div><span class="iconbox"><i class="icon icon-del jsdel"></i></span></span>
+            </div>
+        </div>
+      </div>
+      
+      </form>
+
+    </section>
+    
+  </section>
+</section>
+
+
+<div class="pop"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script>
+    $(function() {
+      var pop = $('.pop').pop();
+      
+      $('.jsauthinfo .txt').keyup(function() {
+        var that = $(this),val=$.trim(that.val());
+        $('.jsauthinfo .txt').each(function(i,n) {
+          if ($(n).val().length<1) {$('.jssave').addClass('disabled');return false;}
+          else {$('.jssave').removeClass('disabled');}
+        });
+        
+        if (val) {
+        
+          that.closest('.sitem').find('.jsdel').addClass('on');
+          
+        }
+        
+        return false;
+      });
+      
+      $('.jsdel').click(function() {
+        var that=$(this);
+        
+        that.removeClass('on').closest('.sitem').find('input').val('').focus();
+        return false;
+        
+      });
+      
+      $('.jssave').click(function() {
+        var that=$(this);
+        if (that.hasClass('disabled')) {return false;}
+        that.addClass('disabled');
+        // 成功
+        pop.addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">昵称修改成功</p>',1000,250);
+        setTimeout(function(){window.location.href="user.html"},1510);
+        
+        
+        
+        return false;
+      });
+
+      
+    });
+</script>
+</block>

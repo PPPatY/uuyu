@@ -1,0 +1,19 @@
+<extend name="Public/bases" />
+<block name="css">
+    <link href="__CSS__/20170913/about.css" rel="stylesheet">
+</block>
+<block name="body">
+    <div class="page-article index-about-article">
+        <div class="inner">
+          <div class="about">
+            <div class="abouttit"><img src="__IMG__/20170913/abouttit.png"></div>
+            <div class="aboutcon">
+              {$data['content']}
+            </div>
+          </div>          
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>highlight_subnav('{:U("Index/about")}');</script>
+</block>

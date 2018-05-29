@@ -1,0 +1,101 @@
+<!-- 成员授权编辑页面 -->
+<extend name="Public/base" />
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style type="text/css">
+		.select2-container{width: 110px !important;}
+		.tab_nav .nolist{
+			background: none;
+			border: 0;
+			margin-top: -2px;
+		}
+		.select2-container--default .select2-selection--single{height: 34px;}
+		.select2-container--default .select2-selection--single .select2-selection__rendered{line-height: 33px;}
+	</style>
+<div class="main-place">
+    <span class="main-placetitle"></span>
+    <ul class="main-placeul">
+        <li><a href="{:U('User/index')}">用户</a></li>
+        <li><a href="{:U('User/index')}">管理组</a></li>
+        <li><a href="#">{$meta_title}</a></li>
+    </ul>
+</div>
+<div class="tab-wrap">
+    <div class="tab_nav">
+        <ul>
+            <li><a href="{:U('AuthManager/access',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}">访问授权</a></li>
+            <li><a href="{:U('AuthManager/category',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}">分类授权</a></li>
+            <li class="current"><a href="javascript:;">成员授权</a></li>
+            <li class="fr nolist">
+                <select name="group" class="select_gallery">
+                    <volist name="auth_group" id="vo">
+                        <option value="{:U('AuthManager/user',array('group_id'=>$vo['id'],'group_name'=>$vo['title']))}" <eq name="vo['id']" value="$this_group['id']">selected</eq> >{$vo.title}</option>
+                    </volist>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data_list box_mt1">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="">UID</th>
+		<th class="">昵称</th>
+		<th class="">最后登录时间</th>
+		<th class="">最后登录IP</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="_list" id="vo">
+		<tr>
+			<td>{$vo.uid} </td>
+			<td>{$vo.nickname}</td>
+			<td><span>{$vo.last_login_time|time_format}</span></td>
+			<td><span>{$vo.last_login_ip|long2ip}</span></td>
+			<td>{$vo.status_text}</td>
+			<td><a href="{:U('AuthManager/removeFromGroup?uid='.$vo['uid'].'&group_id='.I('group_id'))}" class="ajax-get">解除授权</a>
+
+                </td>
+		</tr>
+		</volist>
+	</tbody>
+    </table>
+
+
+    </div>
+	<div class="main-title">
+		<div class="page_nav fl">
+			{$_page}
+		</div>
+		<div id="add-to-group" class="tools fr search_list button_list">
+			<form class="add-user" action="{:U('addToGroup')}" method="post" enctype="application/x-www-form-urlencoded" >
+				<input class="" type="text" name="uid" style="width:240px;" placeholder="请输入uid,多个用英文逗号分隔">
+				<input type="hidden" name="group_id" value="{:I('group_id')}">
+                <a type="submit" class="ajax-post" target-form="add-user" style="float:right;margin-left:15px;"><span class="button_icon button_icon1"></span>新增</a>
+			</form>
+		</div>
+	</div>
+
+</div>
+</block>
+
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+	$('select[name=group]').change(function(){
+		location.href = this.value;
+	});
+    //导航高亮
+    highlight_subnav('{:U('AuthManager/index')}');
+    $(function() {
+	    <volist name=":I('get.')" id="vo">
+            Think.setValue('{$key}',"{$vo}");
+        </volist>
+			$(".select_gallery").select2();
+		});
+</script>
+</block>

@@ -1,0 +1,321 @@
+[ 2018-05-28T09:13:13+08:00 ] 127.0.0.1 /mobile.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001568s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001674s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000390s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000436s ]
+
+[ 2018-05-28T10:59:28+08:00 ] 127.0.0.1 /mobile.php/PointShop/mall.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001185s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001273s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000323s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000395s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0525s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.1818s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 39 行.
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000163s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063507s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063552s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000396s ]
+SQL: SHOW COLUMNS FROM `tab_tips` [ RunTime:0.0926s ]
+SQL: SELECT * FROM `tab_tips` WHERE `obj` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0397s ]
+SQL: SELECT `lock_status`,`real_name`,`idcard` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `tab_point_type` WHERE `key` = 'bind_phone' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0038s ]
+SQL: SELECT `name`,`status` FROM `tab_tool` WHERE `name` IN ('qq_login','wx_login','wb_login','bd_login')  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop` [ RunTime:0.0044s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop_record` [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0061s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0192s ]
+SQL: SELECT `id`,`good_name`,`price`,`number`,`good_info`,`status`,`create_time`,`cover`,`detail_cover`,`good_type`,`good_usage`,`short_name` FROM `tab_point_shop` WHERE `status` = 1 AND `number` > 0 ORDER BY create_time desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_point_shop` WHERE `status` = 1 AND `number` > 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop_record` [ RunTime:0.0065s ]
+SQL: SELECT sr.id,sr.user_id,sr.good_name,sr.good_id,sr.number,sr.pay_amount,sr.create_time,sr.good_type,sr.address,sr.user_name,sr.phone,sr.status,sr.good_key,u.nickname,u.account FROM tab_point_shop_record as sr left join tab_user u on u.id = sr.user_id  ORDER BY sr.create_time desc,sr.id desc LIMIT 0,50   [ RunTime:0.0013s ]
+SQL: SELECT `shop_point` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0015s ]
+NOTIC: [8] Undefined variable: lgjoin D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\PointShopController.class.php 第 50 行.
+SQL: SELECT pt.*,pr.user_id,pr.day,pr.create_time as ctime,date_format(FROM_UNIXTIME(pr.create_time),"%Y-%m-%d") as ct FROM tab_point_type pt left JOIN tab_point_record as pr on pr.type_id = pt.id and pr.user_id = 0  WHERE pt.key = 'sign_in' ORDER BY ctime desc LIMIT 0,10   [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000272s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.261748s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 5 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 8 行.
+NOTIC: [8] Use of undefined constant detail - assumed 'detail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 12 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 16 行.
+NOTIC: [8] Use of undefined constant giftdetail - assumed 'giftdetail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 20 行.
+NOTIC: [8] Use of undefined constant mall - assumed 'mall' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 24 行.
+NOTIC: [8] Use of undefined constant PointShop - assumed 'PointShop' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 24 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: newmsg D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 353 行.
+NOTIC: [8] Undefined variable: promote_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 372 行.
+NOTIC: [8] Undefined variable: game_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 376 行.
+NOTIC: [8] Undefined variable: promote_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 377 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031684s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.199281s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000011s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.230654s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000964s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001021s ]
+
+[ 2018-05-28T10:59:29+08:00 ] 127.0.0.1 /mobile.php/PointShop/mall_detail/id/4.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001165s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001250s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000303s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000347s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0041s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0045s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 39 行.
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000151s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015207s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015254s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000356s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000398s ]
+SQL: SHOW COLUMNS FROM `tab_tips` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_tips` WHERE `obj` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0047s ]
+SQL: SELECT `lock_status`,`real_name`,`idcard` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `tab_point_type` WHERE `key` = 'bind_phone' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0037s ]
+SQL: SELECT `name`,`status` FROM `tab_tool` WHERE `name` IN ('qq_login','wx_login','wb_login','bd_login')  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop` [ RunTime:0.0044s ]
+NOTIC: [2] Missing argument 3 for Admin\Model\PointShopModel::goodsDetail(), called in D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\PointShopController.class.php on line 107 and defined D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Admin\Model\PointShopModel.class.php 第 122 行.
+SQL: SELECT * FROM tab_point_shop ps WHERE ps.status = 1 AND ps.id = '4' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000277s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.041262s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 5 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 8 行.
+NOTIC: [8] Use of undefined constant detail - assumed 'detail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 12 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 16 行.
+NOTIC: [8] Use of undefined constant giftdetail - assumed 'giftdetail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 20 行.
+NOTIC: [8] Use of undefined constant mall - assumed 'mall' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 24 行.
+NOTIC: [8] Use of undefined constant mall_detail - assumed 'mall_detail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 28 行.
+NOTIC: [8] Use of undefined constant PointShop - assumed 'PointShop' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 28 行.
+NOTIC: [8] Undefined index: game_name D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Undefined index: title D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Undefined index: giftbag_name D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Undefined index: game_type_name D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: shop_point D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 97 行.
+NOTIC: [8] Undefined index: shop_point D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 106 行.
+NOTIC: [8] Undefined index: nickname D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 319 行.
+NOTIC: [8] Undefined variable: newmsg D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 451 行.
+NOTIC: [8] Undefined variable: promote_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 470 行.
+NOTIC: [8] Undefined variable: game_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 474 行.
+NOTIC: [8] Undefined variable: promote_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\6604301002b6a92fbb1957b6f98a388f.php 第 475 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020978s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.028744s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000009s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.049360s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000673s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000729s ]
+
+[ 2018-05-28T15:35:22+08:00 ] 127.0.0.1 /mobile.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001154s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001252s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000328s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000375s ]
+
+[ 2018-05-28T15:35:32+08:00 ] 127.0.0.1 /mobile.php/PointShop/mall.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001121s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001189s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001063s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001200s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0099s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 39 行.
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000234s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038277s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038323s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000290s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000342s ]
+SQL: SHOW COLUMNS FROM `tab_tips` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `tab_tips` WHERE `obj` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0097s ]
+SQL: SELECT `lock_status`,`real_name`,`idcard` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0109s ]
+SQL: SELECT * FROM `tab_point_type` WHERE `key` = 'bind_phone' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0098s ]
+SQL: SELECT `name`,`status` FROM `tab_tool` WHERE `name` IN ('qq_login','wx_login','wb_login','bd_login')  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop` [ RunTime:0.0094s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop_record` [ RunTime:0.0096s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0095s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0101s ]
+SQL: SELECT `id`,`good_name`,`price`,`number`,`good_info`,`status`,`create_time`,`cover`,`detail_cover`,`good_type`,`good_usage`,`short_name` FROM `tab_point_shop` WHERE `status` = 1 AND `number` > 0 ORDER BY create_time desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_point_shop` WHERE `status` = 1 AND `number` > 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop_record` [ RunTime:0.0099s ]
+SQL: SELECT sr.id,sr.user_id,sr.good_name,sr.good_id,sr.number,sr.pay_amount,sr.create_time,sr.good_type,sr.address,sr.user_name,sr.phone,sr.status,sr.good_key,u.nickname,u.account FROM tab_point_shop_record as sr left join tab_user u on u.id = sr.user_id  ORDER BY sr.create_time desc,sr.id desc LIMIT 0,50   [ RunTime:0.0003s ]
+SQL: SELECT `shop_point` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: lgjoin D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\PointShopController.class.php 第 50 行.
+SQL: SELECT pt.*,pr.user_id,pr.day,pr.create_time as ctime,date_format(FROM_UNIXTIME(pr.create_time),"%Y-%m-%d") as ct FROM tab_point_type pt left JOIN tab_point_record as pr on pr.type_id = pt.id and pr.user_id = 0  WHERE pt.key = 'sign_in' ORDER BY ctime desc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000258s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.139924s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 5 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 8 行.
+NOTIC: [8] Use of undefined constant detail - assumed 'detail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 12 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 16 行.
+NOTIC: [8] Use of undefined constant giftdetail - assumed 'giftdetail' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 20 行.
+NOTIC: [8] Use of undefined constant mall - assumed 'mall' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 24 行.
+NOTIC: [8] Use of undefined constant PointShop - assumed 'PointShop' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 24 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0086s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: newmsg D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 353 行.
+NOTIC: [8] Undefined variable: promote_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 372 行.
+NOTIC: [8] Undefined variable: game_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 376 行.
+NOTIC: [8] Undefined variable: promote_id D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Mobile\83c7f99c5cf412001ba00e99048f2f68.php 第 377 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.052236s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.102615s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000009s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.154541s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000636s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000679s ]
+
+[ 2018-05-28T15:37:58+08:00 ] 127.0.0.1 /mobile.php/PointShop/mall.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001452s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001520s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000563s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0091s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0092s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 29 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 32 行.
+NOTIC: [8] Use of undefined constant PC_SET_DOMAIM - assumed 'PC_SET_DOMAIM' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\BaseController.class.php 第 39 行.
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000148s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000194s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013377s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013425s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000405s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000444s ]
+SQL: SHOW COLUMNS FROM `tab_tips` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `tab_tips` WHERE `obj` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0099s ]
+SQL: SELECT `lock_status`,`real_name`,`idcard` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0096s ]
+SQL: SELECT * FROM `tab_point_type` WHERE `key` = 'bind_phone' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0088s ]
+SQL: SELECT `name`,`status` FROM `tab_tool` WHERE `name` IN ('qq_login','wx_login','wb_login','bd_login')  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop` [ RunTime:0.0095s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop_record` [ RunTime:0.0106s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0088s ]
+SQL: SHOW COLUMNS FROM `tab_point_type` [ RunTime:0.0105s ]
+SQL: SELECT `id`,`good_name`,`price`,`number`,`good_info`,`status`,`create_time`,`cover`,`detail_cover`,`good_type`,`good_usage`,`short_name` FROM `tab_point_shop` WHERE `status` = 1 AND `number` > 0 ORDER BY create_time desc LIMIT 10,10   [ RunTime:0.0004s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Admin\Model\PointShopModel.class.php 第 54 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_point_shop` WHERE `status` = 1 AND `number` > 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_point_shop_record` [ RunTime:0.0094s ]
+SQL: SELECT sr.id,sr.user_id,sr.good_name,sr.good_id,sr.number,sr.pay_amount,sr.create_time,sr.good_type,sr.address,sr.user_name,sr.phone,sr.status,sr.good_key,u.nickname,u.account FROM tab_point_shop_record as sr left join tab_user u on u.id = sr.user_id  ORDER BY sr.create_time desc,sr.id desc LIMIT 0,50   [ RunTime:0.0004s ]
+SQL: SELECT `shop_point` FROM `tab_user` WHERE `id` = 0 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: lgjoin D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Mobile\Controller\PointShopController.class.php 第 50 行.
+SQL: SELECT pt.*,pr.user_id,pr.day,pr.create_time as ctime,date_format(FROM_UNIXTIME(pr.create_time),"%Y-%m-%d") as ct FROM tab_point_type pt left JOIN tab_point_record as pr on pr.type_id = pt.id and pr.user_id = 0  WHERE pt.key = 'sign_in' ORDER BY ctime desc LIMIT 0,10   [ RunTime:0.0009s ]
+
+[ 2018-05-28T15:40:32+08:00 ] 127.0.0.1 /mobile.php/PointShop/mall.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001582s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001663s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000566s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000623s ]
+

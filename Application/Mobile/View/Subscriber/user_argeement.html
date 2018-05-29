@@ -1,0 +1,64 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+
+    <if condition="$type neq 1">
+        <header class="header">
+            <section class="wrap">
+                <a href="javascript:history.back();" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+                <div class="caption"><span class="table"><span class="table-cell">使用条款和隐私政策</span></span></div>
+            </section>
+        </header>
+        <div class="occupy"></div>
+    </if>
+
+    
+    <section class="trunker">
+      
+      <section class="inner">
+        <section class="contain">
+          <div class="argeement-article">
+            <div class="content">
+              <p class="h2">首部及导言</p>
+              <p>欢迎你使用{:C('BITMAP')}软件及服务</p>
+              <p>为使用{:C('BITMAP')}软件(以下简称“本软件”)及服务，你应当阅读并遵守<span class="blue">《{:C('BITMAP')}软件许可及服务协议》</span>(以下简称“本协议”)，以及<span class="blue">《友友互娱服务协议》</span>。请你务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款，以及开通或使用某项服务的单独协议，并选择接受或不接受。限制、免责条款可能以加粗形式提示你注意</p>
+              <p>如果你未满18周岁，请在法定监护人的陪同下阅读本协议及其他上述协议，并特别注意未成年人使用条款。</p>
+              <p class="h3">一、协议的范围</p>
+              <p class="h4">1.1 协议适用主体范围</p>
+              <p>本协议是你与友友互娱之间关于你下载、安装、适用、复制本软件，以及适用友友互娱相关服务所订立的协议。</p>
+            </div>
+          </div>
+          
+        </section>
+        
+      </section>
+    </section>
+    
+    
+    <script src="__JS__/common.js"></script>
+    <script>
+        $(function() {
+          $('.jschatqq').click(function() {
+            var qq = $.trim($(this).attr('data-value'));
+            console.log(browser.versions.mobile);
+            if (browser.versions.mobile)
+              window.location.href="mqqwpa://im/chat?chat_type=wpa&uin="+qq+"&version=1&src_type=web&web_src=oicqzone.com";
+            else
+              window.location.href="http://wpa.qq.com/msgrd?V=1&amp;Uin="+qq+"&amp;Menu=no";
+              
+            return false;
+          });
+          
+          
+          
+        });
+        
+        
+        
+    </script>
+</block>

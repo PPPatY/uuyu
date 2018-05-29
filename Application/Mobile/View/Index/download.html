@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <link href="__CSS__/downloadcommon.css" rel="stylesheet" >
+    <link href="__CSS__/downloaddownload.css" rel="stylesheet" >
+    
+	</head>
+	<body>
+    
+      <div class="container" style="height: 100vh;">
+        <div class="wrap">
+          <div class="inner">
+            <div class="downloadbox">
+              <img src="__IMG__/guide_img_prompt.png" id="right_click" class="right_click">
+              <img src="{:get_cover(C('APP_LOGO'),'path')}" class="h5_icon" >
+              <h1 class="title">{:C('APP_NAME')}</h1>
+              <p class="version">最新版本：{$data.version}</p>
+              <div class="butnbox">
+                  <eq name="system" value="1">
+                      <a href="itms-services://?action=download-manifest&url={$data.plist_url}" class="butn" id="jsdownload"><img src="__IMG__/guide_btn_ios.png" class="icon"><span>iPhone版下载</span></a>
+                      <else/>
+                      <a href="{$data.file_url}" class="butn" id="jsdownload"><img src="__IMG__/guide_btn_android.png" class="icon"><span>Android版下载</span></a>
+                  </eq>
+
+                <p class="size">大小：{$data.file_size}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        
+      </div>
+    
+    
+    <script>
+      window.onload = function(){ 
+        var b = document.getElementById('right_click');
+        if(is_weixin()){
+          b.css({'display':'block'});
+        }
+        
+        var a = document.getElementById('jsdownload');
+        a.onclick = function(){
+          var html = '<span class="iconbox"><i class="icon-down"></i></span><span class="textbox">正在下载<i>.</i><i>.</i><i>.</i></span>';
+          var name = a.className;
+          if (name.indexOf('disabled')<0) {
+            name += ' disabled';
+            a.className = name;
+            
+            a.innerHTML = html;
+          }
+          
+        }
+
+      } 
+        
+      function is_weixin(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+        
+    </script>
+	</body>
+</html>

@@ -1,0 +1,189 @@
+<extend name="Public/bases" />
+<block name="body">
+<style>
+.head{display: none;}
+.bottom{display: none;}
+</style>
+<link href="__CSS__/login.css" type="text/css" rel="stylesheet">
+<!--头部-->
+<div class="login_head">
+ <span>登录</span>
+</div>
+<!--头部结束-->
+<!--登录-->
+<div class="logincon">
+<dl>
+<dt><i class="login_ph"></i><input type="text"   value="{$_COOKIE['media']}" class="reguser" placeholder="输入您的手机号/账号"></dt>
+<dt>
+    <i class="login_pwd"></i>
+    <span class="changemm">
+        <input id="pass" type="password" class="regpwd" value="{$_COOKIE['media_pas']}" placeholder="输入您的密码">
+    </span>
+    <a id="btn" date-show="1" class="lo_visi"></a>
+</dt>
+
+<dd>
+<span class="rember"><input type="checkbox" id="checkbox-2-1" class="regular-checkbox big-checkbox" /><label for="checkbox-2-1"></label>记住密码</span> 
+<div>
+<span onclick="login('base')" class="loginbtn">登&nbsp;&nbsp;录</span></div>
+<p class="lo_warn"></p>
+</dd>
+</dl>
+
+<ul class="login_bottom">
+<li><hr></li>
+<li><h3>一键登录</h3></li>
+<li><div>
+    <a onclick="login('qq')" class="lo_qq"><i></i></a>
+    <a id="weiixnx" style="display:none;" onclick="login('weixin')" class="lo_wx"><i></i></a>
+    <div class="clear"></div>
+</div></li>
+<li><span>还没有账号？<a href="{:U('TuiRegister/register',array('gid'=>$_REQUEST['gid'],'pid'=>$_REQUEST['pid']))}">马上注册</a></span></li>
+</ul>
+
+
+</div>
+
+<!--登录结束-->
+<div>
+</div>
+<script>
+    window.onload=function(){
+        $('#btn').click(function(){
+            that = $(this);
+            val = $('#pass').val();
+            dateshow = that.attr('date-show');
+            if(dateshow==1){
+                that.attr('date-show',2);//明文
+                that.attr('class','lo_show');
+                $('.changemm').html('<input id="pass" type="text" class="regpwd" value="'+val+'" placeholder="输入您的密码">');
+            }else{
+                that.attr('date-show',1);
+                that.attr('class','lo_visi');
+                $('.changemm').html('<input id="pass" type="password" class="regpwd" value="'+val+'" placeholder="输入您的密码">');
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+  var browser={
+    versions:function(){
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {         //移动终端浏览器版本信息
+                 trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+         }(),
+         language:(navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+$(function(){
+    if(!browser.versions.mobile){
+        $("#weiixnx").attr('style','');
+    }
+})
+</script>
+<script>
+function login(obj) {
+    switch(obj){
+        case 'base':{
+            var account =$('.reguser').val();
+            var password =$('.regpwd').val();
+            var jzmm = $("#checkbox-2-1").prop('checked');
+            if(jzmm){
+                jzmm= 1;
+            }else{
+                jzmm =0;
+            }
+            var data = {"account":account,"password":password,"type":obj,"jzmm":jzmm} ;
+            gameboxbtn(data);
+        };break;
+        default:{
+            var url = '{:U("thirdlogin",array("gid"=>$_REQUEST["gid"],"pid"=>$_REQUEST["pid"]))}';
+            url = url.replace(".html","")+"/type/"+obj;
+            // alert(url);
+            window.location=url;
+        }
+    }
+}
+function gameboxbtn(data) {
+        if (!data.account) {
+            $('.lo_warn').html('<i></i>请输入手机号/账号');return false;
+        }
+        if (!data.password || data.password.length<6) {
+            $('.lo_warn').html('<i></i>请输入至少6位的密码');return false;
+        }
+        switch(data.type){
+            case 'base':{
+                $.ajax({
+                    type:'post',
+                    dataType:'json',
+                    data:{"username":data.account,"password":data.password,"type":data.type,'jzmm':data.jzmm},
+                    url:'{:U("login")}',
+                    success:function(d) {
+                        if (d.status==1) {
+                            if ($("#session").attr('value')) {
+                                var surl = $("#session").attr('value');
+                                window.location.href=surl;
+                            }else{
+                                window.location.href=d.url;
+                            }
+                        }else{
+                            $('.lo_warn').html('<i></i>'+d.msg);return false;
+                        }
+                    },
+                    error:function() {
+                        alert('服务器故障，请稍后再试');
+                    }
+                });
+            };break;
+            case 1:{
+                $.ajax({
+                    type:'post',
+                    dataType:'json',
+                    data:{"username":phone,"password":password,"type":data.type,"game_id":0,"promote_id":0,"promote_account":"自然注册"},
+                    url:'{:U("register")}',
+                    success:function(data) {
+                        switch(parseInt(data.status)) {
+                            case -3: {
+                                alert(data.msg);
+                            };break;
+                            case 0:{
+                                alert(data.msg)
+                            };break;
+                            default:{
+                                window.location.href = data.url;
+                            }
+                            
+                        }
+                    },
+                    error:function() {
+                        alert('服务器故障，请稍后再试');
+                    }
+                });
+            };break;
+            case 2:{
+                $.ajax({
+                    type:'post',
+                    dataType:'json',
+                    data: {"phone":phone,"delay":1,"way":2,"type":data.type},
+                    url: '{:U("telsvcode")}',
+                    success:function(data) {
+                        t(phone,password,2,pid,gid,data);
+                    },
+                    error:function() {
+                        alert('服务器故障，请稍后再试');
+                    }
+                });
+            };break;
+        }
+}
+</script>
+</block>

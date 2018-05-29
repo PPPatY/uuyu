@@ -1,0 +1,83 @@
+<extend name="Public/promote_base"/>
+
+<block name="body">
+<div id="query">
+  <div class="mod">
+    <h2>代充记录</h2>
+    <div id="zc_top">
+      <ul class="clearfix">
+        <li style="border:none;">
+          <h3 class="ftype">推广收入充值到平台币</h3>
+          <p><span>{:number_format(AMOUNT,2)}</span>元 <i>1平台币=1元</i></p>
+          <div>
+            <a href="{:U('fill')}" class="btn01" style="float:left;">平台币充值</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+   <div id="search" class="mod">
+          <h2>查询</h2>
+          <form id="data_form" action="{:U('Recharge/index')}" method="post" enctype="multipart/form-data">
+            <ol>
+              <li class="other clearfix">
+                <div class="m"><em>开始时间：</em><span class="required">*</span>
+                  <input type="text" id="sdate" name="sdate" value="{:I('sdate')}">
+                </div>
+                <div class="r"><em>结束时间：</em><span class="required">*</span>
+                  <input type="text" id="edate" name="edate" value="{:I('edate')}">
+                </div>
+                <div class="search_btn">
+                  <input type="submit" value="查询">
+                </div>
+              </li>
+            </ol>
+          </form>
+        </div>    
+  <div id="jiesuan" class="mod">
+    <h2>代充记录</h2>
+    <div class="con">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th>编号</th>>
+            <th>花费金额</th>
+            
+
+<th>充值时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <volist name="list_data" id="vo">
+          <tr>
+            <td>{$vo.id}</td>
+            <td>{$vo.amount}</td>
+            <td>{$vo.create_time|date='Y-m-d',###}</td>
+          </tr>
+        </volist>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="pagehtml" class="pagenavi pagepp clearfix">{$_page}</div>
+</div>
+<link rel="stylesheet" type="text/css" href="__CSS__/jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+$().ready(function(){
+  $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+  });
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+  });
+});
+</script>
+</block>

@@ -1,0 +1,83 @@
+<extend name="Public/base"/>
+
+<block name="body">
+
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/media')}">双官网</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：设置客服问题</p>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+            <a class="" href="{:U('add','pid='.$pid)}"><span class="button_icon button_icon1"></span>新 增</a>
+            <!-- <a class="" href="javascript:;"><span class="button_icon button_icon2"></span>删 除</a> -->
+        </div>
+	</div>
+
+	<div class="data_list">
+		<table style="text-align:center">
+			<thead>
+				<tr>
+					<th style="text-align:center">分类标题</th>
+					<th style="text-align:center">分类标题URL</th>
+					<th style="text-align:center">子标题</th>
+					<th style="text-align:center">子标题参数</th>
+					<!--<th style="text-align:center">内容</th>-->
+					<th style="text-align:center">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="list">
+				<volist name="list" id="channel">
+					<tr>
+						<td>{:get_kefu_lists(false,$channel['titleurl'])}</td>
+						<td>{$channel['titleurl']}</td>
+						<td>{$channel.zititle}</td>
+						<td>{$channel.id}</td>
+						<!--<td style="max-width:900px;width:900px;white-space:nowrap;overflow:hidden;text-overflow: ellipsis" title="{$channel.contend}">{$channel.contend}</td>-->
+						<td>
+							<a  title="编辑" href="{:U('edit?id='.$channel['id'].'&pid='.$pid)}">编辑</a>
+							<a class="confirm ajax-get" title="删除" href="{:U('del?id='.$channel['id'])}">删除</a>
+						</td>
+					</tr>
+				</volist>
+				<else/>
+				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Kefu/index')}');
+    $(function() {
+    	//点击排序
+    	$('.list_sort').click(function(){
+    		var url = $(this).attr('url');
+    		var ids = $('.ids:checked');
+    		var param = '';
+    		if(ids.length > 0){
+    			var str = new Array();
+    			ids.each(function(){
+    				str.push($(this).val());
+    			});
+    			param = str.join(',');
+    		}
+
+    		if(url != undefined && url != ''){
+    			window.location.href = url + '/ids/' + param;
+    		}
+    	});
+    });
+</script>
+</block>

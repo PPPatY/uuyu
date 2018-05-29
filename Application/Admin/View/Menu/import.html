@@ -1,0 +1,55 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">批量导入 [{$data.title|default='顶级菜单'}]</a></li>
+        </ul>
+    </div>
+    
+    
+	<!-- 标签页导航 -->
+<div class="tab-wrap">
+	<div class="formtitle" style="margin-bottom: 0;"><span>批量导入 [顶级菜单]</span></div>
+	<div class="tab-content tab_content">
+	<!-- 表单 -->
+	<form id="form" action="{:U('import')}" method="post" class="form-horizontal" style="margin-left: 50px;">
+		
+		<!-- 基础文档模型 -->
+		<div id="tab1" class="tab-pane in tab1">
+			<div class="form-item cf">
+				<label class="item-label">导入的内容<span class="check-tips">（请按照导入格式输入）</span></label>
+				<div class="controls table_textarea">
+						<textarea name="tree" style="width: 310px;"></textarea>
+				</div>
+				<span class="check-tips">导入格式：标题|url(回车键)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标题|url</span>
+			</div>
+		</div>
+		<div class="form-item cf">
+			<button class=" submit_btn ajax-post " id="submit" type="submit" target-form="form-horizontal" style="margin-left: 0;margin-top: 20px;">确 定</button>
+			<button class="back_btn" type="button" onclick="window.location.href=&#39;{:U('index?pid='.$pid)}&#39;">返 回</button>
+			<input type="hidden" name="pid" value="{$pid}"/>
+			<input type="hidden" name="cate_id" value="{$cate_id|default=0}">
+		</div>
+	</form>
+	</div>
+</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+
+$('#submit').click(function(){
+	$('#form').submit();
+});
+
+
+$(function(){
+	//导航高亮
+	highlight_subnav('{:U('index')}');
+});
+</script>
+</block>

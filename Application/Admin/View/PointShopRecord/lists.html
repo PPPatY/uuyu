@@ -1,0 +1,206 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Spend/lists')}">站点</a></li>
+            <li><a href="{:U('PointType/lists')}">积分商城</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：用户积分使用记录</p>
+
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+        <!--显示状态搜索-->
+            <div class="input-list">
+                <label>用户账号：</label>
+                <input name="account" type="text" class="" value="{:I('account')}" placeholder="请输入账号">
+            </div>
+            <div class="input-list">
+                <div class="tools">
+                    <label>商品：</label>
+                    <select id="good_id" name="good_id" class="select_gallery" >
+                        <option value="">请选择</option>
+                        <volist name=":get_point_good_lists()" id="vo">
+                            <option value="{$vo.id}">{$vo.good_name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+            <div class="input-list">
+                <label>激活码：</label>
+                <input name="good_key" type="text" class="" value="{:I('good_key')}" placeholder="请输入激活码">
+            </div>
+            <div class="input-list">
+                <label>发货状态：</label>
+                    <select id="status" name="status" class="select_gallery" >
+                        <option value="">请选择</option>
+                        <option value="1">已发货</option>
+                        <option value="0">未发货</option>
+                    </select>
+            </div>
+            <div class="input-list">
+                <label>购买时间：</label>
+                <input type="text" id="time_start" name="time_start"  value="{:I('time_start')}" placeholder="起始时间" />
+                <span style="color: #B3B3B5;font-weight: bold;">—</span>
+                <div class="input-append date" id="datetimepicker" style="display:inline">
+                    <input type="text" id="time_end" name="time_end" value="{:I('time_end')}" placeholder="结束时间" />
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table style="table-layout: fixed;">
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th >用户</th>
+                        <th >购买商品</th>
+                        <th >购买数量</th>
+                        <th >购买地址</th>
+                        <th >激活码</th>
+                        <th >使用积分</th>
+                        <th >发货状态</th>
+                        <th >时间</th>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                <empty name="data" >
+                <tr>
+                <td colspan="8" class="text-center"> aOh! 暂时还没有内容! </td>
+                </tr>
+                <else />
+                    <volist name="data" id="vo">
+                        <tr>
+                            <td>{:get_user_account($vo['user_id'])}</td>
+                            <td class="copy" style="width: 200px;margin: auto;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{$vo.good_name}</td>
+                            <td>{$vo.number}</td>
+                            <td class="copy" style="width: 200px;margin: auto;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+                            <if condition="$vo.good_type eq 1">{$vo.user_name} {$vo.phone} {$vo.address}</if>
+                            </td>
+                            <td class="copy" style="width: 200px;margin: auto;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{:implode(',',json_decode($vo['good_key']))}</td>
+                            <td>{$vo.pay_amount}</td>
+                            <td><if condition="$vo.status eq 0">
+                            		<a color="3c95c8" title="点击确认发货" href="{:U('set_status',['ids'=>$vo['id'],'status'=>1,'msg_type'=>8])}" class="ajax-get">未发货</a>
+                            		<else/>
+                            		<font color="#333">已发货</font>
+                            		</if>
+                            </td>
+                            <td>{:set_show_time($vo['create_time'])}</td>
+                        </tr>
+                    </volist>
+                    </empty>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('lists')}');
+$(function(){
+    Think.setValue('account',"{:I('account')}");
+    Think.setValue('good_id',"{:I('good_id')}");
+    Think.setValue('status',"{:I('status')}");
+    Think.setValue('time_start',"{:I('time_start')}");
+    Think.setValue('time_end',"{:I('time_end')}");
+    $(".select_gallery").select2();
+			$(".select2-search--hide").select2({
+				minimumResultsForSearch: -1,
+			});
+	//搜索功能
+	$("#search").click(function(){
+		var starttime = $.trim($('#time_start').val());
+		var endtime = $.trim($('#time_end').val());
+		
+		if (starttime <= endtime) {
+		
+			var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+			window.location.href = url;
+		} else {
+			layer.msg('开始时间必须小于等于结束时间');
+		}
+		
+		return false;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+    $('#time_start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-right'
+    })
+    $('#time_end').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-right'
+    })
+
+	$('.copy').click(function(){
+		if($.trim($(this).text())=='')return false;
+		//捕获页
+		layer.open({
+		  type: 1,
+		  shade: 0.1,
+          shadeClose: true,
+		  title: false, //不显示标题
+		  area: ['550px', '80px'], //宽高
+		  content: $(this).text()
+		});
+	})
+})
+</script>
+</block>

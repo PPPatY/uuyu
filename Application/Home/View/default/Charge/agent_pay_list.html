@@ -1,0 +1,164 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/platform.css" rel="stylesheet">
+</block>
+
+<block name="body">
+	<style type="text/css">
+		@media screen and (min-width: 1480px) {
+			.trunk-search .tab{float: left;line-height: 0;}
+		}
+		.pagenation{position: absolute;text-align: center;line-height: 5vh;}
+	</style>
+    <div class="page-search normal_list charge-agentPayList-search">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>会长福利></span><span>代充记录</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_jilu.png"><span class="title_main">代充记录</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('Charge/agent_pay_list')}" method="post" enctype="multipart/form-data" class="clearfix">
+              <div class="tab" style="padding-bottom: 10px;">
+	           <a href="{:U('agent_pay')}" class="">给玩家代充</a>
+	           <a href="#" class="current">代充记录</a>
+	        </div>              
+		<div class="form-group  normal_space fr">
+                <input type="button" class="submit" id="search" value="查询"   url="{:U('Charge/agent_pay_list')}">
+              </div>
+              <div class="form-group  normal_space fr">
+                <label class="form-title select-title">充值时间：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="time-start" value="{:I('time-start')}"  placeholder="开始时间">
+                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="time-end" value="{:I('time-end')}" placeholder="结束时间">
+                </div>
+              </div>
+              <div class="form-group  normal_space fr">
+                    <label class="form-title select-title">游戏名称：</label>
+                    <select id="game_id" name="game_id" class="reselect select_gallery" style="max-width:180px;">
+                        <option value="">请选择游戏</option>
+                        <volist name=":get_game_list()" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}" title="{$vo.game_name}">{$vo.game_name}</option>
+                        </volist>
+                    </select>
+              </div>
+              <div class="form-group fr">
+                <input type="text" placeholder="请输入玩家账号" class="txt normal_txt" name="user_account" value="{:trim(I('user_account'))}">
+              </div>
+            </form>
+          </div>
+          
+          <div class="trunk-list list_normal">
+            <table class="table normal_table">
+                <tr class="odd">
+                  <th>游戏名称</th>
+                  <th>流水号</th>
+                  <th>代充金额</th>
+                  <th>实扣金额</th>
+                  <th>支付方式</th>
+                  <th>支付状态</th>
+                  <th>玩家账号</th>
+                  <th>充值时间</th>
+                </tr>
+                <empty name="list_data">
+                <tr><td colspan="8" style="text-align: center;height: 38vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                <else />
+                <volist name="list_data" id="s">
+                <tr>
+                  <td>{:get_game_name($s['game_id'])}</td>
+                  <td>{$s.pay_order_number}</td>
+                  <td>{$s.amount}</td>
+                  <td>{$s.real_amount}</td>
+                  <td>{:get_pay_way1($s['pay_way'])}</td>
+                  <td>{:get_status_text(0,$s['pay_status'])}</td>
+                  <td>{$s.user_account}</td>
+                  <td>{$s.create_time|date="Y-m-d H:i:s",###}</td>
+                </tr>
+              </volist>
+                </empty>
+            </table>
+            <div class="import fr">
+              <span class="txt"><span class="normal_tot">成功充值总计：</span>￥{$total_amount}</span>
+              <span class="txt"><span class="normal_tot">数据量：</span>{$count}条数据</span> 
+              <span class="btn"><a href="{:U('Export/expUser',array(
+            'id'=>1,
+            'user_account'=>I('user_account'),
+            'game_id'=>I('game_id'),
+            'time-start'=>I('time-start'),
+            'time-end'=>I('time-end'),
+            'start'=>I('start'),
+            'end'=>I('end'),
+            ))}" >导出数据(excel格式)</a>
+            </span>
+            </div>
+            
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>    
+    
+</block>
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+  setValue('game_id',{$Think.request.game_id|default="''"});
+  highlight_subnav('{:U('agent_pay')}');
+$().ready(function(){
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+   $('#sdate').datetimepicker({maxDate:'+1970/01/01',
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    scrollMonth:false,
+    scrollTime:false,
+    scrollInput:false,
+    timepicker:false
+  });
+  $(".select_gallery").select2();
+
+  $('#edate').datetimepicker({maxDate:'+1970/01/01',
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    scrollMonth:false,
+    scrollTime:false,
+    scrollInput:false,
+    timepicker:false
+  });
+
+	$("#search").click(function() {
+		if($('#sdate').val()!=''&&$('#edate').val()!=''&&$('#edate').val()<$('#sdate').val()){
+			layer.msg("开始时间必须小于等于结束时间");
+			return false;
+		}
+		
+		var that=$(this);
+		var url = that.attr('url');
+		var query = that.closest('form').find('input,select').serialize();
+		query += "&" + $('.jssearch').find('select').serialize();
+		query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+		query = query.replace(/^&/g, '');
+		if(url.indexOf('?') > 0) {
+			url += '&' + query;
+		} else {
+			url += '?' + query;
+		}
+		window.location.href = url;
+	});
+});
+</script>
+    
+</block>
+  

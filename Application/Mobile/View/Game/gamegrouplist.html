@@ -1,0 +1,46 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/game.css" rel="stylesheet" >
+<header class="header ">
+  <section class="wrap">
+    <a href="javascript:;" onclick="history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span><span class="table-cell word">分类</span></span></a>
+    <div class="caption">
+      <span class="table">
+        <span class="table-cell">
+        <if condition="$type_name">
+          {$type_name}({:count($data)})
+        <else/>
+          未查询到该分类
+        </if>
+        </span>
+      </span>
+    </div>
+  </section>
+</header>
+<div class="occupy"></div>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+<section class="trunker">
+  <section class="inner">
+  
+    <section class="contain">
+        <div class="tab-scroll">
+            <ul class="hot list text-pic-list">
+              <volist name="data" id="data">
+              <li class="clearfix">
+                <div class="item clearfix">
+                  <a href="gamedetail.html" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$data.icon}" class="icon"></a>
+                  <div class="butnbox"><a href="{$data.play_url}" class="butn">开始</a></div>
+                  <div class="text">
+                    <div class="title"><a href="gamedetail.html" class="name">{$data.game_name}</a></div>
+                    <p class="info"><span class="type">{$data.game_type_name}</span><span class="number"><i class="">{$data.play_num}</i>人在玩</span></p>
+                    <p class="slogan">{$data.features}</p>
+                  </div>
+                </div>
+              </li>
+              </volist>
+            </ul>
+        </div>
+    </section>
+  </section>
+</section>
+</block>

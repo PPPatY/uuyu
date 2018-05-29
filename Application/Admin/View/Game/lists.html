@@ -1,0 +1,272 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<style>
+    /*.navtab_list{ width:100%; border-bottom:1px solid #ddd; margin: 15px 0px; height: 65px;}*/
+    .navtab_list {
+			height: 36px;
+			border-bottom: solid 1px #d0dee5;
+			position: relative;
+			border-left: solid 1px #d3dbde;
+			margin: 15px 0px;
+		}
+		.navtab_list a {
+			float: left;
+			height: 37px;
+			line-height: 37px;
+			background: url(__IMG__/itabbg.png) repeat-x;
+			border-right: solid 1px #d3dbde;
+			font-size: 14px;
+			color: #000;
+			padding-left: 25px;
+			padding-right: 25px;
+			text-decoration: none;
+		}
+		.navtab_list a:hover {
+			border-bottom: 0;
+		}
+		.navtab_list a.tabchose {
+			text-decoration: none;
+			border-bottom: none;
+			color: #000;
+			height: 37px;
+			display: block;
+			background: url(__IMG__/itabbg1.png) repeat-x;
+			font-weight: bold;
+		}
+    .navtab_list_cs{ margin-top:20px;margin-left: 20px;}
+    .navtab_list_cs img{ margin:0px 8px;}
+    .data_list table td {
+        min-width: 50px;
+    }
+  </style>
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Game/lists')}">游戏</a></li>
+            <li><a href="{:U('Game/lists')}">游戏管理</a></li>
+            <li><a href="#">{$meta_title}列表</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">通过对接的自运营游戏为官方游戏，可进行cps渠道推广。</p>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+				<a class="" href="{:U('add?model='.$model['id'])}"><span class="button_icon button_icon1"></span>新 增</a>
+				<a class="ajax-post confirm " target-form="ids" url="{:U('del?model='.$model['id'])}"><span class="button_icon button_icon2"></span>删 除</a>
+            </div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list" style="margin-bottom:-15px;">
+            <!--游戏类型搜索END-->
+            <div class="input-list input-list-game search_label_rehab">
+                <label>游戏名称：</label>
+                <select id="game_id" name="game_name" class="select_gallery" >
+                    <option value="">请选择游戏</option>
+                    <volist name=":get_game_list()" id="vo">
+                        <option game-id="{$vo.id}" value="{$vo.game_name}">{$vo.game_name}</option>
+                    </volist>
+                </select>   
+            </div>
+
+            <div class="input-list input-list-game search_label_rehab">
+                <label>推荐状态：</label>
+                <select id="recommend_status" name="recommend_status" class="select_gallery" >
+                    <option value="">请选择推荐状态</option>
+                    <option value="0">不推荐</option>
+                    <option value="1">推荐</option>
+                    <option value="2">热门</option>
+                    <option value="3">最新</option>
+                    
+                </select>   
+            </div>
+
+            <div class="input-list input-list-game search_label_rehab">
+                <label>显示状态：</label>
+                <select id="game_status" name="game_status" class="select_gallery" >
+                    <option value="">请选择显示状态</option>
+                    <option value="1">显示</option>
+                    <option value="0">不显示</option>
+                </select>   
+            </div>
+            <input type="hidden" name="" value="" class="sortBy">
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('Game/lists','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list data_game_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">
+                            <label class="checked">
+								<input class="check-all" type="checkbox">
+								<i class="check_icon"></i>
+							</label>
+                        </th>
+                        <th style="text-align: center;">游戏ID</th>
+                        <th style="text-align: center;">游戏名称</th>
+                        <th style="text-align: center;">游戏类型</th>
+                        <th style="text-align: center;">游戏Appid</th>
+                        <th style="text-align: center;">推荐状态</th>
+                        <th style="text-align: center;">运营状态</th>
+                        <th style="text-align: center;">显示状态</th>
+                        <th ><a class="paixu" data-order='play_count'><if condition="$userarpu_order eq 4 and  $userarpu_order_type eq 'play_count'">在玩人数▲<elseif condition="$userarpu_order eq 3 and $userarpu_order_type eq 'play_count'"/>在玩人数▼<else />在玩人数 <img src="__IMG__/up-down.png" width="13px"></if></a></th>
+                        <th ><a class="paixu" data-order='sort'><if condition="$userarpu_order eq 4 and  $userarpu_order_type eq 'sort'">排序▲<elseif condition="$userarpu_order eq 3 and $userarpu_order_type eq 'sort'"/>排序▼<else />排序 <img src="__IMG__/up-down.png" width="13px"></if></a></th>
+                        <th >操作</th>
+                    </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+                    <empty name="list_data">
+                    <tr><td colspan="11">暂无数据</td></tr>
+                    <else/>
+                    <volist name="list_data" id="data">
+                        <tr>
+                            <td style="text-align: center;">
+                            	<label class="checked">
+								        <input class="ids" type="checkbox" value="{$data['id']}" name="ids[]">
+								        <i class="check_icon"></i>
+							        </label>
+                            </td>
+                            <td style="text-align: center;">{$data.id}</td>
+                            <td style="text-align: center;">{$data.game_name}</td>
+                            <td style="text-align: center;">{$data.game_type_name}</td>
+                            <td style="text-align: center;">{$data.game_appid}</td>
+                            <td style="text-align: center;">{:get_recommend_type($data['recommend_status'])}</td>
+                            <td style="text-align: center;">{:get_one_opentype_name($data['category'])}</td>
+
+                            <td style="text-align: center;">
+                                <if condition="$data.game_status eq 0">
+                                    <a class="chg_status" data-url="{:U('chgculumn',array('isstatus'=>1,'column'=>'game_status','newval'=>1,'game_id'=>$data['id']))}" href="javascript:;" oldval='{$data.game_status}' style="color: red ">不显示</a>
+                                <else/>
+                                    <a class="chg_status" data-url="{:U('chgculumn',array('isstatus'=>1,'column'=>'game_status','newval'=>0,'game_id'=>$data['id']))}" href="javascript:;" oldval='{$data.game_status}'>显示</a>
+                                </if>
+                            </td>
+
+                            <td ><input class="chgculumn chgculumngame" data-url="{:U('chgculumn',array('column'=>'play_count','game_id'=>$data['id']))}"  type="text" oldval="{$data.play_count}" value="{:play_num($data['id'])}"> <span style="color: #5897fb;"></span></td>
+
+                            <td><input class="chgculumn chgculumngame" data-url="{:U('chgculumn',array('column'=>'sort','game_id'=>$data['id']))}"  type="text" oldval="{$data.sort}" value="{$data.sort}"><span style="color: #5897fb;"></span></td>
+                            <td>
+                            <a href="{:U('Game/edit?id='.$data['id'])}">编辑</a>
+                            <a href="{:U('Game/del?ids='.$data['id'])}" class="confirm ajax-get">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    </empty>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script src="__STATIC__/layer/layer.js"></script>
+<script>
+<volist name=":I('get.')" id="vo">
+    Think.setValue('{$key}',"{$vo}");
+</volist>
+$(".select_gallery").select2();
+</script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Game/lists')}');
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+    $(".paixu").click(function(){
+        var that=$(this);
+        $data_order=that.attr('data-order');
+        $order_type='{$userarpu_order}';
+        if($order_type==''||$order_type=='4'){
+            $(".sortBy").attr('name','data_order');
+            val='3,'+$data_order;
+            $(".sortBy").attr('value',val);
+            $("#search").click();
+        }else if($order_type=='3'){
+            $(".sortBy").attr('name','data_order');
+            val='4,'+$data_order;
+            $(".sortBy").attr('value',val);
+            $("#search").click();
+        }
+    });
+    //点击排序
+    $('.list_sort').click(function(){
+        var url = $(this).attr('url');
+        var ids = $('.ids:checked');
+        var param = '';
+        if(ids.length > 0){
+            var str = new Array();
+            ids.each(function(){
+                str.push($(this).val());
+            });
+            param = str.join(',');
+        }
+
+        if(url != undefined && url != ''){
+            
+            window.location.href = url.replace(".html","") + '/ids/' + param;
+        }
+    });
+    //修改字段
+    $('.chg_status').click(function(){
+        that = $(this); 
+        $.get(that.attr('data-url'),function(data,status){
+            if(data.status==1){
+                location.reload();
+            }else{
+                layer.msg(data.msg);
+            }
+        });
+    });
+    $(".chgculumn").blur(function(){
+        that = $(this); 
+        $.get(that.attr('data-url'),{newval:that.val()},function(data,status){
+            if(data.status==1){
+                layer.tips('编辑成功！', that, {
+                  tips: [4, '#3595CC'],
+                  time: 1000
+                });
+            }else{
+                layer.msg(data.msg);
+            }
+        });
+    });
+})
+</script>
+</block>

@@ -1,0 +1,52 @@
+﻿html{
+    height: 100%;
+}
+/* content */
+#content {
+    margin: 70px 15px auto;
+}
+#content .online-bank {
+    border: 1px solid #b2c4e2;
+}
+.bank {
+    padding: 10px 0;
+    padding-left: 24px;
+}
+.bank li {
+    display: inline-block;
+    width: 128px;
+    height: 28px;
+    border: 1px solid #b2c4e2;
+    background: #fff;
+    margin: 5px;
+    padding: 5px 20px;
+}
+.bank li.active {
+    border: 1px solid #f30011;
+}
+.bank .radio {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.bank img {
+    width: 89%;
+    vertical-align: middle;
+}
+.btnGroup {
+    margin-top: 100px;
+    text-align: center;
+}
+.btn{
+    display: inline-block;
+    border: 0;
+    padding: 12px 70px;
+    color: #fff;
+    background: #ff6666;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #fe7171;
+}

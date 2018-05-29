@@ -1,0 +1,23 @@
+@charset "utf-8";
+.page-article {    background: url(../../images/20170913/trunk-bg.jpg) top center no-repeat #f2f4f5;
+    overflow: hidden;
+    padding-bottom: 60px;}
+.page-article .about {
+    background: #fff;
+    padding: 30px;
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+.page-article .about .abouttit {
+    text-align: center;
+}
+
+.page-article .about .aboutcon {
+    width: 1000px;
+    margin: 40px auto 0;
+    font-size: 16px;
+    color: #757575;
+    min-height: 400px;
+}

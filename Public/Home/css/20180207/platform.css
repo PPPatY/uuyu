@@ -1,0 +1,66 @@
+/* common */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #a5a6bb;
+}
+.select2-container--focus .select2-selection--single .select2-selection__rendered{color: #535875;}
+.right_container{background: #fff;}
+.trunk-content{margin: 20px 2% 0;}
+.trunk-search{padding-bottom: 20px;}
+/*.trunk-search .tab{line-height: 6vh;}*/
+.trunk-search .tab a{
+    display: inline-block;
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-radius: 0;
+    margin-right: -5px;
+    background:#F6F7F9;
+    color: #535875;
+}
+.trunk-search .tab a:nth-child(2){border-right: 1px solid #ddd;}
+.trunk-search .tab a:nth-child(3){border-right: 1px solid #ddd;margin-right: -4px;}
+.trunk-search .tab a:first-child{border-left: 1px solid #ddd;border-top-left-radius: 3px;border-bottom-left-radius: 3px;}
+.trunk-search .tab a:last-child{border-right: 1px solid #ddd;border-top-right-radius: 3px;border-bottom-right-radius: 3px;}
+.trunk-search .tab a.current {background:#26C7DB;color:#FFF;border: 1px solid #26C7DB;}
+
+.trunk-list .table3 tr { height: 5vh;}
+.trunk-list .table3 .r {padding-left:15px;color: #535875;}
+.trunk-list .table2 tr{height: 50px;}
+.trunk-list .table2 .l {text-align:right;color: #8B8CA0;width: 100px;}
+.trunk-list .table2 .l .req {color:red;display:inline-block;width:10px;text-align:center;}
+.trunk-list .table2 .r {padding-left:15px;color: #8B8CA0;}
+.trunk-list .table2 .r input.txt {
+    width: 198px;
+    height: 32px;
+    padding-left: 10px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    line-height: 32px;
+    color: #535875;
+}
+
+/* charge agent_pay_list */
+.charge-agentPayList-list .article {padding-top:0;}
+
+.trunk-list .table2 .btn {width:120px;height: 36px;background: #26C7DB;color: #fff;border-radius: 3px;border: none;}
+.trunk-list .table2 .btn:hover{background: #2bd8ed;}
+
+.trunk-list .table3 .money {color:#FF6E25;font-weight: 600;padding: 0 10px;}
+.trunk-list .table3 .accounts{padding: 0 10px;}
+.trunk-list .table3 select~.money {margin-left:10px;}
+.trunk-list .table3 .td1 {width:100px;color: #6a7082;font-weight:600;text-align: right;background: #F0EFF5;}
+.trunk-list .table3 .td1.nor_center{text-align: center;}
+
+.trunk-list .table2 .txt {width:220px;}
+.trunk-list .table2 .reselect {width:242px;}
+
+
+.table2 .form-radio label {position:relative;margin-right:20px;cursor:pointer;}
+.table2 .form-radio input {cursor:pointer;width:14px;height:14px;display:inline-block;position:absolute;top:0;left:0;margin:0;margin-top:2px;opacity:0;}
+.table2 .form-radio i {width:14px;height:14px;display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:5px;background:url(../../images/20180207/icon_normal_weixuanze.png) ;}
+.table2 .form-radio i.current {background-image:url(../../images/20180207/icon_xuanze.png);}
+

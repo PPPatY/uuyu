@@ -1,0 +1,185 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<style type="text/css">
+	.trunk-list{position: relative;min-height: 66vh;}
+	.pagenation{position: absolute;text-align: center;}
+</style>
+</block>
+
+<block name="body">
+    <div class="page-search normal_list query-recharge-search">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>数据管理></span><span>留存统计</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_ARPU.png">
+      	<span class="title_main">留存统计</span>
+      	<span class="details">根据日期，游戏，推广员分析用户流程率信息</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('Query/retention_analysis')}" method="post" enctype="multipart/form-data">
+              <div class="form-group normal_space fr">
+                <input type="button" class="submit" id="search" value="查询" url="{:U('Query/retention_analysis')}">
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">日期：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="start" placeholder="开始时间" value="{$Think.request.start}" >
+                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="end" placeholder="结束时间" value="{$Think.request.end}">
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="promote_id" name="promote_id" class="reselect select_gallery" style="min-width:170px;">
+                        <option game-id="" value="">全部渠道</option>
+                        <option game-id="{:session('promote_auth.pid')}" value="{:session('promote_auth.pid')}">自己</option>
+                        <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                    </select>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="game_id" name="game_id" class="reselect select_gallery"  style="width:180px;">
+                        <option game-id="" value="">请选择游戏</option>
+                        <volist name=":get_game_list()" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.game_name}</option>
+                        </volist>
+                    </select>
+              </div>
+            </form>
+          </div>
+      </div>
+
+    <div class="page-list query-recharge-list">
+      <div class="trunk-content article">
+          <div class="trunk-list">
+            <table class="table normal_table" id="datacontent"></table>
+            <table class="table normal_table" id="datatable" style="<notempty name='list_data'>display:none;</notempty>"><thead>
+                <tr class="odd">
+                  <th>日期</th>
+                  <if condition="$game_name neq ''">
+                    <th>游戏名称</th>
+                  </if>
+                  <th>新增玩家</th>
+                  <th>1日留存</th>
+                  <th>2日留存</th>
+                  <th>3日留存</th>
+                  <th>4日留存</th>
+                  <th>5日留存</th>
+                  <th>6日留存</th>
+                  <th>7日留存</th>
+                  <th>15日留存</th>
+                  <th>30日留存</th>
+                </tr></thead><tbody>
+                <empty name="list_data">
+                <tr><td colspan="11">暂无数据</td></tr>
+                <else />
+                <volist name="list_data" id="vo" mod="2">
+                <tr name="rows" class="<eq name='mod' value='1'>odd</eq>">
+                  <td>{$vo.time}</td>
+                  <if condition="$game_name neq ''">
+										<td title="{$game_name}">{:msubstr2($game_name,0,10)}</td>
+                  </if>
+                  <td>{$vo.register_num}</td>
+                  <td>{:round($vo['1']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['2']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['3']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['4']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['5']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['6']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['7']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['15']/$vo['register_num'],4)*100}%</td>
+                  <td>{:round($vo['30']/$vo['register_num'],4)*100}%</td>
+                </tr>
+                </volist>
+                </empty></tbody>
+            </table>
+            <notempty name="list_data">
+            <div class="pagenation clearfix"><div id="pagenation"></div><span class="rows" style="float:none;vertical-align:top;">共 {$count} 条记录</span></div>
+            </notempty>
+          </div>
+      </div>
+    </div>
+    </div> 
+</block>
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript" src="__JS__/20170831/pagination.js"></script>
+<script type="text/javascript" src="__JS__/20170831/string.js"></script>
+<script type="text/javascript" src="__JS__/20170831/tabpage.js"></script>
+<script type="text/javascript">
+highlight_subnav('{:U("retention_analysis")}');
+setValue('promote_id',{$Think.request.promote_id|default='""'});
+setValue('game_id','{$Think.request.game_id|default=""}');
+$().ready(function(){
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+   $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+  
+  $(".select_gallery").select2();
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+
+	$("#search").click(function() {
+		var sdate =$('#sdate').val();
+	    var edate =$('#edate').val();
+	    if(Date.parse(sdate) > Date.parse(edate)){
+	      layer.msg('开始时间必须小于等于结束时间');
+	      return false;
+	    }
+	  var that=$(this);  
+		var url = that.attr('url');
+		var query = that.closest('form').find('input,select').serialize();
+		query += "&" + $('.jssearch').find('select').serialize();
+		query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+		query = query.replace(/^&/g, '');
+		if(url.indexOf('?') > 0) {
+			url += '&' + query;
+		} else {
+			url += '?' + query;
+		}
+		window.location.href = url;
+	});
+  tablePage('datatable', 'datacontent', 'pagenation', [1, 2, 4, 5, 6, 10], false); 
+  
+  $("#game_id").change(function(){
+    var game_name = $('#game_id option:selected').text();
+    $("#game_name").val(game_name);
+  })
+
+  $("#promote_id").change(function(){
+    var account = $('#promote_id option:selected').text();
+    $("#promote_account").val(account);
+  })
+});
+    $(function () {
+        $('.select2-container--above').prop('width','358px');
+    })
+</script>
+    
+</block>
+  

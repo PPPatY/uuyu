@@ -1,0 +1,204 @@
+<extend name="Public/base"/>
+<block name="body">
+<style>
+    .navtab_list{ width:100%; 
+    .navtab_list a:first-child{ margin-left:0px;}
+    .navtab_list_cs{ margin-top:20px;margin-left: 20px;}
+    .navtab_list_cs img{ margin:0px 8px;}
+    .data_list table td {
+        min-width: 50px;
+    }
+    .main_content_dataoverview {padding-top: 0px !important;}
+    .f-pl-10 { padding-left: 0px !important;}
+    
+    /*radio样式*/
+	.navtab_list input {
+		margin: 0;
+		vertical-align: middle;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.navtab_list .radio input[type="radio"] {
+		opacity: 0;
+	}
+	.navtab_list .radio label {
+		display: inline-block;
+		position: relative;
+		padding-left: 5px;
+	}
+	.navtab_list .radio label::before {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		left: 5px;
+		top: 3px;
+		margin-left: -20px;
+		border: 3px solid #CFCFCF;
+		border-radius: 50%;
+		background-color: #fff;
+		-webkit-transition: border 0.15s ease-in-out;
+		-o-transition: border 0.15s ease-in-out;
+		transition: border 0.15s ease-in-out;
+	}
+	.navtab_list .radio-primary input[type="radio"]:checked+label::after {
+		border: 3px solid #3D94C9;
+		-webkit-transform: scale(1, 1);
+		-ms-transform: scale(1, 1);
+		-o-transform: scale(1, 1);
+		transform: scale(1, 1);
+	}
+	.navtab_list .radio label::after {
+		display: inline-block;
+		position: absolute;
+		content: " ";
+		width: 8px;
+		height: 8px;
+		left: 5px;
+		top: 3px;
+		margin-left: -20px;
+		border-radius: 50%;
+		-webkit-transform: scale(0, 0);
+		-ms-transform: scale(0, 0);
+		-o-transform: scale(0, 0);
+		transform: scale(0, 0);
+		-webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+		-moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+		-o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+		transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+	}
+	.top_nav_list {
+	    height: 40px;
+	    line-height: 50px;
+	}
+	.navtab_list a{color: #404040;}
+	.navtab_list a:hover{border-bottom: 0;}
+</style>
+<link rel="stylesheet" href="__CSS__/open-egret.css">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div class="main-place">
+            <span class="main-placetitle"></span>
+            <ul class="main-placeul">
+                <li><a href="{:U('Statistics/overview')}">统计</a></li>
+                <li><a href="{:U('Statistics/overview')}">总览</a></li>
+                <li><a href="#">数据概况</a></li>
+            </ul>
+            <p class="description_text" style="height: 40px;line-height: 40px;">说明：快速查看1天，7天，30天，1年的全站注册人数和充值金额（此处充值金额只包含游戏充值，不包含账户未消费的平台币）</p>
+        </div>
+        <div class="cf top_nav_list navtab_list" style="height:40px;line-height:50px;margin-left:34px;"> 
+        	参与统计设置：
+			<a href="{:U('data_profile',array('isbd'=>1,'key'=>I('key')))}" class="isbdbut radio radio-primary">
+				<input type="radio" class="isbdrt" id="radio1" value="0" name="iiss" <if condition="I('isbd') eq 1"> checked="checked" </if>>
+				<label for="radio1">排除绑币</label>
+			</a>
+			<a href="{:U('data_profile',array('key'=>I('key')))}" class="isbdbut radio radio-primary">
+				<input type="radio" class="isbdrt" id="radio2" value="1" name="iiss" <if condition="I('isbd') neq 1"> checked="checked" </if>>
+				<label for="radio2">包含绑币</label>
+			</a>
+        </div>
+        <div class="col-md-10 f-pl-10 main_content_dataoverview">
+        <div class="m-box m-chart " style="height: 700px;">
+            <ul class="nav nav-pills jsnav" role="tablist">
+                <li role="presentation" <if condition="$Think.get.key eq 1 or $Think.get.key eq ''"> class="active"</if>><a href="{:U('Statistics/data_profile',array('key'=>1,'isbd'=>I('isbd')))}" aria-controls="dayRank" role="tab" data-toggle="tab">1天</a></li>
+                <li role="presentation" <if condition="$Think.get.key eq 2"> class="active"</if>><a href="{:U('Statistics/data_profile',array('key'=>2,'isbd'=>I('isbd')))}" aria-controls="weekRank" role="tab" data-toggle="tab">7天</a></li>
+                <li role="presentation" <if condition="$Think.get.key eq 3"> class="active"</if>><a href="{:U('Statistics/data_profile',array('key'=>3,'isbd'=>I('isbd')))}" aria-controls="monthRank" role="tab" data-toggle="tab">30天</a></li>
+                <li role="presentation" <if condition="$Think.get.key eq 4"> class="active"</if>><a href="{:U('Statistics/data_profile',array('key'=>4,'isbd'=>I('isbd')))}" aria-controls="monthRank" role="tab" data-toggle="tab">1年</a></li>
+            </ul>
+            <div class="mchart" style="height: 650px;">
+                <div id="maindata_profile" style="height:600px"></div>
+            </div>
+        </div>   
+        </div>
+        <!-- ECharts单文件引入 -->
+        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+         <script type="text/javascript">
+            // 路径配置
+            require.config({
+                paths: {
+                    echarts: 'http://echarts.baidu.com/build/dist'
+                }
+            });
+     
+            // 使用
+            require(
+                [
+                    'echarts',
+                    'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                    'echarts/chart/line'
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('maindata_profile')); 
+                    
+                    option = {
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['注册人数（人）','充值金额（元）']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        splitLine :{
+            show :false,
+        },
+        <if condition="$qingxie gt 15">
+            axisLabel: {
+            rotate: 30,
+            },
+        </if>
+        boundaryGap: false,
+        data: {$xAxis}
+    },
+   
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'注册人数（人）',
+            type:'line',
+            stack: '总量',
+            data:{$xzdate}
+        },
+        {
+            name:'充值金额（元）',
+            type:'line',
+            stack: '总量',
+            data:{$xsdate}
+        },
+    ]
+};
+                    // 为echarts对象加载数据 
+                    myChart.setOption(option); 
+                }
+            );
+        </script>
+<script>
+//导航高亮
+function highlight_subnav(url){
+    $('.side-sub-menu').find('a[href="'+url+'"]').closest('li').addClass('current');
+    /*显示选中的菜单*/
+    $('.side-sub-menu').find("a[href='" + url + "']").parent().parent().prev("h3").find("i").removeClass("icon-fold");
+    $('.side-sub-menu').find("a[href='" + url + "']").parent().parent().show()
+}
+highlight_subnav('{:U('Statistics/data_profile')}');
+$('.isbdbut').click(function(){
+    that = $(this);
+    url = that.attr('href');
+    location.href = url;
+});
+</script>
+</block>

@@ -1,0 +1,72 @@
+<extend name="Public/base" />
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+	<!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Article/index')}">文章</a></li>
+            <li><a href="#">回收站({:count($list)})</a></li>
+        </ul>
+    </div>
+    <div class="cf top_nav_list">
+		<div class="fl button_list">
+        
+        <div class="tools auth-botton">
+            <a url="{:U('article/clear')}" class=" ajax-get"><span class="button_icon button_icon6"></span>清 空</a>
+            <a url="{:U('article/permit')}" class=" ajax-post" target-form="ids"><span class="button_icon button_icon19"></span>还 原</a>
+        </div>
+        </div>
+    </div>
+	<!-- 数据列表 -->
+	<div class="data_list">
+			<table class="">
+    <thead>
+        <tr>
+		<th class="">
+			<label class="checked">
+				<input class="check-all" type="checkbox">
+				<i class="check_icon"></i>
+			</label>
+		</th>
+		<th class="">编号</th>
+		<th class="">标题</th>
+		<th class="">创建者</th>
+		<th class="">类型</th>
+		<th class="">分类</th>
+		<th class="">删除时间</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="list" id="vo">
+		<tr>
+            <td>
+            	<label class="checked">
+					<input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+					<i class="check_icon"></i>
+				</label>
+            </td>
+			<td>{$vo.id} </td>
+			<td>{$vo.title}</td>
+			<td>{$vo.username} </td>
+			<td><span>{:get_document_type($vo['type'])}</span></td>
+			<td><span>{:get_cate($vo['category_id'])}</span></td>
+			<td><span>{$vo.update_time|time_format}</span></td>
+			<td><a href="{:U('article/permit?ids='.$vo['id'])}" class="ajax-get">还原</a>
+                </td>
+		</tr>
+		</volist>
+	</tbody>
+    </table> 
+        
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>

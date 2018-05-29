@@ -1,0 +1,99 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<style>
+.navtab_list {background:#FFF;width:100%;border-bottom:1px solid #ddd;margin:0 0 15px;height:36px;padding-top:25px;}
+.navtab_list a,.tabnav1711 li {font-size:15px;border:1px solid transparent;display:block;width:140px;height:35px;line-height:35px;text-align:center;float:left;color:#333;}
+.navtab_list a.tabchose,.tabnav1711 li.current {border-color:#ddd;border-bottom-color:#FFF;background:#FFF;color:#3C95C8;border-top-left-radius:3px;border-top-right-radius:3px;}
+
+.tabnav1711 li a {color:inherit;}
+.tabcon1711 .submit_btn:visited,.tabcon1711 .submit_btn:active,.tabcon1711 .submit_btn:link {color:#FFF;}
+
+.tab_nav .tab-nav {}
+</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">站点</a></li>
+            <li><a href="{:U('Model/index')}">推广员后台</a></li>
+            <li><a href="#">导航管理</a></li>
+        </ul>
+    </div>
+  
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+            <a class="" href="{:U('add','pid='.$pid)}"><span class="button_icon button_icon1"></span>新 增</a>
+            <a class=" list_sort" url="{:U('sort',array('pid'=>I('get.pid',0)),'')}"><span class="button_icon button_icon18"></span>排序</a>
+        </div>
+	</div>
+
+	<div class="data_list">
+		<table>
+			<thead>
+				<tr>
+					<th>
+						<label class="checked">
+							<input class="check-all" type="checkbox">
+							<i class="check_icon"></i>
+						</label>
+					</th>
+					<th>ID</th>
+					<th>导航名称</th>
+					<th>导航地址</th>
+                    <th>排序</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="list">
+				<volist name="list" id="channel">
+					<tr>
+						<td>
+							<label class="checked">
+								<input class="ids" type="checkbox" name="" id="" value="{$channel['id']}"> 
+								<i class="check_icon"></i>
+							</label>
+						</td>
+						<td>{$channel.id}</td>
+						<td><a href="{:U('index?pid='.$channel['id'])}">{$channel.title}</a></td>
+						<td>{$channel.url}</td>
+                        <td>{$channel.sort}</td>
+						<td>
+							<a title="编辑" href="{:U('edit?id='.$channel['id'].'&pid='.$pid)}">编辑</a>
+							<a href="{:U('setStatus?ids='.$channel['id'].'&status='.abs(1-$channel['status']))}" class="ajax-get">{$channel.status|show_status_op}</a>
+							<a class="confirm ajax-get" title="删除" href="{:U('del?id='.$channel['id'])}">删除</a>
+						</td>
+					</tr>
+				</volist>
+				<else/>
+				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	highlight_subnav('{:U('Channel/index')}');
+    $(function() {
+    	//点击排序
+    	$('.list_sort').click(function(){
+    		var url = $(this).attr('url');
+    		var ids = $('.ids:checked');
+    		var param = '';
+    		if(ids.length > 0){
+    			var str = new Array();
+    			ids.each(function(){
+    				str.push($(this).val());
+    			});
+    			param = str.join(',');
+    		}
+
+    		if(url != undefined && url != ''){
+    			window.location.href = url + '/ids/' + param;
+    		}
+    	});
+    });
+</script>
+</block>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta property="qc:admins" content="71472552776166367">
+<meta property="qc:admins" content="0500007726643536375">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-app-status-bar-style" content="black">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+<meta http-equiv="expires" content="0">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1,minimal-ui">
+<meta name="full-screen" content="yes">
+<title>{$data.title}</title>
+<style>
+body, html, a, img, div, form, select, input, ul, ol, li, h1, h2, h3, h4, h5, h6, dd, dl, dt, p, label, em, span, cude, i  { padding:0;margin: 0;vertical-align: middle;}
+body,.submit { font-family:arial,"微软雅黑",STHeiti,"Microsoft Yahei",tahoma,'Hiragino Sans GB',sans-serif;  }
+body{background:url(../images/bg.jpg) no-repeat fixed;background-size: cover;background-position: right 0; background:#142942;}
+p, ul, li { margin:0px; padding:0px; list-style:none;}
+h1 { margin: 10px 0; text-align: center; font-size: 16px; }
+h2 { text-align: center; }
+hr { border: 0; height: 1px; background-color: #CCC; margin: 5px 0; }
+i, em{ font-style:normal;}
+a { color: #FFF; text-decoration:none; cursor:pointer;}
+a:hover { color: #fff;}
+
+body{max-width:640px; min-width:320px; margin: 0px auto; color:#333;}
+body,html{ height:100%;}
+
+.con{background:#fff;min-height: 100%}
+.protocol{ padding:20px 2%; line-height:30px;}
+.protocol h3{ font-size:18px; height:40px; line-height:40px; margin-bottom:40px;}
+.protocol div img {width:100%!important;}
+</style>
+</head>
+
+<body>
+<div class="con" >
+  <div class="protocol">
+   <h3 align="center">{$data.title}</h3>
+      <h5>{:time_format($data['create_time'])}</h5>
+      <div>
+          {$data.content}
+      </div>
+  </div>
+</div>
+</body>
+</html>

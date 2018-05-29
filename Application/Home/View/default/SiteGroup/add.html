@@ -1,0 +1,144 @@
+<extend name="Public/mix_ base"/>
+<block name="css">
+</block>
+<block name="location">
+<div class="location-container">当前位置：<span>联盟站点</span><span>QQ群列表</span><span>添加QQ群</span></div>
+</block>
+<block name="body">
+    <div class="page-form siteGift-add-form">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_group.png">{$meta_title}</div>
+      <div class="trunk-content article">
+        <div class="trunk-list">
+          <form action="" novalidate="novalidate" method="post" id="data">
+              <table class="table2">
+                  <tr>
+                      <td class="l">游戏名称：</td>
+                      <td class="r">
+                          <select name="site_game_id" id="game_id" class="reselect select_gallery" style="min-width:220px;">
+                              <volist name="game" id="vo">
+                              <option value="{$vo.id}" >{$vo.game_name}</option>
+                              </volist>
+                          </select>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">加群状态：</td>
+                      <td class="r form-radio jspayradio">
+                          <label><input type="radio" name="status" class="name txt" value="1" checked="checked"><i></i><span>开启</span></label>
+                          <label><input type="radio" name="status" class="name txt" value="2"><i></i><span>关闭</span></label>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">QQ群名称：</td>
+                      <td class="r">
+                          <input name="group_name" class="name txt" id="group_name" value="{$data.group_name}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">QQ群号：<i style="color:red;">*</i></td>
+                      <td class="r">
+                          <input name="group_code" type="" class="name txt" id="group_code" value="{$data['group_code']}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">PC端应用地址：</td>
+                      <td class="r">
+                          <input name="pc_url" class="name txt" id="pc_url" value="{$data.pc_url}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">入驻人数：<i style="color:red;">*</i></td>
+                      <td class="r">
+                          <input name="in_num" class="name txt" id="in_num" type="" value="{$data.in_num}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l"></td>
+                      <td class="r">
+                          <button type="button" class="tjbnt btn" onclick="save()">保存</button>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+    <script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+  <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+  <script type="text/javascript">
+
+      $(function() {
+
+          $('.date').datetimepicker({scrollMonth:false,
+              lang:'ch',
+              format:'Y-m-d',
+              formatDate:'Y-m-d',
+              timepicker:false,
+          });
+          
+          $(".select_gallery").select2();
+          
+          $('.jspayradio input:checked').siblings('i').addClass('current');
+    
+          $('.jspayradio input').click(function() {
+              var that=$(this);
+              $('.jspayradio i').removeClass('current');
+              if (that.prop('checked')) {
+                  that.siblings('i').addClass('current');
+              }
+          });
+
+      });
+
+  var sub = true;
+  function save() {
+      if(!sub){
+          return false;
+      }
+      if($('#group_code').val()==''){
+      layer.msg('请填写QQ群号', {icon: 2});
+        return false;
+      }
+      if($('#in_num').val()==''){
+      layer.msg('请填写入驻人数', {icon: 2});
+        return false;
+      }
+      var data = $("#data").serialize();
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('add')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+                  setTimeout(function () {
+                      location.href = "{:U('index')}";
+                  },1000)
+              }
+              else {
+                  sub = true;
+                  if(res.info=='添加失败:该游戏已经存在'){
+                      layer.msg('添加失败：该游戏已经拥有QQ群号', {icon: 2});
+                      return false;
+                  }else{
+                      layer.msg(res.info, {icon: 2});
+                  }
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+  //导航高亮
+  highlight_subnav('{:U('index')}');
+  </script>
+</block>

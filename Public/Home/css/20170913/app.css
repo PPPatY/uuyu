@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.header {background:rgba(0,0,0,.1);position:absolute;top:0;left:0;right:0;width:100%;z-index:20;}
+
+.banner {background:url(../../images/20170913/banner_g.png) center 0 no-repeat;height:360px;position:relative;}
+
+
+.banner .qqbtn {background:#26C7DB;color:#FFF;width:108px;height:44px;display:block;border-radius:5px;text-align:center;line-height:44px;position:absolute;top:220px;left:0;right:0;margin:0 auto;}
+
+
+.page-list .page-title {padding:20px 0;font-size:22px;}
+.page-list .page-condition {position:relative;}
+.page-condition .trunk-table {position:relative;border:1px solid #EBEBEB;background:#F8F8F8;padding:10px 0;border-radius:2px;}
+.page-condition .trunk-row {line-height:42px;}
+.page-condition .trunk-cell-first {width:8%;float:left;text-align:right;}
+.page-condition .trunk-cell-last {width:91%;float:right;}
+.page-condition .trunk-cell .trunk-item {padding:3px 10px;border-radius:2px;margin:0 5px;}
+.page-condition .trunk-cell .trunk-item:hover,
+.page-condition .trunk-cell .trunk-item.active {background:#27C6DB;color:#FFF;}
+
+.trunk-list ul {padding-top:20px;}
+.trunk-list li {width:20%;float:left;padding:5px 0;}
+.trunk-list .item {margin-right:10px;padding:10px 0 10px 0px;}
+.trunk-list .item .icon{float:left;width:70px;height:70px;border-radius:25%;}
+.trunk-list .item .text{margin-left:80px;}
+.trunk-list .item .text a {font-size:14px;padding-top:10px;color:#333;cursor:default;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.trunk-list .item .text p {color:#aaa;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.trunk-list .item .text p i {background:#D2D2D2;width:20px;height:20px;display:inline-block;vertical-align:middle;margin-right:5px;border-radius:2px;}
+.trunk-list .item .text p i.i1 {background:#D2D2D2 url(../../images/20170913/android.png) center center no-repeat;background-size:90% 90%;}
+.trunk-list .item .text p i.i2 {background:#D2D2D2 url(../../images/20170913/ios.png) center center no-repeat;background-size:90% 90%;}

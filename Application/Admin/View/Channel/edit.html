@@ -1,0 +1,62 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style type="text/css">
+		.select2-container{width: 347px !important;}
+	</style>
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('Model/index')}">系统</a>
+			</li>
+			<li>
+				<a href="{:U('Model/index')}">系统设置</a>
+			</li>
+			<li>
+				<a href="#">{$meta_title}</a>
+				<notempty name="pid">
+					&nbsp;&nbsp;[&nbsp;父导航：
+					<a href="{:U('index','pid='.$pid)}">{$parent.title}</a>&nbsp;]
+				</notempty>
+			</li>
+		</ul>
+	</div>
+	<form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+		<div class="formtitle"><span>新增导航</span></div>
+		<input type="hidden" name="pid" value="{$pid}">
+		<ul class="form_info form_info_channel">
+			<li><label><span style="color: red;">* </span>导航标题：</label>
+				<div class="form_main"><input type="text" class="" name="title" value="{$info.title|default=''}" placeholder="请输入导航标题"></div><i class="form_hint">用于显示的文字</i></li>
+			<li><label><span style="color: red;">* </span>导航链接：</label>
+				<div class="form_main"><input type="text" class="" name="url" value="{$info.url|default=''}" placeholder="请输入导航链接"></div><i class="form_hint">用于调转的URL，支持带http://的URL或U函数参数格式</i></li>
+			<li>
+				<label>新窗口打开：</label>
+				<div class="form_main">
+					<span class="form_select">
+		            	<select name="target" class="select_gallery select2-search--hide">
+							<option value="0" <eq name="info.target" value="0" >selected</eq>>否</option>
+							<option value="1" <eq name="info.target" value="1" >selected</eq>>是</option>
+		                </select>
+					</span>
+				</div>
+				<i class="form_hint">是否新窗口打开链接</i>
+			</li>
+			<li><label>优先级：</label>
+				<div class="form_main"><input type="text" class="" name="sort" value="{$info.sort|default='0'}" placeholder="请输入优先级"></div><i class="form_hint">导航显示顺序</i></li>
+			<li><label>&nbsp;</label><input type="hidden" name="id" value="{$info.id|default=''}"><input type="submit" class="form_btn ajax-post" value="确定" target-form="form-horizontal"><button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button></li>
+		</ul>
+	</form>
+</block>
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav('{:U('Channel/index')}');
+		$(".select_gallery").select2();
+		$(".select2-search--hide").select2({
+			minimumResultsForSearch: -1,
+		});
+	</script>
+</block>

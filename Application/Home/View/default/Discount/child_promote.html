@@ -1,0 +1,89 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/game.css" rel="stylesheet" >
+</block>
+
+<block name="body">
+    <div class="page-list normal_list discount-child_promote-list ">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>会长福利</span><span>子渠道福利</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_yve.png"><span class="title_main">子渠道福利列表</span>
+      </div>
+      <div class="trunk-content article">
+        <div class="trunk-search clearfix">
+            <div class="tab fl">
+              <a href="{:U('index')}" class="">我的福利</a>
+              <a href="#" class="current">子渠道福利</a>
+            </div>
+            <form action="{:U('child_promote')}" method="post" enctype="multipart/form-data">
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              <div class="form-group normal_space fr">
+                  <select id="game_id" name="game_id" class="reselect select_gallery" style="width:180px;">
+                      <option value="">请选择游戏</option>
+                      <volist name=":get_game_list()" id="vo">
+                          <option value="{$vo.id}">{$vo.game_name}</option>
+                      </volist>
+                  </select>
+              </div>
+              <div class="form-group fr">
+                  <select name="promote_id" class="reselect select_gallery" style="min-width:170px;" >
+                      <option value="" >全部子渠道</option>
+                      <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                      <option value="{$vo.id}" >{$vo.account}</option>
+                      </volist>
+                  </select>
+              </div>
+            </form>
+        </div>
+        <div class="trunk-list list_normal" style="min-height: 56vh;">
+          <table class="table normal_table">
+              <tr class="odd">
+                <th>ID</th>
+                <th>所属推广员</th>
+                <th>游戏名称</th>
+                <th>统一折扣</th>
+                <th>代充折扣</th>
+              </tr>
+              <empty name="lists_data">
+              <tr><td colspan="7" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+              <else />
+              <volist name="lists_data" id="vo" mod="2">
+              <tr class="<eq name='mod' value='1'>odd</eq>">
+                  <td>{$vo.id}</td>
+                  <td>{:get_promote_account($vo['promote_id'])}</td>
+                  <td>{$vo.game_name}</td>
+                  <td>{$vo.game_discount}</td>
+                  <td>{$vo.promote_discount}</td>
+              </tr>
+              </volist>
+              </empty>
+          </table>
+          <div class="pagenation clearfix">{$_page}</div>
+        </div>
+      </div>
+      <div class="page-explain discount-child_promote-explain">
+      <div class="trunk-content article border_normal">
+        <table class="desccontent">
+            <tr><td class="title">子渠道福利说明：</td><td class="det">子渠道福利包含该账户下二级渠道享受的会长代充折扣，推广渠道首充续充享受的充值折扣福利；</td></tr>
+            <tr><td></td><td class="det">子渠道福利需平台设置才可享受，如若没有，则不享受福利。</td></tr>
+        </table>
+      </div>
+    </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+    <script>
+      highlight_subnav("{:U('index')}");
+      setValue('promote_id',{$Think.request.promote_id|default='""'});
+      setValue('game_id',{$Think.request.game_id|default='""'});
+      $(function() {
+          $(".select_gallery").select2();
+      });
+    </script>
+</block>

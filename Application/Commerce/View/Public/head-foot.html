@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+	<title>{$meta_title}-商务专员管理系统</title></title>
+
+    <link href="{:get_cover(C('MB_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+	<link rel="stylesheet" type="text/css" href="__CSS__/index.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/iconfont.css">
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/buydetail.css">
+	<link rel="stylesheet" href="__CSS__/registsearch.css">
+	<link rel="stylesheet" href="__CSS__/summary.css">
+
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="__JS__/jquery-3.2.1.min.js"></script>
+	<script src="__JS__/bootstrap.min.js"></script>
+	<script src="__JS__/summary.js"></script>
+	<script src="__JS__/buydetail.js"></script>
+	<script src="__JS__/registsearch.js"></script>
+    <script src="__STATIC__/layer/layer.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	</script>
+	<style type="text/css">
+	</style>
+</head>
+
+<body>
+	<!--头部导航start-->
+	<div class="search-nav">
+		<div class="container-login">
+      <a href="javascript:" class="headerLogo">
+        <if condition="get_cover(C('MB_LOGO'),'path') neq ''">
+          <img src="{:get_cover(C('MB_LOGO'),'path')}">
+        <else />
+          <img src="__IMG__/h5commerce_logo.png">
+        </if>
+      </a>
+			<div class="nav-login">
+				<span>今天是：</span>
+				<span id="Clock"></span>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你好：</span>
+				<span>{:$_SESSION['user_auth_commerce']['account']}</span>
+				<a href="javascript:;" class="loginout">
+					<i class="iconfont icon-logout" style="color:#fff;"></i>
+					<span>退出</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!--头部导航end-->
+    <block name="body"> </block>
+
+	<!--底部start-->
+	<div class="footer">
+		<ul class="footer_nav">
+			<li>
+				<span>客服电话：{:C('MB_TEL')}</span>
+				<span>&nbsp;&nbsp;客服邮箱：{:C('MB_EMAIL')}</span>
+				<span>&nbsp;&nbsp;服务时间：9:00-18:00</span>
+			</li>
+			<li>
+				<span>网络备注：{:C('MB_RECORD')}&nbsp;&nbsp;网络文化经营许可证编号：{:C('MB_LICENSE')}&nbsp;&nbsp;版权所有：{:C('MB_COPYRIGHT')}</span>
+			</li>
+		</ul>
+	</div>
+<!--底部end-->
+<block name="script"></block>
+</body>
+</html>

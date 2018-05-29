@@ -1,0 +1,44 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <form id="form" action="{:U('edit')}" method="post" class="form-horizontal">
+    	<div class="tab-wrap">
+        <div class="formtitle"><span>编辑路由信息</span></div>
+        <ul class="form_info ">
+            <li><label>原始网址：</label><input name="full_url" value="{$data.full_url}" type="text" class=""><i class="form_hint">完整url， 如：portal/list/index?id=1</i></li>
+            <li><label>显示网址：</label><input name="url" value="{$data.url}" type="text" class=""><i class="form_hint">实际显示的url</i></li>
+            <li><label>是否启用：</label><span class="form_radio table_radio" style="width: 347px;">
+            	<div class="radio radio-primary">
+					<input type="radio" id="radio1" value="0" name="status" <eq name="data.status" value="0">checked</eq>>
+					<label for="radio1">禁用</label>
+				</div>
+				<div class="radio radio-primary">
+					<input type="radio" id="radio2" value="1" name="status" <eq name="data.status" value="1">checked</eq>>
+					<label for="radio2">启用</label>
+				</div>
+            </span><i class="form_hint">是否启用</i></li>
+            <li><label>&nbsp;</label><input type='hidden' name="id" value="{$data.id}" ><input type="submit" id="submit" value="确认保存" target-form="form-horizontal" class="form_btn ajax-post"><button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button></li>
+        </ul>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('Route/lists')}');
+
+		$('#submit').click(function(){
+			$('#form').submit();
+		});
+	</script>
+</block>

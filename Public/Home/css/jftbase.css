@@ -1,0 +1,47 @@
+﻿/**reset css*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: '\5FAE\8F6F\96C5\9ED1'; /*微软雅黑 unicode编码*/
+    color: #333333;
+    font-size: 14px;
+}
+input, textarea, keygen, select, button {
+    font-family: '\5FAE\8F6F\96C5\9ED1'; 
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+th {
+    text-align:inherit;
+}
+img {
+    border:none;
+    display: inline-block;
+}
+iframe {
+    display:block;
+}
+abbr,acronym {
+    border:none;
+    font-variant:normal;
+}
+del {
+    text-decoration:line-through;
+}
+address,caption,cite,code,dfn,em,th,var {
+    font-style:normal;
+    font-weight:500;
+}
+ol,ul{
+    list-style:none;
+}
+caption,th {
+    text-align:left;
+}
+a {
+    text-decoration:none;cursor: pointer;
+}

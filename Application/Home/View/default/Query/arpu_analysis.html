@@ -1,0 +1,323 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<style type="text/css">
+ .keywords_information {margin-left:15px;cursor:pointer;}
+.keywords_information .keywords_mark {height:35px;line-height:35px;color:#4A90F0;}
+.keywords_information .keywords_mark span{border-bottom:1px solid transparent;}
+.keywords_information .keywords_mark:hover span {border-bottom-color:#4A90F0;}
+.keywords_information .keywords_content {transition:opacity 1.2s,visibility 1.5s;}
+.keywords_information .keywords_content:before {margin-left:41px;}
+.keywords_information .keywords_content .keywords_close {position:absolute;right:0;top:0;width:25px;height:40px;line-height:35px;color:#515974;}
+.keywords_information .keywords_list span:first-child {width:160px;}
+.keywords_information .keywords_list span:last-child {width:228px;}
+.keywords_information {position:relative;display:inline-block;}
+.keywords_information .keywords_mark {display:block;font-size:12px;font-style:normal;font-weight:normal; }
+.keywords_information .keywords_content.active {visibility:visible;opacity:1;transition:visibility 1.5s,opacity 1s;}
+.keywords_information .keywords_content {visibility:hidden;opacity:0;
+    position:absolute;width:435px;z-index:10;background:#fff;border-radius:5px;
+    border: 1px solid #E7ECEF;
+    box-shadow: 1px 1px 15px rgba(0,0,0,.1);
+    top:10px;left:72px;
+}
+
+.keywords_information .keywords_title {
+    height:40px;line-height:40px;background-color:#FAFAFA;
+    border-top-left-radius:5px;border-top-right-radius:5px;color:#515974;
+    padding-left:10px;font-size:12px;
+}
+.keywords_information .keywords_list {overflow:hidden;clear:both;padding:5px;margin:0 8px;font-size:10px;border-bottom:1px solid #EBEEF5;}
+.keywords_information .keywords_list:last-child {border-bottom:none;}
+.keywords_information .keywords_list span {display:inline-block;display: block;font-weight: normal;color: #515974;
+    float: left;
+    line-height: 30px;
+    width: 420px;}
+    .keywords_information .keywords_list span:last-child{color: #a5a6bb;}
+.keywords_information .keywords_list span:first-child {width:160px;margin-right:20px;}
+.chakan{
+      font-size: 14px;
+      font-weight: normal;
+      color: #26C7DB;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+  }
+.chakan:hover{color: #2bd8ed;}
+.trunk-list{position: relative;min-height: 66vh;}
+.pagenation{text-align: center;}
+</style>
+</block>
+
+<block name="body">
+    <div class="page-search normal_list query-recharge-search">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>数据管理></span><span>ARPU统计</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_ARPU.png">
+      	<span class="title_main">ARPU统计</span>
+      	<span class="details">根据日期，游戏，推广员分析ARPU等相关数据信息</span>
+      	<div class="keywords_information" style="clear: both;">
+        <i class="keywords_mark"><span>关键词说明</span></i>
+        <ul class="keywords_content">
+            <li class="keywords_title">关键词说明<a href="javascript:;" class="keywords_close"><img src="__IMG__/20180207/btn_normal_close.png"/></a></li>
+            <li class="keywords_list">
+                <span class="">活跃玩家</span>
+                <span class="">当天登录的玩家总数</span>
+            </li>
+            <li class="keywords_list">
+                <span class="">付费玩家</span>
+                <span class="">当天付费的玩家数量</span>
+            </li>
+            <li class="keywords_list">
+                <span class="">新付费玩家</span>
+                <span class="">当天付费玩家中第一次付费的玩家数</span>
+            </li>
+            <li class="keywords_list">
+                <span class="">付费率</span>
+                <span class="">付费玩家/活跃玩家</span>
+            </li>
+            <li class="keywords_list">
+                <span class="">ARPU(每用户平均付费)</span>
+                <span class="">当日总充值/活跃玩家数</span>
+            </li>
+            <li class="keywords_list">
+                <span class="">ARPPU(付费用户的平均付费)</span>
+                <span class="">当日总充值/付费玩家数</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+						<div class="tab normal_tab">
+							<a href="{:U('arpu_analysis')}" class="normal_change <neq name='Think.get.isbd' value='1'>current</neq>">排除绑币</a>
+							<a href="{:U('arpu_analysis',['isbd'=>1])}" class="normal_change wxnavbtn <eq name='Think.get.isbd' value='1'>current</eq>">包含绑币</a>
+						</div>
+
+            <form action="{:U('Query/arpu_analysis',array('isbd'=>I('isbd')))}" method="post" enctype="multipart/form-data">
+              <div class="form-group normal_space fr">
+                <input type="button" class="submit" id="search" value="查询" url="{:U('Query/arpu_analysis',array('isbd'=>I('isbd')))}">
+              </div>
+              <div class="form-group normal_space fr">
+                <label class="form-title select-title">日期：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="start" placeholder="开始时间" value="{$Think.request.start}" >
+                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="end" placeholder="结束时间" value="{$Think.request.end}">
+                </div>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="promote_id" name="promote_id" class="reselect select_gallery" style="min-width:170px;">
+                        <option game-id="0" value="0">全部渠道</option>
+                        <option game-id="{:session('promote_auth.pid')}" value="{:session('promote_auth.pid')}">自己</option>
+                        <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                    </select>
+              </div>
+              <div class="form-group normal_space fr">
+                    <select id="game_id" name="game_id" class="reselect select_gallery" style="width:180px;">
+                        <option game-id="" value="">请选择游戏</option>
+                        <volist name=":get_apply_game_list2(PID)" id="vo">
+                            <option game-id="{$vo.game_id}" value="{$vo.game_id}">{$vo.game_name}</option>
+                        </volist>
+                    </select>
+              </div>
+            </form>
+          </div>
+      </div>
+
+    <div class="page-list query-recharge-list">
+        
+      <div class="trunk-content article">
+          <div class="trunk-list">
+            <table class="table normal_table" id="datacontent"></table>
+            <table class="table normal_table" id="datatable" style="<notempty name='list_data'>display:none;</notempty>"><thead>
+            <php>$gamename = trim(get_game_name(I('get.game_id')))</php>
+                <tr class="odd">
+                  <th>日期</th>
+                  <if condition="$gamename neq ''">
+                    <th>游戏名称</th>
+                  </if>
+                  <th>新增玩家</th>
+                  <th>活跃玩家</th>
+                  <th>1日留存</th>
+                  <th>充值金额</th>
+                  <th>付费玩家</th>
+                  <th>新付费玩家</th>
+                  <th>付费率</th>
+                  <th>ARPU</th>
+                  <th>ARPPU</th>
+                  <th>累计付费玩家</th>
+                  <if condition="$gamename eq ''">
+                    <th>详情</th>
+                  </if>
+                </tr></thead><tbody>
+                <empty name="list_data">
+                <tr><td colspan="11">暂无数据</td></tr>
+                <else />
+                <volist name="list_data" id="vo" mod="2">
+                <tr name="rows" class="<eq name='mod' value='1'>odd</eq>">
+                  <td>{$vo.time}</td>
+                  <if condition="$gamename neq ''">
+										<td title="{$gamename}">{:msubstr2($gamename,0,10)}</td>
+                  </if>
+                  <td>{$vo.register_num}</td>
+                  <td>{$vo.act_user}</td>
+                  <td>{$vo.keep_num}</td>
+                  <td>{$vo.spend}</td>
+                  <td>{$vo.spend_people}</td>
+                  <td>{$vo.new_pop}</td>
+                  <td>{$vo.spend_rate}</td>
+                  <td>{$vo.ARPU}</td>
+                  <td>{$vo.ARPPU}</td>
+                  <td>{$vo.pop_num}</td>
+                  <if condition="$gamename eq ''">
+                      <td><a class="chakan" onclick="chakan(this)" timetitle="{$vo['time']}" ptitle="{$promote_name}" href-url="{:U('Query/cha_userarpu',array('time'=>$vo['time'],'promote_name'=>$promote_name,'promote_id'=>PID,'isbd'=>I('isbd')))}">查看</a></td>
+                  </if>
+                </tr>
+                </volist>
+                </empty></tbody>
+            </table>
+						
+            <notempty name="list_data">
+            <div class="pagenation clearfix"><div id="pagenation"></div><span class="rows" style="float:none;vertical-align:top;">共 {$count} 条记录</span></div>
+            </notempty>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript" src="__JS__/20170831/pagination.js"></script>
+<script type="text/javascript" src="__JS__/20170831/string.js"></script>
+<script type="text/javascript" src="__JS__/20170831/tabpage.js"></script>
+<eq name='timeout' value='1'>
+<script>
+  layer.msg('时间间隔不能超过90天');
+</script>
+</eq>
+<script type="text/javascript">
+highlight_subnav('{:U("arpu_analysis")}');
+setValue('promote_id',{$Think.request.promote_id|default=0});
+setValue('game_id','{$Think.request.game_id|default=''}');
+layer.config({
+			  extend: 'skin/myskin/style.css', //同样需要加载新皮肤
+			});
+$().ready(function(){
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+   $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+  
+  $(".select_gallery").select2();
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+
+	$("#search").click(function() {
+		var sdate =$('#sdate').val();
+	    var edate =$('#edate').val();
+	    if(Date.parse(sdate) > Date.parse(edate)){
+	      layer.msg('开始时间必须小于等于结束时间');
+	      return false;
+	    }
+	  var that=$(this);  
+		var url = that.attr('url');
+		var query = that.closest('form').find('input,select').serialize();
+		query += "&" + $('.jssearch').find('select').serialize();
+		query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+		query = query.replace(/^&/g, '');
+		if(url.indexOf('?') > 0) {
+			url += '&' + query;
+		} else {
+			url += '?' + query;
+		}
+		window.location.href = url;
+	});
+  
+  tablePage('datatable', 'datacontent', 'pagenation', [1, 2, 4, 5, 6, 10], false); 
+  
+  $('.keywords_information .keywords_mark').click(function() {
+      var that = $(this).siblings().addClass('active');  
+      console.log(that);
+      $(document).click(function(event) {
+        var e = event || window.event;
+        var target= $(e.target);
+        if (!target.hasClass('keywords_information') && target.closest('.keywords_information').length<1) {
+          that.removeClass('active');
+        }
+       
+      });
+      
+      that.find('.keywords_close').click(function() {
+        that.removeClass('active');
+        
+        return false;
+      });
+      
+      return false;
+    });
+  
+    $('.isbdbut').click(function(){
+        that = $(this);
+        url = that.attr('href');
+        location.href = url;
+    });
+});
+		function chakan(t) {
+			that = $(t);
+        url = that.attr('href-url');
+        timetitle = that.attr('timetitle');
+        ptitle = '  ' + that.attr('ptitle') + '  ';
+        layer.closeAll();
+        layer.open({
+            type: 2,
+            title: false,
+            closeBtn: 0, //不显示关闭按钮
+            shade: [0],
+            area: ['1px', '1px'],
+            offset: 'rb', //右下角弹出
+            time: 1, // 秒后自动关闭   这里设置成1ms 不显示过度页面
+            anim: 2,
+            content: ['', 'no'], //iframe的url，no代表不显示滚动条
+            end: function () { //
+                layer.open({
+                    type: 2,
+                    title: timetitle + ptitle + '游戏数据',
+										skin: 'myskin',
+                    shadeClose: true,
+										shade: [0.3,'#273142'],
+                    scrollbar :true,
+                    maxmin: true, //开启最大化最小化按钮
+                    area: ['98%', '45%'],
+                    content: url//iframe的url
+                });
+            }
+        });
+		}
+</script>
+    
+</block>
+  

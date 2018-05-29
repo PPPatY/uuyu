@@ -1,0 +1,45 @@
+<block name="css">
+<link href="__CSS__/20170831/finance.css" rel="stylesheet">
+<link href="__CSS__/20170831/iconfont.css" rel="stylesheet" type="text/css">
+<link href="__CSS__/20170831/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/20170831/common.css" rel="stylesheet" type="text/css">
+</block>
+<block name="body">
+    <div class="page-list query-register-list">
+      <div class="trunk-content article">
+          <div class="trunk-list">
+              <table class="table4">
+                  <tr class="odd">
+                    <th>结算周期</th>
+                    <th>游戏名称</th>
+                    <th>总充值</th>
+                    <th>总注册</th>
+                    <th>结算模式</th>
+                    <th>分成比例(%)</th>
+                    <th>注册单价</th>
+                    <th>结算金额</th>
+                  </tr>
+                  <empty name="list_data">
+                  <tr><td colspan="10">暂无数据</td></tr>
+                  <else />
+                  <volist name="list_data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td>{$vo.starttime|date="Y-m-d",###}至{$vo.endtime|date="Y-m-d",###}</td>
+                    <td>{$vo.game_name}</td>
+                    <td>{$vo.total_money}</td>
+                    <td>{$vo.total_number}</td>
+                    <td><if condition="$vo['pattern'] eq 0">CPS<else />CPA</if></td>
+                   <td>{$vo['ratio']}</td>
+                    <td>{$vo.money}</td>
+                    <td style="color:#ff6600;">{$vo.sum_money}</td>
+                  </tr>
+                  </volist>
+                  </empty>
+              </table>
+              
+              
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>

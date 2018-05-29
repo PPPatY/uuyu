@@ -1,0 +1,120 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+  <link href="__CSS__/20180207/account.css" rel="stylesheet" >
+</block>
+
+<block name="body">
+    <div class="page-list normal_list promote-add_chlid-form">
+      <div class="trunk-title">
+      	<div class="location">
+					<div class="location-container">当前位置：<span>管理中心></span><span>二级渠道></span><span>添加子渠道</span></div>
+				</div>
+      	<img src="__IMG__/20180207/icon_normal_ziqudao.png">
+      	<span class="title_main">添加子渠道</span>
+      </div>
+      <div class="trunk-content article">
+        <div class="trunk-list list_normal">
+          <form action="{:U('Promote/add_chlid')}" novalidate="novalidate" method="post" class="base_info" id="form_reg">
+              <table class="table2">
+                  <tr>
+                    <td class="l"><span class="req">*</span>子渠道帐号：</td>
+                    <td class="r">
+                      <input type="text" class="name input-txt txt" name="account" id="account" placeholder="请输入子渠道帐号">
+                      <!-- <p id="account_tip"></p> -->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l"><span class="req">*</span>子渠道密码：</td>
+                    <td class="r">
+                      <input type="password" class="name txt" name="password" id="password" placeholder="请输入子渠道密码">
+                      <span id="password_tip"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l"><span class="req">*</span>确认密码：</td>
+                    <td class="r">
+                      <input type="password" class="name txt" name="repassword" id="repassword" placeholder="请输入确认密码">
+                      <span id="repassword_tip"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">子渠道昵称：</td>
+                    <td class="r">
+                      <input type="text" class="name txt" name="nickname" id="nickname" placeholder="请输入子渠道昵称">
+                      <span id="nickname_tip"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l"></td>
+                    <td class="r">
+                      <input type="hidden" name="parent_id" value="{:session('promote_auth.pid')}" id="parent_id"></input>
+                      <input type="button" class="tj btn ajax-post" onclick="check()" value="确认添加" title="" target-form="base_info">
+                      <a class="back_btn " alt="返回上一页" title="返回上一页" href="javascript:window.history.back();">返回</a>
+                    </td>
+                  </tr>
+              </table>
+          </form>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+highlight_subnav('{:U("mychlid")}');
+  function check() {
+      data = validation();
+      if(data.status !=1){layer.msg(data.msg,{icon:2}); return false;};
+      var account = $('#account').val();
+      var password = $('#password').val();
+      var nickname = $('#nickname').val();
+      var repassword = $('#repassword').val();
+      var parent_id = $('#parent_id').val();
+      $.ajax({
+        type:"POST",
+        url:"{:U('add_chlid')}",
+        data:{account:account,
+              password:password,
+              nickname:nickname,
+              repassword:repassword,
+              parent_id:parent_id},
+        success:function(res){
+            if(res.status == 1){
+                layer.msg(res.msg);
+                setTimeout(function(){
+                  window.location.href="{:U('mychlid')}";
+                },1000);
+            }else{
+                layer.msg(res.msg);
+            }
+        }
+      });
+      // $('#form_reg').submit();
+  }
+  function validation(){
+       var json_data = "";
+      if($.trim($('#account').val()).length == 0){
+         return json_data = {'status':0,'msg':'子渠道账号不能为空'}
+      }
+      if($.trim($('#account').val()).length < 6){
+        return json_data = {'status':0,'msg':'子渠道账号不能小于6位字符'}
+      }
+      if($.trim($('#password').val()).length == 0){
+          return json_data = {'status':0,'msg':'子渠道密码不能为空'}
+       }
+      if($.trim($('#password').val()).length < 6){
+        return json_data = {'status':0,'msg':'子渠道密码不能小于6位字符'}
+      }
+      if($.trim($('#repassword').val()).length == 0){
+          return json_data = {'status':0,'msg':'确认密码不能为空'}
+       }
+      if($('#repassword').val()!==$('#password').val()){
+        return json_data = {'status':0,'msg':'子渠道密码和确认密码不一致'}
+      }
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+      return json_data = {'status':1,'msg':'成功'};
+      
+  }
+</script>
+
+</block>
+  

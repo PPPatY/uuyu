@@ -1,0 +1,64 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+  <link href="__CSS__/20180207/account.css" rel="stylesheet" >
+</block>
+<block name="body">
+    <div class="page-list normal_list promote-mychlid-list">
+      <div class="trunk-title">
+      	<div class="location">
+					<div class="location-container">当前位置：<span>管理中心></span><span>二级渠道</span></div>
+				</div>
+      	<img src="__IMG__/20180207/icon_normal_ziqudao.png">
+      	<span class="title_main">子渠道列表</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('Promote/mychlid')}" method="post" enctype="multipart/form-data">
+              <div class="form-group fl">
+                <a href="{:U('Promote/add_chlid')}" class="submit btn"><i class="add_qudao"></i><span>添加子渠道</span></a>
+              </div>
+              <div class="form-group fr">
+                <input type="submit" class="submit normal_space" value="查询">
+              </div>
+              <div class="form-group fr">
+                  <input type="text" name="account" class="txt" placeholder="请输入子渠道" value="{:I('account')}">
+              </div>
+            </form>
+          </div>
+          <div class="trunk-list list_normal">
+            <table class="table normal_table">
+                <tr class="odd">
+                  <th>账号ID</th>
+                  <th>子渠道</th>
+                  <th>状态</th>
+                  <th>创建时间</th>
+                  <th>操作</th>
+                </tr>
+                <empty name="list_data">
+                <tr><td colspan="5" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                <else />
+                <volist name="list_data" id="vo" mod="2">
+                  <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td>{$vo.id}</td>
+                    <td>{$vo.account}</td>  
+                    <td><if condition="$vo['status'] eq 0"><span class="status_close">关闭</span><else/>启用</if></td>
+                    <td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+                    <td><a href="{:U('Promote/edit_chlid','id='.$vo['id'])}" class="editbtn">修改</a></td>
+                  </tr>
+                </volist>
+                </empty>
+            </table>
+            
+          </div>
+          <div class="pagenation clearfix">{$_page}</div>
+      </div>
+      <div class="page-explain promote-mychlid-explain">
+	      <div class="trunk-content article border_normal">
+	        <table class="desccontent">
+            <tr><td class="title" style="width: 100px;display: inline-block;">二级渠道说明：</td><td class="det">推广员默认为一级渠道，一级渠道可通过推广员后台新增二级渠道；二级渠道由一级渠道管理开启权限，并由一级渠道给二级渠道结算，结算可到财务管理操作。</td></tr>           
+        </table>
+	      </div>
+	    </div>
+    </div>
+</block>
+  

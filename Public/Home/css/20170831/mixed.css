@@ -1,0 +1,51 @@
+/**
+ * 混服样式
+ * @author 鹿文学
+ */
+/* common */
+button {border:none;}
+.page-list .article {padding-bottom:30px;}
+
+.desccontent {padding:10px 0;}
+
+.page-form .table2 .form-radio label {position:relative;margin-right:20px;cursor:pointer;}
+.page-form .table2 .form-radio input {cursor:pointer;width:16px;height:16px;display:inline-block;position:absolute;top:0;left:0;margin:0;margin-top:2px;opacity:0;}
+.page-form .table2 .form-radio i {width:16px;height:16px;display:inline-block;vertical-align:middle;margin-top:-2px;margin-right:5px;background:url(../../images/20170831/icon_pay1.png) ;}
+.page-form .table2 .form-radio i.current {background-image:url(../../images/20170831/icon_pay2.png);}
+.page-form .table2 .form-textarea textarea{height:150px;border:1px solid #D5D5D5;border-radius:5px;width:220px;}
+
+.trunk-list .table2 .l {text-align:right;}
+.trunk-list .table2 .r {padding-left:40px;position:relative;}
+.trunk-list .table2 .r .txt {width:200px;}
+.trunk-list .table2 .mixedbtn {line-height:38px;height:38px;padding:0 20px;}
+.trunk-list .table2 .btn {width:80px;}
+
+.trunk-list .table2 .siteapplybtn embed  {display:block;opacity:0;}
+.siteapply-index-form .trunk-list .table2 .txt[type=text] {width:420px;}
+.siteapply-index-form .trunk-list .table2 .txt[type=text][disabled],
+.siteapply-index-form .trunk-list .table2 .txt[type=text].disabled {border-color:transparent;background:transparent;}
+
+
+.trunk-list .uploadify {display:inline-block;background:#26C7DB;color:#FFF;border-radius:5px;margin-right:10px;}
+.trunk-list .uploadify .uploadify-button {text-align:center;}
+.trunk-list .uploadify-queue {position:absolute;bottom:40px;color:#FFF;}
+
+.trunk-search .submit {display:inline-block;width:80px;text-align:center;}
+
+.trunk-list .table tr {border-bottom:1px solid #DCE0E3;}
+
+.siteGame-add-form .table2 .l {width:120px;}
+
+
+.trunk-list .table .op {color:#1AAEEB;}
+.trunk-list .table .op a {padding:0 5px;}
+.trunk-list .table .op a.totop {color:#596D88;}
+.trunk-list .table .op a img {height:14px;margin:-2px 2px 0;}
+
+
+.siteapply-index-form {margin-top:20px;min-height:600px;}
+.siteServer-add-form,.siteGame-add-form,.siteGift-add-form {min-height:660px;}
+
+
+
+

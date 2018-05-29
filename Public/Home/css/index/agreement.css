@@ -1,0 +1,13 @@
+@charset "utf-8";
+.main {background-color:#F9F9F9;}
+
+.location {padding:20px 0 15px 10px;font-size:14px;position:relative;}
+.location:before{content:'';display:block;width:2px;height:14px;position:absolute;top:23px;left:0;background-color:#3F89EC;}
+.location span{color:#3F89EC;}
+.location a {}
+
+.agreement {border:1px solid #E3E3E3;background-color:#fff;padding:40px;min-height:400px;}
+.agreement .title {font-size:22px;text-align:center;font-weight:100;}
+.agreement .title img {vertical-align:middle;margin-right:10px;}
+
+.agreement .content {padding-top:40px;}

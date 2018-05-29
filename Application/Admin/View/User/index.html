@@ -1,0 +1,199 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style>
+		.select2-container--default .select2-selection--single {
+			color: #000;
+			resize: none;
+			border: 1px solid #D3D8DE;
+			border-radius: 3px;
+			height: 35px;
+			box-shadow: none;
+		}
+		
+		.select2-container--default .select2-selection--single .select2-selection__rendered {
+			line-height: 34px;
+		}
+		
+		.navtab_list {
+			width: 100%;
+			border-bottom: 1px solid #ddd;
+			margin: 15px 0px;
+			height: 65px;
+		}
+		
+		.navtab_list a {
+			display: block;
+			width: 100px;
+			height: 35px;
+			line-height: 35px;
+			text-align: center;
+			float: left;
+			margin-left: 20px;
+			background: #e0e0e0;
+			border-radius: 3px;
+			color: #333;
+			margin-top: 15px;
+		}
+		
+		.navtab_list a:first-child {
+			margin-left: 0px;
+		}
+		
+		.navtab_list a:hover,
+		.navtab_list a.tabchose {
+			text-decoration: none;
+			border-bottom: none;
+			background: rgb(0, 149, 248);
+			color: #fff;
+		}
+		
+		.navtab_list_cs {
+			margin-top: 20px;
+			margin-left: 20px;
+		}
+		
+		.navtab_list_cs img {
+			margin: 0px 8px;
+		}
+		
+		.data_list table td {
+			min-width: 50px;
+		}
+		.description_text{height: 40px;line-height: 40px;}
+	</style>
+	<!-- 标题栏 -->
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('User/index')}">用户</a>
+			</li>
+			<li>
+				<a href="{:U('User/index')}">管理组</a>
+			</li>
+			<li>
+				<a href="#">{$meta_title}</a>
+			</li>
+		</ul>
+		<p class="description_text">说明：可设置不同角色以及对应权限</p>
+	</div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+			<a class="" href="{:U('add')}"><span class="button_icon button_icon1"></span>新增</a>
+		</div>
+
+		<!-- 高级搜索 -->
+		<div class="fr cf search_list jssearch">
+			<div class="sleft">
+				<label>管理员账号：</label>
+				<input type="text" name="nickname" class="" value="{:I('nickname')}" placeholder="请输入账号">
+			</div>
+			<div class="sleft">
+				<label>状态：</label>
+				<select name="status" class="select_gallery select2-search--hide" style="width: 100px;">
+					<option value="">状态</option>
+					<option value="1">正常</option>
+					<option value="0">锁定</option>
+				</select>
+
+			</div>
+			<div class="input-list">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('index')}">搜索</a>
+			</div>
+		</div>
+	</div>
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<table class="">
+			<thead>
+				<tr>
+					<th class="">账号ID</th>
+					<th class="">管理员账号</th>
+					<th class="">角色类型</th>
+					<th class="">登录次数</th>
+					<th class="">最后登录时间</th>
+					<th class="">最后登录IP</th>
+					<th class="">状态</th>
+					<th class="">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="_list">
+					<volist name="_list" id="vo">
+						<tr>
+							<td>{$vo.uid} </td>
+							<td>{$vo.nickname}</td>
+							<td>{:get_auth_group_name($vo['uid'])}</td>
+							<td>{$vo.login}</td>
+							<td><span>{$vo.last_login_time|time_format0}</span></td>
+							<td><span>{:long2ip($vo['last_login_ip'])}</span></td>
+							<if condition="$vo.status eq 0">
+								<td><span style="color: #ea2020">{$vo.status_text}</span></td>
+								<else/>
+								<td>{$vo.status_text}</td>
+							</if>
+							<td>
+								<a href="{:U('User/edit?id='.$vo['uid'])}" class="">编辑</a>
+								<eq name="vo.status" value="1">
+									<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get ">锁定</a>
+									<else/>
+									<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get ">解锁</a>
+								</eq>
+								<a href="{:U('User/delete',['id'=>$vo['uid']])}" class="confirm ajax-get">删除</a>
+							</td>
+						</tr>
+					</volist>
+				<else/>
+					<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+		Think.setValue('status', "{:I('status')}");
+		//搜索功能
+		$("#search").click(function() {
+			var url = $(this).attr('url');
+			var query = $('.jssearch').find('input').serialize();
+			query += "&" + $('.jssearch').find('select').serialize();
+			query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+			query = query.replace(/^&/g, '');
+			if(url.indexOf('?') > 0) {
+				url += '&' + query;
+			} else {
+				url += '?' + query;
+			}
+			window.location.href = url;
+		});
+		//回车搜索
+		$(".search-input").keyup(function(e) {
+			if(e.keyCode === 13) {
+				$("#search").click();
+				return false;
+			}
+		});
+		//导航高亮
+		highlight_subnav('{:U("User/index")}');
+		$(function() {
+	    <volist name=":I('get.')" id="vo">
+            Think.setValue('{$key}',"{$vo}");
+        </volist>
+			$(".select_gallery").select2();
+			$(".select2-search--hide").select2({
+				minimumResultsForSearch: -1,
+			});
+		})
+	</script>
+</block>

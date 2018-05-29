@@ -1,0 +1,186 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('MixPartner/lists')}">混服</a></li>
+            <li><a href="{:U('MixPartner/lists')}">混服管理</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">对所有合作者管理列表进行信息记录以及相关管理操作</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="cf top_nav_list">
+        <div class="fl button_list">
+        <empty name="model.extend">
+            <div class="tools">
+                <a class=" " href="{:U('add?model='.$model['id'])}"><span class="button_icon button_icon1"></span>新 增</a> 
+                <a class=" ajax-post " target-form="ids" url="{:U("set_status",array("status"=>1))}"><span class="button_icon button_icon12"></span>启 用</a>
+                <a class=" ajax-post " target-form="ids" url="{:U("set_status",array("status"=>0))}"><span class="button_icon button_icon13"></span>禁 用</a>
+            </div>
+        </empty>
+        </div>
+        <!-- 高级搜索 -->
+        <div class="jssearch fr cf search_list">
+                <div class="input-list">
+                    <label>合作者账号：</label>
+                    <input type="text" name="{$model['search_key']|default='account'}" class="" value="{:I('account')}">
+                </div>
+                <div class="input-list input-list-channelstatus">
+                    <label>状态：</label>
+                    <select name="status">
+                        <option value="">全部</option>
+                        <option value="1">正常</option>
+                        <option value="2">禁用</option>
+                    </select>
+                </div>
+                <input type="hidden" name="" value="" class="sortBy">
+                <div class="input-list">
+                    <a class="sch-btn" href="javascript:;" id="search" url="{:U('MixPartner/lists','model='.$model['name'],false)}">搜索</a>
+                </div>
+        </div>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="data-table">
+        <div class="data-table table-striped">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                    <tr>
+                        <th class="row-selected row-selected">
+                            <input class="check-all" type="checkbox">
+                        </th>
+                        <th style="text-align:center" >合作者id</th>
+                        <th style="text-align:center" >混服账号</th>
+                        <th style="text-align:center" >混服站点</th>
+                        <th style="text-align:center" >充值到帐方</th>
+                        <th style="text-align:center" >状态</th>
+                        <th style="text-align:center" >联系电话</th>
+                        <th style="text-align:center" >最后登陆时间</th>
+                        <th style="text-align:center" >操作</th>
+                    </tr>
+                </thead>
+                <!-- 列表 -->
+                <tbody>
+                    <volist name="list_data" id="data">
+                        <tr>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">
+                                <input class="ids" type="checkbox" value="{$data['id']}" name="ids[]">
+                            </td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.id}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.account}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.domain}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{:get_transfe($data['transfe'])}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{:get_status_title($data['status'])}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.contact}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">{$data.last_login_time|date="Y-m-d H:i:s",###}</td>
+                            <td style="border-right:1px solid #DDDDDD;text-align:center">
+                                <a href="{:U('MixPartner/edit?id='.$data['id'])}">编辑</a>
+                                <a class="confirm ajax-get" href="{:U('MixPartner/del?ids='.$data['id'])}">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('MixPartner/lists')}');
+$(function(){
+    //搜索功能
+    $("#search").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+    $('#time-start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+
+    $('#datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left'
+    })
+})
+
+    /* 状态搜索子菜单 */
+    $(".search-form").find(".status").hover(function(){
+        $("#sub-sch-menu-status").removeClass("hidden");
+    },function(){
+        $("#sub-sch-menu-status").addClass("hidden");
+    });
+    $("#sub-sch-menu-status li").find("a").each(function(){
+        $(this).click(function(){
+            var text = $(this).text();
+            $("#sch-status-txt").text(text).attr("data",$(this).attr("value"));
+            $("#sub-sch-menu-status").addClass("hidden");
+            $("#status").val($(this).attr("value"));//pay_way  pay-way
+        })
+    });
+
+
+    /* 渠道等级搜索子菜单 */
+    $(".search-form").find(".parent_id").hover(function(){
+        $("#sub-sch-menu-parent_id").removeClass("hidden");
+    },function(){
+        $("#sub-sch-menu-parent_id").addClass("hidden");
+    });
+    $("#sub-sch-menu-parent_id li").find("a").each(function(){
+        $(this).click(function(){
+            var text = $(this).text();
+            $("#sch-parent_id-txt").text(text).attr("data",$(this).attr("value"));
+            $("#sub-sch-menu-parent_id").addClass("hidden");
+            $("#parent_id").val($(this).attr("value"));//pay_way  pay-way
+        })
+    });
+   
+</script>
+</block>

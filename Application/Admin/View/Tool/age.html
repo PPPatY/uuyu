@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+    	<div class="formtitle"><span>实名认证</span><p class="description_text" style="line-height: 20px;">说明：用于配置实名认证相关参数的功能</p></div>
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane in tab1">
+            <form action="{:U('saveTool')}" method="post" class="form-horizontal smtp form_info_ml">
+                <ul class="form_info ">
+                    <li><label>appcode：</label>
+                        <input name="config[appcode]" type="text" value="{$age['appcode']}" class="">
+                        <i class="form_hint">阿里云实名认证接口 控制台->云市场->appcode</i>
+                    </li>
+                    <li><label>启用状态：</label><span class="form_radio table_radio" style="width: 347px;">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio1" value="0" name="status" <eq name="age_data['status']" value="0">checked="checked"</eq>>
+							<label for="radio1">禁用</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio2" value="1" name="status" <eq name="age_data['status']" value="1">checked="checked"</eq>>
+							<label for="radio2">启用</label>
+						</div>
+                    </span>
+                        <i class="form_hint">短信设置启用状态</i></li>
+                    <li>
+                        <label>&nbsp;</label><input type="hidden" name="name" value="age">
+                        <input type="submit" value="确认保存" target-form="smtp" class="form_btn ajax-post">
+                    </li>
+                </ul>
+            </form>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Tool/age')}');
+        $(function(){
+            //支持tab
+            showTab();
+        })
+    </script>
+</block>

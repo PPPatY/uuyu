@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <if condition="ACTION_NAME eq index and CONTROLLER_NAME eq Index">
+      <title>{:seo_replace(C('media_index.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_index.seo_keyword')}">
+      <meta name="description" content="{:C('media_index.seo_description')}">
+    <elseif condition="ACTION_NAME eq index and CONTROLLER_NAME eq Game" />
+      <title>{:seo_replace(C('media_game_list.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_game_list.seo_keyword')}">
+      <meta name="description" content="{:C('media_game_list.seo_description')}">
+    <elseif condition="ACTION_NAME eq detail and CONTROLLER_NAME eq Game"/>
+      <title>{:seo_replace(C('media_game_detail.seo_title'),array('game_name'=>$data['game_name']),'media')}</title>
+      <meta name="keywords" content="{:C('media_game_detail.seo_keyword')}">
+      <meta name="description" content="{:C('media_game_detail.seo_description')}">
+    <elseif condition="ACTION_NAME eq index and CONTROLLER_NAME eq Gift"/>
+      <title>{:seo_replace(C('media_gift_index.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_gift_index.seo_keyword')}">
+      <meta name="description" content="{:C('media_gift_index.seo_description')}">
+    <elseif condition="ACTION_NAME eq giftdetail and CONTROLLER_NAME eq Gift"/>
+      <title>{:seo_replace(C('media_gift_detail.seo_title'),array('game_name'=>$data['game_name'],'giftbag_name'=>$data['giftbag_name']),'media')}</title>
+      <meta name="keywords" content="{:C('media_gift_detail.seo_keyword')}">
+      <meta name="description" content="{:C('media_gift_detail.seo_description')}">
+    <elseif condition="ACTION_NAME eq mall and CONTROLLER_NAME eq PointShop"/>
+      <title>{:seo_replace(C('media_shop.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_shop.seo_keyword')}">
+      <meta name="description" content="{:C('media_shop.seo_description')}">
+    <elseif condition="ACTION_NAME eq mall_detail and CONTROLLER_NAME eq PointShop"/>
+      <title>{:seo_replace(C('media_shop_detail.seo_title'),array('good_name'=>$data['good_name']),'media')}</title>
+      <meta name="keywords" content="{:C('media_shop_detail.seo_keyword')}">
+      <meta name="description" content="{:C('media_shop_detail.seo_description')}">
+    <elseif condition="ACTION_NAME eq detail and CONTROLLER_NAME eq Article"/>
+      <title>{:seo_replace(C('media_news_detail.seo_title'),array('title'=>$data['title']),'media')}</title>
+      <meta name="keywords" content="{:C('media_news_detail.seo_keyword')}">
+      <meta name="description" content="{:C('media_news_detail.seo_description')}">
+    <elseif condition="ACTION_NAME eq user_recharge and CONTROLLER_NAME eq Subscriber"/>
+      <title>{:seo_replace(C('media_recharge.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_recharge.seo_keyword')}">
+      <meta name="description" content="{:C('media_recharge.seo_description')}">
+    <elseif condition="CONTROLLER_NAME eq Service"/>
+      <title>{:seo_replace(C('media_service.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_service.seo_keyword')}">
+      <meta name="description" content="{:C('media_service.seo_description')}">
+    <else />
+      <title>{:seo_replace(C('media_index.seo_title'),'','media')}</title>
+      <meta name="keywords" content="{:C('media_index.seo_keyword')}">
+      <meta name="description" content="{:C('media_index.seo_description')}">
+    </if>
+    <link href="{:get_cover(C('PC_SET_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">   
+    <link href="__CSS__/swiper.min.css" rel="stylesheet" >
+    <link href="__CSS__/common.css" rel="stylesheet" >
+    <link href="__CSS__/pc.css" rel="stylesheet">
+    <block name="css"></block>
+  </head>
+  <body>
+    
+
+    <div class="main">
+      <div class="pc-header">
+        <div class="pc-inner clearfix">
+          <div class="pc-download">
+            <a href="javascript:;" class="pc-downloadbtn"><i class="pc-icon-phone"></i><span>扫码关注微信公众号</span></a>
+            <div class="pc-qrcode clearfix">
+             <div class="pc-ios"><img src="__IMG__/iframe/Qr-code-u-uuyu.jpg"><span>扫我关注</span></div>
+            </div>
+          </div>
+          <a href="{:U('Index/index')}" class="pc-logo"><notempty name="union_set"><img src="{:get_cover($union_set['pc_logo'],'path')}"><else /><img src="{:get_cover(C('PC_SET_LOGO'),'path')}"></notempty></a>
+        </div>
+      </div>
+      <div class="pc-container">
+        <div class="pc-wrap">
+        <div class="pc-inner">
+          <div class="pc-mobile">
+						<div class="pc-full-box">
+            <div class="pc-iframe">
+              <block name="header"></block>
+              
+              <block name="iframe"></block>
+
+              <block name="footer"></block>
+              
+              <div class="popplog"></div>
+              
+            </div>
+						<!-- <a href="javascript:;" class="pc-screen-btn jsscreen"><i class="pc-screen"></i></a> -->
+						</div>
+            <a href="javascript:history.back();" class="pc-butn"><i class="pc-icon"></i></a>
+          <div class="pc-theme"><img class="pc-theme-pic" src="__IMG__/iframe/theme.png"></div>
+          </div>
+          <div class="pc-sys"><div class="pc-qrcode-box"><img class="pc-qrcode-sys" src="{:get_cover(C('PC_SET_QRCODE'),'path')}"></div><p>扫码即玩 快乐游戏</p></div>
+          <div class="pc-container-footer">
+						<div class="pc-copyright">
+							<p class="pc-cr">
+								<span><img src="__IMG__/iframe/pc_ghs.png">{:C('WEB_BEIAN')}</span>
+								<span>经营性许可证：{:C('WEB_SITE')}</span>
+								<span>{:C('PC_GUAN')}</span>
+							</p>
+							<p>抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</p>
+						</div>
+					</div>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+    <div class="loginbutdiv hidden">
+        <if condition="$wx_login eq 1">
+          <a href="javascript:;" onclick="register('weixin')" class="butn"><img src="__IMG__/login_third_weixin.png"></a> 
+        </if>
+        <if condition="$qq_login eq 1">
+          <a href="javascript:;" onclick="register('qq')" class="butn"><img src="__IMG__/login_third_qq.png"></a> 
+        </if>
+        <if condition="$wb_login eq 1">
+          <a href="javascript:;" onclick="register('weibo')" class="butn"><img src="__IMG__/login_third_sina.png"></a> 
+        </if>
+        <if condition="$bd_login eq 1">
+          <a href="javascript:;" onclick="register('baidu')" class="butn"><img src="__IMG__/login_third_tencent.png"></a>
+        </if>
+    </div>
+    
+    <script src="__JS__/jquery-1.11.1.min.js"></script>
+    <script src="__JS__/swiper-3.4.2.jquery.min.js"></script>
+    <script src="__STATIC__/layer/layer.js"></script>
+    <script src="__JS__/pop.lwx.min.js"></script>
+    <script src="__JS__/common.js"></script>
+    <block name="script"></block>
+    {$logdiv}
+    <script>
+      var gid = "{$game_id}";
+      var pid = "{$promote_id}";
+      var open_name_auth = 0;
+      var name_auth_tip = '';
+      var $bindphoneadd = "{$bindphoneadd}";
+      <if condition="$open_name_auth eq 1">
+          var open_name_auth = "{$open_name_auth}";
+          var name_auth_tip = "{$name_auth_tip}";
+      </if>
+    </script>
+    <script>
+      $("body").on("click",'.butnbox a.butnlogin',function(){
+        res = jslogin();
+        return res;
+      });
+      function jslogin(){
+          $uid = "{:is_login()}";
+          if($uid<=0){
+            $('.jslogin').click();
+            return false;
+          }else{
+            return true;
+          }
+      }
+    </script>
+    <script>  
+      $('.pc-download').hover(function(){$('.pc-qrcode').fadeIn();},function(){$('.pc-qrcode').fadeOut();});
+      
+      function resizephone() {
+          var winHeight = $( window ).height();
+					
+					
+							var hedh = $('.pc-header').height();
+							var both = $('.pc-container-footer').height();
+							var pch = winHeight-hedh;
+							if($(window).width()>720)
+								$('.pc-container').css({'height':pch+'px'});
+							var mobheight = pch-both;
+							
+          var mobwidth = parseInt(mobheight*512/1000);
+					
+					
+          var scale = parseInt(mobwidth/410*100);
+
+              $('html').css('font-size',231*scale/100+'%');
+							
+      }
+      resizephone();
+      var resizephonetime = null;
+      $(window).resize(function() {
+        if (resizephonetime) {clearTimeout(resizephonetime);}
+        resizephonetime = setTimeout(function() {
+				if($(window).width()<=720) {resizephone();}
+        },10);
+      });
+			
+			$('.jsscreen').click(function() {
+				var that = $(this);
+				if (that.hasClass('full')) {
+					that.removeClass('full').css({'right':'-1.2rem'});
+					$('.pc-full-box').removeClass('full-iframe').unwrap();
+				} else {
+					that.addClass('full');
+					that.css({'right':'-0.76rem'});
+					$('.pc-full-box').addClass('full-iframe').wrap('<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1;background:#000"></div>');				
+				}
+				
+			});
+      
+    </script>
+    
+  </body>
+</html>

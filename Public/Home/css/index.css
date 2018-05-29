@@ -1,0 +1,46 @@
+/* login */
+.formTb th{text-align:right}
+.formTb .form-control{float:left; width:281px; height:52px; padding-left:50px;}
+button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+.form-control{background:#fff;border:1px solid #ccc;border-radius:4px;font-size:14px;padding:6px 12px;height:34px;line-height:1.4;box-sizing:border-box}
+.formTb td,.formTb th{vertical-align:top}
+.btn{display:inline-block;font-weight:400;text-align:center;vertical-align:middle;cursor:pointer;border:1px solid transparent;filter:chroma(color=#000000);white-space:nowrap;padding:6px 12px;font-size:14px;line-height:1.42857143;border-radius:4px}
+.formTb .btn-b{padding:12px 24px;font-size:22px;}
+.btn-b{background:#257EEB;color:#fff}
+.change {text-align:right;}
+.change .ca{color:#257EEB;}
+.cl{ clear:both;}
+.logintit{ color:#6b6b6b; font-size:20px; font-weight:normal; margin-bottom:10px;}
+.yzmdiv img{ float:right; width:99px; height:52px; }
+.userinput{ background:url(../images/usericon.png) no-repeat 10px;}
+.pwdinput{ background:url(../images/lock.png) no-repeat 10px;}
+.yzminput{ background:url(../images/yzm.png) no-repeat 10px; width: 160px!important;}
+
+.yscon ul li{ width:25%; float:left;}
+.yscon ul li img{ width:25%; float:left;}
+.yscon ul li span{ display:block; float:left; width:70%; margin-left:5%;}
+.yscon ul li span p{ font-size:20px; color:#333;}
+.yscon ul li span font{ color:#333; font-size:15px; width: 80%;
+    overflow: hidden;
+    display: block;}
+	
+	
+.indext_02{ background:#f2f2f2; display:block; width:100%; min-height:400px;}
+.index02_left { float:left; width:70%;}
+.index02_right { float:right; width:28%;}
+
+.rmgame li{ width:32%; float:left; margin-bottom:30px;}
+.rmgame li img{ width:70px; height:70px; float:left;}
+.rmgame li span{ display:block; float:left; margin-left:20px;}
+.rmgame li span p{ color:#333; font-size:18px; margin-bottom: 10px;
+    margin-top: 10px;}
+.rmgame li span font{ font-size:15px; color:#333;}
+
+.index02_right li{ font-size:16px;font-size: 16px;
+    height: 38px;
+    line-height: 38px;
+    overflow: hidden;}
+.index02_right li img{ width:400px; height:212px;}
+.index02_right li span{ color:#257eeb;}
+
+.join_img{ width:1000px; height:175px; margin:0 auto; margin-bottom:20px;}

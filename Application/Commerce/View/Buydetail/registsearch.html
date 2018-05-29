@@ -1,0 +1,194 @@
+<extend name="Public/head-foot"/>
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+
+<style>
+
+    .select2-container--default .select2-selection--single {
+            color: #000;
+        resize: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ddd;
+        box-shadow: 0px 3px 3px #F7F8F9 inset;height:35px;
+        height:35px;border-radius:3px;font-size: 14px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height:35px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height:35px;
+    }
+    .select2-container--default .select2-search--dropdown .select2-search__field {
+      height:35px;line-height:31px;font-size: 14px;
+    }
+    .select2-results__option[aria-selected] {font-size: 14px;}
+
+</style>
+
+
+<!--内容start-->
+<div class="containers jssearch" >
+	<div class="search-container">
+		<div class="left-nav">
+			<a href="{:U(registsearch)}" class=" topborder">注册查询</a>
+			<a href="{:U(buydetail)}" class="current topborder">充值明细</a>
+			<a href="{:U(summary)}" class="bottomborder current">数据汇总</a>
+		</div>
+
+		<div class="rightcontainer">
+			<div class="rightcontainer-search jssearch fr cf search_list">
+				<div class="search-top">
+					<i class="iconfont icon-search" style="color:#526782; font-size: 20px;"></i>
+					<span>查询</span>
+				</div>
+
+				<div class="serch_2 input-list input-list-promote search_label_rehab">
+				<div class="search-input2">
+					<input type="text" name="username" class="user-input" id="username" placeholder="请输入用户名" value="{:I('username')}">
+				</div>
+					<div class="search-select">
+						<select id="game-id" name="promote_id" class="select_gallery" style="width:150px;height:31px;border-radius: 5px;">
+					<option value="">全部推广员</option>
+	                    <volist name=":get_busier_promote_list($_SESSION['user_auth_commerce']['uid'])" id="vo">
+	                        <option value="{$vo.id}" <if condition="I('promote_id') eq $vo['id']" > selected="true" </if>> {$vo.account}</option>
+	                    </volist>
+	                </select>
+									
+									
+				</div>
+					
+				<div class="textdetail">
+					<span class="txt2">注册时间:</span>
+					<input type="text" name="begtime" class="time-input" id="sdate" value="{:I('begtime')}" placeholder="开始时间">
+					
+					<span class="txt3">到</span>
+					<input type="text" name="endtime" class="time-input" id="edate" value="{:I('endtime')}" placeholder="结束时间">
+				</div>
+					<a class=" searchbtn1" href="javascript:;" id="search" url="{:U('Buydetail/registsearch','model='.$model['name'],false)}">搜索</a>
+				</div>
+				
+				
+				
+			</div>
+			<div class="rightcontainer-detail" style="height: 830px;">
+				<div class="search-top">
+					<i class="iconfont icon-regist" style="color:#526782; font-size: 20px;"></i>
+					<span>注册查询</span>
+				</div>
+				<table>
+					<tr class="num1">
+						<td>ID</td>
+						<td>用户名</td>
+						<td>注册游戏</td>
+						<td>注册时间</td>
+						<td>推广员账号</td>
+					</tr>
+					<notempty name="list_data">
+					<volist name="list_data" id="data">
+					<tr class="num2">
+						<td>{$data.id}</td>
+						<td>{$data.account}</td>
+						<td>{$data.fgame_name}</td>
+						<td>{:date("Y-m-d H:i:s",$data['register_time'])}</td>
+						<td>{$data.promote_account}</td>
+					</tr>
+					</volist>
+					</notempty>
+				</table>
+				<empty name="list_data">
+				<div style="height:50px;line-height:50px;width:1085px;margin:-20px auto 20px;border-bottom: 1px solid #E3E7EA;text-align:center;">暂无数据</div>
+				</empty>
+				<div class="totalnum">{$_page}</div>
+				<div class="totalnum">
+					<span><a href="javascript:;" url="{:U('Buydetail/exportReg',array('p'=>$_GET['p']))}" id="exportData">导出数据(excel格式)</a></span>
+				</div>
+			</div>
+		</div>
+	    <div style="clear:both;"></div>
+	</div>
+
+</div>
+<!--内容end-->
+</block>
+<block name="script" >
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript">
+$(".select_gallery").select2();	
+$('#sdate').datetimepicker({
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+});
+  
+$('#edate').datetimepicker({
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+});
+
+//搜索功能
+$("#search").click(function(){
+	
+	var sdate= $("#sdate").val();
+	var edate= $("#edate").val();
+	if(sdate && edate && sdate > edate){
+		layer.msg('开始时间必须小于等于结束时间');return false;
+	}
+	
+	var url = $(this).attr('url');
+	
+    var query  = $('.jssearch').find('input').serialize();
+    query  += "&" + $('.jssearch').find('select').serialize();
+    query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+    query = query.replace(/^&/g,'');
+    if( url.indexOf('?')>0 ){
+        url += '&' + query;
+    }else{
+        url += '?' + query;
+    }
+	window.location.href = url;
+	
+	return false;
+});
+
+//导出数据
+$("#exportData").click(function(){
+	var url = $(this).attr('url');
+	console.log(url);
+    var query  = $('.jssearch').find('input').serialize();
+    query  += "&" + $('.jssearch').find('select').serialize();
+    query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+    query = query.replace(/^&/g,'');
+    if( url.indexOf('?')>0 ){
+        url += '&' + query;
+    }else{
+        url += '?' + query;
+    }
+	window.location.href = url;
+});
+//退出登录
+$('.loginout').click(function(){
+    $.ajax({
+      type:"POST",
+      url:"{:U('Index/logout')}",
+      success:function(res){
+  		if(res.status == 3){
+  			layer.msg('退出成功', {icon: 1,});
+  			  setTimeout(function(){
+             window.location.href="{:U('Index/index')}";
+            },1500);
+  		}
+      },
+      error:function(){
+      	alert(333);
+      }
+    })
+});			
+
+</script>
+</block>

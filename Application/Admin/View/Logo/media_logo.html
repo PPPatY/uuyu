@@ -1,0 +1,338 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-place">
+        <span class="main-placetitle">位置：</span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Logo/media_logo')}">媒体官网</a></li>
+            <li><a href="#">图标配置</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">基本配置</span>
+                    <span class="">针对渠道后台的基本信息进行配置</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="tab-wrap tab-list">
+	<div class="tab_nav jstabnav">
+		<ul>
+			<li class="current"><a href="javascript:">图标配置</a></li>
+		</ul>
+	</div>
+		<div class="tab-content tab_content">
+			<form action="{:U('save')}" method="post" class="form-horizontal">
+			<ul class="form_info form_info{:I('group_id',1)+10}">
+			<volist name="list" id="config">
+			 <li>
+			 <label>{$config.title}</label>
+				<switch name="config.name">
+					<case value="PC_SET_LOGO">
+					<div class="form_main">
+						<div class="controls">
+							<input type="file" id="upload_picture_logo">
+			                <input type="hidden" name="config[{$config.name}]" id="cover_id_logo" value="{$config.value}" />
+			                <div class="upload-img-box">
+			                <notempty name="config['value']">
+				                    <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				                </notempty>
+			                </div>
+						</div>
+					</div>
+					<i class="form_hint">{$config.remark}</i>
+					</case>
+					<case value="PC2_SET_LOGO">
+					<div class="form_main">
+						<div class="controls">
+							<input type="file" id="upload_picture_logo2">
+			                <input type="hidden" name="config[{$config.name}]" id="cover_id_logo2" value="{$config.value}" />
+			                <div class="upload-img-box">
+			                <notempty name="config['value']">
+				                    <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				                </notempty>
+			                </div>
+						</div>
+					</div>
+					<i class="form_hint">{$config.remark}</i>
+					</case>
+					<case value="PC_SET_QRCODE">
+						<div class="form-item">
+							<div class="controls">
+								<input type="file" id="upload_picture_qrcode">
+				                <input type="hidden" name="config[{$config.name}]" id="cover_id_qrcode" value="{$config.value}"/>
+				                <div class="upload-img-box">
+				                <notempty name="config['value']">
+				                    <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				                </notempty>
+				                </div>
+							</div>
+						</div>
+						<i class="form_hint">{$config.remark}</i>
+					</case>
+					<case value="PC_SET_APP_QRCODE">
+						<div class="form_main">
+							<div class="controls">
+								<input type="file" id="upload_picture_app_qrcode">
+				                <input type="hidden" name="config[{$config.name}]" id="cover_id_app_qrcode" value="{$config.value}"/>
+				                <div class="upload-img-box">
+				                <notempty name="config['value']">
+				                    <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				                </notempty>
+				                </div>
+							</div>
+						</div>
+						<i class="form_hint">{$config.remark}</i>
+					</case>
+					<case value="PC_SET_ICO">
+						<div class="form_main">
+							<div class="controls">
+								<input type="file" id="upload_picture_ico">
+				                <input type="hidden" name="config[{$config.name}]" id="cover_id_ico" value="{$config.value}"/>
+				                <div class="upload-img-box">
+				                <notempty name="config['value']">
+				                    <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				                </notempty>
+				                </div>
+							</div>
+						</div>
+						<i class="form_hint">{$config.remark}</i>
+					</case>
+					<case value="GAME_BACKGROUND_IMG">
+						<div class="form_main">
+							<div class="controls">
+								<input type="file" id="upload_picture_game"><i class="form_hint">{$config.remark}</i>
+				                <input type="hidden" name="config[{$config.name}]" id="game_backgrounp_img" value="{$config.value}"/>
+				                <div class="upload-img-box">
+				                <notempty name="config['value']">
+				                    <div class="upload-pre-item"><img src="{$config['value']|get_cover='path'}"/></div>
+				                </notempty>
+				                </div>
+							</div>
+						</div>
+					</case>
+					</switch>
+				 <li>
+			</volist>
+			</ul>
+				<div class="form-item">
+					<label class="item-label"></label>
+					<div class="controls">
+						<empty name="list"><button type="submit" disabled class=" submit_btn disabled" target-form="form-horizontal">确 定</button><else/><button type="submit" class=" submit_btn ajax-post" target-form="form-horizontal">确 定</button></empty>
+						
+						
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('Lgog/media_logo')}');
+
+	/* 初始化上传插件 */
+	$("#upload_picture_logo").uploadify({
+	    "height"          : 30,
+	    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	    "fileObjName"     : "download",
+	    "buttonText"      : "上传LOGO",
+	    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+	    "width"           : 120,
+	    'removeTimeout'   : 1,
+	    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+	    "onUploadSuccess" : upload_picture_logo{$field.name},
+	    'onFallback' : function() {
+	        alert('未检测到兼容版本的Flash.');
+	    }
+	});
+	function upload_picture_logo{$field.name}(file, data){
+	    var data = $.parseJSON(data);
+	    var src = '';
+	    if(data.status){
+	        $("#cover_id_logo").val(data.id);
+	        src = data.url || '__ROOT__' + data.path;
+	        $("#cover_id_logo").parent().find('.upload-img-box').html(
+	            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        );
+	    } else {
+	        updateAlert(data.info);
+	        setTimeout(function(){
+	            $('#top-alert').find('button').click();
+	            $(that).removeClass('disabled').prop('disabled',false);
+	        },1500);
+	    }
+	}
+
+	/* 初始化上传插件 */
+	$("#upload_picture_logo2").uploadify({
+	    "height"          : 30,
+	    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	    "fileObjName"     : "download",
+	    "buttonText"      : "上传LOGO",
+	    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+	    "width"           : 120,
+	    'removeTimeout'   : 1,
+	    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+	    "onUploadSuccess" : upload_picture_logo2{$field.name},
+	    'onFallback' : function() {
+	        alert('未检测到兼容版本的Flash.');
+	    }
+	});
+	function upload_picture_logo2{$field.name}(file, data){
+	    var data = $.parseJSON(data);
+	    var src = '';
+	    if(data.status){
+	        $("#cover_id_logo2").val(data.id);
+	        src = data.url || '__ROOT__' + data.path;
+	        $("#cover_id_logo2").parent().find('.upload-img-box').html(
+	            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        );
+	    } else {
+	        updateAlert(data.info);
+	        setTimeout(function(){
+	            $('#top-alert').find('button').click();
+	            $(that).removeClass('disabled').prop('disabled',false);
+	        },1500);
+	    }
+	}
+
+
+	/* 初始化二维码上传插件 */
+	$("#upload_picture_qrcode").uploadify({
+	    "height"          : 30,
+	    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	    "fileObjName"     : "download",
+	    "buttonText"      : "上传二维码",
+	    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+	    "width"           : 120,
+	    'removeTimeout'   : 1,
+	    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+	    "onUploadSuccess" : upload_picture_qrcode{$field.name},
+	    'onFallback' : function() {
+	        alert('未检测到兼容版本的Flash.');
+	    }
+	});
+	function upload_picture_qrcode{$field.name}(file, data){
+	    var data = $.parseJSON(data);
+	    var src = '';
+	    if(data.status){
+	        $("#cover_id_qrcode").val(data.id);
+	        src = data.url || '__ROOT__' + data.path;
+	        $("#cover_id_qrcode").parent().find('.upload-img-box').html(
+	            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        );
+	    } else {
+	        updateAlert(data.info);
+	        setTimeout(function(){
+	            $('#top-alert').find('button').click();
+	            $(that).removeClass('disabled').prop('disabled',false);
+	        },1500);
+	    }
+	}
+	/* 初始化二维码上传插件 */
+	$("#upload_picture_app_qrcode").uploadify({
+	    "height"          : 30,
+	    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	    "fileObjName"     : "download",
+	    "buttonText"      : "上传二维码",
+	    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+	    "width"           : 120,
+	    'removeTimeout'   : 1,
+	    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+	    "onUploadSuccess" : upload_picture_app_qrcode{$field.name},
+	    'onFallback' : function() {
+	        alert('未检测到兼容版本的Flash.');
+	    }
+	});
+	function upload_picture_app_qrcode{$field.name}(file, data){
+	    var data = $.parseJSON(data);
+	    var src = '';
+	    if(data.status){
+	        $("#cover_id_app_qrcode").val(data.id);
+	        src = data.url || '__ROOT__' + data.path;
+	        $("#cover_id_app_qrcode").parent().find('.upload-img-box').html(
+	            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        );
+	    } else {
+	        updateAlert(data.info);
+	        setTimeout(function(){
+	            $('#top-alert').find('button').click();
+	            $(that).removeClass('disabled').prop('disabled',false);
+	        },1500);
+	    }
+	}
+
+	/* 初始化上传插件 */
+	$("#upload_picture_ico").uploadify({
+	    "height"          : 30,
+	    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	    "fileObjName"     : "download",
+	    "buttonText"      : "上传ICO图标",
+	    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+	    "width"           : 120,
+	    'removeTimeout'   : 1,
+	    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+	    "onUploadSuccess" : upload_picture_ico{$field.name},
+	    'onFallback' : function() {
+	        alert('未检测到兼容版本的Flash.');
+	    }
+	});
+	function upload_picture_ico{$field.name}(file, data){
+	    var data = $.parseJSON(data);
+	    var src = '';
+	    if(data.status){
+	        $("#cover_id_ico").val(data.id);
+	        src = data.url || '__ROOT__' + data.path;
+	        $("#cover_id_ico").parent().find('.upload-img-box').html(
+	            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        );
+	    } else {
+	        updateAlert(data.info);
+	        setTimeout(function(){
+	            $('#top-alert').find('button').click();
+	            $(that).removeClass('disabled').prop('disabled',false);
+	        },1500);
+	    }
+	}
+	/* 初始化游戏背景图上传插件 */
+	$("#upload_picture_game").uploadify({
+	    "height"          : 30,
+	    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+	    "fileObjName"     : "download",
+	    "buttonText"      : "上传游戏背景图",
+	    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+	    "width"           : 120,
+	    'removeTimeout'   : 1,
+	    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+	    "onUploadSuccess" : upload_picture_game{$field.name},
+	    'onFallback' : function() {
+	        alert('未检测到兼容版本的Flash.');
+	    }
+	});
+	function upload_picture_game{$field.name}(file, data){
+	    var data = $.parseJSON(data);
+	    var src = '';
+	    if(data.status){
+	        $("#game_backgrounp_img").val(data.id);
+	        src = data.url || '__ROOT__' + data.path;
+	        $("#game_backgrounp_img").parent().find('.upload-img-box').html(
+	            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+	        );
+	    } else {
+	        updateAlert(data.info);
+	        setTimeout(function(){
+	            $('#top-alert').find('button').click();
+	            $(that).removeClass('disabled').prop('disabled',false);
+	        },1500);
+	    }
+	}
+</script>
+</block>

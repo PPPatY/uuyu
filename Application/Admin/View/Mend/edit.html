@@ -1,0 +1,122 @@
+<extend name="Public/base" />
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<style>
+	#form .txt_title {width: 345px;}
+	.tab_content{padding: 0;}
+</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Promote/lists')}">推广员</a></li>
+            <li><a href="{:U('Promote/lists')}">推广员管理</a></li>
+            <li><a href="#">推广补链</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">推广补链</span>
+                    <span class="">此处功能用于修改玩家所属推广员的功能</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+<div class="tab-wrap">
+    <div class="tab-content tab_content">
+    <!-- 表单 -->
+    <form id="form" action="{:U('edit?model='.$model['id'])}" method="post" class="form-horizontal">
+        <!-- 基础文档模型 -->
+        <div class="formtitle" style="margin-bottom: 10px;"><span>补链</span><p class="description_text" style="line-height: 20px;">说明：此处功能用于修改玩家所属推广员的功能。</p></div>
+        <div id="tab1" class="tab-pane in tab1 tab_table">
+            <table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td class="l">玩家账号：</td>
+                        <td class="r">
+                           <input name="account" value="{$data['account']}" disabled readonly type="text" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td class="l">注册时间：</td>
+                        <td class="r">
+                           <input type="text" class="txt" name="" disabled value="{:set_show_time($data['register_time'])}" placeholder="输入登录1111111密码">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l">修改前推广员：</td>
+                        <td class="r">
+                           <input name="old_promote_id" value="{:get_promote_name($data['promote_id'])}" disabled readonly type="text" class="">
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td class="l">修改后推广员：</td>
+                        <td class="r">
+                           <select id="prmoote_id_to" name="prmoote_id_to">
+                               <option value="0">官方推广员</option>
+                               <volist name=":get_promote_list()" id="vo">
+                                <option value="{$vo.id}">{$vo.account}{:get_parent_promoteto($vo['id'])}</option>
+                               </volist>
+                           </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="l">备注：</td>
+                        <td class="r" colspan='3'>
+                            <input type="text" class="txt txt_title" name="remark" value="{$data['remark']}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-item cf">
+            <input type="hidden" name="promote_id" value='{$data.promote_id}'/>
+            <input type='hidden' name="user_id" value="{$data['id']}" />
+            <input type="hidden" name="account" value="{$data.account}">
+            <button class=" submit_btn ajax-post " id="submit" type="submit" target-form="form-horizontal">保 存</button>
+            <button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Mend/lists')}');
+Think.setValue("prmoote_id_to", {$data.promote_id|default = 0});
+$('#submit').click(function(){
+    $('#form').submit();
+});
+
+$("#prmoote_id_to").select2();
+$(function(){
+	$('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    showTab();
+});
+</script>
+</block>

@@ -1,0 +1,83 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<style type="text/css">
+		.form_info .form_radio{width: 347px;}
+	</style>
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：用于配置云存储的相关参数，目前支持阿里云OSS存储和七牛存储</p>
+    </div>
+	<div class="tab-wrap">
+		<div class="tab_nav jstabnav">
+		<ul>
+			<li data-tab="tab1" class="current"><a href="javascript:void(0);" >OSS设置</a></li>
+			<li data-tab="tab2"><a href="javascript:void(0);" >七牛设置</a></li>
+		</ul></div>
+		<div class="tab-content">
+		<div id="tab1" class="tab-pane in tab1">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal OSS form_info_ml">
+			<ul class="form_info ">
+                <li><label>bucket名称：</label><input name="config[bucket]" type="text" value="{$oss_storage['bucket']}" class=""><i class="form_hint">oss的bucket名称</i></li>
+                <li><label>AccessKeyId：</label><input name="config[accesskeyid]" type="text" value="{$oss_storage['accesskeyid']}" class=""><i class="form_hint">从OSS获得的AccessKeyId</i></li>
+                <li><label>AccessKeySecr：</label><input name="config[accesskeysecr]" type="text" value="{$oss_storage['accesskeysecr']}" class=""><i class="form_hint">从OSS获得的AccessKeySecr</i></li>
+                <li><label>访问域名：</label><input name="config[domain]" type="text" value="{$oss_storage['domain']}" class=""><i class="form_hint">您选定的OSS数据中心访问域名，例如oss-cn-hangzhou.al</i></li>
+                <li><label>启用状态：</label>
+                	<span class="form_radio table_radio">
+                		<div class="radio radio-primary">
+							<input type="radio" id="radio1" value="0" name="status" <eq name="oss_storage_data['status']" value="0">checked="checked"</eq>>
+							<label for="radio1">禁用</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio2" value="1" name="status" <eq name="oss_storage_data['status']" value="1">checked="checked"</eq>>
+							<label for="radio2">启用</label>
+						</div>
+                </span><i class="form_hint">OSS和七牛同时开启的话默认OSS</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="oss_storage"></input><input type="submit" id="submit" value="确认保存" target-form="OSS" class="form_btn ajax-post"></li>
+            </ul>
+		</form>
+		</div>
+		</div>
+
+		<div class="tab-content">
+		<div id="tab2" class="tab-pane tab2">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal qiniu form_info_ml">
+			<ul class="form_info ">
+                <li><label>bucket名称</label><input name="config[bucket]" type="text" value="{$qiniu_storage['bucket']}" class=""><i class="form_hint">七牛的bucket名称</i></li>
+                <li><label>AccessKeyId</label><input name="config[AccessKey]" type="text" value="{$qiniu_storage['AccessKey']}" class=""><i class="form_hint">从七牛获得的AccessKey</i></li>
+                <li><label>AccessKeySecr</label><input name="config[SecretKey]" type="text" value="{$qiniu_storage['SecretKey']}" class=""><i class="form_hint">从七牛获得的SecretKey</i></li>
+                <li><label>访问域名</label><input name="config[domain]" type="text" value="{$qiniu_storage['domain']}" class=""><i class="form_hint">您选定的七牛数据中心访问域名，例如oss-cn-hangzhou.al</i></li>
+                <li><label>启用状态</label>
+                	<span class="form_radio table_radio">
+                	<div class="radio radio-primary">
+						<input type="radio" id="radio3" value="0" name="status" <eq name="qiniu_storage_data['status']" value="0">checked="checked"</eq>>
+						<label for="radio3">禁用</label>
+					</div>
+					<div class="radio radio-primary">
+						<input type="radio" id="radio4" value="1" name="status" <eq name="qiniu_storage_data['status']" value="1">checked="checked"</eq>>
+						<label for="radio4">启用</label>
+					</div>
+                	</span><i class="form_hint">OSS和七牛同时开启的话默认OSS</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="qiniu_storage"></input><input type="submit" id="submit" value="确认保存" target-form="qiniu" class="form_btn ajax-post"></li>
+            </ul>
+		</form>
+		</div>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('Tool/storage')}');
+	$(function(){
+		//支持tab
+		showTab();
+	})
+</script>
+</block>

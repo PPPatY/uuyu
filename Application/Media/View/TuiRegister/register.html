@@ -1,0 +1,304 @@
+<extend name="Public/bases" />
+<block name="body">
+<style>
+.head{display: none;}
+.bottom{display: none;}
+</style>
+<link href="__CSS__/login.css" type="text/css" rel="stylesheet">
+
+<!--头部-->
+<div class="login_head">
+ <a onclick="window.history.back(-1)" class="back"><img src="__IMG__/back.png"></a>
+ <span>注册</span>
+</div>
+<!--头部结束-->
+<!--注册-->
+<div id="tab1" class="reg_tab">
+    <div class="menu">
+        <ul>
+            <li id="one1" class="off" onclick="jssetTab('one',1)"><span>手机号注册</span></li>
+            <li id="one2" onclick="jssetTab('one',2)"><span>普通帐号注册</span></li>
+        </ul>
+    </div>
+<div class="">
+<!--手机号注册-->
+<div id="con_one_1" class="one1">
+    <div class="logincon">
+        <dl>
+        <dt><i class="login_ph"></i><input class="reguser puser" type="text" placeholder="输入您的手机号"></dt>
+        <dt><i class="login_pwd"></i><input class="regpwd ppwd"  type="text" placeholder="输入您的密码"></dt>
+        <dt class="yzmli"><span><i class="login_yzm"></i><input class="regyzm" id="registerPhonePop" type="text" placeholder="输入验证码"></span><div class="hqyzm"> <a class="sendvcode" >获取验证码</a></div></dt>
+
+        <dd>
+        <span class="rember"><input type="checkbox"  checked id="checkbox-2-1" class="regular-checkbox big-checkbox pckb" /><label for="checkbox-2-1"></label>我已阅读并同意<a href="{:U('Subscriber/agreement')}">《用户注册协议》</a></span>
+        <div>
+        <span  onclick="register('phone')" class="loginbtn rebtn">注&nbsp;&nbsp;册</span></div>
+        <p class="lo_warn"></p></dd>
+        </dl>
+
+        <ul class="login_bottom">
+        <li><span>已注册账号？<a href="{:U('/subscriber','',true,'',true)}">马上登录</a></span></li>
+        </ul>
+    </div>
+</div> <!--手机号注册结束-->
+        
+<!--普通帐号注册-->
+<div id="con_one_2" class="one2" style="display:none;">
+    <div class="logincon">
+        <dl>
+        <dt><i class="login_ph"></i><input class="reguser auser" type="text" placeholder="输入您的用户名"></dt>
+        <dt><i class="login_pwd"></i><input type="text" class="regpwd apwd" placeholder="输入密码"></dt>
+        <dt class="yzmli"><span><i class="login_yzm"></i><input type="text" id="registerNameVcodePop" class="regyzm"  placeholder="输入验证码"></span><div class="hqyzm"><img src="__MODULE__/Subscriber/verify" class="checkcode"></div></dt>
+
+        <dd>
+        <span class="rember"><input type="checkbox"  checked id="checkbox-2-2" class="regular-checkbox big-checkbox ackb" /><label for="checkbox-2-2"></label>我已阅读并同意<a href="{:U('/subagre','',true,'',true)}">《用户注册协议》</a></span>
+        <div>
+        <span onclick="register('account')" class="loginbtn rebtn">注&nbsp;&nbsp;册</span></div>
+        <p class="lo_warn"></p>
+        </dd>
+        </dl>
+
+        <ul class="login_bottom">
+        <li><span>已注册账号？<a href="{:U('/subscriber','',true,'',true)}">马上登录</a></span></li>
+        </ul>
+
+    </div>
+</div> 
+<!--普通帐号注册-->
+</div>
+</div>
+<!--注册结束-->
+<div>
+</div>
+<script>
+    function jssetTab(name,cursel){
+        cursel_0=cursel;
+        links_len = $('.menu ul').children('li').length;
+        for(var i=1; i<=links_len; i++){
+            var menu = document.getElementById(name+i);
+            var menudiv = document.getElementById("con_"+name+"_"+i);
+            if(i==cursel){
+                menu.className="off";
+                menudiv.style.display="block";
+            }
+            else{
+                menu.className=" ";
+                menudiv.style.display="none";
+            }
+        }
+    }
+</script>
+<script>
+var f=function(msg,type) {
+    type = type||0;
+    $class = $('.menu').find('.off').attr('id');
+    if(!type){
+        $("."+$class).find('.lo_warn').html('<i></i>'+msg);
+    }else{
+        $("."+$class).find('.lo_warn').html(msg);
+    }
+};
+$('.checkcode').on('click',function() {
+    var e = (new Date).getTime();
+    codeurl="__MODULE__/Subscriber/verify/t/";
+    $(this).attr('src', codeurl + e);
+});
+$('.aorg').on('click',function() {
+    $("input[class='ackb']").attr("checked","checked");
+});
+$('.porg').on('click',function() {
+    $("input[class='pckb']").attr("checked","checked");
+});
+$('#registerNameVcodePop').blur(function() {
+    var code = $.trim($(this).val());
+    if (code == '') {f('验证码不能为空！');return;}
+    else{f('',1);}
+});
+$('.auser').blur(function() {
+    var account = $.trim($(this).val());
+    if (account == '') {f('用户名不能为空！');return;}
+    else{f('',1);}
+});
+$('.apwd').blur(function() {
+    var apwd = $.trim($(this).val());
+    if (apwd == '') {f('密码不能为空！');return;}
+    else{f('',1);}
+});
+$('.puser').blur(function() {
+    var account = $.trim($(this).val());
+    if (account == '') {f('手机号码不能为空！');return;}
+    else{f('',1);}
+    if (!(/^1[34578]\d{9}$/.test(account))) {
+        f('手机号码格式不正确');return;
+    }else{
+        f('',1);
+        $(".sendvcode").addClass('phoneok');
+    }
+});
+$('.ppwd').blur(function() {
+    var apwd = $.trim($(this).val());
+    if (apwd == '') {f('密码不能为空！');return;}
+    else{f('',1);}
+});
+//发送验证码
+$(".sendvcode").on('click',function() {
+    account=$.trim($('.puser').val());
+    if (!(/^1[34578]\d{9}$/.test(account))) {
+        f('手机号码格式不正确');return;
+    }else{
+        f('',1);
+        $(".sendvcode").addClass('phoneok');
+    }
+// 发送安全码
+if (!$(this).hasClass('disabled')&&$(this).hasClass('phoneok')) {
+    var e = this,p = account;
+    $(e).addClass('disabled');
+    $.ajax({
+        type:'post',
+        url: '{:U("TuiRegister/telsvcode")}',
+        data: 'phone='+p,
+        dataType: 'json',
+        success: function(d) {
+            if (parseInt(d.status) >0) {
+                r && r(parseInt(d.status))
+            } else {
+                $(e).siblings('span').addClass('msg-fail').text(d.msg);
+            } 
+        }
+    });
+    var r = function(i, t) {
+        if (i>0) {
+            var r = 60;
+            $(e).addClass('disabled');
+            var a = setInterval(function() {
+                r--;
+                $(e).text('成功'+r + '秒'),
+                0 == r && ($(e).removeClass('disabled'), $(e).text('获取验证码'), clearInterval(a))
+            },1e3)
+        } 
+    };                      
+}
+return false;
+});
+function register(obj) {
+    switch(obj){
+        case 'account':{
+            var account =$('.auser').val();
+            var password =$('.apwd').val();
+            var verify =$("#registerNameVcodePop").val();
+            var data = {"account":account,'verify':verify,"password":password,"type":obj} ;
+            gameboxbtn(data);
+        };break;
+        case 'phone':{
+            var account =$('.puser').val();
+            var password =$('.ppwd').val();
+            var verify =$("#registerPhonePop").val();
+            var data = {"account":account,"password":password,"type":obj,'verify':verify} ;
+            gameboxbtn(data);
+        };break;
+        default:{
+            var url = '{:U("thirdlogin",array("gid"=>$_REQUEST["gid"],"pid"=>$_REQUEST["pid"]))}';
+            url = url.replace(".html","")+"/type/"+obj;
+            window.location=url;
+        }
+    }
+}
+function gameboxbtn(data) {
+        pid="{:I('pid')}";
+        gid="{:I('gid')}"; 
+        if (data.type=='phone') {
+            if (!(/^1[34578]\d{9}$/.test(data.account))) {
+                f('手机号码格式不正确');return false;
+            }
+            if (!data.password || data.password.length<6) {
+                f('请输入至少6位的密码');return false;
+            }
+            if (!$(".pckb").prop("checked")){
+                f('请阅读用户注册协议');return false;
+            }
+        }
+        if (data.type=='account') {
+            if(data.account.length>15||data.account.length<6){
+                f('用户名由字母开头，6~15位字符组成');return false;
+            }
+            if (!(/^[a-zA-Z]+[0-9a-zA-Z_]{5,15}$/.test(data.account))){
+                f('用户名必须由6~15位字母和数字组成');return false;
+            }
+            if (!data.password || data.password.length<6) {
+                f('请输入至少6位的密码');return false;
+            }
+            if(data.verify==''){
+                f('验证码不能为空');return false;
+            }
+            if (!$(".ackb").prop("checked")){
+                f('请阅读用户注册协议');return false;
+            }
+        }
+        switch(data.type){
+            case 'account':{
+                $.ajax({
+                    type:'post',
+                    dataType:'json',
+                    data:{"account":data.account,"password":data.password,"type":data.type,'verify':data.verify,'p_id':pid,'g_id':gid},
+                    url:'{:U("TuiRegister/register")}',
+                    success:function(d) {
+                        switch(d.status){
+                            case 1:{
+                                window.location.href=d.url;
+                            };break;
+                            default:{
+                                if(d.code==0){
+                                    $('.checkcode').click();
+                                }
+                                f(d.msg);
+                            }
+                        }
+                    },
+                    error:function() {
+                        alert('服务器故障，请稍后再试');
+                    }
+                });
+            };break;
+            case 'phone':{
+                $.ajax({
+                    type:'post',
+                    dataType:'json',
+                    data:{"account":data.account,"password":data.password,"type":data.type,'verify':data.verify,'way':0,'p_id':pid,'g_id':gid},
+                    url:'{:U("TuiRegister/check_tel_code")}',
+                    success:function(data) {
+                        switch(parseInt(data.status)) {
+                            case -3: {
+                                f(data.msg);
+                            };break;
+                            case 0:{
+                                f(data.msg)
+                            };break;
+                            default:{
+                                window.location.href = data.url;
+                            }
+                            
+                        }
+                    },
+                    error:function() {
+                        alert('服务器故障，请稍后再试');
+                    }
+                });
+            };break;
+            case 2:{
+                $.ajax({
+                    type:'post',
+                    dataType:'json',
+                    data: {"phone":phone,"delay":1,"way":2,"type":data.type},
+                    url: '{:U("telsvcode")}',
+                    success:function(data) {
+                        t(phone,password,2,pid,gid,data);
+                    },
+                    error:function() {
+                        alert('服务器故障，请稍后再试');
+                    }
+                });
+            };break;
+        }
+}
+</script>
+</block>

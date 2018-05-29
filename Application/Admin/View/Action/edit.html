@@ -1,0 +1,70 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('User/index')}">用户</a></li>
+            <li><a href="{:U('User/index')}">管理组</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+        <div class="formtitle"><span>基本信息</span></div>
+        <ul class="form_info ">
+            <li><label>行为名称：</label><span class="form_text">{:get_action($info['action_id'], "title")}</span></li>
+            <li><label>执行者：</label><span class="form_text">{:get_nickname($info['user_id'])}</span></li>
+            <li><label>执行IP：</label><span class="form_text">{:get_nickname($info['user_id'])}</span></li>
+            <li><label>执行时间：</label><span class="form_text">{:date('Y-m-d H:i:s',$info['create_time'])}</span></li>
+            <li><label>备注：</label><textarea readonly="readonly">{$info.remark}</textarea></li>
+            <li><label>&nbsp;</label><button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button></li>
+        </ul>
+    </form>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/jquery.dragsort-0.5.1.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+Think.setValue("extend", {$info.extend|default=0});
+//导航高亮
+highlight_subnav('{:U('Action/actionlog')}');
+
+
+$(function(){
+	showTab();
+})
+//拖曳插件初始化
+$(function(){
+	$(".dragsort").dragsort({
+	     dragSelector:'li',
+	     placeHolderTemplate: '<li class="draging-place">&nbsp;</li>',
+	     dragBetween:true,	//允许拖动到任意地方
+	     dragEnd:function(){
+	    	 var self = $(this);
+	    	 self.find('input').attr('name', 'field_sort[' + self.closest('ul').data('group') + '][]');
+	     	//updateVal();
+	     }
+	 });
+
+	$('#sortUl li b').click(function(){
+		$(this).parent().remove();
+		updateVal();
+	});
+
+	// 更新排序后的隐藏域的值
+	function updateVal() {
+		var fields = new Array();
+		$('.form_field_sort').each(function(){
+			var i = 1;
+			var self = this;
+			var group = $(self).attr('group');
+			$(self).find('li').each(function(){
+		   		var id = $(this).find('em').attr('data');
+		   		$('#field-' + id).val(id + ':' + group + ':' + i++);
+		   	});
+		});
+
+	}
+})
+</script>
+</block>
+

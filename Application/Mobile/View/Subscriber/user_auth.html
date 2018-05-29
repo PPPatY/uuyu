@@ -1,0 +1,151 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+<header class="header">
+  <section class="wrap">
+    <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">实名认证</span></span></div>
+  </section>
+</header>
+<div class="occupy"></div>
+
+<section class="trunker">
+  <if condition="$userinfo['real_name'] eq '' || $userinfo['idcard'] eq ''">
+  <section class="inner">
+    <section class="contain">
+      <!-- 未认证  -->
+      <form action="" class="">
+      <div class="auth-info info-table jsauthinfo">
+        <div class="wrap">
+            <div class="item table">
+              <span class="table-cell item1">真实姓名</span>
+              <span class="table-cell item2"><input type="text" name="real_name" class="txt" placeholder="请输入您的真实姓名" value=""></span>
+            </div>
+            <div class="item table">
+              <span class="table-cell item1">证件号码</span>
+              <span class="table-cell item2"><input type="text" name="idcard" class="txt" placeholder="请输入您的证件号码" value=""></span>
+            </div>
+        </div>
+      </div>
+      <div class="auth-butn info-input-butn">
+        <input type="submit" class="butn disabled jssubmit" value="提交">
+        <p class="error-text auth-error hidden"></p>
+      </div>
+      <p class="auth-notice">
+        根据2010年8月1日实施的《网络游戏管理暂行办法》，网络游戏用户需使用有效身份证件进行实名认证。为保证流畅游戏体验，享受健康游戏生活，请广大玩家尽快实名认证，且每个身份证件号码只能认证一次。
+      </p>
+      </form>
+
+    </section>
+    
+  </section>
+ <else/>
+  <section class="inner">
+    <section class="contain">
+      <!-- 已认证 -->
+      <div class="authed-info">
+        <img src="__IMG__/fq/my_real_already.png" class="portrait">
+        <div class="title">您已进行过实名认证</div>
+        <table>
+          <tr><td>真实姓名：</td><td>{$userinfo['real_name']}</td></tr>
+          <tr><td>身份证号：</td><td>{:substr($userinfo['idcard'],0,1)}***********{:substr($userinfo['idcard'],-1)}</td></tr>
+        </table>
+      </div>
+      
+    </section>
+  </section>
+ </if>
+</section>
+
+
+<div class="pop"></div>
+<script src="__JS__/pop.lwx.min.js"></script>
+<script src="__JS__/common.js"></script>
+<script>
+    $(function() {
+      var pop = $('.pop').pop();
+      
+      $('.jsauthinfo .txt').keyup(function() {
+        
+        $('.jsauthinfo .txt').each(function(i,n) {
+          if ($(n).val().length<1) {$('.jssubmit').addClass('disabled');return false;}
+          else {$('.jssubmit').removeClass('disabled');}
+        });
+        
+        return false;
+      });
+      
+      
+      $('.jssubmit').click(function() {
+        var that=$(this);
+        if (that.hasClass('disabled')) {return false;}
+        that.addClass('disabled');
+        $name = $('input[name="real_name"]').val();
+        $idcard = $('input[name="idcard"]').val();
+        if($idcard.length>18){
+          $('.auth-error').removeClass('hidden').text('身份证号码错误');
+          $('.jssubmit').addClass('disabled');return false;
+        }
+        $.ajax({
+          type:'post',
+          url:"{:U('isChineseName')}",
+          data:{name:$name},
+          success:function(data){
+            if(data.status!=1){
+              $('.auth-error').removeClass('hidden').text(data.msg);
+            }else{
+              $.ajax({
+                type:'post',
+                url:"{:U('isidcard')}",
+                data:{idcard:$idcard,name:$name},
+                success:function(data){
+                  if(data.status!=1){
+                    $('.auth-error').removeClass('hidden').text(data.msg);
+                  }else{
+                    $.ajax({
+                      type:'post',
+                      url:"{:U('bind_idcard')}",
+                      data:{name:$name,idcard:$idcard},
+                      success:function(data){
+                        console.log(data);
+                        if(data.status!=1&&data.status!=0){
+                          $('.auth-error').removeClass('hidden').text(data.msg);
+                        }else if(data.status!=1){
+                          pop.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_authentication_fail.png"><div class="pop-title">提交失败</div><a href="javascript:;" class="pop-btn jscomfirm">再试一次</a></div>');
+                          $('.jscomfirm').click(function() {pop.close();that.removeClass('disabled');});
+                        }else{
+                          // 成功
+                          pop.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_authentication_success.png"><div class="pop-title">实名认证成功</div><a href="user.html" class="pop-btn2">返回个人中心</a></div>'); 
+                        }
+                      },error:function(){
+                        pop.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_authentication_fail.png"><div class="pop-title">提交失败</div><a href="javascript:;" class="pop-btn jscomfirm">再试一次</a></div>');
+                        $('.jscomfirm').click(function() {pop.close();that.removeClass('disabled');});
+                      }
+                    });
+                  }
+                },error:function(){
+                  pop.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_authentication_fail.png"><div class="pop-title">提交失败</div><a href="javascript:;" class="pop-btn jscomfirm">再试一次</a></div>');
+                  $('.jscomfirm').click(function() {pop.close();that.removeClass('disabled');});
+                }
+              });
+            }
+          },error:function(){
+            pop.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_authentication_fail.png"><div class="pop-title">提交失败</div><a href="javascript:;" class="pop-btn jscomfirm">再试一次</a></div>');              
+            $('.jscomfirm').click(function() {pop.close();that.removeClass('disabled');});
+          }
+        });
+        
+        pop.find('.pop-close').click(function() {pop.close();that.removeClass('disabled');});
+        return false;
+      });
+
+      
+    });
+    
+</script>
+</block>

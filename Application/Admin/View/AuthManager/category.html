@@ -1,0 +1,102 @@
+<!-- 分类授权编辑页面 -->
+<extend name="Public/base" />
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style type="text/css">
+		.select2-container{width: 110px !important;}
+		.tab_nav .nolist{
+			background: none;
+			border: 0;
+			margin-top: -2px;
+		}
+		.select2-container--default .select2-selection--single{height: 34px;}
+		.select2-container--default .select2-selection--single .select2-selection__rendered{line-height: 33px;}
+	</style>
+<div class="main-place">
+    <span class="main-placetitle"></span>
+    <ul class="main-placeul">
+        <li><a href="{:U('User/index')}">用户</a></li>
+        <li><a href="{:U('User/index')}">管理组</a></li>
+        <li><a href="#">{$meta_title}</a></li>
+    </ul>
+</div>
+<div class="tab-wrap">
+    <div class="tab_nav">
+        <ul>
+            <li><a href="{:U('AuthManager/access',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}">访问授权</a></li>
+            <li class="current"><a href="javascript:;">分类授权</a></li>
+            <li><a href="{:U('AuthManager/user',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}">成员授权</a></li>
+            <li class="fr nolist">
+                <select name="group" class="select_gallery select2-search--hide">
+                    <volist name="auth_group" id="vo">
+                        <option value="{:U('AuthManager/category',array('group_id'=>$vo['id'],'group_name'=>$vo['title']))}" <eq name="vo['id']" value="$this_group['id']">selected</eq> >{$vo.title}</option>
+                    </volist>
+                </select>
+            </li>
+        </ul>
+    </div>
+    <!-- 表格列表 -->
+    <div class="tb-unit posr">
+        <form class="save-category category_list" action="{:U('AuthManager/addToCategory')}" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="group_id" value="{:I('group_id')}">
+            <div class="category auth-category">
+                <div class="hd cf">
+                    <div class="fold">折叠</div>
+                    <div class="order">选择</div>
+                    <div class="name">栏目名称</div>
+                </div>
+                {:R('AuthManager/tree', array($group_list))}
+            </div>
+
+            <div class="tb-unit-bar box_mt">
+                <button class="submit_btn ajax-post" type="submit" target-form="save-category">确 定</button>
+                <button class="category_return" onclick="javascript:history.back(-1);return false;">返 回</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /表格列表 -->
+</block>
+<block name="script">
+<script type="text/javascript">
+    +function($){
+        /* 分类展开收起 */
+        $(".category dd").prev().find(".fold i").addClass("icon-unfold")
+            .click(function(){
+                var self = $(this);
+                if(self.hasClass("icon-unfold")){
+                    self.closest("dt").next().slideUp("fast", function(){
+                        self.removeClass("icon-unfold").addClass("icon-fold");
+                    });
+                } else {
+                    self.closest("dt").next().slideDown("fast", function(){
+                        self.removeClass("icon-fold").addClass("icon-unfold");
+                    });
+                }
+            });
+
+        var auth_groups = [{$authed_group}];
+        $('.cate_id').each(function(){
+            if( $.inArray( parseInt(this.value,10),auth_groups )>-1 ){
+                $(this).prop('checked',true);
+            }
+        });
+	    $('select[name=group]').change(function(){
+		    location.href = this.value;
+	    });
+    }(jQuery);
+    //导航高亮
+    highlight_subnav('{:U('AuthManager/index')}');
+    $(function() {
+	    <volist name=":I('get.')" id="vo">
+            Think.setValue('{$key}',"{$vo}");
+        </volist>
+			$(".select_gallery").select2();
+			$(".select2-search--hide").select2({
+				minimumResultsForSearch: -1,
+			});
+		});
+</script>
+</block>

@@ -1,0 +1,480 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/gift.css" rel="stylesheet" >
+<style>
+.dropload-noData{
+  display: none;
+}
+</style>
+    <header class="header ">
+      <section class="wrap">
+        <div class="caption giftindex">
+          <span class="table">
+            <span class="table-cell">
+              <div id="tab-menu">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper tabmenu">
+                        <div class="swiper-slide swiper-visible active"><a href="javascript:;" class="table"><span class="table-cell">推荐</a></span></div>
+                        <div class="swiper-slide swiper-visible"><a href="javascript:;" class="table"><span class="table-cell">热门</span></a></div>
+                        <div class="swiper-slide swiper-visible"><a href="javascript:;" class="table"><span class="table-cell">最新</span></a></div>
+                        <div class="swiper-slide swiper-visible"><a href="javascript:;" class="table"><span class="table-cell">全部</span></a></div>
+                    </div>
+                </div>
+              </div>
+            </span>
+          </span>
+        </div>
+        <a href="{:U('Search/index')}" class="hbtn search"><span class="table"><span class="table-cell"><img src="__IMG__/nav_btn_search.png"></span></span></a>
+      </section>
+    </header>
+    <div class="occupy"></div>
+<a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+    <section class="trunker">
+      <section class="inner">
+      
+        <section class="contain">
+          
+          
+            <div class="tab-scroll">
+              <div id="tab-slide">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper tabpanel">
+                        <div class="swiper-slide">
+                          <ul class="list second-list">
+                          <!-- -->
+                          <empty name="data">
+                            <div class="empty swiper-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>
+                          <else/>
+                            <volist name="data" id="da">
+                              <li class="clearfix">
+                                <div class="item clearfix">
+                                  <div class="game-info">
+                                    <a href="{$da.play_detail_url}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$da.icon}" class="icon"></a>
+                                    <div class="text"><div class="title">{$da.game_name}</div><p>共<span>{$da.gbnum}</span>个礼包</p></div>
+                                  </div>
+                                  <div class="gift-list">
+                                    <volist name="da['gblist']" id="d" key="k">
+                                      <div <if condition="$k eq 1"> class="subitem active" <else/>class="subitem"</if>>
+                                        <div class="butnbox getgift" data-gift_id="{$d['gift_id']}" data-game_id="{$d['game_id']}"><a href="javascript:;" <if condition='$d.geted eq 0'> class="butn">领取<else/>class="butn disabled">已领取</if></a></div>
+                                        <div class="text">
+                                          <div class="title"><a href="{$d.gift_detail_url}" class="name">[{$d.giftbag_name}]</a></div>
+                                          <p class="introduction">{$d.desribe}&nbsp;</p>
+                                        </div>
+                                      </div>
+                                    </volist>
+                                    <if condition="$da['gbnum'] gt 1"><a class="moregift jsmoregift"><span>查看更多礼包 ( {:$da['gbnum']-1} )<img src="__IMG__/gift_hot_see.png"></span></a></if>
+                                  </div>
+                                </div>
+                              </li>
+                            </volist>
+                          </empty>
+                          </ul>
+                        
+                        </div>
+                        <div class="swiper-slide loaddiv" id="hotgift">
+                          <ul class="list second-list">
+                          </ul>
+                        </div>
+                        <div class="swiper-slide" id="newgift">
+                          <ul class="list second-list">
+                          </ul>
+                        </div>
+                        <div class="swiper-slide">
+                          <ul class="list second-list">
+                          <empty name="data">
+                            <div class="empty swiper-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>
+                          <else/>
+                            <volist name="alldata" id="allda">
+                              <li class="clearfix">
+                                <div class="item clearfix">
+                                  <div class="game-info">
+                                    <a href="{$allda.play_detail_url}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$allda.icon}" class="icon"></a>
+                                    <div class="text"><div class="title">{$allda.game_name}</div><p>共<span>{$allda.gbnum}</span>个礼包</p></div>
+                                  </div>
+                                  <div class="gift-list">
+                                    <volist name="allda['gblist']" id="d" key="k">
+                                      <div <if condition="$k eq 1"> class="subitem active" <else/>class="subitem"</if>>
+                                        <div class="butnbox getgift" data-gift_id="{$d['gift_id']}" data-game_id="{$d['game_id']}"><a href="javascript:;" <if condition='$d.geted eq 0'> class="butn">领取<else/>class="butn disabled">已领取</if></a></div>
+                                        <div class="text">
+                                          <div class="title"><a href="{$d.gift_detail_url}" class="name">[{$d.giftbag_name}]</a></div>
+                                          <p class="introduction">{$d.desribe}&nbsp;</p>
+                                        </div>
+                                      </div>
+                                    </volist>
+                                    <if condition="$allda['gbnum'] gt 1"><a class="moregift jsmoregift"><span>查看更多礼包 ( {:$allda['gbnum']-1} )<img src="__IMG__/gift_hot_see.png"></span></a></if>
+                                  </div>
+                                </div>
+                              </li>
+                            </volist>
+                          </empty>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            
+            
+        </section>
+        
+      </section>
+    </section>
+    <div class="space"></div>
+    <div class="popmsg"></div>
+    <link href="__STATIC__/dist/dropload.css" rel="stylesheet" >
+    <script src="__STATIC__/dist/dropload.js"></script>
+    <script>
+        function nologintc(popmsg,msg){
+          popmsg.addClass('pop-notice').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_unlisted.png"><div class="pop-title">您还未登录</div><p class="pop-text">'+msg+'</p><a href="javascript:;" class="pop-btn tologin">去登录</a></div>'); 
+          popmsg.find('.pop-close').click(function() {popmsg.close();});
+          popmsg.find('.tologin').click(function() {popmsg.close();$('.jslogin').click()});
+        }
+        function Copy(str,that){
+            var save = function(e){
+                e.clipboardData.setData('text/plain', str);
+                e.preventDefault();
+            }
+            that.css("color", "white");
+            document.addEventListener('copy', save);
+            document.execCommand('copy');
+            document.removeEventListener('copy',save);
+            that.text('复制成功');
+        }
+        $(function() {
+          $user = "{:is_login()}";
+          var popmsg = $('.popmsg').pop();
+          $("body").on("click",'.getgift',function(){
+            that = $(this);
+            // 是否登录
+            if ($user>0) {
+              $.ajax({
+                  type: 'post',
+                  url: '{:U("Gift/getgift")}',
+                  async:false,
+                  data:{gameid:that.attr('data-game_id'),giftid:that.attr('data-gift_id')},
+                  dataType: 'json',
+                  success: function(data){
+                      if(data.code==1){
+                        // 成功
+                        that.children('a.butn').addClass('disabled').text('已领取');
+                        popmsg.addClass('pop-hint').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_successful.png"><div class="pop-title">领取成功！</div><div class="pop-code pop-table"><span class="pop-cell pop-input"><input type="text" readonly class="code pop-txt" value="'+data.nvalue+'"></span></div><p class="pop-text">可在[我的礼包]中查看</p><a href="javascript:;" class="copy pop-btn">复制激活码</a></div>');
+                        popmsg.find('.pop-close').click(function() {popmsg.close();});
+                        popmsg.find('.copy').click(function() {
+                            // //移动端复制
+                            $(".copy").css("color", "#14b4c3");
+                            $(".copy").text('复制');
+                            Copy($('.code').val(),$('.pop-hint .pop-btn'));
+                          });
+                      }else{
+                        // 失败
+                        popmsg.addClass('pop-hint').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_fail.png"><div class="pop-title">领取失败！</div><p class="pop-text">'+data.msg+'</p><a  class="pop-btn jsfresh">重试</a></div>');
+                        popmsg.find('.jsfresh').click(function(){popmsg.close();});
+                        popmsg.find('.pop-close').click(function() {popmsg.close();});
+                      }
+                  },
+                  error: function(xhr, type){
+                      alert('服务器错误');
+                  }
+              });
+            }else{
+              nologintc(popmsg,'暂时无法领取礼包~T_T~');
+            }
+          });
+        });
+    </script>
+    <script>
+        var itemIndex = 0;
+        var tab1LoadEnd = false;
+        var tab2LoadEnd = false;
+        // var realheight = $(document).height();
+        // console.log(realheight);
+        $(function() {
+          var viewSwiper = new Swiper('#tab-slide .swiper-container', {
+            autoHeight:false,
+            onSlideChangeStart: function() {
+              updateNavPosition()
+            }
+          })
+
+          var previewSwiper = new Swiper('#tab-menu .swiper-container', {
+            visibilityFullFit: true,
+            slidesPerView: 'auto',
+            onlyExternal: true,
+            onTap: function() {
+              viewSwiper.slideTo(previewSwiper.clickedIndex)
+            }
+          })
+          
+          var updateNavPosition = function() {
+            $('#tab-menu .active').removeClass('active')
+            var activeNav = $('#tab-menu .swiper-slide').eq(viewSwiper.activeIndex).addClass('active')
+            itemIndex = viewSwiper.activeIndex;
+            dataload(itemIndex);
+            if (!activeNav.hasClass('swiper-visible')) {
+              if (activeNav.index() > previewSwiper.activeIndex) {
+                var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+                previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
+              } else {
+                previewSwiper.slideTo(activeNav.index())
+              }
+            }
+          }
+          
+          $('.jsmoregift').click(function() {
+            var that=$(this);
+            that.fadeOut().siblings('div').addClass('active');
+          });
+
+        });
+        var counter = 0;
+        var counter1 = 0;
+        // dropload
+        var dropload = $('.loaddiv').dropload({
+            scrollArea : window,
+            threshold:6000,
+            loadDownFn : function(me){
+                var loadid = $('#tab-slide .swiper-container .swiper-slide').eq(itemIndex).attr('id');
+                // 加载菜单一的数据
+                if(itemIndex == '1'){
+                    var num = 10000;
+                    counter++;
+                    data = loadajax(me,2,num,counter);
+                    var result = '';
+                    if(!data){
+                      result +='<div class="empty swiper-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>';
+                      $("#"+loadid+' ul').append(result);
+                      tab1LoadEnd = true;
+                      // 锁定
+                      me.lock();
+                      // 无数据
+                      me.noData();
+                      me.resetload();
+                      return;
+                    }
+<<<<<<< .mine
+                    /*for(var i = 0; i < data.length; i++){
+                        var gblist = data[i].gblist;
+                        result += '<li class="clearfix"><div class="item clearfix"><div class="game-info"><a href="'+data[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data[i].icon+'" class="icon"></a><div class="text"><div class="title">'+data[i].game_name+'</div><p>共<span>'+data[i].gbnum+'</span>个礼包</p></div></div><div class="gift-list">';
+||||||| .r525
+                    for(var i = 0; i < data.length; i++){
+                        var gblist = data[i].gblist;
+                        result += '<li class="clearfix"><div class="item clearfix"><div class="game-info"><a href="'+data[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data[i].icon+'" class="icon"></a><div class="text"><div class="title">'+data[i].game_name+'</div><p>共<span>'+data[i].gbnum+'</span>个礼包</p></div></div><div class="gift-list">';
+=======
+                    if(!jQuery.isArray( data )){
+                      $nnnum = 0;
+                      $.each(data,function(i,e){
+                          $nnnum = i;
+                          var gblist = e.gblist;
+                          result += '<li class="clearfix"><div class="item clearfix"><div class="game-info"><a href="'+e.play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+e.icon+'" class="icon"></a><div class="text"><div class="title">'+e.game_name+'</div><p>共<span>'+e.gbnum+'</span>个礼包</p></div></div><div class="gift-list">';
+>>>>>>> .r531
+
+                          for(var j = 0; j < gblist.length; j++){
+                            result +='<div class="subitem ';
+                            if(j==0){
+                              result +='active';
+                            }
+                            result +='"><div class="butnbox getgift" data-gift_id="'+gblist[j].gift_id+'" data-game_id="'+gblist[j].game_id+'"><a href="'+'javascript:;';
+                            if(gblist[j].geted != 1){
+                              result +='" class="butn">领取';
+                            }else{
+                              result +='" class="butn disabled">已领取';
+                            }
+                            result +='</a></div><div class="text"><div class="title"><a href="'+e.play_detail_url+'" class="name">['+gblist[j].giftbag_name+']</a></div><p class="introduction">'+gblist[j].desribe+'&nbsp;</p></div></div>';
+                          }
+                          gbnum = e.gbnum;
+                          cc = gbnum -1;
+                          if(gbnum > 1){
+                            result +='<a class="moregift jsmoregift"><span>查看更多礼包 ('+cc+')<img src="__IMG__/gift_hot_see.png"></span></a></div></div></li>';
+                          }
+                      });
+                    }else{
+                      $nnnum = data.length;
+                      for(var i = 0; i < data.length; i++){
+                          var gblist = data[i].gblist;
+                          result += '<li class="clearfix"><div class="item clearfix"><div class="game-info"><a href="'+data[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data[i].icon+'" class="icon"></a><div class="text"><div class="title">'+data[i].game_name+'</div><p>共<span>'+data[i].gbnum+'</span>个礼包</p></div></div><div class="gift-list">';
+
+                          for(var j = 0; j < gblist.length; j++){
+
+                            result +='<div class="subitem ';
+                            if(j==0){
+                              result +='active';
+                            }
+                            result +='"><div class="butnbox getgift" data-gift_id="'+gblist[j].gift_id+'" data-game_id="'+gblist[j].game_id+'"><a href="'+'javascript:;';
+                            if(gblist[j].geted != 0){
+                              result +='" class="butn">领取';
+                            }else{
+                              result +='" class="butn disabled">已领取';
+                            }
+                            result +='</a></div><div class="text"><div class="title"><a href="'+data[i].play_detail_url+'" class="name">['+gblist[j].giftbag_name+']</a></div><p class="introduction">'+gblist[j].desribe+'&nbsp;</p></div></div>';
+                          }
+                          gbnum = data[i].gbnum;
+                          cc = gbnum -1;
+                          if(gbnum > 1){
+                            result +='<a class="moregift jsmoregift"><span>查看更多礼包 ('+cc+')<img src="__IMG__/gift_hot_see.png"></span></a></div></div></li>';
+                          }
+                      }
+                    }*/
+										
+										$.each(data,function(i,e){
+										
+											result += '<li class="clearfix"><div class="item clearfix"><div class="game-info"><a href="'+e.play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+e.icon+'" class="icon"></a><div class="text"><div class="title">'+e.game_name+'</div><p>共<span>'+e.gbnum+'</span>个礼包</p></div></div><div class="gift-list">';
+
+												$.each(e.gblist,function(ii,ee){
+													
+													result +='<div class="subitem ';
+                          if(ii==0){
+                            result +='active';
+                          }
+                          result +='"><div class="butnbox getgift" data-gift_id="'+ee.gift_id+'" data-game_id="'+ee.game_id+'"><span class="table"><span class="table-cell"><a href="'+'javascript:;';
+                          if(ee.geted == 0){
+                            result +='" class="butn">领取';
+                          }else{
+                            result +='" class="butn disabled">已领取';
+                          }
+                          result +='</a></span></span></div><div class="text"><div class="title"><a href="'+e.play_detail_url+'" class="name">['+ee.giftbag_name+']</a></div><p class="introduction">'+ee.desribe+'&nbsp;</p></div></div>';
+												
+												});
+												
+												gbnum = e.gbnum;
+                        cc = gbnum -1;
+                        if(gbnum > 1){
+                          result +='<a class="moregift jsmoregift"><span>查看更多礼包 ('+cc+')<img src="__IMG__/gift_hot_see.png"></span></a></div></div></li>';
+                        }
+										});
+                    // 为了测试，延迟1秒加载
+                    //setTimeout(function(){
+                        $("#"+loadid+' ul').append(result);
+                        tab1LoadEnd = true;
+<<<<<<< .mine
+                        //if(data.length<num){
+||||||| .r525
+                        if(data.length<num){
+=======
+                        if($nnnum<num){
+>>>>>>> .r531
+                          // 锁定
+                          me.lock();
+                          // 无数据
+                          me.noData();
+                        //}
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    //},1);
+                    $("body").on("click",'.jsmoregift',function(){
+                        var that=$(this);
+                        that.fadeOut().siblings('div').addClass('active');
+                    });
+                // 加载菜单二的数据
+                }else if(itemIndex == '2'){
+                    var num = 10000;
+                    counter1++;
+                    data = loadajax(me,3,num,counter1);
+                    if(!data){
+                      var result = '';
+                      result +='<div class="empty swiper-categroy"><img src="__IMG__/no_date.png" class="empty-icon"><p class="empty-text">~ 空空如也 ~</p></div>';
+                      $("#"+loadid+' ul').append(result);
+                      tab2LoadEnd = true;
+                      // 锁定
+                      me.lock();
+                      // 无数据
+                      me.noData();
+                      me.resetload();
+                      return;
+                    }
+                    var result = '';
+                    for(var i = 0; i < data.length; i++){
+                        var gblist = data[i].gblist;
+                        result += '<li class="clearfix"><div class="item clearfix"><div class="game-info"><a href="'+data[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data[i].icon+'" class="icon"></a><div class="text"><div class="title">'+data[i].game_name+'</div><p>共<span>'+data[i].gbnum+'</span>个礼包</p></div></div><div class="gift-list">';
+
+                        for(var j = 0; j < gblist.length; j++){
+
+                          result +='<div class="subitem ';
+                          if(j==0){
+                            result +='active';
+                          }
+                          result +='"><div class="butnbox getgift" data-gift_id="'+gblist[j].gift_id+'" data-game_id="'+gblist[j].game_id+'"><a href="'+'javascript:;';
+                          if(gblist[j].geted != 0){
+                            result +='" class="butn">领取';
+                          }else{
+                            result +='" class="butn disabled">已领取';
+                          }
+                          result +='</a></div><div class="text"><div class="title"><a href="'+data[i].play_detail_url+'" class="name">['+gblist[j].giftbag_name+']</a></div><p class="introduction">'+gblist[j].desribe+'&nbsp;</p></div></div>';
+                        }
+                        gbnum = data[i].gbnum;
+                        cc = gbnum -1;
+                        if(gbnum > 1){
+                          result +='<a class="moregift jsmoregift"><span>查看更多礼包 ('+cc+')<img src="__IMG__/gift_hot_see.png"></span></a></div></div></li>';
+                        }
+                    }
+                    // 为了测试，延迟1秒加载
+                    // setTimeout(function(){
+                        $("#"+loadid+' ul').append(result);
+                        tab2LoadEnd = true;
+                        if(data.length<num){
+                          // 锁定
+                          me.lock();
+                          // 无数据
+                          me.noData();
+                        }
+                        // 每次数据加载完，必须重置
+                        me.resetload();
+                    // },1);
+                    $("body").on("click",'.jsmoregift',function(){
+                        var that=$(this);
+                        that.fadeOut().siblings('div').addClass('active');
+                    });
+                }
+
+                $('#tab-slide .swiper-container .swiper-wrapper').css('height','auto');
+            }
+        });
+
+        function loadajax(me,rec_status,num,counter){
+          var adddata ='';
+          $.ajax({
+              type: 'post',
+              url: '{:U("Gift/index")}',
+              async:false,
+              data:{rec_status:rec_status},
+              dataType: 'json',
+              success: function(data){
+                  adddata = data;
+              },
+              error: function(xhr, type){
+                  me.resetload();
+              }
+          });
+          return adddata;
+        }
+
+        function dataload(itemIndex){
+          var loadid = $('#tab-slide .swiper-container .swiper-slide').eq(itemIndex).attr('id');
+          if(itemIndex == '1'){
+              // 如果数据没有加载完
+              if(!tab1LoadEnd){
+                  // 解锁
+                  dropload.unlock();
+                  dropload.noData(false);
+              }else{
+                  // 锁定
+                  dropload.lock('down');
+                  dropload.noData();
+              }
+          // 如果选中菜单二
+          }else if(itemIndex == '2'){
+              if(!tab2LoadEnd){
+                  // 解锁
+                  dropload.unlock();
+                  dropload.noData(false);
+              }else{
+                  // 锁定
+                  dropload.lock('down');
+                  dropload.noData();
+              }
+          }
+          dropload.resetload();
+        }
+    </script>
+</block>

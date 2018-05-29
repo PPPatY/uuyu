@@ -1,0 +1,135 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style>
+		.select2-container{width: 347px !important;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$info['id']?'编辑':'新增'} [{:get_model_by_id($info['model_id'])}] 属性</a></li>
+        </ul>
+        <div class="main-jump">
+        <a href="{:U('index','model_id='.$info['model_id'])}">返回列表</a>
+        </div>
+    </div>
+
+	<!-- 标签页导航 -->
+	<div class="tab-wrap">
+		<div class="tab_nav jstabnav">
+    <ul>
+			<li data-tab="tab1" class="current"><a href="javascript:void(0);">基 础</a></li>
+			<li data-tab="tab2"><a href="javascript:void(0);">高 级</a></li>
+		</ul></div>
+		<div class="tab-content tab_content">
+			<!-- 表单 -->
+			<form id="form" action="{:U('update')}" method="post" class="form-horizontal form_info_ml doc-modal-form">
+				<!-- 基础 -->
+				<div id="tab1" class="tab-pane in tab1">
+                    <ul class="form_info form_info_attribute">
+                        <li><label>字段名</label><div class="form_main"><input type="text" class="" name="name" value="{$info.name}" placeholder="请输入字段名"></div><i class="form_hint">请输入字段名 英文字母开头，长度不超过30</i></li>
+                        <li><label>字段标题</label><div class="form_main"><input type="text" class="" name="title" value="{$info.title}" placeholder="请输入字段标题"></div><i class="form_hint">请输入字段标题，用于表单显示</i></li>
+                        <li><label>字段类型</label><div class="form_main"><span class="form_select">
+                        	<select name="type" id="data-type" class="select_gallery select2-search--hide">
+								<option value="">----请选择----</option>
+								<volist name=":get_attribute_type()" id="type">
+								<option value="{$key}" rule="{$type[1]}">{$type[0]}</option>
+								</volist>
+							</select></span></div><i class="form_hint">用于表单中的展示方式</i></li>
+                        <li><label>字段定义</label><div class="form_main"><input type="text" class="" name="field" value="{$info.field}" id="data-field" placeholder="请输入字段定义"></div><i class="form_hint">字段属性的sql表示</i></li>
+                        <li><label>参数</label><div class="form_main form_textarea_edit"><span class="form_textarea"><textarea name="extra" class="" style="width: 325px;height: 76px;">{$info.extra}</textarea></span></div><i class="form_hint">布尔、枚举、多选字段类型的定义数据</i></li>
+                        <li><label>默认值</label><div class="form_main"><input type="text" class="" name="value" value="{$info.value}" placeholder="请输入默认值"></div><i class="form_hint">字段的默认值</i></li>
+                        <li><label>字段备注</label><div class="form_main"><input type="text" class="" name="remark" value="{$info.remark}" placeholder="请输入字段备注"></div><i class="form_hint">用于表单中的提示</i></li>
+                        <li><label>是否显示</label><div class="form_main"><span class="form_select"><select name="is_show" class="select_gallery select2-search--hide">
+								<option value="1">始终显示</option>
+								<option value="2">新增显示</option>
+								<option value="3">编辑显示</option>
+								<option value="0">不显示</option>
+							</select></span></div><i class="form_hint">是否显示在表单中</i></li>
+                        <li><label>是否必填</label><div class="form_main"><span class="form_select"><select name="is_must" class="select_gallery select2-search--hide">
+								<option value="0">否</option>
+								<option value="1">是</option>
+							</select></span></div><i class="form_hint">用于自动验证</i></li>
+                        
+                    </ul>
+                </div>
+                <div id="tab2" class="tab-pane tab2">
+                    <ul class="form_info form_info_attribute">
+                        <li><label>验证方式</label><div class="form_main"><span class="form_select"><select name="validate_type" class="select_gallery select2-search--hide">
+								<option value="regex">正则验证</option>
+								<option value="function">函数验证</option>
+								<option value="unique">唯一验证</option>
+								<option value="length">长度验证</option>
+                                <option value="in">验证在范围内</option>
+                                <option value="notin">验证不在范围内</option>
+                                <option value="between">区间验证</option>
+                                <option value="notbetween">不在区间验证</option>
+							</select></span></div><i class="form_hint">验证方式</i></li>
+                        <li><label>验证规则</label><div class="form_main"><input type="text" class="" name="validate_rule" value="{$info.validate_rule}" placeholder="请输入验证规则"></div><i class="form_hint">根据验证方式定义相关验证规则</i></li>
+                        <li><label>出错提示</label><div class="form_main"><input type="text" class="" name="error_info" value="{$info.error_info}" placeholder="请输入出错提示"></div><i class="form_hint">出错提示</i></li>
+                        <li><label>验证时间</label><div class="form_main"><span class="form_select"><select name="validate_time" class="select_gallery select2-search--hide">
+                                <option value="3">始 终</option>
+								<option value="1">新 增</option>
+								<option value="2">编 辑</option>
+								</select></span></div><i class="form_hint"></i></li>
+                        <li><label>自动完成方式</label><div class="form_main"><span class="form_select"><select name="auto_type" class="select_gallery select2-search--hide">
+								<option value="function">函数</option>
+								<option value="field">字段</option>
+								<option value="string">字符串</option>
+							</select></span></div><i class="form_hint"></i></li>
+                        <li><label>自动完成规则</label><div class="form_main"><input type="text" class="" name="auto_rule" value="{$info.auto_rule}" placeholder="请输入自动完成规则"></div><i class="form_hint">根据完成方式订阅相关规则</i></li>
+                        <li><label>自动完成时间</label><div class="form_main"><span class="form_select"><select name="auto_time" class="select_gallery select2-search--hide">
+								<option value="3">始 终</option>
+								<option value="1">新 增</option>
+								<option value="2">编 辑</option>
+							</select></span></div><i class="form_hint"></i></li>
+                        
+                    </ul>
+				</div>
+
+				<!-- 按钮 -->
+				<div class="form-item cf">
+					<label class="item-label"></label>
+					<div class="controls edit_sort_btn">
+						<input type="hidden" name="id" value="{$info['id']}"/>
+						<input type="hidden" name="model_id" value="{$info['model_id']}"/>
+						<button class=" submit_btn ajax-post no-refresh" type="submit" target-form="form-horizontal">确 定</button>
+						<button class="back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+//导航高亮
+highlight_subnav('{:U('Model/index')}');
+Think.setValue('type', "{$info.type|default=''}");
+Think.setValue('is_show', "{$info.is_show|default=1}");
+Think.setValue('is_must', "{$info.is_must|default=0}");
+Think.setValue('validate_time', "{$info.validate_time|default=3}");
+Think.setValue('auto_time', "{$info.auto_time|default=3}");
+Think.setValue('validate_type', "{$info.validate_type|default='regex'}");
+Think.setValue('auto_type', "{$info.auto_type|default='function'}");
+$(".select_gallery").select2();
+$(".select2-search--hide").select2({
+	minimumResultsForSearch: -1,
+});
+$(function(){
+	showTab();
+})
+<eq name="ACTION_NAME" value="add">
+$(function(){
+	$('#data-type').change(function(){
+		$('#data-field').val($(this).find('option:selected').attr('rule'));
+	});
+})
+</eq>
+</script>
+</block>
+

@@ -1,0 +1,185 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/area.lwx.css" rel="stylesheet" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+</block>
+<block name="header">
+<header class="header">
+  <section class="wrap">
+  <if condition="I('get.mall_detail_id')">
+    <a href="{:U('PointShop/mall_detail',array('id'=>I('get.mall_detail_id')))}" class="hbtn left arrow-left jaarrow"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+  <else/>
+    <a href="{$HTTP_REFERER}" class="hbtn left arrow-left jaarrow"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+  </if>
+    <div class="caption"><span class="table"><span class="table-cell">添加新地址</span></span></div>
+    <a href="javascript:;" class="hbtn right user-save jssave"><span class="table"><span class="table-cell">保存</span></span></a>
+  </section>
+</header>
+</block>
+<block name="iframe" >
+<div class="mainer">
+    
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+      
+      <section class="inner">
+        <section class="contain">
+          <form action="" class="">
+          <div class="address-info info-list jsauthinfo">
+            <div class="wrap">
+                <div class="item table">
+                  <span class="table-cell item1">收货人</span>
+                  <span class="table-cell item2"><div class="addressbox"><input type="text" name="consignee" class="txt" placeholder="不少于2个字符" value=""></div></span>
+                </div>
+                <div class="item table">
+                  <span class="table-cell item1">联系电话</span>
+                  <span class="table-cell item2"><div class="addressbox"><input type="text" name="consignee_phone" class="txt" placeholder="不少于7个字符" value=""></div></span>
+                </div>
+                <div class="item table">
+                  <span class="table-cell item1">所在地区</span>
+                  <span class="table-cell item2 city"><div class="addressbox"><input type="hidden" name="consignee_address" ><div class="txt default area consignee_address">省份 城市 区县</div></div><span class="iconbox"><i class="icon icon-right jseye"></i></span></span>
+                </div>
+                <div class="item table">
+                  <span class="table-cell item1">详细地址</span>
+                  <span class="table-cell item2"><div class="addressbox"><input type="text" name="detailed_address" class="txt" placeholder="不少于5个字符，且不能全部为数字" value=""></div></span>
+                </div>
+            </div>
+          </div>
+          
+          </form>
+
+        </section>
+        
+      </section>
+    </section>
+</div>    
+</block>
+<block name="footer">
+    <div class="pop"></div>
+		<div class="poparea"></div>
+</block>
+<block name="script">
+    <script src="__JS__/distpicker.data.min.js"></script>
+    <script src="__JS__/distpicker.min.js"></script>
+    <script>
+    var mall_detail_id = "{:I('get.mall_detail_id')}";
+        $(function() {
+          var pop = $('.pop').pop();
+          
+          $('.jaarrow').click(function() {
+            var that=$(this);
+            var url = that.attr('href');
+						
+						var flag = false;
+						$('input').each(function() {
+							var tinput = $(this),val=$.trim(tinput.val());
+							
+							if (val) flag=true;
+							
+						});console.log(flag);
+						if (flag) {
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">确定返回？</div><div class="pop-text">信息还未保存，确认现在返回吗？</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="'+url+'" class="pop-butn pop-comfirm ">确定</a></div>');
+            $('.jscancel').click(function() {pop.close();});
+            } else {
+							window.location.href=url;
+						}
+            return false;
+          });
+          
+          
+          
+					var poparea = $('.poparea').pop();
+					// 省市县选择
+					$('.city').click(function() {
+						var that = $(this),caddress = that.find('.consignee_address');
+						      
+						poparea.addClass('pop-area').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><div id="distpicker" data-toggle="distpicker"><select class="pop-select" id="province"></select><select class="pop-select" id="city"></select><select class="pop-select" id="district"></select></div></div><div class="pop-butn-box"> <a href="javascript:;" class="pop-butn pop-comfirm jscomfirm">确定</a></div>');
+						
+						$("#distpicker").distpicker({placeholder: false,});
+						
+						poparea.find('.pop-close').click(function() {poparea.close();return false;});
+						poparea.find('.jscancel').click(function() {poparea.close();return false;});
+        
+						poparea.find('.jscomfirm').click(function() {
+							var province = poparea.find('#province').val();
+							var city = poparea.find('#city').val();
+							var district = poparea.find('#district').val();
+							that.find('input').val();
+							caddress.text(province+''+city+''+district).removeClass('default');
+							
+							poparea.close();
+							return false;
+						});
+						
+					});
+					
+					
+          
+          $('.jssave').click(function() {
+            var that=$(this);
+            if (that.hasClass('disabled')) {return false;}
+            consignee = $('input[name="consignee"]').val();
+            if(consignee.length<2|| !/^(([a-zA-Z]+)|([\u4E00-\u9FA5\uF900-\uFA2D]+))$/.test(consignee)){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请输入正确的收货人姓名</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            consignee_phone = $('input[name="consignee_phone"]').val();
+            if(consignee_phone.length<7 || !/^(?:(\d{3,4}-\d{8})|(1\d{10}))$/.test(consignee_phone)){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请输入正确的联系电话</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            consignee_address = $('.consignee_address').text();
+            if(consignee_address=='' || '省份 城市 区县' == consignee_address){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请选择所在区域</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            detailed_address = $('input[name="detailed_address"]').val();
+            if(detailed_address.length<5||!isNaN(detailed_address)){
+              // 失败
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">请输入正确的详细地址</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 jscancel">好的</a></div>');
+              $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+              return false;
+            }
+            // // 失败
+            // pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">可能是网络原因，请重新提交</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">重试</a></div>');
+            // $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+            // $('.pop-comfirm').click(function() {pop.close();that.removeClass('disabled');});
+            that.addClass('disabled');
+            $.ajax({
+              type:'post',
+              url:"{:U('user_address_add')}",
+              data:{consignee:consignee,consignee_phone:consignee_phone,consignee_address:consignee_address,detailed_address:detailed_address},
+              success:function(data){
+                if(data.status==1){
+                  // 成功
+                  if(mall_detail_id>0){
+                    pop.addClass('pop-notice').open('','<div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_successful.png"><div class="pop-title">地址添加成功！</div><a href="{:U('PointShop/mall_detail',array('id'=>I('get.mall_detail_id')))}" class="pop-btn">确认</a></div>');     
+                  }else{
+                    pop.addClass('pop-notice').open('','<div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_successful.png"><div class="pop-title">地址添加成功！</div><a href="{$HTTP_REFERER}" class="pop-btn">确认</a></div>');              
+                  }
+                  $('.pop-close').click(function() {pop.close();that.removeClass('disabled');});
+                }else{
+                  // 失败
+                  pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">可能是网络原因，请重新提交</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">重试</a></div>');
+                  $('.jscancel').click(function() {pop.close();that.removeClass('disabled');});
+                  $('.pop-comfirm').click(function() {pop.close();that.removeClass('disabled');});
+                }
+              }
+            });
+            return false;
+          });
+
+          
+        });
+        
+        
+        
+    </script>
+</block>

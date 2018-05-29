@@ -1,0 +1,65 @@
+<extend name="Public/mix_ base"/>
+<block name="location">
+<style>
+  .rows{
+    width: 100px;
+  }
+</style>
+<div class="location-container">当前位置：<span>联盟站点</span><span>区服列表</span></div>
+</block>
+<block name="body">
+    <div class="page-list siteServer-index-list">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_server.png">区服列表</div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <div class="tab">
+              <a href="{:U('add')}" class="submit" >添加区服</a>
+            </div>
+          </div>
+          <div class="trunk-list">
+              <table class="table">
+                  <tr class="odd">
+                    <th>游戏名称</th>
+                    <th>游戏类型</th>
+                    <th>开服时间</th>
+                    <th>区服名称</th>
+                    <th>操作</th>
+                  </tr>
+                  <empty name="data">
+                  <tr><td colspan="5">暂无数据<td></tr>
+                  <else />
+                  <volist name="data" id="vo">
+                      <trid id ="{$vo['id']}">
+                      <tr id ="{$vo['id']}">
+                          <td>{:get_site_game_name($vo['game_id'])}</td>
+                          <td>{:get_game_type($vo['game_id'])}</td>
+                          <td>{$vo.start_time|time_format}</td>
+                          <td>{$vo.server_name}</td>
+                          <td class="op">
+                              <if condition="$vo['server_type'] eq 1">
+                                  <!-- 编辑 | 删除 -->
+                                  <else />
+                              <a class="edit" href="{:U('edit',['id'=>$vo['id']])}"><img src="__IMG__/20170831/icon_edit.png">编辑</a> |
+                              <a class="del_game" href="javascript:;" data-id ="{$vo['id']}"><img src="__IMG__/20170831/icon_del.png">删除</a>
+                              </if>
+                          </td>
+                      </tr>
+                  </volist>
+                  </empty>
+              </table>
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script type="text/javascript">
+	//删除操作
+	$('.del_game').click(function(){
+		var val = $(this).attr("data-id");
+		var url = "{:U('del')}";
+		del_action(val,url);
+	});
+
+  </script>
+</block>

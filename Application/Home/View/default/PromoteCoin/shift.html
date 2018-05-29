@@ -1,0 +1,212 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/platform.css" rel="stylesheet">
+<style>
+	.trunk-list .table3 {width: 100%;}
+	.table3 tr td{border: 1px solid #E0E7EF;}
+	.pagenation{line-height: 6.5vh;text-align: right;}
+	.pagenation>div {text-align: right;}
+	.trunk-list .table3 tr {height: 4.2vh;}
+</style>
+</block>
+
+<block name="body">
+    <div class="page-search normal_list promoteCoin-shift-search">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>会长福利></span><span>平台币转移</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_yve.png"><span class="title_main">账户余额</span>
+      </div>
+      <div class="trunk-content article" style="height: 622px;">
+      	<div class="trunk-search clearfix">
+              <div class="tab">
+                <a href="#" class="current">给下级转移</a>
+                <a href="{:U('record')}" class="">转移记录</a>
+              </div>
+          </div>
+          <div class="trunk-list">
+            <table class="table3">
+                <tr>
+                	<td class="td1 nor_center">我的账户余额</td>
+                	<td colspan="10"><span class="money">{$data.balance_coin}元</span></td>
+                </tr>
+                <if condition="get_fu_id(PID) eq 0">
+                <tr>
+                	<td class="td1 nor_center">下级渠道账号</td>
+                    <volist name="childData" id="vo">
+                        <td><span class="accounts">{$vo.account}</span></td>
+                    </volist>
+                </tr>
+                <tr>
+                	<td class="td1 nor_center">下级渠道余额</td>
+                	<volist name="childData" id="vo">
+                        <td><span class="accounts">{$vo.balance_coin}</span></td>
+                    </volist>
+                </tr>
+                </if>
+            </table>
+            <div class="pagenation clearfix" style="min-height:60px;">
+            	{$_page}
+            </div>
+          </div>
+          
+          <div class="trunk-list"> 
+              <form id="form" action="{:U('shift')}" method="post">
+              <table class="table2">
+                <tbody>
+                <tr>
+                  <td class="l">我的账户余额：</td>
+                  <td class="r"><span style="color: red" id="yingfu">{$data.balance_coin}</span></td>
+                </tr>
+                  <tr>
+                    <td class="l"><span class="req">*</span>子渠道选择：</td>
+                    <td class="r">
+                      <select id="promote_id" name="promote_id" class="reselect select_gallery" style="min-width:170px;" >
+                        <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                            <option game-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">子渠道余额：</td>
+                    <td class="r"><span id="child_coin"></span></td>
+                  </tr>
+                  <tr>
+                    <td class="l"><span class="req">*</span>发送数量：</td>
+                    <td class="r">
+                      <input type="text" name="num" class="name txt"   id="num" value="">
+                    </td>
+                  </tr>
+                  
+                  <tr>
+                    <td class="l"></td>
+                    <td class="r">
+                      <button type="button" class="tjbnt btn" onclick="check()" >确认</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+                
+          </div>
+      </div>
+    
+    
+      <div class="page-explain charge-agentPay-explain">
+      <div class="trunk-content article border_normal">
+        <table class="desccontent">
+            <tr><td class="title">平台币转移说明：</td><td class="det">一级渠道账户的平台币可以转移给二级渠道；二级渠道平台币来源于一级渠道转移，或者平台发放。</td></tr>	           
+        </table>
+      </div>
+      </div>
+    </div>  
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/layer/extend/layer.ext.js" ></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+        $("#promote_id").change();
+        $("#promote_child").change();
+        
+        $(".select_gallery").select2();
+    });
+
+      function sub_from() {
+        var promote_id = $('#promote_id').val();
+        var num = $('#num').val();
+        console.log(num);
+        console.log(promote_id);
+        $.ajax({
+          type:"POST",
+          url:"{:U('shift')}",
+          data:{
+            promote_id:promote_id,
+            num:num},
+          success:function(res){
+            if(res.status==1){
+              layer.msg(res.msg);
+              setTimeout(function(){
+              window.location.href="{:U('record')}";
+              },1500);
+            }else{
+              layer.msg(res.msg);
+              setTimeout(function(){
+               location.reload();
+              },1500);
+            }
+          }
+        });
+      }
+
+      $(".zhe td").empty();
+      function check() {
+          data = validation();
+          if (data.status != 1) {
+              layer.msg(data.msg, {icon: 2});
+              return false;
+          } else {
+              sub_from();
+          }
+      }
+
+      $("#promote_id").change(function(){
+          var coin = get_child_coin($(this).val());
+          console.log(coin);
+          $("#child_coin").text(coin)
+      });
+      $("#promote_child").change(function(){
+          var coin = get_child_coin($(this).val());
+          $("#money").text(coin)
+      });
+
+      function get_child_coin(cid){
+          var coin = 0;
+          $.ajax({
+              url:"{:U('PromoteCoin/get_coin')}",
+              data:{id:cid},
+              type:'post',
+              async:false,
+              success:function(data){
+                  coin = data.coin;
+              },
+              errror:function(){
+                  layer.msg("服务器故障！");
+              }
+          });
+          if(coin == null){
+              coin = 0;
+          }
+          return coin;
+      }
+
+      function validation() {
+          var json_data = "";
+          var limits = {$data['balance_coin']|default=0};
+          if ($.trim($('#num').val()).length == 0) {
+              return json_data = {'status': 0, 'msg': '发送数量不能为空'}
+          }
+          if ($.trim($('#num').val()) > limits) {
+              return json_data = {'status': 0, 'msg': '发送数量不能超过你的额度' + limits}
+          }
+          if (!intege($('#num').val())) {
+              return json_data = {'status': 0, 'msg': '发送数量必须是正整数'};
+          }
+          return json_data = {'status': 1, 'msg': '成功'};
+      }
+
+      function intege(data) {
+          var re = /^[1-9]+[0-9]*]*$/;
+          if (!re.test(data)) {
+              return false;
+          }
+          else {
+              return true;
+          }
+      }
+  </script>
+</block>

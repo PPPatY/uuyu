@@ -1,0 +1,236 @@
+<extend name="Public/bases" />
+<block name="css"> 
+  <link href="__CSS__/20170913/index.css" rel="stylesheet" >
+</block>
+<block name="body">
+<div class="banner">
+    <div class="inner clearfix">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin={:C('CH_SET_SERVER_QQ')}&site=qq&menu=yes" class="qqbtn" target="_blank"><img src="__IMG__/20170913/qq.png">QQ咨询</a>  
+        <div class="lrwrapper clearfix">
+            <div class="lrbox clearfix">
+                <div class="lrpane tab-pane fade active in" id="lr-login">
+                    <h4 class="title"><span class="titletext">欢迎回来！</span><span class="titlebtn">还没账号？<a href="{:U('register')}" >去注册</a></span></h4>
+                    <form id="loginForm" class="form-horizontal" method="post"  novalidate="novalidate">
+
+                        <div class="form-group clearfix">
+                            <div class="input-group input-format">
+                                <span class="input-group-addon"><i class="input_icon input_icon_user" ></i></span>
+                                <input type="text" name="account" value="{$_COOKIE['home_account']}" class="form-control" placeholder="账号" aria-describedby="basic-addon1" maxlength="30">
+                            </div>
+                            <div class="input-status"></div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <div class="input-group input-format ">
+                                <span class="input-group-addon"><i class="input_icon input_icon_lock"></i></span>
+                                <input type="password" id="loginPassword" value="{$_COOKIE['home_pas']}" name="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1" >
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="input-status"></div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="captchabox input-group input-format">
+                                <span class="input-group-addon"><i class="input_icon input_icon_barcode"></i></span>
+                                <input class="form-control" id="loginCaptcha" name="yzm" placeholder="验证码" autocomplete="off" maxlength="4">
+                            </div>
+                            <div class="f-wsn"><img name="changeCaptcha" src="__MODULE__/Index/verify"></div>
+                            <div class="input-status"></div>
+                        </div>
+                        <div class="form-group ff clearfix">
+                            <label class="tabbtn"><input type="checkbox" name="remm" id="remember" ><i></i><span>记住密码</span></label>
+                        </div>
+                        <div >
+                            <input id="loginButton" type="submit" class="btn btn_primary" value="登 录">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="code">
+        <img src="images/t-code.png" clas="code-img">
+        <div class="code-text">扫一扫下载</div>
+        <div class="code-text code-orange">渠道管家App</div>
+    </div>
+<notempty name="doc1">
+<div class="news">
+    <div class="inner clearfix txtScroll">
+        <span><i class="icon icon-voice"></i></span>
+        <a class="next" href="javascript:;"><i class="icon icon-angle_right"></i></a>
+        <div class="bd">
+        <ul>
+          <volist name="doc1" id="vo">
+          <li>
+          	<a href="{:U('Home/Article/detail?id='.$vo['id'])}" target="_blank" title="{$vo['title']}"><i>公告</i>{:msubstr($vo['title'],0,70)}</a>
+          </li>
+          </volist>
+        </ul>
+        </div>
+    </div>
+</div>
+</notempty>
+
+<div class="advantage page-aside">
+    <div class="inner">
+        <h2 class="aside-title"><span>平台优势</span></h2>
+        <div class="aside-content clearfix">
+            <ul>
+              <li><div class="item"><i class="icon icon1"></i><span class="contitle">收入丰厚</span><p class="context"><span>CPS+CPA双模式计费方式</span><span>可持续获得收益</span></p></div></li>
+              <li><div class="item"><i class="icon icon2"></i><span class="contitle">统计精准</span><p class="context"><span>每一笔收入都有迹可循</span><span>精准无误，永不扣量</span></p></div></li>
+              <li><div class="item"><i class="icon icon3"></i><span class="contitle">海量资源</span><p class="context"><span>优质内容，海量资源开放合作</span><span>提供最佳合作方式</span></p></div></li>
+              <li><div class="item"><i class="icon icon4"></i><span class="contitle">结算及时</span><p class="context"><span>结算快速，结算金额准确无误</span><span>绝不拖欠分成</span></p></div></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="app page-aside">
+    <div class="inner">
+        <h2 class="aside-title"><span>精品应用推荐</span></h2>
+        <div class="aside-content slideColumn clearfix">
+            <div class="bd">
+              <div class="ulWrap">
+                <ul>
+                    <volist name="rec_data" id="rec" mod="12">
+                    <li>
+                      <div class="pic"><a style="cursor: default;" href="javascript:;" target="_blank"  title="{$rec.game_name}"><img src="<empty name="rec['icon']">__IMG__/game_icon.png<else/>{$rec['icon']|get_cover='path'}</empty>"></a></div>
+                      <div class="title"><a style="cursor: default;" href="javascript:;" target="_blank" title="{$rec.game_name}">{$rec.game_name}</a></div>
+                    </li>
+                    <eq name="mod" value="11"></ul><ul></eq>
+                    </volist>
+                </ul>
+              </div>
+            </div>
+            <if condition="count($rec_data) gt 12">
+            <div class="hd"><ul>
+              <volist name="rec_data" id="rec" mod="12">
+              <eq name="mod" value="11"><li></li></eq>
+              </volist></ul>
+            </div>
+            <a class="prev" href="javascript:void(0)"></a>
+            <a class="next" href="javascript:void(0)"></a>
+            </if>
+        </div>
+    </div>
+</div>
+
+<div class="join page-aside">
+    <div class="inner">
+        <h2 class="aside-title"><span>如何加入我们</span></h2>
+        <div class="aside-content clearfix">
+            <ul class="clearfix">
+                <li><div class="item"><img class="icon" src="__IMG__/20170913/step1.png"><h5 class="contitle">注册账号</h5><p class="context"><span>注册账号，通过审核，加入联盟</span></p></div><div class="angle"><i class="iconangle"></i></div></li>
+                <li><div class="item"><img class="icon" src="__IMG__/20170913/step2.png"><h5 class="contitle">选择游戏资源</h5><p class="context"><span>选择推广的产品，游戏信息</span></p></div><div class="angle"><i class="iconangle"></i></div></li>
+                <li><div class="item"><img class="icon" src="__IMG__/20170913/step3.png"><h5 class="contitle">申请渠道分包</h5><p class="context"><span>获得自有渠道的游戏资源包</span></p></div><div class="angle"><i class="iconangle"></i></div></li>
+                <li><div class="item"><img class="icon" src="__IMG__/20170913/step4.png"><h5 class="contitle">推广分成</h5><p class="context"><span>每笔充值，后台申请结算的分成</span></p></div></li>
+            </ul>
+            <a href="{:U('register')}" class="joinbtn" >开始加入</a>
+        </div>
+    </div>
+</div>
+
+<div class="gotop"><img src="__IMG__/index/gotop.png"></div>
+</block>
+<block name="script">
+<script src="__JS__/20170913/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+    highlight_subnav('{:U("Index/index")}');
+    var regLogin = "";
+    // 如果登录有错误
+
+    $(document).ready(function(){
+    	<if condition="count($rec_data) gt 12">
+        $(".slideColumn").slide({titCell:".hd ul",mainCell:".bd .ulWrap",autoPage:true,effect:"left",autoPlay:true,vis:1});
+        <else/>
+        $(".slideColumn").slide({titCell:".hd ul",mainCell:".bd .ulWrap",autoPage:true,effect:"left",autoPlay:false,vis:1});
+        </if>
+        $(".txtScroll").slide({mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true});
+    
+        $('#remember').change(function() {
+            var that = $(this);
+            if (that.prop('checked')) {
+              that.siblings('i').addClass('on');
+            } else {
+              that.siblings('i').removeClass('on');
+            }
+        });
+
+        /**
+         * 新增验证方法
+         */
+        $.validator.addMethod("numOrLetter", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9_\.]+$/.test(value);
+        }, '只能是字母或数字');
+
+        // 登录验证
+        $("#loginForm").validate({
+            //定义规则
+            rules:{
+                account:{
+                    required:true,
+                    rangelength:[6,30]
+                },
+                password:{
+                    required:true,
+                    minlength:6
+                },
+                yzm:{
+                    required:true,
+                    rangelength:[4,4]
+                }
+            },
+            //定义错误消息
+            messages:{
+                account:{
+                    required:"请输入登录账号",
+                    rangelength:"账号必须是6~30位字符串"
+                },
+                password:{
+                    required:"请输入登录密码",
+                    minlength:'登录密码必须大于6位',
+                },
+                yzm:{
+                    required:"请输入验证码",
+                    rangelength:"验证码必须是4位字符串"
+                }
+            },
+            submitHandler:function(form){
+                data = $('#loginForm').serialize();
+                $.ajax({
+                    type:'post',
+                    url:"{:U('login')}",
+                    data:data,
+                    success:function(data){
+                        if(data.status==1){
+                            layer.msg(data.msg, {icon: 1});
+                            window.location.href=data.url;
+                        }else{
+                            $("img[name='changeCaptcha']").click();
+                            layer.msg(data.msg, {icon: 2});
+                        }
+                    },error:function(){
+
+                    }
+                });
+            }
+        });
+
+
+    });
+
+</script>
+<script type="text/javascript">
+    (function(){
+        var ThinkPHP = window.Think = {
+            "ROOT"   : "", //当前网站地址
+            "APP"    : "/index.php?s=", //当前项目地址
+            "PUBLIC" : "/Public", //项目公共目录地址
+            "DEEP"   : "/", //PATHINFO分割符
+            "MODEL"  : ["3", "", "html"],
+            "VAR"    : ["m", "c", "a"]
+        }
+    })();
+</script>
+</block>

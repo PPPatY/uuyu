@@ -1,0 +1,136 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/user.css" rel="stylesheet" >
+</block>
+<block name="header">
+<header class="header">
+  <section class="wrap">
+    <a href="javascript:history.back();" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">联系我们</span></span></div>
+  </section>
+</header>
+</block>
+<block name="iframe" >
+<div class="mainer user-contact">
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+      
+      <section class="inner">
+        <section class="contain">
+          <div class="contact-list">
+            <div class="clearfix table">
+              
+              <if condition="$union_set eq ''">
+              <a href="javascript:;" data-value="{:C('PC_SET_SERVER_QQ')}" class="butn table-row jschatqq">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_qq.png" class="icon"></span>
+                <span class="table-cell butn2">客服 QQ：{:C('PC_SET_SERVER_QQ')}</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              <else/>
+              <a href="javascript:;" data-value="{$union_set['cust_qq']}" class="butn table-row jschatqq">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_qq.png" class="icon"></span>
+                <span class="table-cell butn2">客服 QQ：{$union_set['cust_qq']}</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              </if>
+              
+              <if condition="$union_set eq ''">
+              <a href="javascript:;" data-value="{:C('PC_COMMUNICATION_GROUP')}" data-url="{:C('PC_COMMUNICATION_GROUP_URL')}" class="butn table-row jschatqqqun">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_group.png" class="icon"></span>
+                <span class="table-cell butn2">官方交流群：{:C('PC_COMMUNICATION_GROUP')}</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              <else/>
+              <a href="javascript:;" data-value="{$union_set['qq_group']}" data-url="{$union_set['qq_group_url']}" class="butn table-row jschatqqqun">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_group.png" class="icon"></span>
+                <span class="table-cell butn2">官方交流群：{$union_set['qq_group']}</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              </if>
+              
+
+              <if condition="$union_set eq ''">
+              <a href="tel:{:C('PC_SET_SERVER_TEL')}" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_phone.png" class="icon"></span>
+                <span class="table-cell butn2">客服电话：{:C('PC_SET_SERVER_TEL')}</span>
+                <span class="table-cell butn3"></span>
+              </a>
+              <else/>
+              <a href="tel:{$union_set['cust_tel']}" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_phone.png" class="icon"></span>
+                <span class="table-cell butn2">客服电话：{$union_set['cust_tel']}</span>
+                <span class="table-cell butn3"></span>
+              </a>
+              </if>
+
+              <if condition="$union_set eq ''">
+              <a href="tel:{:C('PC_COOPERATION')}" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_cooperation.png" class="icon"></span>
+                <span class="table-cell butn2">商务合作：{:C('PC_COOPERATION')}</span>
+                <span class="table-cell butn3"></span>
+              </a>
+              <else/>
+              <a href="tel:{$union_set['business']}" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_cooperation.png" class="icon"></span>
+                <span class="table-cell butn2">商务合作：{$union_set['business']}</span>
+                <span class="table-cell butn3"></span>
+              </a>
+              </if>
+              
+              <if condition="$union_set eq ''">
+              <a href="{:C('PC_OFFICIAL_SITE')}" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_website.png" class="icon"></span>
+                <span class="table-cell butn2">官方网址：{:C('PC_OFFICIAL_SITE')}</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              <else/>
+              <a href="{$union_set['pr_site']}" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_website.png" class="icon"></span>
+                <span class="table-cell butn2">官方网址：{$union_set['pr_site']}</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              </if>
+              <a href="user_argeement.html" class="butn table-row">
+                <span class="table-cell butn1"><img src="__IMG__/my_contact_agreement.png" class="icon"></span>
+                <span class="table-cell butn2">用户协议</span>
+                <span class="table-cell butn3"><img src="__IMG__/ma_more.png" class="icon-right"></span>
+              </a>
+              
+            </div>
+          </div>
+          
+        </section>
+        
+      </section>
+    </section>
+</div>
+</block>    
+<block name="script">
+    <script>
+        $(function() {
+          $('.jschatqq').click(function() {
+            var qq = $.trim($(this).attr('data-value'));
+            if (browser.versions.mobile && !browser.versions.trident) {
+              window.open("mqqwpa://im/chat?chat_type=wpa&uin="+qq+"&version=1&src_type=web");
+            }else
+              window.open("tencent://message/?uin="+qq+"&&menu=yes");
+            return false;
+          });
+          
+          $('.jschatqqqun').click(function() {
+            var qq = $.trim($(this).attr('data-value'));
+            if (browser.versions.mobile && !browser.versions.trident) {
+              window.location.href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin="+qq+"&card_type=group&source=external";
+            }else {
+              window.open($.trim($(this).attr('data-url')));
+            }
+            return false;
+          });
+          
+        });
+        
+        
+        
+    </script>
+</block>

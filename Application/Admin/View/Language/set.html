@@ -1,0 +1,201 @@
+<extend name="Public/base" />
+<block name="body">
+<link rel="stylesheet" type="text/css" href="__CSS__/admin_table.css" media="all">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/webuploader/webuploader.css" media="all">
+    <script src="__STATIC__/md5.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="__STATIC__/webuploader/webuploader.js"></script>
+<style type="text/css">
+	.data_list label.checked{margin-right: 10px;}
+</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Game/lists')}">游戏</a></li>
+            <li><a href="{:U('Game/lists')}">游戏管理</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <!-- 标签页导航 -->
+<div class="tab-wrap">
+    <div class="tab_nav jstabnav">
+    <ul>
+    <if condition ="C('SYSTEM_LANGUAGE') eq 0" >
+        <li data-tab="tab1" class="current"><a href="javascript:void(0);">English</a></li>
+        <li data-tab="tab3" ><a href="javascript:void(0);">Chinese</a></li>
+    <else />
+    	<li data-tab="tab1" class="current"><a href="javascript:void(0);">英文</a></li>
+        <li data-tab="tab3" ><a href="javascript:void(0);">中文</a></li>
+    </if>
+    </ul>
+    </div>
+    <div class="tab-content tab_content">
+    <!-- 表单 -->
+    <form id="form" action="{:U('set')}" method="post" class="form-horizontal">
+        <!-- 基础 -->
+        <div id="tab1" class="tab-pane in tab1 tab_table ">
+            <table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td class="l">Using state：</td>
+                    <td class="r table_radio" >
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio1" value="1" name="game_attribute" >
+							<label for="radio1">Open</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio2" value="2" name="game_attribute" <eq name="data.game_attribute" value="2">checked</eq>>
+							<label for="radio2">Close</label>
+						</div>
+                      
+                            <span> (It works on all sites after it's opened)</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">Login method：</td>
+                    <td class="r data_list" >
+                    	<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Facebook
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Google
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Alipay
+						</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">Registration way：</td>
+                    <td class="r data_list" >
+                    	<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Email
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> A key to register
+						</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">Payment method：</td>
+                    <td class="r data_list">
+                    	<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Paypal
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Credit card
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Unionpay card
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> Alipay
+						</label>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <!-- 设置 -->
+        <div id="tab3" class="tab-pane  tab3 tab_table">
+                    <table  border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td class="l">使用状态：</td>
+                    <td class="r table_radio" >
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio3" value="1" name="game_attribute" >
+							<label for="radio3">开启</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio4" value="2" name="game_attribute" <eq name="data.game_attribute" value="2">checked</eq>>
+							<label for="radio4">关闭</label>
+						</div>
+                            <span> （开启之后对所有站点生效）</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">登录方式：</td>
+                    <td class="r data_list" >
+                    	<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 微信
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> QQ
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 帐号
+						</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">注册方式：</td>
+                    <td class="r data_list" >
+                    	<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 手机号
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 邮箱
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 一键注册
+						</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="l">支付方式：</td>
+                    <td class="r data_list">
+                    	<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 支付宝
+						</label>
+						<label class="checked">
+							<input type="checkbox" class="inp_checkbox" value="1" name="game_attribute" >
+							<i class="check_icon"></i> 微信
+						</label>
+     
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        
+        </div>
+        <div class="form-item cf">
+            <button class="submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+        </div>
+    </form>
+    </div>
+</div>
+</block>
+
+<block name="script">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+//导航高亮
+highlight_subnav('{:U('Game/lists')}');
+//菜单
+showTab();
+
+$('#submit').click(function(){
+    $('#form').submit();
+});
+</script>
+</block>

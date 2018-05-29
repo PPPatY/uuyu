@@ -1,0 +1,31 @@
+<extend name="Public/base" />
+<!-- 管理员用户组新增和编辑页面 -->
+<block name="body">
+	<style type="text/css">
+		.form_info textarea{width: 324px;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('User/index')}">用户</a></li>
+            <li><a href="{:U('User/index')}">管理组</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <form action="{:U('AuthManager/writeGroup')}" enctype="application/x-www-form-urlencoded" method="POST"
+            class="form-horizontal form_info_ml">
+        <div class="formtitle"><span>权限信息</span></div>
+        <ul class="form_info ">
+            <input type="hidden" name="id" value="{$auth_group.id}">
+            <li><label>用户组：</label><input id="auth-title" name="title" type="text" value="{$auth_group.title}" class=""><i class="form_hint"></i></li>
+            <li><label>描述：</label><textarea id="auth-description" name="description">{$auth_group.description}</textarea><i class="form_hint"></i></li>
+            <li><label>&nbsp;</label><input type="submit" id="submit" value="确认保存" target-form="form-horizontal" class="form_btn ajax-post"><button class=" back_btn" onclick="javascript:history.back(-1);return false;">返 回</button></li>
+        </ul>
+    </form>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+    //导航高亮
+    highlight_subnav('{:U('AuthManager/index')}');
+</script>
+</block>

@@ -1,0 +1,100 @@
+<extend name="Public/base" />
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-place">
+		<span class="main-placetitle"></span>
+		<ul class="main-placeul">
+			<li>
+				<a href="{:U('User/index')}">用户</a>
+			</li>
+			<li>
+				<a href="{:U('User/index')}">管理组</a>
+			</li>
+			<li>
+				<a href="#">{$meta_title}</a>
+			</li>
+		</ul>
+		<p class="description_text" style="height: 40px;line-height: 40px;">说明：可以设置管理账号的不同操作权限</p>
+
+	</div>
+
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+			<a id="add-group" class="" href="{:U('createGroup')}"><span class="button_icon button_icon1"></span>新增</a>
+			<a url="{:U('changestatus?method=resumeGroup')}" class="ajax-post" target-form="ids"><span class="button_icon button_icon4"></span>启 用</a>
+			<a url="{:U('changestatus?method=forbidGroup')}" class="ajax-post" target-form="ids"><span class="button_icon button_icon5"></span>禁 用</a>
+			<a url="{:U('changestatus?method=deleteGroup')}" class="ajax-post confirm" target-form="ids"><span class="button_icon button_icon2"></span>删 除</a>
+		</div>
+	</div>
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<table class="">
+			<thead>
+				<tr>
+					<th class="">
+						<label class="checked">
+								<input class="check-all" type="checkbox" />
+								<i class="check_icon"></i>
+							</label>
+					</th>
+					<th class="">用户组</th>
+					<th class="">描述</th>
+
+					<th class="">授权</th>
+					<th class="">状态</th>
+					<th class="">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="_list">
+					<volist name="_list" id="vo">
+						<tr>
+							<td>
+								<label class="checked">
+								        <input class="ids" type="checkbox" name="id[]" value="{$vo.id}" />
+								        <i class="check_icon"></i>
+							        </label>
+							</td>
+							<td>
+								<a href="{:U('AuthManager/editgroup?id='.$vo['id'])}">{$vo.title}</a>
+							</td>
+							<td><span>{:mb_strimwidth($vo['description'],0,60,"...","utf-8")}</span></td>
+
+							<td>
+								<a href="{:U('AuthManager/access?group_name='.$vo['title'].'&group_id='.$vo['id'])}">访问授权</a>
+								<a href="{:U('AuthManager/category?group_name='.$vo['title'].'&group_id='.$vo['id'])}">分类授权</a>
+								<a href="{:U('AuthManager/user?group_name='.$vo['title'].'&group_id='.$vo['id'])}">成员授权</a>
+							</td>
+							<td>
+								<eq name="vo.status" value="1"><span class="enabled_status">{$vo.status_text}</span>
+									<else /><span class="disabled_status">{$vo.status_text}</span></eq>
+							</td>
+							<td>
+								<eq name="vo.status" value="1">
+									<a href="{:U('AuthManager/changeStatus?method=forbidGroup&id='.$vo['id'])}" class="ajax-get">禁用</a>
+									<else/>
+									<a href="{:U('AuthManager/changeStatus?method=resumeGroup&id='.$vo['id'])}" class="ajax-get">启用</a>
+								</eq>
+								<a href="{:U('AuthManager/changeStatus?method=deleteGroup&id='.$vo['id'])}" class="confirm ajax-get">删除</a>
+							</td>
+						</tr>
+					</volist>
+					<else/>
+					<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="page">
+		{$_page}
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript" charset="utf-8">
+		//导航高亮
+		highlight_subnav('{:U('
+			AuthManager / index ')}');
+	</script>
+</block>

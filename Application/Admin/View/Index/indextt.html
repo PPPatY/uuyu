@@ -1,0 +1,35 @@
+<link  href="__CSS__/index3.0.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<style>
+body {background-color:#fff; width:550px; overflow: hidden;}
+table {font-size:14px;text-align: center;background-color:#fff;width:550px;}
+table th {line-height: 60px;}
+table td {line-height: 32px;}
+table td a {color:#3EAFE1;text-decoration:underline;}
+table td a:hover {cursor:pointer;}
+</style>
+<!--第三部分-->
+
+<table cellpadding="1" cellspacing="1" >
+<thead><tr><th>提示板块</th><th>提示内容</th></tr></thead>
+<tbody class="athover">
+<volist name="tishi[gac]" id="gac">
+<tr><td>【原包管理】</td><td><a href="{:U('GameSource/lists')}" target="_blank"><span>【{$gac.game_name}】游戏原包尚未上传</span></a></td></tr>
+</volist>
+<volist name="tishi[prolc]" id="prolc">
+<tr><td>【代充额度】</td><td><a href="{:U('Promote/pay_limit')}" target="_blank"><span>【{$prolc.account}】代充额度不足</span></a></td></tr>
+</volist>
+<volist name="tishi[rebc]" id="rebc">
+<tr><td>【返利设置】</td><td><a href="{:U('Rebate/lists')}" target="_blank"><span>【{$rebc.game_name}】充值返利已到期</span></a></td></tr>
+</volist>
+<volist name="tishi[giftc]" id="giftc">
+<tr><td>【礼包列表】</td><td><a href="{:U('Giftbag/lists')}" target="_blank"><span>【{$giftc.game_name}】{$giftc.giftbag_name}数量不足</span></a></td></tr>
+</volist>
+<volist name="tishi[pgiftc]" id="pgiftc">
+<tr><td>【渠道礼包】</td><td><a href="{:U('PromoteGift/lists')}" target="_blank"><span>【{$pgiftc.game_name}】{$pgiftc.giftbag_name}数量不足</span></a></td></tr>
+</volist>
+</tbody>
+</table>
+
+        
+</block>

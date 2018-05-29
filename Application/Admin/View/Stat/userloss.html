@@ -1,0 +1,236 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+    <script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <script src="__JS__/loss/jquery.min.js"></script>
+    <script src="__JS__/loss/common.js"></script>
+    <script src="__JS__/loss/bootstrap.min.js"></script>
+    <script src="__JS__/loss/bootstrap-datetimepicker.min.js"></script>
+    <script src="__JS__/loss/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="__JS__/loss/bootstrap-select.min.js"></script>
+    <script src="__JS__/loss/VMenu.js"></script>
+    <script src="__JS__/loss/zh-cn.js"></script>
+    <script src="__JS__/loss/echarts-all.js"></script>
+    <script src="__JS__/loss/chart.js"></script>
+    <script src="__JS__/loss/jquery.tablesorter.js"></script>
+    <script src="__JS__/loss/string.js"></script>
+    <script src="__JS__/loss/pagination.js"></script>
+    <script src="__JS__/loss/datacommon.js"></script>
+    <script src="__JS__/loss/retain.js"></script>
+    <link href="__CSS__/loss/iconfont.css" rel="stylesheet">
+    <link href="__CSS__/loss/pagination.css" rel="stylesheet">
+    <link href="__CSS__/loss/common.css" rel="stylesheet">
+    <link href="__CSS__/loss/datetimepicker.css" rel="stylesheet">
+    <link href="__CSS__/loss/dropdown.css" rel="stylesheet">
+    <link href="__CSS__/loss/icon.css" rel="stylesheet">
+    <link href="__CSS__/loss/user.css" rel="stylesheet">
+    <style type="text/css">
+    	.search_list2 {margin-right: 0;}
+    	.nav-pills {margin-top: 9px;}
+    	.nav-pills li a {
+		    padding: 6px 10px;
+		    margin-right: 8px;
+		    color: #404040;
+		    background-color: #F8F8F8;
+		    border: solid 1px #D9DCE5;
+		}
+    	.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{background-color: #FFFFFF;color: #3D94C9;border: 1px solid #3D94C9;}
+    	.nav li a, .nav li a:hover{border-bottom: solid 1px #D9DCE5;}
+    </style>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Statistics/overview')}">统计</a></li>
+            <li><a href="{:U('Stat/userarpu')}">数据分析</a></li>
+            <li><a href="#">流失分析</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：根据渠道，日期，查看流失人数、金额、充值次数</p>
+    </div>
+    <div class="cf top_nav_list">
+        <!-- 高级搜索 -->
+        <div class="jssearch fl cf search_list">
+            <div class="input-list input-list-promote search_label_rehab">
+                <label>推广员账号：</label>
+                <select id="promote_id" name="promote_id" class="select_gallery" >
+                    <option value="">请选择</option>
+                    <volist name=":get_promote_list()" id="vo">
+                        <option promote-id="{$vo.id}" value="{$vo.id}">{$vo.account}</option>
+                    </volist>
+                </select>  
+            </div>
+            <div class="input-list input-list-promote search_label_rehab">
+                <label>流失种类：</label>
+                <select id="channel_id" name="channel_id" class="select_gallery" >
+                    <option value="1">连续3天不登录</option>
+                    <option value="2">连续7天不登录</option>
+                </select>
+            </div>
+            <div class="input-list">
+                <label>流失时间：</label>
+                <input type="text" id="time-start" name="time_start" class="" value="{$start}" placeholder="起始时间" />
+                <span style="color: #B3B3B5;font-weight: bold;">—</span>
+                <div class="input-append date" id="datetimepicker" style="display:inline">
+                <input type="text" id="time-end" name="time_end" class="" value="{$end}" placeholder="结束时间" />
+                <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('stat/userloss',array('data_order'=>I('data_order'),'model'=>$model['name']),false)}">搜索</a>
+            </div>
+        </div>
+        <div class="jssearch fr cf search_list search_list2">
+        	<ul class="nav nav-pills" role="tablist" id="generalTabs">
+                <li role="presentation" class="active" data-toggle="tooltip" data-placement="bottom" data-original-title="玩家流失分析">
+                    <a href="#lossPlayer" aria-controls="lossPlayer" role="tab" data-toggle="tab" data="lossPlayer">玩家流失</a>
+                </li>
+                <li role="presentation" data-toggle="tooltip" data-placement="bottom" data-original-title="流失金额分析">
+                    <a href="#lossMoney" aria-controls="lossMoney" role="tab" data-toggle="tab" data="lossMoney">流失金额分析</a>
+                </li>
+                <li role="presentation" data-toggle="tooltip" data-placement="bottom" data-original-title="流失次数分析">
+                    <a href="#lossTimes" aria-controls="lossTimes" role="tab" data-toggle="tab" data="lossTimes">流失次数分析</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 数据列表 -->
+
+    <div class="matter_box matter_box2">
+        <div class="matter_mt-4">
+            
+
+            <div class="tab-content matter_mt">
+                <div role="tabpanel" class="tab-pane active" id="lossPlayer">
+                    <div class="row f-mlr-0">
+                        <div id="lossPlayerChart" style="height: 350px; padding-top: 10px; -webkit-tap-highlight-color: transparent; user-select: none; background-color: rgba(0, 0, 0, 0); cursor: default;" >
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="lossMoney">
+                    <div class="row f-mlr-0">
+                        <div id="lossMoneyChart" style="height:350px;padding-top:10px;"></div>
+
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="lossTimes">
+                    <div class="row f-mlr-0">
+                        <div id="lossTimesChart" style="height:350px;padding-top:10px;"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="__JS__/loss/usersLost.js"></script>
+		<script src="__STATIC__/layer/layer.js" type="text/javascript"></script>
+<script>
+<volist name=":I('get.')" id="vo">
+    Think.setValue('{$key}',"{$vo}");
+</volist>
+$(".select_gallery").select2();
+</script>
+<script type="text/javascript">
+    var dataJson = {"lossplayer":{"loss":{"2016-12-13":9,"2016-12-14":24,"2016-12-15":32,"2016-12-16":28,"2016-12-17":42,"2016-12-18":18,"2016-12-19":18},"lossrate":{"2016-12-13":9,"2016-12-14":35,"2016-12-15":67,"2016-12-16":59,"2016-12-17":45,"2016-12-18":55,"2016-12-19":23}},"lossmoney":{"2016-12-13":13,"2016-12-14":32,"2016-12-15":40,"2016-12-16":37,"2016-12-23":24,"2016-12-24":23,"2016-12-25":23},"losstimes":{"2016-12-13":4,"2016-12-14":8,"2016-12-15":8,"2016-12-16":9,"2016-12-17":4,"2016-12-18":2,"2016-12-26":4}};
+    var dataJson = {$json_data};
+    lossPlayerChart();
+//导航高亮
+highlight_subnav('{:U('stat/userloss')}');
+$(function(){
+		//计算天数差的函数，通用
+    function GetDateDiff(startDate,endDate)
+    {
+        var startTime = new Date(Date.parse(startDate.replace(/-/g,   "/"))).getTime();
+        var endTime = new Date(Date.parse(endDate.replace(/-/g,   "/"))).getTime();
+        var dates = Math.abs((startTime - endTime))/(1000*60*60*24);
+        return  dates;
+    }
+		
+    //搜索功能
+    $("#search").click(function(){
+		
+				var start = $("#time-start").val();
+        start = start.substring(0,19);
+        var end = ($("#time-end").val() == "") ?  "{:date('Y-m-d')}" : $("#time-end").val();
+        end = end.substring(0,19);
+        var interval = GetDateDiff(start,end);
+        if(interval < 0 || start == ''){
+            layer.msg('请选择开始时间和结束时间');
+            return false;
+        }else if(interval>90){
+            layer.msg('请选择90日内的时间段');
+            return false;
+        }else if (start > end) {
+					layer.msg('开始时间必须小于等于结束时间');
+					return false;
+				}
+		
+        var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+    $("#search1").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+    $("#search2").click(function(){
+        var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+    
+    $('#time-start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+
+    $('#datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left'
+    })
+})
+</script>
+</block>

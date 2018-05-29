@@ -1,0 +1,27 @@
+.trunk-search {padding-bottom: 20px;}
+.trunk-content {margin: 20px 2% 0;}
+
+.page-list .table4 td, .page-list .table4 th{border: 1px solid #E0E7EF;}
+
+.normal_table label.checked input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+.normal_table .check_icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -3px auto;
+}
+.normal_table label.checked input[type="checkbox"]+.check_icon {
+    background: url(../../images/20180207/icon_weixuan.png) no-repeat;
+    background-color: #fff;
+}
+.normal_table label.checked input[type="checkbox"]:checked+.check_icon {
+    background: url(../../images/20180207/icon_xuanzhong.png) no-repeat;
+    background-color: #fff;
+}
+
+.cps input{width: 60px;height: 22px;border: 1px solid #E5E5E5;border-radius: 3px;color: #515974;padding-left: 5px;}
+.cpa input{width: 90px;height: 22px;border: 1px solid #E5E5E5;border-radius: 3px;color: #515974;padding-left: 5px;}
+.coop .cooperation{border: 1px solid #E5E5E5;border-radius: 3px;}

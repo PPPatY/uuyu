@@ -1,0 +1,92 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+	<script type="text/javascript" src="__JS__/select2.min.js"></script>
+	<style type="text/css">
+		.form_info textarea{width: 323px;height: 76px;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Model/index')}">系统设置</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+	<form action="{:U()}" method="post" class="form-horizontal form_info_ml">
+		<div class="formtitle"><span>配置信息</span></div>
+        <ul class="form_info form_info_attribute">
+            <li><label>配置标识</label><div class="form_main"><input type="text" class="" name="name" value="{$info.name|default=''}" placeholder="请输入配置标识"></div><i class="form_hint">用于C函数调用，只能使用英文且不能重复</i></li>
+            <li><label>配置标题</label><div class="form_main"><input type="text" class="" name="title" value="{$info.title|default=''}" placeholder="请输入配置标题"></div><i class="form_hint">用于后台显示的配置标题</i></li>
+            <li><label>排序</label><div class="form_main"><input type="text" class="" name="sort" value="{$info.sort|default=0}" placeholder="请输入排序"></div><i class="form_hint">用于分组显示的顺序</i></li>
+            <li><label>配置类型</label><div class="form_main"><span class="form_select"><select name="type" class="select_gallery select2-search--hide">
+					<volist name="Think.config.CONFIG_TYPE_LIST" id="type">
+						<option value="{$key}">{$type}</option>
+					</volist>
+				</select></span></div><i class="form_hint">系统会根据不同类型解析配置值</i></li>
+            <li><label>配置分类</label><div class="form_main"><span class="form_select"><select name="category" id="category" class="select_gallery select2-search--hide">
+					<option value="0">不分类</option>
+					<volist name="Think.config.CONFIG_CATEGORY_LIST" id="category">
+						<option value="{$key}">{$category}</option>
+					</volist>
+				</select></span></div><i class="form_hint">配置分类 用于批量设置 不分类则不会显示在系统设置中</i></li>
+            <li><label>配置分组</label><div class="form_main"><span class="form_select"><select name="group" id="group" class="select_gallery select2-search--hide">
+					<option value="0">不分组</option>
+					<volist name="Think.config.CONFIG_GROUP_LIST" id="group">
+						<option value="{$key}">{$group}</option>
+					</volist>
+				</select></span></div><i class="form_hint">配置分组 用于批量设置 不分组则不会显示在系统设置中</i></li>
+            <li><label>配置值</label><div class="form_main form_textarea_edit"><span class="form_textarea"><textarea name="value">{$info.value|default=''}</textarea></span></div><i class="form_hint">配置值</i></li>
+            <li><label>配置项</label><div class="form_main form_textarea_edit"><span class="form_textarea"><textarea name="extra">{$info.extra|default=''}</textarea></span></div><i class="form_hint">如果是枚举型 需要配置该项</i></li>
+            <li><label>说明</label><div class="form_main form_textarea_edit"><span class="form_textarea"><textarea name="remark">{$info.remark|default=''}</textarea></span></div><i class="form_hint">配置详细说明</i></li>
+            
+        </ul>
+        
+		<div class="form-item">
+			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<button class="submit_btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="back_btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</form>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		//导航高亮
+		highlight_subnav('{:U('Config/index')}');
+		$(".select_gallery").select2();
+		$(".select2-search--hide").select2({
+			minimumResultsForSearch: -1,
+		});
+
+		$(function () {
+            Think.setValue("type", {$info.type|default=0});
+            Think.setValue("category", {$info.category|default=0});
+            $("#category").change();
+            Think.setValue("group", {$info.group|default=0});
+        })
+ 		$("#category").change(function(){
+			var $group = {$info.group|default=0};
+			$.ajax({
+				type:"POST",
+				dataType:"json",
+				async:false,
+				data:{category:$("#category").val()},
+				url:"{:U('Ajax/getConfigCategory')}",
+				success:function (data) {
+					$("#group").empty();
+				    var str = "<option value='0'>不分类</option>";
+					for(var i in data){
+						str += "<option value="+i+">"+data[i]+"</option>";
+					}
+					$("#group").append(str);
+					if($group>0){
+						$(".selection #select2-group-container").text(data[i]);
+					}
+                }
+			})
+		}) 
+
+	</script>
+</block>

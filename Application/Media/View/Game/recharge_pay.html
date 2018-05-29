@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="applicable-device" content="mobile">
+    <link href="style/css/common.css" rel="stylesheet" >
+    <link href="style/css/recharge.css" rel="stylesheet" >
+    <script src="style/js/jquery-1.11.1.min.js"></script>
+    
+	</head>
+	<body>
+    
+    <div class="" style="max-width:1242px;width:100%;"><img src="style/images/fq/rechargebg.jpg"></div>
+    
+    <div class="pop"></div>
+    <script src="style/js/pop.lwx.min.js"></script>
+    <script src="style/js/common.js"></script>
+    <script>
+        $(function() {
+          var pop = $('.pop').pop();
+          
+          pop.addClass('pop-pay').open('','<div class="pop-pay-box"><a href="javascript:;" class="pop-close"></a><div class="pop-content"><form action=""><input type="hidden" name="" value=""><div class="pop-title">确认付款</div><div class="pop-pay-info"><div class="pop-table"><div class="pop-row"><span class="pop-cell pm">充值金额</span> <span class="pop-cell pv"><span class="red">￥<i>128</i></span></span></div><div class="pop-row"><span class="pop-cell pm">订单号</span> <span class="pop-cell pv"><span>SP-201709260953464ZK3</span></span></div></div></div><div class="pop-pay-way"><div class="pop-pay-way-title">选择支付方式</div><div class="pop-pay-way-select"><div class="clearfix jsradio table"><label class="item table-row jsweixin"><span class="table-cell item1"><img src="style/images/my_pay_weixin.png" class="icon"></span> <span class="table-cell item2"><span class="way">微信支付</span><span class="text">推荐微信用户使用</span></span> <span class="table-cell item3"><span class="icon-hook-wrap"><i class="icon-arrow-right"></i></span></span></label><label class="item input-radio table-row"><span class="table-cell item1"><img src="style/images/my_pay_alipay.png" class="icon"></span> <span class="table-cell item2"><span class="way">支付宝支付</span><span class="text">平台币余额：0.00</span></span> <span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio on" checked value=""><i class="icon-hook"></i></span></span></label><label class="item input-radio table-row"><span class="table-cell item1"><img src="style/images/pop_pay_platform.png" class="icon"></span> <span class="table-cell item2"><span class="way">平台币支付</span><span class="text">平台币余额：0.00</span></span> <span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value=""><i class="icon-hook"></i></span></span></label><label class="item input-radio table-row"><span class="table-cell item1"><img src="style/images/pop_pay_bind.png" class="icon"></span> <span class="table-cell item2"><span class="way">绑定平台币支付</span><span class="text">绑定平台币余额：0.00</span></span> <span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value=""><i class="icon-hook"></i></span></span></label></div></div></div><div class="pop-butn-box"><input type="submit" value="立即付款" class="pop-butn jspaysubmit"></div></form></div></div>');
+          
+          $('.jsweixin').click(function() {
+            pop.find('.pop-pay-box').fadeOut(200);
+            
+            $('<div class="pop-pay-weixin" style="display:none;"><a href="javascript:;" class="pop-arrow-left2"></a><div class="pop-content"><div class="pop-title">微信支付</div><div class="pop-pay-info"><div class="pop-table"><div class="pop-row"><span class="pop-cell pm">充值金额</span> <span class="pop-cell pv"><span class="red">￥<i>128</i></span></span></div><div class="pop-row"><span class="pop-cell pm">订单号</span> <span class="pop-cell pv"><span>SP-201709260953464ZK3</span></span></div></div></div><div class="pop-pay-qrcode"><img src="style/images/fq/pop_pay_code.png"><p>扫一扫 完成支付</p></div></div></div>').appendTo(pop.find('.pop-box')).delay(200).fadeIn(200);
+            
+            
+            $('.pop-arrow-left2').click(function() {
+              pop.find('.pop-pay-weixin').remove();
+              pop.find('.pop-pay-box').fadeIn(200);
+            });
+            
+          });
+          
+
+          $('.jsradio .radio').change(function() {
+            var that=$(this),parent=that.closest('.jsradio');
+            if (that.prop('checked')) {
+              parent.find('.radio').removeClass('on');
+              that.addClass('on');
+            }
+          });
+          
+          $('.pop-close').click(function(){pop.close();});
+          
+          $('.jspaysubmit').click(function() {
+            pop.close();
+            
+            setTimeout(function() {
+              // 成功
+              pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">充值成功</div><div class="pop-table"><div class="pop-row"><div class="pop-cell">充值账户：</div><div class="pop-cell">15236521569</div></div><div class="pop-row"><div class="pop-cell">充值金额：</div><div class="pop-cell">￥300</div></div></div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="recharge_pay.html" class="pop-butn pop-comfirm ">继续充值</a></div>');
+              
+              $('.jscancel').click(function() {pop.close();});
+              
+              
+            },810);
+            return false;
+          });
+          
+          
+        });
+        
+        
+        
+    </script>
+	</body>
+</html>

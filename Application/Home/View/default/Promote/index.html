@@ -1,0 +1,45 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/manager.css" rel="stylesheet" >
+</block>
+<block name="body">
+        <div class="page-overview promote-index-overview index-overview clearfix">
+          <ul>
+            <li><div class="icon"><img src="__IMG__/20180207/icon_chongzhi1.png"/></div><div class="text text2"><p>今日充值</p><span>￥{$today}</span></div></li>
+            <li><div class="icon"><img src="__IMG__/20180207/icon_chongzhi2.png"/></div><div class="text text1"><p>昨日充值</p><span>￥{$yesterday}</span></div></li>
+            <li><div class="icon"><img src="__IMG__/20180207/icon_chongzhi3.png"/></div><div class="text text3"><p>本月充值</p><span>￥{$month}</span></div></li>
+            <li><div class="icon"><img src="__IMG__/20180207/icon_chongzhi5.png"/></div><div class="text text5"><p>上月充值</p><span>￥{$lastmonth}</span></div></li>
+            <li><div class="icon"><img src="__IMG__/20180207/icon_chongzhi4.png"/></div><div class="text text4"><p>总计充值</p><span>￥{$total}</span></div></li>
+          </ul>
+        </div>
+
+				<div class="page-list promote-index-list promote-index-list-news">
+          <div class="trunk-title-main"><img src="__IMG__/20180207/icon_normal_new.png"><span>新闻公告</span></div>
+          <div class="trunk-content article">
+            <ul>
+              <volist name="list" id="article">
+              <li>
+                  <span class="article-type"><img src="__IMG__/20180207/icon_normal_gonggao.png"/></span>
+                  <span >
+                  <a title="{$article['title']}" class="article-title" target="_blank" href="{:U('Home/Article/detail?id='.$article['id'])}">{:msubstr2($article['title'],0,70)}</a>
+                  </span>
+                  <span class="article-time fr">{$article.update_time|date='Y-m-d',###}</span>
+              </li>
+              </volist>
+            </ul>
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+        </div>
+        <script>  
+            $(function(){
+                $('.icon').each(function() {
+                    var that = $(this),rotate = that.attr('data-rotate'),half=parseInt(rotate/2);
+                    if (rotate<=0) {return ;}
+                    that.count = 0;
+                    
+                });
+                
+            });
+        </script>
+</block>
+  

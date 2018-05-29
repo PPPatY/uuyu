@@ -1,0 +1,31 @@
+@charset "utf-8";
+.main {background-color:#F9F9F9;}
+
+.titlewrap {}
+.titlewrap .item {width:50%;float:left;text-align:center;height:40px;padding:40px 0;}
+.titlewrap .item .itemmain {font-size:20px;display:inline-block;height:inherit;font-weight:700;color:#686868;border-bottom:2px solid transparent;}
+.titlewrap .item .itemmain .icon {float:left;width:40px;height:34px;background-position:left bottom;background-repeat:no-repeat;}
+.titlewrap .item .itemmain .icon1 {background-image:url(../../images/index/notice1.png);}
+.titlewrap .item .itemmain .icon2 {background-image:url(../../images/index/news1.png);}
+.titlewrap .item .itemmain .title {float:left;}
+.titlewrap .item.active .itemmain{color:#257EEB;border-bottom-color:#8DBAF2;}
+.titlewrap .item.active .itemmain .icon1 {background-image:url(../../images/index/notice2.png);}
+.titlewrap .item.active .itemmain .icon2 {background-image:url(../../images/index/news2.png);}
+
+.affiche table {width:100%;border:1px solid #F1F1F1;background-color:#FFFFFF;padding:0;min-height:500px;}
+.affiche table .menuwrap{width:35%;vertical-align:top;padding:0;}
+.affiche table .contentwrap {width:65%;border-left:1px solid #F1F1F1;vertical-align:top;padding:30px;}
+.affiche .menu {}
+.affiche .menu .list_item {font-size:14px;display:block;color:#9D9D9D;line-height:30px;}
+.affiche .menu>.list_item {font-weight:700;line-height:60px;padding-left:15px;border-bottom:1px solid #E8E8E8;}
+.affiche .menu>.list_item .icon {float:right;font-size:28px;color:#BBBBBB;}
+.affiche .menu .list_item.active,.affiche .menu .list_item:hover {color:#629CEC;}
+.affiche .menu>.list_item.active .icon,.affiche .menu>.list_item:hover .icon {color:#629CEC;}
+.affiche .menu .list_group {display:none;background-color:#F7F7F7;padding:20px 20px 20px 30px;}
+.affiche .menu .list_group.active {display:block;}
+
+.affiche .contentwrap .title {font-size:20px;padding:10px 0 10px;border-bottom:1px solid #E4E4E4;}
+.affiche .contentwrap .content {padding:20px 10px;}
+.affiche .contentwrap .bottom {border-top:1px dashed #E4E4E4;margin-top:10px;padding:20px 0 10px;}
+.affiche .contentwrap .bottom p {text-align:right;color:#B6B6B6;font-size:14px;padding-right:20px;}
+

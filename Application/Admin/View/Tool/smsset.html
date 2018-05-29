@@ -1,0 +1,332 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<style type="text/css">
+		.form_info li>label{width: 122px;}
+		.navtab_list_con {
+		    width: 100%;
+		    margin: 15px 0px;
+		    background-color: #f0f0f0;
+		}
+		.navtab_list_cs {
+		    margin: 20px;
+		    font-size: 12px;
+		}
+		.navtab_list_cs span{line-height: 25px;}
+		.form_info input[type=text]{float: left;}
+		.form_info li .form_hint{display: block;margin-left: 480px;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current"><a href="javascript:void(0);" >溪谷云短信</a></li>
+                <li data-tab="tab2"><a href="javascript:void(0);" >阿里大鱼（旧）</a></li>
+                <!--<li data-tab="tab3"><a href="javascript:void(0);" >极光</a></li>-->
+                <li data-tab="tab4"><a href="javascript:void(0);" >阿里大鱼（新）</a></li>
+                <!--<li data-tab="tab5"><a href="javascript:void(0);" >阿里云短信(消息服务)</a></li>-->
+                <p class="description_text">用于配置短信通知功能相关参数的功能</p>
+            </ul>
+        </div>
+        
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane in tab1">
+            <form action="{:U('saveTool')}" method="post" class="form-horizontal smtp form_info_ml">
+            	<div class="cf top_nav_list navtab_list_con">
+					<div class="fl navtab_list_cs">
+						<span>溪谷短信为溪谷科技整合云之讯提供的短信通知功能，联系售后即可获取参数，无需第三方申请，高效便捷。</span><br>
+						<span>短信管理地址：<a href="http://yun.vlcms.com" target="_blank">http://yun.vlcms.com</a></span><br>
+					</div>
+				</div>
+                <ul class="form_info ">
+                    <li><label>用户标识：</label>
+                        <input name="config[smtp]" type="text" value="{$sms_set['smtp']}" class="">
+                        <i class="form_hint">用户标识</i>
+                    </li>
+                    <li>
+                        <label>应用标识：</label><input name="config[smtp_account]" type="text" value="{$sms_set['smtp_account']}" class="">
+                        <i class="form_hint">应用标识</i>
+                    </li>
+                    <li>
+                        <label>密码：</label>
+                        <input name="config[smtp_password]" type="text" value="{$sms_set['smtp_password']}" class="">
+                        <i class="form_hint">密码</i>
+                    </li>
+                    <li>
+                        <label>验证码模板标识：</label>
+                        <input name="config[smtp_port]" type="text" value="{$sms_set['smtp_port']}" class="">
+                        <i class="form_hint">短信文本格式模板编号</i>
+                    </li>
+                    <li><label>通知模板标识：</label>
+                        <input name="config[smtp_notice_port]" type="text" value="{$sms_set['smtp_notice_port']}" class="">
+                        <i class="form_hint">短信文本格式模板编号</i></li>
+                    <li>
+                        <label>每日IP发送数量：</label>
+                        <input name="config[limit]" type="text" value="{$sms_set['limit']}" class="">
+                        <i class="form_hint">0或空则不限制</i>
+                    </li>
+                    <li><label>启用状态：</label><span class="form_radio table_radio" style="width: 347px;float: left;">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio1" value="0" name="status" <eq name="sms_set_data['status']" value="0">checked="checked"</eq>>
+							<label for="radio1">禁用</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio2" value="1" name="status" <eq name="sms_set_data['status']" value="1">checked="checked"</eq>>
+							<label for="radio2">启用</label>
+						</div>
+                    </span>
+                        <i class="form_hint">短信设置启用状态</i></li>
+                    <li>
+                        <label>&nbsp;</label><input type="hidden" name="name" value="sms_set">
+                        <input type="submit" value="确认保存" target-form="smtp" class="form_btn ajax-post">
+                    </li>
+                </ul>
+            </form>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="tab2" class="tab-pane tab2">
+            <form action="{:U('saveTool')}" method="post" class="form-horizontal alidayu form_info_ml">
+            	<div class="cf top_nav_list navtab_list_con">
+					<div class="fl navtab_list_cs">
+						<span>注意：此处为阿里大鱼云短信更新前的老版本参数配置方式，仅仅阿里大鱼老版本客户；新客户请在阿里大鱼（新）页面配置。</span>
+					</div>
+				</div>
+                <ul class="form_info ">
+                    <li><label>appkey：</label>
+                        <input name="config[appkey]" type="text" value="{$alidayu['appkey']}" class="">
+                        <i class="form_hint">用户appkey</i>
+                    </li>
+                    <li>
+                        <label>secretKey：</label>
+                        <input name="config[secretKey]" type="text" value="{$alidayu['secretKey']}" class="">
+                        <i class="form_hint">用户secretKey</i>
+                    </li>
+                    <li>
+                        <label>模板ID：</label>
+                        <input name="config[template_id]" type="text" value="{$alidayu['template_id']}" class="">
+                        <i class="form_hint">模板ID</i>
+                    </li>
+                    <li>
+                        <label>短信签名：</label>
+                        <input name="config[sign]" type="text" value="{$alidayu['sign']}" class="">
+                        <i class="form_hint">传入的短信签名必须是在阿里大于“管理中心-短信签名管理”中的可用签名。如“阿里大于”已在短信签名管理中通过审核，则可传入”阿里大于“（传参时去掉引号）作为短信签名。短信效果示例：【阿里大于】欢迎使用阿里大于服务。</i>
+                    </li>
+                    <li>
+                        <label>每日IP发送数量：</label>
+                        <input name="config[limit]" type="text" value="{$alidayu['limit']}" class="">
+                        <i class="form_hint">0或空则不限制</i>
+                    </li>
+                    <li><label>启用状态：</label><span class="form_radio table_radio" style="width: 347px; float: left;">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio3" value="0" name="status" <eq name="alidayu_data['status']" value="0">checked="checked"</eq>>
+							<label for="radio3">禁用</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio4" value="1" name="status" <eq name="alidayu_data['status']" value="1">checked="checked"</eq>>
+							<label for="radio4">启用</label>
+						</div>
+                    </span>
+                        <i class="form_hint">短信设置启用状态</i></li>
+                    <li>
+                        <label>&nbsp;</label><input type="hidden" name="name" value="alidayu">
+                        <input type="submit"  value="确认保存" target-form="alidayu" class="form_btn ajax-post">
+                    </li>
+                </ul>
+            </form>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="tab3" class="tab-pane tab3">
+                <form action="{:U('saveTool')}" method="post" class="form-horizontal jiguang form_info_ml">
+                    <ul class="form_info ">
+                        <li><label>appkey：</label>
+                            <input name="config[appkey]" type="text" value="{$jiguang['appkey']}" class="">
+                            <i class="form_hint">用户appkey</i>
+                        </li>
+                        <li>
+                            <label>secretKey：</label>
+                            <input name="config[secretKey]" type="text" value="{$jiguang['secretKey']}" class="">
+                            <i class="form_hint">用户secretKey</i>
+                        </li>
+                        <li><label>通知模板标识：</label>
+                            <input name="config[temp]" type="text" value="{$jiguang['temp']}" class="">
+                            <i class="form_hint">短信文本格式模板编号</i></li>
+                        <li>
+                    <li>
+                        <label>每日IP发送数量：</label>
+                        <input name="config[limit]" type="text" value="{$jiguang['limit']}" class="">
+                        <i class="form_hint">0或空则不限制</i>
+                    </li>
+                        <li><label>启用状态：</label>
+                            <span class="form_radio table_radio" style="width: 347px;float: left;">
+                            	<div class="radio radio-primary">
+									<input type="radio" id="radio5" value="0" name="status" <eq name="jiguang_data['status']" value="0">checked="checked"</eq>>
+									<label for="radio5">禁用</label>
+								</div>
+								<div class="radio radio-primary">
+									<input type="radio" id="radio6" value="1" name="status" <eq name="jiguang_data['status']" value="1">checked="checked"</eq>>
+									<label for="radio6">启用</label>
+								</div>
+                    </span>
+                            <i class="form_hint">短信设置启用状态</i>
+                        </li>
+                        <li>
+                            <label>&nbsp;</label><input type="hidden" name="name" value="jiguang">
+                            <input type="submit"  value="确认保存" target-form="jiguang" class="form_btn ajax-post">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="tab4" class="tab-pane tab4">
+            <form action="{:U('saveTool')}" method="post" class="form-horizontal alidayunew form_info_ml">
+            	<div class="cf top_nav_list navtab_list_con">
+					<div class="fl navtab_list_cs">
+						<span>阿里大鱼云短信，为溪谷软件提供的第三方云短信供应方，用户可自行前往申请注册，并获取相关参数进行配置。</span><br>
+						<span>阿里大于（新）申请地址：<a href="https://www.aliyun.com/product/sms?spm=5176.8142029.388261.372.itPPfu" target="_blank">https://www.aliyun.com/product/sms?spm=5176.8142029.388261.372.itPPfu</a></span><br>
+					</div>
+				</div>
+                <ul class="form_info ">
+                    <li><label>appkey：</label>
+                        <input name="config[appkey]" type="text" value="{$alidayunew['appkey']}" class="">
+                        <i class="form_hint">用户appkey</i>
+                    </li>
+                    <li>
+                        <label>secretKey：</label>
+                        <input name="config[secretKey]" type="text" value="{$alidayunew['secretKey']}" class="">
+                        <i class="form_hint">用户secretKey</i>
+                    </li>
+
+                    <li>
+                        <label>短信API产品名：</label>
+                        <input name="config[product]" type="text" value="{$alidayunew['product']}" class="">
+                        <i class="form_hint">短信API产品名默认填 Dysmsapi</i>
+                    </li>
+
+                    <li>
+                        <label>短信API产品域名：</label>
+                        <input name="config[domain]" type="text" value="{$alidayunew['domain']}" class="">
+                        <i class="form_hint">短信API产品域名默认填 dysmsapi.aliyuncs.com</i>
+                    </li>
+
+                    <li>
+                        <label>Region：</label>
+                        <input name="config[region]" type="text" value="{$alidayunew['region']}" class="">
+                        <i class="form_hint">暂时不支持多Region默认填 cn-hangzhou </i>
+                    </li>
+
+                    <li>
+                        <label>模板ID：</label>
+                        <input name="config[template_id]" type="text" value="{$alidayunew['template_id']}" class="">
+                        <i class="form_hint">模板ID</i>
+                    </li>
+                    <li>
+                        <label>短信签名：</label>
+                        <input name="config[sign]" type="text" value="{$alidayunew['sign']}" class="">
+                        <i class="form_hint">传入的短信签名必须是在阿里云“控制台-云计算基础服务->短信服务”中的可用签名。如“阿里大于”已在短信签名管理中通过审核，则可传入”阿里大于“（传参时去掉引号）作为短信签名。短信效果示例：【阿里大于】验证码为xxxx。</i>
+                    </li>
+                    <li>
+                        <label>每日IP发送数量：</label>
+                        <input name="config[limit]" type="text" value="{$alidayunew['limit']}" class="">
+                        <i class="form_hint">0或空则不限制</i>
+                    </li>
+                    <li><label>启用状态：</label><span class="form_radio table_radio" style="width: 347px; float: left;">
+                    	<div class="radio radio-primary">
+							<input type="radio" id="radio7" value="0" name="status" <eq name="alidayunew_data['status']" value="0">checked="checked"</eq>>
+							<label for="radio7">禁用</label>
+						</div>
+						<div class="radio radio-primary">
+							<input type="radio" id="radio8" value="1" name="status" <eq name="alidayunew_data['status']" value="1">checked="checked"</eq>>
+							<label for="radio8">启用</label>
+						</div>
+                    </span>
+                        <i class="form_hint">短信设置启用状态</i></li>
+                    <li>
+                        <label>&nbsp;</label><input type="hidden" name="name" value="alidayunew">
+                        <input type="submit"  value="确认保存" target-form="alidayunew" class="form_btn ajax-post">
+                    </li>
+                </ul>
+            </form>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="tab5" class="tab-pane tab5">
+                <form action="{:U('saveTool')}" method="post" class="form-horizontal alidayumsg form_info_ml">
+                    <ul class="form_info ">
+                        <li><label>appkey：</label>
+                            <input name="config[appkey]" type="text" value="{$alidayumsg['appkey']}" class="">
+                            <i class="form_hint">用户appkey</i>
+                        </li>
+                        <li>
+                            <label>secretKey：</label>
+                            <input name="config[secretKey]" type="text" value="{$alidayumsg['secretKey']}" class="">
+                            <i class="form_hint">用户secretKey</i>
+                        </li>
+
+
+                        <li>
+                            <label>短信API产品域名：</label>
+                            <input name="config[domain]" type="text" value="{$alidayumsg['domain']}" class="">
+                        </li>
+                        <li>
+                            <label>模板ID：</label>
+                            <input name="config[template_id]" type="text" value="{$alidayumsg['template_id']}" class="">
+                            <i class="form_hint">模板ID</i>
+                        </li>
+
+                        <li>
+                            <label>短信使用的主题：</label>
+                            <input name="config[topic]" type="text" value="{$alidayumsg['topic']}" class="">
+                            <i class="form_hint">主题</i>
+                        </li>
+                        <li>
+                            <label>短信签名：</label>
+                            <input name="config[sign]" type="text" value="{$alidayumsg['sign']}" class="">
+                            <i class="form_hint">传入的短信签名必须是在阿里云“消息服务->短信签名”中的可用签名。如“阿里大于”已在短信签名管理中通过审核，则可传入”阿里大于“（传参时去掉引号）作为短信签名。短信效果示例：【阿里大于】验证码为xxxx。</i>
+                        </li>
+                        <li>
+                            <label>每日IP发送数量：</label>
+                            <input name="config[limit]" type="text" value="{$alidayumsg['limit']}" class="">
+                            <i class="form_hint">0或空则不限制</i>
+                        </li>
+                        <li><label>启用状态：</label><span class="form_radio table_radio" style="width: 347px; float: left;">
+                        	<div class="radio radio-primary">
+								<input type="radio" id="radio9" value="0" name="status" <eq name="alidayumsg_data['status']" value="0">checked="checked"</eq>>
+								<label for="radio9">禁用</label>
+							</div>
+							<div class="radio radio-primary">
+								<input type="radio" id="radio10" value="1" name="status" <eq name="alidayumsg_data['status']" value="1">checked="checked"</eq>>
+								<label for="radio10">启用</label>
+							</div>
+                    </span>
+                            <i class="form_hint">短信设置启用状态</i></li>
+                        <li>
+                            <label>&nbsp;</label><input type="hidden" name="name" value="alidayumsg">
+                            <input type="submit"  value="确认保存" target-form="alidayumsg" class="form_btn ajax-post">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Tool/smsset')}');
+        $(function(){
+            //支持tab
+            showTab();
+        })
+    </script>
+</block>

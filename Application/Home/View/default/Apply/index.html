@@ -1,0 +1,284 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/game.css" rel="stylesheet" >
+<style type="text/css">
+	.trunk-list{position: relative;min-height: 66vh;}
+	.pagenation{position: absolute;text-align: center;line-height: 5vh;}
+</style>
+</block>
+
+<block name="body">
+    <div class="page-list normal_list apply-index-list">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>分包管理></span><span>游戏分包</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_game.png"><span class="title_main">游戏列表</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <div class="tab fl">
+              <a href="#" class="current">申请游戏</a>
+              <a href="{:U('my_game')}" class="">我的游戏</a>
+            </div>
+            <form action="{:U('index')}" method="post" enctype="multipart/form-data">
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              <div class="form-group normal_space fr">
+                  <select id="game_id" name="game_id" class="reselect select_gallery" style="min-width:200px;width: 175px;">
+                      <option value="">请选择游戏</option>
+                      <volist name=":get_game_list()" id="vo">
+                          <option value="{$vo.id}">{$vo.game_name}</option>
+                      </volist>
+                  </select>
+              </div>
+            </form>
+          </div>
+          <div class="trunk-list">
+            <if condition="get_fu_id(PID) eq 0">
+            <table class="table normal_table">
+                <tr class="odd">
+                  <th class="th1"></th>
+                  <th class="th2">游戏名称</th>
+                  <th class="th3">游戏类型</th>
+                  <th class="th5">注册单价</th>
+                  <th class="th6">分成比例</th>
+                  <th class="th7">申请状态</th>
+                </tr>
+                <empty name="list_data" >
+              <tr><td colspan="7" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+              <else />
+                <volist name="list_data" id="vo" mod="2">
+                <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td class="td1">
+				<if condition='$vo["recommend_status"] eq 2'>
+                    <img src="__IMG__/20180207/burn_fire.png">
+                  </if>
+                    </td>
+                    <td class="td2">
+                      <a href="" class="bg_st">
+<span class="img_table">
+                  		<div class="img_cell">
+                  			<div class="cell_con">手游</div>
+                  		</div>
+<img src="<empty name="vo['icon']">__IMG__/game_icon.png<else/>__ROOT__{$vo.icon|get_cover='path'}</empty>">
+                        </span>
+                      </a>
+<span class="name_a" title="{$vo['game_name']}">{:msubstr($vo['game_name'],0,10)}</span>
+                    </td>
+                    <td class="td3" title="{$vo['game_type_name']}">{:msubstr($vo['game_type_name'],0,8)}</td>
+                    <td class="td5">
+                      <if condition='$vo["money"] eq "" '>
+                        0
+                        <else/>{$vo.money}
+                      </if>
+                    </td>
+                    <td class="td6">
+                      <if condition='$vo["ratio"] eq "" '>
+                        0
+                        <else/>{$vo.ratio}
+                      </if>
+                    </td>
+                    <if condition="$parent_id neq ''">
+                    <else/>
+                    </if>
+                    <td class="td15">
+                        <switch name="vo['status']">
+                          <case value="0"><a href="javascript:;" class="applycbtn wait proc">审核中</a></case>
+                          <case value="1">
+                            
+                            <a href="javascript:;" class="applycbtn download copy" data-url="{$_SERVER['HTTP_HOST']}{$vo['register_url']}" title="复制下载地址">
+                              复制
+                            </a>
+                          </case>
+                          <case value="2"><a href="javascript:;" class="applycbtn fall proc">审核失败</a></case>
+                          <default /><a href="javascript:;" class="applycbtn" onclick="yiapply({$vo.id},this)">马上申请</a>
+                        </switch>
+                        
+                    </td>
+                </tr>
+                </volist>
+                </empty>
+            </table>
+            <else />
+            <table class="table normal_table">
+                <tr class="odd">
+                  <th class="th11"></th>
+                  <th class="th12">游戏名称</th>
+                  <th class="th13">游戏类型</th>
+                  <th class="th14">游戏大小</th>
+                  <th class="th15">申请状态</th>
+                </tr>
+                <empty name="list_data">
+                <tr><td colspan="5" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+              <else />
+                <volist name="list_data" id="vo" mod="2">
+                <tr class="<eq name='mod' value='1'>odd</eq>">
+                    <td class="td11">
+                      <if condition='$vo["recommend_status"] eq 2'>
+                    <img src="__IMG__/20180207/burn_fire.png">
+                  </if>
+                    </td>
+                    <td class="td12">
+                      <a href="" class="bg_st">
+                  	<div class="img_table">
+                  		<div class="img_cell">
+                  			<div class="cell_con"><span class="cell_style">手游</span></div>
+                  		</div>
+<img src="__ROOT__{$vo.icon|get_cover='path'}" width="50" height="50" align="middle">
+                        </div>
+                      </a>
+<span class="name_a">{$vo.game_name}</span>
+                    </td>
+                    <td class="td13">{$vo['game_type_name']}</td>
+                    <td class="td14">{$vo.game_size}</td>
+                    <if condition="$parent_id neq ''">
+                    <else/>
+                    </if>
+                    <td class="td15 dddsss">
+                        <switch name="vo['status']">
+                          <case value="0"><a href="javascript:;" class="applycbtn wait proc">审核中</a></case>
+                          <case value="1">
+                            <a href="javascript:;" class="applycbtn download copy" data-url="{$_SERVER['HTTP_HOST']}{$vo['register_url']}" title="复制下载地址">
+                              复制
+                            </a>
+                          </case>
+                          <case value="2"><a href="javascript:;" class="applycbtn fall proc">审核失败</a></case>
+                          <default /><a href="javascript:;" class="applycbtn" onclick="yiapply({$vo.id},this)">马上申请</a>
+                        </switch>
+                    </td>
+                </tr>
+                </volist>
+                </empty>
+            </table>
+            </if>
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script src="__STATIC__/zeroclipboard/jquery.zclip.min.js"></script>
+  <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+  <script type="text/javascript">
+  setValue('type',{$Think.request.type|default='""'});
+  setValue('game_id',{$Think.request.game_id|default='""'});
+  $(document).ready(function() {
+    $(".select_gallery").select2();
+    $('.download').click(function(event){
+      var href = $(this).attr('href');
+      if(href == '#'){
+        layer.msg("暂无下载内容",{icon:2,time:1000});
+        return false;
+      }
+    });
+    
+    })
+    
+    function bindz(){
+    	$('a.copy').zclip({
+    	path: "/Public/static/zeroclipboard/ZeroClipboard.swf",
+    	copy: function(){
+    	    return $(this).attr('data-url');
+    	},
+    	beforeCopy:function(){
+    	  $(this).addClass("proc");
+    	},
+    	afterCopy:function(){
+    	  $(this).removeClass("copy");
+    	  if($(this).attr('data-url')=="" || $(this).attr('data-url')==null){
+    	    layer.msg("暂无下载",{icon:2});
+    	  }
+    	  else{
+    	    layer.msg("复制成功",{icon:1});
+    	  }
+    	  
+    	}
+    	});
+    } 
+    bindz();
+  $("#all").click(
+  function(){
+    if(this.checked){
+        $("input[name='zi']").prop('checked', true)
+    }else{
+        $("input[name='zi']").prop('checked', false)
+    }
+  }
+);
+  //批量申请
+  $("#gapply").click(function() {
+   var chk_value =""; 
+   var pattern_value="";  
+    $(':checkbox').each(function(){  
+    if($(this).val()!=""&&$(this).prop('checked'))  {
+     chk_value+= (","+$(this).val());
+    }  
+    });     
+   chk_value =chk_value.substr(1, chk_value.length-1); 
+    chk_value=chk_value.slice(0);
+    pattern_value =pattern_value.substr(1, pattern_value.length-1); 
+    pattern_value=pattern_value.slice(0);
+    if(chk_value==0){
+      alert('你还没有选择任何内容！');
+    }else{
+     $("#gapply").attr('href', '__MODULE__/Apply/gapply/game_id/'+chk_value);//+'/pattern/'+pattern_value
+
+    }
+  });
+  function errapply($gameid,pattern,obj){ 
+        layer.msg("上级渠道未申请或未通过该游戏,不能申请",{icon: 2});
+  }
+  function erapply($gameid,pattern,obj){ 
+      $.ajax({
+        type:"post",
+        url:"__URL__/apply",
+        dataType:"json",
+        data:{game_id:$gameid,pattern:pattern},
+        success:function(res){
+          if(res.status){
+            $(obj).attr("onclick","").html("审核中").addClass("proc wait");
+            location.href="{:U('index')}";
+          }
+          else{
+            layer.msg(res.msg,{icon: 2});
+          }
+        },
+        error:function(){
+          layer.msg('服务器故障',{icon:5});
+        }
+      }) 
+  }
+  function yiapply($gameid,obj){ 
+      $.ajax({
+        type:"post",
+        url:"__URL__/apply",
+        dataType:"json",
+        data:{game_id:$gameid},//,pattern:pattern
+        success:function(res){
+          if(res.status){
+			if(res.code){
+              $(obj).removeAttr("onclick").html("复制").addClass("download copy").attr('data-url',"http://{$_SERVER['HTTP_HOST']}"+res.data);
+              bindz();
+              layer.msg(res.msg,{icon: 1});
+			} else{ 
+	            $(obj).attr("onclick","").html("审核中").addClass("proc wait");
+	            layer.msg(res.msg,{icon: 1});
+	            //setTimeout('location.href="{:U('index')}";',500);//局部div刷新 */
+           }
+          }
+          else{
+            layer.msg(res.msg,{icon: 2});
+          }
+        },
+        error:function(){
+          layer.msg('服务器故障',{icon:5});
+        }
+      }) 
+  }
+  //导航高亮
+  highlight_subnav('{:U('Apply/index')}');
+  </script>
+</block>

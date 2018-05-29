@@ -1,0 +1,296 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/search.css" rel="stylesheet" >
+<style>
+.jshid{
+  display: none;
+}
+</style>
+<header class="header">
+  <section class="wrap">
+    <a href="javascript:;" class="hbtn jshid left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/nav_search_return.png"></span></span></a>
+    <div class="searchbox">
+      <form class="search-input table" action="" onkeydown="if(event.keyCode==13){return false;}">
+        <span class="table-cell">
+          <a href="javascript:;" class="iconbox jssearch"><span class="table"><span class="table-cell"><i class="icon icon-search"></i></span></span></a>
+          <a href="javascript:;" class="iconbox jsdel"><span class="table"><span class="table-cell"><i class="icon icon-del"></i></span></span></a>
+          <div class="input-group">
+          <input type="text" class="txt jskeywords" name="keywords" placeholder="大家都在搜{$titlegame.game_name}" />
+          </div>
+        </span>
+      </form>
+    </div>
+    <a href="javascript:;" onclick="history.go(-1);" class="hbtn right search-cancel jsscancel"><span class="table"><span class="table-cell">取消</span></span></a>
+  </section>
+</header>
+<style>
+.footer{
+  display: none;
+}
+</style>
+<div class="occupy"></div>
+
+<section class="trunker">
+
+  <section class="inner jsinner">
+    <section class="contain">
+      <div class="default-list">
+        <div class="recommend">
+          <div class="recommend-title same-title"><span>热门推荐</span><a href="javascript:;" class="searchchangebutn"><img src="__IMG__/search_batch.png" class="icon"><span>换一批</span></a></div>
+          <div class="recommend-content">
+            <div id="jschange" class="swiper-container">
+                <div class="swiper-wrapper">
+                <volist name="allgame" id="all">
+                    <div class="swiper-slide"><div class="item"><a href="{$all.play_detail_url}" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$all.icon}" class="icon"></a><a href="{$all.play_detail_url}" class="title">{$all.game_name}</a></div></div>
+                </volist>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="hotwords">
+          <div class="hotwords-title same-title"><span>搜索热词</span></div>
+          <div class="hotwords-content">
+            <div class="hotwords-list clearfix">
+            <volist name="hotgame" id="hot">
+              <!-- <a href="{$hot.play_detail_url}" class="butn">{$hot.game_name}</a> -->
+              <a data-href="{$hot.play_detail_url}" class="butn hotbutn">{$hot.game_name}</a>
+            </volist>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </section>
+</section>
+
+<script src="__JS__/common.js"></script>
+<script>
+    cfkw = "{:I('kw')}";
+    if(cfkw!=''){
+      $('.jskeywords').val(cfkw);
+      $('.jsscancel').attr('onclick','history.go(-2);');
+    }
+    $(function() {
+          var timer;
+          var kw = $('.jskeywords');
+          $('.hotbutn').click(function(){
+            $reci = $(this).text();
+            kw.val($reci);
+            if ($.trim(kw.val()).length>0) {$('.jsdel').addClass('on')}
+            kkw = $('.jsdel').closest('form').find('input').val();
+            search(kkw);
+          });
+          
+          if ($.trim(kw.val()).length>0) {kw.closest('form').find('.jsdel').addClass('on');}
+          kkw = $('.jsdel').removeClass('on').closest('form').find('input').val();
+          if(kkw!=''){
+            search(kkw);
+          }
+          $('.jsdel').click(function() {
+            var that=$(this);
+            that.removeClass('on').closest('form').find('input').val('').focus();
+            clearInterval(timer);
+            $('.trunker .jsinner').css('display','block');
+            $('.nonner').remove();
+            $('.isinner').remove();
+            return false;
+          });
+          kw.addClass('disabled');
+          kw.keyup(function() {
+            var that = $(this),val=$.trim(that.val()),parent=that.closest('form');
+            clearInterval(timer);
+            kw.addClass('disabled');
+            if (val) {
+              parent.find('.jsdel').addClass('on');
+              search(val);
+            }else{
+              $('.jsdel').click();
+            }
+            
+            return false;
+          });
+          var val1 =$.trim(kw.val());
+          kw.focus(function(){
+            kw.removeClass('disabled');
+            var that = $(this),parent=that.closest('form');
+            timer = setInterval(function(){
+              val=$.trim(that.val());
+              if(val.length>0&&val1!=val){
+                kw.removeClass('disabled');
+              }else if(val1!=val){
+                $('.jsdel').click();
+              }
+              if(!kw.hasClass('disabled')&&val.length>0){
+                search(val);
+              }
+              val1 = val;
+            },300);
+          });
+          kw.blur(function(){
+            clearInterval(timer);
+          });
+          function search(kw){
+            if(!kw){
+              return false;
+            }
+            $.ajax({
+              type:'post',
+              url:"{:U('search')}",
+              data:{keyword:kw},
+              success:function(data){
+                if(data.code==0){
+                  $('.trunker .jsinner').css('display','none');
+                  $('.trunker .jsinner').siblings().remove();
+                  $('.trunker').append('<section class="inner nonner"><section class="contain"><div class="list search-list"><div class="empty"><img src="__IMG__/seach_noresult.png" class="empty-icon"><p class="empty-text">没搜到相关信息？换个词试试</p></div></div></section></section>');
+                }else if(data.code==1){
+                  $('.arrow-left').attr('href',data.url);
+                  var kwstr = $('.jskeywords').val();
+                  var kwarray = kwstr.split ("");
+                  var result = '<section class="inner isinner"><section class="contain"><div class="list search-list">';
+                  if(data.data.game!=''){
+                    result += '<div class="search-item"> <div class="search-item-title">游戏</div><div class="serrch-item-content"><ul>';
+                    for(var i = 0; i < data.data.game.length; i++){
+                        if(i>2){
+                          result +='<li class="list-item clearfix jshid">';
+                        }else{
+                          result +='<li class="list-item clearfix">';
+                        }
+                        result += '<div class="item clearfix"><a href="'+data.data.game[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data.data.game[i].icon+'" class="icon"></a><div class="butnbox"><a href="'+data.data.game[i].play_url+'" class="butn">开始</a></div><div class="textbox"><a href="'+data.data.game[i].play_detail_url+'" class="srtitle gamename">';
+                        restr = data.data.game[i].game_name;
+                        var rearray = restr.split ("");
+                        for(var ii = 0; ii < rearray.length; ii++){
+                          for(var j = 0; j < kwarray.length; j++){
+                            if(rearray[ii]==kwarray[j]){
+                              rearray[ii] = '<span>'+rearray[ii]+'</span>';
+                            }
+                          }
+                        }
+                        b = rearray.join("");
+                        result +=b;
+                        result +='</a><p class="info"><span class="type">'+data.data.game[i].game_type_name+'</span><span class="description">'+data.data.game[i].features+'</span></p></div></div></li> ';
+                    }
+                    result+='</ul></div>';
+                    if(data.data.game.length>3){
+                      result+='<a href="javascript:;" class="search-item-link jsmore"><div class="sil-inner clearfix"><span>查看更多游戏</span><span class="icon-right"><span class="table"><span class="table-cell"><img src="__IMG__/search_more.png"></span></span></span></div></a>';
+                    }
+                    result+='</div>';
+                  }
+                  if(data.data.gift!=''){
+                    console.log(data);
+                    result += '<div class="search-item"><div class="search-item-title">礼包</div><div class="serrch-item-content"><ul>';
+                    if(jQuery.isArray( data.data.gift )){
+                      for(var i = 0; i < data.data.gift.length; i++){
+                          if(i>2){
+                            result +='<li class="list-item clearfix jshid">';
+                          }else{
+                            result +='<li class="list-item clearfix">';
+                          }
+                          result += '<div class="item clearfix"><a href="'+data.data.gift[i].gift_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data.data.gift[i].icon+'" class="icon"></a><div class="butnbox"><a href="'+data.data.gift[i].gift_detail_url+'" class="butn">去领取</a></div><div class="textbox"><a href="'+data.data.gift[i].gift_detail_url+'" class="srtitle giftname">《';
+                          restr = data.data.gift[i].game_name;
+                          var rearray = restr.split ("");
+                          for(var ii = 0; ii < rearray.length; ii++){
+                            for(var j = 0; j < kwarray.length; j++){
+                              if(rearray[ii]==kwarray[j]){
+                                rearray[ii] = '<span>'+rearray[ii]+'</span>';
+                              }
+                            }
+                          }
+                          b = rearray.join("");
+                          result +=b;
+                          result +='》'+data.data.gift[i].giftbag_name+'</a><div class="surplusbox"><span class="surplus"><i style="width:'+(data.data.gift[i].novice_surplus/data.data.gift[i].novice_all*100).toFixed(2)+'%"></i></span><span class="number">剩余<i>'+(data.data.gift[i].novice_surplus/data.data.gift[i].novice_all*100).toFixed(2)+'%</i></span></div><p class="date">有效期：';
+                          result +=data.data.gift[i].start_time+'~'+data.data.gift[i].end_time;
+                          result +='</p></div></div></li>';
+                      }
+                    }else{
+                      var i = 0;
+                      $.each(data.data.gift,function(j,e){
+                        i++;
+                        if(i>2){
+                          result +='<li class="list-item clearfix jshid">';
+                        }else{
+                          result +='<li class="list-item clearfix">';
+                        }
+                        result += '<div class="item clearfix"><a href="'+e.play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+e.icon+'" class="icon"></a><div class="butnbox"><a href="'+e.gift_detail_url+'" class="butn">去领取</a></div><div class="textbox"><a href="'+e.gift_detail_url+'" class="srtitle giftname">《';
+                        restr = e.game_name;
+                        var rearray = restr.split ("");
+                        for(var ii = 0; ii < rearray.length; ii++){
+                          for(var j = 0; j < kwarray.length; j++){
+                            if(rearray[ii]==kwarray[j]){
+                              rearray[ii] = '<span>'+rearray[ii]+'</span>';
+                            }
+                          }
+                        }
+                        b = rearray.join("");
+                        result +=b;
+                        result +='》'+e.giftbag_name+'</a><div class="surplusbox"><span class="surplus"><i style="width:'+(e.novice_surplus/e.novice_all*100).toFixed(2)+'%"></i></span><span class="number">剩余<i>'+(e.novice_surplus/e.novice_all*100).toFixed(2)+'%</i></span></div><p class="date">有效期：';
+                        result +=e.start_time+'~'+e.end_time;
+                        result +='</p></div></div></li>';
+                      });
+                    }
+                    result+='</ul> </div>';
+                    if(data.data.gift.length>3){
+                      result+='<a href="javascript:;" class="search-item-link jsmore"><div class="sil-inner clearfix"><span>查看更多礼包</span><span class="icon-right"><span class="table"><span class="table-cell"><img src="__IMG__/search_more.png"></span></span></span></div></a>';
+                    }
+                    result+='</div>';
+                  }
+                  if(data.data.article!=''){
+                    result += '<div class="search-item"><div class="search-item-title">活动</div><div class="serrch-item-content"><ul>';
+                    for(var i = 0; i < data.data.article.length; i++){
+                        if(i>2){
+                          result +='<li class="list-item clearfix jshid">';
+                        }else{
+                          result +='<li class="list-item clearfix">';
+                        }
+                        result += '<div class="item clearfix"><div class="butnbox"><a href="'+data.data.article[i].article_detail_url+'" class="butn">查看</a></div><div class="textbox activetext"><a href="'+data.data.article[i].article_detail_url+'" class="srtitle activename">《';
+                        restr = data.data.article[i].belong_game;
+                        var rearray = restr.split ("");
+                        for(var ii = 0; ii < rearray.length; ii++){
+                          for(var j = 0; j < kwarray.length; j++){
+                            if(rearray[ii]==kwarray[j]){
+                              rearray[ii] = '<span>'+rearray[ii]+'</span>';
+                            }
+                          }
+                        }
+                        b = rearray.join("");
+                        result +=b;
+                        result +='》'+data.data.article[i].title+'</a><p class="notice">';
+                        if(data.data.article[i].hdtype!='活动'){
+                          result +='<span class="cate cate-notice">';
+                        }else{
+                          result +='<span class="cate cate-active">';
+                        }
+                        result +=data.data.article[i].hdtype+'</span><span class="catchword">'+data.data.article[i].description+'</span></p></div></div></li>';
+                    }
+                    result+='</ul> </div>';
+                    if(data.data.article.length>3){
+                      result+='<a href="javascript:;" class="search-item-link jsmore"><div class="sil-inner clearfix"><span>查看更多活动</span><span class="icon-right"><span class="table"><span class="table-cell"><img src="__IMG__/search_more.png"></span></span></span></div></a>';
+                    }
+                    result+='</div>';
+                  }
+                  result+='</div></section></section>';
+                  $('.trunker .jsinner').css('display','none');
+                  $('.trunker .jsinner').siblings().remove();
+                  $('.trunker').append(result);
+                }
+              },error:function(){
+
+              }
+            });
+            $('.jskeywords').addClass('disabled');
+          }
+          new Swiper('#jschange', {slidesPerView:4,slidesPerGroup:4,loop:true,loopAdditionalSlides:4,nextButton:'.searchchangebutn'});
+          $("body").on("click",'.jsmore',function(){
+              that = $(this); parent = that.closest('.search-item'); tt = $('.searchbox');
+              that.css('display','none');
+              parent.find('li').removeClass('jshid');
+              parent.siblings('.search-item').remove();
+              tt.addClass('list');
+              tt.siblings('.arrow-left').removeClass('jshid');
+          });
+          function backsearch(kw){
+
+          }
+    });
+</script>
+</block>

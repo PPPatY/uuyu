@@ -1,0 +1,205 @@
+<extend name="Public/mix_ base"/>
+<block name="css">
+</block>
+<block name="location">
+<div class="location-container">当前位置：<span>联盟站点</span><span>礼包列表</span><span>编辑礼包</span></div>
+</block>
+<block name="body">
+    <div class="page-form siteGift-add-form">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_welfare.png">{$meta_title}</div>
+      <div class="trunk-content article">
+        <div class="trunk-list">
+          <form action="" novalidate="novalidate" method="post" id="data">
+              <table class="table2">
+                  <tr>
+                      <td class="l">游戏名称：</td>
+                      <td class="r">
+                          <select name="site_game_id" id="game_id" class="reselect select_gallery" style="min-width:220px;">
+                              <option value="{$data['site_game_id']}" >{$data['game_name']}</option>
+                          </select>
+                      </td>
+                  </tr>
+                      <td class="l">礼包区服：</td>
+                      <td class="r">
+                          <select name="server_name"  id="server_id" class="reselect select_gallery" style="min-width:220px;">
+                          <volist name="serverNames" id="vo"> 
+                              <option value="{$vo.server_name}"
+                                  <if condition=" $vo['server_name'] eq $data['server_name'] "> selected </if> 
+                              > {$vo.server_name}</option>
+                          </volist>
+                          </select>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">礼包状态：</td>
+                      <td class="r form-radio jspayradio">
+                          <label><input type="radio" name="status" class="name txt" value="1"><i></i><span>开启</span></label>
+                          <label><input type="radio" name="status" class="name txt" value="2"><i></i><span>关闭</span></label>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">礼包名称：</td>
+                      <td class="r">
+                          <input name="gift_name" class="name txt" id="gift_name" maxlength="20" value="{$data.gift_name}">
+                      </td>
+                  </tr>
+                   <tr>
+                      <td class="l">推荐状态：</td>
+                      <td class="r form-radio jspayradio">
+                          <label for=""> <input type="radio" name="recomend_status" class="name txt" maxlength ="20" id="recomend_status" value="1" <if condition="$data['recomend_status'] eq 1">checked=""true</if> ><i></i>推荐</label> 
+                          <label for=""> <input type="radio" name="recomend_status" class="name txt" maxlength ="20" id="recomend_status" value="2" <if condition="$data['recomend_status'] eq 2">checked=""true</if>><i></i>热门</label> 
+                          <label for=""> <input type="radio" name="recomend_status" class="name txt" maxlength ="20" id="recomend_status" value="3" <if condition="$data['recomend_status'] eq 3">checked=""true</if>><i></i>不推荐</label> 
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">有效周期：</td>
+                      <td class="r">
+                          <input name="start_time" class="date txt" id="start_time" value="{:time_format($data['start_time'],'Y-m-d')}">
+                          至
+                          <input name="end_time" class="date txt" id="end_time" value="{:time_format($data['end_time'],'Y-m-d')}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">礼包激活码：</td>
+                      <td class="r form-textarea">
+                          <textarea  name="novice" class="area" id="novice" maxlength="500" holdreplace="一行一个">{:str_replace(",","\\r\\n",$data['novice'])}</textarea>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">领取方式：</td>
+                      <td class="r form-textarea">
+                          <textarea  name="get_way" class="area" maxlength="500"  id="get_way">{$data.get_way}</textarea>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">礼包内容：</td>
+                      <td class="r form-textarea">
+                          <textarea  name="gift_content" class="area" maxlength="500"  id="gift_content">{$data.gift_content}</textarea>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l"></td>
+                      <td class="r">
+                          <input name="id" hidden="hidden" value="{$data.id}">
+                          <button type="button" class="tjbnt btn" onclick="save()">保存</button>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+    <script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+  <script type="text/javascript">
+      setValue("site_game_id","{$data.site_game_id}");
+      setValue("status","{$data.status}");
+
+      $(function() {
+
+          $('.date').datetimepicker({scrollMonth:false,
+              lang:'ch',
+              format:'Y-m-d',
+              formatDate:'Y-m-d',
+              timepicker:false,
+          });
+          
+          
+          $(".select_gallery").select2();
+          
+          $('.jspayradio input:checked').siblings('i').addClass('current');
+          
+          $('.jspayradio input').click(function() {
+              var that=$(this);
+              $('.jspayradio i').removeClass('current');
+              if (that.prop('checked')) {
+                  that.siblings('i').addClass('current');
+              }
+          });
+
+      });
+      //       $('#game_id').change(function(){
+      //   var game_id = $('#game_id').val();
+      //   $.ajax({
+      //     type:'POST',
+      //     url:"{:U('get_server')}",
+      //     data:{game_id:game_id},
+      //     success:function(res){
+      //        if(res.status ==1){
+      //           var html="";
+      //           $(res.data).each(function(){
+      //              html +=" <option value="+this.server_name+">"+this.server_name+"</option>";
+      //           })
+      //           $('#server_id').html('').html(html);
+      //       }
+      //     }
+      //   });
+      // });
+
+  var sub = true;
+  function save() {
+      if(!sub){
+          return false;
+      }
+      if($("#gift_name").val()==""){
+    	  layer.msg('礼包名称不能为空', {icon: 5});
+    	  return false;
+      }
+      if($("#start_time").val()==""){
+    	  layer.msg('开始时间不能为空', {icon: 5});
+    	  return false;
+      }
+      if($("#end_time").val()==""){
+    	  layer.msg('结束时间不能为空', {icon: 5});
+    	  return false;
+      }
+      if($("#start_time").val() > $("#end_time").val()){
+    	  layer.msg('开始时间不能大于结束时间', {icon: 5});
+    	  return false;
+      }
+      if($("#novice").val()==""){
+    	  layer.msg('激活码不能为空', {icon: 5});
+    	  return false;
+      }
+      if($("#get_way").val()==""){
+    	  layer.msg('领取方式不能为空', {icon: 5});
+    	  return false;
+      }
+      if($("#gift_content").val()==""){
+    	  layer.msg('礼包内容不能为空', {icon: 5});
+    	  return false;
+      }
+      var data = $("#data").serialize();
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('edit')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+                  setTimeout(function () {
+                      location.href = "{:U('index')}";
+                  },1000)
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.info, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+  //导航高亮
+  highlight_subnav('{:U('SiteGift/index')}');
+  </script>
+</block>

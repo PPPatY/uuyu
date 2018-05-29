@@ -1,0 +1,107 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/platform.css" rel="stylesheet">
+ <style type="text/css">
+ 	.trunk-list {position: relative;min-height: 66vh;}
+	.pagenation{position: absolute;text-align: center;line-height: 5vh;}
+</style>
+</block>
+
+<block name="body">
+    <div class="page-search normal_list promoteCoin-index-search">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>会长福利></span><span>平台币入账记录</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_jilu.png"><span class="title_main">平台币入账记录</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('index')}" method="post" enctype="multipart/form-data">
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              <div class="form-group fr">
+                
+                <label class="form-title select-title">发放时间：</label>
+                <div class="select-time">
+                  <input type="text" id="sdate" class="txt" name="timestart" placeholder="开始时间" value="<notempty name='Think.request.start'>{$Think.request.start}<else />{$Think.request.timestart}</notempty>" >
+                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="timeend" placeholder="结束时间" value="<notempty name='Think.request.end'>{$Think.request.end}<else />{$Think.request.timeend}</notempty>">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="trunk-list">
+            <table class="table normal_table">
+                <tr class="odd">
+                  <th>ID</th>
+                  <th>发放时间</th>
+                  <th>平台币数量</th>
+                  <th>平台币来源</th>
+                </tr>
+                <empty name="lists_data">
+                <tr><td colspan="4" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+                <else />
+                <volist name="lists_data" id="vo">
+                <tr>
+                  <td>{$vo.id}</td>
+                  <td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
+                  <td>{$vo.num}</td>
+                  <td><gt name="vo['source_id']" value="0">上级渠道<else/>{:get_status_text(4,$vo['source_id'])}</gt></td>
+                </tr>
+                </volist>
+                </empty>
+            </table>
+            <div class="import fr">
+              <span class="txt"><span class="normal_tot">数据量：</span>{$count}条数据</span>
+              <span class="btn"><a href="{:U('Export/expUser',array_merge(array('id'=>8),I()))}" >导出数据(excel格式)</a>
+              </span>
+            </div>
+            <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+$().ready(function(){
+ $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  });
+
+  $('.submit').click(function(){
+    var edate = $('#edate').val();
+    var sdate = $('#sdate').val();
+    if(Date.parse(sdate) > Date.parse(edate)){
+      layer.msg('开始时间必须小于等于结束时间');
+      return false;
+    }
+    if(edate ==''|| sdate==''){
+    }
+  });
+
+});
+</script>
+</block>
+  

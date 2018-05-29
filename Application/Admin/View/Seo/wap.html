@@ -1,0 +1,69 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/wap')}">WAP官网</a></li>
+            <li><a href="#">SEO设置</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">SEO设置</span>
+                    <span class="">设置wap官网的站点SEO</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="tab-wrap">
+		<div class="tab_nav jstabnav">
+    <ul>
+            <volist name="lists" id="vo">
+            <li data-tab="tab{$i}" class="<eq name='i' value='1' >current</eq>"><a href="javascript:void(0);" >{$vo.title}</a></li>
+            </volist>
+		</ul></div>
+        <div class="infomation">
+            <h3>提示</h3>
+            <p>插入的变量两边必须包括百分号" %变量% "，当游戏范围不支持该变量时，该变量
+            将不会在前台显示（变量后边的分隔符也不会显示）。以下是可用SEO变量：</p>
+            <p><strong>站点名称：</strong><span> %webname% </span></p>
+            <p><strong>游戏名称：</strong><span> %gamename% </span></p>
+            <p><strong>礼包名称：</strong><span> %giftname% </span></p>
+            <p><strong>资讯名称：</strong><span> %newsname% </span></p>
+            <p><strong>游戏类型：</strong><span> %gametype% </span></p>
+            <p><strong>设备类型：</strong><span> %gamedevice% </span></p>
+            <p><strong>资讯栏目：</strong><span> %catetitle% </span></p>
+        </div>
+        <volist name="lists" id="vo">
+        <div class="tab-content">
+            <div id="tab{$i}" class="tab-pane <eq name='i' value='1' >in</eq> tab{$i}">
+                <form action="{:U('save')}" method="post" class="form-horizontal {$vo.name}">
+                    <ul class="form_info form_info_seo">
+                    <li><label>Title</label><input name="seo_title" value="{$vo.seo_title}" type="text" class="txt2"><i class="form_hint">{$vo.title}标题</i></li>
+                    <li><label>Keyword</label><textarea name="seo_keyword" class="" >{$vo.seo_keyword}</textarea><i class="form_hint">{$vo.title}关键字</i></li>
+                    <li><label>Description</label><textarea name="seo_description" class="" >{$vo.seo_description}</textarea><i class="form_hint">{$vo.title}描述</i></li>
+                    <li><label>&nbsp;</label><input type="hidden" name="name" value="{$vo.name}"></input>
+           <input type="hidden" name="module" value="media"></input><input type="submit" id="submit" value="确认保存" target-form="{$vo.name}" class="form_btn ajax-post"></li>    
+                    </ul>
+                    
+                </form>
+            </div>
+        </div>
+        </volist>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U("Seo/wap")}');
+	$(function(){
+		//支持tab
+		showTab();
+	})
+</script>
+</block>

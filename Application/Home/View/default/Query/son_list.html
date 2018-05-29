@@ -1,0 +1,279 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/finance.css" rel="stylesheet">
+</block>
+<block name="body">
+	<style type="text/css">
+		@media screen and (max-width: 1440px) {
+			.trunk-search .select-time .txt{width: 100px;}
+			.form-group .submit{width: 55px;}
+			.trunk-search .tab{float: none;margin-bottom: 10px;}
+		}
+	</style>
+    <div class="page-search normal_list query-son_list-search">
+      <div class="trunk-title">
+      	<div class="location">
+		<div class="location-container">当前位置：<span>财务管理></span><span>结算记录</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_jiesuan.png"><span class="title_main">结算记录</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <form action="{:U('Query/son_list')}" method="post" enctype="multipart/form-data">
+        	  <div class="tab fl">
+                <a href="{:U('Query/son_earning')}" class="">子渠道结算</a>
+                <a href="#" class="current">结算记录</a>
+              </div>
+              <div class="form-group normal_space fr">
+                <input type="submit" class="submit" value="查询">
+              </div>
+              
+              <div class="form-group normal_space fr">
+	            <label class="form-title select-title">结算时间：</label>
+	                <div class="select-time">
+	                  <input type="text" id="jsdate" class="txt" name="jtimestart" placeholder="开始时间" value="{:I('jtimestart')}" >
+	                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="jedate" class="txt" name="jtimeend" placeholder="结束时间" value="{:I('jtimeend')}">
+                </div>
+              </div>
+              
+               <div class="form-group normal_space fr">
+                    <select id="ch_promote_id" name="ch_promote_id" class="reselect select_gallery" style="min-width:170px;">
+                        <option value="0">全部子渠道</option>
+                        <volist name=":get_promote_list_by_id()" id ="vo">
+                          <option value="{$vo.id}">{$vo.account}</option>
+                        </volist>
+                    </select>
+              </div>
+              
+              <div class="form-group normal_space fr">
+	            <label class="form-title select-title">结算周期：</label>
+	                <div class="select-time">
+	                  <input type="text" id="sdate" class="txt" name="timestart" placeholder="开始时间" value="{:I('timestart')}" >
+	                </div>
+                <label class="form-title select-title" style="padding:0 5px;">到</label>
+                <div class="select-time">
+                  <input type="text" id="edate" class="txt" name="timeend" placeholder="结束时间" value="{:I('timeend')}">
+                </div>
+              </div>
+            </form>
+          </div>
+          
+          <div class="page-list query-son_list-list">
+	          <div class="trunk-list">
+	              <table class="table4 normal_table">
+	                  <tr class="odd">
+	                    <th>子渠道账户</th>
+	                    <th>结算周期</th>
+	                    <th>结算单号</th>
+	                    <th>总充值</th>                   
+	                    <th>总注册</th>
+	                    <th>结算金额</th>
+	                    <th>结算范围</th>
+	                    <th>结算时间</th>
+	                    <th>详情</th>
+	                    <th>提现审核</th>
+	                  </tr>
+	                  <empty name="list_data">
+	                  <tr><td colspan="10" style="text-align: center;height: 35vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
+	                  <else />
+                  <volist name="list_data" id="vo">
+                  <tr>
+                  <td>{$vo.promote_account}</td>  
+                  <td>{$vo.settlement_start_time|date="Y-m-d",###}~{$vo.settlement_end_time|date="Y-m-d",###}</td>
+                    <td>{$vo.settlement_number} </td>
+                     <td><notempty name="vo.sum_money">{:get_son_settlemt_sum($vo['settlement_number'],'sum_money')}<else />0</notempty></td>
+                     <td><notempty name="vo.reg_number">{:get_son_settlemt_sum($vo['settlement_number'],'reg_number')}<else />0</notempty></td>
+                     <td>{:get_son_settlemt_sum($vo['settlement_number'],'jie_money')}</td>
+                      <td><if condition="$vo['isbd'] eq 0">排除绑币<else />包含绑币</if></td>
+                    <td>{$vo.create_time|date="Y-m-d",###}</td>
+                    <td><a href="javascript:;" class="channel_pack" style="color:#46A3FF" onclick="channel_pack(this)" url="{:U('son_settlemeng_detail',array('settlement_number'=>$vo['settlement_number']))}">查看</a></td>
+                    <td>
+	                    <switch name="vo.ti_status" >
+	                       <case value="-1"><a href="javascript:;" style="color:#46A3FF">未申请</a></case>
+	                       <case value="0">
+	                       	<a href="javascript:;" style="color:#46A3FF" onclick="channel_son_settlement(this)" data-num="{$vo['settlement_number']}"data-type="1">通过</a>
+	                       	<a href="javascript:;" style="color:#FF0000" onclick="channel_son_settlement(this)" data-num="{$vo['settlement_number']}" data-type="2">驳回</a>
+	                       </case>
+	                       <case value="1"><lable style="color:#D0D0D0">已通过</lable></case>
+	                       <case value="2"><lable style="color:#FF0000">已驳回</lable></case>
+	                   </switch>
+                    </td>
+                  </tr>
+                  </volist>
+                  <tr class="odd">
+	                    <td colspan="9" style="font-weight: bold;">结算汇总(元)</td>
+	                    <td>{:number_format(round($total,2),2)}</td>
+	                  </tr>
+	                  </empty>
+	              </table>
+	              
+	              
+	              <div class="pagenation jspagenation clearfix">{$_page}</div>
+	          </div>
+	      </div>
+      </div>
+    </div> 
+    
+</block>
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+  setValue('ch_promote_id',{$Think.request.ch_promote_id|default=0});
+  highlight_subnav("{:U('Query/son_earning')}");
+  //审核
+  function channel_son_settlement(t){
+		var settlement_number = $(t).data('num'),type = $(t).data('type');
+		$.ajax({
+		      url: '{:U("change_son_settlement")}',
+		      type: 'POST',
+		      dataType: 'json',
+		      data: {settlement_number: settlement_number,type: type},
+		      success:function(data){
+		        if(data.status==0){
+		             layer.msg('请勿重复操作', {icon: 5});
+
+		        }else{
+		            layer.msg('申请成功', {icon: 6});
+		            setTimeout(function(){window.location.reload();},2000);
+		        }
+		      },
+		      error:function(){
+		        layer.msg('服务器故障', {icon: 4});
+		      }
+		    });
+	};
+  
+	function channel_pack(t) {
+		$url = $(t).attr('url');
+				layer.open({
+						type: 2,
+						title: "结算详情",
+						shadeClose: false,
+						shade: 0.6,
+						area: ['80%', '62%'],
+						content:[$url,'no']//iframe的url
+				}); 
+	};
+  
+$().ready(function(){
+    
+
+   $("#pagehtml a").on("click",function(event){
+    event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+    var geturl = $(this).attr('href');
+    $('#data_form').attr('action',geturl);
+    $('#data_form').submit();
+   });
+  $('#sdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  }).change(function() {
+    var regexp = new RegExp('-','gi');
+    var sdate = $.trim($(this).val()).replace(regexp,'');  
+    if (sdate) {
+      var edate = $.trim($('#edate').val()).replace(regexp,'');
+      if (edate && parseInt(sdate)>parseInt(edate)) {
+        layer.msg('开始时间必须小于或等于结束时间', {icon: 2});
+      }
+    }
+    return false;
+  });
+  
+  $('#edate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  }).change(function() {
+    var regexp = new RegExp('-','gi');
+    var edate = $.trim($(this).val()).replace(regexp,'');  
+    if (edate) {
+      var sdate = $.trim($('#sdate').val()).replace(regexp,'');
+      if (sdate && parseInt(sdate)>parseInt(edate)) {
+        layer.msg('开始时间必须小于或等于结束时间', {icon: 2});
+      }
+    }
+    return false;
+  });
+  
+  $('#jsdate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  }).change(function() {
+    var regexp = new RegExp('-','gi');
+    var jsdate = $.trim($(this).val()).replace(regexp,'');  
+    if (jsdate) {
+      var jedate = $.trim($('#jedate').val()).replace(regexp,'');
+      if (jedate && parseInt(jsdate)>parseInt(jedate)) {
+        layer.msg('开始时间必须小于或等于结束时间', {icon: 2});
+      }
+    }
+    return false;
+  });
+  
+  $('#jedate').datetimepicker({scrollMonth:false,
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',maxDate:'+1970/01/01',
+    timepicker:false,scrollMonth:false,
+scrollTime:false,
+scrollInput:false,
+  }).change(function() {
+    var regexp = new RegExp('-','gi');
+    var jedate = $.trim($(this).val()).replace(regexp,'');  
+    if (jedate) {
+      var jsdate = $.trim($('#jsdate').val()).replace(regexp,'');
+      if (jsdate && parseInt(jsdate)>parseInt(jedate)) {
+        layer.msg('开始时间必须小于或等于结束时间', {icon: 2});
+      }
+    }
+    return false;
+  });
+	
+	
+	$('#son_list').unbind('submit').bind('submit',function() {
+		var regexp = new RegExp('-','gi');
+    var sdate = $.trim($('#sdate').val()).replace(regexp,'');
+    var edate = $.trim($('#edate').val()).replace(regexp,'');
+    var jsdate = $.trim($('#jsdate').val()).replace(regexp,'');
+    var jedate = $.trim($('#jedate').val()).replace(regexp,'');
+		
+		if (sdate && edate && parseInt(sdate)>parseInt(edate)) {
+			return false;
+		}
+		if (jsdate && jedate && parseInt(jsdate)>parseInt(jedate)) {
+			return false;
+		}
+		
+		$(this).submit();
+		
+		
+	});
+
+  $(".select_gallery").select2();
+  
+  //申请提现
+	function tixian(id){
+		console.log(id);
+	}
+  
+});
+</script>
+</block>
+  

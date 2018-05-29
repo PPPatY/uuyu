@@ -1,0 +1,99 @@
+<extend name="Public/bases" />
+<block name="body" >
+<style>
+.game_list table td{ border-bottom:0px;}
+</style>
+<div class="con">
+<!--游戏列表-->
+<div class="game_list gide_con clear pt60" style="margin-top:0px;">
+
+<div class="gide_01 bortb wh_bg " style="padding:15px 0px;">
+<table cellpadding="0" cellspacing="0" >
+<tbody>
+<tr>
+<td width="20%" class="cen"><a ><img src="{$data.icon|get_cover='path'}"></a></td>
+<td width="60%"><a>
+<ul class="lblist">
+<li><h3>《{$data.game_name}》{$data.giftbag_name}</h3></li>
+<li class="g-rest"><span>剩余:</span><div class="lbjdt">
+<div class="jdt_or" style="width:{:($data['wnovice']/$data['allcount_novice'])*100}%"></div>
+</div><span>{$data.wnovice}/{$data.allcount_novice}</span></li>
+<li><font>有效期：</font><font class="blue">{$data.start_time|date='Y-m-d H:i:s',###}至
+<if condition="$data['end_time'] eq 0">永久<else />
+{$data.end_time|date='Y-m-d H:i:s',###}</if></font></li>
+</ul>
+</a></td>
+<td width="20%" class="cen"><a class="lqbtn" id="bt_action">领取</a></td>
+</tr>
+
+</tbody>
+</table>
+<td><div class="novice"></div></td>
+</div>
+
+<div class="gide_02 wh_bg mt15 bortb">
+<div class="gidetit"><i class="gide_gift"></i>礼包内容</div>
+<div class="gidecon bortb">
+{$data['digest']}
+</div>
+</div>
+
+<div class="gide_02 wh_bg mt15 bortb mb55">
+<div class="gidetit"><i class="gide_set"></i>领取方法</div>
+<div class="gidecon bortb">
+{$data['desribe']}
+</div>
+</div>
+</div>
+
+<!--游戏列表结束-->
+<!--底部-->
+<div class="bottom">
+  <ul>
+      <li ><a href="{:U('/index','',true,'',true)}"><i class="bot_home"></i><font>首页</font></a></li>
+      <li><a href="{:U('/game','',true,'',true)}"><i class="bot_game"></i><font>游戏</font></a></li>
+      <li class="active"><a href="{:U('/gift','',true,'',true)}"><i class="bot_gift"></i><font>福利</font></a></li>
+      <li><a href="{:U('/subscriber','',true,'',true)}"><i class="bot_user"></i><font>我的</font></a></li>
+  </ul>
+</div>
+<!--底部结束-->
+</div>
+<script>
+$(function(){
+  $("#bt_action").click(function(){
+    var that = this;
+    $.ajax({
+      async: false,
+      cache: false,
+      data:'giftid={$data.id}&giftname={$data.giftbag_name}&gameid={$data.game_id}&gamename={$data.game_name}',
+      dataType:'json',
+      url:'__CONTROLLER__/getgift',
+      type:'post',
+      beforeSend:function() {
+        $(that).unbind('click').html('领取中');
+      },
+      success:function(data) {
+                switch (parseInt(data.status)) {
+                    case 1: {
+                        $(that).html('已领');
+                        $('.novice').show().html(data.info+'，您的激活码为：'+data.nvalue);
+                        $('.g-rest').html('<span>剩余:</span><div class="lbjdt"><div class="jdt_or" style="width:{:(($data["wnovice"]-1)/$data["allcount_novice"])*100}%"></div></div><span>{:$data["wnovice"]-1}/{$data["allcount_novice"]}</span>');
+                    };break;
+                    case 2: {
+                        $(that).html('已领');
+                        $('.novice').show().html(data.info+'您的激活码为：'+data.nvalue);
+                    };break;
+                    default:{
+                        $('.novice').show().html('<hr>'+data.info);
+                    };
+                }
+      },
+      error:function(){
+        
+      }     
+    });
+  });
+});
+</script>
+</div>
+</block>

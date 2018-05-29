@@ -1,0 +1,62 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Addons/index')}">扩展</a></li>
+            <li><a href="{:U('Addons/index')}">扩展</a></li>
+            <li><a href="#">钩子列表</a></li>
+        </ul>
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<?php if (IS_ROOT): ?>
+			<a class="" href="{:U('addhook')}"><span class="button_icon button_icon1"></span>新 增</a>
+		<?php endif ?>
+        </div>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data_list">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名称</th>
+					<th>描述</th>
+					<th>类型</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td><a href="{:U('edithook?id='.$vo['id'])}">{$vo.name}</a></td>
+						<td>{$vo.description}</td>
+						<td>{$vo.type_text}</td>
+						<td>
+							<a title="编辑" href="{:U('edithook?id='.$vo['id'])}">编辑</a>
+							<a class="confirm ajax-get" title="删除" href="{:U('delhook?id='.$vo['id'])}">删除</a>
+						</td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>        
+	</div>
+	<!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+    
+		$(function(){
+
+		})
+	</script>
+</block>

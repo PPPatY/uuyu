@@ -1,0 +1,340 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+
+/*css reset*/
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+fieldset,
+img {
+	border: none;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+input {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+input::-moz-focus-inner {
+	border: none;
+	padding: 0;
+}
+
+select,
+input {
+	vertical-align: middle;
+}
+
+select,
+input,
+textarea {
+	margin: 0;
+}
+
+input[type="text"],
+textarea {
+	outline-style: none;
+	-webkit-appearance: none;
+}
+
+textarea {
+	resize: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+body {
+	font: 12px/1.42857143 "Microsoft YaHei", "微软雅黑", "Arial", "宋体";
+	color: #333;
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+input,
+textarea,
+keygen,
+select,
+button {
+	font-family: "Microsoft YaHei", "微软雅黑", "Arial", "宋体";
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: "Microsoft YaHei", "微软雅黑", "Arial";
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus {
+	outline: none;
+}
+
+
+/*header部分*/
+
+.containers {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.containers .header {
+	width: 100%;
+	height: 60px;
+	background-color: #18B1EA;
+	position: relative;
+}
+
+.containers .header .arrow_left {
+	height: 100%;
+	position: absolute;
+	left: 1%;
+}
+
+.containers .header .title {
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 25px;
+	height: 60px;
+	line-height: 60px;
+}
+
+.contents {
+	width: 100%;
+	height: 100%;
+	background-color: #F4F4F4;
+}
+
+.contents .contents_detail {
+	padding-top: 20px;
+	position: relative;
+	margin: 0 auto;
+	margin-left: 4%;
+	margin-right: 4%;
+	height: 100px;
+}
+
+.contents .contents_detail .left_contents {
+	width: 80%;
+	height: 100px;
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	float: left;
+	padding-top: 6%;
+	margin-bottom: 3%;
+	position: relative;
+}
+
+.contents .contents_detail .right_contents {
+	width: 20%;
+	height: 100px;
+	float: right;
+	margin-bottom: 3%;
+}
+
+.contents .contents_detail .left_contents .flows {
+	width: 45%;
+	float: left;
+	margin-left: 5%;
+	position: absolute;
+	bottom: 10px;
+}
+
+.contents .contents_detail .left_contents .flows_title {
+	margin-left: 5%;
+	font-size: 18px;
+	margin-top: 3%;
+	position: absolute;
+	right: 3%;
+	top: 25%;
+}
+
+.contents .contents_detail .left_contents .flows .number {
+	font-size: 30px;
+	color: #18B1EA;
+}
+
+.contents .contents_detail .left_contents .flows .munber_M {
+	font-size: 15px;
+	color: #18B1EA;
+}
+
+.contents .contents_detail .left_contents .flows .flows_text {
+	display: block;
+	margin-top: 2%;
+	font-size: 12px;
+	color: #CECECE;
+}
+
+.contents .contents_detail .right_contents a {
+	display: block;
+	text-align: center;
+	line-height: 100px;
+	font-size: 18px;
+	color: #FFFFFF;
+	border-radius: 8px;
+}
+
+.contents .contents_detail .right_contents .take {
+	background-color: #18B1EA;
+}
+
+.contents .contents_detail .right_contents .taken {
+	background-color: #CECECE;
+}
+
+@media only screen and (max-width: 320px) {
+	.contents .contents_detail .left_contents .flows {
+		width: 50%;
+	}
+	.contents .contents_detail .left_contents .flows_title {
+		font-size: 16px;
+	}
+}
+
+
+/*优惠券页面样式*/
+
+.contents .center_content {
+	padding-top: 20px;
+	position: relative;
+	margin: 0 auto;
+	margin-left: 4%;
+	margin-right: 4%;
+}
+
+.contents .center_content .main_img {
+	position: relative;
+	width: 100%;
+	height: 100px;
+	margin-bottom: 20px;
+}
+
+.contents .center_content .main_img .price {
+	float: left;
+	height: 100%;
+	background-color: #fff;
+	width: 87%;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	position: relative;
+}
+
+.contents .center_content .main_img .price .price_text {
+	color: #FF9B26;
+	position: absolute;
+	border-right: 1px dashed #E5E5E5;
+	top: 0%;
+	left: 4%;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	padding-right: 3%;
+	width: 22%;
+}
+
+.dot,
+.youhui {
+	font-size: 14px;
+}
+
+.youhui {
+	display: block;
+}
+
+.nums {
+	font-size: 28px;
+}
+
+.img_center {
+	float: left;
+}
+
+.main_detail {
+	position: absolute;
+	left: 30%;
+	top: 15%;
+}
+
+.tit_big {
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 8px;
+}
+
+.tit_normal {
+	display: block;
+	font-size: 12px;
+	color: #888888;
+	margin-bottom: 3px;
+}
+
+@media only screen and (max-width: 375px) {
+	.tit_big {
+		overflow: hidden;
+		height: 20px;
+	}
+	.tit_normal {
+		overflow: hidden;
+		height: 20px;
+	}
+}
+
+.main_get {
+	width: 13%;
+	height: 100%;
+	float: left;
+	background: url(../images/coupon_img_bg2.png) no-repeat left;
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.main_get a {
+	display: block;
+	width: 20%;
+	position: absolute;
+	right: 35%;
+	top: 26%;
+	color: #fff;
+	font-size: 18px;
+}
+
+.arrive_bottom {
+	text-align: center;
+	color: #999;
+	margin-top: 10px;
+}

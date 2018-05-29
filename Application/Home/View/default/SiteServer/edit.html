@@ -1,0 +1,124 @@
+<extend name="Public/mix_ base"/>
+<block name="css">
+</block>
+<block name="location">
+<div class="location-container">当前位置：<span>联盟站点</span><span>区服列表</span><span>编辑区服</span></div>
+</block>
+<block name="body">
+    <div class="page-form siteServer-add-form">
+      <div class="trunk-title"><img src="__IMG__/20170831/icon_server.png">{$meta_title}</div>
+      <div class="trunk-content article">
+        <div class="trunk-list">
+          <form action="" novalidate="novalidate" method="post" id="data">
+              <table class="table2">
+                  <tr>
+                      <td class="l">游戏名称：</td>
+                      <td class="r">
+                          <select name="game_id" id="game_id" class="reselect select_gallery" style="min-width:200px;">
+                              <option value="">请选择游戏</option>
+                              <volist name="game" id="vo">
+                              <option value="{$vo.id}" <if condition="$vo['game_name'] eq $data['game_name']"> selected =="true"</if>>{$vo.game_name}</option>
+                              </volist>
+                          </select>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">显示状态：</td>
+                      <td class="r form-radio jspayradio">
+                          <label><input type="radio" name="status" class="name" value="1" ><i></i><span>开启</span></label>
+                          <label><input type="radio" name="status" class="name" value="2" ><i></i><span>关闭</span></label>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">区服名称：</td>
+                      <td class="r">
+                          <input name="server_name" class="name txt" id="server_name" value="{$data.server_name}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l">开服时间：</td>
+                      <td class="r">
+                          <input name="start_time" class="name txt date" id="start_time" value="{:time_format($data['start_time'])}">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="l"></td>
+                      <td class="r">
+                          <input name="id" hidden="hidden" value="{$data.id}">
+                          <button type="button" class="tjbnt btn" onclick="save()">保存</button>
+                      </td>
+                  </tr>
+              </table>
+          </form>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/jquery-ui.css">
+    <script type="text/javascript" src="__STATIC__/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="__JS__/DateTimePicker/jquery-ui-timepicker-addon.min.css">
+    <script type="text/javascript" src="__JS__/DateTimePicker/jquery-ui-sliderAccess.js"></script>
+    <script type="text/javascript" src="__JS__/DateTimePicker/jquery-ui-timepicker-addon.min.js"></script>
+      <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+  <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+
+  <script type="text/javascript">
+      setValue("game_id","{$data.game_id}");
+      setValue("status","{$data.status}");
+
+      $(function() {
+
+          $('.date').datetimepicker({scrollMonth:false,
+              dateFormat: 'yy-mm-dd'
+          });
+          
+          $(".select_gallery").select2();
+          
+          $('.jspayradio input:checked').siblings('i').addClass('current');
+          
+          $('.jspayradio input').click(function() {
+              var that=$(this);
+              $('.jspayradio i').removeClass('current');
+              if (that.prop('checked')) {
+                  that.siblings('i').addClass('current');
+              }
+          });
+
+      });
+
+  var sub = true;
+  function save() {
+      if(!sub){
+          return false;
+      }
+      var data = $("#data").serialize();
+      sub = false;
+      $.ajax({
+          type: "post",
+          url: "{:U('edit')}",
+          dataType: "json",
+          data: data,
+          success: function (res) {
+              if (res.status != 0) {
+                  layer.msg(res.info, {icon: 1});
+                  setTimeout(function () {
+                      location.href = "{:U('index')}";
+                  },1000)
+              }
+              else {
+                  sub = true;
+                  layer.msg(res.info, {icon: 2});
+              }
+          },
+          error: function () {
+              layer.msg('服务器故障', {icon: 5});
+          }
+      })
+  }
+
+
+  //导航高亮
+  highlight_subnav('{:U('index')}');
+  </script>
+</block>

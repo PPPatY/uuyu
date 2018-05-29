@@ -1,0 +1,77 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Config/group')}">站点</a></li>
+            <li><a href="{:U('Site/app')}">联运APP</a></li>
+            <li><a href="#">支付配置</a></li>
+        </ul>
+        <div class="question">
+            <i class="question_mark">?</i>
+            <ul class="question_content">
+                <li class="question_title">功能以及数据相关说明</li>
+                <li class="question_list">
+                    <span class="">{$meta_title}</span>
+                    <span class="">用于配置APP所用到的支付功能相关参数</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+		<ul>
+			<li data-tab="tab1" class="current"><a href="javascript:void(0);" >微信(APP)</a></li>
+			<li data-tab="tab3"><a href="javascript:void(0);" >威富通</a></li>
+
+		</ul>
+        </div>
+		<div class="tab-content ">
+		<div id="tab1" class="tab-pane in tab1">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal wei_xin_apps form_info_ml">
+            <ul class="form_info ">
+                <li><label>商户号</label><input name="config[partner]" type="text" value="{$wei_xin_apps['partner']}" class=""><i class="form_hint">微信商户号</i></li>
+                <li><label>APPID</label><input name="config[email]" type="text" value="{$wei_xin_apps['email']}" class=""><i class="form_hint">绑定支付的APPID</i></li>
+                <li><label>密钥key</label><input name="config[key]" type="text" value="{$wei_xin_apps['key']}" class=""><i class="form_hint">微信秘钥</i></li>
+                <li><label>启用状态</label><span class="form_radio">
+                    <label><input type="radio" name="status" value="0" <eq name="wei_xin_apps_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                    <label><input type="radio" name="status" value="1" <eq name="wei_xin_apps_data['status']" value="1">checked="checked"</eq>> 启用
+                </label></span><i class="form_hint">微信开启状态</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="wei_xin_apps"></input><input type="submit" id="submit" value="确认保存" target-form="wei_xin_apps" class="form_btn ajax-post"></li>
+            </ul>
+        </form>
+		</div>
+		</div>
+
+
+		<div class="tab-content">
+		<div id="tab3" class="tab-pane tab3">
+		<form action="{:U('saveTool')}" method="post" class="form-horizontal weixin_app form_info_ml">
+            <ul class="form_info ">
+                <li><label>商户号</label><input name="config[partner]" type="text" value="{$weixin_app['partner']}" class=""><i class="form_hint">威富通商户号</i></li>
+                <li><label>密钥key</label><input name="config[key]" type="text" value="{$weixin_app['key']}" class=""><i class="form_hint">微信秘钥</i></li>
+                <li><label>启用状态</label><span class="form_radio">
+                    <label><input type="radio" name="status" value="0" <eq name="weixin_app_data['status']" value="0">checked="checked"</eq>> 禁用</label>
+                    <label><input type="radio" name="status" value="1" <eq name="weixin_app_data['status']" value="1">checked="checked"</eq>> 启用
+                </label></span><i class="form_hint">微信开启状态</i></li>
+                <li><label>&nbsp;</label><input type="hidden" name="name" value="weixin_app"></input><input type="submit" id="submit" value="确认保存" target-form="weixin_app" class="form_btn ajax-post"></li>
+            </ul>
+        </form>
+		</div>
+		</div>
+
+
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:U('Tool/payset')}');
+	$(function(){
+		//支持tab
+		showTab();
+	})
+</script>
+</block>

@@ -1,0 +1,5 @@
+<div class="fr">
+	<volist name="tree" id='vo'>
+		<a <if condition="$vo.id eq $cateID"> class="tabchose" </if>  href="{:U('Article/index',array('cate_id'=>$vo['id']))}">{$vo.title}</a>
+	</volist>
+</div>

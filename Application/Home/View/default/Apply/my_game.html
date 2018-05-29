@@ -1,0 +1,183 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/game.css" rel="stylesheet" >
+<style>
+    .tb110 .zclip embed{margin-bottom: 45px;}
+    .trunk-list{position: relative;min-height: 66vh;}
+	.pagenation{position: absolute;text-align: center;line-height: 5vh;}
+</style>
+
+</block>
+
+<block name="body">
+    <div class="page-list normal_list apply-my_game-list">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>分包管理></span><span>我的游戏</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_game.png"><span class="title_main">游戏列表</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <div class="tab fl">
+              <a href="{:U('Apply/index')}" class="">申请游戏</a>
+              <a href="#" class="current">我的游戏</a>
+            </div>
+            <form action="{:U('my_game')}" method="post" enctype="multipart/form-data">
+              <div class="form-group  normal_space fr">
+                <input type="button" class="submit" id="search" value="查询"  url="{:U('my_game')}">
+              </div>
+              <div class="form-group  normal_space fr">
+                    <select id="ti_status" name="type" class="reselect select_gallery" style="min-width:170px;" >
+                        <option value="-1">请选择审核状态</option>
+                        <option value="0">待审核</option>
+                        <option value="1">已审核</option>
+                    </select>
+              </div>
+              <div class="form-group  normal_space fr">
+                  <select id="game_id" name="game_id" class="reselect select_gallery" style="width:180px;">
+                      <option value="">请选择游戏</option>
+                      <volist name=":get_apply_game_list2(PID)" id="vo">
+                          <option value="{$vo.game_id}" <if condition="I('game_id') eq $vo['id']"> selected="true"</if> >{$vo.game_name}</option>
+                      </volist>
+                  </select>
+              </div>
+              
+            </form>
+          </div>
+          <div class="trunk-list">
+              <table class="table normal_table">
+                  <tr class="odd <if condition='get_parent_id(PID) eq 0'>pid</if>">
+                    <th class="th1" style="width: 12%;">游戏名称</th>
+                    <th>类型</th>
+                  <if condition="get_parent_id(PID) eq 0">
+                    <th>注册单价</th>
+                    <th>分成比例</th>
+                  </if>
+                    <th>审核状态</th>
+                  </tr>
+                  <empty name="list_data">
+                  <else />
+                  <volist name="list_data" id="vo">
+                  <tr>
+                  <td class="<if condition='get_parent_id(PID) eq 0'>td2<else />td12</if>">
+                    <a href="javascript:;" class="bg_st">
+                    	<span class="img_table">
+	                  		<div class="img_cell">
+	                  			<div class="cell_con">手游</div>
+	                  		</div>
+                      <img src="<empty name="vo['icon']">__IMG__/game_icon.png<else/>__ROOT__{$vo.icon|get_cover='path'}</empty>">
+                      </span>
+                    </a>
+<span class="name_a" title="{$vo['game_name']}">{:msubstr($vo['game_name'],0,10)}</span>
+                  </td>
+                  <td title="{$vo['game_type_name']}">{:msubstr($vo['game_type_name'],0,8)}</td>
+                    <if condition="get_parent_id(PID) eq 0">
+                  <td>
+                    <if condition='$vo["money"] eq "" '>
+                      0
+                    <else/>{$vo.money}
+                    </if>
+                  </td>
+                  <td>
+                    <if condition='$vo["ratio"] eq "" '>
+                      0
+                  <else/>{$vo.ratio} 
+                  </if>
+                  </td>
+                    </if>
+                  <td   style="position: relative;" class="tb110">
+                    <switch name="vo.status">
+                      <case value="0"><a href="javascript:;" class="applycbtn wait proc">审核中</a></case>
+                      <case value="1">
+                        <a href="javascript:;" class="applycbtn download copy" data-url="{$_SERVER['HTTP_HOST']}{$vo['register_url']}" title="复制下载地址">
+                              复制
+                            </a>
+                      </case>
+                      <case value="2"><a href="javascript:;" class="applycbtn fall proc">审核失败</a></case>
+                    </switch>
+                  </td>
+                  </tr>
+                  </volist>
+                  </empty>
+                  
+                  
+              </table>
+              <div class="import fr">
+                <span class="txt"><span class="normal_tot">数据量：</span>{$count}条数据</span>
+                <span class="btn"><a href="{:U('Export/expUser',array(
+            'id'=>5,
+            'user_account'=>I('user_account'),
+            'game_id'=>I('game_id'),
+            'time-start'=>I('time-start'),
+            'time-end'=>I('time-end'),
+            'start'=>I('start'),
+            'end'=>I('end'),
+            'game_name'=>I('game_name'),
+            'type'=>I('type'),
+            ))}" >导出数据(excel格式)</a>
+            </span>
+              </div>
+              
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name='script'>
+<script src="__STATIC__/zeroclipboard/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+highlight_subnav("{:U('Apply/index')}");
+setValue('type',{$Think.request.type|default='""'});
+setValue('game_id',{$Think.request.game_id|default='""'});
+$(function(){
+  
+  $(".select_gallery").select2();
+  $('.download').click(function(){
+    var href= $(this).attr('href');
+    var text= $(this).text();
+    if(text =='下载'){
+      if( href =='#'|| href =='javascript:;' ){
+          layer.msg("暂无下载内容",{icon:2});
+          return false;
+      }
+    }
+  });
+
+	$("#search").click(function() {
+		var url = $(this).attr('url');
+		var query = $('.jssearch').find('input').serialize();
+		query += "&" + $('.jssearch').find('select').serialize();
+		query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g, '');
+		query = query.replace(/^&/g, '');
+		if(url.indexOf('?') > 0) {
+			url += '&' + query;
+		} else {
+			url += '?' + query;
+		}
+		window.location.href = url;
+	});
+	
+    $('a.copy').zclip({
+          path: '__STATIC__/zeroclipboard/ZeroClipboard.swf',
+          
+          copy: function(){
+              return $(this).attr('data-url');
+          },
+          beforeCopy:function(){
+            $(this).addClass("proc");
+          },
+          afterCopy:function(){
+            $(this).removeClass("copy");
+            if( $(this).attr('data-url')=="" || $(this).attr('data-url')== null ){
+              layer.msg("暂无下载内容",{icon:2});
+             }else{
+              layer.msg("复制成功",{icon:1,time:1000});
+            }
+          }
+    });
+})
+</script>
+</block>

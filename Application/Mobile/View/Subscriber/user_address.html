@@ -1,0 +1,110 @@
+<extend name="Public/bases" />
+<block name="body" >
+<link href="__CSS__/user.css" rel="stylesheet" >
+<style>
+.footer{
+  display: none;
+}
+</style>
+    <header class="header">
+      <section class="wrap">
+      <if condition="I('get.back') eq 1">
+        <a href="javascript:history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+      <else/>
+        <a href="{:U('user')}" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+      </if>
+        <div class="caption"><span class="table"><span class="table-cell">收货地址</span></span></div>
+      </section>
+    </header>
+    <div class="occupy"></div>
+    
+    <section class="trunker">
+    <if condition="json_decode($userinfo['shop_address'],true) eq false">
+      <section class="inner">
+        <section class="contain">
+          <div class="list address-list">
+            
+            <div class="empty">
+              <img src="__IMG__/my_address_img_not.png" class="empty-icon">
+              <p class="empty-text">尚未添加收货地址</p>
+            </div>
+            
+            
+            <div class="address-btn">
+              <a href="{:U('user_address_add')}"  class="btn" >添加新地址</a>
+            </div>
+          </div>
+        </section>
+        
+      </section>
+    <else/>
+    <php>$shop_address_info = json_decode($userinfo['shop_address'],true)</php>
+      <section class="inner">
+        <section class="contain">
+          <div class="list address-list">
+            <ul class="clearfix ">
+              <li>
+                <div class="item">
+                  <p class="title clearfix">
+                    <span class="name">{$shop_address_info['consignee']}</span>
+                    <span class="phone">{$shop_address_info['consignee_phone']}</span>
+                  </p>
+                  <p class="address">{$shop_address_info['consignee_address']}</p>
+                </div>
+                <div class="butnbox">
+                  <a href="{:U('user_address_edit')}" class="butn editbutn">编辑</a>
+                  <a href="javascript:;" class="butn delebutn jsdel">删除</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        
+      </section>
+    </if>
+    </section>
+    <div class="pop"></div>
+    <script src="__JS__/common.js"></script>
+    <script>
+        $(function() {
+        
+          var pop = $('.pop').pop();
+          
+          $('.jsdel').click(function() {
+            
+            
+            pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">确定要删除该地址吗？</div><div class="pop-text">删除后无法兑换实物商品</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn pop-default jscancel">取消</a> <a href="javascript:;" class="pop-butn pop-comfirm ">确定</a></div>');
+            $('.jscancel').click(function() {pop.close();});
+            $('.pop-comfirm').click(function() {
+              // ajax
+              $.ajax({
+                type:'post',
+                url:"{:U('user_address_add',array('type'=>1))}",
+                success:function(data){
+                  if(data.status==1){
+                    // 成功
+                    pop.addClass('pop-notice').open('','<div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_successful.png"><div class="pop-title">地址删除成功！</div><a href="{:U('user_address')}" class="pop-btn">确认</a></div>');              
+                    $('.pop-close').click(function() {pop.close();location.href=location.href;});
+                  }else{
+                    // 失败
+                    pop.addClass('pop-prompt').open('','<div class="pop-content"><div class="pop-title">提交失败</div><div class="pop-text">可能是网络原因，请重新提交</div></div><div class="pop-butn-box"><a href="javascript:;" class="pop-butn2 pop-comfirm2 refresh ">重试</a></div>');
+                    $('.refresh').click(function() {location.href=location.href});
+                    $('.pop-comfirm').click(function() {pop.close();location.href=location.href;});
+                  }
+                },error:function(){
+
+                }
+              });
+              
+              return false;
+            });
+            
+            
+          });
+          
+        });
+        
+        
+        
+    </script>
+</block>

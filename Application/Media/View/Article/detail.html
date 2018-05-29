@@ -1,0 +1,71 @@
+<extend name="Public/bases" />
+<block name="css">
+<link href="__CSS__/news.css" rel="stylesheet" >
+</block>
+<block name="header">
+<header class="header">
+  <section class="wrap">
+    <a href="javascript:;" onclick="history.go(-1)"  class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span></span></a>
+    <div class="caption"><span class="table"><span class="table-cell">详情</span></span></div>
+    <a href="javascript:;" class="hbtn right mall-share jsshare"><span class="table"><span class="table-cell"><img src="__IMG__/nav_activity_share.png"></span></span></a>
+  </section>
+</header>
+</block>
+<block name="iframe" >
+<div class="mainer newspage">
+<div class="occupy"></div>
+
+<section class="trunker">
+  
+  <section class="inner">
+    <section class="contain">
+      <div class="detail news-detail">
+        <h1 class="title" >{$data.title}</h1>
+        <div class="date">{:date('Y-m-d H:i:s',$data['create_time'])}</div>
+        <div class="article" style="word-wrap:break-word;">
+          {$data.content}
+        </div>
+      </div>
+    </section>
+    
+  </section>
+</section>
+</div>
+</block>
+<block name="footer">
+<div class="pop"></div>
+</block>
+<block name="script">
+<script>
+
+    
+    $(function() {
+      
+    
+      var pop = $('.pop').pop();
+      
+      $('.jsshare').click(function() {
+        var open = '<div class="pop-content"><div class="sharebutnbox"><a style="margin-left: 1.2rem;" onclick="javascript:bShare.share(event,'+"'qqim'"+');return false;" class="icon qq"><i></i><span>QQ好友</span></a> <a style="margin-left: 1.2rem;" onclick="javascript:bShare.share(event,'+"'qzone'"+');return false;" class="icon qzone"><i></i><span>QQ空间</span></a> <a style="margin-left: 1.2rem;" onclick="javascript:bShare.share(event,'+"'sinaminiblog'"+');return false;" class="icon weibo"><i></i><span>新浪微博</span></a></div></div><div class="pop-butn jscancel"><a href="javascript:;">取消</a></div>';  
+        pop.addClass('pop-share').open('',open);
+        
+        $('.jscancel').click(function(){
+          pop.close();
+          try{
+            $('#bsWXBox').remove();
+          }catch(err){
+
+          }
+        });
+        
+      });
+
+      
+      
+      
+    });
+    
+    
+</script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/jsshare/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+<script type="text/javascript" charset="utf-8" src="__STATIC__/jsshare//bshareC0.js"></script>
+</block>

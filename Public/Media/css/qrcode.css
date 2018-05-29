@@ -1,0 +1,71 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+.head {
+	width: 100%;
+    height: 44px;
+    background: #272830;
+    line-height: 44px;
+    color: #959595;
+    font-size: 14px;
+}
+.nav_home{
+	
+	margin-left: 8%;
+	background: url(../images/qrcode/home_icon.png)no-repeat left center;
+	padding-left:25px;
+	float: left;
+	
+	
+
+}
+.nav_home a{
+	color: #959595;
+	padding-right: 10px;
+	border-right: 1px solid #3a3c48;
+}
+.pc-download{
+	float: left;
+	margin-right: 20px;
+	
+}
+.pc-download img{
+	width: 100px;
+}
+.head-app{
+	margin-left: 10px;
+	background: url(../images/qrcode/phone_icon.png)no-repeat left center;
+	cursor: pointer;
+}
+.head-app span{
+	display: block;
+	padding-left: 22px;
+}
+.main{
+	height: 770px;
+	background: url(../images/qrcode/code_bg.jpg) center no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.main .pc-container-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+.main .pc-container-footer .pc-copyright {
+    width: 100%;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+}
+
+/*  二维码页面修改底部显示样式：start && author ：PatY */
+.main .pc-container-footer{bottom: -20px;}
+.main .pc-container-footer .pc-copyright .pc-cr span img{vertical-align: text-bottom;margin-right: 3px;}
+/*  二维码页面修改底部显示样式：start && author ：PatY */

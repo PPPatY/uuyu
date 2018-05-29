@@ -1,0 +1,161 @@
+<extend name="Public/subbases" />
+<block name="body">
+<link rel="stylesheet" type="text/css" href="__CSS__/login.css">
+<div id="bodyBg">
+	<div id="divWelcome">
+
+		<p class="tip">请选择登录方式</p>
+		<p class="dwc">
+			<span id="qqlogin">
+				<img onclick="qqlogin()" src="__IMG__/login_qq.png"></span>
+  
+			<span id="telogin">
+				<img onclick="telogin();" src="__IMG__/login_mob.png"></span>
+		</p>
+		<p class="tip tipd">&nbsp;</p>
+	</div>
+</div>
+<div class="box"></div>
+<script>
+function qqlogin() {
+	window.location='/nine.php?s=/Subscriber/thirdlogin/type/qq';	
+}
+function wxlogin() {
+	window.location='__CONTROLLER__/thirdlogin/type/weixin/Qrconnect/qrconnect';
+}
+function telogin() {
+	box();
+}
+
+function box(p) {
+    $('.box').remove();
+    if (!p) p = '';
+    $('#bodyBg').after('<div class="box"></div>');
+	html = 	'<div id="gamemask" class="gamemask"></div>'
+	html += '<div id="gamebox" class="gamebox">'
+	html += '<div class="gameboxmain">'
+	html += '<input style="display:none;"/><input type="text" class="gameboxtext" placeholder="输入手机号" value="'+p+'" autocomplete="off">'
+	html += '<input style="display:none;"/><input type="password" class="gameboxtext" placeholder="输入密码" autocomplete="off">'
+	html += '<div class="gameboxbtn">登录/一键注册</div>';
+	html += '</div>'
+	html += '<img class="gameboxclose" src="__IMG__/panel_close.png">'
+	html += '</div>';
+	$('.box').html(html);
+	$('.gamemask').show();
+	$('.gamebox').show();
+	$('.gameboxclose').click(function() {
+		$('.gamebox').remove();
+		$('.gamemask').remove();
+	});	
+	$('.gameboxbtn').on('click',function() {
+		phone = $('.gamebox :input[type=text]').val();
+		password = $('.gamebox :input[type=password]').val();
+		if (!phone) {
+			alert('请输入手机号');return false;
+		}
+		if (!password) {
+			alert('请输入密码');return false;
+		}
+		var pid="{:$_GET['pid']}";
+		var game_id="{:$_GET['game_id']}";
+		$.ajax({
+			cache: false,
+			async: false,
+			type:'post',
+			url:'{:U("register")}',
+			dataType:'json',
+			data:'username='+phone+'&password='+password+'&game_id='+game_id+'&pid='+pid,
+			success: function (data) {
+                switch (parseInt(data.status)) {
+                    case 1: {
+                        window.location.href=data.url;
+                    };break;
+                    case 2: {
+                        var h = '<p>'+data.info+'</p>';
+                          h += '<div class="gamebindp">'
+                          h += '<input class="gamebindpcode" placeholder="输入安全码" /><div class="gamebindpsend disabled">重新发送</div>'
+                          h += '</div><div class="gamebindpbot">'
+                          h += '<div class="gamebindpactive">激活</div><div class="gamebindpcancel">取消</div></div>';
+                        $('.gameboxmain').empty().html(h);
+                        console.log(data);
+                        var b = r && r('.gamebindpsend',60);                    
+                        $('.gamebindpsend').on('click',function() {
+                            if (!$(this).hasClass('disabled')) {
+                                var e = this;
+                                $.ajax({
+                                    type:'post',
+                                    url: '{:U("telsvcode")}',
+                                    data: 'phone='+phone,
+                                    dataType: 'json',
+                                    success: function(d) {
+                                        if (parseInt(d.status) == 2) {
+                                           b = r && r('.gamebindpsend',60);                                           
+                                        } else {
+                                            $('.gameboxmain p').text(d.info);
+                                        }
+                                    }
+                                });                                
+                            }
+                            return false;
+                        });
+                                                                      
+                        $('.gamebindpactive').on('click',function() {
+                            var pcode = $.trim($('.gamebindpcode').val());
+                            if (pcode == '' ) {alert('请输入安全码');$('.gamebindpsend').addClass('disabled').unbind('click');return false;}
+                            $.ajax({
+                                type:'post',
+                                dataType:'json',
+                                url:'{:U("checktelcode")}',
+                                data:'code='+pcode+'&game_id='+game_id+'&pid='+pid,,
+                                success:function (d) {
+                                    switch (parseInt(d.status)) {
+                                        case 1:
+                                            window.location.href=d.url;break;
+                                        case 2:{
+                                            console.log(d);
+                                            $('.gameboxmain p').text(d.info);
+                                            setTimeout(function() { 
+                                                clearInterval(b);
+                                                box(phone);
+                                            },2000);
+                                        };break;
+                                        default: 
+                                            alert(d.info);
+                                    }
+                                }
+                            });
+                        });
+                        
+                        $('.gamebindpcancel').on('click',function(e) {                           
+                            clearInterval(b);
+                            box(phone);
+                        });
+                    };break;
+                    default: alert(data.info);
+                }
+			},
+			error: function () {
+				alert('服务器故障，请稍后再试');
+			},
+		});
+
+	});
+    function r(e,r) {
+        var r = r;
+        $(e).addClass('disabled');
+        if (r == 0) {
+            $(e).text('重新发送');clearInterval(a);
+            return;
+        }
+        var a = setInterval(function() {
+            r--;
+            $(e).text(r + '秒后重发'),
+            0 == r && ($(e).removeClass('disabled'), $(e).text('重新发送'), clearInterval(a));
+        },1e3);
+        return a;
+    };
+    return false;
+}
+
+</script>
+</block>

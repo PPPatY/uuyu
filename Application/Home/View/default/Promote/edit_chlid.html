@@ -1,0 +1,360 @@
+﻿<extend name="Public/promote_base"/>
+<block name="css">
+  <link href="__CSS__/20180207/account.css" rel="stylesheet" >
+</block>
+
+<block name="body">
+  <script type="text/javascript" src="__STATIC__/provincecityarea/area1.js" ></script>
+    <div class="page-list normal_list promote-edit_chlid-form">
+      <div class="trunk-title">
+      	<div class="location">
+				<div class="location-container">当前位置：<span>管理中心></span><span>二级渠道></span><span>修改子渠道</span></div>
+				</div>
+      	<img src="__IMG__/20180207/icon_normal_ziqudao.png"><span class="title_main">修改子渠道</span>
+      </div>
+      <div class="trunk-content article">
+        <div class="trunk-search trunk-tab clearfix">
+						<table class="tab jstab">
+            	<tr>
+            		<td class="<eq name='Think.get.type' value='0'>current<else /><empty name='Think.get.type'>current</empty></eq>" ><a href="javascript:;" >基本信息</a></td>
+            		<td class="<eq name='Think.get.type' value='1'>current</eq>"><a href="javascript:;"  >结算信息</a></td>
+              </tr>
+            </table>
+        </div>
+        <div class="trunk-list">
+          <div class="tabpan <eq name='Think.get.type' value='0'>current<else /><empty name='Think.get.type'>current</empty></eq>">
+            <form action="{:U('Promote/edit_chlid',array('type'=>0))}" novalidate="novalidate" method="post" class="edit_info" id="form_child_info">
+              <table class="table2">
+                  <tr>
+
+                    <td class="l">登录帐号：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" id="account" value="{$data['account']}" disabled="disabled">
+<input type="hidden" name="account" value="{$data['account']}" >
+                      <span id="account_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l">登录密码：</td>
+
+                    <td class="r">
+
+                      <input type="password" class="name txt" name="password" id="password" placeholder="如不更改密码，不需填写">
+
+                      <span id="password_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l">子渠道昵称：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="nickname" id="nickname" value="{$data['nickname']}" placeholder="请输入子渠道昵称">
+
+                      <span id="nickname_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l"><span class="req">*</span>真实姓名：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="real_name" id="real_name" value="{$data['real_name']}" placeholder="请输入子渠道姓名">
+
+                      <span id="real_name_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l"><span class="req">*</span>手机号：</td>
+
+                    <td class="r">
+
+                      <input type="number" class="name txt" name="mobile_phone" id="mobile_phone" value="{$data['mobile_phone']}" placeholder="请输入子渠道手机号">
+
+                      <span id="mobile_phone_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l"><span class="req">*</span>电子邮箱：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="email" id="email" value="{$data['email']}" placeholder="请输入子渠道电子邮箱">
+
+                      <span id="email_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  
+
+                  <tr>
+
+                    <td class="l">启用账号：</td>
+
+                    <td class="r form-radio jspayradio">
+
+                      <label><input type="radio" name="status" value="1"><i></i><span>启用</span></label>
+
+                      <label><input type="radio" name="status" value="0"><i></i><span>关闭</span></label>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l"></td>
+
+                    <td class="r">
+
+                      <input type="hidden" name="id" value="{$data.id}"/>
+
+                      <input type="submit" class="tj btn ajax-post"  value="确认修改" title="" target-form="edit_info">
+<a class="back_btn " alt="返回上一页" title="返回上一页" href="javascript:window.history.back();">返回</a>
+                    </td>
+
+                  </tr>
+              </table>
+            </form>
+					</div>
+          <div class="tabpan <eq name='Think.get.type' value='1'>current</eq>">
+						<form action="{:U('Promote/edit_chlid',array('type'=>1))}" novalidate="novalidate" method="post" class="edit_info_bake" id="form_reg">
+							<table class="table2">
+									<tr>
+                    <td class="l"><span class="req">*</span>开户城市：</td>
+                        <td class="r r1">
+                          <div class="info areainfo">
+                              <div>
+                              <select id="s_province"  class="areaselect1 select_gallery" style="width: 90px;"></select>  
+                              <select id="s_city"      class="areaselect2 select_gallery" style="width: 120px;"></select>  
+                              <select id="s_county"    class="areaselect3 select_gallery" style="width: 90px;"></select>
+                              <?php $bank_area = explode(',',$data['bank_area']);?>
+                              <script type="text/javascript" >
+                                  var pro="{:$bank_area['0']}";
+                                  var city="{:$bank_area['1']}";
+                                  var are="{:end($bank_area)}";
+                                  _init_area(pro,city,are);</script>
+                              </div>
+															<input id="barea" type="hidden" name="bank_area" value="{$data['bank_area']}">
+                          </div>
+                          <script type="text/javascript">
+                              var showArea = function(){
+                                  var str = "" + document.getElementById('s_province').value + "," +    
+                                  document.getElementById('s_city').value + "," + 
+                                  document.getElementById('s_county').value + "";
+																	
+																	document.getElementById('barea').setAttribute('value',str);
+                              }
+                              document.getElementById('s_county').setAttribute('onchange','showArea()');
+                          </script>
+                          <span id="bank_area_tip"></span>
+                  </tr>
+									
+									<tr>
+
+                    <td class="l"><span class="req">*</span>开户网点：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="account_openin" id="account_openin" value="{$data['account_openin']}" placeholder="请输入银行开户网点">
+
+                      <span id="account_openin_tip"></span>
+
+                    </td>
+
+                  </tr>
+									
+                  <td class="l"><span class="req">*</span>收款银行：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="bank_name" id="bank_name" value="{$data['bank_name']}" placeholder="请输入子渠道开户银行">
+
+                      <span id="bank_name_tip"></span>
+
+                    </td>
+
+                  </tr>
+									
+									<tr>
+
+                    <td class="l"><span class="req">*</span>银行户名：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="bank_account" id="bank_account" value="{$data['bank_account']}" placeholder="请输入银行户名">
+
+                      <span id="email_tip"></span>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="l"><span class="req">*</span>银行卡号：</td>
+
+                    <td class="r">
+
+                      <input type="text" class="name txt" name="bank_card" id="bank_card" value="{$data['bank_card']}" placeholder="请输入子渠道银行卡号">
+
+                      <span id="bank_card_tip"></span>
+
+                    </td>
+
+                  </tr>
+									
+									<tr>
+
+                    <td class="l"></td>
+
+                    <td class="r">
+
+                      <input type="hidden" name="id" value="{$data.id}"/>
+<input type="hidden" name="account" value="{$data['account']}" >
+                      <input type="submit" class="tj btn ajax-post" value="确认修改" title="" target-form="edit_info_bake">
+<a class="back_btn " alt="返回上一页" title="返回上一页" href="javascript:window.history.back();">返回</a>
+                    </td>
+
+                  </tr>
+							</table>
+						</form>
+					</div>
+        </div>
+      </div>
+    </div>
+</block>
+<block name="script">
+  <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+highlight_subnav('{:U("mychlid")}');
+    setValue('status',{$data.status});
+    function check() {
+      data = validation();
+      if(data.status !=1){layer.msg(data.msg,{icon:2}); return false;};
+
+      $.post('{:U('Promote/edit_chlid')}',$('#form_reg').serialize(),function(res){
+          if(res.status == 1){
+              layer.msg(res.msg);
+                setTimeout(function(){
+              window.location.href="{:U('mychlid')}";
+            },1000);
+          }else{
+              layer.msg(res.msg);
+          }
+      });
+    }
+    function validation(){
+      var json_data = "";
+      if($.trim($('#password').val()).length!=0&&$.trim($('#password').val()).length < 6){
+        return json_data = {'status':0,'msg':'登录密码不能小于6位字符'}
+      }
+
+
+      if($.trim($('#mobile_phone').val()).length==0){
+        return json_data = {'status':0,'msg':'手机号不能为空'}
+      }
+      
+      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+      if(!myreg.test($('#mobile_phone').val())){
+        return json_data = {'status':0,'msg':'请输入正确的手机号'}
+      }
+
+      if($.trim($('#email').val()).length==0){
+        return json_data = {'status':0,'msg':'电子邮箱不能为空'}
+      }
+      
+
+      var myreg1 = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+      if(!myreg1.test($('#email').val())){
+        return json_data = {'status':0,'msg':'您输入的电子邮箱格式不合法'}
+      }
+      
+      var myreg2 = /[\u4e00-\u9fa5]{4,10}/;
+      if($.trim($('#bank_name').val()) && !myreg2.test($('#bank_name').val())){
+          return json_data = {'status':0,'msg':'您输入的银行名称格式不正确'}
+        }
+      
+			var myreg3 = /^\d{10,20}$/;
+			var bankcard = $('#bank_card'),bankcardval=$.trim(bankcard.val());
+      if(bankcardval && !myreg3.test(bankcardval)){
+					bankcard.val('');
+          return json_data = {'status':0,'msg':'请输入正确的卡号'}
+        }
+
+      return json_data = {'status':1,'msg':'成功'};
+
+    }
+    
+    $(function() {
+			
+
+      var ajaxurl="{:U('Account/getArea')}";
+      function loadArea(areaId,areaType) {
+      $.post(ajaxurl,{'areaId':areaId},function(data){
+          if(areaType=='city'){
+             $('#'+areaType).html('<option value="-1">市/县</option>');
+             $('#district').html('<option value="-1">镇/区</option>');
+          }else if(areaType=='district'){
+             $('#'+areaType).html('<option value="-1">镇/区</option>');
+          }
+          if(areaType!='null'){
+              $.each(data,function(no,items){
+                  $('#'+areaType).append('<option value="'+items.area_id+'">'+items.area_name+'</option>');
+              });
+          }
+        });
+      }
+
+      $('.tab td').on('click',function() {
+        var that = $(this);
+        $('.tabpan').removeClass('current');
+        that.siblings().removeClass('current');
+        that.addClass('current');
+        $('.tabpan').eq(that.index()).addClass('current');
+        return false;
+      });
+
+      $('.jspayradio input:checked').siblings('i').addClass('current');
+    
+      $('.jspayradio input').click(function() {
+          var that=$(this);
+          $('.jspayradio i').removeClass('current');
+          if (that.prop('checked')) {
+              that.siblings('i').addClass('current');
+          }
+      });
+          
+      $(".select_gallery").select2();    
+      
+    });
+    
+  </script>
+
+</block>
+
+  

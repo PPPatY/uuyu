@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="__JS__/mui.min.js"></script>
+		<link href="__CSS__/mui.min.css" rel="stylesheet" />
+		<link href="__CSS__/index1.css" rel="stylesheet" />
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<div class="containers">
+			<div class="header">
+			
+				<div class="title">
+					<span>选择支付方式</span>
+				</div>
+			</div>
+			<!--中间内容-->
+			<div class="contents" style="background-color:#F3F2F7;">
+				<style>
+					ul{ padding: 0px;}
+					.infomation {
+						background-color: #FFFFFF;
+						width: 100%;
+						padding-top: 15px;
+						padding-bottom: 15px;
+						font-size: 16px;
+						position: relative;
+					}
+					
+					.info_content {
+						margin: 0 14px;
+						position: relative;
+					}
+					
+					.infomation span {
+						display: block;
+					}
+					
+					.methods {
+						background-color: #FFFFFF;
+						margin-top: 20px;
+						width: 100%;
+						display: inline-block;
+						padding: 15px 0px;
+					}
+					
+					.confirm {
+						margin-top: 20px;
+						position: relative;
+						width: 100%;
+					}
+					
+					.confirm button {
+						width: 90%;
+						height: 40px;
+						background-color: #01B1EC;
+						display: block;
+						margin: 0 auto;
+						text-align: center;
+						line-height: 40px;
+						color: #ffffff;
+						font-size: 18px;
+						border-radius: 2px;
+					}
+										
+					.methods_content .zhifubao,
+					.weixin {
+						width: 33%;
+						text-align: center;
+					}
+					
+					.zhifubao {
+						float: left;
+					}
+					
+					.weixin {
+						float: right;
+					}
+					.methods_content ul li{ width: 50%; float: left;}
+					.methods_content ul li div{ border: 2px solid #dbdada; width: 60%; max-width: 120px; margin: 0 auto; border-radius: 8px; overflow: hidden; text-align: center; padding-top: 10px;}
+					.methods_content ul li div h3{ background:#dbdada; color: #fff; margin-top:10px; margin-bottom: 0px; display: block; width: 100%; text-align: center; height: 30px; line-height: 30px; font-size: 15px;}
+					.methods_content ul li div span{ display: block; width: 60px; height: 60px; margin: 0 auto;}
+					.zhifubao_type span{ background: url(__IMG__/icon-zhifubao_g.png) no-repeat center; background-size:100% 100% ;}
+					.weixin_type span{ background: url(__IMG__/icon-weixin_g.png) no-repeat center; background-size:100% 100% ;}
+					.zf_check{ display: block; width: 30px; height: 30px; margin: 0 auto; margin-top: 10px; border-radius: 30px; border: 1px solid #dbdada;}
+				    
+						.methods_content ul li.chose div{border: 2px solid #00b1eb}
+						.methods_content ul li.chose div h3{ background: #00b1eb;}
+						.methods_content ul li.chose.zhifubao_type span{ background: url(__IMG__/icon-zhifubao.png) no-repeat center; background-size:100% 100% ;}
+				   .methods_content ul li.chose.weixin_type span{background: url(__IMG__/icon-weixin.png) no-repeat center; background-size:100% 100% ;}
+				  .methods_content ul li.chose .zf_check{ display: block; width: 30px; height: 30px; background: url(__IMG__/icon-1.png) no-repeat center; background-size:100% 100%; border: 1px solid #00b1eb;}
+				</style>
+				<div class="infomation">
+					<div class="info_content">
+						<span>所有支付方式接收我方回调更新数据时，必须增加防止二次通知语句，否则造成损失由商户自行承担。</span>
+					</div>
+				</div>
+				<div class="methods">
+					<div class="methods_content">
+						<ul>
+							<li  <if condition="$_GET['type'] eq Alipay">class='zhifubao_type chose'<else/>class='zhifubao_type'</if>   ><div><span></span><h3>支付宝支付</h3></div><a href="{:U('pay_way',array('type'=>'Alipay','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}" class="zf_check" ></a></li>
+							
+							<li id="weixinwap" <if condition="$_GET['type'] eq wapWeChat">class='weixin_type chose'<else/>class='weixin_type'</if> ><div><span></span><h3>微信支付</h3></div><a href="{:U('pay_way',array('type'=>'wapWeChat','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}" class="zf_check"></a></li>
+
+							<li id="weixin"  <if condition="$_GET['type'] eq WeChat">class='weixin_type chose'<else/>class='weixin_type'</if> ><div><span></span><h3>微信支付</h3></div><a href="{:U('pay_way',array('type'=>'WeChat','account'=>I('account'),'pay_amount'=>I('pay_amount'),'sign'=>I('sign'),'pay_order_number'=>I('pay_order_number')))}" class="zf_check"></a></li>
+
+						</ul>
+						
+						
+					</div>
+				</div>
+				<div class="confirm">
+
+					<form method="post" action="{:U('pay_way')}" target="_self">
+                    
+                    
+                        <input type="hidden" name="type" value="{:I('type')}"/>
+                        <input type="hidden" name="sign" value="{:I('sign')}"/>                        
+                        <input type="hidden" name="account" value="{:I('account')}"/>
+                        <input type="hidden" name="pay_amount" value="{:I('pay_amount')}"/>
+                        <input type="hidden" name="pay_order_number" value="{:I('pay_order_number')}"/>
+                        <button class="btn">确认</button>
+                    
+                </form>
+
+
+
+				</div>
+			</div>
+		</div>
+	</body>
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<script>
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    if(isWeiXin()){
+        $('#weixinwap').hide();
+    }else{
+        $('#weixin').hide();
+
+    }
+
+
+</script>
+
+</html>

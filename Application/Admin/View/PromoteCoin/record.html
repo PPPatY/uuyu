@@ -1,0 +1,131 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+    <!-- 标题栏 -->
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Promote/lists')}">推广员</a></li>
+            <li><a href="{:U('Promote/ch_reg_list')}">数据管理</a></li>
+            <li><a href="#">平台币转移记录</a></li>
+        </ul>
+        <p class="description_text" style="height: 40px;line-height: 40px;">说明：查看一级推广员给二级推广员转移平台币的记录</p>
+
+    </div>
+	<div class="cf top_nav_list">
+		<div class="fl button_list">
+		<empty name="model.extend">
+			<div class="tools">
+			</div>
+		</empty>
+		</div>
+		<!-- 高级搜索 -->
+		<div class="jssearch fr cf search_list">
+			<div class="input-list input-list-game search_label_rehab">
+                <label>一级推广员：</label>
+                <select name="source_id" class="select_gallery" style="width:150px;">
+                    <option value="">请选择推广员</option>
+                    <volist name=":promote_lists(1)" id="vo">
+                        <option  value="{$vo.id}">{$vo.account}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="input-list">
+            <label>二级推广员：</label>
+                <select name="promote_id" class="select_gallery" style="width:150px;">
+                    <option value="">请选择推广员</option>
+                    <volist name=":promote_lists(2)" id="vo">
+                        <option  value="{$vo.id}">{$vo.account}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="input-list">
+                <a class="sch-btn" href="javascript:;" id="search" url="{:U('record','model='.$model['name'],false)}">搜索</a>
+            </div>
+		</div>
+	</div>
+
+
+    <!-- 数据列表 -->
+    <div class="data_list">
+        <div class="">
+            <table>
+                <!-- 表头 -->
+                <thead>
+                <tr>
+                        <th>一级推广员</th>
+                        <th>二级推广员</th>
+                        <th>转移数量</th>
+                        <th>转移时间</th>
+                </tr>
+                </thead>
+
+                <!-- 列表 -->
+                <tbody>
+								<notempty name="list_data">
+                <volist name="list_data" id="data">
+                    <tr>
+                        <td>{:get_promote_parent($data['promote_id'])}</td>
+                        <td>{:get_promote_account($data['promote_id'])}</td>
+                        <td>{$data.num}</td>
+                        <td>{:time_format($data['create_time'])}</td>
+                    </tr>
+                </volist>
+                <tr class="data_summary">
+                    <td colspan="9"><span style="margin-right:10px">汇总:</span><span>今日转移：{$sum.to_day|default=0}个 ； 昨日转移：{$sum.yst_day|default=0}个 ； 累计转移：{$sum.all_num|default=0}个</span></td>
+                </tr>
+								<else />
+									<tr><td colspan="9">aOh! 暂时还没有内容!</td></tr>
+									</notempty>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$_page|default=''}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+
+    Think.setValue("source_id","{:I('source_id')}");
+    Think.setValue("promote_id","{:I('promote_id')}");
+    Think.setValue("promote_type","{:I('promote_type')}");
+
+    $(".select_gallery").select2();
+</script>
+<script type="text/javascript">
+highlight_subnav('{:U('PromoteCoin/record')}');
+if('{$Think.get.game_name}'!=''){
+    $('#select2-game_id-container').text('{$Think.get.game_name}');
+}
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&"+$('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    //回车自动提交
+    $('.jssearch').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+})
+</script>
+</block>

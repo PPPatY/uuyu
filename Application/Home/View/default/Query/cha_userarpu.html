@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$meta_title}-个人中心</title>
+    <link href="__CSS__/20170831/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="__CSS__/20170831/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="__CSS__/20170831/common.css" rel="stylesheet" type="text/css">
+    <link href="{:get_cover(C('CH_SET_ICO'),'path')}" type="image/x-icon" rel="shortcut icon">
+    <script type="text/javascript" src="__JS__/jquery-1.11.1.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <![endif]-->
+    {:hook('pageHeader')}
+    <script type="text/javascript" src="__STATIC__/layer/layer.js" ></script>
+    <block name="css"></block>
+    <script type="text/javascript" src="__JS__/20170831/common.js"></script>
+
+    <link href="__CSS__/20170831/data.css" rel="stylesheet">
+    <style type="text/css">
+        .keywords_information {margin-left:15px;cursor:pointer;}
+        .keywords_information .keywords_mark {height:35px;line-height:35px;color:#145ccd;}
+        .keywords_information .keywords_mark span{border-bottom:1px solid transparent;}
+        .keywords_information .keywords_mark:hover span {border-bottom-color:#145ccd;}
+        .keywords_information .keywords_content {transition:opacity 1.2s,visibility 1.5s;}
+        .keywords_information .keywords_content:before {margin-left:41px;}
+        .keywords_information .keywords_content .keywords_close {position:absolute;right:0;top:0;width:30px;height:30px;line-height:30px;color:#FFF;}
+        .keywords_information .keywords_list span:first-child {width:160px;}
+        .keywords_information .keywords_list span:last-child {width:350px;}
+        .keywords_information {position:relative;display:inline-block;}
+        .keywords_information .keywords_mark {display:block;font-size:12px;font-style:normal;font-weight:normal; }
+        .keywords_information .keywords_content.active {visibility:visible;opacity:1;transition:visibility 1.5s,opacity 1s;}
+        .keywords_information .keywords_content {visibility:hidden;opacity:0;
+            position:absolute;width:550px;z-index:10;background:#fff;border-radius:5px;
+            box-shadow:0px 4px 4px rgba(0,0,0,.1),2px 0px 2px rgba(0,0,0,.1),-2px 0px 2px rgba(0,0,0,.1);
+            top:38px;left:-20px;
+        }
+
+        .keywords_information .keywords_content:before {
+            display:block;content:'';
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom-color: #7089A1;
+            margin-top: -20px;margin-left:18px;
+            position: absolute;top:0;left:0;
+        }
+
+        .keywords_information .keywords_title {
+            height:30px;line-height:30px;background-color:#7089A1;
+            border-top-left-radius:5px;border-top-right-radius:5px;color:#fff;
+            padding-left:10px;font-size:12px;
+        }
+        .keywords_information .keywords_list {overflow:hidden;clear:both;padding:10px;font-size:10px;padding-left:10px;border-bottom:1px solid #DBDBDD;}
+        .keywords_information .keywords_list:last-child {border-bottom:none;}
+        .keywords_information .keywords_list span {display:inline-block;display: block;
+            float: left;
+            line-height: 30px;
+            width: 420px;}
+        .keywords_information .keywords_list span:first-child {width:160px;margin-right:20px;}
+        
+        .trunk-list .table .odd {background: #F0EFF5;}
+		.page-list .trunk-list .table tr {
+			height: 40px;
+			line-height: 40px;
+			color: #515974;
+			
+		}
+		.trunk-list .table th{font-weight: 600;}
+		.trunk-list .table th, .trunk-list .table td{font-size: 14px;}
+		.page-list .trunk-list .table tr.no_data{border: none;text-align: center;}
+		.page-list .trunk-list .table tr.no_data img{padding-top: 28px;}
+		.trunk-list .table tr:nth-child(2n-1) {border-top: 1px solid #f3f5f9;border-bottom: 1px solid #f3f5f9;}
+    </style>
+</head>
+
+<body style="background:#ffffff">
+
+
+<div class="trunk" style="padding:0;">
+
+    	<div class="page-list query-recharge-list" style="margin-top:0px;min-height:200px;">
+
+        <div class="trunk-content article">
+            <div class="trunk-list">
+                <table class="table" id="datacontent">
+                    <table class="table" id="datatable"><thead>
+                    <tr class="odd">
+                        <th>游戏名称</th>
+                        <th>新增玩家</th>
+                        <th>活跃玩家</th>
+                        <th>1日留存</th>
+                        <th>充值金额</th>
+                        <th>付费玩家</th>
+                        <th>新付费玩家</th>
+                        <th>付费率</th>
+                        <th>ARPU</th>
+                        <th>ARPPU</th>
+                    </tr></thead><tbody>
+                    <empty name="list_data">
+                        <tr class="no_data"><td colspan="11"><img src="__IMG__/20180207/icon_chakan_wushujv1.png"/><p style="line-height: 20px;color: #A5A5A5;">暂无数据</p></td></tr>
+                        <else />
+                        <volist name="list_data" id="vo" mod="2">
+                            <tr name="rows" class="<eq name='mod' value='1'>odd</eq>">
+                                <td>{$vo.game_name}</td>
+                                <td>{$vo.register_num}</td>
+                                <td>{$vo.act_user}</td>
+                                <td>{$vo.keep_num}%</td>
+                                <td>{:number_format(round($vo['usersIncome']),2)}</td>
+                                <td>{$vo.spend}</td>
+                                <td>{$vo.spend_people}</td>
+                                <td>{$vo.spend_rate}</td>
+                                <td>{:number_format(round($vo['ARPU']),2)}</td>
+                                <td>{:number_format(round($vo['ARPPU']),2)}</td>
+                            </tr>
+                        </volist>
+                    </empty></tbody>
+                    </table>
+                </table>
+                <div class="pagenation clearfix">{$_page}</div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+    <script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+    <script type="text/javascript" src="__JS__/20170831/pagination.js"></script>
+    <script type="text/javascript" src="__JS__/20170831/string.js"></script>
+    <script type="text/javascript" src="__JS__/20170831/tabpage.js"></script>
+    <eq name='timeout' value='1'>
+        <script>
+            layer.msg('时间间隔不能超过90天');
+        </script>
+    </eq>
+    <script>
+        function chakan() {
+            url = "{:U('Query/cha_userarpu',array('time'=>$vo['time'],'promote_name'=>$promote_name,'promote_id'=>$_REQUEST['promote_id']))}";
+            timetitle ="游戏数据";
+            ptitle = "游戏数据";
+            console.log(url);
+            layer.open({
+                type: 2,
+                title: false,
+                closeBtn: 0, //不显示关闭按钮
+                shade: [0],
+                area: ['1px', '1px'],
+                offset: 'rb', //右下角弹出
+                time: 1, // 秒后自动关闭   这里设置成1ms 不显示过度页面
+                anim: 2,
+                content: ['', 'no'], //iframe的url，no代表不显示滚动条
+                end: function () { //
+                    layer.open({
+                        type: 2,
+                        title: timetitle + ptitle + '游戏数据',
+                        shadeClose: true,
+                        shade: false,
+                        maxmin: true, //开启最大化最小化按钮
+                        area: ['50%', '45%'],
+                        content: url//iframe的url
+                    });
+                }
+            });
+        }
+
+    </script>
+    <script type="text/javascript">
+        setValue('promote_id',{$Think.request.promote_id|default=0});
+        setValue('game_id','{$Think.request.game_id|default=0}');
+        $().ready(function(){
+            $("#pagehtml a").on("click",function(event){
+                event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)
+                var geturl = $(this).attr('href');
+                $('#data_form').attr('action',geturl);
+                $('#data_form').submit();
+            });
+            $('#sdate').datetimepicker({
+                lang:'ch',
+                format:'Y-m-d',
+                formatDate:'Y-m-d',
+                scrollMonth:false,
+                scrollTime:false,
+                scrollInput:false,
+                timepicker:false
+            });
+
+            $(".select_gallery").select2();
+
+            $('#edate').datetimepicker({
+                lang:'ch',
+                format:'Y-m-d',
+                formatDate:'Y-m-d',
+                scrollMonth:false,
+                scrollTime:false,
+                scrollInput:false,
+                timepicker:false
+            });
+
+
+            tablePage('datatable', 'datacontent', 'pagenation', [1, 2, 4, 5, 6, 10], false);
+
+            $('.keywords_information .keywords_mark').click(function() {
+                var that = $(this).siblings().addClass('active');
+                console.log(that);
+                $(document).click(function(event) {
+                    var e = event || window.event;
+                    var target= $(e.target);
+                    if (!target.hasClass('keywords_information') && target.closest('.keywords_information').length<1) {
+                        that.removeClass('active');
+                    }
+
+                });
+
+                that.find('.keywords_close').click(function() {
+                    that.removeClass('active');
+
+                    return false;
+                });
+
+                return false;
+            });
+
+            $("#game_id").change(function(){
+                var game_name = $('#game_id option:selected').text();
+                $("#game_name").val(game_name);
+            });
+
+            $("#promote_id").change(function(){
+                var account = $('#promote_id option:selected').text();
+                $("#promote_account").val(account);
+            })
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<extend name="Public/sbases" />
+<block name="title" >
+<title>{$game_name}</title>
+</block>
+<block name="body" >
+<link rel="stylesheet" type="text/css" href="__CSS__/suspension/game.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/egretopen.css" />
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+<style type="text/css">
+body, div, dl, dt, dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote，th,td,a{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0;}
+address,caption, cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul,li {list-style:none;}
+capation,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+a{ text-decoration:none; cursor:pointer;}
+a:hover{ text-decoration:none;}
+a:focus{ border:none; outline:none;}
+html{ background:#dfe1e4 url(style/images/bg.png) repeat; height:100%; }
+body {letter-spacing: 0.05em; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;  position:relative; background-color: #efefef; max-width:640px;min-width:320px; margin:0 auto; font-family: arial,"微软雅黑",STHeiti,"Microsoft Yahei",tahoma,'Hiragino Sans GB',sans-serif;}
+
+html,body{height:100%;margin:0;padding:0;overflow:hidden;}
+body {margin:0 auto;text-align:left;background: transparent; }
+html {
+    background: #dfe1e4 url(__IMG__/bg.png) repeat;
+    height: 100%;
+}
+.layer_out .text_center{font-size:14px;}
+.layer_out .layui-layer-btn {font-size:14px;}
+</style>
+<div id="sdkdiv"></div>
+<div style="background:#fff;">
+    <iframe id="op_url_mainframe" frameborder="0" scrolling="yes" name="main" src="{$login_url}" 
+    style="height:100%; visibility: inherit; width: 100%;max-width:640px; z-index: 1;overflow: visible;position:absolute;background-image:url({$game_img});background-repeat:no-repeat;background-size:cover;"></iframe>
+  <link rel="stylesheet" type="text/css" href="__CSS__/suspension/common.css" />
+   <if condition="0">
+  {:W('Suspension/index')}<!-- 悬浮窗 -->
+  </if>
+</div>
+<script type="text/javascript">
+var domain = "http://"+"{:C(PC_SET_DOMAIM)}";
+var appId = "{$signPackage['appId']}",
+    timestamp = "{$signPackage['timestamp']}",
+    nonceStr = "{$signPackage['nonceStr']}",
+    signature = "{$signPackage['signature']}";
+var title = "{$shareparams['title']}",
+    desc = "{$shareparams['desc']}",
+    imgUrl = "{$shareparams['imgUrl']}",
+    link = "{$shareparams['link']}";
+</script>
+<script src="__STATIC__/xigusdk/xgh5sdkuse.js?time={:time()}"></script> 
+</block>
+

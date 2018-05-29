@@ -1,0 +1,171 @@
+<extend name="Public/head-foot"/>
+<block name="body">
+<link rel="stylesheet" href="__CSS__/select2.min.css" type="text/css" />
+<script type="text/javascript" src="__JS__/select2.min.js"></script>
+<style>
+
+    .select2-container--default .select2-selection--single {
+            color: #000;
+        resize: none;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ddd;
+        box-shadow: 0px 3px 3px #F7F8F9 inset;height:35px;
+        height:35px;border-radius:3px;font-size: 14px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height:35px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height:35px;
+    }
+    .select2-container--default .select2-search--dropdown .select2-search__field {
+      height:35px;line-height:31px;font-size: 14px;
+    }
+    .select2-results__option[aria-selected] {font-size: 14px;}
+
+</style>
+<!--内容start-->
+<div class="containers">
+	<div class="search-container jssearch"  >
+		<div class="left-nav">
+			<a href="{:U(registsearch)}" class="current topborder">注册查询</a>
+			<a href="{:U(buydetail)}" class="current">充值明细</a>
+			<a href="{:U(summary)}" class="bottomborder ">数据汇总</a>
+		</div>
+
+		<div class="rightcontainer">
+			<div class="rightcontainer-summary" >
+				<div class="searchdetail">
+					<span class="selecttime">选择时间:</span>
+					<span class="gf00">*</span>
+					<input type="text" name="begtime" class="time1" value="{:I('begtime')}" style="margin:auto 5px;" id="sdate" placeholder="开始时间">
+
+					<span class="txt4">到</span>
+					<input type="text" name="endtime" class="time1"  value="{:I('endtime')}"  style="margin:auto 5px;" id="edate" placeholder="结束时间">
+					<span class="txt5" style="margin-left:20px;line-height:35px;">推广员帐号:</span>
+					<select id="promote_id" name="promote_id" class="select_gallery" style="width:150px;height:31px;border-radius: 5px;">
+	                        <option  value="" >全部推广员</option>
+	                    <volist name=":get_busier_promote_list($uid)" id="vo">
+	                        <option value="{$vo.id}" <if condition="I('promote_id') eq $vo['id']" > selected="true" </if> > {$vo.account}</option>
+	                    </volist>
+	                </select>
+					<span class="txt5" style="margin-left:20px;line-height:35px;">游戏名称</span>
+					<select id="game_id" name="game_id" class="select_gallery" style="width:150px;height:31px;border-radius: 5px;">
+						<option value="" selected="true">全部游戏</option>
+	                     <volist name="game_list" id="vo">
+	                        <option value="{$vo.game_id}" <if condition="I('game_id') eq $vo['game_id']" > selected="true" </if> > {$vo.game_name}</option>
+	                    </volist>
+	                </select>
+					
+					<a href="javascript:;" class="btn1 sertchbtn" style="margin-left:20px" url="{:U('Buydetail/summary','model='.$model['name'],false)}" id="search">查询</a>
+					
+				</div>
+			</div>
+
+			<div class="rightcontainer-detail" style="height: 960px;">
+				<table class="detailtb">
+					<tr class="num1">
+						<td>查询时间</td>
+						<td>推广员帐号</td>
+						<td>游戏名称</td>
+						<td>总注册（个）</td>
+						<td>充值人次（个）</td>
+						<td>总充值（元）</td>
+					</tr>
+					<notempty name="list_data">
+					<volist name="list_data" id="data"  >
+					<tr class="num2">
+						<td>{$data['register_time']|strtotime|date="m月d日",###}</td>
+						<td>{$data.promote_account}</td>
+						<td>{$data.game_name}</td>
+						<td>{$data.reguser}</td>
+						<td>{$data.spenduser}</td>
+						<td>{$data.pay_amount}</td>
+					</tr>
+	                </volist>
+					</notempty>
+				</table>
+				<empty name="list_data">
+				<div style="height:50px;line-height:50px;width:1085px;margin:0px auto 20px;border-bottom: 1px solid #E3E7EA;text-align:center;">暂无数据</div>
+				</empty>
+				<div style="height:15px;">&nbsp;</div>
+				<div class="totalnum">{$_page}</div>
+				<div class="totalnum">
+					<span><a  href="{:U('Buydetail/exportSummary',array('begtime'=>I('begtime'),'endtime'=>I('endtime'),'promote_id'=>I(promote_id),'game_id'=>I('game_id'),'p'=>I('p')))}" >导出数据(excel)</a></span>
+				</div>
+				
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+</div>
+<!--内容end-->
+</block>
+
+<block name="script">
+			
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+$(".select_gallery").select2();
+	$('#sdate').datetimepicker({
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+  });
+  
+  $('#edate').datetimepicker({
+    lang:'ch',
+    format:'Y-m-d',
+    formatDate:'Y-m-d',
+    timepicker:false
+  });
+  //搜索功能
+	$("#search").click(function(){
+		var sdate= $("#sdate").val();
+	  	var edate= $("#edate").val();
+	  	if(sdate =="" && edate==""){
+	  		layer.msg("请选择时间范围");
+	  		return false;
+	  	}
+	  	if(sdate!="" && edate!="" && sdate > edate){
+	  		layer.msg("开始时间必须小于等于结束时间");
+	  		return false;
+	  	}
+	  	
+		var url = $(this).attr('url');
+		console.log(url);
+        var query  = $('.jssearch').find('input').serialize();
+        query  += "&" + $('.jssearch').find('select').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//退出登录
+	$('.loginout').click(function(){
+    	     $.ajax({
+              type:"POST",
+              url:"{:U('Index/logout')}",
+              success:function(res){
+              		if(res.status == 3){
+              			layer.msg('退出成功', {icon: 1,});
+              			  setTimeout(function(){
+                         window.location.href="{:U('Index/index')}";
+                        },1500);
+              		}
+              },
+              error:function(){
+            	  layer.msg('退出失败');
+              }
+            })
+        });	
+</script>
+</block>

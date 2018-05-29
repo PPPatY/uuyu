@@ -1,0 +1,648 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+
+/* login页面 */
+
+.login {
+	background: url(../images/pic_1.png) no-repeat;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+
+.loginbox {
+	width: 480px;
+	height: 400px;
+	background-color: #a7a7a7;
+	margin: 0 auto;
+	position: relative;
+	top: 235px;
+	opacity: 0.25;
+	border-radius: 12px;
+}
+
+.logintext {
+	width: 300px;
+	height: 400px;
+	margin: 0 auto;
+	position: relative;
+	top: -160px;
+	left: -33px;
+}
+
+.login-h5 {
+	left: 50px;
+	line-height: 48px;
+	color: #fff;
+	opacity: 1;
+}
+
+.loginput {
+	margin-top: -6px;
+}
+
+
+/* 设置输入框username字体颜色  */
+
+#username::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #878A8A;
+}
+
+#username:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #878A8A;
+}
+
+#username::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #878A8A;
+}
+
+#username:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: #878A8A;
+}
+
+
+
+/* 设置输入框password字体颜色  */
+
+#password::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #878A8A;
+}
+
+#password:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #878A8A;
+}
+
+#password::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #878A8A;
+}
+
+#password:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: #878A8A;
+}
+
+
+/* 设置输入框p_registerRandum字体颜色  */
+
+#p_registerRandum::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #878A8A;
+}
+
+#p_registerRandum:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #878A8A;
+}
+
+#p_registerRandum::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #878A8A;
+}
+
+#p_registerRandum:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	color: #878A8A;
+}
+
+.login-input {
+	width: 300px;
+	height: 45px;
+	line-height: 32px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 6px 0 50px;
+	margin: 12px auto;
+	border-radius: 5px;
+	font-size: 16px;
+	font-family:'微软雅黑';
+}
+
+.login-input-random {
+	width: 200px;
+	height: 45px;
+	line-height: 32px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 6px 0 50px;
+	margin: 12px auto;
+	border-radius: 5px;
+	font-size: 16px;
+	font-family:'微软雅黑';
+}
+
+.kylogin {
+	width: 368px;
+	height: 45px;
+	line-height: 32px;
+	background: #26C6DA;
+	color: #fff;
+	border: none medium;
+	text-align: center;
+	display: inline-block;
+	border-radius: 5px;
+	margin: 12px auto;
+	font-size: 17px;
+	font-family:'微软雅黑';
+}
+
+.kylogin:hover {
+	background: #12B0C4;
+}
+
+.form-group i {
+	position: absolute;
+	padding: 1.6rem;
+	left: -5px;
+}
+
+
+/* 注册查询页面 */
+
+table {
+	background-color: transparent;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.search-nav {
+	position: relative;
+	min-width: 1200px;
+	height: 70px;
+	z-index: 4;
+	width: 100%;
+	background: #526782;
+}
+
+.container-login {
+	min-width: 1000px;
+	max-width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+.headerLogo{float: left;height: 60px;margin-top:5px;}
+.headerLogo img{height: 100%}
+
+.nav-login {
+	float: right;
+	position: relative;
+	z-index: 4;
+	font-size: 15px;
+	font-family: "微软雅黑";
+	top: 25px;
+	color: #fff;
+}
+
+.nav-login .loginout {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav-login .loginout img {
+	width: 16px;
+	height: 17.6px;
+	position: absolute;
+	top: 0px;
+}
+
+.nav-login .loginout span {
+	padding: 0px 5px;
+}
+
+.containers {
+	min-width: 1200px;
+	background: #EEEFF1;
+	/* height: 1200px; */
+}
+
+.search-container {
+	min-width: 1000px;
+	max-width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 50px;
+	padding-bottom:50px;
+}
+
+.search-container .left-nav {
+	width: 40px;
+	float: left;
+}
+
+.left-nav a.current {
+	background: #fff;
+	color: #526782;
+}
+
+.left-nav a {
+	display: inline-block;
+	width: 40px;
+	height: 120px;
+	background: #526782;
+	font-size: 16px;
+	color: #fff;
+	line-height: 25px;
+	text-align: center;
+	/*writing-mode: tb-rl;*/
+	/*-webkit-writing-mode: tb-rl;
+	-moz-writing-mode: tb-rl;*/
+	text-decoration: none;
+	padding: 10px;
+   margin-bottom: 1px;
+}
+
+.left-nav a.topborder {
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.left-nav a.bottomborder {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.rightcontainer {
+	float: left;
+	margin-left: 25px;
+	width: 1127px;
+}
+
+.rightcontainer-search {
+	background: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: #dedede 0px 0px 7px;
+	-moz-box-shadow: #dedede 0px 0px 7px;
+	box-shadow: #dedede 0px 0px 7px;
+	position: relative;
+}
+
+.search-top {
+
+	color: #526782;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	width: 100%;
+	height: 50px;
+	line-height:50px;
+	border-bottom: 1px solid #e5e6e8;
+}
+
+.search-top i {
+	margin: 0px 20px;
+	float: left;
+}
+
+.search-top span {
+	display: block;
+	float: left;
+}
+
+.search-input {
+	width: 96%;
+	margin: 0 auto;
+	color: #323232;
+}
+
+.user-input {
+	width: 170px;
+	height: 35px;
+	line-height: 32px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 15px 0 11px;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.search-select {
+	float: left;
+}
+.search-select {
+    margin-left: 20px;
+}
+.search-input2 {
+    float: left;
+}
+.time-input {
+	width: 160px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 15px 0 11px;
+	position: absolute;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-left: 10px;
+}
+.serch_2{width:96%; margin:0 auto;clear:both;padding:30px 0;}
+.serch_2:after {content:'';display:block;width:100%;height:1px;clear:both;overflow:hidden;}
+.textdetail {
+	float: left;
+	width: 53%;
+	height: 34px;
+	line-height: 34px;
+	margin-left: 20px;
+}
+
+.textdetail .txt2 {
+	margin-left: 30px;
+	margin-right: 5px;
+}
+
+.gf00 {
+	color: red;
+}
+
+.textdetail .txt3 {
+	margin-left: 180px;
+	margin-right: 5px;
+}
+
+.searchbtn {
+	display: block;
+	border: 1px solid #26C7DB;
+	border-radius: 5px;
+	height: 30px;
+	width: 80px;
+	line-height: 30px;
+	background-color: #26C7DB;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	float: right;
+}
+
+.rightcontainer-detail {
+	background: #fff;
+	height: 800px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: #dedede 0px 0px 7px;
+	-moz-box-shadow: #dedede 0px 0px 7px;
+	box-shadow: #dedede 0px 0px 7px;
+	position: relative;
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.rightcontainer-detail table {
+	display: table;
+	/*border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;*/
+	text-align: center;
+	width: 1085px;
+	margin: 20px auto;
+}
+
+.rightcontainer-detail table .num1 {
+	height: 60px;
+	background-color: #F8F9FB;
+}
+
+.rightcontainer-detail table .num2 {
+	height: 60px;
+	background-color: #fff;
+}
+
+.rightcontainer-detail table tr td {
+	border-bottom: 1px solid #E3E7EA;
+}
+
+.totalnum {
+	float: right;
+	margin-right: 2%;
+}
+
+.totalnum span {
+	padding-left: 20px;
+}
+
+.totalnum span a {
+	text-decoration: none;
+	color: #52B7E1;
+}
+
+
+/* 底部  */
+
+.footer {
+	min-width: 1200px;
+	height: 170px;
+	z-index: 4;
+	width: 100%;
+	background: #526782;
+}
+
+.footer_nav {
+	margin: 0 auto;
+	max-width: 1200px;
+	min-width: 1000px;
+	position: relative;
+	list-style-type: none;
+	color: #fff;
+	text-align: center;
+	padding-top: 20px;
+	font-size: 15px;
+}
+
+.footer_nav .b1 {
+	border-right: 1px solid #fff;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+.footer_nav .b2 {
+	padding-left: 5px;
+}
+
+.footer_nav li {
+	margin: 15px auto;
+}
+
+/* 底部  */
+
+/* 数据汇总页面 */
+
+.rightcontainer-summary {
+	background: #fff;
+	height: 120px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: #dedede 0px 0px 7px;
+	-moz-box-shadow: #dedede 0px 0px 7px;
+	box-shadow: #dedede 0px 0px 7px;
+	position: relative;
+}
+
+.searchdetail {
+	padding: 48px 22px;
+}
+
+.searchdetail .gf00 {
+	color: red;
+}
+
+.searchdetail .time1 {
+	width: 120px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 15px 0 11px;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.searchdetail #pleaseselect {
+	font-family: "microsoft yahei";
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	outline-color: #009de0;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.searchdetail .btn1 {
+	display: block;
+	border: 1px solid #26C7DB;
+	border-radius: 5px;
+	height: 35px;
+	width: 80px;
+	line-height: 35px;
+	background-color: #26C7DB;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+}
+
+.searchdetail .sertchbtn {
+	position: absolute;
+	top: 50px;
+	left: 910px;
+}
+
+.searchdetail .outbtn {
+	position: absolute;
+	top: 50px;
+	left: 1015px;
+}
+
+.rightcontainer-detail .detailtb {
+	display: table;
+	text-align: center;
+	position: relative;
+	top: 20px;
+	left: 0px;
+	width: 1085px;
+}
+
+
+/* 充值明细 */
+
+.textdetail2 {
+	float: left;
+    width: 50%;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 20px;
+}
+
+.time-input1 {
+	width: 160px;
+	height: 33px;
+	line-height: 33px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 15px 0 11px;
+	position: absolute;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-left: 0px;
+}
+
+.time-input2 {
+	width: 160px;
+	height: 33px;
+	line-height: 33px;
+	border: 1px solid #ddd;
+	outline: none;
+	padding: 0 15px 0 11px;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-left: 12px;
+}
+
+.searchbtn1 {
+	display: block;
+  border: 1px solid #26C7DB;
+  border-radius: 5px;
+  height: 35px;
+  width: 80px;
+  line-height: 35px;
+  background-color: #26C7DB;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  float: left;
+}
+
+
+
+.totalnum .current,
+.totalnum  .next,.totalnum .num,.totalnum .prev ,.totalnum .first,.totalnum .end{
+  border: 1px solid #26C7DB;
+  border-radius: 5px;
+  height: 30px;
+  width: auto;
+  line-height: 28px;
+  text-align: center;
+  text-decoration: none;
+  display:inline-block;
+  padding:0 5px;
+}
+.totalnum  .next,.totalnum .num,.totalnum .prev ,.totalnum .first,.totalnum .end {
+  color: #fff;
+  background-color: #26C7DB;
+  
+}
+.totalnum .current{ 
+color: #26C7DB;
+background-color: #fff;
+}
+.totalnum .rows{
+
+}
+.totalnum div{
+  margin-left:84px;
+}
+.totalnum .current,.totalnum .num{
+  margin:0 2px;
+}
+.totalnum span a {line-height:28px;}              
