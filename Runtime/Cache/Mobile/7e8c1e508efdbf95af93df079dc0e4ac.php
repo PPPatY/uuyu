@@ -245,7 +245,7 @@
                   for(var i=0;i<data.data.like.length;i++){
                     result+='<li><a href="'+data.data.like[i].play_detail_url+'"><img src="'+data.data.like[i].icon+'"><p>'+data.data.like[i].game_name+'</p></a></li>';
                   }
-                  result+='<li><a href="<?php echo U("Game/index");?>"><img src="/Public/Mobile/images/pop_leave_logo.png"><p>更多游戏</p></a></li></ul></div></div><div class="butn100 pop-butn-box pop-clear">';
+                  result+='<li><a href="<?php echo U("Game/index#categroy");?>"><img src="/Public/Mobile/images/pop_leave_logo.png"><p>更多游戏</p></a></li></ul></div></div><div class="butn100 pop-butn-box pop-clear">';
                   if(data.data.collection==1){
                     result+='<a href="javascript:;" class="pop-butn continue" style="width:100%;">离开</a> ';
                   }else if(data.data.collection==-1){

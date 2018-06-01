@@ -96,8 +96,13 @@
   
     <section class="contain">
       <div class="detail">
-<div class="occupy"></div>
+        <div class="occupy"></div>
+        <div class="game-banner-show-p">
+          <!-- <img src="/Public/Mobile/images/test-img-detile.jpg" width="100%" alt=""> -->
+          <img src="<?php echo ($data["introducebg"]); ?>" width="100%" alt="">
+        </div>
         <div class="base">
+          <div class="wrap-optice-shadow-p"></div>
           <div class="wrap">
             <div class="iconbox"><span class="font table"><span class="table-cell"><?php echo C('BITMAP');?></span></span><img src="<?php echo ($data["icon"]); ?>" class="icon"></div>
             <div class="butnbox"><span class="table"><a href="javascript:;" class="butn table-cell setcollection"><i data-collection="<?php echo ($data["collect_status"]); ?>" data-game_id="<?php echo ($data["id"]); ?>" class="icon-star <?php if($data["collect_status"] == 1): ?>on collect_status1<?php else: ?>collect_status0<?php endif; ?>"></i><span><?php if($data["collect_status"] == 1): ?>已<?php endif; ?>收藏</span></a></span></div>

@@ -64,3 +64,8 @@ input,select,button{outline:none;font-size:14px;font-family:inherit;}
 .footer p a{margin:0 30px;position:relative;}
 .footer p a~a:before {content:'';width:1px;height:14px;background:#E2E2E2;position:absolute;left:-30px;top:3px;}
 .footer  .footer_text{color:#E2E2E2;}
+
+
+/* 针对添加样式 */
+body{background-image: url("../../images/20170913/login-bg-big.jpg");background-size: cover;background-repeat: no-repeat;}
+.header .nav{display: none;}

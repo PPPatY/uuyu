@@ -174,11 +174,22 @@
 .code-orange{color:#ff7700;padding-top:0px;}
 
 
-
-
-
-
-
-
-
-
+/* 修改新增样式代码 ：start-By-pat */
+.header{background: transparent;}
+.header .logo .text span{color: #666; font-weight: bold;}
+.banner .lrbox .title .titlebtn{display: none;}
+.banner{background-image: none;}
+.news{display: none;}
+.page-aside{display: none;}
+.app{display: none;}
+.page-aside{display: none;}
+.gotop{display: none;}
+.footer{display: none;}
+.banner .lrwrapper{position: unset;}
+.banner .lrbox{float: none;position: unset;}
+.banner .lrbox .lrpane{left: 50%; width: 30%; background: rgba(255,255,255,.5); margin-left: -200px; margin-top: 5%;}
+.banner .inner{height: unset;}
+.tab-pane .has-error .form-control{background: rgba(255,255,255,.5)}
+.tab-pane .form-control{background: rgba(255,255,255,.5)}
+.tab-pane .input-group-addon{background: transparent}
+/* 修改新增样式代码 ：end-By-pat */

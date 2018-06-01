@@ -364,12 +364,12 @@ $(function(){
               if (!jQuery.isArray(nndata)) {
                 $.each(nndata, function(i, e){
                   nnnum = i;
-                  hotGameContent += '<li class="swiper-slide"><div class="item"><img class="game-bg-p" src="'+e.icon+'" alt=""><a href="'+e.play_detail_url+'" ><img src="'+e.icon+'" class="icon" alt=""><span class="game-title">'+e.game_name+'</span><span class="game-introduce">'+e.features+'</span></a><a class="began-game" href="'+e.play_url+'">开始</a></div></li>';
+                  hotGameContent += '<li class="swiper-slide"><div class="item"><img class="game-bg-p" src="'+e.showbg+'" alt=""><a href="'+e.play_detail_url+'" ><img src="'+e.icon+'" class="icon" alt=""><span class="game-title">'+e.game_name+'</span><span class="game-introduce">'+e.features+'</span></a><a class="began-game" href="'+e.play_url+'">开始</a></div></li>';
                 })
               } else {
                 nnnum = nndata.length;
                 for(var i = 0; i < nndata.length; i++){
-                  hotGameContent += '<li class="swiper-slide"><div class="item"><img class="game-bg-p" src="'+nndata[i].icon+'" alt=""><a href="'+nndata[i].play_detail_url+'" ><img src="'+nndata[i].icon+'" class="icon" alt=""><span class="game-title">'+nndata[i].game_name+'</span><span class="game-introduce">'+nndata[i].features+'</span></a><a class="began-game" href="'+nndata[i].play_url+'">开始</a></div></li>';
+                  hotGameContent += '<li class="swiper-slide"><div class="item"><img class="game-bg-p" src="'+nndata[i].showbg+'" alt=""><a href="'+nndata[i].play_detail_url+'" ><img src="'+nndata[i].icon+'" class="icon" alt=""><span class="game-title">'+nndata[i].game_name+'</span><span class="game-introduce">'+nndata[i].features+'</span></a><a class="began-game" href="'+nndata[i].play_url+'">开始</a></div></li>';
                 }
               }
               $('#hot-game-slide ul').append(hotGameContent);

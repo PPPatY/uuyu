@@ -391,6 +391,22 @@
                           <span class="notice-text" style="margin-left: 274px;">上传游戏的截图信息，此处截图在游戏详情页显示</span>
                       </td>
                 	</tr>
+                  <!--游戏介绍背景图-->
+                  <tr class="picbox">
+                      <td class="l">游戏介绍背景图：<span class="infonotice2">(尺寸：275*160px)</span>   </td>
+                      <td class="r" >
+                          <?php echo hook('UploadImages', array('name'=>'introducebg','value'=>$data['introducebg'],'pic_num'=>1));?>
+                          <span class="notice-text" style="margin-left: 273px;">上传游戏介绍背景图，此处截图在游戏详情页头部显示</span>
+                      </td>
+                  </tr>
+                  <!--游戏展示背景图-->
+                  <tr class="picbox">
+                      <td class="l">游戏展示背景图：<span class="infonotice2">(尺寸：180*210px)</span>   </td>
+                      <td class="r" >
+                          <?php echo hook('UploadImages', array('name'=>'showbg','value'=>$data['showbg'],'pic_num'=>1));?>
+                          <span class="notice-text" style="margin-left: 273px;">上传游戏展示背景图，此处截图在首页推荐热门显示</span>
+                      </td>
+                  </tr>
                 	<tr class="picbox">
                       <td class="l">游戏闪屏：<span class="infonotice2">(尺寸：640*950px)</span> </td></td>
                       <td class="r" >
@@ -763,6 +779,73 @@ function upload_picture_cover<?php echo ($field["name"]); ?>(file, data){
         },1500);
     }
 }
+
+
+/*上传游戏介绍背景*/
+$("#upload_picture_introducebg").uploadify({
+    "height"          : 30,
+    "swf"             : "/Public/static/uploadify/uploadify.swf",
+    "fileObjName"     : "download",
+    "buttonText"      : "上传封面",
+    "uploader"        : "<?php echo U('File/uploadPicture',array('session_id'=>session_id()));?>",
+    "width"           : 120,
+    'removeTimeout'   : 1,
+    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+    "onUploadSuccess" : upload_picture_introducebg<?php echo ($field["name"]); ?>,
+'onFallback' : function() {
+    alert('未检测到兼容版本的Flash.');
+}
+});
+function upload_picture_introducebg<?php echo ($field["name"]); ?>(file, data){
+    var data = $.parseJSON(data);
+    var src = '';
+    if(data.status){
+        $("#introducebg_id_cover").val(data.id);
+        src = data.url || '' + data.path;
+        $("#introducebg_id_cover").parent().find('.upload-img-box').html(
+            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+        );
+    } else {
+        updateAlert(data.info);
+        setTimeout(function(){
+            $('#top-alert').find('button').click();
+            $(that).removeClass('disabled').prop('disabled',false);
+        },1500);
+    }
+}
+/*上传游戏展示背景*/
+$("#upload_picture_showbg").uploadify({
+    "height"          : 30,
+    "swf"             : "/Public/static/uploadify/uploadify.swf",
+    "fileObjName"     : "download",
+    "buttonText"      : "上传封面",
+    "uploader"        : "<?php echo U('File/uploadPicture',array('session_id'=>session_id()));?>",
+    "width"           : 120,
+    'removeTimeout'   : 1,
+    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+    "onUploadSuccess" : upload_picture_showbg<?php echo ($field["name"]); ?>,
+'onFallback' : function() {
+    alert('未检测到兼容版本的Flash.');
+}
+});
+function upload_picture_showbg<?php echo ($field["name"]); ?>(file, data){
+    var data = $.parseJSON(data);
+    var src = '';
+    if(data.status){
+        $("#showbg_id_cover").val(data.id);
+        src = data.url || '' + data.path;
+        $("#showbg_id_cover").parent().find('.upload-img-box').html(
+            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+        );
+    } else {
+        updateAlert(data.info);
+        setTimeout(function(){
+            $('#top-alert').find('button').click();
+            $(that).removeClass('disabled').prop('disabled',false);
+        },1500);
+    }
+}
+
 //上传游戏详情背景
 /* 初始化上传插件 */
 $("#upload_picture_detail").uploadify({

@@ -1,0 +1,1831 @@
+[ 2018-05-31T09:51:58+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001662s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001737s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0130s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000467s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0195s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0244s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0251s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0351s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527731517 AND `deadline` NOT BETWEEN 1 AND 1527731517 ORDER BY update_time desc  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527731517 AND `deadline` NOT BETWEEN 1 AND 1527731517 ORDER BY update_time desc  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0229s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527731517 OR `start_time` = 0 ) AND ( `end_time` > 1527731517 OR `end_time` = 0 )  [ RunTime:0.0222s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527731517 OR `start_time` = 0 ) AND ( `end_time` > 1527731517 OR `end_time` = 0 )  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000455s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000547s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0894s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0514s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0532s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0008s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.245420s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.245536s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001213s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001327s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002111s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002280s ]
+
+[ 2018-05-31T09:51:58+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001434s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001508s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0039s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000423s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0040s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000775s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000828s ]
+
+[ 2018-05-31T10:20:59+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001261s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001356s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0043s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000363s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000414s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0037s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733259 AND `deadline` NOT BETWEEN 1 AND 1527733259 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733259 AND `deadline` NOT BETWEEN 1 AND 1527733259 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0038s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733259 OR `start_time` = 0 ) AND ( `end_time` > 1527733259 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733259 OR `start_time` = 0 ) AND ( `end_time` > 1527733259 OR `end_time` = 0 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000201s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000271s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0032s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030610s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030646s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000378s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000407s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000810s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000902s ]
+
+[ 2018-05-31T10:20:59+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001557s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001624s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0035s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000350s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000397s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0035s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733259 AND `deadline` NOT BETWEEN 1 AND 1527733259 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733259 AND `deadline` NOT BETWEEN 1 AND 1527733259 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0042s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733259 OR `start_time` = 0 ) AND ( `end_time` > 1527733259 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733259 OR `start_time` = 0 ) AND ( `end_time` > 1527733259 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000186s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000226s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030968s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000360s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000389s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000644s ]
+
+[ 2018-05-31T10:21:04+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001512s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001598s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0051s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000308s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000351s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0038s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733264 AND `deadline` NOT BETWEEN 1 AND 1527733264 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733264 AND `deadline` NOT BETWEEN 1 AND 1527733264 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0036s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733264 OR `start_time` = 0 ) AND ( `end_time` > 1527733264 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733264 OR `start_time` = 0 ) AND ( `end_time` > 1527733264 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000243s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000283s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033175s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033206s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000398s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000426s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000598s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000643s ]
+
+[ 2018-05-31T10:21:04+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001072s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001152s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0040s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000475s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0037s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733264 AND `deadline` NOT BETWEEN 1 AND 1527733264 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733264 AND `deadline` NOT BETWEEN 1 AND 1527733264 ORDER BY update_time desc  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0037s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733264 OR `start_time` = 0 ) AND ( `end_time` > 1527733264 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733264 OR `start_time` = 0 ) AND ( `end_time` > 1527733264 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000244s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000286s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032603s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032635s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000398s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000426s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000625s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000671s ]
+
+[ 2018-05-31T10:21:28+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004124s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004216s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0045s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001147s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001198s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0038s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0112s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733288 AND `deadline` NOT BETWEEN 1 AND 1527733288 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733288 AND `deadline` NOT BETWEEN 1 AND 1527733288 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0050s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733288 OR `start_time` = 0 ) AND ( `end_time` > 1527733288 OR `end_time` = 0 )  [ RunTime:0.0007s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733288 OR `start_time` = 0 ) AND ( `end_time` > 1527733288 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000211s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000256s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0005s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044036s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.044097s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002476s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002526s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001480s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001565s ]
+
+[ 2018-05-31T10:21:28+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003786s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003886s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0044s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0020s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001166s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001232s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0041s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001309s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001378s ]
+
+[ 2018-05-31T10:21:44+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.000981s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001046s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0054s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000383s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000421s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0123s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733304 AND `deadline` NOT BETWEEN 1 AND 1527733304 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733304 AND `deadline` NOT BETWEEN 1 AND 1527733304 ORDER BY update_time desc  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0038s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733304 OR `start_time` = 0 ) AND ( `end_time` > 1527733304 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733304 OR `start_time` = 0 ) AND ( `end_time` > 1527733304 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000185s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000228s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031679s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031723s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000391s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000423s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000696s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000757s ]
+
+[ 2018-05-31T10:21:44+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001207s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001286s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0043s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000306s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000345s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0050s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733304 AND `deadline` NOT BETWEEN 1 AND 1527733304 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733304 AND `deadline` NOT BETWEEN 1 AND 1527733304 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0035s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733304 OR `start_time` = 0 ) AND ( `end_time` > 1527733304 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733304 OR `start_time` = 0 ) AND ( `end_time` > 1527733304 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000212s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000270s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031651s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031708s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000343s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000388s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000678s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000795s ]
+
+[ 2018-05-31T10:22:19+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001239s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001317s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0045s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000336s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000378s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0043s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733339 AND `deadline` NOT BETWEEN 1 AND 1527733339 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733339 AND `deadline` NOT BETWEEN 1 AND 1527733339 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0041s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733339 OR `start_time` = 0 ) AND ( `end_time` > 1527733339 OR `end_time` = 0 )  [ RunTime:0.0008s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733339 OR `start_time` = 0 ) AND ( `end_time` > 1527733339 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000201s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000242s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032182s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032226s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000395s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000496s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000534s ]
+
+[ 2018-05-31T10:22:19+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001256s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001323s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0036s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000308s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000349s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0034s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733339 AND `deadline` NOT BETWEEN 1 AND 1527733339 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733339 AND `deadline` NOT BETWEEN 1 AND 1527733339 ORDER BY update_time desc  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0034s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733339 OR `start_time` = 0 ) AND ( `end_time` > 1527733339 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733339 OR `start_time` = 0 ) AND ( `end_time` > 1527733339 OR `end_time` = 0 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000179s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000217s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030165s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030208s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000320s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000349s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000545s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000583s ]
+
+[ 2018-05-31T10:22:37+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001970s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002075s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0044s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000459s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0039s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733357 AND `deadline` NOT BETWEEN 1 AND 1527733357 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733357 AND `deadline` NOT BETWEEN 1 AND 1527733357 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0036s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733357 OR `start_time` = 0 ) AND ( `end_time` > 1527733357 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733357 OR `start_time` = 0 ) AND ( `end_time` > 1527733357 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000222s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0031s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029947s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029994s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000366s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000394s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000479s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000528s ]
+
+[ 2018-05-31T10:22:37+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003250s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003315s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0034s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001147s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001190s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0032s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733357 AND `deadline` NOT BETWEEN 1 AND 1527733357 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733357 AND `deadline` NOT BETWEEN 1 AND 1527733357 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0033s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733357 OR `start_time` = 0 ) AND ( `end_time` > 1527733357 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733357 OR `start_time` = 0 ) AND ( `end_time` > 1527733357 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000216s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034705s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034749s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000964s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000993s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001440s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001511s ]
+
+[ 2018-05-31T10:22:38+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001181s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001259s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0039s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000625s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0040s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733357 AND `deadline` NOT BETWEEN 1 AND 1527733357 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733357 AND `deadline` NOT BETWEEN 1 AND 1527733357 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0041s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733357 OR `start_time` = 0 ) AND ( `end_time` > 1527733357 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733357 OR `start_time` = 0 ) AND ( `end_time` > 1527733357 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000270s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000335s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0004s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034305s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034382s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000469s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000513s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000627s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000680s ]
+
+[ 2018-05-31T10:22:38+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001121s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001193s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0048s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000357s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000400s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0048s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527733358 AND `deadline` NOT BETWEEN 1 AND 1527733358 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527733358 AND `deadline` NOT BETWEEN 1 AND 1527733358 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0046s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527733358 OR `start_time` = 0 ) AND ( `end_time` > 1527733358 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527733358 OR `start_time` = 0 ) AND ( `end_time` > 1527733358 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000188s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000230s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032278s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032327s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000351s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000380s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000558s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000601s ]
+
+[ 2018-05-31T06:19:04+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.054600s ]
+INFO: [ app_init ] --END-- [ RunTime:0.075166s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0139s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0112s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010142s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0241s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0285s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0125s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0489s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0586s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527718744 AND `deadline` NOT BETWEEN 1 AND 1527718744 ORDER BY update_time desc  [ RunTime:0.0137s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527718744 AND `deadline` NOT BETWEEN 1 AND 1527718744 ORDER BY update_time desc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0244s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527718744 OR `start_time` = 0 ) AND ( `end_time` > 1527718744 OR `end_time` = 0 )  [ RunTime:0.0143s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527718744 OR `start_time` = 0 ) AND ( `end_time` > 1527718744 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000257s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000306s ]
+NOTIC: [2] file_put_contents(./Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php): failed to open stream: Invalid argument D:\phpStudy\PHPTutorial\WWW\UUhuyv\ThinkPHP\Library\Think\Storage\Driver\File.class.php 第 46 行.
+ERR: _STORAGE_WRITE_ERROR_:./Runtime/Cache/Home/769e70f2e46f34ceb60619bbda5e4691.php
+
+[ 2018-05-31T06:19:04+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010156s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010279s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0234s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0112s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010105s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010181s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0241s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0293s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0489s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0074s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0586s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527718744 AND `deadline` NOT BETWEEN 1 AND 1527718744 ORDER BY update_time desc  [ RunTime:0.0137s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527718744 AND `deadline` NOT BETWEEN 1 AND 1527718744 ORDER BY update_time desc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0246s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527718744 OR `start_time` = 0 ) AND ( `end_time` > 1527718744 OR `end_time` = 0 )  [ RunTime:0.0142s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527718744 OR `start_time` = 0 ) AND ( `end_time` > 1527718744 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000261s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000316s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0425s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0159s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0279s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0099s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0315s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0053s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.244561s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.244617s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001022s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001075s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.009138s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009202s ]
+
+[ 2018-05-31T06:19:04+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001135s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001216s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0047s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000455s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000522s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0039s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000498s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000553s ]
+
+[ 2018-05-31T06:19:08+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001457s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001524s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0054s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000382s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000421s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0044s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527718748 AND `deadline` NOT BETWEEN 1 AND 1527718748 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527718748 AND `deadline` NOT BETWEEN 1 AND 1527718748 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0037s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527718748 OR `start_time` = 0 ) AND ( `end_time` > 1527718748 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527718748 OR `start_time` = 0 ) AND ( `end_time` > 1527718748 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000239s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000286s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0034s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032025s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032058s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000397s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000426s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000661s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000712s ]
+
+[ 2018-05-31T06:19:08+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001723s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001805s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0037s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000655s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000726s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0038s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000466s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000511s ]
+
+[ 2018-05-31T06:51:01+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.027746s ]
+INFO: [ app_init ] --END-- [ RunTime:0.028414s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0315s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0046s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.009118s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009194s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0139s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0151s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0129s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0242s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0074s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0264s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527720661 AND `deadline` NOT BETWEEN 1 AND 1527720661 ORDER BY update_time desc  [ RunTime:0.0123s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527720661 AND `deadline` NOT BETWEEN 1 AND 1527720661 ORDER BY update_time desc  [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0262s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527720661 OR `start_time` = 0 ) AND ( `end_time` > 1527720661 OR `end_time` = 0 )  [ RunTime:0.0210s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527720661 OR `start_time` = 0 ) AND ( `end_time` > 1527720661 OR `end_time` = 0 )  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000302s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000364s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0518s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0251s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0617s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0174s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0525s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0078s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0005s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.302898s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.302984s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.014512s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014645s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.027472s ]
+INFO: [ app_end ] --END-- [ RunTime:0.027566s ]
+
+[ 2018-05-31T06:51:02+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001436s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001510s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0038s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000527s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0039s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000538s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000590s ]
+
+[ 2018-05-31T06:52:47+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001461s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001542s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0292s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000313s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000356s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0141s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0086s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0264s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0154s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527720767 AND `deadline` NOT BETWEEN 1 AND 1527720767 ORDER BY update_time desc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527720767 AND `deadline` NOT BETWEEN 1 AND 1527720767 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0153s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527720767 OR `start_time` = 0 ) AND ( `end_time` > 1527720767 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527720767 OR `start_time` = 0 ) AND ( `end_time` > 1527720767 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000288s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000374s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0155s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.047311s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.047345s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000396s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000479s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000515s ]
+
+[ 2018-05-31T06:52:47+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001166s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001253s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0211s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000452s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0227s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000629s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000697s ]
+
+[ 2018-05-31T06:58:43+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001504s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001607s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0040s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000347s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000409s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0043s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527721123 AND `deadline` NOT BETWEEN 1 AND 1527721123 ORDER BY update_time desc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527721123 AND `deadline` NOT BETWEEN 1 AND 1527721123 ORDER BY update_time desc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0054s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527721123 OR `start_time` = 0 ) AND ( `end_time` > 1527721123 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527721123 OR `start_time` = 0 ) AND ( `end_time` > 1527721123 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000190s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000232s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0004s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035936s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035970s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000421s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000451s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000563s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000632s ]
+
+[ 2018-05-31T06:58:43+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001207s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001271s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0053s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000382s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000422s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0043s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527721123 AND `deadline` NOT BETWEEN 1 AND 1527721123 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527721123 AND `deadline` NOT BETWEEN 1 AND 1527721123 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0049s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527721123 OR `start_time` = 0 ) AND ( `end_time` > 1527721123 OR `end_time` = 0 )  [ RunTime:0.0005s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527721123 OR `start_time` = 0 ) AND ( `end_time` > 1527721123 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000239s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000295s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032520s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032554s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000422s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000479s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000517s ]
+
+[ 2018-05-31T06:58:47+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001114s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0037s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000392s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000433s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0042s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527721127 AND `deadline` NOT BETWEEN 1 AND 1527721127 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527721127 AND `deadline` NOT BETWEEN 1 AND 1527721127 ORDER BY update_time desc  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0035s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527721127 OR `start_time` = 0 ) AND ( `end_time` > 1527721127 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527721127 OR `start_time` = 0 ) AND ( `end_time` > 1527721127 OR `end_time` = 0 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000195s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000236s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0033s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028029s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028063s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000333s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000361s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000487s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000528s ]
+
+[ 2018-05-31T06:58:47+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001004s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001069s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0033s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000309s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000348s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0030s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0176s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527721127 AND `deadline` NOT BETWEEN 1 AND 1527721127 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527721127 AND `deadline` NOT BETWEEN 1 AND 1527721127 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0036s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527721127 OR `start_time` = 0 ) AND ( `end_time` > 1527721127 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527721127 OR `start_time` = 0 ) AND ( `end_time` > 1527721127 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000195s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000236s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0035s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031644s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031684s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000396s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000469s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000507s ]
+
+[ 2018-05-31T07:50:56+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001100s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001177s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0057s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000464s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0051s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527724255 AND `deadline` NOT BETWEEN 1 AND 1527724255 ORDER BY update_time desc  [ RunTime:0.0187s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527724255 AND `deadline` NOT BETWEEN 1 AND 1527724255 ORDER BY update_time desc  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0038s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527724255 OR `start_time` = 0 ) AND ( `end_time` > 1527724255 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527724255 OR `start_time` = 0 ) AND ( `end_time` > 1527724255 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000220s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000272s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0178s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0053s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.069590s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.069628s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000393s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000428s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000559s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000603s ]
+
+[ 2018-05-31T07:50:56+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001689s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001770s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0050s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000453s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000498s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0042s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000519s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000580s ]
+
+[ 2018-05-31T16:51:35+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001519s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001612s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000330s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000379s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0034s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0232s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0095s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0247s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527756695 AND `deadline` NOT BETWEEN 1 AND 1527756695 ORDER BY update_time desc  [ RunTime:0.0061s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527756695 AND `deadline` NOT BETWEEN 1 AND 1527756695 ORDER BY update_time desc  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0155s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527756695 OR `start_time` = 0 ) AND ( `end_time` > 1527756695 OR `end_time` = 0 )  [ RunTime:0.0083s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527756695 OR `start_time` = 0 ) AND ( `end_time` > 1527756695 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000414s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000495s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0257s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0051s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.203506s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.203548s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000340s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000368s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000631s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000671s ]
+
+[ 2018-05-31T16:51:36+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001101s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001168s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0042s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000344s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0036s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527756696 AND `deadline` NOT BETWEEN 1 AND 1527756696 ORDER BY update_time desc  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527756696 AND `deadline` NOT BETWEEN 1 AND 1527756696 ORDER BY update_time desc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0056s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527756696 OR `start_time` = 0 ) AND ( `end_time` > 1527756696 OR `end_time` = 0 )  [ RunTime:0.0004s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527756696 OR `start_time` = 0 ) AND ( `end_time` > 1527756696 OR `end_time` = 0 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000237s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000291s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033139s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033171s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000371s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000398s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000666s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000716s ]
+
+[ 2018-05-31T10:07:07+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.071258s ]
+INFO: [ app_init ] --END-- [ RunTime:0.104826s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0897s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0054s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.018727s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.018844s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0430s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0779s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `recommend_status` = 1 ORDER BY sort desc,id DESC  [ RunTime:0.0168s ]
+SQL: SHOW COLUMNS FROM `sys_category` [ RunTime:0.1354s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_gg') AND `status` = 1  [ RunTime:0.0108s ]
+SQL: SHOW COLUMNS FROM `sys_document` [ RunTime:0.0538s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('83') AND `status` = 1 AND `create_time` <= 1527732426 AND `deadline` NOT BETWEEN 1 AND 1527732426 ORDER BY update_time desc  [ RunTime:0.0194s ]
+SQL: SELECT * FROM `sys_category` WHERE `name` IN ('tui_zx') AND `status` = 1  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sys_document` WHERE `category_id` IN ('82') AND `status` = 1 AND `create_time` <= 1527732426 AND `deadline` NOT BETWEEN 1 AND 1527732426 ORDER BY update_time desc  [ RunTime:0.0278s ]
+SQL: SHOW COLUMNS FROM `tab_adv` [ RunTime:0.0535s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_gg' AND ( `start_time` < 1527732426 OR `start_time` = 0 ) AND ( `end_time` > 1527732426 OR `end_time` = 0 )  [ RunTime:0.0057s ]
+SQL: SELECT tab_adv.*,tab_adv_pos.name FROM `tab_adv` INNER JOIN tab_adv_pos on tab_adv.pos_id = tab_adv_pos.id  WHERE tab_adv.status = 1 AND tab_adv_pos.name = 'index_zx' AND ( `start_time` < 1527732426 OR `start_time` = 0 ) AND ( `end_time` > 1527732426 OR `end_time` = 0 )  [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000395s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000474s ]
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 11 行.
+NOTIC: [2] Illegal string offset 'game_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'title' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'giftbag_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'game_type_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [2] Illegal string offset 'good_name' D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+NOTIC: [8] Uninitialized string offset: 0 D:\phpStudy\PHPTutorial\WWW\UUhuyv\Application\Common\Common\extend.php 第 208 行.
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.1590s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 61 LIMIT 1   [ RunTime:0.0159s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0953s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0176s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 377 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_channel` [ RunTime:0.0549s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`sort`,`create_time`,`update_time`,`status`,`target` FROM `sys_channel` WHERE ( status=1 ) ORDER BY sort asc  [ RunTime:0.0226s ]
+NOTIC: [8] Undefined index: home_account D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 72 行.
+NOTIC: [8] Undefined index: home_pas D:\phpStudy\PHPTutorial\WWW\UUhuyv\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 80 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 359 LIMIT 1   [ RunTime:0.0019s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.571088s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.571183s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.015871s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.015926s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.027659s ]
+INFO: [ app_end ] --END-- [ RunTime:0.027729s ]
+
+[ 2018-05-31T10:07:07+08:00 ] 127.0.0.1 /index.php?s=/Home/Index/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001732s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001816s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0049s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000730s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0044s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.local.uuhuyv.com','http://www.local.uuhuyv.com','https://www.local.uuhuyv.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `type`,`name`,`value` FROM `sys_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001018s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001121s ]
+

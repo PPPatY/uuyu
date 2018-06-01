@@ -24,8 +24,13 @@
   
     <section class="contain">
       <div class="detail">
-<div class="occupy"></div>
+        <div class="occupy"></div>
+        <div class="game-banner-show-p">
+          <!-- <img src="__IMG__/test-img-detile.jpg" width="100%" alt=""> -->
+          <img src="{$data.introducebg}" width="100%" alt="">
+        </div>
         <div class="base">
+          <div class="wrap-optice-shadow-p"></div>
           <div class="wrap">
             <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="{$data.icon}" class="icon"></div>
             <div class="butnbox"><span class="table"><a href="javascript:;" class="butn table-cell setcollection"><i data-collection="{$data.collect_status}" data-game_id="{$data.id}" class="icon-star <if condition='$data.collect_status eq 1'> on collect_status1<else/>collect_status0</if>"></i><span><if condition='$data.collect_status eq 1'>已</if>收藏</span></a></span></div>

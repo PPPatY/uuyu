@@ -248,6 +248,9 @@
 .space{
   height: .25rem;
 }
+.gacatelist .space{
+  height: 1.25rem;
+}
 .text-class-list li:first-child{margin-top:0;}
 
 .text-class-list .iconbox .icon{display: none;}
@@ -293,7 +296,9 @@
   font-size: .7rem;
   line-height: 1.2rem;
   border-radius: .25rem;
-  box-shadow: 0 4px 16px #9bd5fd;
+  box-shadow: 0 4px 16px #8ea044;
+  width: 90%;
+  text-align: center;
 }
 
 .detail .gift .text-list .item{
@@ -331,5 +336,74 @@
   width: 100%;
   line-height: .9rem;
 }
+
+
+.game-banner-show-p{
+  
+}
+.detail{
+  background: #000;
+}
+.detail .base{
+  position: relative;
+  background: #000;
+}
+.detail .base .wrap{
+  width: 80%;
+  margin: 0 auto;
+}
+.detail .screenshot{
+  background: #000;
+}
+.description.samething{
+  background: #000;
+}
+.detail .base .wrap-optice-shadow-p{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 110%;
+  background: none;
+  box-shadow: -15px -13px 30px #000;
+}
+.detail .description .content{
+  color: #ccbfbf;
+}
+.detail .samething .cntitle .name{
+  color: #efefef;
+}
+.detail .base .textbox .title .name{
+  color: #fff;
+}
+.detail .base .textbox .info{
+  color: #ccc;
+}
+.detail .base .textbox .slogan{
+  color: #d6d6d6;
+}
+.detail .base .textbox .title .type{
+  border-color: #cecece;
+  color: #ecdede;
+}
+.detail .base .butnbox .butn .icon-star~span{
+  color: #cecece;
+}
+.detail .base .butnbox .butn .icon-star.on~span{
+  color: #fff;
+}
+.detail .description .content .showarticle{
+  background: #000;
+  color: #FF7700;
+}
+
+
+.detail .base .butnbox{right: -10%;}
+.detail .base .wrap .but-begin{
+  width: 90%;
+  text-align: left;
+}
+
+
 
 /*新增修改css：end-By:PatY*/

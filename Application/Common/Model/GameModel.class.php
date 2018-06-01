@@ -23,7 +23,7 @@ class GameModel extends BaseModel{
 		$map['g.game_status'] = 1;
 		$map['g.test_status'] = 1;
 		$data = $this->table('tab_game as g')
-			->field('g.icon,g.cover,g.game_name,g.id,g.game_type_id,g.features,ifnull(gb.id,0) as gift_id,g.play_count,gb.is_unicode,gb.novice,gb.unicode_num,g.game_score')
+			->field('g.icon,g.cover,g.showbg,g.game_name,g.id,g.game_type_id,g.features,ifnull(gb.id,0) as gift_id,g.play_count,gb.is_unicode,gb.novice,gb.unicode_num,g.game_score')
 			->join('tab_giftbag as gb on gb.game_id = g.id and gb.status = 1','left')
 			->where($map)
 			->page($page, $row)
@@ -44,6 +44,7 @@ class GameModel extends BaseModel{
 				$data[$key]['game_name'] = mb_substr($val['game_name'],0,8,'utf-8').'...';
 					
 			$data[$key]['icon'] = icon_url($val['icon']);
+			$data[$key]['showbg'] = icon_url($val['showbg']);
 
 			$gametypename = get_game_type($val['game_type_id']);
 			if (mb_strlen($gametypename,'utf-8')>5&&strtolower(MODULE_NAME)!='app')
@@ -165,7 +166,7 @@ class GameModel extends BaseModel{
 		$map['g.game_status'] = 1;
 		$map['g.test_status'] = 1;
 		$data = $this->alias('g')
-				->field('g.icon,g.game_name,g.id,g.game_type_id,g.features,g.screenshot,g.introduction,ifnull(b.status,0) as collect_status')
+				->field('g.icon,g.introducebg,g.game_name,g.id,g.game_type_id,g.features,g.screenshot,g.introduction,ifnull(b.status,0) as collect_status')
 				->join("tab_user_behavior as b on b.game_id = g.id and b.user_id = {$user_id} and b.status = 1",'left')
 				->where($map)
 				->find();
@@ -177,7 +178,8 @@ class GameModel extends BaseModel{
 			return false;
 		}elseif(ACTION_NAME!='open_game'){
 			$data['icon'] = icon_url($data['icon']);
-			
+			$data['introducebg'] = icon_url($data['introducebg']);
+
 			$gametypename = get_game_type($data['game_type_id']);
 			if (mb_strlen($gametypename,'utf-8')>5&&strtolower(MODULE_NAME)!='app')
 				$data['game_type_name'] = '（'.mb_substr($gametypename,0,5,'utf-8').'...';

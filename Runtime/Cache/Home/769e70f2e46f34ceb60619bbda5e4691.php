@@ -47,11 +47,11 @@
               <i></i>
               <span class="text"><span>H5推广</span><span>联盟中心</span></span>
           </div>
-          <ul class="nav clearfix">
+          <!-- <ul class="nav clearfix">
             <?php $__NAV__ = M('Channel')->field(true)->where("status=1")->order("sort asc")->select(); if(is_array($__NAV__)): $i = 0; $__LIST__ = $__NAV__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$nav): $mod = ($i % 2 );++$i; if(($nav["pid"]) == "0"): ?><li>
                       <a href="<?php echo (get_nav_url($nav["url"])); ?>" target="<?php if(($nav["target"]) == "1"): ?>_blank<?php else: ?>_self<?php endif; ?>"><span><?php echo ($nav["title"]); ?></span></a>
                     </li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
-          </ul>
+          </ul> -->
       </div>
     </div>
      
@@ -59,7 +59,7 @@
 		
 <div class="banner">
     <div class="inner clearfix">
-        <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo C('CH_SET_SERVER_QQ');?>&site=qq&menu=yes" class="qqbtn" target="_blank"><img src="/Public/Home/images/20170913/qq.png">QQ咨询</a>  
+        <!-- <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo C('CH_SET_SERVER_QQ');?>&site=qq&menu=yes" class="qqbtn" target="_blank"><img src="/Public/Home/images/20170913/qq.png">QQ咨询</a>   -->
         <div class="lrwrapper clearfix">
             <div class="lrbox clearfix">
                 <div class="lrpane tab-pane fade active in" id="lr-login">
@@ -104,11 +104,11 @@
     </div>
 </div>
     <div class="code">
-        <img src="images/t-code.png" clas="code-img">
-        <div class="code-text">扫一扫下载</div>
-        <div class="code-text code-orange">渠道管家App</div>
+        <img src="/Public/Home/images/20170913/Qr-code-u-uuyu.jpg" width="150px" height="150px"  clas="code-img">
+        <div class="code-text">扫码关注友友游戏中心</div>
+        <!-- <div class="code-text code-orange">渠道管家App</div> -->
     </div>
-<?php if(!empty($doc1)): ?><div class="news">
+<!-- <?php if(!empty($doc1)): ?><div class="news">
     <div class="inner clearfix txtScroll">
         <span><i class="icon icon-voice"></i></span>
         <a class="next" href="javascript:;"><i class="icon icon-angle_right"></i></a>
@@ -120,9 +120,9 @@
         </ul>
         </div>
     </div>
-</div><?php endif; ?>
+</div><?php endif; ?> -->
 
-<div class="advantage page-aside">
+<!-- <div class="advantage page-aside">
     <div class="inner">
         <h2 class="aside-title"><span>平台优势</span></h2>
         <div class="aside-content clearfix">
@@ -134,9 +134,9 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="app page-aside">
+<!-- <div class="app page-aside">
     <div class="inner">
         <h2 class="aside-title"><span>精品应用推荐</span></h2>
         <div class="aside-content slideColumn clearfix">
@@ -158,9 +158,9 @@
             <a class="next" href="javascript:void(0)"></a><?php endif; ?>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="join page-aside">
+<!-- <div class="join page-aside">
     <div class="inner">
         <h2 class="aside-title"><span>如何加入我们</span></h2>
         <div class="aside-content clearfix">
@@ -173,9 +173,9 @@
             <a href="<?php echo U('register');?>" class="joinbtn" >开始加入</a>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="gotop"><img src="/Public/Home/images/index/gotop.png"></div>
+<!-- <div class="gotop"><img src="/Public/Home/images/index/gotop.png"></div> -->
 
     </div>
 		
