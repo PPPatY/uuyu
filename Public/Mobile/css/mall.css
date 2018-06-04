@@ -483,4 +483,10 @@
   font-style: normal;
 }
 
+.detail .samething .content p img{
+  height: unset;
+  width: unset;
+  max-width: 100%;
+}
+
 /*新增修改css：end-By:PatY*/

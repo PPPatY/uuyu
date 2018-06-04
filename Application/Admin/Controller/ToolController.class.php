@@ -110,7 +110,7 @@ class ToolController extends ThinkController {
     */
     public function payset($value='')
     {
-        $str = "alipay,weixin,wei_xin,wei_xin_app,jubaobar,weixin_gf,jft,goldpig";
+        $str = "alipay,weixin,wei_xin,wei_xin_app,jubaobar,weixin_gf,jft,goldpig,upay";
         $this->BaseConfig($str);
         $this->meta_title = '支付设置';
         $this->display();

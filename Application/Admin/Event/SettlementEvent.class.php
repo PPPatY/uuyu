@@ -25,6 +25,7 @@ class SettlementEvent extends ThinkEvent {
             // ->page($page, $row)
             ->order('tab_user.id desc')
             ->select();
+
             $ucount=count($udata);
         $sdata=M('Spend','tab_')
             ->field('game_id,tab_spend.game_name,if(tab_promote.parent_id = 0,tab_spend.promote_id,parent_id) as pid,sum(pay_amount) as spay_amount ,ratio,tab_game.money')
@@ -38,11 +39,17 @@ class SettlementEvent extends ThinkEvent {
             foreach ($udata as $key => $value) {
                 foreach ($sdata as $k => $v) {
                     if (($value['pid'] == $v['pid']) && ($value['game_id'] == $v['game_id'])) {
-                        $data[] = array_merge($value,$v);unset($udata[$key]);unset($sdata[$k]);
+                        $data[] = array_merge($value,$v);
+                        unset($udata[$key]);
+                        unset($sdata[$k]);
+                        $data = array_merge($data,$udata,$sdata);
+                    }else{
+                        $data = array_merge($udata,$sdata);
                     }
                 }
             }
-            $data = array_merge($data,$udata,$sdata);
+            
+            //$data = array_merge($data,$udata,$sdata);
         }elseif (!empty($udata)) {
             $data = $udata;
         }elseif (!empty($sdata)) {

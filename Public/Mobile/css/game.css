@@ -296,7 +296,7 @@
   font-size: .7rem;
   line-height: 1.2rem;
   border-radius: .25rem;
-  box-shadow: 0 4px 16px #8ea044;
+  box-shadow: 0 4px 16px #9dd9fc;
   width: 90%;
   text-align: center;
 }
@@ -342,21 +342,23 @@
   
 }
 .detail{
-  background: #000;
+  /*background: #000;*/
 }
 .detail .base{
   position: relative;
-  background: #000;
+  /*background: #000;*/
 }
 .detail .base .wrap{
   width: 80%;
   margin: 0 auto;
 }
 .detail .screenshot{
-  background: #000;
+  /*background: #000;*/
 }
 .description.samething{
-  background: #000;
+  /*background: #000;*/
+  margin-top: 0;
+  padding-top: .3rem;
 }
 .detail .base .wrap-optice-shadow-p{
   position: absolute;
@@ -365,36 +367,36 @@
   height: 100%;
   width: 110%;
   background: none;
-  box-shadow: -15px -13px 30px #000;
+  box-shadow: -15px -30px 30px #fff;
 }
 .detail .description .content{
-  color: #ccbfbf;
+  /*color: #ccbfbf;*/
 }
 .detail .samething .cntitle .name{
-  color: #efefef;
+  /*color: #efefef;*/
 }
 .detail .base .textbox .title .name{
-  color: #fff;
+  /*color: #fff;*/
 }
 .detail .base .textbox .info{
-  color: #ccc;
+  /*color: #ccc;*/
 }
 .detail .base .textbox .slogan{
-  color: #d6d6d6;
+  /*color: #d6d6d6;*/
 }
 .detail .base .textbox .title .type{
-  border-color: #cecece;
-  color: #ecdede;
+  /*border-color: #cecece;*/
+  /*color: #ecdede;*/
 }
 .detail .base .butnbox .butn .icon-star~span{
-  color: #cecece;
+  /*color: #cecece;*/
 }
 .detail .base .butnbox .butn .icon-star.on~span{
-  color: #fff;
+  /*color: #fff;*/
 }
 .detail .description .content .showarticle{
-  background: #000;
-  color: #FF7700;
+  /*background: #000;*/
+  /*color: #FF7700;*/
 }
 
 
