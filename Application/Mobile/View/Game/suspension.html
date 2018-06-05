@@ -259,24 +259,26 @@
                     result+='<a href="javascript:;" class="pop-butn collection">收藏游戏</a>';
                   }
                   result+='</div>';
-									pop.addClass('pop-partir').open('',result);
-									$('.pop-close').click(function(){
-										pop.close();
-										window.history.pushState('forward', null, '#');
-									});
-									// 收藏游戏
-									$('.collection').click(function() {
-										pop.removeClass('pop-partir');
-										// ajax
-										$('.jssuscollection').click();
-										window.history.pushState('forward', null, '#');
-										return false;
-										
-									});
-									// 离开
-									$('.continue').click(function() {
-										location.replace('{$prev_url}');
-									});
+                    pop.addClass('pop-partir').open('',result);
+                    $('.pop-close').click(function(){
+                      pop.close();
+                      window.history.pushState('forward', null, '#');
+                    });
+                    // 收藏游戏
+                    $('.collection').click(function() {
+                      pop.removeClass('pop-partir');
+                      // ajax
+                      $('.jssuscollection').click();
+                      window.history.pushState('forward', null, '#');
+                      return false;
+                        
+                    });
+                    // 离开
+                    $('.continue').click(function() {
+                      // location.replace('{$prev_url}');
+                      // 修改游戏中点击返回 退出游戏时的重定向到首页。
+                      window.location.href = "http://uuyu.com";
+                    });
                 }
               });
             }

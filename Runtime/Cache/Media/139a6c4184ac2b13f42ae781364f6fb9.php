@@ -945,6 +945,14 @@ $(function(){
     <script>
       $("body").on("click",'.butnbox a.butnlogin',function(){
         res = jslogin();
+        var gsurl=$(this).attr('href');
+
+        var index = gsurl .lastIndexOf("\/");
+        var gsid  = gsurl .substring(index + 1, gsurl .length);
+        var result='';
+        result += '<input type="hidden"  value="'+gsid+'" id="goodsid"/>';
+        $("#lblTagIdUserName").append(result);
+
         return res;
       });
       function jslogin(){

@@ -14,38 +14,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mall.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
+      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="484" lean-forward="true" selection-start-line="484" selection-end-line="485" selection-end-column="23" />
+            <state relative-caret-position="7371">
+              <caret line="351" column="23" selection-start-line="351" selection-start-column="23" selection-end-line="351" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mall.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Media/css/mall.css">
+      <file leaf-file-name="h5sdkajax.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="278" column="25" selection-start-line="278" selection-start-column="25" selection-end-line="278" selection-end-column="25" />
+            <state relative-caret-position="525">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/common.css">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="402" selection-start-line="402" selection-end-line="402" selection-end-column="35" />
+            <state relative-caret-position="18417">
+              <caret line="877" column="8" selection-start-line="877" selection-start-column="8" selection-end-line="877" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Public/Media/css/common.css">
+      <file leaf-file-name="bases.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/bases.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="allMaster.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="408" column="35" selection-start-line="408" selection-start-column="35" selection-end-line="408" selection-end-column="35" />
+            <state relative-caret-position="399">
+              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suspension.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="273" column="24" lean-forward="true" selection-start-line="273" selection-start-column="24" selection-end-line="273" selection-end-column="24" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="404.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/404.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bases.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/bases.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3276">
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -55,18 +109,35 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>height</find>
+      <find>.hot-games-p .play-scroll .item .game-introduce</find>
+      <find>font-size: 0.5rem;</find>
+      <find>.hot-games-p .play-scroll .item</find>
+      <find>.detail .samething .content p img</find>
+      <find>butnlogin</find>
+      <find>butn</find>
+      <find>pop-butn</find>
+      <find>continue</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Public/Media/css/game.css" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/index.css" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/common.css" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/game.css" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/mall.css" />
         <option value="$PROJECT_DIR$/Public/Media/css/mall.css" />
         <option value="$PROJECT_DIR$/Public/Media/css/common.css" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/mall.css" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/game.css" />
+        <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/Application/User/Conf/config.php" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/index.css" />
+        <option value="$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Index/index.html" />
+        <option value="$PROJECT_DIR$/Application/Media/View/Public/bases.html" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Index/allMaster.html" />
+        <option value="$USER_HOME$/Desktop/临时文件夹/allMaster/allMaster.html" />
+        <option value="$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" />
       </list>
     </option>
   </component>
@@ -76,84 +147,59 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="109" />
-    <option name="y" value="61" />
-    <option name="width" value="1358" />
-    <option name="height" value="957" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1947" />
+    <option name="y" value="-20" />
+    <option name="width" value="1578" />
+    <option name="height" value="929" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Media" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Media" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
               <item name="Mobile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
               <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="weiduan" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
               <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="mui.css" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UUhuyv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UUhuyv" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="weiduan" type="462c0819:PsiDirectoryNode" />
+              <item name="quanminzhugong" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="jslogin&#9;null&#9;null&#10;butnlogin&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.prettier" value="true" />
@@ -179,6 +225,9 @@
       </list>
     </option>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="" />
@@ -197,19 +246,29 @@
       <workItem from="1527210434540" duration="1503000" />
       <workItem from="1527318292595" duration="1458000" />
       <workItem from="1527492885864" duration="2350000" />
+      <workItem from="1527889931031" duration="7083000" />
+      <workItem from="1528078201755" duration="661000" />
+      <workItem from="1528094757609" duration="719000" />
+      <workItem from="1528096560405" duration="5468000" />
+      <workItem from="1528160865048" duration="645000" />
+      <workItem from="1528162563696" duration="292000" />
+      <workItem from="1528162898755" duration="3296000" />
+      <workItem from="1528177543874" duration="4764000" />
+      <workItem from="1528183946186" duration="1784000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64461000" />
+    <option name="totallyTimeSpent" value="89173000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="109" y="61" width="1358" height="957" extended-state="0" />
+    <frame x="2552" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26080477" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14114584" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3280098" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -232,6 +291,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Public/Media/css/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8568">
+          <caret line="408" column="35" selection-start-line="408" selection-start-column="35" selection-end-line="408" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8022">
@@ -417,17 +483,10 @@
         <state relative-caret-position="-63" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
+    <entry file="file://$PROJECT_DIR$/Public/Media/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="484" lean-forward="true" selection-start-line="484" selection-end-line="485" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Media/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="278" column="25" selection-start-line="278" selection-start-column="25" selection-end-line="278" selection-end-column="25" />
+        <state relative-caret-position="674">
+          <caret line="408" column="35" selection-start-line="408" selection-start-column="35" selection-end-line="408" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -438,24 +497,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index.css">
+    <entry file="file://$PROJECT_DIR$/Public/Media/css/mall.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1660">
-          <caret line="344" column="19" selection-start-line="344" selection-start-column="2" selection-end-line="344" selection-end-column="20" />
+        <state relative-caret-position="21">
+          <caret line="278" column="25" selection-start-line="278" selection-start-column="25" selection-end-line="278" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/PointShopController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Ueditor/php/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10269">
+          <caret line="489" column="1" selection-start-line="489" selection-start-column="1" selection-end-line="489" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="334" column="19" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
+        <state relative-caret-position="7749">
+          <caret line="369" column="23" selection-start-line="369" selection-start-column="23" selection-end-line="369" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Media/css/common.css">
+    <entry file="file://E:/Owner/uuyuData.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="408" column="35" selection-start-line="408" selection-start-column="35" selection-end-line="408" selection-end-column="35" />
+        <state relative-caret-position="168">
+          <caret line="8" lean-forward="true" selection-end-line="122954" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/User/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="76" column="20" lean-forward="true" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7371">
+          <caret line="351" column="23" selection-start-line="351" selection-start-column="23" selection-end-line="351" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/sbases.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/loginsdk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/bases.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3276">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18417">
+          <caret line="877" column="8" selection-start-line="877" selection-start-column="8" selection-end-line="877" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/allMaster.html" />
+    <entry file="file://$USER_HOME$/Desktop/临时文件夹/allMaster/allMaster.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="9" />
+          <folding>
+            <element signature="e#497#43858#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/bases.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="273" column="24" lean-forward="true" selection-start-line="273" selection-start-column="24" selection-end-line="273" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -269,8 +269,10 @@
 									});
 									// 离开
 									$('.continue').click(function() {
-										location.replace('<?php echo ($prev_url); ?>');
-									});
+										// location.replace('<?php echo ($prev_url); ?>');
+                                        // 修改游戏中点击返回 退出游戏时的重定向到首页。
+                                        window.location.href = "http://uuyu.com";
+                                    });
                 }
               });
             }
