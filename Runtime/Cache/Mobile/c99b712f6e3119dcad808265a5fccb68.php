@@ -79,6 +79,15 @@
 }
 </style>
 <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
+
+    <header class="header user-index">
+        <section class="wrap">
+            <div class="caption"><span class="table"><span class="table-cell">礼包中心</span></span></div>
+
+        </section>
+    </header>
+    <div class="occupy"></div>
+
     <section class="trunker">
       <section class="inner">
       

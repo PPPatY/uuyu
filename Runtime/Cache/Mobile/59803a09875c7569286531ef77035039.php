@@ -72,13 +72,13 @@
   </head>
   <body <?php if(CONTROLLER_NAME == 'Search'): ?>class="searchpage" <?php elseif(CONTROLLER_NAME == 'Article'): ?>class="newspage" <?php elseif(ACTION_NAME == 'mall_record'): ?> class="integral-record"<?php elseif(ACTION_NAME == 'user_balance'): ?> class="user-balance"<?php elseif(ACTION_NAME == 'user_nickname'): ?> class="user-nickname"<?php elseif(ACTION_NAME == 'user_auth' or ACTION_NAME == 'user_bind_phone'): ?> class="user-auth"<?php elseif(ACTION_NAME == 'user_auth' or ACTION_NAME == 'user_bind_modify'): ?> class="user-auth"<?php elseif(ACTION_NAME == 'user_auth' or ACTION_NAME == 'user_bind_modifyed'): ?> class="user-auth"<?php elseif(ACTION_NAME == 'user_auth' or ACTION_NAME == 'user_password'): ?> class="user-auth" <?php elseif(ACTION_NAME == 'user_address'): ?> class="user-balance" <?php elseif(ACTION_NAME == 'user_gift'): ?> class="user-gift" <?php elseif(ACTION_NAME == 'user_collectioned'): ?> class="user-collection" <?php elseif(ACTION_NAME == 'user_collection'): ?> class="user-collection" <?php elseif(ACTION_NAME == 'user_contact'): ?> class="user-contact" <?php elseif(ACTION_NAME == 'user_argeement'): ?> class="user-contact"<?php elseif(ACTION_NAME == 'user_message'): ?> class="user-message"<?php elseif(ACTION_NAME == 'mall' and $data["count"] == 0 ): ?> class="mall-empty-mainer"<?php endif; ?> >
     
-<link href="/Public/Mobile/css/index.css" rel="stylesheet" >
+<link href="/Public/Mobile/css/index-201806070920.css" rel="stylesheet" >
 <style>
 .dropload-noData{
   display:none;
 }
 </style>
-  <!-- <header class="header ">
+  <header class="header ">
     <section class="wrap">
     <?php if($union_set == ''): ?><a class="hbtn table left logo"><span class="table-cell"><img src="<?php echo get_cover(C('WAP_SET_LOGO'),'path');?>"></span></a>
     <?php else: ?>
@@ -89,7 +89,7 @@
       <?php else: ?>
         <a href="<?php echo U('Search/index');?>" class="hbtn search"><span class="table"><span class="table-cell"><img src="/Public/Mobile/images/nav_btn_search.png"></span></span></a><?php endif; ?>
     </section>
-  </header> -->
+  </header>
   <!-- <div class="occupy"></div> -->
     <section class="trunker">
       <section class="inner">
@@ -132,6 +132,7 @@
             <div class="wrap">
               <div class="recently-play-title-p">
                 <span class="table"><span class="title"> </span><i class="table-cell">热门爆款</i></span>
+                <a href="/mobile.php/Game/index.html#categroy"><span class="more-games">更多 ></span></a>
               </div>
               <div class="play-scroll">
                 <div id="hot-game-slide" class="swiper-container">
@@ -372,7 +373,7 @@ $(function(){
             var loadid = $('#tab-slide .s-container .s-slide').eq(itemIndex).attr('id');
             // 加载菜单一的数据
         // 添加JS代码：start
-            var hotGameNum = 5;
+            var hotGameNum = 0;
             counter++;
             var hotGameData = loadajax1(me,'<?php echo U("Index/more_game");?>',2,hotGameNum,counter);
             var hotGameContent = '';
@@ -383,22 +384,22 @@ $(function(){
               $('#hot-game-slide ul').append(hotGameContent);
                   tab1LoadEnd = true;
                   // 锁定
-                  // me.lock();
+                  me.lock();
                   // 无数据
-                  // me.noData();
-                  // me.resetload();
+                  me.noData();
+                  me.resetload();
             } else {
               var nnnum=0;
               var nndata = hotGameData.data;
               if (!jQuery.isArray(nndata)) {
                 $.each(nndata, function(i, e){
                   nnnum = i;
-                  hotGameContent += '<li class="swiper-slide"><div class="item"><img class="game-bg-p" src="'+e.showbg+'" alt=""><a href="'+e.play_detail_url+'" ><img src="'+e.icon+'" class="icon" alt=""><span class="game-title">'+e.game_name+'</span><span class="game-introduce">'+e.features+'</span></a><a class="began-game" href="'+e.play_url+'">开始</a></div></li>';
+                  hotGameContent += '<li class="swiper-slide"><div class="item butnbox"><img class="game-bg-p" src="'+e.showbg+'" alt=""><a href="'+e.play_detail_url+'" ><img src="'+e.icon+'" class="icon" alt=""><span class="game-title">'+e.game_name+'</span><span class="game-introduce">'+e.features+'</span></a><a class="began-game butn butnlogin" href="'+e.play_url+'">开始</a></div></li>';
                 })
               } else {
                 nnnum = nndata.length;
                 for(var i = 0; i < nndata.length; i++){
-                  hotGameContent += '<li class="swiper-slide"><div class="item"><img class="game-bg-p" src="'+nndata[i].showbg+'" alt=""><a href="'+nndata[i].play_detail_url+'" ><img src="'+nndata[i].icon+'" class="icon" alt=""><span class="game-title">'+nndata[i].game_name+'</span><span class="game-introduce">'+nndata[i].features+'</span></a><a class="began-game" href="'+nndata[i].play_url+'">开始</a></div></li>';
+                  hotGameContent += '<li class="swiper-slide"><div class="item butnbox"><img class="game-bg-p" src="'+nndata[i].showbg+'" alt=""><a href="'+nndata[i].play_detail_url+'" ><img src="'+nndata[i].icon+'" class="icon" alt=""><span class="game-title">'+nndata[i].game_name+'</span><span class="game-introduce">'+nndata[i].features+'</span></a><a class="began-game butn butnlogin" href="'+nndata[i].play_url+'">开始</a></div></li>';
                 }
               }
               $('#hot-game-slide ul').append(hotGameContent);
@@ -407,16 +408,16 @@ $(function(){
                 tab1LoadEnd = true;
                 // if(nnnum<hotGameNum){
                   // 锁定
-                  // me.lock();
+                  me.lock();
                   // 无数据
-                  // me.noData();
+                  me.noData();
                 // }
                 // 每次数据加载完，必须重置
-                // me.resetload();
+                me.resetload();
             }
         // 添加JS代码：end
             if(itemIndex == '0'){
-                var num = 5;
+                var num = 0;
                 counter++;
                 data = loadajax1(me,'<?php echo U("Index/more_game");?>',2,num,counter);
                 var result = '';
@@ -472,7 +473,7 @@ $(function(){
             }else
              if(itemIndex == '1'){
                 counter1++;
-                var num = 5;
+                var num = 0;
                 data = loadajax1(me,'<?php echo U("Index/more_game");?>',3,num,counter1);
                 var result = '';
                 if(data.status==0){
@@ -981,6 +982,15 @@ $(function(){
 
         $("body").on("click",'.butnbox a.butnlogin',function(){
             res = jslogin();
+
+            var gsurl=$(this).attr('href');
+
+            var index = gsurl .lastIndexOf("\/");
+            var gsid  = gsurl .substring(index + 1, gsurl .length);
+            var result='';
+            result += '<input type="hidden"  value="'+gsid+'" id="goodsid"/>';
+            $("#lblTagIdUserName").append(result);
+
             return res;
         });
         function jslogin(){
