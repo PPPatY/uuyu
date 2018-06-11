@@ -137,29 +137,13 @@
               <div class="play-scroll">
                 <div id="hot-game-slide" class="swiper-container">
                   <ul class="swiper-wrapper">
-                    <!--<li class="swiper-slide">-->
-                      <!--<div class="item">-->
-                        <!--<img class="game-bg-p" src="/Public/Mobile/images/index-game-icon-p-4.png" alt="">-->
-                        <!--<a href="www.baidu.com" class="icons">-->
-                          <!--<img src="/Public/Mobile/images/index-game-icon-p-4.png" class="icon" alt="">-->
-                          <!--<span class="game-title">决战沙城</span>-->
-                          <!--<span class="game-introduce">万人同屏战沙城</span>-->
-                        <!--</a>-->
-                        <!--<a class="began-game" href="www.mi.com">开始</a>-->
-                      <!--</div>-->
-                    <!--</li>-->
+
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="newes-games-p">
-            <div class="wrap">
-              <div class="recently-play-title-p">
-                <span class="table"><span class="title"> </span><i class="table-cell">最新游戏</i></span>
-              </div>
-            </div>
-          </div> -->
+
           <div class="recommend-list">
             
             <div class="tab-scroll">
@@ -244,18 +228,6 @@
 $('.hdredpoint').click(function(){
   $(this).children('.circle').remove();
 });
-
-// 增加js操作代码：start
-// $(document).ready(function(){
-//   var setBg = $('#hot-game-slide .swiper-wrapper .swiper-slide') ;
-//   var BgUrl = $('#hot-game-slide .swiper-wrapper .swiper-slide .item .icons .icon').attr('src');
-//   setBg.find('.item').css('background', BgUrl);
-// })
-// $(document).ready(function(){
-  // $('#tab-menu .s-slide:first-child').click();
-// })
-
-// 增加js操作代码：end
 
 
 var itemIndex = 1;
@@ -360,9 +332,6 @@ $(function(){
     var counter4 = 0;
     var counter5 = 0;
     // 每页展示5个
-
-    // 增加js操作代码：start
-    // 增加js操作代码：end
 
 
     // dropload

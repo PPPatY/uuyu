@@ -27,7 +27,9 @@ html,body,.container,.container .wrap,.inner,.container .loadbox {height:100%;z-
         </div>
       </div>
     </div>
-    <iframe id="op_url_mainframe" src="{$login_url}" style="background-image:url({$game_load_page});" frameborder="0" class="gamestartbox hidden"></iframe>
+    <iframe id="op_url_mainframe" src="{$login_url}" style="background-image:url({$game_load_page});" frameborder="0" class="gamestartbox hidden">
+      <!--<a href="javascript:;" class="suspensionbtn hidden" id="jssuspensionbtn"><img src="{:get_cover(C('SUSPENSION_ICO'),path)}"></a>-->
+    </iframe>
     <if condition="is_login() gt 0">
     {:W('Game/suspension')}<!-- 悬浮窗 -->
     </if>

@@ -162,4 +162,20 @@
 	.suspensionbox .sus-menu .sus-menu-butn {padding:0.11rem 0;}
 	
 }
- 
+
+
+
+
+/*新加样式*/
+.suspensionbtn{
+	/*width: .8rem;*/
+	/*height: .8rem;*/
+	/*margin: 0;*/
+	/*padding: 0;*/
+	/*margin-right: -0.74rem;*/
+}
+.suspensionbtn img{
+	/*margin-left: 50%;*/
+}
+
+/*新加样式*/

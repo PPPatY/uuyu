@@ -99,7 +99,9 @@ html,body,.container,.container .wrap,.inner,.container .loadbox {height:100%;z-
         </div>
       </div>
     </div>
-    <iframe id="op_url_mainframe" src="<?php echo ($login_url); ?>" style="background-image:url(<?php echo ($game_load_page); ?>);" frameborder="0" class="gamestartbox hidden"></iframe>
+    <iframe id="op_url_mainframe" src="<?php echo ($login_url); ?>" style="background-image:url(<?php echo ($game_load_page); ?>);" frameborder="0" class="gamestartbox hidden">
+      <!--<a href="javascript:;" class="suspensionbtn hidden" id="jssuspensionbtn"><img src="<?php echo get_cover(C('SUSPENSION_ICO'),path);?>"></a>-->
+    </iframe>
     <?php if(is_login() > 0): echo W('Game/suspension');?><!-- 悬浮窗 --><?php endif; ?>
   </div>
 <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>

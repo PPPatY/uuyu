@@ -1,0 +1,1268 @@
+[ 2018-06-09T10:14:24+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002656s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002733s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001305s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001400s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0222s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-06-09T10:14:24+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001198s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001260s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000435s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000479s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0101s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000118s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000163s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.071594s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.071640s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000473s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000502s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000714s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000751s ]
+
+[ 2018-06-09T10:14:25+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001924s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000344s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000388s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0170s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-06-09T10:14:25+08:00 ] 127.0.0.1 /admin.php?s=/Public/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002413s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002495s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001145s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0108s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000696s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000747s ]
+
+[ 2018-06-09T10:14:32+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001195s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001257s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.008771s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008813s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0142s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-06-09T10:14:32+08:00 ] 127.0.0.1 /admin.php?s=/Public/verify.html&random=0.19932269248958878
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001354s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001472s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000457s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000517s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0109s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004825s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004918s ]
+
+[ 2018-06-09T10:14:37+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007866s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007928s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000407s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0226s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Constant UC_AUTH_KEY already defined D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\User\Conf\config.php 第 17 行.
+NOTIC: [8] Undefined index: lite D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Db.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `sys_member` [ RunTime:0.0309s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status`,`kuaijie_value` FROM `sys_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_action` [ RunTime:0.0361s ]
+SQL: SELECT * FROM `sys_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_action_log` [ RunTime:0.0744s ]
+SQL: INSERT INTO `sys_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES ('1','1','2130706433','member','1','1528510477','admin在2018-06-09 10:14登录了后台') [ RunTime:0.0140s ]
+SQL: SELECT * FROM `sys_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 1 D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Common\Common\function.php 第 719 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Common\Common\function.php 第 719 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `sys_action_log` WHERE `action_id` = 1 AND `user_id` = 1 AND `create_time` > 1528424077 LIMIT 1   [ RunTime:0.0018s ]
+SQL: SHOW COLUMNS FROM `sys_member` [ RunTime:0.0092s ]
+SQL: UPDATE `sys_member` SET `score`=score+10 WHERE ( uid=1 AND status>-1 ) [ RunTime:0.0003s ]
+SQL: UPDATE `sys_member` SET `login`=`login`+1,`last_login_time`='1528510477',`last_login_ip`='2130706433' WHERE `uid` = 1 [ RunTime:0.0002s ]
+
+[ 2018-06-09T10:14:37+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001244s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001308s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000354s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000398s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0121s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2018-06-09T10:14:38+08:00 ] 127.0.0.1 /admin.php?s=/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001194s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001253s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000526s ]
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0117s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0375s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0111s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0136s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0203s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0135s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0276s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Index/index%' and hide != 1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 1  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 1 AND `hide` = 0  [ RunTime:0.0003s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\AdminController.class.php 第 317 行.
+SQL: SHOW COLUMNS FROM `sys_member` [ RunTime:0.0121s ]
+SQL: SELECT `uid`,`nickname`,us.last_login_time,us.last_login_ip,`login` FROM `sys_member` INNER JOIN sys_ucenter_member as us on sys_member.uid = us.id  WHERE `uid` = '1' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_user` [ RunTime:0.0134s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0132s ]
+SQL: SHOW COLUMNS FROM `tab_spend` [ RunTime:0.0343s ]
+SQL: SHOW COLUMNS FROM `tab_deposit` [ RunTime:0.0260s ]
+SQL: SHOW COLUMNS FROM `tab_apply` [ RunTime:0.0252s ]
+SQL: SHOW COLUMNS FROM `tab_promote` [ RunTime:0.0497s ]
+NOTIC: [8] Undefined variable: gameso D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\IndexController.class.php 第 50 行.
+SQL: SELECT `game_name` FROM `tab_game` WHERE `id` = 0 ORDER BY create_time desc  [ RunTime:0.0003s ]
+SQL: SELECT `account`,`pay_limit` FROM `tab_promote` WHERE `pay_limit` < 10 AND `set_pay_time` > 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_rebate` [ RunTime:0.0405s ]
+SQL: SELECT `game_name`,`endtime` FROM `tab_rebate` WHERE ( `endtime` <> 0 AND `endtime` < 1528510478  )  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_giftbag` [ RunTime:0.0125s ]
+SQL: SELECT `game_name`,`novice`,`giftbag_name` FROM `tab_giftbag` WHERE `status` = 1  [ RunTime:0.0131s ]
+SQL: SHOW COLUMNS FROM `tab_promote_gift` [ RunTime:0.0400s ]
+SQL: SELECT `game_name`,`novice`,`giftbag_name` FROM `tab_promote_gift` WHERE `status` = 1  [ RunTime:0.0002s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\IndexController.class.php 第 88 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000133s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000169s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0147s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0130s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 144 行.
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `sys_addons` [ RunTime:0.0266s ]
+SQL: SELECT `config` FROM `sys_addons` WHERE `name` = 'SiteStat' AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user_login_record` [ RunTime:0.0803s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user` WHERE `register_time` BETWEEN 1527782400 AND 1530374399 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_game` WHERE `create_time` BETWEEN 1527782400 AND 1530374399 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT sum(pay_amount) as amount FROM `tab_spend` WHERE `pay_time` BETWEEN 1527782400 AND 1530374399 AND ( pay_status=1 and pay_way > 0 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT sum(pay_amount) as amount FROM `tab_deposit` WHERE `create_time` BETWEEN 1527782400 AND 1530374399 AND ( pay_status=1 and pay_way>0 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_promote` WHERE `create_time` BETWEEN 1527782400 AND 1530374399 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT sum(pay_amount) as amount FROM `tab_spend` WHERE `pay_time` BETWEEN 1527782400 AND 1530374399 AND ( pay_status=1 and pay_way > 0 and promote_id > 0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `tab_app_apply` [ RunTime:0.0256s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_promote` WHERE `status` = 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_apply` WHERE ( ISNULL(pack_url) ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_withdraw` [ RunTime:0.0219s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_withdraw` WHERE `status` = 0 AND `promote_id` > 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_spend` WHERE `pay_game_status` = 0 AND `pay_status` = 1 LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_app_apply` WHERE `dow_url` = '' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_msg` [ RunTime:0.0342s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_msg` WHERE `user_id` = 1 AND `status` = 2 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_apply` WHERE `status` = 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_apply_union` WHERE `status` = 0 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `pay_amount`,pay_time as time FROM `tab_spend` WHERE ( pay_status=1 and pay_way>=0 and pay_time  between 1527955200 and 1528559999  )  [ RunTime:0.0003s ]
+SQL: SELECT `pay_amount`,create_time as time FROM `tab_deposit` WHERE ( pay_status=1 and pay_way>=0 and create_time  between 1527955200 and 1528559999  )  [ RunTime:0.0002s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Addons\SiteStat\SiteStatAddon.class.php 第 155 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Addons\SiteStat\SiteStatAddon.class.php 第 155 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Addons\SiteStat\SiteStatAddon.class.php 第 155 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Addons\SiteStat\SiteStatAddon.class.php 第 155 行.
+SQL: SELECT `account`,register_time as time FROM `tab_user` WHERE ( register_time  between 1527955200 and 1528559999  )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000195s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.396011s ]
+SQL: SELECT `kuaijie_value` FROM `sys_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_kuaijieicon` [ RunTime:0.0252s ]
+SQL: SELECT * FROM `sys_kuaijieicon` WHERE `id` IN ('1','2','4','5','6','7','8','9','10','3')  [ RunTime:0.0003s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Common\extend.php 第 1496 行.
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 6 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 7 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 8 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 9 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 10 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 11 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 12 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 14 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 15 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant gac - assumed 'gac' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\79bde46336f7088c2c4092b8642fe931.php 第 332 行.
+NOTIC: [8] Use of undefined constant prolc - assumed 'prolc' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\79bde46336f7088c2c4092b8642fe931.php 第 333 行.
+NOTIC: [8] Use of undefined constant rebc - assumed 'rebc' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\79bde46336f7088c2c4092b8642fe931.php 第 334 行.
+NOTIC: [8] Use of undefined constant giftc - assumed 'giftc' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\79bde46336f7088c2c4092b8642fe931.php 第 335 行.
+NOTIC: [8] Use of undefined constant giftc - assumed 'giftc' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\79bde46336f7088c2c4092b8642fe931.php 第 335 行.
+NOTIC: [8] Use of undefined constant pgiftc - assumed 'pgiftc' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\79bde46336f7088c2c4092b8642fe931.php 第 336 行.
+SQL: select version() as v; [ RunTime:0.0002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.142527s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.142559s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000543s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000571s ]
+INFO: Run Addons\SiteStat\SiteStatAddon [ RunTime:0.383580s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.383604s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 191 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.143245s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.142559s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000006s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.000141s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000736s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000774s ]
+
+[ 2018-06-09T10:14:41+08:00 ] 127.0.0.1 /admin.php?s=/Game/lists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001242s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001305s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000355s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000397s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0164s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0138s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0114s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0138s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0103s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0137s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/lists%' and hide != 1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0008s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: p D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 56 行.
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0416s ]
+SQL: SELECT * FROM `sys_model` WHERE `name` = 'game' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 74 行.
+SQL: SELECT * FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0141s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_game` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `id`,`sort`,`game_name`,`game_type_name`,`game_appid`,`game_status`,`mix_status`,`icon`,`category`,`play_count`,`game_load_page`,`recommend_status` FROM `tab_game` ORDER BY sort desc,id desc  LIMIT 0,10   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 152 行.
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0558s ]
+SQL: SELECT `id`,`name`,`type`,`extra` FROM `sys_attribute` WHERE `model_id` = 5  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 387 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0136s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 386 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 441 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 804 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 755 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 783 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 734 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 173 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000285s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000324s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0184s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 140 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `test_status` = 1  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_user_play` [ RunTime:0.0144s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 1 AND `play_time` > '1526463521' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 2 AND `play_time` > '1527044594' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 17 AND `play_time` > '1526829785' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 60 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 60 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 59 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 57 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 57 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 56 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 56 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 55 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 55 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 54 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 54 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 50 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 50 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0009s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 352 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 502 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.244625s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.244658s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000711s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000748s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000818s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000868s ]
+
+[ 2018-06-09T10:14:44+08:00 ] 127.0.0.1 /admin.php?s=/GameType/lists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002137s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002200s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000531s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000576s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameTypeController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameTypeController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameTypeController::set_status() should be compatible with Admin\Controller\ThinkController::set_status($Model = Admin\Controller\CONTROLLER_NAME) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameTypeController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0254s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0096s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0127s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0107s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0122s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%GameType/lists%' and hide != 1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0009s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: p D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameTypeController.class.php 第 13 行.
+NOTIC: [8] Undefined variable: extend D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameTypeController.class.php 第 13 行.
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `sys_model` WHERE `name` = 'GameType' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 74 行.
+SQL: SELECT * FROM `sys_model` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game_type` [ RunTime:0.0151s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_game_type` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `id`,`type_name`,`status_show`,`op_nickname`,`create_time` FROM `tab_game_type` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 152 行.
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0132s ]
+SQL: SELECT `id`,`name`,`type`,`extra` FROM `sys_attribute` WHERE `model_id` = 17  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 173 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000206s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000258s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0139s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0130s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\45f2e49fa08686fcfaa28b71dbe0467b.php 第 140 行.
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\45f2e49fa08686fcfaa28b71dbe0467b.php 第 319 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.197158s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.197191s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000523s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000551s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001239s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001316s ]
+
+[ 2018-06-09T10:14:45+08:00 ] 127.0.0.1 /admin.php?s=/Game/lists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001210s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001272s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000333s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000372s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0162s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0106s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0129s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0101s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0128s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/lists%' and hide != 1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0008s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: p D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 56 行.
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `sys_model` WHERE `name` = 'game' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 74 行.
+SQL: SELECT * FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0131s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_game` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `id`,`sort`,`game_name`,`game_type_name`,`game_appid`,`game_status`,`mix_status`,`icon`,`category`,`play_count`,`game_load_page`,`recommend_status` FROM `tab_game` ORDER BY sort desc,id desc  LIMIT 0,10   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 152 行.
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0138s ]
+SQL: SELECT `id`,`name`,`type`,`extra` FROM `sys_attribute` WHERE `model_id` = 5  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 387 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0134s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 386 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 441 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 804 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 755 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 783 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 734 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 173 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000267s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000305s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0126s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 140 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `test_status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0107s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user_play` [ RunTime:0.0126s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 1 AND `play_time` > '1526463521' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 2 AND `play_time` > '1527044594' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 17 AND `play_time` > '1526829785' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 60 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 60 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 59 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 57 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 57 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 56 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 56 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 55 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 55 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 54 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 54 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 50 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 50 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0009s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 352 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 502 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.205126s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.205181s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000576s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000606s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000857s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000902s ]
+
+[ 2018-06-09T10:14:54+08:00 ] 127.0.0.1 /admin.php?s=/Game/edit/id/59.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001187s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001247s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000447s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0177s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0117s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0143s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0112s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0136s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/edit%' and hide != 1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 141 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0135s ]
+SQL: SELECT `id`,`game_name`,`sort`,`short`,`game_type_id`,`game_type_name`,`game_score`,`features`,`recommend_level`,`third_url`,`type`,`version`,`game_size`,`icon`,`cover`,`showbg`,`introducebg`,`screenshot`,`introduction`,`game_api`,`and_dow_address`,`ios_dow_address`,`game_address`,`dow_num`,`game_status`,`pay_status`,`dow_status`,`mix_status`,`developers`,`create_time`,`discount`,`language`,`game_appid`,`game_coin_name`,`game_coin_ration`,`category`,`ratio`,`money`,`recommend_status`,`screen_type`,`game_address_other`,`play_count`,`set_play_count_time`,`game_load_page`,`game_attribute`,`test_status` FROM `tab_game` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game_set` [ RunTime:0.0191s ]
+SQL: SELECT `id`,`game_id`,`third_party_url`,`login_notify_url`,`pay_notify_url`,`game_role_url`,`game_gift_url`,`game_server_url`,`game_key`,`access_key`,`agent_id`,`partner`,`key`,`game_pay_appid`,`apk_pck_name`,`apk_pck_sign`,`support_sdk` FROM `tab_game_set` WHERE `game_id` = 59 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000550s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000760s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0184s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0149s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0149s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 140 行.
+SQL: SHOW COLUMNS FROM `tab_game_type` [ RunTime:0.0166s ]
+SQL: SELECT * FROM `tab_game_type` WHERE ( status_show=1 )  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0157s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user_play` [ RunTime:0.0147s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 59 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tab_opentype` [ RunTime:0.0588s ]
+SQL: SELECT * FROM `tab_opentype` WHERE ( status=1 )  [ RunTime:0.0003s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000053s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.393538s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036406s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036454s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000456s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000483s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.067194s ]
+INFO: [ UploadImages ] --END-- [ RunTime:0.067229s ]
+INFO: [ UploadImages ] --START--
+NOTIC: [8] Undefined index: pic_num D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Addons\UploadImages\UploadImagesAddon.class.php 第 36 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.419080s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004983s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001067s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.005600s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.005589s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.000014s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.424683s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004698s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.006680s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.010925s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.005293s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.005635s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.430052s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004739s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.012003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.016291s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.005337s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.010959s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.436168s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005322s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.017957s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.022906s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.006592s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.016329s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 523 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 693 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 698 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 726 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 731 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 760 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 765 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 794 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 799 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 826 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 831 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 860 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 865 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006067s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.017957s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.023603s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000953s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001007s ]
+
+[ 2018-06-09T10:14:58+08:00 ] 127.0.0.1 /admin.php?s=/Game/edit.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001202s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001261s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000332s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000377s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0172s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0109s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0144s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0111s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0153s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/edit%' and hide != 1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 141 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0008s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0150s ]
+SQL: SHOW COLUMNS FROM `tab_rebate` [ RunTime:0.0145s ]
+SQL: UPDATE `tab_rebate` SET `game_name`='QQ飞车' WHERE `game_id` = 59 [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_spend` [ RunTime:0.0157s ]
+SQL: UPDATE `tab_spend` SET `game_name`='QQ飞车' WHERE `game_id` = 59 [ RunTime:0.0006s ]
+NOTIC: [8] Undefined index: game_coin_ration D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Model.class.php 第 1204 行.
+NOTIC: [8] Undefined index: play_count D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Model.class.php 第 1204 行.
+NOTIC: [8] Undefined index: recommend_level D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Model.class.php 第 1204 行.
+SQL: UPDATE `tab_game` SET `game_name`='QQ飞车',`game_appid`='31104B24D0502B1CC',`game_type_id`='11',`game_type_name`='女生',`sort`='1',`game_score`='2',`developers`='11',`features`='21133123',`game_attribute`='1',`screen_type`='2',`game_status`='1',`test_status`='1',`category`='0',`recommend_status`='1',`icon`='0',`cover`='0',`screenshot`='',`introducebg`='0',`showbg`='0',`game_load_page`='0',`introduction`='f\'s\'f\'d\'s',`ratio`='0',`money`='0',`discount`='10',`and_dow_address`='',`ios_dow_address`='',`short`='QQFC' WHERE `id` = 59 [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `tab_game_set` [ RunTime:0.0144s ]
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0153s ]
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0151s ]
+SQL: SELECT `id`,`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type` FROM `sys_attribute` WHERE `model_id` = 5  [ RunTime:0.0008s ]
+NOTIC: [8] Undefined variable: id D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Model\GameModel.class.php 第 113 行.
+SQL: UPDATE `tab_game_set` SET `third_party_url`='',`login_notify_url`='',`pay_notify_url`='',`game_key`='',`agent_id`='',`game_pay_appid`='31104B24D0502B1CC',`id`='59',`game_id`='59' WHERE `game_id` = 59 [ RunTime:0.0004s ]
+
+[ 2018-06-09T10:15:01+08:00 ] 127.0.0.1 /admin.php?s=/Game/lists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001284s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001352s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000413s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0309s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0155s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0108s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0120s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0140s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0144s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/lists%' and hide != 1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0007s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0001s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: p D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 56 行.
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0122s ]
+SQL: SELECT * FROM `sys_model` WHERE `name` = 'game' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 74 行.
+SQL: SELECT * FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0146s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_game` LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `id`,`sort`,`game_name`,`game_type_name`,`game_appid`,`game_status`,`mix_status`,`icon`,`category`,`play_count`,`game_load_page`,`recommend_status` FROM `tab_game` ORDER BY sort desc,id desc  LIMIT 0,10   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 152 行.
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`name`,`type`,`extra` FROM `sys_attribute` WHERE `model_id` = 5  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0405s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 387 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0144s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 386 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 441 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 804 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 755 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 783 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 734 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 173 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000273s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000316s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0134s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 140 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0149s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `test_status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0108s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user_play` [ RunTime:0.0129s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 1 AND `play_time` > '1526463521' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 2 AND `play_time` > '1527044594' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 17 AND `play_time` > '1526829785' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 60 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 60 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 59 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 57 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 57 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 56 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 56 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 55 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 55 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 54 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 54 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 50 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 50 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 352 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 502 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.224084s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.224117s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000576s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000603s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000738s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000771s ]
+
+[ 2018-06-09T10:15:27+08:00 ] 127.0.0.1 /admin.php?s=/Game/edit/id/57.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001238s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001300s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000532s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000603s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0242s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0134s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0107s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0147s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0098s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0182s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/edit%' and hide != 1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 141 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0011s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0136s ]
+SQL: SELECT `id`,`game_name`,`sort`,`short`,`game_type_id`,`game_type_name`,`game_score`,`features`,`recommend_level`,`third_url`,`type`,`version`,`game_size`,`icon`,`cover`,`showbg`,`introducebg`,`screenshot`,`introduction`,`game_api`,`and_dow_address`,`ios_dow_address`,`game_address`,`dow_num`,`game_status`,`pay_status`,`dow_status`,`mix_status`,`developers`,`create_time`,`discount`,`language`,`game_appid`,`game_coin_name`,`game_coin_ration`,`category`,`ratio`,`money`,`recommend_status`,`screen_type`,`game_address_other`,`play_count`,`set_play_count_time`,`game_load_page`,`game_attribute`,`test_status` FROM `tab_game` WHERE `id` = 57 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_game_set` [ RunTime:0.0132s ]
+SQL: SELECT `id`,`game_id`,`third_party_url`,`login_notify_url`,`pay_notify_url`,`game_role_url`,`game_gift_url`,`game_server_url`,`game_key`,`access_key`,`agent_id`,`partner`,`key`,`game_pay_appid`,`apk_pck_name`,`apk_pck_sign`,`support_sdk` FROM `tab_game_set` WHERE `game_id` = 57 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000443s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000486s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0186s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0191s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0139s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 140 行.
+SQL: SHOW COLUMNS FROM `tab_game_type` [ RunTime:0.0149s ]
+SQL: SELECT * FROM `tab_game_type` WHERE ( status_show=1 )  [ RunTime:0.0003s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 237 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0111s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 57 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user_play` [ RunTime:0.0147s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 57 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `tab_opentype` [ RunTime:0.0135s ]
+SQL: SELECT * FROM `tab_opentype` WHERE ( status=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 804 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.286994s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005447s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005489s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000519s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000549s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.009604s ]
+INFO: [ UploadImages ] --END-- [ RunTime:0.009642s ]
+INFO: [ UploadImages ] --START--
+NOTIC: [8] Undefined index: pic_num D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Addons\UploadImages\UploadImagesAddon.class.php 第 36 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000060s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.293805s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 454 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 455 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 456 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 457 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 458 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011042s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001254s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.011775s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.011733s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.000028s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000052s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.305358s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005143s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.013022s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000007s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.017650s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.005843s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.011794s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000053s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.311247s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005323s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.018834s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.023641s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.005953s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.017675s ]
+INFO: [ UploadImages ] --START--
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.318451s ]
+NOTIC: [8] Undefined variable: uploadLimit D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+NOTIC: [8] Undefined variable: multi D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\5bc0a4f5ca6fba5034acda4f9a3fcb99.php 第 27 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006620s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.024867s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.030972s ]
+INFO: Run Addons\UploadImages\UploadImagesAddon [ RunTime:0.007300s ]
+INFO: [ UploadImages ] --END-- [ RunTime:-0.023660s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 523 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 693 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 698 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 726 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 731 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 760 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 765 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 794 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 799 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 826 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 831 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 860 行.
+NOTIC: [8] Undefined variable: field D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\2aced5d0e473cbb1133380841fe23993.php 第 865 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007182s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.024867s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000005s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.031530s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001054s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001110s ]
+
+[ 2018-06-09T10:15:31+08:00 ] 127.0.0.1 /admin.php?s=/Game/edit.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000008s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001193s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001256s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000336s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000386s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0245s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0249s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0097s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0126s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0106s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/edit%' and hide != 1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 141 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0125s ]
+NOTIC: [8] Uninitialized string offset: 1 D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Pinyin.class.php 第 49 行.
+SQL: SHOW COLUMNS FROM `tab_rebate` [ RunTime:0.0171s ]
+SQL: UPDATE `tab_rebate` SET `game_name`='皇上吉祥2' WHERE `game_id` = 57 [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_spend` [ RunTime:0.0160s ]
+SQL: UPDATE `tab_spend` SET `game_name`='皇上吉祥2' WHERE `game_id` = 57 [ RunTime:0.0611s ]
+NOTIC: [8] Undefined index: game_coin_ration D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Model.class.php 第 1204 行.
+NOTIC: [8] Undefined index: play_count D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Model.class.php 第 1204 行.
+NOTIC: [8] Undefined index: recommend_level D:\PHPStudy\PHPTutorial\WWW\uuyu-work\ThinkPHP\Library\Think\Model.class.php 第 1204 行.
+SQL: UPDATE `tab_game` SET `game_name`='皇上吉祥2',`game_appid`='9A5150A461CB43F82',`game_type_id`='11',`game_type_name`='女生',`sort`='0',`game_score`='0',`developers`='',`features`='',`game_attribute`='1',`screen_type`='2',`game_status`='1',`test_status`='1',`category`='0',`recommend_status`='0',`icon`='804',`cover`='0',`screenshot`='454,455,456,457,458',`introducebg`='0',`showbg`='0',`game_load_page`='0',`introduction`='',`ratio`='0',`money`='0',`discount`='10',`and_dow_address`='',`ios_dow_address`='',`short`='HSJX' WHERE `id` = 57 [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_game_set` [ RunTime:0.0137s ]
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0136s ]
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0141s ]
+SQL: SELECT `id`,`name`,`title`,`field`,`type`,`value`,`remark`,`is_show`,`extra`,`model_id`,`is_must`,`status`,`update_time`,`create_time`,`validate_rule`,`validate_time`,`error_info`,`validate_type`,`auto_rule`,`auto_time`,`auto_type` FROM `sys_attribute` WHERE `model_id` = 5  [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: id D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Model\GameModel.class.php 第 113 行.
+SQL: UPDATE `tab_game_set` SET `third_party_url`='',`login_notify_url`='http://api.modo.cn/game/open/mdcl/c234/mdgid/10/',`pay_notify_url`='http://api.modo.cn/game/asyncPaySuc/mdcl/c234/mdgid/10/',`game_key`='m0RSuOAP7GlWjTACdaDWhfgezFQra9c8',`agent_id`='',`game_pay_appid`='9A5150A461CB43F82',`id`='57',`game_id`='57' WHERE `game_id` = 57 [ RunTime:0.0003s ]
+
+[ 2018-06-09T10:15:33+08:00 ] 127.0.0.1 /admin.php?s=/Game/lists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001700s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001797s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000486s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000544s ]
+NOTIC: [2048] Declaration of Admin\Controller\ThinkController::lists() should be compatible with Admin\Controller\AdminController::lists($model, $where = Array, $order = '', $field = true) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 16 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::lists() should be compatible with Admin\Controller\ThinkController::lists($model = NULL, $p = 0, $extend_map = Array) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::edit() should be compatible with Admin\Controller\ThinkController::edit($model = NULL, $id = 0) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+NOTIC: [2048] Declaration of Admin\Controller\GameController::add() should be compatible with Admin\Controller\ThinkController::add($model = NULL) D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 9 行.
+SQL: SHOW COLUMNS FROM `tab_apply_union` [ RunTime:0.0193s ]
+SQL: SELECT `union_id`,`union_account`,`status`,`apply_domain_type`,`domain_url`,`union_set` FROM `tab_apply_union` WHERE `domain_url` IN ('www.uuyu.l.com','http://www.uuyu.l.com','https://www.uuyu.l.com') LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0169s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0105s ]
+SQL: SELECT * FROM sys_auth_group as ag right JOIN sys_auth_group_access as aga on(ag.id=aga.group_id and aga.uid=1)  WHERE ( ag.status=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group_access` [ RunTime:0.0122s ]
+SQL: SELECT `uid`,`group_id` FROM `sys_auth_group_access` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_auth_group` [ RunTime:0.0117s ]
+SQL: SELECT `title` FROM `sys_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_menu` [ RunTime:0.0133s ]
+SQL: SELECT `id`,`title`,`url` FROM `sys_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT `pid` FROM `sys_menu` WHERE ( pid !=0 AND url like '%Game/lists%' and hide != 1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `sys_menu` WHERE `id` = 140 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT DISTINCT  `group` FROM `sys_menu` WHERE `group` <> '' AND `pid` = 140  [ RunTime:0.0007s ]
+SQL: SELECT `id`,`url` FROM `sys_menu` WHERE `pid` = 140 AND `hide` = 0  [ RunTime:0.0001s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '游戏管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '区服管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `sys_menu` WHERE `group` = '礼包管理' AND `pid` = 140 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: p D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\GameController.class.php 第 56 行.
+SQL: SHOW COLUMNS FROM `sys_model` [ RunTime:0.0159s ]
+SQL: SELECT * FROM `sys_model` WHERE `name` = 'game' LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 74 行.
+SQL: SELECT * FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0141s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_game` LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `id`,`sort`,`game_name`,`game_type_name`,`game_appid`,`game_status`,`mix_status`,`icon`,`category`,`play_count`,`game_load_page`,`recommend_status` FROM `tab_game` ORDER BY sort desc,id desc  LIMIT 0,10   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 152 行.
+SQL: SELECT `extend` FROM `sys_model` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `sys_attribute` [ RunTime:0.0133s ]
+SQL: SELECT `id`,`name`,`type`,`extra` FROM `sys_attribute` WHERE `model_id` = 5  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sys_picture` [ RunTime:0.0129s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 387 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `tab_tool` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 386 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 441 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 804 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 748 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 755 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 783 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 734 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0001s ]
+NOTIC: [8] Undefined index: data_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\Controller\ThinkController.class.php 第 173 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000266s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000305s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 499 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sys_picture` WHERE `status` = 1 AND `id` = 364 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'oss_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `tab_tool` WHERE `name` = 'qiniu_storage' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sys_config` [ RunTime:0.0142s ]
+SQL: SELECT `extra`,`value` FROM `sys_config` WHERE `id` = 13 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 140 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `tab_game` WHERE `game_status` = 1 AND `test_status` = 1  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 303 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 304 行.
+SQL: SHOW COLUMNS FROM `tab_game` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `tab_user_play` [ RunTime:0.0127s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 1 AND `play_time` > '1526463521' LIMIT 1   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 2 AND `play_time` > '1527044594' LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 17 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 17 AND `play_time` > '1526829785' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 60 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 60 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 59 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 59 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 57 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 57 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0012s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 56 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 56 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 55 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 55 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 54 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 54 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `tab_game` WHERE `id` = 50 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `tab_user_play` WHERE `game_id` = 50 AND `play_time` > '0' LIMIT 1   [ RunTime:0.0008s ]
+NOTIC: [8] Use of undefined constant VERSION_NUMBER - assumed 'VERSION_NUMBER' D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 352 行.
+NOTIC: [8] Undefined variable: userarpu_order D:\PHPStudy\PHPTutorial\WWW\uuyu-work\Runtime\Cache\Admin\658387b01e6b0e3dbb2973f341ec5995.php 第 502 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.223948s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.223979s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000558s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000587s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000701s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000734s ]
+

@@ -78,7 +78,7 @@
   display: none;
 }
 </style>
-<header class="header gamedetailheader">
+<!-- <header class="header gamedetailheader">
   <section class="wrap">
     <a href="javascript:;" onclick="history.go(-1)" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="/Public/Mobile/images/back_return.png"></span></span></a>
     <div class="caption">
@@ -89,14 +89,14 @@
       </span>
     </div>
   </section>
-</header>
+</header> -->
 <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
 <section class="trunker">
   <section class="inner">
   
     <section class="contain">
       <div class="detail">
-        <div class="occupy"></div>
+        <!-- <div class="occupy"></div> -->
         <div class="game-banner-show-p">
           <!-- <img src="/Public/Mobile/images/test-img-detile.jpg" width="100%" alt=""> -->
           <img src="<?php echo ($data["introducebg"]); ?>" width="100%" alt="">

@@ -4,63 +4,24 @@
     <list default="true" id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Gift/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Gift/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Public/bases.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Public/bases.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/game.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/gift.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/gift.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Media/82e43b209680cd27cc543eb103b497e2.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Media/82e43b209680cd27cc543eb103b497e2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Media/ec17efcfe397308e3533cc8ef3721ed1.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Media/ec17efcfe397308e3533cc8ef3721ed1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/0f3b7f9c0c871e588f52428dee0a0550.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/0f3b7f9c0c871e588f52428dee0a0550.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/suspension.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/suspension.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-5.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/394e26ae1d10bb1a447c6868111a51fa.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/394e26ae1d10bb1a447c6868111a51fa.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/504874d46cd50d44c36a0ad79b4f367f.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/504874d46cd50d44c36a0ad79b4f367f.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/59803a09875c7569286531ef77035039.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/59803a09875c7569286531ef77035039.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/6bf7857f3b021ea1df91eaf8597c0afa.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/6bf7857f3b021ea1df91eaf8597c0afa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/c99b712f6e3119dcad808265a5fccb68.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/c99b712f6e3119dcad808265a5fccb68.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_05.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_05.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_05.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_05.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-10/5af3f2f1b964a.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f73ec300.png" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f73ec300.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f78c2abd.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f78c2abd.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f7903293.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f7903293.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f793d1ee.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f793d1ee.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f7976c2b.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f7976c2b.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f79b5b6f.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af55f79b5b6f.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af561b97bdb3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-11/5af561b97bdb3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe34ff8ac65.png" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe34ff8ac65.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe43ce3333a.png" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe43ce3333a.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe647a617cd.png" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe647a617cd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe9e8d2a299.png" beforeDir="false" afterPath="$PROJECT_DIR$/Uploads/Picture/2018-05-18/5afe9e8d2a299.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110c080d105.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110c082da4a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110c083e9ea.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110d76a2ba1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110d76ad1fc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110d76ddb57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110dbaa632a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110e29e4bf2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110e29f20e3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-01/5b110e2a17d74.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b123e6a17387.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b123e9d0a44d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b123ef11e46e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b123f0c647e5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b123f6759ae7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b12590ac8050.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b1259245777e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125929884b6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125b197dbb4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125b239e39b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4f13620.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4f46219.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4f60ed8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4f76a47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4f8bfc4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4fb0214.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uploads/Ueditor2018-06-02/5b125d4fc375b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/7e8c1e508efdbf95af93df079dc0e4ac.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/7e8c1e508efdbf95af93df079dc0e4ac.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/18_06_07.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Admin/18_06_07.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_07.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_07.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_07.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_07.log" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -77,7 +38,7 @@
       <file leaf-file-name="index-201806070920.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="827">
+            <state relative-caret-position="5607">
               <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
             </state>
           </provider>
@@ -86,17 +47,57 @@
       <file leaf-file-name="game20180607.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="372" column="10" selection-start-line="372" selection-start-column="10" selection-end-line="372" selection-end-column="10" />
+            <state relative-caret-position="7308">
+              <caret line="348" column="21" selection-start-line="348" selection-start-column="21" selection-end-line="348" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="30" selection-start-column="30" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11325">
-              <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
+            <state relative-caret-position="378">
+              <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suspension.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="242" column="40" lean-forward="true" selection-start-line="242" selection-start-column="40" selection-end-line="242" selection-end-column="40" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,6 +125,10 @@
       <find>loadajax1</find>
       <find>.detail .base .wrap .but-begin</find>
       <find>register</find>
+      <find>jssuspensionbtn</find>
+      <find>inner</find>
+      <find>jsloadpic</find>
+      <find>index-201806070920.css</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,7 +148,6 @@
         <option value="$PROJECT_DIR$/Application/Media/View/Public/bases.html" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Index/allMaster.html" />
         <option value="$USER_HOME$/Desktop/临时文件夹/allMaster/allMaster.html" />
-        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Gift/index.html" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/gift.css" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Public/bases.html" />
@@ -152,10 +156,15 @@
         <option value="$PROJECT_DIR$/Public/Mobile/css/index-20180607.css" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/game.css" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Game/detail.html" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css" />
         <option value="$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Index/index.html" />
+        <option value="$PROJECT_DIR$/Application/Media/View/Game/suspension.html" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/suspension.css" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/index.html" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" />
       </list>
     </option>
   </component>
@@ -165,15 +174,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1947" />
-    <option name="y" value="-20" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="2683" />
+    <option name="y" value="-26" />
     <option name="width" value="1578" />
     <option name="height" value="929" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showMembers ProjectPane="false" />
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -192,6 +204,43 @@
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -205,13 +254,29 @@
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
               <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="xigusdk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="weiduan" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
               <item name="weiduan" type="462c0819:PsiDirectoryNode" />
               <item name="quanminzhugong" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -223,7 +288,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="register&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Home/js/register.js&#10;jslogin&#9;null&#9;null&#10;butnlogin&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="__CSS__&#9;ACTION&#9;null&#10;index-201806070920.css&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/index-201806070920.css&#10;game20180607&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/game20180607.css&#10;game20180607.css&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/game20180607.css&#10;jsloadpic&#9;null&#9;null&#10;register&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Home/js/register.js&#10;jslogin&#9;null&#9;null&#10;butnlogin&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.prettier" value="true" />
@@ -283,18 +348,30 @@
       <workItem from="1528245529075" duration="5923000" />
       <workItem from="1528265599623" duration="784000" />
       <workItem from="1528266807328" duration="3007000" />
-      <workItem from="1528332728387" duration="10924000" />
+      <workItem from="1528332728387" duration="12386000" />
+      <workItem from="1528419669413" duration="356000" />
+      <workItem from="1528420038833" duration="1229000" />
+      <workItem from="1528425256156" duration="7995000" />
+      <workItem from="1528506465165" duration="2999000" />
+      <workItem from="1528677580656" duration="941000" />
     </task>
+    <task id="LOCAL-00001" summary="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改.">
+      <created>1528360562008</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1528360562008</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110783000" />
+    <option name="totallyTimeSpent" value="125765000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14114584" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14114584" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32765958" />
@@ -319,18 +396,15 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改." />
+    <option name="LAST_COMMIT_MESSAGE" value="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改." />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6657">
-          <caret line="317" column="22" selection-start-line="317" selection-start-column="22" selection-end-line="317" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9639">
-          <caret line="459" column="1" selection-start-line="459" selection-start-column="1" selection-end-line="461" selection-end-column="23" />
+        <state relative-caret-position="3507">
+          <caret line="167" selection-start-line="167" selection-end-line="167" />
         </state>
       </provider>
     </entry>
@@ -449,13 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/allMaster.html" />
     <entry file="file://$USER_HOME$/Desktop/临时文件夹/allMaster/allMaster.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -527,31 +594,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/loginsdk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/bases.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="118" column="29" selection-start-line="118" selection-start-column="29" selection-end-line="118" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Public/static/dist/dropload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -562,24 +608,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/View/default/Query/register.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/View/default/Index/register.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Model/BaseModel.class.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
           <caret line="76" column="20" lean-forward="true" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="24" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Common/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Common/Common/function11.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -600,13 +634,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/subbases.html">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/weiduan/quanminzhugong/allmaster.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Media/View/TuiRegister/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="661">
+          <caret line="148" column="16" lean-forward="true" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="347" column="9" selection-start-line="347" selection-start-column="9" selection-end-line="347" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/loginsdk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/loginsdk.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Media/View/Game/suspension.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" selection-start-column="30" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/bases.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="109" column="58" selection-start-line="109" selection-start-column="58" selection-end-line="109" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="153" column="66" lean-forward="true" selection-start-line="153" selection-start-column="66" selection-end-line="153" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5607">
+          <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7308">
+          <caret line="348" column="21" selection-start-line="348" selection-start-column="21" selection-end-line="348" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1239">
-          <caret line="273" selection-start-line="273" selection-end-line="273" />
+        <state relative-caret-position="365">
+          <caret line="242" column="40" lean-forward="true" selection-start-line="242" selection-start-column="40" selection-end-line="242" selection-end-column="40" />
           <folding>
             <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
@@ -620,42 +756,6 @@
             <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/sbases.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/loginsdk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="827">
-          <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="372" column="10" selection-start-line="372" selection-start-column="10" selection-end-line="372" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11325">
-          <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
         </state>
       </provider>
     </entry>

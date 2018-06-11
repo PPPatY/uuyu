@@ -1,5 +1,5 @@
 <?php if (!defined('THINK_PATH')) exit();?><a href="javascript:;" class="suspensionbtn hidden" id="jssuspensionbtn"><img src="<?php echo get_cover(C('SUSPENSION_ICO'),path);?>"></a>
-    
+
 <div class="suspensionbox">
   <div class="wrap">
     <div class="sus-menu">
@@ -194,7 +194,7 @@
             $(s).addClass('open');
           }
         },!1)
-        
+
       },!1);
       s.addEventListener(t.evt3,function(event){
         f = !1;
@@ -206,7 +206,7 @@
         document.addEventListener(t.evt2,function(a){a.preventDefault();},!1);
         document.removeEventListener(t.evt2,function(a){a.preventDefault();},!1);
         setTimeout(function() {h = !0;},15);
-        
+
       },!1);
       
       /* 悬浮出现 */
@@ -214,7 +214,7 @@
         $('.suspensionbox').animate({
           left:0
         },500,function(){});
-        
+
         return false;
       });
       
@@ -253,26 +253,26 @@
                     result+='<a href="javascript:;" class="pop-butn collection">收藏游戏</a>';
                   }
                   result+='</div>';
-									pop.addClass('pop-partir').open('',result);
-									$('.pop-close').click(function(){
-										pop.close();
-										window.history.pushState('forward', null, '#');
-									});
-									// 收藏游戏
-									$('.collection').click(function() {
-										pop.removeClass('pop-partir');
-										// ajax
-										$('.jssuscollection').click();
-										window.history.pushState('forward', null, '#');
-										return false;
-										
-									});
-									// 离开
-									$('.continue').click(function() {
-										// location.replace('<?php echo ($prev_url); ?>');
-                                        // 修改游戏中点击返回 退出游戏时的重定向到首页。
-                                        window.location.href = "http://uuyu.com";
-                                    });
+                    pop.addClass('pop-partir').open('',result);
+                    $('.pop-close').click(function(){
+                      pop.close();
+                      window.history.pushState('forward', null, '#');
+                    });
+                    // 收藏游戏
+                    $('.collection').click(function() {
+                      pop.removeClass('pop-partir');
+                      // ajax
+                      $('.jssuscollection').click();
+                      window.history.pushState('forward', null, '#');
+                      return false;
+
+                    });
+                    // 离开
+                    $('.continue').click(function() {
+                      // location.replace('<?php echo ($prev_url); ?>');
+                      // 修改游戏中点击返回 退出游戏时的重定向到首页。
+                      window.location.href = "http://uuyu.com";
+                    });
                 }
               });
             }
