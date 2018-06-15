@@ -177,5 +177,25 @@
 .suspensionbtn img{
 	/*margin-left: 50%;*/
 }
+.container .loadbox .notice{
+	color: #999;
+}
+
+.dialog-mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 10.66rem;
+	height: 100%;
+	background: rgba(0,0,0,.6);
+	text-align: center;
+}
+
+.dialog-mask .content{
+	font-size: .6rem;
+	color: #fff;
+	margin-top: 130px;
+}
 
 /*新加样式*/

@@ -130,6 +130,13 @@
       </div>
     </div>
   </div>
+  <div class="dialog-mask js-close-dialog-mask-p">
+    <div class="content">
+      <p>扫描二维码关注微信公众号</p>
+      <p>更多好玩游戏分享</p>
+      <img src="/Public/Mobile/images/exit-qr-code.jpg" alt="">
+    </div>
+  </div>
 </div>
 <link href="/Public/static/dist/dropload.css" rel="stylesheet" >
 <script src="/Public/static/dist/dropload.js"></script>
@@ -156,6 +163,13 @@
         alert('此浏览器不支持此操作，请长按礼包码复制');
       });
   }
+
+    // 关闭二维码提示 :start
+    $('.js-close-dialog-mask-p').click(function () {
+        $('.dialog-mask').hide();
+    })
+    // 关闭二维码提示 :end
+
     $(function() {
       var pop = $('.pop').pop();
 			
@@ -210,15 +224,18 @@
       },!1);
       
       /* 悬浮出现 */
-      $(s).on('click',function() {
-        $('.suspensionbox').animate({
-          left:0
-        },500,function(){});
+        $(s).on('click',function() {
+            // 二维码提示出现 ：start
+            // $('.dialog-mask').show();
+            // 二维码提示出现 ：end
 
-        return false;
-      });
-      
-      
+            $('.suspensionbox').animate({
+                left:0
+            },500,function(){});
+            return false;
+        });
+
+
       /* 离开 */
       if (window.history && window.history.pushState) {
         $(window).on('popstate',function() {
@@ -226,7 +243,8 @@
           var hasSplit = hashLocation.split('#!/');
           var hasName = hasSplit[1];
           var result='';
-          $game_id = "<?php echo I('game_id');?>"
+          $game_id = "<?php echo I('game_id');?>";
+          $pid = "<?php echo I('pid');?>";
           if (hasName != '') {
             pop.css('z-index',2000);
             var hash = window.location.hash;
@@ -234,14 +252,18 @@
               $.ajax({
                 type:'post',
                 url:"<?php echo U('Game/suspension_leave');?>",
-                data:{game_id:$game_id},
+                data:{game_id:$game_id,pid:$pid},
                 async:false,
                 success:function(data){
                   result += '<a href="javascript:;" class="pop-close"></a><div class="pop-content"><div class="pop-title">今日推荐游戏</div><div class="partir-qrcode">';
-                  result+='<a href="http://uuyu.com/media.php?s=Game/open_game/game_id/25" target="_self" style="display:inline-block;width:4.6rem;height:4.6rem;"><img src="';
-                  // result+=data.data.qrcode;
-                  result+='/Public/Mobile/images/Today-recommendation-game.png';
-                  result+='"></a><p style="font-size:.5rem;color:#ff7777;">点击立即进入游戏</p></div><div class="partir-recommend"><ul class="pop-clear">';
+                  if(data.data.id==''){
+                      result+='<a href="#"><img src="';
+                      result+=data.data.path+'"></a><p style="font-size:.5rem;color:#ff7777;">点击立即进入游戏</p></div><div class="partir-recommend"><ul class="pop-clear">';
+                  }else{
+                      result+='<a href="?s=Game/open_game/game_id/';
+                      result+=data.data.id+'"  target="_self" style="display:inline-block;width:4.6rem;height:4.6rem;"><img src="';
+                      result+=data.data.path+'"></a><p style="font-size:.5rem;color:#ff7777;">点击立即进入游戏</p></div><div class="partir-recommend"><ul class="pop-clear">';
+                  }
                   for(var i=0;i<data.data.like.length;i++){
                     result+='<li><a href="'+data.data.like[i].play_detail_url+'"><img src="'+data.data.like[i].icon+'"><p>'+data.data.like[i].game_name+'</p></a></li>';
                   }

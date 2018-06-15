@@ -1,0 +1,61 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<style type="text/css">
+		.form_info li>label{width: 130px;}
+	</style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >基本设置</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" method="post" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <ul class="form_info ">
+                        <li><label>参数 1：</label><input type="text" class="text input-large" value="{$wechat_url}"><i class="form_hint"> 参数 1说明</i></li>
+
+                        <li><label>参数 2：</label><input type="text" class="text input-large" name="config[appid]" value="{$wechat['appid']}"><i class="form_hint">参数 2说明</i></li>
+
+                        <li><label>参数 3：</label><input type="text" class="text input-large" name="config[appsecret]" value="{$wechat['appsecret']}"><i class="form_hint">参数 3说明</i></li>
+
+                        <li><label>参数 4：</label><input type="text" class="text input-large" name="config[token]" value="{$wechat['token']}"><i class="form_hint">参数 4说明</i></li>
+
+                        <li><label>参数 5：</label><input type="text" class="text input-large" name="config[key]" value="{$wechat['key']}"><i class="form_hint">参数5说明</i></li>
+
+                    </ul>
+                </div>
+                <div class="form-item">
+                    <label class="item-label"></label>
+                    <div class="controls">
+                        <input type="hidden" name="name" value="wechat"></input>
+                        <button type="submit" class=" submit_btn ajax-post" target-form="form-horizontal" style="margin-left: 159px;">确 定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</block>
+
+<block name="script">
+<script src="__JS__/channel.js"></script>
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('Wechat/index')}');
+    $(function(){
+        //支持tab
+        showTab();
+        $('.firsttab').click();
+    })
+</script>
+</block>

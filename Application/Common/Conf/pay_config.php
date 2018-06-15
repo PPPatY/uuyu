@@ -40,16 +40,10 @@
   ),
   'wechat' => 
   array (
-    'appid' => 'wx8545770ebd76f2b9',
-    'appsecret' => '0d6008c6e6d8b8d24eaed658288c1eb7',
-    'token' => '6z7n9vd90',
-    'key' => 'OIke75yILoxalFoavJzxB8kxiUS9qvJKjkkUe4weOYX',
-    'wechatname' => '剑斩江湖',
-    'message' => 
-    array (
-      'first_msg' => '',
-      'default_msg' => '',
-    ),
+    'appid' => '',
+    'appsecret' => '',
+    'token' => '',
+    'key' => '',
   ),
   'sms_set' => 
   array (

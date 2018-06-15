@@ -136,6 +136,13 @@
       </div>
     </div>
   </div>
+  <div class="dialog-mask js-close-dialog-mask-p">
+    <div class="content">
+      <p>扫描二维码关注微信公众号</p>
+      <p>更多好玩游戏分享</p>
+      <img src="__IMG__/exit-qr-code.jpg" alt="">
+    </div>
+  </div>
 </div>
 <link href="__STATIC__/dist/dropload.css" rel="stylesheet" >
 <script src="__STATIC__/dist/dropload.js"></script>
@@ -162,6 +169,13 @@
         alert('此浏览器不支持此操作，请长按礼包码复制');
       });
   }
+
+    // 关闭二维码提示 :start
+    $('.js-close-dialog-mask-p').click(function () {
+        $('.dialog-mask').hide();
+    })
+    // 关闭二维码提示 :end
+
     $(function() {
       var pop = $('.pop').pop();
 			
@@ -216,15 +230,18 @@
       },!1);
       
       /* 悬浮出现 */
-      $(s).on('click',function() {
-        $('.suspensionbox').animate({
-          left:0
-        },500,function(){});
+        $(s).on('click',function() {
+            // 二维码提示出现 ：start
+            // $('.dialog-mask').show();
+            // 二维码提示出现 ：end
 
-        return false;
-      });
-      
-      
+            $('.suspensionbox').animate({
+                left:0
+            },500,function(){});
+            return false;
+        });
+
+
       /* 离开 */
       if (window.history && window.history.pushState) {
         $(window).on('popstate',function() {

@@ -2,26 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wechat/menuSettings.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Game/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Game/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Common/Conf/pay_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Conf/pay_config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Media/images/pc_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Media/images/pc_bg.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Public/Mobile/css/suspension.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/suspension.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/allMaster/content-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/394e26ae1d10bb1a447c6868111a51fa.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/394e26ae1d10bb1a447c6868111a51fa.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/504874d46cd50d44c36a0ad79b4f367f.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/504874d46cd50d44c36a0ad79b4f367f.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/59803a09875c7569286531ef77035039.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/59803a09875c7569286531ef77035039.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/6bf7857f3b021ea1df91eaf8597c0afa.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/6bf7857f3b021ea1df91eaf8597c0afa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/pc_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/images/pc_bg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/d547876950465376e4639887bff20c94.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Admin/d547876950465376e4639887bff20c94.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/7e8c1e508efdbf95af93df079dc0e4ac.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/7e8c1e508efdbf95af93df079dc0e4ac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Admin/18_06_07.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Admin/18_06_07.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_07.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_07.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_07.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_07.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_11.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_11.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_11.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_11.log" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,69 +27,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index-201806070920.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5607">
-              <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game20180607.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7308">
-              <caret line="348" column="21" selection-start-line="348" selection-start-column="21" selection-end-line="348" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" selection-start-column="30" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="suspension.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="suspension.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="242" column="40" lean-forward="true" selection-start-line="242" selection-start-column="40" selection-end-line="242" selection-end-column="40" />
+            <state relative-caret-position="2919">
+              <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_game_error.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Game/edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1046">
+              <caret line="413" column="73" selection-start-line="413" selection-start-column="73" selection-end-line="413" selection-end-column="73" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suspension.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4137">
+              <caret line="197" column="22" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -129,6 +107,10 @@
       <find>inner</find>
       <find>jsloadpic</find>
       <find>index-201806070920.css</find>
+      <find>tab-pane</find>
+      <find>泛海</find>
+      <find>add-child</find>
+      <find>upload_picture_introducebg</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,10 +143,13 @@
         <option value="$PROJECT_DIR$/Application/Mobile/View/Index/index.html" />
         <option value="$PROJECT_DIR$/Application/Media/View/Game/suspension.html" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html" />
-        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/suspension.css" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Game/index.html" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/game20180607.css" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wechat/basic.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wechat/menuSettings.html" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/suspension.css" />
+        <option value="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -174,9 +159,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="2683" />
-    <option name="y" value="-26" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2713" />
+    <option name="y" value="-22" />
     <option name="width" value="1578" />
     <option name="height" value="929" />
   </component>
@@ -205,20 +190,20 @@
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
               <item name="Game" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -226,15 +211,7 @@
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="Index" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -256,30 +233,6 @@
               <item name="Mobile" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="xigusdk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="weiduan" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="weiduan" type="462c0819:PsiDirectoryNode" />
-              <item name="quanminzhugong" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -290,7 +243,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="__CSS__&#9;ACTION&#9;null&#10;index-201806070920.css&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/index-201806070920.css&#10;game20180607&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/game20180607.css&#10;game20180607.css&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/game20180607.css&#10;jsloadpic&#9;null&#9;null&#10;register&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Home/js/register.js&#10;jslogin&#9;null&#9;null&#10;butnlogin&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/A-Work/Vue-mkt" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
@@ -353,7 +306,11 @@
       <workItem from="1528420038833" duration="1229000" />
       <workItem from="1528425256156" duration="7995000" />
       <workItem from="1528506465165" duration="2999000" />
-      <workItem from="1528677580656" duration="941000" />
+      <workItem from="1528677580656" duration="1616000" />
+      <workItem from="1528783202571" duration="4318000" />
+      <workItem from="1528850720904" duration="11350000" />
+      <workItem from="1528943481904" duration="4220000" />
+      <workItem from="1529027011796" duration="4747000" />
     </task>
     <task id="LOCAL-00001" summary="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改.">
       <created>1528360562008</created>
@@ -366,10 +323,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125765000" />
+    <option name="totallyTimeSpent" value="151075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14114584" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -401,55 +359,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3507">
-          <caret line="167" selection-start-line="167" selection-end-line="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7224">
-          <caret line="344" column="19" selection-start-line="344" selection-start-column="19" selection-end-line="344" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9639">
-          <caret line="459" column="1" selection-start-line="459" selection-start-column="1" selection-end-line="461" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5502">
-          <caret line="262" column="22" selection-start-line="262" selection-start-column="22" selection-end-line="262" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8442">
-          <caret line="402" column="14" selection-start-line="402" selection-start-column="14" selection-end-line="402" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9450">
-          <caret line="450" column="16" selection-start-line="450" selection-start-column="16" selection-end-line="450" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5082">
-          <caret line="242" column="21" selection-start-line="242" selection-start-column="21" selection-end-line="242" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Public/Mobile/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8085">
@@ -509,13 +418,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/Owner/uuyuData.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" lean-forward="true" selection-end-line="122954" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/Owner/uuyuData.sql" />
     <entry file="file://$PROJECT_DIR$/Application/User/Conf/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -690,38 +593,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="153" column="66" lean-forward="true" selection-start-line="153" selection-start-column="66" selection-end-line="153" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="30" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5607">
-          <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -739,23 +614,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Admin/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5964">
+          <caret line="284" column="20" selection-start-line="284" selection-start-column="12" selection-end-line="284" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/menuSettings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="535" column="113" selection-start-line="535" selection-start-column="113" selection-end-line="535" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/basic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4137">
+          <caret line="197" column="22" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="242" column="40" lean-forward="true" selection-start-line="242" selection-start-column="40" selection-end-line="242" selection-end-column="40" />
+        <state relative-caret-position="2919">
+          <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Game/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1046">
+          <caret line="413" column="73" selection-start-line="413" selection-start-column="73" selection-end-line="413" selection-end-column="73" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>

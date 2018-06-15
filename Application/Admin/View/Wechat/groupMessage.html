@@ -1,0 +1,101 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul id="tuwenOrtext">
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >图文</a></li>
+                <li data-tab="tab2"><a href="javascript:void(0);" >文本</a></li>
+                <p class="description_text">/*菜单说明*/</p>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <ul class="form_info ">
+                        <li><label>media_id：</label><input type="text" class="text input-large js-media_id" value="{$wechat_url}"><i class="form_hint"> media_id说明</i></li>
+                        <li><label>type：</label><input type="text" class="text input-large js-type" name="config[appid]" value="{$wechat['appid']}"><i class="form_hint">type：说明</i></li>
+                    </ul>
+                </div>
+                <div id="tab2" class="tab-pane in tab2">
+                    <ul class="form_info ">
+                        <li><label>type：</label><input type="text" class="text input-large js-type" value="{$wechat_url}"><i class="form_hint"> type说明</i></li>
+                        <li><label>content：</label><textarea name="" class="text-content" id="" cols="30" rows="10"></textarea> </li>
+                    </ul>
+                </div>
+                <div class="form-item">
+                    <label class="item-label"></label>
+                    <div class="controls">
+                        <div class="submit-btn js-submit-menuSettings" target-form="form-horizontal" style="width: 36px; cursor: pointer;">确 定</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+
+        var data = {}
+        
+        // 点击提交 获取整个数据
+        $('.js-submit-menuSettings').click(function () {
+            data.menu = $('#tuwenOrtext li.firsttab').hasClass('current')?0:1;
+            if (data.menu == 0) {
+                data.media_id = $('#tab1 input.js-media_id').val();
+                data.type = $('#tab1 input.js-type').val();
+            } else {
+                data.media_id = null;
+                data.type = $('#tab2 input.js-type').val();
+                data.content = $('#tab2 textarea.text-content').val();
+            }
+            
+            console.log(data || '未做数据获取操作');
+        })
+
+        
+        // 数据提交函数
+        function sensDatas(e){
+            // 提交信息
+            var data_key = e;
+            var sendData = $.ajax({
+                url: '',
+                method: 'post',
+                data: {},
+                dataType: 'json'
+            })
+            sendData.done(function (e) {
+                // console.log(e)
+                var status = JSON.parse(e.info)
+            })
+            sendData.fail(function () {
+                // console.log('请求失败，error')
+            })
+            console.log(data);
+        }
+    </script>
+</block>
