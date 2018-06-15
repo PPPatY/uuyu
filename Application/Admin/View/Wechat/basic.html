@@ -22,25 +22,30 @@
             <form action="{:U('saveTool')}" method="post" class="form-horizontal qq_login form_info_ml">
                 <div id="tab1" class="tab-pane in tab1">
                     <ul class="form_info ">
-                        <li><label>参数 1：</label><input type="text" class="text input-large" value="{$wechat_url}"><i class="form_hint"> 参数 1说明</i></li>
+                        <li>
+                            <label>参数 1：</label>
+                            <input type="text" class="text input-large js-inp-1" value="{$wechat_url}">
+                            <i class="form_hint"> 参数 1说明</i>
+                        </li>
 
-                        <li><label>参数 2：</label><input type="text" class="text input-large" name="config[appid]" value="{$wechat['appid']}"><i class="form_hint">参数 2说明</i></li>
+                        <li><label>参数 2：</label><input type="text" class="text input-large js-inp-2" name="config[appid]" value="{$wechat['appid']}"><i class="form_hint">参数 2说明</i></li>
 
-                        <li><label>参数 3：</label><input type="text" class="text input-large" name="config[appsecret]" value="{$wechat['appsecret']}"><i class="form_hint">参数 3说明</i></li>
+                        <li><label>参数 3：</label><input type="text" class="text input-large js-inp-3" name="config[appsecret]" value="{$wechat['appsecret']}"><i class="form_hint">参数 3说明</i></li>
 
-                        <li><label>参数 4：</label><input type="text" class="text input-large" name="config[token]" value="{$wechat['token']}"><i class="form_hint">参数 4说明</i></li>
+                        <li><label>参数 4：</label><input type="text" class="text input-large js-inp-4" name="config[token]" value="{$wechat['token']}"><i class="form_hint">参数 4说明</i></li>
 
-                        <li><label>参数 5：</label><input type="text" class="text input-large" name="config[key]" value="{$wechat['key']}"><i class="form_hint">参数5说明</i></li>
+                        <li><label>参数 5：</label><input type="text" class="text input-large js-inp-5" name="config[key]" value="{$wechat['key']}"><i class="form_hint">参数5说明</i></li>
 
                     </ul>
                 </div>
-                <div class="form-item">
+                <!-- <div class="form-item">
                     <label class="item-label"></label>
                     <div class="controls">
                         <input type="hidden" name="name" value="wechat"></input>
-                        <button type="submit" class=" submit_btn ajax-post" target-form="form-horizontal" style="margin-left: 159px;">确 定</button>
+                        <button type="submit" class="submit js-submit" target-form="form-horizontal" style="margin-left: 159px;">确 定</button>
                     </div>
-                </div>
+                </div> -->
+                <input type="button" value="提交" class="submit js-submit" style=" margin-left: 50px; margin-top: 15px; padding: 6px 20px;">
             </form>
         </div>
     </div>
@@ -57,5 +62,42 @@
         showTab();
         $('.firsttab').click();
     })
+</script>
+
+        
+<script type="text/javascript">
+    var data = {};
+
+    // 点击提交
+    $('.js-submit').click(function () {
+        var liData = $('#tab1>.form_info');
+        data.param1 = liData.find('input.js-inp-1').val();
+        data.param2 = liData.find('input.js-inp-2').val();
+        data.param3 = liData.find('input.js-inp-3').val();
+        data.param4 = liData.find('input.js-inp-4').val();
+        data.param5 = liData.find('input.js-inp-5').val();
+        sendDatas(data);
+        console.log(data);
+    })
+    
+    // 数据提交函数
+    function sendDatas(e){
+        // 提交信息
+        var data_key = e;
+        var sendData = $.ajax({
+            url: '',
+            method: 'post',
+            data: {},
+            dataType: 'json'
+        })
+        sendData.done(function (e) {
+            // console.log(e)
+            var status = JSON.parse(e.info)
+        })
+        sendData.fail(function () {
+            // console.log('请求失败，error')
+        })
+        console.log(data);
+    }
 </script>
 </block>

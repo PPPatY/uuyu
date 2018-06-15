@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wechat/menuSettings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Game/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Game/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Conf/pay_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Conf/pay_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Media/images/pc_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Media/images/pc_bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/css/suspension.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/css/suspension.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/Mobile/images/pc_bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/Public/Mobile/images/pc_bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/d547876950465376e4639887bff20c94.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Admin/d547876950465376e4639887bff20c94.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Mobile/7e8c1e508efdbf95af93df079dc0e4ac.php" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Cache/Mobile/7e8c1e508efdbf95af93df079dc0e4ac.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_11.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Media/18_06_11.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_11.log" beforeDir="false" afterPath="$PROJECT_DIR$/Runtime/Logs/Mobile/18_06_11.log" afterDir="false" />
-    </list>
+    <list default="true" id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -36,7 +23,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_game_error.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user_game_error.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -62,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="21">
@@ -218,6 +205,35 @@
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Wechat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Application" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -232,6 +248,12 @@
               <item name="Public" type="462c0819:PsiDirectoryNode" />
               <item name="Mobile" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
+              <item name="Public" type="462c0819:PsiDirectoryNode" />
+              <item name="Ueditor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -310,7 +332,7 @@
       <workItem from="1528783202571" duration="4318000" />
       <workItem from="1528850720904" duration="11350000" />
       <workItem from="1528943481904" duration="4220000" />
-      <workItem from="1529027011796" duration="4747000" />
+      <workItem from="1529027011796" duration="5456000" />
     </task>
     <task id="LOCAL-00001" summary="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改.">
       <created>1528360562008</created>
@@ -323,7 +345,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151075000" />
+    <option name="totallyTimeSpent" value="151784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="-8" width="1936" height="1056" extended-state="6" />
@@ -670,9 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Game/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1046">
@@ -696,6 +715,9 @@
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

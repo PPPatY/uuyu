@@ -69,13 +69,16 @@
         
         // 点击提交 获取整个数据
         $('.js-submit-menuSettings').click(function () {
-            data.bgPic = $('.upload-img-box .upload-pre-item img')[0].src || null
+            data.bgPic = $('.upload-img-box .upload-pre-item img')[0].src || null;
+
+
+            sendDatas(data);
             console.log(data || '未做数据获取操作');
         })
 
         
         // 数据提交函数
-        function sensDatas(e){
+        function sendDatas(e){
             // 提交信息
             var data_key = e;
             var sendData = $.ajax({
