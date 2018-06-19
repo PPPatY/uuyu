@@ -65,7 +65,6 @@
         <div class="tab_nav jstabnav">
             <ul>
                 <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >新增页面</a></li>
-                <!-- <li data-tab="tab2"><a href="javascript:void(0);" >文本</a></li> -->
                 <p class="description_text">/*新增页面说明*/</p>
             </ul>
         </div>
@@ -100,13 +99,11 @@
             // 获取eventkey
             $('.eventkey-p').blur(function () {
                 data.eventkey = $('.eventkey-p').val();
-                // console.log(data.eventkey);
             })
         
             // 获取eventtype
             $('.eventtype-p').blur(function () {
                 data.eventtype = $('.eventtype-p').val();
-                // console.log(data.eventtype);
             })
 
             // 获取选中图文或文本
@@ -126,18 +123,15 @@
             // 获取图文中的标题
             $('.key-word-title-p').blur(function () {
                 data.eventTitle = $(this).val();
-                // console.log(data.eventTitle);
             })
 
             // 获取文本中的内容
             $('#editor-w').blur(function () {
                 data.eventTextCont = $(this).val();
-                // console.log(data.eventTextCont);
             })
         
             // 点击提交
             $('.js-submit').click(function () {
-                // console.log(data);
 
 
 
