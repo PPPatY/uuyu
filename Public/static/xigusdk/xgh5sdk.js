@@ -1,8 +1,8 @@
-/*! h5game-sdk 2017-07-27 19:33:20 */
+﻿/*! h5game-sdk 2017-07-27 19:33:20 */
 // 自执行函数开始
 !
 function(a, b, c) {
-    var openurl = "//local.h5_4.com";
+    var openurl = "//uuyu.com";
     "use strict";
     var d = Date.parse(new Date())/1000;
     var e = d,
@@ -409,6 +409,7 @@ GameXG.prototype.h5paySdk = function(data, callback) {
             $this.postMessage({ event: "game:h5paySdk",code:0, data: data.sdkloginmodel+"--sdkloginmodel参数错误" });return;
             break;
     }
+    console.log(siteurl)
     var d = {
             url: siteurl + "GameUtile/h5paySdk",
             callbackName: "h5paySdkCallback",

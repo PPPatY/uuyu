@@ -91,7 +91,7 @@
           <if condition="($paytype['wei_xin'] eq 1) or ($paytype['weixin'] eq 1)">
             <label class="item table-row jsweixin"><span class="table-cell item1"><img src="/Public/Mobile/images/my_pay_weixin.png" class="icon"></span><span class="table-cell item2"><span class="way">微信支付</span><span class="text">推荐微信用户使用</span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value="weixin"><i class="icon-hook"></i><!--<i class="icon-arrow-right">--></span></span></label>
           </if>
-          <if condition="$paytype['alipay'] eq 1">
+          <if condition="$paytype['upay'] eq 1">
             <label class="item input-radio table-row"><span class="table-cell item1"><img src="/Public/Mobile/images/my_pay_alipay.png" class="icon"></span><span class="table-cell item2"><span class="way">支付宝支付</span><span class="text"></span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio on" checked="" value="alipay"><i class="icon-hook"></i></span></span></label>
           </if>
             <label class="item input-radio table-row"><span class="table-cell item1"><img src="/Public/Mobile/images/pop_pay_platform.png" class="icon"></span><span class="table-cell item2"><span class="way">平台币支付</span><span class="text">平台币余额：{$ptb['balance']}</span></span><span class="table-cell item3"><span class="icon-hook-wrap"><input type="radio" name="way" class="radio" value="ptb"><i class="icon-hook"></i></span></span></label>

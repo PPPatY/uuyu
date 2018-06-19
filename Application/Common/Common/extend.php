@@ -1145,6 +1145,18 @@ function get_wx_type(){
     }
    return $name=="weixin"?1:0;
 }
+
+function get_alipay_type(){
+    $map['name'] = 'alipay';
+    $map1['name'] = 'upay';
+    $type=M('Tool','tab_')->where($map)->select();
+    $type1=M('Tool','tab_')->where($map1)->select();
+    if($type['status']==1 && $type1['status']==0){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 //查询uc用户是否存在该平台
 function find_uc_account($name){
     $map['account']=trim($name);
@@ -1586,6 +1598,7 @@ function signsortData($data, $secret)
         $tmp[] = $k . '=' . urlencode($v);
     }
     $str = implode('&', $tmp) . $secret;
+   file_put_contents(dirname(__FILE__).'/123.txt',$str);
     return md5($str);
 }
 function is_https() {

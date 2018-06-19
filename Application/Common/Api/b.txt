@@ -1,1 +1,1 @@
-http://h5.kengwan.com/mobile.php/Pay/channel_pay_notify/cha/58/gaid/rxufLmiZNK4CESMw6p0?amount=1000&channel_source=vlcms&game_appid=2B678C6D710DC034E&out_trade_no=SP_20170919175108Bnz1&payplatform2cp=127.0.0.1&trade_no=SP_201709191751062Rmx&sign=e7dcf19838397487b5530fcc72eb1d91
+http://sdk.h5.gamedog.cn/Platformwuhanyouyou/paycallback/?amount=600&channel_source=vlcms&game_appid=4B8B15D867FDAE690&out_trade_no=SP_201806131701255vxh&payplatform2cp=116.62.196.35&trade_no=172970&sign=de2596bbadbfe575a8d474643a44d298

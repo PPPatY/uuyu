@@ -709,6 +709,75 @@ class NotifyController extends BaseController
         }
     }
 
+    public function upay_notify(){
+        $notify = $_REQUEST;
+        file_put_contents(dirname(__FILE__).'/123.txt',json_encode($notify));
+        if(!empty($notify)){
+            
+            if($notify['state']==1){
+               
+                //sign验证
+                $sign_str = 'customerid='.$notify['customerid'].'&sd51no='.$notify['sd51no'].'&sdcustomno='.$notify['sdcustomno'].'&mark='.$notify['mark'].'&key='.C('upay.key');
+                $sign = strtoupper(md5($sign_str));
+                if($sign == $notify['sign']){
+                    //resign验证
+                    $resign_str = 'sign='.$sign.'&customerid='.$notify['customerid'].'&ordermoney='.$notify['ordermoney'].'&sd51no='.$notify['sd51no'].'&state='.$notify['state'].'&key='.C('upay.key');
+                    $resign = strtoupper(md5($resign_str));
+                    if($resign == $notify['resign']){
+                         //通知游付，通知成功
+                        echo '<result>1</result>';
+                         //平台订单验证
+                        $order_info['trade_no'] = $notify['sd51no'];
+                        $order_info['out_trade_no'] = $notify['sdcustomno'];
+                        $order_info['real_amount'] = $notify['ordermoney'];
+                        $pay_where = substr($order_info['out_trade_no'], 0, 2);
+                        switch ($pay_where) {
+                            case 'SP':
+                                $Spend = M('Spend', "tab_");
+                                $map['pay_order_number'] = $order_info['out_trade_no'];
+                                $orderinfo = $Spend->where($map)->find();
+                                $result = $this->changepaystatus($order_info, $orderinfo, 'Spend');
+                               if($result){
+                                    $this->set_spend($orderinfo);//订单信息
+                                }
+                            break;
+
+                            case 'PF':
+                                $deposit = M('deposit', "tab_");
+                                $map['pay_order_number'] = $order_info['out_trade_no'];
+                                $orderinfo = $deposit->where($map)->find();
+                                $result = $this->changepaystatus($order_info, $orderinfo, 'deposit');
+                                if($result){
+                                   $this->set_deposit($orderinfo);
+                                }
+                            break;
+
+                            default:
+                                $this->record_logs("orderinfo error");
+                                 exit('orderinfo error');
+                            break;
+                        }
+                         
+                    }else{
+                        $this->record_logs("resign error");
+                        exit('resign error');
+                    }
+                    
+                }else{
+                    $this->record_logs("sign error");
+                    exit('sign error');
+                }
+                
+            }else{
+                $this->record_logs("pay fail");
+                exit('pay fail');
+            }
+        }else{
+            $this->record_logs("Access Denied");
+            exit('Access Denied');
+        }
+    }
+
     /**
      *判断平台币充值是否存在
      */

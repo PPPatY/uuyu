@@ -65,7 +65,7 @@ class GameUtileController extends Controller{
                           ->where(array('tab_user.id'=>is_login(),'game_id'=>$gamedata['id']))
                           ->find();
                 $this->assign('userdata',$userdata);
-                $paytype = M('tool', 'tab_')->field('status,name')->where(['name'=>['in','weixin,wei_xin,alipay,jft,goldpig']])->select();
+                $paytype = M('tool', 'tab_')->field('status,name')->where(['name'=>['in','weixin,wei_xin,alipay,jft,goldpig,upay']])->select();
                 foreach ($paytype as $key => $value) {
                     $pay[$value['name']] = $value['status'];
                 }

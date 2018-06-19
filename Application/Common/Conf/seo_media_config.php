@@ -7,9 +7,9 @@
   ),
   'media_index' => 
   array (
-    'seo_title' => '%webname% _好玩的手机游戏免费下载_最热门的手机游戏',
-    'seo_keyword' => '溪谷，手游，手机游戏，免费下载',
-    'seo_description' => '',
+    'seo_title' => '%webname% ',
+    'seo_keyword' => '友友互娱，H5游戏，免费下载，福利，充值',
+    'seo_description' => '友友互娱，用心创造快乐',
   ),
   'media_game_list' => 
   array (
@@ -85,9 +85,9 @@
   ),
   'channel_index' => 
   array (
-    'seo_title' => '%webname%合作平台_手机游戏推广联盟_手游推广员赚钱平台1',
-    'seo_keyword' => '11',
-    'seo_description' => '22',
+    'seo_title' => '%webname%_手机游戏推广联盟_手游推广员赚钱平台',
+    'seo_keyword' => 'cps',
+    'seo_description' => '推广联盟',
   ),
   'channel_game_list' => 
   array (

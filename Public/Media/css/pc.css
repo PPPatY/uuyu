@@ -96,6 +96,12 @@ body {overflow:hidden;}
 .mainer::-webkit-scrollbar-corner{background:#f4f4f4;}
 .mainer::-webkit-scrollbar-resizer{background:#ababab;}
 
+/* 新建修改：author：paty */
+.main .pc-header .pc-download .pc-qrcode{left: -12%;}
+.main .pc-container .pc-sys p{font-size: .5rem; color: #fff}
+.main .pc-container-footer .pc-copyright p{color: #fff}
+.main .pc-container .pc-sys p{color: #fff}
+/* ：end */
 
 @media screen and (max-width:1200px) {
   .pc-inner {width:90%;}
@@ -118,12 +124,3 @@ body {overflow:hidden;}
 	.main .pc-container-footer {display:none;}
 
 }
-
-
-
-/* 新建修改：author：paty */
-.main .pc-header .pc-download .pc-qrcode{left: -12%;}
-.main .pc-container .pc-sys p{font-size: .5rem; color: #fff}
-.main .pc-container-footer .pc-copyright p{color: #fff}
-.main .pc-container .pc-sys p{color: #fff}
-/* ：end */

@@ -58,10 +58,35 @@ class WechatController extends Controller{
                 $msg = C('wechat.message');
                 switch ($data['Event']) {
                     case Wechat::MSG_EVENT_SUBSCRIBE:
+                        //关注公众号,修改用户状态为已关注
+                        $uid = str_replace('qrscene_','',$data['EventKey']);
+                        $wx_openid = $data['FromUserName'];
+                        //判断openid是否已经绑定其他账号
+                        $is_sub = M('user','tab_')->where(['wx_openid'=>$wx_openid])->getField('id');
+                        if(empty($is_sub)){//未绑定
+                            M('user','tab_')->where(['id'=>$uid])->save(['is_wechat_subscribe'=>1,'wx_openid'=>$wx_openid]);
+                        }else{
+                            M('user','tab_')->where(['id'=>$is_sub])->save(['is_wechat_subscribe'=>1]);
+                        }
+                        //回复文字
                         $wechat->replyText($msg['first_msg']);
+                        break;
+                    case Wechat::MSG_EVENT_SCAN:
+                        //关注公众号,修改用户状态为已关注
+                        $uid = str_replace('qrscene_','',$data['EventKey']);
+                        $wx_openid = $data['FromUserName'];
+                        //判断openid是否已经绑定其他账号
+                        $is_sub = M('user','tab_')->where(['wx_openid'=>$wx_openid])->getField('id');
+                        if(empty($is_sub)){//未绑定
+                            M('user','tab_')->where(['id'=>$uid])->save(['is_wechat_subscribe'=>1,'wx_openid'=>$wx_openid]);
+                        }else{
+                            M('user','tab_')->where(['id'=>$is_sub])->save(['is_wechat_subscribe'=>1]);
+                        }
                         break;
                     case Wechat::MSG_EVENT_UNSUBSCRIBE:
                         //取消关注，记录日志
+                        $wx_openid = $data['FromUserName'];
+                        M('user','tab_')->where(['wx_openid'=>$wx_openid])->save(['is_wechat_subscribe'=>0]);
                         break;
                     case Wechat::MSG_EVENT_CLICK:
                         //click事件

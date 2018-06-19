@@ -23,6 +23,9 @@
             <div class="tab fl">
               <a href="{:U('Apply/index')}" class="">申请游戏</a>
               <a href="#" class="current">我的游戏</a>
+                <if condition="get_parent_id(PID) eq 0">
+                    <a href="{:U('child_game')}" class="">子渠道游戏</a>
+                </if>
             </div>
             <form action="{:U('my_game')}" method="post" enctype="multipart/form-data">
               <div class="form-group  normal_space fr">
@@ -50,11 +53,9 @@
               <table class="table normal_table">
                   <tr class="odd <if condition='get_parent_id(PID) eq 0'>pid</if>">
                     <th class="th1" style="width: 12%;">游戏名称</th>
-                    <th>类型</th>
-                  <if condition="get_parent_id(PID) eq 0">
+                    <th>游戏类型</th>
                     <th>注册单价</th>
                     <th>分成比例</th>
-                  </if>
                     <th>审核状态</th>
                   </tr>
                   <empty name="list_data">
@@ -73,20 +74,36 @@
 <span class="name_a" title="{$vo['game_name']}">{:msubstr($vo['game_name'],0,10)}</span>
                   </td>
                   <td title="{$vo['game_type_name']}">{:msubstr($vo['game_type_name'],0,8)}</td>
-                    <if condition="get_parent_id(PID) eq 0">
-                  <td>
-                    <if condition='$vo["money"] eq "" '>
-                      0
-                    <else/>{$vo.money}
-                    </if>
-                  </td>
-                  <td>
-                    <if condition='$vo["ratio"] eq "" '>
-                      0
-                  <else/>{$vo.ratio} 
+
+
+                  <if condition="get_parent_id(PID) eq 0">
+                      <td>
+                          <if condition='$vo["money"] eq "" '>0
+                              <else/>{$vo.money}
+                          </if>
+                      </td>
+                      <else/>
+                      <td>
+                          <if condition='$vo["money"] eq "" '>0
+                              <else/>{$vo.promote_money}
+                          </if>
+                      </td>
                   </if>
-                  </td>
-                    </if>
+
+                  <if condition="get_parent_id(PID) eq 0">
+                      <td>
+                          <if condition='$vo["ratio"] eq "" '>0
+                              <else/>{$vo.ratio}
+                          </if>
+                      </td>
+                      <else/>
+                      <td>
+                          <if condition='$vo["money"] eq "" '>0
+                              <else/>{$vo.promote_ratio}
+                          </if>
+                      </td>
+                  </if>
+
                   <td   style="position: relative;" class="tb110">
                     <switch name="vo.status">
                       <case value="0"><a href="javascript:;" class="applycbtn wait proc">审核中</a></case>

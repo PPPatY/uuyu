@@ -3493,8 +3493,25 @@ class GameController extends BaseController {
         $map['status'] = array('in','-1,1');
 
         $collection=M('user_behavior','tab_')->where($map)->find();
-
-        $data['qrcode'] = get_cover(C('PC_SET_QRCODE'),'path');
+        //推广者的二维码
+        $pid=$_REQUEST['pid'];
+        if(!empty($pid)){
+            $pid_logo=M('apply_union','tab_')->where(array('union_id'=>$pid))->field('union_set')->find();
+            $arr=json_decode($pid_logo['union_set'],1);
+            $qid=$arr['qcode'];
+            $cover=M('picture','sys_')->where(array('id'=>$qid))->field('path')->find();
+            $data['path']=$cover['path'];
+            $data['id']='';
+        }else{
+            //获取今日推荐游戏id和封面图
+            $vid=M('config','sys_')->where(array('name'=>'DAILY_GAME_RECOMMEND'))->field('value')->find();
+            $data['id']=$vid['value'];
+            $img=M('game','tab_')->where(array('id'=> $data['id']))->field('icon')->find();
+            $imgurl=$img['icon'];
+            $cover=M('picture','sys_')->where(array('id'=>$imgurl))->field('path')->find();
+            $data['path']=$cover['path'];
+        }
+        //$data['qrcode'] = get_cover(C('PC_SET_QRCODE'),'path');
 
         $data['like'] = $this->gsULike(3);
 
@@ -3612,39 +3629,20 @@ class GameController extends BaseController {
 
     //游戏登陆数据sdk验证   不适用白鹭
 
-
-
     public function sdkloginVerify(){
 
-
-
         $data = $_POST['data'];
-
-
-
         $data = json_decode($data,true);
-
-
-
         $map['game_appid']=$data['game_appid'];
 
-
-
         $gamedata=M('game','tab_')->where($map)->find();
-
-
 
         $gamesetdata=M('game_set','tab_')->where(array('game_id'=>$gamedata['id']))->find();
 
 
-
         $uid=session("user_auth.user_id");
 
-
-
         //如果已登录(暂时不用，登录完进游戏)
-
-
 
         if($uid){
 
@@ -3736,19 +3734,7 @@ class GameController extends BaseController {
 
     //H5sdk login结束
 
-
-
-    
-
-
-
-
-
-
-
     //H5sdk pay  start
-
-
 
     public function paysdk(){
 
@@ -3824,18 +3810,7 @@ class GameController extends BaseController {
     }
 
 
-
-
-
-
-
-
-
-
-
     //游戏支付数据sdk验证
-
-
 
     public function sdkpayVerify($param=''){
 
@@ -4011,8 +3986,6 @@ class GameController extends BaseController {
 
     }
 
-
-
     public function goldpig_return_callback(){
 
         $url = 'http://357p.com/api/mun.asp?mun='.I('get.orderId');
@@ -4143,17 +4116,11 @@ class GameController extends BaseController {
 
     }
 
-    
-
     public function game_bind_phone(){
 
         $this->display();
 
-
-
     }
-
-    
 
     public function add_spend($data){
 
@@ -4205,11 +4172,7 @@ class GameController extends BaseController {
 
     }
 
-
-
     //app写session
-
-
 
     protected function app_write_session($token){
 

@@ -12,15 +12,18 @@
     <div class="page-list normal_list apply-index-list">
       <div class="trunk-title">
       	<div class="location">
-		<div class="location-container">当前位置：<span>分包管理></span><span>游戏分包</span></div>
+		<div class="location-container">当前位置：<span>游戏中心></span><span>游戏链接</span></div>
 		</div>
       	<img src="__IMG__/20180207/icon_normal_game.png"><span class="title_main">游戏列表</span>
       </div>
       <div class="trunk-content article">
           <div class="trunk-search clearfix">
             <div class="tab fl">
-              <a href="#" class="current">申请游戏</a>
+              <a href="{:U('Apply/index')}" class="current">申请游戏</a>
               <a href="{:U('my_game')}" class="">我的游戏</a>
+                <if condition="get_parent_id(PID) eq 0">
+                    <a href="{:U('child_game')}" class="">子渠道游戏</a>
+                </if>
             </div>
             <form action="{:U('index')}" method="post" enctype="multipart/form-data">
               <div class="form-group normal_space fr">
@@ -41,11 +44,12 @@
             <table class="table normal_table">
                 <tr class="odd">
                   <th class="th1"></th>
+                    <th class="th4">icon</th>
                   <th class="th2">游戏名称</th>
                   <th class="th3">游戏类型</th>
                   <th class="th5">注册单价</th>
                   <th class="th6">分成比例</th>
-                  <th class="th7">申请状态</th>
+                  <th class="th7">复制链接</th>
                 </tr>
                 <empty name="list_data" >
               <tr><td colspan="7" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">暂无数据</p></td></tr>
@@ -57,15 +61,17 @@
                     <img src="__IMG__/20180207/burn_fire.png">
                   </if>
                     </td>
-                    <td class="td2">
-                      <a href="" class="bg_st">
+                    <td class="td4">
+                        <a href="" class="bg_st">
 <span class="img_table">
                   		<div class="img_cell">
                   			<div class="cell_con">手游</div>
                   		</div>
-<img src="<empty name="vo['icon']">__IMG__/game_icon.png<else/>__ROOT__{$vo.icon|get_cover='path'}</empty>">
-                        </span>
-                      </a>
+<img src="<empty name="vo['icon']">__IMG__/game_icon.png<else/>{$vo.icon|get_cover='path'}</empty>">
+                </span>
+                </a>
+                    </td>
+                    <td class="td2">
 <span class="name_a" title="{$vo['game_name']}">{:msubstr($vo['game_name'],0,10)}</span>
                     </td>
                     <td class="td3" title="{$vo['game_type_name']}">{:msubstr($vo['game_type_name'],0,8)}</td>
@@ -88,7 +94,7 @@
                         <switch name="vo['status']">
                           <case value="0"><a href="javascript:;" class="applycbtn wait proc">审核中</a></case>
                           <case value="1">
-                            
+
                             <a href="javascript:;" class="applycbtn download copy" data-url="{$_SERVER['HTTP_HOST']}{$vo['register_url']}" title="复制下载地址">
                               复制
                             </a>
@@ -96,7 +102,7 @@
                           <case value="2"><a href="javascript:;" class="applycbtn fall proc">审核失败</a></case>
                           <default /><a href="javascript:;" class="applycbtn" onclick="yiapply({$vo.id},this)">马上申请</a>
                         </switch>
-                        
+
                     </td>
                 </tr>
                 </volist>
@@ -174,9 +180,9 @@
         return false;
       }
     });
-    
+
     })
-    
+
     function bindz(){
     	$('a.copy').zclip({
     	path: "/Public/static/zeroclipboard/ZeroClipboard.swf",
@@ -194,10 +200,10 @@
     	  else{
     	    layer.msg("复制成功",{icon:1});
     	  }
-    	  
+
     	}
     	});
-    } 
+    }
     bindz();
   $("#all").click(
   function(){
@@ -210,16 +216,16 @@
 );
   //批量申请
   $("#gapply").click(function() {
-   var chk_value =""; 
-   var pattern_value="";  
-    $(':checkbox').each(function(){  
+   var chk_value ="";
+   var pattern_value="";
+    $(':checkbox').each(function(){
     if($(this).val()!=""&&$(this).prop('checked'))  {
      chk_value+= (","+$(this).val());
-    }  
-    });     
-   chk_value =chk_value.substr(1, chk_value.length-1); 
+    }
+    });
+   chk_value =chk_value.substr(1, chk_value.length-1);
     chk_value=chk_value.slice(0);
-    pattern_value =pattern_value.substr(1, pattern_value.length-1); 
+    pattern_value =pattern_value.substr(1, pattern_value.length-1);
     pattern_value=pattern_value.slice(0);
     if(chk_value==0){
       alert('你还没有选择任何内容！');
@@ -228,10 +234,10 @@
 
     }
   });
-  function errapply($gameid,pattern,obj){ 
+  function errapply($gameid,pattern,obj){
         layer.msg("上级渠道未申请或未通过该游戏,不能申请",{icon: 2});
   }
-  function erapply($gameid,pattern,obj){ 
+  function erapply($gameid,pattern,obj){
       $.ajax({
         type:"post",
         url:"__URL__/apply",
@@ -249,9 +255,9 @@
         error:function(){
           layer.msg('服务器故障',{icon:5});
         }
-      }) 
+      })
   }
-  function yiapply($gameid,obj){ 
+  function yiapply($gameid,obj){
       $.ajax({
         type:"post",
         url:"__URL__/apply",
@@ -263,7 +269,7 @@
               $(obj).removeAttr("onclick").html("复制").addClass("download copy").attr('data-url',"http://{$_SERVER['HTTP_HOST']}"+res.data);
               bindz();
               layer.msg(res.msg,{icon: 1});
-			} else{ 
+			} else{
 	            $(obj).attr("onclick","").html("审核中").addClass("proc wait");
 	            layer.msg(res.msg,{icon: 1});
 	            //setTimeout('location.href="{:U('index')}";',500);//局部div刷新 */
@@ -276,7 +282,7 @@
         error:function(){
           layer.msg('服务器故障',{icon:5});
         }
-      }) 
+      })
   }
   //导航高亮
   highlight_subnav('{:U('Apply/index')}');

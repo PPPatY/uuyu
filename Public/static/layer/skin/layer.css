@@ -598,8 +598,7 @@ html #layui_layer_skinlayercss {
 
 .layui-layer-page .layui-layer-content {
 	position: relative;
-    height: 50px ;
-    line-height: 50px;
+    height: auto ;
     text-align: center;
     overflow-y: auto;
 }

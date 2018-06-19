@@ -2,7 +2,7 @@
   <section class="wrap">
     <div class="nav table">
       <a class="item table-cell <if condition='CONTROLLER_NAME eq "Index"'>active</if>" href="{:U('Index/index')}"><i class="icon icon-home"></i><span>首页</span></a>
-      <a class="item table-cell <if condition='CONTROLLER_NAME eq "Game"'>active</if>" href="{:U('Game/index#categroy')}"><i class="icon icon-game"></i><span>游戏</span></a>
+      <a class="item table-cell <if condition='CONTROLLER_NAME eq "Game"'>active</if>" href="{:U('Game/index')}"><i class="icon icon-game"></i><span>游戏</span></a>
       <a class="item table-cell <if condition='CONTROLLER_NAME eq "Gift"'>active</if>" href="{:U('Gift/index')}"><i class="icon icon-gift"></i><span>礼包</span></a>
       <a class="jsshopmall item table-cell <if condition='CONTROLLER_NAME eq "PointShop"'>active</if>" href="{:U('PointShop/mall')}"><i class="icon icon-mall"><if condition="$mallissignin eq 1"><i class="circle"></i></if></i><span>商城</span></a>
       <a class="item table-cell <if condition='CONTROLLER_NAME eq "Subscriber"'>active</if>" href="{:U('Subscriber/user')}"><i class="icon icon-user"><if condition="$newmsg eq 1"><i class="circle"></i></if></i><span>我的</span></a>

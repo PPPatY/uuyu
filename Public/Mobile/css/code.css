@@ -1,0 +1,134 @@
+/*wap关注二维码弹窗*/
+
+body,
+html {
+	font-size: inherit;
+}
+
+.layui-layer {
+	border-radius:0.32em;
+}
+.layui-layer-title{
+	border-top-left-radius:2em;
+border-top-right-radius:2em;
+}
+.layui-layer-page .layui-layer-content {
+	overflow-y: visible;
+}
+
+.layui-layer-setwin .layui-layer-close {
+	background-position: 0 0;
+}
+
+.layui-layer-setwin a {
+	width: 0.5rem;
+	height: 0.5rem;
+	background: url(../images/icon_close.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+
+.code {
+	display: none;
+}
+
+.layui-layer-title {
+	background-color: #ffffff;
+}
+
+.layui-layer-iframe {
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.code-img {
+	display: block;
+	width: 60%;
+	margin: 0 auto;
+	padding: 3%;
+	border: 1px solid #dddddd;
+}
+
+.code-text {
+
+    margin: 0.4rem 0 0.14rem;
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+.save {
+	text-align: center;
+    color: #999999;
+    margin-top: 0.3rem;
+	font-size: 0.44rem;
+}
+
+.save-img {
+	width: 0.54rem;
+    margin-top: -0.1rem;
+}
+
+@media screen and (max-width:1240px) {
+	html {
+		font-size: 623%;
+	}
+}
+
+@media screen and (max-width:992px) {
+	html {
+		font-size: 500%;
+	}
+}
+
+@media screen and (max-width:768px) {
+	html {
+		font-size: 385%;
+	}
+}
+
+@media screen and (max-width:720px) {
+	html {
+		font-size: 362%;
+	}
+}
+
+@media screen and (max-width:660px) {
+	html {
+		font-size: 332%;
+	}
+}
+
+@media screen and (max-width:600px) {
+	html {
+		font-size: 301%;
+	}
+}
+
+@media screen and (max-width:540px) {
+	html {
+		font-size: 271%;
+	}
+}
+
+@media screen and (max-width:480px) {
+	html {
+		font-size: 241%;
+	}
+}
+
+@media screen and (max-width:420px) {
+	html {
+		font-size: 211%;
+	}
+}
+
+@media screen and (max-width:360px) {
+	html {
+		font-size: 181%;
+	}
+}
+
+@media screen and (max-width:320px) {
+	html {
+		font-size: 161%;
+	}
+}

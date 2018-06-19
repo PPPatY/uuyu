@@ -1,9 +1,11 @@
+
 //登录
 $("body").on("click",'#blTagIdLoginBtn',function(){
   //登录变量
   that=$(this);
   account =$("#lblTagIdUserName").val();//账号
   password =$("#lblTagIdUserPwd").val();//密码
+     getgsid=$("#goodsid").val();//游戏id
   var parent=that.closest('.jspopitem');
   if(!account){
     parent.find('.pop-error').stop(true).fadeIn(200).text('请输入手机号或用户名');
@@ -13,6 +15,7 @@ $("body").on("click",'#blTagIdLoginBtn',function(){
     parent.find('.pop-error').stop(true).fadeIn(200).text('请输入密码');
     return false;
   }
+
   // 登录
   $.ajax({
       type: "POST",
@@ -24,10 +27,19 @@ $("body").on("click",'#blTagIdLoginBtn',function(){
           parent.find('.pop-error').stop(true).fadeIn(200).text(data.msg);
           return false;
         }else if(data.status==1){
-          layer.msg('登录成功',{time:1000});
-          setTimeout("top.location.reload()",500);
+            layer.msg('登录成功',{time:1000});
+
+            if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
+                window.location.href="http://uuyu.com/mobile.php?s=Game/open_game/game_id/"+getgsid;
+            }else{
+                window.location.href="http://uuyu.com/media.php?s=Game/open_game/game_id/"+getgsid;
+            }
+          //setTimeout("top.location.reload()",500);
+
+
         }else if(data.status==2){
           layer.msg('登录成功',{time:1000});
+
           setTimeout("self.postMessage({event:'loginSdkres',status:1,data:"+data.data+"}, '*');",10);
         }
       },
@@ -346,6 +358,8 @@ function check_tel_code(ele,phone,verify,unsetcode){
   return res;
 };
 function register(obj) {
+   /* 2018.6.8增加*/
+    var gid=$("#goodsid").val();//游戏id
   switch(obj){
       default:{
 					var hash = location.hash.replace('#','');
@@ -363,13 +377,21 @@ function register(obj) {
                   try{
                       h5shell.thirdlogin(0);
                   }catch(e){
-                      $('#qqThirdLogin').trigger('click');
+                      try{
+                        window.webkit.messageHandlers.h5shellthirdlogin.postMessage(2);
+                      }catch(e){
+                        $('#qqThirdLogin').trigger('click');
+                      }
                   }
               }else{
                   try{
                       h5shell.thirdlogin(1);
                   }catch(e){
-                      $('#weixinThirdLogin').trigger('click');
+                      try{
+                        window.webkit.messageHandlers.h5shellthirdlogin.postMessage(1);
+                      }catch(e){
+                        $('#weixinThirdLogin').trigger('click');
+                      }
                   }
               }
           }else{

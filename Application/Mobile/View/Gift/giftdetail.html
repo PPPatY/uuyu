@@ -1,11 +1,25 @@
 <extend name="Public/bases" />
 <block name="body" >
 <link href="__CSS__/gift.css" rel="stylesheet" >
+<link href="__CSS__/code.css" rel="stylesheet" >
 <style>
 .footer{
   display: none;
 }
 </style>
+
+    <!--关注公众号弹出层-->
+    <div class="code" id="code">
+
+        <img src="__IMG__/code.png" alt="" class="code-img" />
+        <div class="code-text">微信内打开图片，识别二维码关注公众号</div>
+        <div class="save">
+            <!--<img src="__IMG__/icon_normal_xiazai.png" class="save-img">-->
+            <span class="save-text">截图保存图片至相册</span>
+        </div>
+    </div>
+    <!--关注公众号弹出层-->
+
     <header class="header ">
       <section class="wrap">
         <a href="javascript:;" onclick="history.go(-1);" class="hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span><span class="table-cell word">礼包</span></span></a>
@@ -135,6 +149,16 @@
                           });
                       }else if(data.code==0){
                         nologintc(popmsg,'');
+                      }else if(data.code==-4){
+                          $(".code-img").attr("src",data.qrcodeurl);
+                          //领取失败,未关注公众号
+                          layer.open({
+                              type: 1,
+                              shadeClose: false,
+                              title: '&nbsp',
+                              area: ['10rem', '10.2rem'], //宽高
+                              content: $('#code')
+                          });
                       }else{
                         // 失败
 												var butn = '';

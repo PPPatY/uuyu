@@ -283,11 +283,10 @@
                 data:{game_id:$game_id},
                 async:false,
                 success:function(data){
-                  result += '<a href="javascript:;" class="pop-close"></a><div class="pop-content"><div class="pop-title">今日推荐游戏</div><div class="partir-qrcode">';
-                  result+='<a href="http://uuyu.com/media.php?s=Game/open_game/game_id/25" target="_self" style="display:inline-block;width:4.6rem;height:4.6rem;"><img src="';
-                  // result+=data.data.qrcode;
-                  result+='__IMG__/Today-recommendation-game.png';
-                  result+='"><p style="font-size:.5rem;color:#ff7777;">点击立即进入游戏</p></div><div class="partir-recommend"><ul class="pop-clear">';
+                    result += '<a href="javascript:;" class="pop-close"></a><div class="pop-content"><div class="pop-title">今日推荐游戏</div><div class="partir-qrcode">';
+                    result+='<a href="?s=Game/open_game/game_id/';
+                    result+=data.data.id+'"  target="_self" style="display:inline-block;width:3.2rem;height:3.2rem;"><img src="';
+                    result+=data.data.path+'"></a><p style="font-size:.5rem;color:#ff7777;">点击立即进入游戏</p></div><div class="partir-recommend"><ul class="pop-clear">';
                   for(var i=0;i<data.data.like.length;i++){
                     result+='<li><a href="'+data.data.like[i].play_detail_url+'"><img src="'+data.data.like[i].icon+'"><p>'+data.data.like[i].game_name+'</p></a></li>';
                   }

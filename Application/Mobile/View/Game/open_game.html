@@ -1,6 +1,7 @@
 <extend name="Public/bases" />
 <block name="body" >
 <link href="__CSS__/suspension.css" rel="stylesheet" >
+<link href="__CSS__/code_2.css" rel="stylesheet" >
 <style>
 .footer{
   display: none;
@@ -27,9 +28,7 @@ html,body,.container,.container .wrap,.inner,.container .loadbox {height:100%;z-
         </div>
       </div>
     </div>
-    <iframe id="op_url_mainframe" src="{$login_url}" style="background-image:url({$game_load_page});" frameborder="0" class="gamestartbox hidden">
-      <!--<a href="javascript:;" class="suspensionbtn hidden" id="jssuspensionbtn"><img src="{:get_cover(C('SUSPENSION_ICO'),path)}"></a>-->
-    </iframe>
+    <iframe id="op_url_mainframe" src="{$login_url}" style="background-image:url({$game_load_page});" frameborder="0" class="gamestartbox "></iframe>
     <if condition="is_login() gt 0">
     {:W('Game/suspension')}<!-- 悬浮窗 -->
     </if>

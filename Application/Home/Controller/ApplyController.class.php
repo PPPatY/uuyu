@@ -139,7 +139,7 @@ class ApplyController extends BaseController {
         $row    = 10;
         $data = M("game","tab_")
             /* 查询指定字段，不指定则查询所有字段 */
-            ->field("tab_game.*,tab_apply.register_url,tab_apply.promote_id,tab_apply.status")
+            ->field("tab_game.*,tab_apply.register_url,tab_apply.promote_id,tab_apply.status,tab_apply.promote_ratio,tab_apply.promote_money")
             ->join("tab_apply ON tab_game.id = tab_apply.game_id and tab_apply.promote_id = ".session('promote_auth.pid'))
             // 查询条件
             ->where($map)
@@ -174,9 +174,109 @@ class ApplyController extends BaseController {
         $this->display();
     }
 
+
+    //子渠道游戏
+    public function child_game($p=0){
+
+        if (PLEVEL>0) {echo '<script>window.history.go(-1);</script>';exit;}
+
+        if(!empty($_REQUEST['game_id'])){
+            $map['tab_apply.game_id']=$_REQUEST['game_id'];
+        }
+        if (!empty($_REQUEST['promote_id'])) {
+            $map['tab_apply.promote_id']=$_REQUEST['promote_id'];
+        } else {
+            $sid = M('Promote','tab_')->field('id')->where(array('parent_id'=>PID,'status'=>1))->select();
+            if ($sid){
+                $map['tab_apply.promote_id']=array('in',array_column($sid,'id'));
+            }else{
+                $map['tab_apply.promote_id']=-1;
+            }
+        }
+
+        $map['tab_game.game_status']  = 1;//游戏状态
+        $start_time = strtotime(I('time_start'));
+        $end_time   = strtotime(I('time_end'));
+        if(!empty($start_time)&&!empty($end_time)){
+            $map['tab_apply.dispose_time']  = ['BETWEEN',[$start_time,$end_time+24*60*60-1]];
+            unset($_REQUEST['time_start']);unset($_REQUEST['time_end']);
+        }else if(!empty($start_time)){
+            $map['tab_apply.dispose_time'] = array('gt',$start_time);
+        }else if(!empty($end_time)){
+            $map['tab_apply.dispose_time'] = array('lt',$end_time+24*60*60-1);
+        }
+        $map['tab_apply.status']=1;
+        $map['tab_game.game_status']  = 1;//游戏状态
+
+        $page = intval($p);
+        $page = $page ? $page : 1; //默认显示第一页数据
+        $row  = 10;
+
+        $data = M('apply','tab_')
+            ->field('tab_game.game_name,tab_game.icon,tab_apply.register_url,tab_apply.promote_account,tab_apply.apply_time,
+            tab_game.game_type_name,tab_apply.dispose_time,tab_apply.id as applyid,tab_apply.promote_ratio,tab_apply.promote_money,tab_apply.game_id')
+            ->join('__GAME__ ON __GAME__.id = __APPLY__.game_id','LEFT')
+            ->where($map)
+            ->order("apply_time desc")
+            ->page($page, $row)
+            ->select();
+
+        $count = M('apply','tab_')
+            ->join('__GAME__ ON __GAME__.id = __APPLY__.game_id','LEFT')
+            ->where($map)
+            ->count();
+
+        if($count > $row){
+            $page = new \Think\Page($count, $row);
+            $page->setConfig('theme','%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END% %HEADER%');
+            $page->parameter['p'] = I('p',1);
+            $page->parameter['game_id'] = I('request.game_id');
+            $this->assign('_page', $page->show());
+        }
+
+        $this->assign("count",$count);
+        $this->assign('list_data', $data);
+
+
+        $this->meta_title = "子渠道游戏";
+        $this->display();
+    }
+
+    //修改注册单价和分成比例
+    public function changevalue() {
+        if (IS_POST) {
+            if (!is_numeric($_REQUEST['id']) || $_REQUEST['id'] <=0) {
+                echo json_encode(array('status'=>0,'info'=>'数据有误'));exit;
+            }
+            if (!is_numeric($_REQUEST['value']) || $_REQUEST['value']<0) {
+                echo json_encode(array('status'=>0,'info'=>'数据有误'));exit;
+            }
+            $apply = M('apply','tab_');
+            if ($_REQUEST['type']==1) {
+                $res = $apply->where(array('id'=>$_REQUEST['id']))->setField(array('promote_money'=>$_REQUEST['value']));
+                if ($res) {
+                    echo json_encode(array('status'=>1,'info'=>'注册单价修改成功'));exit;
+                } else {
+                    echo json_encode(array('status'=>0,'info'=>'注册单价修改失败'));exit;
+                }
+            } elseif ($_REQUEST['type']==2) {
+                $res = $apply->where(array('id'=>$_REQUEST['id']))->setField(array('promote_ratio'=>$_REQUEST['value']));
+                if ($res) {
+                    echo json_encode(array('status'=>1,'info'=>'分成比例修改成功'));exit;
+                } else {
+                    echo json_encode(array('status'=>0,'info'=>'分成比例修改失败'));exit;
+                }
+            } else {
+                echo json_encode(array('status'=>0,'info'=>'数据有误'));exit;
+            }
+        } else {
+            echo json_encode(array('status'=>0,'info'=>'数据有误'));exit;
+        }
+    }
+
     /**
-	申请游戏
-    */
+    申请游戏
+     */
     public function apply(){
         if(isset($_POST['game_id'])){
             $model = new ApplyModel(); //D('Apply');
@@ -185,6 +285,15 @@ class ApplyController extends BaseController {
             $data['promote_id'] = session("promote_auth.pid");
             $data['promote_account'] = session("promote_auth.account");
             $data['apply_time'] = NOW_TIME;
+
+            /*20180509新增,子渠道分成比例和注册单价*/
+            //获取游戏信息
+            $game_info = M('game','tab_')->field('ratio,money')->where(['id'=>I('game_id',0,'intval')])->find();
+
+            $data['promote_ratio'] = $game_info['ratio'];
+            $data['promote_money'] = $game_info['money'];
+            $data['dispose_time'] = time();
+
             C('PROMOTE_URL_AUTO_AUDIT')==1?$data['status'] = 1:$data['status'] = 0;
             $data['enable_status'] = 1;
             $data['register_url']="/mobile.php/"."?s="."Game/open_game/pid/".get_pid()."/game_id/".$data['game_id'].".html";

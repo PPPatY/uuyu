@@ -1,0 +1,31 @@
+/*pc关注二维码弹窗*/
+.code{
+	display: none;
+}
+.layui-layer-title {
+	background-color: #ffffff;
+}
+
+.layui-layer-iframe {
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.code-img {
+	display: block;
+	width: 171px;
+    margin: 1rem auto 0;
+}
+
+.code-text {
+	margin: 20px 0 10px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.code-explain {
+	color: #999999;
+	font-size: 14px;
+	text-align: center;
+	/*margin-top: -25px;*/
+}

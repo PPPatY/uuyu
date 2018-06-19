@@ -303,7 +303,7 @@ class QueryController extends BaseController {
     		$this->error("数据错误！",U('Query/my_earning'));
     	}
     	$map = $settlemeng_number;
-    	$data = M('Settlement','tab_')->where($map)->field('starttime,endtime,game_id,game_name,sum_money,total_number,pattern,total_money,ratio,money')->select();
+    	$data = M('Settlement','tab_')->where($map)->field('starttime,endtime,game_id,game_name,sum_money,settlement_number,pattern,total_money,ratio,money')->select();
     	$this->assign('list_data',$data);
     	$this->display();
     }
@@ -533,7 +533,7 @@ class QueryController extends BaseController {
     			$user->commit();$spend->commit();$bill->commit();
     		}
     	}
-    		$this->success('生成结算单成功！已经结算的游戏不可结算',U('son_list'),true);
+    		$this->success('生成结算单成功！已经结算的游戏不可结算111',U('son_list'),true);
       
       } else {
         $this->error('请选择要结算的项目',true);

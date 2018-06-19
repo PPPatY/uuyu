@@ -511,19 +511,6 @@ function upload_picture_introducebg{$field.name}(file, data){
         setTimeout(function(){
             $('#top-alert').find('button').click();
             $(that).removeClass('disabled').prop('disabled',false);
-        },1500);var data = $.parseJSON(data);
-    var src = '';
-    if(data.status){
-        $("#introducebg_id_cover").val(data.id);
-        src = data.url || '__ROOT__' + data.path;
-        $("#introducebg_id_cover").parent().find('.upload-img-box').html(
-            '<div class="upload-pre-item"><img src="' + src + '"/></div>'
-        );
-    } else {
-        updateAlert(data.info);
-        setTimeout(function(){
-            $('#top-alert').find('button').click();
-            $(that).removeClass('disabled').prop('disabled',false);
         },1500);
     }
 }

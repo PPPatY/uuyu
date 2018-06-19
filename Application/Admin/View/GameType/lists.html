@@ -100,6 +100,7 @@
                         <th >显示状态</th>
                         <th >添加人员</th>
                         <th >添加时间</th>
+                        <th >类型排序</th>
                         <th >操作</th>
                     </tr>
                 </thead>
@@ -121,6 +122,7 @@
                             <td><if condition="$data['status_show'] eq 0"><span style="color: red">{:get_info_status($data['status_show'])}</span><else/>{:get_info_status($data['status_show'])}</if></td>
                             <td>{$data.op_nickname}</td>
                             <td>{:set_show_time($data['create_time'])}</td>
+                            <td><input class="chgculumn chgculumngame" data-url="{:U('chgculumn',array('column'=>'order_id','game_id'=>$data['id']))}"  type="text" oldval="{$data.order_id}" value="{$data.order_id}"/><span style="color: #5897fb;"></span></td>
                             <td>
                             <a href="{:U('edit',array('model'=>$model['id'],'id'=>$data['id']))}">编辑</a>
                             <if condition="$data.status_show eq 0">
@@ -179,6 +181,19 @@ $(function(){
         }
     });
 
+    $(".chgculumn").blur(function(){
+        that = $(this);
+        $.get(that.attr('data-url'),{newval:that.val()},function(data,status){
+            if(data.status==1){
+                layer.tips('编辑成功！', that, {
+                    tips: [4, '#3595CC'],
+                    time: 1000
+                });
+            }else{
+                layer.msg(data.msg);
+            }
+        });
+    });
 
 })
 </script>

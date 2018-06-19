@@ -62,4 +62,23 @@ class GameTypeModel extends Model{
     protected function get_op_nickname(){
        return session("user_auth.username");
     }
+    public function chgculumn(){
+        if(I('game_id')==''||I('column')==''){
+            return -1;
+        }
+        $game = $this->find(I('game_id'));
+        if(empty($game)){
+            return 0;
+        }
+        $column = I('column');
+        $data[$column] = I('newval');
+        $map['id'] = I('game_id');
+        $res = $this->where($map)->save($data);
+        if($res!==false){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
 }

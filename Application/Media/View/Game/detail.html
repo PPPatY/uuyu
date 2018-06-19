@@ -14,6 +14,7 @@
       </span>
     </div>
   </section>
+    <link href="__CSS__/pc_code.css" rel="stylesheet" >
 </header>
 </block>
 <block name="iframe" >
@@ -251,6 +252,11 @@
 													popmsg.open().addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已复制</p>',1000,250);
 												},440);
                       });
+                  }else if(data.code==-4){
+                      //popmsg.addClass('pop-hint ').open('','<div class="code" id="code"><div  class="code-img"><img src="'+data.qrcodeurl+'" alt=""></div><div class="code-text">微信内打开图片，识别二维码关注公众号</div><div class="save"> <span class="save-text ">长按二维码保存到相册</span></div><div class="pop-close"></div></div>');
+                      popmsg.addClass('pop-hint ').open('','<div class="code" id="code"><img src="'+data.qrcodeurl+'" alt="" class="code-img" /><div class="code-text">关注微信公众号可领取礼包</div><div class="code-explain">微信扫一扫 关注公众号</div><div class="pop-close"></div></div>');
+                      $(".code").css("display","block");
+                      popmsg.find('.pop-close').click(function() {popmsg.close(); });
                   }else{
                     // 失败
 										var butn = '';

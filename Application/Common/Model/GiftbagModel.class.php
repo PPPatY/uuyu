@@ -7,6 +7,8 @@
  */
 namespace Common\Model;
 
+use Com\WechatAuth;
+
 class GiftbagModel extends BaseModel{
 
 	/**
@@ -228,7 +230,8 @@ class GiftbagModel extends BaseModel{
 		$map['_string'] = "end_time > {$time} or end_time = 0";
 		$map['gb.id'] = $gift_id;
 		$data = $this->alias('gb')
-				->field("game_id,gb.id as gift_id,gb.game_name,icon,giftbag_name,server_id,server_name,novice,gb.digest,gb.desribe,start_time,end_time,is_unicode,g.game_type_id")
+				->field("game_id,gb.id as gift_id,gb.game_name,icon,giftbag_name,server_id,server_name,novice,gb.digest,
+				gb.desribe,start_time,end_time,is_unicode,g.game_type_id")
 				->join('tab_game g on g.id = gb.game_id')
 				->where($map)
 				->find();
@@ -276,6 +279,34 @@ class GiftbagModel extends BaseModel{
             $data=$info['novice'];
             return array('code'=>'-2','msg'=>'您已领取过，给别人一个领取的机会吧','nvalue'=>$data);
         }else {
+
+            //判断是否为联盟站点
+            if(empty(session('union_host'))){
+                //判断是否开启公众号验证
+                if(C('IS_GET_GIFT')==1){
+                    //检查用户是否关注公众号
+                    $is_wechat_subscribe = M('user','tab_')->where(['id'=>$userid])->getField('is_wechat_subscribe');
+                    if(empty($is_wechat_subscribe)){
+                        $qrCodeUrl = $this->getQrCode();
+                        return ['code'=>'-4','msg'=>'您还未关注公众号,请关注公众号后领取','qrcodeurl'=>$qrCodeUrl];
+                    }
+                }
+            }else{
+                //联盟站点,读取站点配置
+                $union_set = json_decode(session('union_host.union_set'),true);
+                //判断是否开启公众号验证
+                if($union_set['is_subscribe']==1){
+                    //检查用户是否关注公众号
+                    $is_wechat_subscribe = M('user','tab_')->where(['id'=>$userid])->getField('is_wechat_subscribe');
+                    if(empty($is_wechat_subscribe)){
+                        $qrCodeUrl = $this->getQrCode();
+                        return ['code'=>'-4','msg'=>'您还未关注公众号,请关注公众号后领取','qrcodeurl'=>$qrCodeUrl];
+                    }
+                }
+            }
+
+
+
             $n = $this->field('novice,end_time,is_unicode,unicode_num')->where(array('id'=>$giftid))->find();
             $y = $n['novice'];
             if(empty($y)||($n['is_unicode']==1&&$n['unicode_num']<=0)) {
@@ -354,6 +385,19 @@ class GiftbagModel extends BaseModel{
 	 * author: xmy 280564871@qq.com
 	 */
 	public function getNovice($user_id,$gift_id){
+
+
+        //判断是否开启公众号验证
+        if(C('IS_GET_GIFT')==1){
+            //检查用户是否关注公众号
+            $is_wechat_subscribe = M('user','tab_')->where(['id'=>$user_id])->getField('is_wechat_subscribe');
+            if(empty($is_wechat_subscribe)){
+                $qrCodeUrl = $this->getQrCode();
+                return ['qrCodeUrl'=>$qrCodeUrl];
+            }
+        }
+
+
 		$data = $this->find($gift_id);
 		if($data['is_unicode']==1){
 			$data1['id'] = $data['id'];
@@ -395,4 +439,34 @@ class GiftbagModel extends BaseModel{
 			return $novice;
 		}
 	}
+
+
+    /**
+     *
+     * 获取微信公众号二维码
+     * @return string
+     */
+    public function getQrCode(){
+
+        $result = auto_get_access_token(dirname(__FILE__) . '/access_token_validity.txt');
+        $appid = C('wechat.appid');
+        $appsecret = C('wechat.appsecret');
+
+        //获取access_token
+        if (!$result['is_validity']) {
+            $auth = new WechatAuth($appid, $appsecret);
+            $token = $auth->getAccessToken();
+            $token['expires_in_validity'] = time() + $token['expires_in'];
+            wite_text(json_encode($token), dirname(__FILE__) . '/access_token_validity.txt');
+            $result = auto_get_access_token(dirname(__FILE__) . '/access_token_validity.txt');
+        }
+        $auth = new WechatAuth($appid, $appsecret,$result['access_token']);
+        $user_id = session('user_auth.user_id');
+        $res  = $auth->qrcodeCreate($user_id);
+        $qrcodeurl = $auth->showqrcode($res['ticket']);
+        return $qrcodeurl;
+    }
+
+
+
 }

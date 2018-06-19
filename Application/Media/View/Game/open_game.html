@@ -2,6 +2,7 @@
 <block name="css">
 <link href="__STATIC__/dist/dropload.css" rel="stylesheet" >
 <link href="__CSS__/suspension.css" rel="stylesheet" >
+<link href="__CSS__/code.css" rel="stylesheet" >
 </block>
 <block name="body" >
   <div class="pc-container2 " >
@@ -11,7 +12,7 @@
     <div id="sdkdiv">
       {$paysdk}
     </div>
-    <iframe id="op_url_mainframe" src="{$login_url}" style="background:url({$game_load_page}) center center no-repeat;" frameborder="0" class="gamestartbox hidden"></iframe>
+    <iframe id="op_url_mainframe" src="{$login_url}" style="background:url({$game_load_page}) center center no-repeat;" frameborder="0" class="gamestartbox "></iframe>
     <div class="pc-wrap jsloadpic">
       <div class="pc-inner">
         <div class="pc-loadbox">
@@ -53,7 +54,6 @@
       ttt.find('.circle').remove();
       sss.text('已签到');
     }
-    
     var iframe = $('.gamestartbox')[0];
     if(login>0){
       console.log('noload');

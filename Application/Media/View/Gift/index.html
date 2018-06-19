@@ -33,14 +33,27 @@
   display: none;
 }
 </style>
+
+<link href="__CSS__/pc_code.css" rel="stylesheet" >
+<!--提示公众号弹出框-->
+<!--<div class="code" id="code">-->
+    <!--<img src="images/code.png" alt="" class="code-img" />-->
+    <!--<div class="code-text">微信内打开图片，识别二维码关注公众号</div>-->
+    <!--<div class="save">-->
+        <!--<img src="__IMG__/icon_normal_xiazai.png" class="save-img">-->
+        <!--<span class="save-text">保存图片到相册</span>-->
+    <!--</div>-->
+<!--</div>-->
+<!--提示公众号弹出框-->
+
     <div class="occupy"></div>
 <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
     <section class="trunker">
       <section class="inner">
       
         <section class="contain">
-          
-          
+
+
             <div class="tab-scroll">
               <div id="tab-slide">
                 <div class="s-container">
@@ -119,9 +132,7 @@
                 </div>
               </div>
             </div>
-            
-            
-            
+
             
         </section>
         
@@ -131,6 +142,8 @@
 </div>
     <div class="popmsg"></div>
 </block>
+
+
 
 <block name="script">
     <script src="__STATIC__/dist/dropload.js"></script>
@@ -175,16 +188,33 @@
                             $(".copy").css("color", "#14b4c3");
                             $(".copy").text('复制');
                             Copy($('.code').val(),$('.pop-hint .pop-btn'));
-														popmsg.close(400);
-														setTimeout(function(){
-															popmsg.open().addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已复制</p>',1000,250);
-														},440);
-                          });
+                            popmsg.close(400);
+                            setTimeout(function(){
+                                popmsg.open().addClass('pop-message').msg('<img class="pop-image" src="__IMG__/pop_completed.png"><p class="pop-text">已复制</p>',1000,250);
+                            },440);
+                        });
+                      }else if(data.code==-4){
+
+
+                          //未关注公众号
+                         /* layer.open({
+                              type: 1,
+                              shadeClose: true,
+                              title: '&nbsp',
+                              area: ['10rem', '10rem'], //宽高
+                              content: $('#code')
+                          });*/
+
+
+                          //popmsg.addClass('pop-hint ').open('','<div class="code" id="code"><div  class="code-img"><img src="'+data.qrcodeurl+'" alt=""></div><div class="code-text">微信内打开图片，识别二维码关注公众号</div><div class="save"><span class="save-text ">长按二维码保存到相册</span></div><div class="pop-close"></div></div>');
+                          popmsg.addClass('pop-hint ').open('','<div class="code" id="code"><img src="'+data.qrcodeurl+'" alt="" class="code-img" /><div class="code-text">关注微信公众号可领取礼包</div><div class="code-explain">微信扫一扫 关注公众号</div><div class="pop-close"></div></div>');
+                          $(".code").css("display","block");
+                          popmsg.find('.pop-close').click(function() {popmsg.close(); });
+
                       }else{
                         // 失败
-												var butn = '';
-												if (data.code!='-2') {butn += '<a  class="pop-btn jsfresh">重试</a>';}
-												
+                        var butn = '';
+                        if (data.code!='-2') {butn += '<a  class="pop-btn jsfresh">重试</a>';}
                         popmsg.addClass('pop-hint').open('','<a href="javascript:;" class="pop-close"></a><div class="pop-content"><img class="pop-image" src="__IMG__/pop_receive_fail.png"><div class="pop-title">领取失败！</div><p class="pop-text">'+data.msg+'</p>'+butn+'</div>');
                         popmsg.find('.jsfresh').click(function(){popmsg.close();});
                         popmsg.find('.pop-close').click(function() {popmsg.close();});

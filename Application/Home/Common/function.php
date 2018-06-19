@@ -96,6 +96,26 @@ function get_nav_url($url){
     return $url;
 }
 
+/**
+ *推广员搜索游戏下拉列表
+ */
+function get_promote_serach_game(){
+    $game = M("game","tab_");
+    if(!empty($type)){
+        $map['developers']  = $type == 1? array('EQ',0):array('GT',0);
+        $map['game_status'] =  $type == 1? 1:array('in','0,1');
+
+    }else{
+        $map['apply_status'] = 1;
+        $map['online_status'] = 1;
+
+    }
+    $map['game_status'] = 1;
+    $lists = $game->field('id,game_name,icon')->where($map)->select();
+    if(empty($lists)){return false;}
+    return $lists;
+}
+
 
 function get_apply_dow_url($game_id=0,$promote_id=0)
 {

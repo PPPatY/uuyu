@@ -143,7 +143,7 @@ class GameModel extends BaseModel{
 			->join($jointable)
 			->where($map)
 			->group("gt.id")
-			->order('counts desc,create_time desc')
+			->order('order_id desc')
 			->select();
 		foreach ($data as $key => $val){
 			$data[$key]['icon'] = icon_url($val['icon']);

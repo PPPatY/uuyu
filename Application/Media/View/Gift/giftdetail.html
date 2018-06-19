@@ -1,6 +1,7 @@
 <extend name="Public/bases" />
 <block name="css">
 <link href="__CSS__/gift.css" rel="stylesheet" >
+<link href="__CSS__/pc_code.css" rel="stylesheet" >
 </block>
 <block name="header">
 <header class="header giftdetail-header">
@@ -71,7 +72,6 @@
 </div>
     <div class="popmsg"></div>
 </block>
-
 <block name="footer">
 <div class="start-game">
   <a data-href="{$data.play_url}" class="btn">开始游戏</a>
@@ -133,6 +133,11 @@
                           });
                       }else if(data.code==0){
                         nologintc(popmsg,'');
+                      }else if(data.code==-4){
+                          popmsg.addClass('pop-hint ').open('','<div class="code" id="code"><img src="'+data.qrcodeurl+'" alt="" class="code-img" /><div class="code-text">关注微信公众号可领取礼包</div><div class="code-explain">微信扫一扫 关注公众号</div><div class="pop-close"></div></div>');
+                          $(".code").css("display","block");
+                          popmsg.find('.pop-close').click(function() {popmsg.close(); });
+
                       }else{
                         // 失败
 												var butn = '';

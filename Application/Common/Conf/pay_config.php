@@ -6,29 +6,28 @@
   ),
   'alipay' => 
   array (
-    'partner' => '2088122686942163',
-    'key' => '8akw5piwm9u0psw41hzgtsj2pgv56p3k',
-    'email' => 'xigumeidi@qq.com',
-    'appid' => '2016012601121430',
-    'usenew' => '1',
+    'partner' => '',
+    'key' => '',
+    'email' => '',
+    'appid' => '',
   ),
   'wei_xin' => 
   array (
-    'partner' => '1302541901',
-    'email' => 'wx8545770ebd76f2b9',
-    'appsecret' => '0d6008c6e6d8b8d24eaed658288c1eb7',
-    'key' => 'asdfghjkasdfghjkasdfghjkasdfghjk',
+    'partner' => '1503022721',
+    'email' => 'wx295ed8e5b6a937c6',
+    'appsecret' => '438fe07a6c976ee29c78ffc83a4565b3',
+    'key' => 'vPrr5rvnMztk5TCa5HXeDU3DYgyiMaQo',
   ),
   'wei_xin_app' => 
   array (
-    'partner' => '1311272801',
-    'email' => 'wx91386443e1dfb650',
-    'key' => 'asdfghjkasdfghjkasdfghjkasdfghjk',
+    'partner' => '1503022721',
+    'email' => 'wx6119208345950fc7',
+    'key' => 'vPrr5rvnMztk5TCa5HXeDU3DYgyiMaQo',
   ),
   'weixin' => 
   array (
-    'partner' => '7552900037',
-    'key' => '11f4aca52cf400263fdd8faf7a69e007',
+    'partner' => '',
+    'key' => '',
   ),
   'jft' => 
   array (
@@ -40,40 +39,48 @@
   ),
   'wechat' => 
   array (
-    'appid' => '',
-    'appsecret' => '',
-    'token' => '',
-    'key' => '',
+    'appid' => 'wx295ed8e5b6a937c6',
+    'appsecret' => '438fe07a6c976ee29c78ffc83a4565b3',
+    'token' => 'uuyucom123',
+    'key' => 'eLTVuT7gK3UwDBpKEroR3ivvrXbUKDPiE3XGCn9k9L6',
+    'wechatname' => '友友游戏中心',
+    'message' => 
+    array (
+      'first_msg' => '友友游戏中心！将快乐传递到更远的地方！
+感谢你的支持！
+<a href="http://uuyu.com/">【我们的官网】</a>',
+      'default_msg' => '',
+    ),
   ),
   'sms_set' => 
   array (
-    'smtp' => 'tfnj3gru6ztmw5pk78ha4v9esixbqyao',
-    'smtp_account' => '1960daf08fa64ecbbe85fb4f88204384',
+    'smtp' => '',
+    'smtp_account' => '',
     'smtp_password' => '',
-    'smtp_port' => '24952',
-    'smtp_notice_port' => '0',
-    'limit' => '15',
+    'smtp_port' => '',
+    'smtp_notice_port' => '',
+    'limit' => '',
   ),
   'wx_login' => 
   array (
-    'appid' => 'wx3b58fe5a82c2fb7e',
-    'appsecret' => 'ddefeeeb3ed54575e2a3b776c33bb498',
+    'appid' => 'wx71893c9971dd2526',
+    'appsecret' => '201f9b1f62832fc63ae329b9d43fee40',
   ),
   'qq_login' => 
   array (
-    'appid' => '101411903',
-    'key' => 'caa32d91e6c841cf461a5f79bbf8ac55',
+    'appid' => '101477652',
+    'key' => 'bd9860d9caccbe4358d5d9e5ab5c0ac3',
   ),
   'wb_login' => 
   array (
-    'appkey' => '349729882',
-    'appsecret' => '98310801b2ffd0151110e9a3e7eaa4e2',
+    'appkey' => '3139826300',
+    'appsecret' => '8c56ce96f12364b0f080ed2680e3909d',
     'scope' => '',
   ),
   'bd_login' => 
   array (
-    'appkey' => 'YWiujrrxoruFpN0ckvpMDYdp',
-    'appsecret' => 'nWVknj6YGZTwusGfE9BD3NcMDhswBDMD',
+    'appkey' => '',
+    'appsecret' => '',
   ),
   'oss_storage' => 
   array (
@@ -88,8 +95,24 @@
   ),
   'goldpig' => 
   array (
-    'partner' => '26881',
-    'appid' => '66250',
-    'key' => 'xigukeji',
+    'partner' => '',
+    'appid' => '',
+    'key' => '',
+  ),
+  'alidayunew' => 
+  array (
+    'appkey' => 'LTAIxOpPY97t0Ims',
+    'secretKey' => 'eqVhUTC2r6vZros4YMVy3xucjzgQxS',
+    'product' => 'Dysmsapi',
+    'domain' => 'dysmsapi.aliyuncs.com',
+    'region' => 'cn-hangzhou',
+    'template_id' => 'SMS_134185302',
+    'sign' => '友友游戏中心',
+    'limit' => '0',
+  ),
+  'upay' => 
+  array (
+    'partner' => '200881',
+    'key' => 'C6224C1BE072BF5556817749C32E40C6',
   ),
 );

@@ -336,6 +336,12 @@ class UserEvent extends BaseEvent {
                 $data[$keyy]['ratio']=0.00;
                 $data[$keyy]['money']=0.00;
             }
+            if(empty($valuee['total_number'])){
+                 $data[$keyy]['total_number']=0;
+            }
+             if(empty($valuee['total_amount'])){
+                 $data[$keyy]['total_amount']=0;
+            }
         }
         $this->assign('model', $model);
         $this->assign('list_data', $data);

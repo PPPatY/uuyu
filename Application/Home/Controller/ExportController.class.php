@@ -345,6 +345,62 @@ class ExportController extends Controller
                      $xlsData[$k]['source_id'] = get_promote_account($v['source_id']);
                 }
                  break;
+             case 10:
+                 $xlsName = "子渠道游戏";
+                 $xlsCell = array(
+                     array('promote_account', '子渠道账号'),
+                     array('game_name', '游戏名称'),
+                     array('dispose_time', '审核时间'),
+                     array('promote_money', '注册单价'),
+                     array('promote_ratio', '分成比例'),
+                 );
+
+                 if (isset($_REQUEST['game_id']) && $_REQUEST['game_id'] != null) {
+                     $map['tab_game.id'] = trim($_REQUEST['game_id']);
+                 }
+
+                 $start_time = strtotime(I('time_start'));
+                 $end_time   = strtotime(I('time_end'));
+                 if(!empty($start_time)&&!empty($end_time)){
+                     $map['tab_apply.dispose_time']  = ['BETWEEN',[$start_time,$end_time+24*60*60-1]];
+                     unset($_REQUEST['time_start']);unset($_REQUEST['time_end']);
+                 }else if(!empty($start_time)){
+                     $map['tab_apply.dispose_time'] = array('gt',$start_time);
+                 }else if(!empty($end_time)){
+
+                     $map['tab_apply.dispose_time'] = array('lt',$end_time+24*60*60-1);
+                 }
+
+                 $sid = M('Promote','tab_')->field('id')->where(array('parent_id'=>is_login_promote(),'status'=>1))->select();
+
+                 if ($sid){
+                     $map['tab_apply.promote_id']=array('in',array_column($sid,'id'));
+                 }else{
+                     $map['tab_apply.promote_id']=-1;
+                 }
+
+                 if ($_REQUEST['type'] == -1 || !isset($_REQUEST['type'])) {
+                     unset($map['status']);
+                 } else {
+                     $map['status'] = $_REQUEST['type'];
+                 }
+
+                 $xlsData = M("game", "tab_")
+                     ->field("tab_game.*,tab_apply.promote_id,tab_apply.promote_account,tab_apply.status,tab_apply.promote_money,tab_apply.promote_ratio,tab_apply.dispose_time")
+                     ->join("tab_apply ON tab_game.id = tab_apply.game_id")
+                     // 查询条件
+                     ->order("apply_time desc")
+                     ->where($map)
+                     ->select();
+
+                 //格式化时间戳
+                 foreach($xlsData as &$v){
+                     $v['dispose_time'] = date("Y-m-d H:i:s",$v['dispose_time']);
+                 }
+                 unset($v);
+
+                 break;
+
      	}
          $this->exportExcel($xlsName, $xlsCell, $xlsData);
      }

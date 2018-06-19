@@ -21,7 +21,7 @@
       	<span class="title_main">子渠道结算</span>
       </div>
       <div class="trunk-content article">
-          <form action="{:U('Query/son_earning')}" method="post" enctype="multipart/form-data">
+          <form action="{:U('Query/son_earning')}" method="post" enctype="multipart/form-data" id='form1'>
           
           <div class="trunk-search clearfix">
           	<div class="tab fl">
@@ -98,7 +98,7 @@
                   <td>
 	                  <label class="checked">
 				        <input class="ids" type="checkbox" data-val="{$vo['game_id']}"data-reg="{$vo['total_number']},{$vo['total_amount']}"
-				        value="{$vo['game_id']},CPS,{$vo['ratio']},{$vo['money']},{$vo['total_number']},{$vo['total_amount']},{$vo['promote_id']}"
+				        value="{$vo['game_id']},'CPS',{$vo['ratio']},{$vo['money']},{$vo['total_number']},{$vo['total_amount']},{$vo['promote_id']}"
 				        name="ids[]">
 				        <i class="check_icon"></i>
 			        </label>
@@ -392,7 +392,7 @@ function modifyvalue(that) {
 	var gid = $.trim(ids.attr('data-val'));
 	var promoteid = $.trim($('#ch_promote_id').val());
 
-	var result = gid+','+coop+','+cps+','+cpa+','+reg+','+promoteid;
+	var result = gid+",'"+coop+"',"+cps+","+cpa+","+reg+","+promoteid;
 
 	ids.val(result);
 }
@@ -490,6 +490,95 @@ scrollInput:false,
   $(".select_gallery").select2();
 
 });
+</script>
+<script type="text/javascript">
+
+function submitFrom(){
+    var validation = true;
+    $.each($('input[name="ids[]"][type="checkbox"]:checked'),function(){
+      var coop = $(this).closest('td').siblings('.coop').find('.cooperation :selected').val();
+        switch(coop){
+          case 'CPS':
+            var cps = $(this).closest('td').siblings('.cps').find('input').val();
+            if (cps == '') {validation=false; layer.msg('请输入分成比例',{icon:2});return false;}
+            if (!/^(((\d|[1-9]\d)(\.\d{1,2})?)|100|100.0|100.00)$/.test(cps)) {validation=false;layer.msg('请输入正确的分成比例数字',{icon:2});return false;}
+            break;
+          case 'CPA':
+            var cpa = $(this).closest('td').siblings('.cpa').find('input').val();
+            if (cpa == '') {validation=false;layer.msg('请输入注册单价',{icon:2});return false;}
+            if (!/^\d+(\.\d{1,2})*$/.test(cpa)) {validation=false;layer.msg('请输入正确的注册单价数字',{icon:2});return false;}
+            break;
+          default:
+              validation=false;layer.msg('未知错误',{icon:2});return false;
+            break;
+        }
+        var json_text = Trim($(this).val(),"g");
+       // var json_obj  = eval("("+json_text+")");
+        // json_obj["bind_coin_status"] = $('input[name="bind_coin"][type="radio"]:checked').val();
+        // var json_text = JSON.stringify(json_obj);
+        $(this).val(json_text);
+    });
+    if(validation){
+      var text = $('.ids').serialize();
+      var text1 = $('#form1').serialize();
+      console.log(text1);
+      var url = "{:U('generatesub')}";
+      $.post(url,text).success(function(result){
+        if(result.status == 1){
+          layer.msg(result.info,{icon:1,time:2000},function() {
+              //that.removeClass('disabled').prop('disabled',false);
+              window.location.reload();
+          });
+        }else{
+          layer.msg(result.info,{icon:2});
+        }
+      })
+    }
+}
+
+function Trim(str,is_global)
+{
+    var result;
+    result = str.replace(/(^\s+)|(\s+$)/g,"");
+    if(is_global.toLowerCase()=="g")
+    {
+      result = result.replace(/\s/g,"");
+    }
+    return result;
+}
+
+function details(id,number){
+    layer.open({
+        type: 2,
+        title: '结算详情',
+        shadeClose: true,
+        shade: 0.3,
+        area: ['60%', '50%'],
+        content: '/index.php?s=/Home/Query/son_details/promote_id/'+id+'/settlement_number/'+number//iframe的url
+    });
+}
+
+function tixian(settlement_number) {
+  $.ajax({
+    url: '{:U("son_apply_withdraw")}',
+    type: 'POST',
+    dataType: 'json',
+    data: {'settlement_number': settlement_number},
+    success:function(data){
+      if(data.status==0){
+           layer.msg('请勿重复操作', {icon: 5});
+
+      }else{
+          layer.msg('申请成功', {icon: 6});
+          setTimeout(function(){location.reload();},2000);
+      }
+    },
+    error:function(){
+      layer.msg('服务器故障', {icon: 4});
+    }
+  });
+}
+
 </script>
 </block>
   

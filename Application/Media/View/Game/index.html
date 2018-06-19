@@ -5,7 +5,7 @@
 </block>
 <block name="header">
 <div class="galist">
-<!-- <header class="header ">
+<header class="header ">
   <section class="wrap">
     <div class="caption">
       <span class="table">
@@ -24,10 +24,10 @@
     </div>
     <a href="{:U('Search/index')}" class="hbtn search"><span class="table"><span class="table-cell"><img src="__IMG__/nav_btn_search.png"></span></span></a>
   </section>
-</header> -->
+</header>
 </div>
 <div class="gacatelist">
-<!-- <header class="header ">
+<header class="header ">
       <section class="wrap">
       <if condition="I('get.from') eq 'collec'">
         <a href="javascript:history.go(-1);" class="gacatelistht hbtn left arrow-left"><span class="table"><span class="table-cell"><img src="__IMG__/back_return.png"></span><span class="table-cell word"></span></span></a>
@@ -41,7 +41,7 @@
           </span>
         </div>
       </section>
-    </header> -->
+    </header>
 </div>
 </block>
 <block name="iframe" >
@@ -54,7 +54,7 @@
 }
 </style>
 
-<!-- <div class="occupy"></div> -->
+<div class="occupy"></div>
 <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
     <section class="trunker">
       <section class="inner">
@@ -77,7 +77,7 @@
                         </div>
                         <div class="s-slide" id="fenlei">
                           <ul class=" list text-class-list">
-                            <!-- <li data-type_id='-1'>
+                            <li data-type_id='-1'>
                               <a href="javascript:;" class="typeitem item clearfix">
                                 <div class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="__IMG__/game_classify_all.png" class="icon"></div>
                                 <div class="butnbox"><span class="table"><span class="butn table-cell">{$allgame}<i class="icon icon-arrow-right"></i></span></span></div>
@@ -85,7 +85,7 @@
                                   <div class="title"><span class="name">所有类别</span></div>
                                 </div>
                               </a>
-                            </li> -->
+                            </li>
                             <volist name="gamegroup" id="gg">
                               <li data-type_id='{$gg.type_id}'>
                                 <a  class="item typeitem clearfix">
@@ -111,7 +111,7 @@
     <div class="space"></div>
 </div>
 <div class="gacatelist">  
-    <!-- <div class="occupy"></div> -->
+    <div class="occupy"></div>
     <a href="javascript:;" style="display: none;" class="hbtn right table login jslogin"><span class="table-cell"><i class="">登录</i></span></a>
     <section class="trunker">
       <section class="inner">
@@ -136,13 +136,7 @@
 
 <block name="script">
 <script src="__STATIC__/dist/dropload.js"></script>
-  <script>     
-
-      $(document).ready(function () {
-        $('#fenlei ul li:first-child').click();
-        $('#fenlei ul li:first-child').find(".item").addClass("active");
-      })
-
+  <script>
     var itemIndex = 0;
     var tab1LoadEnd = false;
     var tab2LoadEnd = false;
@@ -374,14 +368,13 @@ $('#fenlei ul li').click(function(){
           for(var i = 0; i < data.data.length; i++){
               result += '<li class="clearfix"><div class="item clearfix"><a href="'+data.data[i].play_detail_url+'" class="iconbox"><span class="font table"><span class="table-cell">{:C('BITMAP')}</span></span><img src="'+data.data[i].icon+'" class="icon"></a><div class="butnbox"><span class="table"><span class="table-cell"><a href="'+data.data[i].play_url+'" class="butn butnlogin">开始</a></span></span></div><div class="text"><div class="title"><a href="'+data.data[i].play_detail_url+'" class="name">'+data.data[i].game_name+'</a></div><p class="info"><span class="type">'+data.data[i].game_type_name+'</span><span class="number"><i class="">'+data.data[i].play_num+'</i>人在玩</span></p><p class="slogan">'+data.data[i].features+'</p></div></div></li>';
           }
-          $('.gacatelist .contain ul').html("");
           $('.gacatelist .contain ul').append(result);
         },
         error: function(xhr, type){
         }
     });
     $('.gacatelist').css('display','block');
-    // $('.galist').css('display','none');
+    $('.galist').css('display','none');
 });
 $('.gacatelistht').click(function(){
     $('.gacatelist').css('display','none');

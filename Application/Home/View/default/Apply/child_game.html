@@ -1,0 +1,275 @@
+<extend name="Public/promote_base"/>
+<block name="css">
+<link href="__CSS__/20180207/data.css" rel="stylesheet">
+<link href="__CSS__/20180207/game.css" rel="stylesheet" >
+<style>
+    .tb110 .zclip embed{margin-bottom: 45px;}
+    .trunk-list{position: relative;min-height: 66vh;}
+	.pagenation{position: absolute;text-align: center;line-height: 5vh;}
+    .input-box {display:inline-block;width:100px;}
+    .input-box input {width:60px;border:1px solid #3A97FF;border-radius:3px;text-align:center;height: 24px;}
+    .input-box~.input-box{margin-top:2px;}
+</style>
+
+</block>
+
+<block name="body">
+    <div class="page-list normal_list apply-my_game-list">
+      <div class="trunk-title">
+      	<div class="location">
+			<div class="location-container">当前位置：<span>游戏管理></span><span>我的游戏</span></div>
+		</div>
+      	<img src="__IMG__/20180207/icon_normal_game.png"><span class="title_main">游戏列表</span>
+      </div>
+      <div class="trunk-content article">
+          <div class="trunk-search clearfix">
+            <div class="tab fl">
+                <a href="{:U('Apply/index')}" class="">申请游戏</a>
+                <a href="{:U('my_game')}" class="">我的游戏</a>
+                <if condition="get_parent_id(PID) eq 0">
+                    <a href="{:U('child_game')}" class="current">子渠道游戏</a>
+                </if>
+            </div>
+              <form action="{:U('child_game')}" method="post" enctype="multipart/form-data">
+                  <div class="form-group normal_space fr">
+                      <input type="submit" class="submit"  id="search" value="查询">
+                  </div>
+                  <div class="form-group normal_space fr">
+                      <label class="form-title select-title"></label>
+                      <div class="select-time">
+                          <input type="text" id="sdate" class="txt" name="time_start" value="{:I('time_start')}" placeholder="开始时间">
+                      </div>
+                      <label class="form-title select-title">&nbsp;—&nbsp;</label>
+                      <div class="select-time">
+                          <input type="text" id="edate" class="txt" name="time_end" value="{:I('time_end')}" placeholder="结束时间">
+                      </div>
+                  </div>
+
+                  <div class="form-group normal_space fr">
+                      <select id="game_id" name="game_id" class="reselect select_gallery" style="min-width:200px;width: 175px;">
+                          <option value="">请选择游戏</option>
+                          <volist name=":get_promote_serach_game()" id="vo">
+                              <option value="{$vo.id}" title="{$vo.game_name}">{$vo.game_name}</option>
+                          </volist>
+                      </select>
+                  </div>
+                  <div class="form-group fr">
+                      <select id="promote_id" name="promote_id" class="reselect select_gallery" style="min-width:170px;" >
+                          <option value="" >子渠道帐号</option>
+                          <volist name=":get_prmoote_chlid_account(PID)" id="vo">
+                              <option value="{$vo.id}" >{$vo.account}</option>
+                          </volist>
+                      </select>
+                  </div>
+              </form>
+          </div>
+          <div class="trunk-list">
+              <table class="table normal_table">
+                  <tr class="odd <if condition='get_parent_id(PID) eq 0'>pid</if>">
+                      <th class="th1" style="width: 12%;">子渠道账号</th>
+                      <th>icon</th>
+                      <th>游戏名称</th>
+                      <th>审核时间</th>
+                      <if condition="get_parent_id(PID) eq 0">
+                          <th>注册单价</th>
+                          <th>分成比例</th>
+                      </if>
+                  </tr>
+                  <empty name="list_data">
+                      <tr><td colspan="7" style="text-align: center;height: 45vh;"><img src="__IMG__/20180207/icon_wushujv2.png"/><p style="line-height: 40px;color: #A5A5A5;">子渠道暂时没有申请游戏哦</p></td></tr>
+                  <else/>
+                  <volist name="list_data" id="vo">
+                      <tr>
+                          <td>{$vo.promote_account}</td>
+                          <td>
+                              <a href="javascript:;" class="bg_st">
+                                  <span class="img_table">
+                                      <div class="img_cell">
+                                          <div class="cell_con">游戏</div>
+                                      </div>
+                                      <img src="__ROOT__{$vo.icon|get_cover='path'}" style="position: absolute;left: 0;width: 34px;height: 34px;<if condition="$vo['icon'] eq 0">display: none;</if>">
+                                  </span>
+                              </a>
+                          </td>
+
+                          <td>{$vo.game_name}</td>
+                          <empty name="vo['dispose_time']">
+                              <td>自动审核</td>
+                          <else/>
+                              <td>{:date("Y-m-d H:i:s",$vo['dispose_time'])}</td>
+                          </empty>
+
+                          <php>
+                              $game_ratio_info = M('game','tab_')->getField('id,ratio,money',true);
+                          </php>
+
+                          <php>
+                              $ratio_class = $game_ratio_info[$vo['game_id']]['ratio']==$vo['promote_ratio']?'':'color:red';
+                              $money_class = $game_ratio_info[$vo['game_id']]['money']==$vo['promote_money']?'':'color:red';
+                          </php>
+
+                          <if condition="get_parent_id(PID) eq 0">
+                              <td>
+                                  <label class="input-box jsinputbox">
+                                      <input type="text" placeholder="填写" style="{$money_class}" maxlength="6" data-default="0" data-type="1" data-id="{$vo.applyid}" value="{$vo['promote_money']|default='0'}" />
+                                  </label>
+                              </td>
+                              <td>
+                                  <label class="input-box jsinputbox">
+                                      <input type="text" placeholder="填写" style="{$ratio_class}" maxlength="6" data-default="0.00" data-type="2" data-id="{$vo.applyid}" value="{$vo['promote_ratio']|default='0.00'}" />
+                                  </label>
+                              </td>
+                          </if>
+
+                      </tr>
+                  </volist>
+                  </empty>
+              </table>
+              <div class="import fr">
+                <span class="txt"><span class="normal_tot">数据量：</span>{$count}条数据</span>
+                <span class="btn"><a href="{:U('Export/expUser',array(
+            'id'=>10,
+            'user_account'=>I('user_account'),
+            'promote_id'=>I('promote_id'),
+            'game_id'=>I('game_id'),
+            'time-start'=>I('time-start'),
+            'time-end'=>I('time-end'),
+            'time_start'=>I('time_start'),
+            'time_end'=>I('time_end'),
+            'game_name'=>I('game_name'),
+            'type'=>I('type'),
+            ))}" >导出数据(excel格式)</a>
+            </span>
+              </div>
+
+              <div class="pagenation clearfix">{$_page}</div>
+          </div>
+      </div>
+    </div>
+</block>
+<block name='script'>
+<link rel="stylesheet" type="text/css" href="__CSS__/p_jquery.datetimepicker.css">
+<script type="text/javascript" src="__JS__/jquery.datetimepicker.js"></script>
+<script src="__STATIC__/zeroclipboard/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="__JS__/20170831/select2.min.js"></script>
+<script type="text/javascript">
+highlight_subnav("{:U('Apply/index')}");
+setValue('type',{$Think.request.type|default='""'});
+setValue('game_id',{$Think.request.game_id|default='""'});
+setValue('promote_id',{$Think.request.promote_id|default='""'});
+$(function(){
+
+
+  $(".select_gallery").select2();
+  $('.download').click(function(){
+    var href= $(this).attr('href');
+    var text= $(this).text();
+    if(text =='下载'){
+      if( href =='#'|| href =='javascript:;' ){
+          layer.msg("暂无下载内容",{icon:2});
+          return false;
+      }
+    }
+  });
+
+	$("#search").click(function() {
+        var starttime = $.trim($('#sdate').val());
+        var endtime = $.trim($('#edate').val());
+        if (starttime && endtime && starttime > endtime) {
+            layer.msg('开始时间必须小于等于结束时间');
+            return false;
+        }
+	});
+
+    $('a.copy').zclip({
+          path: '__STATIC__/zeroclipboard/ZeroClipboard.swf',
+
+          copy: function(){
+              return $(this).attr('data-url');
+          },
+          beforeCopy:function(){
+            $(this).addClass("proc");
+          },
+          afterCopy:function(){
+            $(this).removeClass("copy");
+            if( $(this).attr('data-url')=="" || $(this).attr('data-url')== null ){
+              layer.msg("暂无下载内容",{icon:2});
+             }else{
+              layer.msg("复制成功",{icon:1,time:1000});
+            }
+          }
+    });
+
+
+
+    $('.jsinputbox input').on('blur',function() {
+        var that = $(this),val = $.trim(that.val());
+//        var e = event || window.event;
+        if (val) {
+            if (/^(0|[1-9]\d*)(\.\d{1,2})?$/.test(val)) {
+                if(that.attr('data-type')==2 && val>100){
+                    layer.msg('分成比例不能大于100');
+                    return;
+                }
+                changevalue(that,val);
+            } else {
+                layer.msg('请输入正确的数字');
+            }
+        } else {
+            that.val(that.attr('data-default'));
+        }
+        return false;
+    });
+
+
+    function changevalue(that,val) {
+        if (that.hasClass('disabled')) {return false;}
+        $.ajax({
+            type:'post',
+            data:{type:that.attr('data-type'),value:val,id:that.attr('data-id')},
+            dataType:'json',
+            url:'{:U("changevalue")}',
+            beforeSend:function() {that.addClass('disabled');},
+            success:function(data) {
+                that.removeClass('disabled');
+                if (parseInt(data.status) == 1) {
+                    layer.msg(data.info);
+                } else {
+                    layer.msg(data.info);
+                }
+            },
+            error:function(){
+                that.removeClass('disabled');
+                layer.msg('服务器故障，请稍候再试...');
+            },
+        });
+
+    }
+
+
+
+
+    $('#sdate').datetimepicker({
+        lang:'ch',
+        format:'Y-m-d',
+        formatDate:'Y-m-d',
+        scrollMonth:false,
+        scrollTime:false,
+        scrollInput:false,
+        timepicker:false
+    });
+
+    $('#edate').datetimepicker({
+        lang:'ch',
+        format:'Y-m-d',
+        formatDate:'Y-m-d',
+        scrollMonth:false,
+        scrollTime:false,
+        scrollInput:false,
+        timepicker:false
+    });
+
+
+})
+</script>
+</block>

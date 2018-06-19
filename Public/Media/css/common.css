@@ -387,24 +387,3 @@ to{-webkit-transform:rotate(360deg);}
 .pop-area .pop-butn-box .pop-comfirm{background:#23BBF3;color:#FFF;width:2rem;vertical-align:middle;}
 
 
-
-
-/*新增修改css：start-By:PatY*/
-.footer .nav .item .icon{
-    width: .82rem;}
-.footer .nav .item .icon-home{background-size: 100%;}
-.footer .nav .item .icon-home{ background: url("../images/nav-index-bottom-sy-nh.png") no-repeat;background-size: 99%;}
-.footer .nav .item .icon-game{background: url("../images/nav-index-bottom-game-nh.png") no-repeat;background-size: 100%;}
-.footer .nav .item .icon-gift{background: url("../images/nav-index-bottom-gift-nh.png") no-repeat;background-size: 100%;}
-.footer .nav .item .icon-mall{background: url("../images/nav-index-bottom-store-nh.png") no-repeat;background-size: 100%;}
-.footer .nav .item .icon-user{background: url("../images/nav-index-bottom-uc-nh.png") no-repeat;background-size: 100%;}
-
-/*.footer .nav .item.active .icon-gift{background-image: url("../images/nav-index-bottom-gift.png");background-size: 100%;}*/
-.footer .nav .item.active .icon-home{background: url("../images/nav-index-bottom-sy.png") no-repeat;background-size: 99%;}
-.footer .nav .item.active .icon-game{background: url("../images/nav-index-bottom-game.png") no-repeat;background-size: 100%;}
-.footer .nav .item.active .icon-gift{background: url("../images/nav-index-bottom-gift.png") no-repeat;background-size: 100%;}
-.footer .nav .item.active .icon-mall{background: url("../images/nav-index-bottom-store.png") no-repeat;background-size: 100%;}
-.footer .nav .item.active .icon-user{background: url("../images/nav-index-bottom-uc.png") no-repeat;background-size: 100%;}
-
-.empty .empty-icon {height: unset;}
-/*新增修改css：end-By:PatY*/
