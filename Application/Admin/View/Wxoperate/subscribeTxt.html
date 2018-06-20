@@ -1,0 +1,202 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+        .keyword-wrap .content{margin-top: 15px;}
+        .keyword-wrap .content .li-com {
+            /* padding: 5px; */
+        }
+
+        .keyword-wrap .content .li-com .img-pre-show{
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .keyword-wrap .content .li-com span.key-text {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        .keyword-wrap .content .li-com label {
+            margin: 0 15px;
+        }
+        .keyword-wrap .content .li-com .tuwen-content {
+            margin-left: 50px;
+            margin-top: 10px;
+            /* border: 1px solid #a9a9a9; */
+            /* padding: 10px; */
+        }
+        .keyword-wrap .content .li-com .text-content {
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .keyword-wrap .content .li-com .text-content textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .keyword-wrap .content .li-com .show-content {
+            display: none;
+        }
+        .keyword-wrap .content .li-com .show-content.active {
+            display: block;
+        }
+
+        .keyword-wrap .content .submit{
+            margin-left: 50px;
+            margin-top: 15px;
+            padding: 6px 20px;
+        }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 26%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+        }
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关注回复</a></li>
+                <p class="description_text">/*关注回复说明*/</p>
+            </ul>
+        </div>
+        
+        <div class="error-tip-box js-show-error-tip-p">
+                <p><span></span></p>
+            </div>
+        <div class="keyword-wrap">
+            <div class="content">
+                <div class="reply li-com">
+                    <span class="key-text">回复：</span>
+                    <label for="for-tuwen" class="for-tuwen js-change-reply"><input id="for-tuwen" type="radio" value="0" name="reply-chose" checked="checked">图文</label>
+                    <label for="for-text" class="for-text js-change-reply"><input id="for-text" type="radio" value="1" name="reply-chose">文本</label>
+                    <div class="tuwen-content show-content active">
+                        <!-- <div id="txtdiv" style="border:1px solid gray;min-height:240px"></div> -->
+                        <div class="keyword li-com" style="margin-left: -50px;">
+                            <span class="key-text">item：</span>
+                            <input type="text" class="item-id-p" value="{$res.news}">
+                            <i class="form_hint">说明： 输入数字ID 以，间隔开，最多 8 个</i>
+                        </div>
+                    </div>
+                    <div class="text-content show-content">
+                        <textarea id="editor-w">{$res.content}</textarea>
+                    </div>
+                </div>
+                <input type="button" value="提交" class="submit js-submit">
+            </div>
+        </div>
+        <!--脚本控制-->
+        <script>
+            var data = {};
+            data.chose = 0;
+        
+            // 获取选中图文或文本
+            $('.js-change-reply').click(function () {
+                var t = $(this);
+                if (t.hasClass('for-tuwen')) {
+                    data.chose = 0;
+                    $('.tuwen-content').show()
+                    $('.text-content').hide()
+                } else if(t.hasClass('for-text')) {
+                    data.chose = 1;
+                    $('.text-content').show()
+                    $('.tuwen-content').hide()
+                } else {
+                    data.chose = 0;
+                }
+            })
+        
+            // 点击提交
+            $('.js-submit').click(function () {
+                data.textContent = data.chose == 0? null: $('#editor-w').val();
+                data.item_id = data.chose == 1? null:$('input.item-id-p').val();
+                sendDatas(data);
+            })
+
+            // 数据提交函数
+            function sendDatas(e){
+                var errorTip = $('.js-show-error-tip-p');
+                // 提交信息
+                var data_v = e;
+                var sendData = $.ajax({
+                    url: "{:U('Wxoperate/subscribeTxt')}",
+                    method: 'post',
+                    data: {type: data.chose, content:data.textContent, news: data.item_id },
+                    dataType: 'json'
+                })
+                sendData.done(function (e) {
+                    if (!e) {
+                        return;
+                    } else if(e.code == 1) {
+                        errorTip.show();
+                        errorTip.find('p span').html('更新成功！');
+                        DialogErrorTip();
+                    } else {
+                        errorTip.show();
+                        errorTip.find('p span').html('更新失败！');
+                        DialogErrorTip();
+                    }
+
+                })
+                sendData.fail(function () {
+                    errorTip.show();
+                    errorTip.find('p span').html('服务器出错，请稍后重试！');
+                    DialogErrorTip()
+                })
+            }
+
+            // 错误弹框关闭
+            function DialogErrorTip(){
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                },2500)
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                })
+            }
+        </script>
+        
+    </div>
+   
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+</block>

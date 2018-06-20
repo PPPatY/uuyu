@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 商城样式
  * @author 鹿文学
  */
@@ -272,3 +272,47 @@
   .mall-confition .list-item .butn {margin-left:0.2rem;}
 }
 @media screen and (max-width:320px) {.mall-confition .table-cell:first-child {width:21%;}}
+
+
+
+
+
+
+
+
+
+
+
+/*新增修改css：start-By:PatY*/
+
+.mall-list li{
+  height: 7.5rem;
+}
+
+.mall-list .item{
+  height: 100%;
+}
+
+.mall-list .item .iconbox{
+    height: 74%;
+}
+
+.mall-list .item .iconbox .icon{
+  // height: unset;
+}
+
+.mall-list li{
+  overflow: hidden;
+}
+
+.inner .user-content-p .sign-up .butn span i{
+  font-style: normal;
+}
+
+.detail .samething .content p img{
+  height: unset;
+  width: unset;
+  max-width: 100%;
+}
+
+/*新增修改css：end-By:PatY*/
