@@ -184,6 +184,31 @@
             
     <style type="text/css">
         .form_info li>label{width: 130px;}
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 26%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
     </style>
     <div class="main-place">
         <span class="main-placetitle"></span>
@@ -201,6 +226,10 @@
                 <li data-tab="tab3"><a href="javascript:void(0);" >菜单 3</a></li>
                 <p class="description_text">/*菜单说明*/</p>
             </ul>
+        </div>
+                
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
         </div>
         <div class="tab-content">
             <form action="<?php echo U('saveTool');?>" class="form-horizontal qq_login form_info_ml">
@@ -485,6 +514,7 @@
         function sendData(e){
             // 提交信息
             var data_v = e;
+            var errorTip = $('.js-show-error-tip-p');
             
             console.log(data_v);
             var sendData = $.ajax({
@@ -494,10 +524,32 @@
                 dataType: 'json'
             })
             sendData.done(function (e) {
-                console.log(e);
+                if (!e) {
+                    return;
+                } else if(e.code == 1) {
+                    errorTip.show();
+                    errorTip.find('p span').html('更新成功！');
+                    DialogErrorTip();
+                } else {
+                    errorTip.show();
+                    errorTip.find('p span').html('更新失败！');
+                    DialogErrorTip();
+                }
             })
             sendData.fail(function () {
-                // console.log('请求失败，error');
+                errorTip.show();
+                errorTip.find('p span').html('服务器出错，请稍后重试！');
+                DialogErrorTip()
+            })
+        }
+
+        // 错误弹框关闭
+        function DialogErrorTip(){
+            setTimeout(function(){
+                $('.js-show-error-tip-p').hide();
+            },2500)
+            $('.js-show-error-tip-p').click(function () {
+                $('.js-show-error-tip-p').hide();
             })
         }
     </script>

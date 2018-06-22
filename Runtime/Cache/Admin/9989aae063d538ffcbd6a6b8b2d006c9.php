@@ -237,6 +237,31 @@
         .upload-img-box{
             display: inline-block;
         }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 26%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
     </style>
     
     <script type="text/javascript" src="/Public/static/webuploader/webuploader.js"></script>
@@ -255,7 +280,9 @@
                 <p class="description_text">/*关键字说明*/</p>
             </ul>
         </div>
-        <script src="http://cdn.bootcss.com/wangeditor/2.1.20/js/lib/jquery-2.2.1.js"></script>
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
+        </div>
         <div class="keyword-wrap" style="margin-top: 15px;">
             <div class="content">
                 <div class="keyword li-com">
@@ -263,9 +290,6 @@
                     <input type="text" class="key-word-p">
                 </div>
                 <div class="reply li-com">
-                    <!-- <span class="key-text">回复：</span> -->
-                    <!-- <label for="for-tuwen" class="for-tuwen js-change-keyw"><input id="for-tuwen" type="radio" value="0" name="chose" checked="checked">图文</label> -->
-                    <!-- <label for="for-text" class="for-text js-change-keyw"><input id="for-text" type="radio" value="1" name="chose">文本</label> -->
                     <div class="tuwen-content show-content active">
                         <div class="bg-pic li-com" style="padding-left: 100px;position: relative;">
                             <span class="key-text" style=" position: absolute; left: 0;">背景图：</span>
@@ -277,7 +301,6 @@
                         </div>
                         <div class="bg-pic li-com">
                             <span class="key-text">描述：</span>
-                            <!-- <div id="txtdiv" style="border:1px solid gray;min-height:240px"></div> -->
                             <textarea id="editor-w" style="border:1px solid gray;min-height:240px;max-width: 600px;"></textarea>
                         </div>
                         <div class="bg-pic li-com">
@@ -285,9 +308,6 @@
                             <input type="text" class="key-word-address-p">
                         </div>
                     </div>
-                    <!-- <div class="text-content show-content">
-                        <textarea id="editor-w"></textarea>
-                    </div> -->
                 </div>
                 <input type="button" value="提交" class="submit js-submit">
             </div>
@@ -296,39 +316,12 @@
         <script>
             // 声明变量
             var data = {};
-            
-            // $(function(){
-            //     //初始化编辑器
-            //     editor = new wangEditor("txtdiv");
-            //     editor.create();
-                
-            //     //内容修改事件，此处做的是实时展示实际效果
-            //     editor.onchange = function(){
-            //         //获取editor的html值
-            //         data.description = editor.$txt.html();
-            //         // $("#show_box").html(html)
-            //     }
-            // })
-        
+
             // 获取关键词
             $('.key-word-p').blur(function () {
                 data.keyword = $('.key-word-p').val();
                 // console.log(data.keyWord);
             })
-            
-            // 获取选中图文或文本
-            // $('.js-change-keyw').click(function () {
-            //     var Sshow = $(this)
-            //     if (Sshow.hasClass('for-tuwen')) {
-            //         data_v.Chose = 0;
-            //         $('.tuwen-content').show()
-            //         $('.text-content').hide()
-            //     } else {
-            //         data_v.Chose = 1;
-            //         $('.text-content').show()
-            //         $('.tuwen-content').hide()
-            //     }
-            // })
 
             // 获取图文中的标题
             $('.key-word-title-p').blur(function () {
@@ -347,19 +340,13 @@
         
             // 点击提交
             $('.js-submit').click(function () {
-                // if(data_v.Chose == 0) {
-                        data.picurl = $('.upload-img-box .upload-pre-item img')[0].src;
-
-                // } else {
-                    // data.keyword = data_v.keyWord;
-                // }
-
+                data.picurl = $('.upload-img-box .upload-pre-item img')[0].src;
                 sendDatas(data);
-                console.log(data);
             })
 
             // 数据提交函数
             function sendDatas(e){
+            var errorTip = $('.js-show-error-tip-p');
                 // 提交信息
                 var data_d = e;
                 var sendData = $.ajax({
@@ -369,19 +356,37 @@
                     dataType: 'json'
                 })
                 sendData.done(function (e) {
-                    console.log(e)
-                    // var status = JSON.parse(e.info)
+                    if (!e) {
+                        return;
+                    } else if(e.code == 1) {
+                        errorTip.show();
+                        errorTip.find('p span').html('更新成功！');
+                        DialogErrorTip();
+                    } else {
+                        errorTip.show();
+                        errorTip.find('p span').html('更新失败！');
+                        DialogErrorTip();
+                    }
                 })
                 sendData.fail(function () {
-                    // console.log('请求失败，error')
+                    errorTip.show();
+                    errorTip.find('p span').html('服务器出错，请稍后重试！');
+                    DialogErrorTip()
                 })
-                console.log(data);
+            }
+        
+            // 错误弹框关闭
+            function DialogErrorTip(){
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                },1500)
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                })
             }
         </script>
-        
-        <!--按照官网上的说明，js和css的这两个引用应该放在body的末尾-->
-        <script src="http://cdn.bootcss.com/wangeditor/2.1.20/js/wangEditor.js"></script>
-        <link href="http://cdn.bootcss.com/wangeditor/2.1.20/css/wangEditor.css" rel="stylesheet">
         
     </div>
    

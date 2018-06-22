@@ -336,7 +336,26 @@ class WxoperateController extends IndexController{
             $this->assign('res',$res);
             $this->display();
         }
-}
+    }
+
+    /*删除关键字*/
+    public  function delkeywords(){
+        if(IS_POST){
+            $id=$_POST['id'];
+            $res=M('keyword_replay','wx_')->where(array('id'=>$id))->delete();
+            if($res===false){
+                $msg=array('code'=>-1,'msg'=>'删除失败！');
+                $this->ajaxReturn($msg);
+            }else{
+                $msg=array('code'=>1,'msg'=>'成功删除！');
+                $this->ajaxReturn($msg);
+            }
+        }else{
+            $msg=array('code'=>0,'msg'=>'操作不合法！');
+            $this->ajaxReturn($msg);
+        }
+    }
+
 
 }
 

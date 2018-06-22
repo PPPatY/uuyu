@@ -206,8 +206,53 @@
             margin-top: 30px;
         }
         .form-item a,span{
-            font-size: 22px;
-            margin: 0 5px;
+            /* font-size: 22px; */
+            width: 31px;
+            height: 28px;
+            border: 1px solid #DDD;
+            text-align: center;
+            line-height: 30px;
+            padding: 4px 9px;
+            color: #3C95C8;
+            margin-right: -1px;
+        }
+
+        
+        .form-item a:hover{
+            color: #3C95C8;
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+        .form-item span{
+            color: #3C95C8;
+            font-weight: bold;
+            border: 1px solid transparent;
+        }
+
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 26%;
+            left: 34%;
+            max-width: 308px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
         }
     </style>
     <div class="main-place">
@@ -223,6 +268,9 @@
             <ul>
                 <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关键字</a></li>
             </ul>
+        </div>
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
         </div>
         <div class="tab-content">
             <form action="<?php echo U('saveTool');?>" class="form-horizontal qq_login form_info_ml">
@@ -256,15 +304,6 @@
                                         <a href="?s=/Wxoperate/editkeywords/id/<?php echo ($listData["id"]); ?>">编辑</a>
                                     </td>
                                 </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-                            <!-- <tr>
-                                <td>2</td>
-                                <td>消消乐</td>
-                                <td>消消乐</td>
-                                <td>享受百花齐放的乐趣</td>
-                                <td>http</td>
-                                <td>https</td>
-                                <td><a href="javascript:;">删除</a></td>
-                            </tr> -->
                         </table>
                     </ul>
                 </div>
@@ -423,34 +462,56 @@
         $('.js-delete').on('click',function(){
             var _t = $(this);
             data.id = _t.attr("id");
-            _t.parent().parent('tr').remove();
-            console.log(data);
-            sendDatas(data);
+            // _t.parent().parent('tr').remove();
+            sendDatas(data, _t);
         });
 
         // 点击提交 获取整个数据
-        $('.js-submit-menuSettings').click(function () {
-
-            console.log('未做数据获取操作');
-            sendDatas(data);
-        })
+        // $('.js-submit-menuSettings').click(function () {
+        //     sendDatas(data);
+        // })
 
     
         // 数据提交函数
-        function sendDatas(e){
+        function sendDatas(e,t){
+            var errorTip = $('.js-show-error-tip-p');
             // 提交信息
             var data_v = e;
             var sendData = $.ajax({
-                url: "<?php echo U('Wxoperate/keyWords');?>",
+                url: "<?php echo U('Wxoperate/delkeywords');?>",
                 method: 'post',
                 data: data_v,
                 dataType: 'json'
             })
             sendData.done(function (e) {
-                console.log(e)
+                if (!e) {
+                    return;
+                } else if(e.code == 1) {
+                    t.parent().parent('tr').remove();
+                    errorTip.show();
+                    errorTip.find('p span').html('删除成功！');
+                    DialogErrorTip();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>"
+                } else {
+                    errorTip.show();
+                    errorTip.find('p span').html('删除失败！');
+                    DialogErrorTip();
+                }
             })
             sendData.fail(function () {
-                console.log('请求失败，error')
+                errorTip.show();
+                errorTip.find('p span').html('删除失败！');
+                DialogErrorTip()
+            })
+        }
+        
+        // 错误弹框关闭
+        function DialogErrorTip(){
+            setTimeout(function(){
+                $('.js-show-error-tip-p').hide();
+            },1500)
+            $('.js-show-error-tip-p').click(function () {
+                $('.js-show-error-tip-p').hide();
             })
         }
     </script>

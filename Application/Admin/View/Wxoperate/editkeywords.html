@@ -56,6 +56,31 @@
         .upload-img-box{
             display: inline-block;
         }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 26%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
     </style>
     
     <script type="text/javascript" src="__STATIC__/webuploader/webuploader.js"></script>
@@ -73,6 +98,9 @@
                 <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关键字</a></li>
                 <p class="description_text">/*关键字说明*/</p>
             </ul>
+        </div>
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
         </div>
         <div class="keyword-wrap" style="margin-top: 15px;">
             <div class="content">
@@ -154,20 +182,44 @@
 
             // 数据提交函数
             function sendDatas(e){
+            var errorTip = $('.js-show-error-tip-p');
                 // 提交信息
                 var data_v = e;
                 var sendData = $.ajax({
-                    url: '',
+                    url: "{:U('Wxoperate/editkeywords')}",
                     method: 'post',
                     data: data_v,
                     dataType: 'json'
                 })
                 sendData.done(function (e) {
-                    console.log(e);
-                    // var status = JSON.parse(e.info)
-                })
+                    if (!e) {
+                        return;
+                    } else if(e.code == 1) {
+                        errorTip.show();
+                        errorTip.find('p span').html('更新成功！');
+                        DialogErrorTip();
+                    } else {
+                        errorTip.show();
+                        errorTip.find('p span').html('更新失败！');
+                        DialogErrorTip();
+                    }
+                });
                 sendData.fail(function () {
-                    // console.log('请求失败，error')
+                    errorTip.show();
+                    errorTip.find('p span').html('服务器出错，请稍后重试！');
+                    DialogErrorTip()
+                })
+            }
+        
+            // 错误弹框关闭
+            function DialogErrorTip(){
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "{:U('Wxoperate/keyWords')}";
+                },1500)
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "{:U('Wxoperate/keyWords')}";
                 })
             }
         </script>
