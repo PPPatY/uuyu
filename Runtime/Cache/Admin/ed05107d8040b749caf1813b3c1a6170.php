@@ -235,7 +235,7 @@
             <form action="<?php echo U('saveTool');?>" class="form-horizontal qq_login form_info_ml">
                 <div id="tab1" class="tab-pane in tab1">
                     <?php if(empty($nav_data)): ?><div class="form-item channel pLi tab1-name-tit" >
-                            <div class="controls tab1-name-title" id="<?php echo ($data[0]['id']); ?>">
+                            <div class="controls tab1-name-title">
                                 <span class="">一级导航：</span>
                                 <input type="text" class="text js-tab1-name" value="<?php echo ($data[0]['name']); ?>">
                             &nbsp;
@@ -267,7 +267,7 @@
                 <div id="tab2" class="tab-pane in tab2">
                    
                     <?php if(empty($nav_data)): ?><div class="form-item channel pLi tab2-name-tit" >
-                            <div class="controls tab2-name-title" id="<?php echo ($data[0]['id']); ?>">
+                            <div class="controls tab2-name-title">
                                 <span class="">一级导航：</span>
                                 <input type="text" class="text js-tab2-name" value="<?php echo ($data[1]['name']); ?>">
                                 &nbsp;
@@ -297,7 +297,7 @@
                 </div>
                 <div id="tab3" class="tab-pane in tab3">
                     <?php if(empty($nav_data)): ?><div class="form-item channel pLi tab3-name-tit" >
-                            <div class="controls tab3-name-title" id="<?php echo ($data[0]['id']); ?>">
+                            <div class="controls tab3-name-title">
                                 <span class="">一级导航：</span>
                                 <input type="text" class="text js-tab3-name" value="<?php echo ($data[2]['name']); ?>">
                                 &nbsp;
@@ -545,12 +545,20 @@
 
         // 错误弹框关闭
         function DialogErrorTip(){
-            setTimeout(function(){
-                $('.js-show-error-tip-p').hide();
-            },2500)
-            $('.js-show-error-tip-p').click(function () {
-                $('.js-show-error-tip-p').hide();
-            })
+            if(e == 1){
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                },1500)
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                })
+            } else{
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                },1500)
+            }
         }
     </script>
 

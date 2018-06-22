@@ -239,6 +239,7 @@
             height: 100%;
             background-color: rgba(0,0,0,.3);
             text-align: center;
+            z-index: 9;
         }
         .tab-wrap .error-tip-box p{
             position: absolute;
@@ -251,6 +252,7 @@
             background: #00000060;
             color: #fff;
             border-radius: 10px;
+            z-index: 9;
         }
     </style>
     <div class="main-place">
@@ -270,8 +272,8 @@
         </div>
         
         <div class="error-tip-box js-show-error-tip-p">
-                <p><span></span></p>
-            </div>
+            <p><span></span></p>
+        </div>
         <div class="keyword-wrap">
             <div class="content">
                 <div class="reply li-com">
@@ -344,7 +346,6 @@
                         errorTip.find('p span').html('更新失败！');
                         DialogErrorTip();
                     }
-
                 })
                 sendData.fail(function () {
                     errorTip.show();
@@ -357,7 +358,7 @@
             function DialogErrorTip(){
                 setTimeout(function(){
                     $('.js-show-error-tip-p').hide();
-                },2500)
+                },1500)
                 $('.js-show-error-tip-p').click(function () {
                     $('.js-show-error-tip-p').hide();
                 })

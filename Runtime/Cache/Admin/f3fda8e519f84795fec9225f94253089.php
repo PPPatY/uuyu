@@ -365,7 +365,7 @@
             function sendDatas(e){
             var errorTip = $('.js-show-error-tip-p');
                 // 提交信息
-                var data_v = e;
+                var data_v = 1;
                 var sendData = $.ajax({
                     url: "<?php echo U('Wxoperate/editkeywords');?>",
                     method: 'post',
@@ -377,31 +377,40 @@
                         return;
                     } else if(e.code == 1) {
                         errorTip.show();
-                        errorTip.find('p span').html('更新成功！');
-                        DialogErrorTip();
+                        errorTip.find('p span').html('修改成功！');
+                        DialogErrorTip(e.code);
                     } else {
                         errorTip.show();
-                        errorTip.find('p span').html('更新失败！');
-                        DialogErrorTip();
+                        errorTip.find('p span').html('修改失败！');
+                        DialogErrorTip(e.code);
                     }
                 });
                 sendData.fail(function () {
                     errorTip.show();
                     errorTip.find('p span').html('服务器出错，请稍后重试！');
-                    DialogErrorTip()
+                    DialogErrorTip(0)
                 })
             }
         
             // 错误弹框关闭
-            function DialogErrorTip(){
-                setTimeout(function(){
-                    $('.js-show-error-tip-p').hide();
-                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
-                },1500)
-                $('.js-show-error-tip-p').click(function () {
-                    $('.js-show-error-tip-p').hide();
-                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
-                })
+            function DialogErrorTip(e){
+                if(e == 1){
+                    setTimeout(function(){
+                        $('.js-show-error-tip-p').hide();
+                        window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                    },1500);
+                    $('.js-show-error-tip-p').click(function () {
+                        $('.js-show-error-tip-p').hide();
+                        window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                    })
+                } else{
+                    setTimeout(function(){
+                        $('.js-show-error-tip-p').hide();
+                    },1500);
+                    $('.js-show-error-tip-p').click(function () {
+                        $('.js-show-error-tip-p').hide();
+                    })
+                }
             }
         </script>
 

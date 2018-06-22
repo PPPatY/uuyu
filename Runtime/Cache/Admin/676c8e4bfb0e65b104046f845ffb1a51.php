@@ -295,10 +295,10 @@
                             <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$listData): $mod = ($i % 2 );++$i;?><tr>
                                     <td><?php echo ($listData["id"]); ?></td>
                                     <td><?php echo ($listData["keyword"]); ?></td>
-                                    <td><?php echo ($listData["title"]); ?></td>
-                                    <td><?php echo ($listData["description"]); ?></td>
-                                    <td><?php echo ($listData["picurl"]); ?></td>
-                                    <td><?php echo ($listData["url"]); ?></td>
+                                    <td title="<?php echo ($listData["title"]); ?>"><?php echo ($listData["title"]); ?></td>
+                                    <td title="<?php echo ($listData["description"]); ?>"><?php echo ($listData["description"]); ?></td>
+                                    <td title="<?php echo ($listData["picurl"]); ?>"><?php echo ($listData["picurl"]); ?></td>
+                                    <td title="<?php echo ($listData["url"]); ?>"><?php echo ($listData["url"]); ?></td>
                                     <td>
                                         <a href="javascript:;" class="js-delete" id="<?php echo ($listData["id"]); ?>" style="margin-right: 15px;">删除</a>
                                         <a href="?s=/Wxoperate/editkeywords/id/<?php echo ($listData["id"]); ?>">编辑</a>
@@ -476,7 +476,7 @@
         function sendDatas(e,t){
             var errorTip = $('.js-show-error-tip-p');
             // 提交信息
-            var data_v = e;
+            var data_v = 1;
             var sendData = $.ajax({
                 url: "<?php echo U('Wxoperate/delkeywords');?>",
                 method: 'post',
@@ -490,29 +490,39 @@
                     t.parent().parent('tr').remove();
                     errorTip.show();
                     errorTip.find('p span').html('删除成功！');
-                    DialogErrorTip();
-                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>"
+                    DialogErrorTip(e.code);
                 } else {
                     errorTip.show();
                     errorTip.find('p span').html('删除失败！');
-                    DialogErrorTip();
+                    DialogErrorTip(e.code);
                 }
             })
             sendData.fail(function () {
                 errorTip.show();
                 errorTip.find('p span').html('删除失败！');
-                DialogErrorTip()
+                DialogErrorTip(0)
             })
         }
         
         // 错误弹框关闭
-        function DialogErrorTip(){
-            setTimeout(function(){
-                $('.js-show-error-tip-p').hide();
-            },1500)
-            $('.js-show-error-tip-p').click(function () {
-                $('.js-show-error-tip-p').hide();
-            })
+        function DialogErrorTip(e){
+            if(e == 1){
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                },1500);
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "<?php echo U('Wxoperate/keyWords');?>";
+                })
+            } else{
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                },1500);
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                })
+            }
         }
     </script>
 

@@ -115,10 +115,10 @@
                                 <tr>
                                     <td>{$listData.id}</td>
                                     <td>{$listData.keyword}</td>
-                                    <td>{$listData.title}</td>
-                                    <td>{$listData.description}</td>
-                                    <td>{$listData.picurl}</td>
-                                    <td>{$listData.url}</td>
+                                    <td title="{$listData.title}">{$listData.title}</td>
+                                    <td title="{$listData.description}">{$listData.description}</td>
+                                    <td title="{$listData.picurl}">{$listData.picurl}</td>
+                                    <td title="{$listData.url}">{$listData.url}</td>
                                     <td>
                                         <a href="javascript:;" class="js-delete" id="{$listData.id}" style="margin-right: 15px;">删除</a>
                                         <a href="?s=/Wxoperate/editkeywords/id/{$listData.id}">编辑</a>
@@ -193,29 +193,39 @@
                     t.parent().parent('tr').remove();
                     errorTip.show();
                     errorTip.find('p span').html('删除成功！');
-                    DialogErrorTip();
-                    window.location.href = "{:U('Wxoperate/keyWords')}"
+                    DialogErrorTip(e.code);
                 } else {
                     errorTip.show();
                     errorTip.find('p span').html('删除失败！');
-                    DialogErrorTip();
+                    DialogErrorTip(e.code);
                 }
             })
             sendData.fail(function () {
                 errorTip.show();
                 errorTip.find('p span').html('删除失败！');
-                DialogErrorTip()
+                DialogErrorTip(0)
             })
         }
         
         // 错误弹框关闭
-        function DialogErrorTip(){
-            setTimeout(function(){
-                $('.js-show-error-tip-p').hide();
-            },1500)
-            $('.js-show-error-tip-p').click(function () {
-                $('.js-show-error-tip-p').hide();
-            })
+        function DialogErrorTip(e){
+            if(e == 1){
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "{:U('Wxoperate/keyWords')}";
+                },1500);
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                    window.location.href = "{:U('Wxoperate/keyWords')}";
+                })
+            } else{
+                setTimeout(function(){
+                    $('.js-show-error-tip-p').hide();
+                },1500);
+                $('.js-show-error-tip-p').click(function () {
+                    $('.js-show-error-tip-p').hide();
+                })
+            }
         }
     </script>
 </block>
