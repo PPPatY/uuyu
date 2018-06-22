@@ -1,0 +1,160 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+        .form_info li>a{ border-color: transparent;}
+        .form_info li>a:hover{ border-color: transparent; cursor: pointer;}
+        .table-list tr{
+            height: 35px;
+        }
+        .table-list th{
+            min-width: 100px;
+        }
+        .table-list tr td{
+            text-align: center;
+            max-width: 200px;
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .form-item{
+            display: inline-block;
+            height: 35px;
+            margin-top: 30px;
+        }
+        .form-item a,span{
+            font-size: 22px;
+            margin: 0 5px;
+        }
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关键字</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <ul class="form_info ">
+                        <li>
+                            <label style="width: 100px;">关键字列表：</label>
+                            <a href="{:U('Wxoperate/addkeywords')}">
+                                <input type="button" value="添加" class=""style="padding:5px 20px; " >
+                            </a>
+                        </li>
+                        <table border="1" class="table-list" style="margin-left: 50px">
+                            <tr>
+                                <th>ID</th>
+                                <th>关键字</th>
+                                <th>标题</th>
+                                <th>描述</th>
+                                <th>图片地址</th>
+                                <th>跳转地址</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="list" id="listData">
+                                <tr>
+                                    <td>{$listData.id}</td>
+                                    <td>{$listData.keyword}</td>
+                                    <td>{$listData.title}</td>
+                                    <td>{$listData.description}</td>
+                                    <td>{$listData.picurl}</td>
+                                    <td>{$listData.url}</td>
+                                    <td>
+                                        <a href="javascript:;" class="js-delete" id="{$listData.id}" style="margin-right: 15px;">删除</a>
+                                        <a href="?s=/Wxoperate/editkeywords/id/{$listData.id}">编辑</a>
+                                    </td>
+                                </tr>
+                            </volist>
+                            <!-- <tr>
+                                <td>2</td>
+                                <td>消消乐</td>
+                                <td>消消乐</td>
+                                <td>享受百花齐放的乐趣</td>
+                                <td>http</td>
+                                <td>https</td>
+                                <td><a href="javascript:;">删除</a></td>
+                            </tr> -->
+                        </table>
+                    </ul>
+                </div>
+                <div class="form-item">
+                    {$page}
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+        var data = {};        
+
+        // 设置分页位置
+        $(document).ready(function () {
+            var tabW = $('.table-list').width();
+            var selfWidth = $('.form-item').width();
+            var marginL = tabW - selfWidth + 50;
+            console.log(marginL);
+            $('.form-item').css("margin-left", marginL);
+        })
+
+        // 点击删除
+        $('.js-delete').on('click',function(){
+            var _t = $(this);
+            data.id = _t.attr("id");
+            _t.parent().parent('tr').remove();
+            console.log(data);
+            sendDatas(data);
+        });
+
+        // 点击提交 获取整个数据
+        $('.js-submit-menuSettings').click(function () {
+
+            console.log('未做数据获取操作');
+            sendDatas(data);
+        })
+
+    
+        // 数据提交函数
+        function sendDatas(e){
+            // 提交信息
+            var data_v = e;
+            var sendData = $.ajax({
+                url: "{:U('Wxoperate/keyWords')}",
+                method: 'post',
+                data: data_v,
+                dataType: 'json'
+            })
+            sendData.done(function (e) {
+                console.log(e)
+            })
+            sendData.fail(function () {
+                console.log('请求失败，error')
+            })
+        }
+    </script>
+</block>

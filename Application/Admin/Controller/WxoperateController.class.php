@@ -179,6 +179,7 @@ class WxoperateController extends IndexController{
             $data['type']=$_POST['type'];
             $data['content']=$_POST['content'];
             $data['news']=$_POST['news'];
+           
             $con=M('replay_subscrib','wx_')->where(array('id'=>1))->save($data);
             if($con){
                 $msg=array('code'=>1,'msg'=>'更新成功！');
@@ -194,8 +195,149 @@ class WxoperateController extends IndexController{
             $this->display();
         }
     }
-    
-    
+
+    /*后台菜单设置*/
+    public function menueSet(){
+        if(IS_POST){
+            if($_POST['id']){
+                $id=$_POST['id'];
+                $name=$_POST['name'];
+                $type=$_POST['type'];
+                $key=$_POST['key'];
+                $url=$_POST['url'];
+                if(!empty($name)){
+                    $data['name']=$name;
+                }elseif(!empty($type)){
+                    $data['type']=$type;
+                }elseif(!empty($key)){
+                    $data['key']=$key;
+                }elseif(!empty($url)){
+                    $data['url']=$url;
+                }
+                $con=M('menue','wx_')->where(array('id'=>$id))->save($data);
+                if($con===false){
+                    $msg=array('code'=>-1,'msg'=>'修改失败！');
+                    $this->ajaxReturn($msg);
+                }else{
+                    $msg=array('code'=>1,'msg'=>'修改成功！');
+                    $this->ajaxReturn($msg);
+                }
+            }elseif($_POST['submit']){
+                $firstArr=M('menue')->field('id,name')->where(array('pid'=>0))->select();
+                $tab=array();
+                for($i=0;$i<count($firstArr);$i++){
+                    if(!empty($firstArr[$i]['name'])){
+                        $subArr=M('menue')->where(array('pid'=>$firstArr[$i]['id']))->field('name,type,key,url')->select();
+                        for($j=0; $j <= count($subArr)+1; $j++){
+                            if(empty($subArr[$j]['name'])){
+                                unset($subArr[$j]);
+                            }
+                        }
+                        for($n=0; $n <= count($subArr); $n++){
+                            if($subArr[$n]['type']=='view'){
+                                unset($subArr[$n]['key']);
+                            }elseif($subArr[$n]['type']=='click'){
+                                unset($subArr[$n]['url']);
+                            }
+                        }
+                        $tab[$i]=array('name'=>$firstArr[$i]['name'],'sub_button'=>$subArr);
+                    }
+                }
+                $token=$this->getToken();
+                $oauth=new WechatAuth($this->appId,$this->appSecret,$token);
+                $oauth->menuCreate($tab);
+            }
+        }else{
+            $result=M('menue','wx_')->where(array('pid'=>0))->field('id,name')->select();
+            $child_arr=array();
+            for($i=0; $i<count($result);  $i++){
+                $child=M('menue','wx_')->where(array('pid'=>$result[$i]['id']))->field('id,name,type,key,url')->select();
+                for($j=0;$j<count($child);$j++){
+                    if(empty($child[$j]['key']) ){
+                        unset($child[$j]['key']);
+                    }elseif(empty($child[$j]['url']) ){
+                        unset($child[$j]['url']);
+                    }
+                    elseif(empty($child['key']) ){
+                        unset($child['key']);
+                    
+                    }elseif (empty($child['url'])){
+                        unset($child['url']);
+                    }
+                }
+                array_shift($result[$i]);
+                $result[$i]['sub_button']=$child;
+            }
+            $this->assign('data',$result);
+            $this->assign('sub0',$result[0]['sub_button']);
+            $this->assign('sub1',$result[1]['sub_button']);
+            $this->assign('sub2',$result[2]['sub_button']);
+            // var_dump($result[0]['sub_button']);
+            $this->display();
+        }
+    }
+
+    /*关键字列表*/
+    public  function keyWords(){
+        $count=M('keyword_replay','wx_')->count();
+        $Page  = new \Think\Page($count,2);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $show  = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = M('keyword_replay','wx_')->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        
+        $this->display(); 
+    }
+       
+    /*添加关键字*/
+    public  function  addkeywords(){
+        if(IS_POST){
+            $data['keyword']=$_POST['keyword'];
+            $data['title']=$_POST['title'];
+            $data['description']=$_POST['description'];
+            $data['picurl']=$_POST['picurl'];
+            $data['url']=$_POST['url'];
+            $con=M('keyword_replay','wx_')->data($data)->add();
+            if($con){
+                $msg=array('code'=>1,'msg'=>'添加成功！');
+                $this->ajaxReturn($msg);
+            }else{
+                $msg=array('code'=>0,'msg'=>'添加失败！');
+                $this->ajaxReturn($msg);
+            }
+        }else{
+            // $msg=array('code'=>-1,'msg'=>'请求不合法！');
+            // $this->ajaxReturn($msg);
+            $this->display(); 
+        }
+    }
+
+     /*修改关键字*/
+     public function editkeywords(){
+        if(IS_POST){
+            $data['id']=$_POST['id'];
+            $data['keyword']=$_POST['keyword'];
+            $data['title']=$_POST['title'];
+            $data['description']=$_POST['description'];
+            $data['picurl']=$_POST['picurl'];
+            $data['url']=$_POST['url'];
+            $con=M('keyword_replay','wx_')->save($data);
+            if($con){
+                $msg=array('code'=>1,'msg'=>'修改成功！');
+                $this->ajaxReturn($msg);
+            }else{
+                $msg=array('code'=>0,'msg'=>'修改失败！');
+                $this->ajaxReturn($msg);
+            }
+        }else{
+            $id=$_GET['id'];
+            $res=M('keyword_replay','wx_')->where(array('id'=>$id))->find();
+            $this->assign('res',$res);
+            $this->display();
+        }
+}
+
 }
 
 

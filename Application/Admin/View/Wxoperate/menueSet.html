@@ -1,0 +1,229 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >菜单 1</a></li>
+                <li data-tab="tab2"><a href="javascript:void(0);" >菜单 2</a></li>
+                <li data-tab="tab3"><a href="javascript:void(0);" >菜单 3</a></li>
+                <p class="description_text">/*菜单说明*/</p>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <empty name="nav_data">
+                        <div class="form-item channel pLi tab1-name-tit" >
+                            <div class="controls tab1-name-title" id="{$data[0]['id']}">
+                                <span class="">一级导航：</span>
+                                <input type="text" class="text js-tab1-name" value="{$data[0]['name']}">
+                            &nbsp;
+                            </div>
+                            <volist name="sub0" id="sub_data0" key="key">
+                                <div class="form-item channel cLi tab1-data{$key}" >
+                                    <div class="controls" id="{$sub_data0['id']}">
+                                        <span class="">二级导航：</span>
+                                        <input type="text" class="text js-tab-name" value="{$sub_data0['name']}">
+                                        &nbsp;
+                                        <span class="">type：</span>
+                                        <select name="typeSel" class="sub-type"> 
+                                            <if condition="$sub_data0['type'] eq 'view'">
+                                                <option value="view" >view</option>
+                                                <option value="click">click</option>
+                                            <else />
+                                                <option value="click">click</option>    
+                                                <option value="view">view</option>  
+                                            </if>
+                                        </select>
+                                        &nbsp;
+                                        <if condition="$sub_data0['type'] eq 'view'">
+                                            <span class="">Value：</span>
+                                            <input type="text" class="text js-tab-ku" value="{$sub_data0['url']}">
+                                        <else />
+                                            <span class="">Value：</span>
+                                            <input type="text" class="text js-tab-ku" value="{$sub_data0['key']}">
+                                        </if>
+                                    
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </empty>
+                </div>
+                <div id="tab2" class="tab-pane in tab2">
+                   
+                    <empty name="nav_data">
+                        <div class="form-item channel pLi tab2-name-tit" >
+                            <div class="controls tab2-name-title" id="{$data[0]['id']}">
+                                <span class="">一级导航：</span>
+                                <input type="text" class="text js-tab2-name" value="{$data[1]['name']}">
+                                &nbsp;
+                            </div>
+                            <volist name="sub1" id="sub_data1" key="key">
+                                <div class="form-item channel cLi tab2-data{$key}" >
+                                    <div class="controls" id="{$sub_data1['id']}">
+                                        <span class="">二级导航：</span>
+                                        <input type="text" class="text js-tab-name" value="{$sub_data1['name']}">
+                                        &nbsp;
+                                        <span class="">type：</span>
+                                        <select name="typeSel" class="sub-type">
+                                            <if condition="$sub_data1['type'] eq 'view'">
+                                                <option value="view" >view</option>
+                                                <option value="click">click</option>
+                                            <else />
+                                                <option value="click">click</option>    
+                                                <option value="view">view</option>  
+                                            </if>
+                                        </select>
+                                        &nbsp;
+                                        <if condition="$sub_data1['type'] eq 'view'">
+                                            <span class="">Value：</span>
+                                            <input type="text" class="text js-tab-ku" value="{$sub_data1['url']}">
+                                        <else />
+                                            <span class="">Value：</span>
+                                            <input type="text" class="text js-tab-ku" value="{$sub_data1['key']}">
+                                        </if>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </empty>
+                </div>
+                <div id="tab3" class="tab-pane in tab3">
+                    <empty name="nav_data">
+                        <div class="form-item channel pLi tab3-name-tit" >
+                            <div class="controls tab3-name-title" id="{$data[0]['id']}">
+                                <span class="">一级导航：</span>
+                                <input type="text" class="text js-tab3-name" value="{$data[2]['name']}">
+                                &nbsp;
+                            </div>
+                            <volist name="sub2" id="sub_data2" key="key">
+                                <div class="form-item channel cLi tab3-data{$key}" >
+                                    <div class="controls" id="{$sub_data2['id']}">
+                                        <span class="">二级导航：</span>
+                                        <input type="text" class="text js-tab-name" value="{$sub_data2['name']}">
+                                        &nbsp;
+                                        <span class="">type：</span>
+                                        <select name="typeSel" class="sub-type">
+                                                <if condition="$sub_data2['type'] eq 'view'">
+                                                    <option value="view" >view</option>
+                                                    <option value="click">click</option>
+                                                <else />
+                                                    <option value="click">click</option>    
+                                                    <option value="view">view</option>  
+                                                </if>
+                                        </select>
+                                        &nbsp;
+                                        <if condition="$sub_data2['type'] eq 'view'">
+                                            <span class="">Value：</span>
+                                            <input type="text" class="text js-tab-ku" value="{$sub_data2['url']}">
+                                        <else />
+                                            <span class="">Value：</span>
+                                            <input type="text" class="text js-tab-ku" value="{$sub_data2['key']}">
+                                        </if>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </empty>
+                   
+                </div>
+                <div class="form-item">
+                    <label class="item-label"></label>
+                    <div class="controls">
+                        <div class="submit-btn js-submit-menuSettings" target-form="form-horizontal" style="width: 36px; cursor: pointer;">确 定</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+
+        var data = {};
+
+        //改变type值
+        $('.sub-type').change(function(){
+            data = {};
+            var _t = $(this);
+            data.type = _t.find('option:selected').val();
+            data.id = _t.parent('.controls').attr("id");
+            // console.log(data);
+            sendData(data);
+        })
+        
+        //改变input值
+        $('input.text').change(function(){
+            data = {};
+            var _t = $(this);
+            data.id = _t.parent('.controls').attr("id");
+            var type = _t.parent('.controls').find('option:selected').val();
+            if (_t.hasClass('js-tab-name')) {
+                data.name = _t.val();
+            } else {
+                if (type == 'view') {
+                    data.url = _t.val();
+                } else {
+                    data.key = _t.val();
+                }
+            }
+
+            // console.log(data);
+            sendData(data);
+        })
+
+        // 点击提交 提交状态
+        $('.js-submit-menuSettings').click(function () {
+            // console.log(data);
+            var status = {};
+            status.submit = 1;
+            sendData(status);
+        })
+
+        // 数据提交函数
+        function sendData(e){
+            // 提交信息
+            var data_v = e;
+            
+            console.log(data_v);
+            var sendData = $.ajax({
+                url: "{:U('Wxoperate/menueSet')}",
+                method: 'post',
+                data: data_v,
+                dataType: 'json'
+            })
+            sendData.done(function (e) {
+                console.log(e);
+            })
+            sendData.fail(function () {
+                // console.log('请求失败，error');
+            })
+        }
+    </script>
+</block>

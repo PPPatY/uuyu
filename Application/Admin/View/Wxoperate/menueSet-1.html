@@ -1,0 +1,408 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >菜单 1</a></li>
+                <li data-tab="tab2"><a href="javascript:void(0);" >菜单 2</a></li>
+                <li data-tab="tab3"><a href="javascript:void(0);" >菜单 3</a></li>
+                <p class="description_text">/*菜单说明*/</p>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <empty name="nav_data">
+                        <div class="form-item channel pLi tab1-name-tit" >
+                            <div class="controls tab1-name-title">
+                                <span class="">一级导航：</span><input type="text" class="text js-tab1-name" value="{$data[0]['name']}">
+                            &nbsp;
+
+                            </div>
+                            <volist name="sub0" id="sub_data0" key="key">
+                                <div class="form-item channel cLi tab1-data{$key}" >
+                                    <div class="controls">
+                                        <span class="">二级导航：</span><input type="text" class="text js-tab-name" value="{$sub_data0['name']}">
+                                        &nbsp;
+                                        <span class="">type：</span>
+                                        <select name="typeSel" id="tab1-data{$key}-type"> 
+                                            <if condition="$sub_data0['type'] eq 'view'">
+                                                <option value="view" >view</option>
+                                                <option value="click">click</option>
+                                            <else />
+                                                <option value="click">click</option>    
+                                                <option value="view">view</option>  
+                                            </if>
+                                        </select>
+                                        &nbsp;
+                                        <if condition="$sub_data0['type'] eq 'view'">
+                                            <span class="">Value：</span><input type="text" class="text js-tab-ku" value="{$sub_data0['url']}">
+                                        <else />
+                                            <span class="">Value：</span><input type="text" class="text js-tab-ku" value="{$sub_data0['key']}">
+                                        </if>
+                                    
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </empty>
+                </div>
+                <div id="tab2" class="tab-pane in tab2">
+                   
+                    <empty name="nav_data">
+                        <div class="form-item channel pLi tab2-name-tit" >
+                            <div class="controls tab2-name-title">
+                                <span class="">一级导航：</span><input type="text" class="text js-tab2-name" name="template[nav][1][title][]"  value="{$data[1]['name']}">
+                                &nbsp;
+                               
+                            </div>
+                            <volist name="sub1" id="sub_data1" key="key">
+                                <div class="form-item channel cLi tab2-data{$key}" >
+                                    <div class="controls">
+                                        <span class="">二级导航：</span><input type="text" class="text js-tab-name" value="{$sub_data1['name']}">
+                                        &nbsp;
+                                        <span class="">type：</span>
+                                        <select name="typeSel" id="tab2-data{$key}-type">
+                                            <if condition="$sub_data1['type'] eq 'view'">
+                                                <option value="view" >view</option>
+                                                <option value="click">click</option>
+                                            <else />
+                                                <option value="click">click</option>    
+                                                <option value="view">view</option>  
+                                            </if>
+                                        </select>
+                                        &nbsp;
+                                        <if condition="$sub_data1['type'] eq 'view'">
+                                            <span class="">Value：</span><input type="text" class="text js-tab-ku" value="{$sub_data1['url']}">
+                                        <else />
+                                            <span class="">Value：</span><input type="text" class="text js-tab-ku" value="{$sub_data1['key']}">
+                                        </if>
+
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </empty>
+                </div>
+                <div id="tab3" class="tab-pane in tab3">
+                    <empty name="nav_data">
+                        <div class="form-item channel pLi tab3-name-tit" >
+                            <div class="controls tab3-name-title">
+                                <span class="">一级导航：</span><input type="text" class="text js-tab3-name" name="template[nav][1][title][]"  value="{$data[2]['name']}">
+                                &nbsp;
+                            </div>
+                            <volist name="sub2" id="sub_data2" key="key">
+                                <div class="form-item channel cLi tab3-data{$key}" >
+                                    <div class="controls">
+                                        <span class="">二级导航：</span><input type="text" class="text js-tab-name" value="{$sub_data2['name']}">
+                                        &nbsp;
+                                        <span class="">type：</span>
+                                        <select name="typeSel" id="tab3-data{$key}-type">
+                                                <if condition="$sub_data2['type'] eq 'view'">
+                                                    <option value="view" >view</option>
+                                                    <option value="click">click</option>
+                                                <else />
+                                                    <option value="click">click</option>    
+                                                    <option value="view">view</option>  
+                                                </if>
+                                        </select>
+                                        &nbsp;
+                                        <if condition="$sub_data2['type'] eq 'view'">
+                                            <span class="">Value：</span><input type="text" class="text js-tab-ku" value="{$sub_data2['url']}">
+                                        <else />
+                                            <span class="">Value：</span><input type="text" class="text js-tab-ku" value="{$sub_data2['key']}">
+                                        </if>
+                                    </div>
+                                </div>
+                            </volist>
+                        </div>
+                    </empty>
+                   
+                </div>
+                <div class="form-item">
+                    <label class="item-label"></label>
+                    <div class="controls">
+                        <div class="submit-btn js-submit-menuSettings" target-form="form-horizontal" style="width: 36px; cursor: pointer;">确 定</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+        // 新增js
+        // 声明数据
+        var data = {}, textData = {};
+        data.tab1 = {}
+        data.tab2 = {}
+        data.tab3 = {}
+        textData.tab1 = {}
+        textData.tab2 = {}
+        textData.tab3 = {}
+        
+        // 点击提交 获取整个数据
+        $('.js-submit-menuSettings').click(function () {
+            data.tab1.name = $('#tab1>.tab1-name-tit>.tab1-name-title input.js-tab1-name').val();
+            data.tab2.name = $('#tab2>.tab2-name-tit>.tab2-name-title input.js-tab2-name').val();
+            data.tab3.name = $('#tab3>.tab3-name-tit>.tab3-name-title input.js-tab3-name').val();
+            data.tab1.sub_button = [];
+            data.tab2.sub_button = [];
+            data.tab3.sub_button = [];
+
+            // 菜单1的二级导航name
+            textData.tab1.tabData1 = $('#tab1>.tab1-name-tit>.tab1-data1 input.js-tab-name').val();
+            textData.tab1.tabData2 = $('#tab1>.tab1-name-tit>.tab1-data2 input.js-tab-name').val();
+            textData.tab1.tabData3 = $('#tab1>.tab1-name-tit>.tab1-data3 input.js-tab-name').val();
+            textData.tab1.tabData4 = $('#tab1>.tab1-name-tit>.tab1-data4 input.js-tab-name').val();
+            textData.tab1.tabData5 = $('#tab1>.tab1-name-tit>.tab1-data5 input.js-tab-name').val();
+
+            // 菜单2的二级导航name
+            textData.tab2.tabData1 = $('#tab2>.tab2-name-tit>.tab2-data1 input.js-tab-name').val();
+            textData.tab2.tabData2 = $('#tab2>.tab2-name-tit>.tab2-data2 input.js-tab-name').val();
+            textData.tab2.tabData3 = $('#tab2>.tab2-name-tit>.tab2-data3 input.js-tab-name').val();
+            textData.tab2.tabData4 = $('#tab2>.tab2-name-tit>.tab2-data4 input.js-tab-name').val();
+            textData.tab2.tabData5 = $('#tab2>.tab2-name-tit>.tab2-data5 input.js-tab-name').val();
+            
+            // 菜单3的二级导航name
+            textData.tab3.tabData1 = $('#tab3>.tab3-name-tit>.tab3-data1 input.js-tab-name').val();
+            textData.tab3.tabData2 = $('#tab3>.tab3-name-tit>.tab3-data2 input.js-tab-name').val();
+            textData.tab3.tabData3 = $('#tab3>.tab3-name-tit>.tab3-data3 input.js-tab-name').val();
+            textData.tab3.tabData4 = $('#tab3>.tab3-name-tit>.tab3-data4 input.js-tab-name').val();
+            textData.tab3.tabData5 = $('#tab3>.tab3-name-tit>.tab3-data5 input.js-tab-name').val();
+
+
+            // 菜单1 数据
+            if (!textData.tab1.tabData1) {
+                data.tab1.sub_button[0] = null;
+            } else {
+                data.tab1.sub_button[0] = {};
+                data.tab1.sub_button[0]['name'] = $('#tab1>.tab1-name-tit>.tab1-data1 input.js-tab-name').val();
+                data.tab1.sub_button[0]['type'] = $('#tab1>.tab1-name-tit>.tab1-data1 select#tab1-data1-type option:selected').val();
+                if (data.tab1.sub_button[0]['type'] == "view") {
+                    data.tab1.sub_button[0]['url'] = $('#tab1>.tab1-name-tit>.tab1-data1 input.js-tab-ku').val();
+                } else {
+                    data.tab1.sub_button[0]['key'] = $('#tab1>.tab1-name-tit>.tab1-data1 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab1.tabData2) {
+                data.tab1.sub_button[1] = null;
+            } else {
+                data.tab1.sub_button[1] = {};
+                data.tab1.sub_button[1]['name']= $('#tab1>.tab1-name-tit>.tab1-data2 input.js-tab-name').val();
+                data.tab1.sub_button[1]['type']= $('#tab1>.tab1-name-tit>.tab1-data2 select#tab1-data2-type option:selected').val();
+                if (data.tab1.sub_button[1]['type']== "view") {
+                    data.tab1.sub_button[1]['url']= $('#tab1>.tab1-name-tit>.tab1-data2 input.js-tab-ku').val();
+                } else {
+                    data.tab1.sub_button[1]['key']= $('#tab1>.tab1-name-tit>.tab1-data2 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab1.tabData3) {
+                data.tab1.sub_button[2] = null;
+            } else {
+                data.tab1.sub_button[2] = {};
+                data.tab1.sub_button[2]['name'] = $('#tab1>.tab1-name-tit>.tab1-data3 input.js-tab-name').val();
+                data.tab1.sub_button[2]['type'] = $('#tab1>.tab1-name-tit>.tab1-data3 select#tab1-data3-type option:selected').val();
+                if (data.tab1.sub_button[2]['type'] == "view") {
+                    data.tab1.sub_button[2]['url'] = $('#tab1>.tab1-name-tit>.tab1-data3 input.js-tab-ku').val();
+                } else {
+                    data.tab1.sub_button[2][key] = $('#tab1>.tab1-name-tit>.tab1-data3 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab1.tabData4) {
+                data.tab1.sub_button[3] = null;
+            } else {
+                data.tab1.sub_button[3] = {};
+                data.tab1.sub_button[3]['name'] = $('#tab1>.tab1-name-tit>.tab1-data4 input.js-tab-name').val();
+                data.tab1.sub_button[3]['type'] = $('#tab1>.tab1-name-tit>.tab1-data4 select#tab1-data4-type option:selected').val();
+                if (data.tab1.sub_button[3]['type'] == "view") {
+                    data.tab1.sub_button[3]['url'] = $('#tab1>.tab1-name-tit>.tab1-data4 input.js-tab-ku').val();
+                } else {
+                    data.tab1.sub_button[3]['key'] = $('#tab1>.tab1-name-tit>.tab1-data4 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab1.tabData5) {
+                data.tab1.sub_button[4] = null;
+            } else {
+                data.tab1.sub_button[4] = {};
+                data.tab1.sub_button[4]['name'] = $('#tab1>.tab1-name-tit>.tab1-data5 input.js-tab-name').val();
+                data.tab1.sub_button[4]['type'] = $('#tab1>.tab1-name-tit>.tab1-data5 select#tab1-data5-type option:selected').val();
+                if (data.tab1.sub_button[4]['type'] == "view") {
+                    data.tab1.sub_button[4]['url'] = $('#tab1>.tab1-name-tit>.tab1-data5 input.js-tab-ku').val();
+                } else {
+                    data.tab1.sub_button[4]['key'] = $('#tab1>.tab1-name-tit>.tab1-data5 input.js-tab-ku').val();
+                }
+            }
+
+            // 菜单2 数据
+            if (!textData.tab2.tabData1) {
+                data.tab2.sub_button[0] = null;
+            } else {
+                data.tab2.sub_button[0] = {};
+                data.tab2.sub_button[0]['name'] = $('#tab2>.tab2-name-tit>.tab2-data1 input.js-tab-name').val();
+                data.tab2.sub_button[0]['type'] = $('#tab2>.tab2-name-tit>.tab2-data1 select#tab2-data1-type option:selected').val();
+                if (data.tab2.sub_button[0]['type'] == "view") {
+                    data.tab2.sub_button[0]['url'] = $('#tab2>.tab2-name-tit>.tab2-data1 input.js-tab-ku').val();
+                } else {
+                    data.tab2.sub_button[0]['key'] = $('#tab2>.tab2-name-tit>.tab2-data1 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab2.tabData2) {
+                data.tab2.sub_button[1] = null;
+            } else {
+                data.tab2.sub_button[1] = {};
+                data.tab2.sub_button[1]['name'] = $('#tab2>.tab2-name-tit>.tab2-data2 input.js-tab-name').val();
+                data.tab2.sub_button[1]['type'] = $('#tab2>.tab2-name-tit>.tab2-data2 select#tab2-data2-type option:selected').val();
+                if (data.tab2.sub_button[1]['type'] == "view") {
+                    data.tab2.sub_button[1]['url'] = $('#tab2>.tab2-name-tit>.tab2-data2 input.js-tab-ku').val();
+                } else {
+                    data.tab2.sub_button[1]['key'] = $('#tab2>.tab2-name-tit>.tab2-data2 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab2.tabData3) {
+                data.tab2.sub_button[2] = null;
+            } else {
+                data.tab2.sub_button[2] = {};
+                data.tab2.sub_button[2]['name'] = $('#tab2>.tab2-name-tit>.tab2-data3 input.js-tab-name').val();
+                data.tab2.sub_button[2]['type'] = $('#tab2>.tab2-name-tit>.tab2-data3 select#tab2-data3-type option:selected').val();
+                if (data.tab2.sub_button[2]['type'] == "view") {
+                    data.tab2.sub_button[2]['url'] = $('#tab2>.tab2-name-tit>.tab2-data3 input.js-tab-ku').val();
+                } else {
+                    data.tab2.sub_button[2]['key'] = $('#tab2>.tab2-name-tit>.tab2-data3 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab2.tabData4) {
+                data.tab2.sub_button[3] = null;
+            } else {
+                data.tab2.sub_button[3] = {};
+                data.tab2.sub_button[3]['name'] = $('#tab2>.tab2-name-tit>.tab2-data4 input.js-tab-name').val();
+                data.tab2.sub_button[3]['type'] = $('#tab2>.tab2-name-tit>.tab2-data4 select#tab2-data4-type option:selected').val();
+                if (data.tab2.sub_button[3]['type'] == "view") {
+                    data.tab2.sub_button[3]['url'] = $('#tab2>.tab2-name-tit>.tab2-data4 input.js-tab-ku').val();
+                } else {
+                    data.tab2.sub_button[3]['key'] = $('#tab2>.tab2-name-tit>.tab2-data4 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab2.tabData5) {
+                data.tab2.sub_button[4] = null;
+            } else {
+                data.tab2.sub_button[4] = {};
+                data.tab2.sub_button[4]['name'] = $('#tab2>.tab2-name-tit>.tab2-data5 input.js-tab-name').val();
+                data.tab2.sub_button[4]['type'] = $('#tab2>.tab2-name-tit>.tab2-data5 select#tab2-data5-type option:selected').val();
+                if (data.tab2.sub_button[4]['type'] == "view") {
+                    data.tab2.sub_button[4]['url'] = $('#tab2>.tab2-name-tit>.tab2-data5 input.js-tab-ku').val();
+                } else {
+                    data.tab2.sub_button[4]['key'] = $('#tab2>.tab2-name-tit>.tab2-data5 input.js-tab-ku').val();
+                }
+            }
+
+            // 菜单3 数据
+            if (!textData.tab3.tabData1) {
+                data.tab3.sub_button[0] = null;
+            } else {
+                data.tab3.sub_button[0] = {};
+                data.tab3.sub_button[0]['name'] = $('#tab3>.tab3-name-tit>.tab3-data1 input.js-tab-name').val();
+                data.tab3.sub_button[0]['type'] = $('#tab3>.tab3-name-tit>.tab3-data1 select#tab3-data1-type option:selected').val();
+                if (data.tab3.sub_button[0]['type'] == "view") {
+                    data.tab3.sub_button[0]['url'] = $('#tab3>.tab3-name-tit>.tab3-data1 input.js-tab-ku').val();
+                } else {
+                    data.tab3.sub_button[0]['key'] = $('#tab3>.tab3-name-tit>.tab3-data1 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab3.tabData2) {
+                data.tab3.sub_button[1] = null;
+            } else {
+                data.tab3.sub_button[1] = {};
+                data.tab3.sub_button[1]['name'] = $('#tab3>.tab3-name-tit>.tab3-data2 input.js-tab-name').val();
+                data.tab3.sub_button[1]['type'] = $('#tab3>.tab3-name-tit>.tab3-data2 select#tab3-data2-type option:selected').val();
+                if (data.tab3.sub_button[1]['type'] == "view") {
+                    data.tab3.sub_button[1]['url'] = $('#tab3>.tab3-name-tit>.tab3-data2 input.js-tab-ku').val();
+                } else {
+                    data.tab3.sub_button[1]['key'] = $('#tab3>.tab3-name-tit>.tab3-data2 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab3.tabData3) {
+                data.tab3.sub_button[2] = null;
+            } else {
+                data.tab3.sub_button[2] = {};
+                data.tab3.sub_button[2]['name'] = $('#tab3>.tab3-name-tit>.tab3-data3 input.js-tab-name').val();
+                data.tab3.sub_button[2]['type'] = $('#tab3>.tab3-name-tit>.tab3-data3 select#tab3-data3-type option:selected').val();
+                if (data.tab3.sub_button[2]['type'] == "view") {
+                    data.tab3.sub_button[2]['url'] = $('#tab3>.tab3-name-tit>.tab3-data3 input.js-tab-ku').val();
+                } else {
+                    data.tab3.sub_button[2]['key'] = $('#tab3>.tab3-name-tit>.tab3-data3 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab3.tabData4) {
+                data.tab3.sub_button[3] = null;
+            } else {
+                data.tab3.sub_button[3] = {};
+                data.tab3.sub_button[3]['name'] = $('#tab3>.tab3-name-tit>.tab3-data4 input.js-tab-name').val();
+                data.tab3.sub_button[3]['type'] = $('#tab3>.tab3-name-tit>.tab3-data4 select#tab3-data4-type option:selected').val();
+                if (data.tab3.sub_button[3]['type'] == "view") {
+                    data.tab3.sub_button[3]['url'] = $('#tab3>.tab3-name-tit>.tab3-data4 input.js-tab-ku').val();
+                } else {
+                    data.tab3.sub_button[3]['key'] = $('#tab3>.tab3-name-tit>.tab3-data4 input.js-tab-ku').val();
+                }
+            }
+            if (!textData.tab3.tabData5) {
+                data.tab3.sub_button[4] = null;
+            } else {
+                data.tab3.sub_button[4] = {};
+                data.tab3.sub_button[4]['name'] = $('#tab3>.tab3-name-tit>.tab3-data5 input.js-tab-name').val();
+                data.tab3.sub_button[4]['type'] = $('#tab3>.tab3-name-tit>.tab3-data5 select#tab3-data5-type option:selected').val();
+                if (data.tab3.sub_button[4]['type'] == "view") {
+                    data.tab3.sub_button[4]['url'] = $('#tab3>.tab3-name-tit>.tab3-data5 input.js-tab-ku').val();
+                } else {
+                    data.tab3.sub_button[4]['key'] = $('#tab3>.tab3-name-tit>.tab3-data5 input.js-tab-ku').val();
+                }
+            }
+            console.log(data);
+            sensDatas(data);
+        })
+
+        
+        // 数据提交函数
+        function sensDatas(e){
+            // 提交信息
+            var data_v = e;
+            var sendData = $.ajax({
+                url: "{:U('Wxoperate/menueSet')}",
+                method: 'post',
+                data: {tab1: data_v.tab1.name, tab2: data_v.tab2.name, tab3: data_v.tab3.name, sub1: JSON.stringify(data_v.tab1.sub_button), sub2: JSON.stringify(data_v.tab2.sub_button), sub3: JSON.stringify(data_v.tab3.sub_button) },
+                dataType: 'json'
+            })
+            sendData.done(function (e) {
+                var status = JSON.parse(e.info)
+            })
+            sendData.fail(function () {
+                // console.log('请求失败，error')
+            })
+        }
+    </script>
+</block>

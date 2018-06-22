@@ -1,0 +1,207 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+        .keyword-wrap .content .li-com {
+            padding: 5px;
+        }
+        .keyword-wrap .content .li-com .wangEditor-container{
+            width: 90%;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+
+        .keyword-wrap .content .li-com .img-pre-show{
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .keyword-wrap .content .li-com span.key-text {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            vertical-align: top;
+        }
+        .keyword-wrap .content .li-com label {
+            margin: 0 15px;
+        }
+        .keyword-wrap .content .li-com .tuwen-content {
+            margin-left: 50px;
+            margin-top: 10px;
+            border: 1px solid #a9a9a9;
+            padding: 10px;
+        }
+        .keyword-wrap .content .li-com .text-content {
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .keyword-wrap .content .li-com textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .keyword-wrap .content .li-com .show-content {
+            display: none;
+        }
+        .keyword-wrap .content .li-com .show-content.active {
+            display: block;
+        }
+
+        .keyword-wrap .content .submit{
+            margin-left: 50px;
+            margin-top: 15px;
+            padding: 6px 20px;
+        }
+        .upload-img-box{
+            display: inline-block;
+        }
+    </style>
+    
+    <script type="text/javascript" src="__STATIC__/webuploader/webuploader.js"></script>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关键字</a></li>
+                <p class="description_text">/*关键字说明*/</p>
+            </ul>
+        </div>
+        <div class="keyword-wrap" style="margin-top: 15px;">
+            <div class="content">
+                <div class="keyword li-com">
+                    <span class="key-text">关键词：</span>
+                    <input type="text" class="key-word-p">
+                </div>
+                <div class="reply li-com">
+                    <div class="tuwen-content show-content active">
+                        <div class="bg-pic li-com" style="padding-left: 100px;position: relative;">
+                            <span class="key-text" style=" position: absolute; left: 0;">背景图：</span>
+                            {:hook('UploadImages', array('name'=>'showbgWeChat','value'=>$data['showbgWeChat'],'pic_num'=>1))}
+                        </div>
+                        <div class="bg-pic li-com">
+                            <span class="key-text">标题：</span>
+                            <input type="text" class="key-word-title-p">
+                        </div>
+                        <div class="bg-pic li-com">
+                            <span class="key-text">描述：</span>
+                            <textarea id="editor-w" style="border:1px solid gray;min-height:240px;max-width: 600px;"></textarea>
+                        </div>
+                        <div class="bg-pic li-com">
+                            <span class="key-text">跳转地址：</span>
+                            <input type="text" class="key-word-address-p">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" value="提交" class="submit js-submit">
+            </div>
+        </div>
+        <!--脚本控制-->
+        <script>
+            // 声明变量
+            var data = {};
+
+            // 获取关键词
+            $('.key-word-p').blur(function () {
+                data.keyword = $('.key-word-p').val();
+                // console.log(data.keyWord);
+            })
+
+            // 获取图文中的标题
+            $('.key-word-title-p').blur(function () {
+                data.title = $(this).val();
+            })
+        
+            // 获取图文中的地址
+            $('.key-word-address-p').blur(function () {
+                data.url = $(this).val();
+            })
+        
+            // 获取文本中的内容
+            $('#editor-w').blur(function () {
+                data.description = $(this).val();
+            })
+        
+            // 点击提交
+            $('.js-submit').click(function () {
+                data.picurl = $('.upload-img-box .upload-pre-item img')[0].src;
+                sendDatas(data);
+            })
+
+            // 数据提交函数
+            function sendDatas(e){
+                // 提交信息
+                var data_d = e;
+                var sendData = $.ajax({
+                    url: "{:U('Wxoperate/addkeywords')}",
+                    method: 'post',
+                    data: data_d,
+                    dataType: 'json'
+                })
+                sendData.done(function (e) {
+                    console.log(e)
+                })
+                sendData.fail(function () {
+                })
+            }
+        </script>
+        
+    </div>
+   
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+        
+        /*上传图片*/
+        $("#upload_picture_introducebg").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传封面",
+            "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : upload_picture_introducebg{$field.name},
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+        });
+        function upload_picture_introducebg{$field.name}(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if(data.status){
+                $("#introducebg_id_cover").val(data.id);
+                src = data.url || '__ROOT__' + data.path;
+                $("#introducebg_id_cover").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+    </script>
+</block>
