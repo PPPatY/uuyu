@@ -1,0 +1,221 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+
+        .li-com textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .li-com span{
+            display: inline-block;
+            width: 110px;
+            text-align: right;
+            vertical-align: top;
+            font-weight: bold;
+        }
+        .note-shuoming{
+            position: absolute;
+            left: 300px;
+            margin-top: 5px;
+            color: #999;
+            font-style: normal;
+        }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 26%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
+    </style>
+
+    <script type="text/javascript" src="__STATIC__/webuploader/webuploader.js"></script>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >新增</a></li>
+                <p class="description_text">/*新增说明*/</p>
+            </ul>
+        </div>
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <ul class="form_info ">
+                        <li style="padding-left: 130px;">
+                            <label style="position: absolute; left: 0;">上传图片素材：</label> <i class="note-shuoming">图片支持 JPG, PNG, JPEG </i>
+                            {:hook('UploadImages', array('name'=>'showNewSucai','value'=>$data['showNewSucai'],'pic_num'=>1))}
+                            <!-- <div class="img-pre-show" style="margin-top: 20px; margin-left: 140px;">
+                                <img id="img_preview" data-src="" src="" data-holder-rendered="true" style="width: 100px; display: block;">
+                            </div> -->
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-pic li-com">
+                    <span class="key-text">描述：</span>
+                    <textarea id="editor-w" style="border:1px solid gray;min-height:240px;max-width: 600px;"></textarea>
+                </div>
+                <div class="form-item">
+                    <label class="item-label"></label>
+                    <div class="controls">
+                        <div class="submit-btn js-submit-menuSettings" target-form="form-horizontal" style="width: 36px; cursor: pointer;">确 定</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+        var data = {};
+
+        // 获取文本中的内容
+        $('#editor-w').blur(function () {
+            data.description = $(this).val();
+        });
+
+        // 点击提交 获取整个数据
+        $('.js-submit-menuSettings').click(function () {
+            data.url = $('.upload-img-box .upload-pre-item img')[0].src || null;
+            data.description = data.description || $('#editor-w').val();
+
+            sendDatas(data);
+            console.log(data || '未做数据获取操作');
+        });
+
+        // 数据提交函数
+        function sendDatas(e){
+            var errorTip = $('.js-show-error-tip-p');
+            // 提交信息
+            var data_v = e;
+            var sendData = $.ajax({
+                url: "{:U('Wxoperate/upImgUrl')}",
+                method: 'post',
+                data: data_v,
+                dataType: 'json'
+            });
+            sendData.done(function (e) {
+                if (!e) {
+                    return;
+                } else if(e.code == 1) {
+                    errorTip.show();
+                    errorTip.find('p span').html('上传成功！');
+                    DialogErrorTip(e.code);
+                } else {
+                    errorTip.show();
+                    errorTip.find('p span').html('上传失败！');
+                    DialogErrorTip(e.code);
+                }
+            });
+            sendData.fail(function () {
+                errorTip.show();
+                errorTip.find('p span').html('服务器出错，请稍后重试！');
+                DialogErrorTip(0)
+            })
+        }
+
+        // 错误弹框关闭
+        function DialogErrorTip(e){
+            var errorTipP = $('.js-show-error-tip-p');
+            if(e == 1){
+                setTimeout(function(){
+                    errorTipP.hide();
+                    window.location.reload();
+                },1500);
+                errorTipP.click(function () {
+                    errorTipP.hide();
+                    window.location.reload();
+                })
+            } else{
+                setTimeout(function(){
+                    errorTipP.hide();
+                },3500);
+                errorTipP.click(function () {
+                    errorTipP.hide();
+                })
+            }
+        }
+    </script>
+
+    /*上传图片插件*/
+    <script>
+
+        /*上传图片*/
+        $("#upload_picture_showNewSucai-button").uploadify({
+            "height"          : 30,
+            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+            "fileObjName"     : "download",
+            "buttonText"      : "上传封面",
+            "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+            "width"           : 120,
+            'removeTimeout'   : 1,
+            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+            "onUploadSuccess" : upload_picture_introducebg{$field.name},
+        'onFallback' : function() {
+            alert('未检测到兼容版本的Flash.');
+        }
+        });
+        function upload_picture_introducebg{$field.name}(file, data){
+            var data = $.parseJSON(data);
+            var src = '';
+            if(data.status){
+                $("#introducebg_id_cover").val(data.id);
+                src = data.url || '__ROOT__' + data.path;
+                $("#introducebg_id_cover").parent().find('.upload-img-box').html(
+                    '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                );
+            } else {
+                updateAlert(data.info);
+                setTimeout(function(){
+                    $('#top-alert').find('button').click();
+                    $(that).removeClass('disabled').prop('disabled',false);
+                },1500);
+            }
+        }
+    </script>
+</block>

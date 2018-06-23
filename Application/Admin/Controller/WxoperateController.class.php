@@ -14,7 +14,8 @@ class WxoperateController extends IndexController{
 	
     /*上传图文消息内的图片获取url*/
     public function upImgUrl(){
-            $filename=$_SERVER['DOCUMENT_ROOT'].$_POST['url'];
+        if(IS_POST){
+            $filename=$_POST['url'];
             $data['description']=$_POST['description'];
             $token=$this->getToken();
            
@@ -35,18 +36,21 @@ class WxoperateController extends IndexController{
                 $msg=array('code'=>-1,'msg'=>'获取图片url失败！');
                 $this->ajaxReturn($msg);
             }
+        } else {
+            $this->display();
+        }
     }
     
     /*上传图文消息内的图片获取url  --- 列表页*/
     public function urlLists(){
-        $count=M('content_imgurl')->count();
+        $count=M('content_imgurl','wx_')->count();
         $Page  = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
         $show  = $Page->show();// 分页显示输出
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-        $list = M('content_imgurl')->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $list = M('content_imgurl','wx_')->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('list',$list);// 赋值数据集
         $this->assign('page',$show);// 赋值分页输出
-       
+
         $this->display(); 
     }
     
@@ -87,7 +91,8 @@ class WxoperateController extends IndexController{
     }
     
     /*添加永久图文素材到数据库--不影响微信端*/
-    public  function    addMeterial(){
+    public  function    addNewsMeterial(){
+        if(IS_POST){
             $data['title']=$_POST['title'];
             $data['thumb_media_id']=$_POST['thumb_media_id'];
             $data['author']=$_POST['author'];
@@ -96,7 +101,7 @@ class WxoperateController extends IndexController{
             $data['content']=$_POST['content'];
             $data['content_source_url']=$_POST['content_source_url'];
             
-            $addtw=M('sucai')->data($data)->add();
+            $addtw=M('sucai', 'wx_')->data($data)->add();
             if($addtw){
                 $msg=array('code'=>1,'msg'=>'添加成功！');
                 $this->ajaxReturn($msg);
@@ -104,8 +109,50 @@ class WxoperateController extends IndexController{
                 $msg=array('code'=>-1,'msg'=>'添加失败！');
                 $this->ajaxReturn($msg);
             }
+        } else {
+            $this->display();
+        }
     }
-    
+
+     /*永久图文素材列表---不影响微信端*/
+    public  function  upnewslList(){
+        $count=M('sucai', 'wx_')->count();
+        $Page  = new \Think\Page($count,2);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $show  = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = M('sucai', 'wx_')->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display();
+    }
+
+    /*编辑永久图文素材列表---不影响微信端*/
+    public  function  editnewsMeterial(){
+       if(IS_POST){
+            $id=$_POST['id'];
+            $data['title']=$_POST['title'];
+            $data['thumb_media_id']=$_POST['thumb_media_id'];
+            $data['author']=$_POST['author'];
+            $data['digest']=$_POST['digest'];
+            $data['show_cover_pic']=$_POST['show_cover_pic'];
+            $data['content']=$_POST['content'];
+            $data['content_source_url']=$_POST['content_source_url'];
+            $res=M('sucai', 'wx_')->where(array('id'=>$id))->save($data);
+            if($res===false){
+                $msg=array('code'=>-1,'msg'=>'修改失败！');
+                $this->ajaxReturn($msg);
+            }else{
+                $msg=array('code'=>1,'msg'=>'修改成功！');
+                $this->ajaxReturn($msg);
+            }
+        }else{
+            $id=$_GET['id'];
+            $con=M('sucai', 'wx_')->where(array('id'=>$id))->find();
+            $this->assign('con',$con);
+            $this->display();
+        }
+    }
+
     /*新增永久多图文素材*/
     public  function upAddNews($ids='1,2'){
             header('Content-Type:text/html;charset=utf-8');

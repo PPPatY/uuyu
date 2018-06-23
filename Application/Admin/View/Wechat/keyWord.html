@@ -121,26 +121,25 @@
                 //初始化编辑器
                 editor = new wangEditor("txtdiv");
                 editor.create();
-                
                 //内容修改事件，此处做的是实时展示实际效果
                 editor.onchange = function(){
                     //获取editor的html值
                     data.html = editor.$txt.html();
                     // $("#show_box").html(html)
                 }
-            })
+            });
         
             // 获取关键词
             $('.key-word-p').blur(function () {
                 data.keyWord = $('.key-word-p').val();
                 console.log(data.keyWord);
-            })
+            });
         
             // 获取关键词
             $('.key-word-p').blur(function () {
                 data.keyWord = $('.key-word-p').val();
                 console.log(data.keyWord);
-            })
+            });
             
             
             // 获取选中图文或文本
@@ -155,7 +154,7 @@
                     $('.text-content').show()
                     $('.tuwen-content').hide()
                 }
-            })
+            });
 
             // 获取选中图文或文本
             // $('.js-change-reply').click(function () {
@@ -177,19 +176,19 @@
             $('.key-word-title-p').blur(function () {
                 data.keyWordTitle = $(this).val();
                 // console.log(data.keyWordTitle);
-            })
+            });
         
             // 获取图文中的地址
             $('.key-word-address-p').blur(function () {
                 data.keyWordAddress = $(this).val();
                 // console.log(data.keyWordAddress);
-            })
+            });
         
             // 获取文本中的内容
             $('#editor-w').blur(function () {
                 data.keyWordTextCont = $(this).val();
                 // console.log(data.keyWordTextCont);
-            })
+            });
         
             // 点击提交
             $('.js-submit').click(function () {
@@ -200,7 +199,7 @@
                 }
                 sendDatas(data);
                 console.log(data);
-            })
+            });
 
             // 数据提交函数
             function sendDatas(e){
@@ -211,15 +210,14 @@
                     method: 'post',
                     data: {},
                     dataType: 'json'
-                })
+                });
                 sendData.done(function (e) {
                     // console.log(e)
                     var status = JSON.parse(e.info)
-                })
+                });
                 sendData.fail(function () {
                     // console.log('请求失败，error')
-                })
-                console.log(data);
+                });
             }
         </script>
         

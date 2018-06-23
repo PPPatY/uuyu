@@ -6,16 +6,6 @@
         .keyword-wrap .content .li-com {
             padding: 5px;
         }
-        .keyword-wrap .content .li-com .wangEditor-container{
-            width: 90%;
-            margin-left: 50px;
-            margin-top: 10px;
-        }
-
-        .keyword-wrap .content .li-com .img-pre-show{
-            margin-left: 50px;
-            margin-top: 10px;
-        }
         .keyword-wrap .content .li-com span.key-text {
             display: inline-block;
             width: 100px;
@@ -30,10 +20,6 @@
             margin-top: 10px;
             border: 1px solid #a9a9a9;
             padding: 10px;
-        }
-        .keyword-wrap .content .li-com .text-content {
-            margin-left: 50px;
-            margin-top: 10px;
         }
         .keyword-wrap .content .li-com textarea {
             width: 100%;
@@ -52,9 +38,6 @@
             margin-left: 50px;
             margin-top: 15px;
             padding: 6px 20px;
-        }
-        .upload-img-box{
-            display: inline-block;
         }
         .tab-wrap{
             position: relative;
@@ -140,28 +123,28 @@
             $('.key-word-p').blur(function () {
                 data.keyword = $('.key-word-p').val();
                 // console.log(data.keyWord);
-            })
+            });
 
             // 获取图文中的标题
             $('.key-word-title-p').blur(function () {
                 data.title = $(this).val();
-            })
+            });
         
             // 获取图文中的地址
             $('.key-word-address-p').blur(function () {
                 data.url = $(this).val();
-            })
+            });
         
             // 获取文本中的内容
             $('#editor-w').blur(function () {
                 data.description = $(this).val();
-            })
+            });
         
             // 点击提交
             $('.js-submit').click(function () {
                 data.picurl = $('.upload-img-box .upload-pre-item img')[0].src;
                 sendDatas(data);
-            })
+            });
 
             // 数据提交函数
             function sendDatas(e){
@@ -173,7 +156,7 @@
                     method: 'post',
                     data: data_d,
                     dataType: 'json'
-                })
+                });
                 sendData.done(function (e) {
                     if (!e) {
                         return;
@@ -186,32 +169,32 @@
                         errorTip.find('p span').html('新增失败！');
                         DialogErrorTip(e.code);
                     }
-                })
+                });
                 sendData.fail(function () {
                     errorTip.show();
                     errorTip.find('p span').html('服务器出错，请稍后重试！');
                     DialogErrorTip(0)
                 })
             }
-        
+
             // 错误弹框关闭
             function DialogErrorTip(e){
+                var errorTipP = $('.js-show-error-tip-p');
                 if(e == 1){
                     setTimeout(function(){
-                        $('.js-show-error-tip-p').hide();
-                        window.location.href = "{:U('Wxoperate/keyWords')}";
+                        errorTipP.hide();
+                        window.location.reload();
                     },1500);
-                    $('.js-show-error-tip-p').click(function () {
-                        $('.js-show-error-tip-p').hide();
-                        window.location.href = "{:U('Wxoperate/keyWords')}";
+                    errorTipP.click(function () {
+                        errorTipP.hide();
+                        window.location.reload();
                     })
                 } else{
                     setTimeout(function(){
-                        $('.js-show-error-tip-p').hide();
-                    },1500);
+                        errorTipP.hide();
+                    },3500);
                     $('.js-show-error-tip-p').click(function () {
-                        $('.js-show-error-tip-p').hide();
-                        window.location.href = "{:U('Wxoperate/keyWords')}";
+                        errorTipP.hide();
                     })
                 }
             }

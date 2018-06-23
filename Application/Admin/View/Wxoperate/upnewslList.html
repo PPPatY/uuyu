@@ -56,31 +56,6 @@
             font-weight: bold;
             border: 1px solid transparent;
         }
-        .tab-wrap{
-            position: relative;
-        }
-        .tab-wrap .error-tip-box{
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,.3);
-            text-align: center;
-            z-index: 9;
-        }
-        .tab-wrap .error-tip-box p{
-            position: absolute;
-            top: 26%;
-            left: 34%;
-            max-width: 308px;
-            display: inline-block;
-            margin: 0 auto;
-            padding: 10px 130px;
-            background: #00000060;
-            color: #fff;
-            border-radius: 10px;
-            z-index: 9;
-        }
     </style>
     <div class="main-place">
         <span class="main-placetitle"></span>
@@ -93,7 +68,8 @@
     <div class="tab-wrap">
         <div class="tab_nav jstabnav">
             <ul>
-                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关键字</a></li>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >素材</a></li>
+                <!-- <p class="description_text">/*新增说明*/</p> -->
             </ul>
         </div>
         <div class="error-tip-box js-show-error-tip-p">
@@ -104,32 +80,40 @@
                 <div id="tab1" class="tab-pane in tab1">
                     <ul class="form_info ">
                         <li>
-                            <label style="width: 100px;">关键字列表：</label>
-                            <a href="{:U('Wxoperate/addkeywords')}">
-                                <input type="button" value="添加" class=""style="padding:5px 20px; " >
+                            <label style="width: 50px;">列表：</label>
+                            <a href="{:U('Wxoperate/addNewsMeterial')}">
+                                <input type="button" value="添加" class=""style="padding:5px 20px; margin-left:30px;" >
                             </a>
                         </li>
                         <table border="1" class="table-list" style="margin-left: 50px">
                             <tr>
-                                <th>ID</th>
-                                <th>关键字</th>
-                                <th>标题</th>
-                                <th>描述</th>
-                                <th>图片地址</th>
+                                <th>素材ID</th>
+                                <th>素材标题</th>
+                                <th>素材缩略图id</th>
+                                <th>作者</th>
+                                <th>摘要</th>
+                                <th>是否封面</th>
                                 <th>跳转地址</th>
                                 <th>操作</th>
                             </tr>
-                            <volist name="list" id="listData">
+                            <volist name="list" id="meterialData">
                                 <tr>
-                                    <td>{$listData.id}</td>
-                                    <td>{$listData.keyword}</td>
-                                    <td title="{$listData.title}">{$listData.title}</td>
-                                    <td title="{$listData.description}">{$listData.description}</td>
-                                    <td title="{$listData.picurl}">{$listData.picurl}</td>
-                                    <td title="{$listData.url}">{$listData.url}</td>
+                                    <td>{$meterialData.id}</td>
+                                    <td>{$meterialData.title}</td>
+                                    <td title="{$meterialData.thumb_media_id}">{$meterialData.thumb_media_id}</td>
+                                    <td>{$meterialData.author}</td>
+                                    <td title="{$meterialData.digest}">{$meterialData.digest}</td>
                                     <td>
-                                        <a href="javascript:;" class="js-delete" id="{$listData.id}" style="margin-right: 15px;">删除</a>
-                                        <a href="?s=/Wxoperate/editkeywords/id/{$listData.id}">编辑</a>
+                                        <if condition="$meterialData.show_cover_pic eq '0'">
+                                            否
+                                        <else />
+                                            是
+                                        </if>
+                                    </td>
+                                    <td title="{$meterialData.content_source_url}">{$meterialData.content_source_url}</td>
+                                    <td>
+                                        <a href="javascript:;" class="js-delete" id="{$meterialData.id}" style="margin-right: 15px;">删除</a>
+                                        <a href="?s=/Wxoperate/editnewsMeterial/id/{$meterialData.id}">编辑</a>
                                     </td>
                                 </tr>
                             </volist>
@@ -142,7 +126,7 @@
             </form>
         </div>
     </div>
-   
+
 </block>
 
 <block name="script">
@@ -155,9 +139,10 @@
             showTab();
             $('.firsttab').click();
         })
+
     </script>
     <script>
-        var data = {};        
+        var data = {};
 
         // 设置分页位置
         $(document).ready(function () {
@@ -176,23 +161,17 @@
             sendDatas(data, _t);
         });
 
-        // 点击提交 获取整个数据
-        // $('.js-submit-menuSettings').click(function () {
-        //     sendDatas(data);
-        // })
-
-    
         // 数据提交函数
         function sendDatas(e,t){
             var errorTip = $('.js-show-error-tip-p');
             // 提交信息
             var data_v = e;
             var sendData = $.ajax({
-                url: "{:U('Wxoperate/delkeywords')}",
+                url: "{:U('Wxoperate/upnewslList')}",
                 method: 'post',
                 data: data_v,
                 dataType: 'json'
-            });
+            })
             sendData.done(function (e) {
                 if (!e) {
                     return;
@@ -211,20 +190,21 @@
                 errorTip.show();
                 errorTip.find('p span').html('删除失败！');
                 DialogErrorTip(0)
-            })
+            });
+            console.log(data);
         }
-        
+
         // 错误弹框关闭
         function DialogErrorTip(e){
             var errorTipP = $('.js-show-error-tip-p');
             if(e == 1){
                 setTimeout(function(){
                     errorTipP.hide();
-                    window.location.href = "{:U('Wxoperate/keyWords')}";
+                    window.location.reload();
                 },1500);
                 errorTipP.click(function () {
                     errorTipP.hide();
-                    window.location.href = "{:U('Wxoperate/keyWords')}";
+                    window.location.reload();
                 })
             } else{
                 setTimeout(function(){

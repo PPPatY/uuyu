@@ -270,19 +270,23 @@
 
         // 错误弹框关闭
         function DialogErrorTip(){
+            var errorTip = $('.js-show-error-tip-p');
             if(e == 1){
                 setTimeout(function(){
-                    $('.js-show-error-tip-p').hide();
+                    errorTip.hide();
                     window.location.href = "{:U('Wxoperate/keyWords')}";
                 },1500)
-                $('.js-show-error-tip-p').click(function () {
-                    $('.js-show-error-tip-p').hide();
+                errorTip.click(function () {
+                    errorTip.hide();
                     window.location.href = "{:U('Wxoperate/keyWords')}";
                 })
             } else{
                 setTimeout(function(){
-                    $('.js-show-error-tip-p').hide();
-                },1500)
+                    errorTip.hide();
+                },3500);
+                errorTip.click(function () {
+                    errorTip.hide();
+                })
             }
         }
     </script>

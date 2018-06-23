@@ -159,28 +159,40 @@
                     } else if(e.code == 1) {
                         errorTip.show();
                         errorTip.find('p span').html('更新成功！');
-                        DialogErrorTip();
+                        DialogErrorTip(e.code);
                     } else {
                         errorTip.show();
                         errorTip.find('p span').html('更新失败！');
-                        DialogErrorTip();
+                        DialogErrorTip(0);
                     }
                 })
                 sendData.fail(function () {
                     errorTip.show();
                     errorTip.find('p span').html('服务器出错，请稍后重试！');
-                    DialogErrorTip()
+                    DialogErrorTip(0)
                 })
             }
 
             // 错误弹框关闭
-            function DialogErrorTip(){
-                setTimeout(function(){
-                    $('.js-show-error-tip-p').hide();
-                },1500)
-                $('.js-show-error-tip-p').click(function () {
-                    $('.js-show-error-tip-p').hide();
-                })
+            function DialogErrorTip(e){
+                var errorTipP = $('.js-show-error-tip-p');
+                if(e == 1){
+                    setTimeout(function(){
+                        errorTipP.hide();
+                        window.location.reload();
+                    },1500);
+                    errorTipP.click(function () {
+                        errorTipP.hide();
+                        window.location.reload();
+                    })
+                } else{
+                    setTimeout(function(){
+                        errorTipP.hide();
+                    },3500);
+                    $('.js-show-error-tip-p').click(function () {
+                        errorTipP.hide();
+                    })
+                }
             }
         </script>
         

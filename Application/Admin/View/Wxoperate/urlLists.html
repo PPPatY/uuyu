@@ -13,11 +13,16 @@
         }
         .table-list tr td{
             text-align: center;
-            max-width: 200px;
-            padding: 0 10px;
+            max-width: 250px;
+            max-height: 60px;
+            padding: 5px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+        .table-list tr td img{
+            max-width: 120px;
+            max-height: 50px;
         }
         .form-item.fenye{
             display: inline-block;
@@ -93,7 +98,8 @@
     <div class="tab-wrap">
         <div class="tab_nav jstabnav">
             <ul>
-                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >关键字</a></li>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >素材</a></li>
+                <!-- <p class="description_text">/*新增说明*/</p> -->
             </ul>
         </div>
         <div class="error-tip-box js-show-error-tip-p">
@@ -104,32 +110,29 @@
                 <div id="tab1" class="tab-pane in tab1">
                     <ul class="form_info ">
                         <li>
-                            <label style="width: 100px;">关键字列表：</label>
-                            <a href="{:U('Wxoperate/addkeywords')}">
-                                <input type="button" value="添加" class=""style="padding:5px 20px; " >
+                            <label style="width: 50px;">列表：</label>
+                            <a href="{:U('Wxoperate/upImgUrl')}">
+                                <input type="button" value="添加" class=""style="padding:5px 20px; margin-left:30px;" >
                             </a>
                         </li>
                         <table border="1" class="table-list" style="margin-left: 50px">
                             <tr>
                                 <th>ID</th>
-                                <th>关键字</th>
-                                <th>标题</th>
+                                <th>图片</th>
+                                <th>url</th>
                                 <th>描述</th>
-                                <th>图片地址</th>
-                                <th>跳转地址</th>
                                 <th>操作</th>
                             </tr>
-                            <volist name="list" id="listData">
+
+                            <volist name="list" id="listsData">
                                 <tr>
-                                    <td>{$listData.id}</td>
-                                    <td>{$listData.keyword}</td>
-                                    <td title="{$listData.title}">{$listData.title}</td>
-                                    <td title="{$listData.description}">{$listData.description}</td>
-                                    <td title="{$listData.picurl}">{$listData.picurl}</td>
-                                    <td title="{$listData.url}">{$listData.url}</td>
+                                    <td>{$listsData.id}</td>
+                                    <td><img src="{$listsData.url}"></td>
+                                    <td title="{$listsData.url}">{$listsData.url}</td>
+                                    <td title="{$listsData.description}">{$listsData.description}</td>
                                     <td>
-                                        <a href="javascript:;" class="js-delete" id="{$listData.id}" style="margin-right: 15px;">删除</a>
-                                        <a href="?s=/Wxoperate/editkeywords/id/{$listData.id}">编辑</a>
+                                        <a href="javascript:;" class="js-delete" id="{$listsData.id}">删除</a>
+                                        <!--<a href="?s=/Wxoperate/material/id/{$listsData.id}">编辑</a>-->
                                     </td>
                                 </tr>
                             </volist>
@@ -142,7 +145,7 @@
             </form>
         </div>
     </div>
-   
+
 </block>
 
 <block name="script">
@@ -155,9 +158,15 @@
             showTab();
             $('.firsttab').click();
         })
+
     </script>
     <script>
-        var data = {};        
+        var data = {};
+        // 点击提交 获取整个数据
+        // $('.js-submit-menuSettings').click(function () {
+        //
+        //     console.log('未做数据获取操作');
+        // })
 
         // 设置分页位置
         $(document).ready(function () {
@@ -176,23 +185,17 @@
             sendDatas(data, _t);
         });
 
-        // 点击提交 获取整个数据
-        // $('.js-submit-menuSettings').click(function () {
-        //     sendDatas(data);
-        // })
-
-    
         // 数据提交函数
-        function sendDatas(e,t){
+        function sendDatas(e){
             var errorTip = $('.js-show-error-tip-p');
             // 提交信息
             var data_v = e;
             var sendData = $.ajax({
-                url: "{:U('Wxoperate/delkeywords')}",
+                url: "{:U('Wxoperate/urlLists')}",
                 method: 'post',
                 data: data_v,
                 dataType: 'json'
-            });
+            })
             sendData.done(function (e) {
                 if (!e) {
                     return;
@@ -211,9 +214,10 @@
                 errorTip.show();
                 errorTip.find('p span').html('删除失败！');
                 DialogErrorTip(0)
-            })
+            });
+            console.log(data);
         }
-        
+
         // 错误弹框关闭
         function DialogErrorTip(e){
             var errorTipP = $('.js-show-error-tip-p');
