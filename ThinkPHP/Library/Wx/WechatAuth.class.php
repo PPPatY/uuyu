@@ -9,7 +9,7 @@
 // | Author: 麦当苗儿 <zuojiazi.cn@gmail.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
 
-namespace Com;
+namespace Wx;
 
 class WechatAuth {
     

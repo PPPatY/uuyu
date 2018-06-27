@@ -1,0 +1,9 @@
+[ 2018-06-25T08:49:05+08:00 ] 127.0.0.1 /mobile.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.153315s ]
+INFO: [ app_init ] --END-- [ RunTime:0.166784s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.026540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.026598s ]
+

@@ -11,13 +11,15 @@
             position: fixed;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             background-color: rgba(0,0,0,.3);
             text-align: center;
             z-index: 9;
         }
         .tab-wrap .error-tip-box p{
             position: absolute;
-            top: 26%;
+            top: 45%;
             left: 34%;
             max-width: 108px;
             display: inline-block;
@@ -205,7 +207,7 @@
             data.id = _t.parent('.controls').attr("id");
             // console.log(data);
             sendData(data);
-        })
+        });
         
         //改变input值
         $('input.text').change(function(){
@@ -222,10 +224,8 @@
                     data.key = _t.val();
                 }
             }
-
-            // console.log(data);
             sendData(data);
-        })
+        });
 
         // 点击提交 提交状态
         $('.js-submit-menuSettings').click(function () {
@@ -233,7 +233,7 @@
             var status = {};
             status.submit = 1;
             sendData(status);
-        })
+        });
 
         // 数据提交函数
         function sendData(e){
@@ -241,44 +241,43 @@
             var data_v = e;
             var errorTip = $('.js-show-error-tip-p');
             
-            console.log(data_v);
             var sendData = $.ajax({
                 url: "{:U('Wxoperate/menueSet')}",
                 method: 'post',
                 data: data_v,
                 dataType: 'json'
-            })
+            });
             sendData.done(function (e) {
                 if (!e) {
                     return;
                 } else if(e.code == 1) {
                     errorTip.show();
                     errorTip.find('p span').html('更新成功！');
-                    DialogErrorTip();
+                    DialogErrorTip(e.code);
                 } else {
                     errorTip.show();
                     errorTip.find('p span').html('更新失败！');
-                    DialogErrorTip();
+                    DialogErrorTip(0);
                 }
-            })
+            });
             sendData.fail(function () {
                 errorTip.show();
                 errorTip.find('p span').html('服务器出错，请稍后重试！');
-                DialogErrorTip()
+                DialogErrorTip(0)
             })
         }
 
         // 错误弹框关闭
-        function DialogErrorTip(){
+        function DialogErrorTip(e){
             var errorTip = $('.js-show-error-tip-p');
             if(e == 1){
                 setTimeout(function(){
                     errorTip.hide();
-                    window.location.href = "{:U('Wxoperate/keyWords')}";
-                },1500)
+                    // window.location.href = "{:U('Wxoperate/menueSet')}";
+                },1500);
                 errorTip.click(function () {
                     errorTip.hide();
-                    window.location.href = "{:U('Wxoperate/keyWords')}";
+                    // window.location.href = "{:U('Wxoperate/menueSet')}";
                 })
             } else{
                 setTimeout(function(){

@@ -26,7 +26,9 @@
         .keyword-wrap .content .li-com .show-content.active {
             display: block;
         }
-
+        .js-tuwen{
+            display: none;
+        }
         .keyword-wrap .content .submit{
             margin-left: 50px;
             margin-top: 15px;
@@ -92,7 +94,11 @@
                                 <input id="for-text" type="radio" value="1" name="chose">图文消息
                             </label>
                         </div>
-                        <div class="bg-pic li-com">
+                        <div class="bg-pic li-com js-text">
+                            <span class="key-text">内容：</span>
+                            <textarea id="editor-w" style="border:1px solid gray;min-height:240px;min-width: 600px;"></textarea>
+                        </div>
+                        <div class="bgpic li-com js-tuwen">
                             <span class="key-text">media_id：</span>
                             <input type="text" class="media-id-p" value="">
                             <i style="font-style: normal;color: #666; margin-left: 30px;">图文消息填写图文素材列表ID，以,半角逗号隔开</i>
@@ -105,23 +111,39 @@
         <!--脚本控制-->
         <script>
             // 声明变量
-            var data = {};
+            var data = {}, data2 = {};
 
             // 获取选中图文或文本
             $('.js-change-keyw').click(function () {
                 var Sshow = $(this);
-                data.type = Sshow.hasClass('for-tuwen') ? 0 : 1 ;
+                data.type = Sshow.hasClass('for-tuwen') ? "text" : "mpnews" ;
+                if(data.type == "text") {
+                    $('.js-text').show();
+                    $('.js-tuwen').hide();
+                } else {
+                    $('.js-text').hide();
+                    $('.js-tuwen').show();
+                }
             });
 
-            //  获得焦点，错误提示消失
+            // 获取图文内容
             $('.media-id-p').blur(function(){
-                data.media_id = $(this).val();
-            })
+                data2.content = $(this).val();
+            });
 
+            //  获取文本内容
+            $('#editor-w').blur(function(){
+                data2.textcontent = $(this).val();
+            })
             // 点击提交
             $('.js-submit').click(function () {
-                data.type = data.type || 0 ;
-                data.media_id = data.media_id || $('.media-id-p').val();
+                data.type = data.type || "text" ;
+
+                if(data.type == "text"){
+                    data.content = data2.textcontent || $('#editor-w').val();
+                } else {
+                    data.content = data2.content || $('#editor-w').val();
+                }
                 sendDatas(data);
             });
 
@@ -131,7 +153,7 @@
                 // 提交信息
                 var data_v = e;
                 var sendData = $.ajax({
-                    url: "{:U('Wxoperate/groupMessage')}",
+                    url: "{:U('Wxoperate/sendMsgToAll')}",
                     method: 'post',
                     data: data_v,
                     dataType: 'json'
@@ -162,11 +184,11 @@
                 if(e == 1){
                     setTimeout(function(){
                         errorTip.hide();
-                        window.location.href = "{:U('Wxoperate/upnewslList')}";
+                        // window.location.href = "{:U('Wxoperate/upnewslList')}";
                     },1500);
                     errorTip.click(function () {
                         errorTip.hide();
-                        window.location.href = "{:U('Wxoperate/upnewslList')}";
+                        // window.location.href = "{:U('Wxoperate/upnewslList')}";
                     })
                 } else{
                     setTimeout(function(){

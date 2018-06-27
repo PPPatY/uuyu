@@ -1,0 +1,273 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+        .keyword-wrap .content{margin-top: 15px;}
+        .keyword-wrap .content .li-com {
+            /* padding: 5px; */
+            margin: 15px 0;
+        }
+
+        .keyword-wrap .content .li-com .img-pre-show{
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .keyword-wrap .content .li-com span.key-text {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+        }
+        .keyword-wrap .content .li-com label {
+            margin: 0 15px;
+        }
+        .keyword-wrap .content .li-com .tuwen-content,.lianjie-content {
+            margin-left: 50px;
+            margin-top: 10px;
+            /* border: 1px solid #a9a9a9; */
+            /* padding: 10px; */
+        }
+        .keyword-wrap .content .li-com .text-content {
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        .keyword-wrap .content .li-com .text-content textarea {
+            width: 60%;
+            min-height: 150px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .keyword-wrap .content .li-com .show-content {
+            display: none;
+        }
+        .keyword-wrap .content .li-com .show-content.active {
+            display: block;
+        }
+
+        .keyword-wrap .content .submit{
+            margin-left: 50px;
+            margin-top: 15px;
+            padding: 6px 20px;
+        }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 45%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >菜单导航事件</a></li>
+                <!-- <li data-tab="tab2"><a href="javascript:void(0);" >文本</a></li> -->
+                <!--<p class="description_text">/*关注回复说明*/</p>-->
+            </ul>
+        </div>
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
+        </div>
+        <div class="keyword-wrap">
+            <div class="content">
+                <div class="keyword li-com" >
+                    <span class="key-text">EventKey：</span>
+                    <input type="text" class="EventKey-p" data="{$info.id}" value="{$info.eventkey}">
+                </div>
+                <div class="reply li-com">
+                    <span class="key-text">回复：</span>
+                    <if condition="$info.msgtype eq '0'">
+                        <label for="for-text" class="for-text js-change-reply"><input id="for-text" type="radio" value="1" name="reply-chose" checked="checked">文本</label>
+                        <label for="for-lianjie" class="for-lianjie js-change-reply"><input id="for-lianjie" type="radio" value="0" name="reply-chose">链接</label>
+                        <label for="for-tuwen" class="for-tuwen js-change-reply"><input id="for-tuwen" type="radio" value="0" name="reply-chose">图文</label>
+                        <elseif condition="$info.msgtype eq '3'"/>
+                            <label for="for-text" class="for-text js-change-reply"><input id="for-text" type="radio" value="1" name="reply-chose">文本</label>
+                            <label for="for-lianjie" class="for-lianjie js-change-reply"><input id="for-lianjie" type="radio" value="0" name="reply-chose" checked="checked">链接</label>
+                            <label for="for-tuwen" class="for-tuwen js-change-reply"><input id="for-tuwen" type="radio" value="0" name="reply-chose">图文</label>
+                        <else />
+                            <label for="for-text" class="for-text js-change-reply"><input id="for-text" type="radio" value="1" name="reply-chose">文本</label>
+                            <label for="for-lianjie" class="for-lianjie js-change-reply"><input id="for-lianjie" type="radio" value="0" name="reply-chose">链接</label>
+                            <label for="for-tuwen" class="for-tuwen js-change-reply"><input id="for-tuwen" type="radio" value="0" name="reply-chose" checked="checked">图文</label>
+                    </if>
+
+                    <div class="text-content show-content active">
+                        <textarea id="editor-w" placeholder="{$info.msgcontent}"></textarea>
+                    </div>
+                    <div class="lianjie-content show-content">
+                        <div class="keyword li-com" style="margin-left: -50px;">
+                            <span class="key-lianjie key-text">链接：</span>
+                            <input type="text" class="item-url-p" value="{$info.msgcontent}">
+                        </div>
+                    </div>
+                    <div class="tuwen-content show-content">
+                        <div class="keyword li-com" style="margin-left: -50px;">
+                            <span class="key-text">item：</span>
+                            <input type="text" class="item-id-p" value="{$info.msgcontent}">
+                            <i style="font-style: normal;color: #999; margin-left: 30px;">请输入消息事件列表ID，多个以，隔开不超过8个</i>
+                        </div>
+                    </div>
+                </div>
+                <input type="button" value="提交" class="submit js-submit">
+            </div>
+        </div>
+        <!--脚本控制-->
+        <script>
+            var data = {};
+            $(document).ready(function () {
+               var _show = "{$info.msgtype}" ;
+               if(_show == 0) {
+                   $('.text-content').show();
+                   $('.lianjie-content').hide();
+                   $('.tuwen-content').hide();
+               } else if(_show == 3) {
+                   $('.lianjie-content').show();
+                   $('.text-content').hide();
+                   $('.tuwen-content').hide();
+               } else {
+                   $('.tuwen-content').show();
+                   $('.lianjie-content').hide();
+                   $('.text-content').hide();
+               }
+            });
+
+            // 获取EventKey
+            $('.EventKey-p').blur(function(){
+                data.eventkey = $(this).val();
+            });
+
+            // 获取选中图文或文本
+            $('.js-change-reply').click(function () {
+                var t = $(this);
+                if (t.hasClass('for-text')) {
+                    data.msgtype = 0;
+                    $('.text-content').show();
+                    $('.lianjie-content').hide();
+                    $('.tuwen-content').hide();
+                } else if(t.hasClass('for-lianjie')) {
+                    data.msgtype = 3;
+                    $('.lianjie-content').show();
+                    $('.text-content').hide();
+                    $('.tuwen-content').hide();
+                } else {
+                    data.msgtype = 1;
+                    $('.tuwen-content').show();
+                    $('.lianjie-content').hide();
+                    $('.text-content').hide();
+                }
+            });
+
+            // 点击提交
+            $('.js-submit').click(function () {
+                data.id = $('.EventKey-p').attr('data');
+                data.eventkey = data.eventkey || $('.EventKey-p').val();
+                data.msgtype = data.msgtype || 0;
+                if(data.msgtype == 0) {
+                    data.msgcontent = $('#editor-w').val();
+                } else if (data.msgtype == 3) {
+                    data.msgcontent = $('.lianjie-content input.item-url-p').val();
+                } else {
+                    data.msgcontent = $('.tuwen-content input.item-id-p').val();
+                }
+                sendDatas(data);
+            });
+
+            // 数据提交函数
+            function sendDatas(e){
+                var errorTip = $('.js-show-error-tip-p');
+                // 提交信息
+                var data_v = e;
+                var sendData = $.ajax({
+                    url: "{:U('Wxoperate/editNavEvent')}",
+                    method: 'post',
+                    data: data_v,
+                    dataType: 'json'
+                });
+                sendData.done(function (e) {
+                    if (!e) {
+                        return;
+                    } else if(e.code == 1) {
+                        // t.parent().parent('tr').remove();
+                        errorTip.show();
+                        errorTip.find('p span').html('编辑成功！');
+                        DialogErrorTip(e.code);
+                    } else {
+                        errorTip.show();
+                        errorTip.find('p span').html('编辑失败！');
+                        DialogErrorTip(e.code);
+                    }
+                });
+                sendData.fail(function () {
+                    errorTip.show();
+                    errorTip.find('p span').html('编辑失败！');
+                    DialogErrorTip(0)
+                })
+            }
+
+            // 错误弹框关闭
+            function DialogErrorTip(e){
+                var errorTipP = $('.js-show-error-tip-p');
+                if(e == 1){
+                    setTimeout(function(){
+                        errorTipP.hide();
+                        window.location.href = "{:U('Wxoperate/navEventList')}";
+                    },1500);
+                    errorTipP.click(function () {
+                        errorTipP.hide();
+                        window.location.href = "{:U('Wxoperate/navEventList')}";
+                    })
+                } else{
+                    setTimeout(function(){
+                        errorTipP.hide();
+                    },3500);
+                    errorTipP.click(function () {
+                        errorTipP.hide();
+                    })
+                }
+            }
+        </script>
+
+    </div>
+
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+</block>

@@ -2,7 +2,7 @@
 /**
  * 微信控制器IndexController.class.php
 */
-namespace dmin\Controller;
+namespace Admin\Controller;
 use  Think\Controller;
 
 use  Wx\Wechat;
@@ -10,16 +10,16 @@ use  Wx\WechatAuth;
 
 
 
-class WxadminController extends Controller {
+class WxadminController extends AdminController {
 	
 	/* 测试号 */
-    private $appId = 'wx9c854ea9bf0fbe4d'; //AppID(应用ID)
+    /*private $appId = 'wx9c854ea9bf0fbe4d'; //AppID(应用ID)
 	private $appSecret	= "6b1670c3bcf2246849aea0890c93d7e3";
-	private $token = 'zhukao985'; //微信后台填写的TOKEN
+	private $token = 'zhukao985'; //微信后台填写的TOKEN*/
 	
-	/* private $appId = 'wx295ed8e5b6a937c6'; //AppID(应用ID)
+	private $appId = 'wx295ed8e5b6a937c6'; //AppID(应用ID)
 	private $appSecret	= "438fe07a6c976ee29c78ffc83a4565b3";
-	private $token = 'uuyucom123'; //微信后台填写的TOKEN */
+	private $token = 'uuyucom123'; //微信后台填写的TOKEN
 	
 	private $cryptstr = 'eLTVuT7gK3UwDBpKEroR3ivvrXbUKDPiE3XGCn9k9L6'; //消息加密KEY（EncodingAESKey）
 	
@@ -118,81 +118,11 @@ class WxadminController extends Controller {
 		
 	}
 	
-    /*创建菜单：view,click两种类型*/
-    public function createMenu(){
-        $token=$this->getToken();
-		$oauth=new WechatAuth($this->appId,$this->appSecret,$token);
-        $postArr=array(
-			array(
-				"name"=>"热门游戏",
-				"sub_button"=>array(
-					array(
-						"name"=>"全民主公",
-						"type"=>"view",
-						"url"=>"http://uuyu.com/mobile.php/?s=Game/open_game/game_id/54",
-					),
-					array(
-						"name"=>"传奇荣耀",
-						"type"=>"view",
-						"url"=>"http://uuyu.com/mobile.php/?s=Game/open_game/game_id/25",
-					),
-					array(
-						"name"=>"心动女友",
-						"type"=>"view",
-						"url"=>"http://uuyu.com/mobile.php/?s=Game/open_game/game_id/2",
-					),
-					array(
-						"name"=>"侠客行",
-						"type"=>"view",
-						"url"=>"http://uuyu.com/mobile.php/?s=Game/open_game/game_id/10",
-					),
-					array(
-						"name"=>"花儿消消乐",
-						"type"=>"view",
-						"url"=>"http://uuyu.com/mobile.php/?s=Game/open_game/game_id/17",
-					),
-				)
-			),
-			array(
-				"name"=>"最新福利",
-				"sub_button"=>array(
-					array(
-						"name"=>"游戏礼包",
-						"type"=>"click",
-						"key"=>"GAME_LIBAO",
-					),
-					array(
-						"name"=>"新户红包",
-						"type"=>"click",
-						"key"=>"GAME_HONGBAO",
-					),
-				)
-			),
-			array(
-				"name"=>"客服",
-				"sub_button"=>array(
-					array(
-						"name"=>"联系我们",
-						"type"=>"click",
-						"key"=>"GAME_ADD",
-					),
-					array(
-						"name"=>"合作招商",
-						"type"=>"click",
-						"key"=>"GAME_COMMERCE",
-					),
-				)
-			)
-        );
-		
-		$oauth->menuCreate($postArr);
-       
-    }
-
+  
 	
 	/* 关注自动回复查询 */
 	protected function getSubscrib(){
-		$sub=M('replay_subscrib')->field('type,content,news')->find();
+		$sub=M('replay_subscrib','Wx_')->field('type,content,news')->find();
 		if($sub['type']==='0'){
 			$arr['type']=0;
 			$arr['Content']=$sub['content'];
@@ -209,7 +139,7 @@ class WxadminController extends Controller {
 			if(count($idarr) <= 8 && count($idarr) >= 1){
 				
 				for($i=0;$i < count($idarr);$i++){
-					$item=M('replay_item')->field('title,description,picurl,url')->where(array('id'=>$idarr[$i]))->find();
+					$item=M('replay_item','Wx_')->field('title,description,picurl,url')->where(array('id'=>$idarr[$i]))->find();
 					
 					$items['item']['Title']=$item['title'];
 					$items['item']['Description']=$item['description'];
@@ -233,7 +163,7 @@ class WxadminController extends Controller {
 		
 		$map['keyword']=array('like','%'.$key.'%');
 		
-		$res=M('keyword_replay')->where($map)->field('title,description,picurl,url')->find();
+		$res=M('keyword_replay','Wx_')->where($map)->field('title,description,picurl,url')->find();
 		
 		if($res){
 			$arr['ArticleCount']=1;
@@ -262,7 +192,7 @@ class WxadminController extends Controller {
 			return	$content;
 			
 		}else{
-			$res=M('event')->where(array('eventkey'=>$eventKey))->field('msgtype,msgcontent')->find();
+			$res=M('event','Wx_')->where(array('eventkey'=>$eventKey))->field('msgtype,msgcontent')->find();
 			if($res){
 				/*文本0图文1链接3 */
 				if($res['msgtype']==='1'){
@@ -275,7 +205,7 @@ class WxadminController extends Controller {
 					);
 					if(count($idarr) <= 9 && count($idarr) >= 1){
 						for($j=0;$j<count($idarr);$j++){
-							$item=M('replay_item')->field('title,description,picurl,url')->where(array('id'=>$idarr[$j]))->find();
+							$item=M('replay_item','Wx_')->field('title,description,picurl,url')->where(array('id'=>$idarr[$j]))->find();
 							$items['item']['Title']=$item['title'];
 							$items['item']['Description']=$item['description'];
 							$items['item']['PicUrl']=$item['picurl'];
@@ -303,7 +233,7 @@ class WxadminController extends Controller {
 	/*检查用户是否领取过红包*/
 	protected  function checkUser($openid){
 		/* 1查表用户存在否，不存在则入库，存在则查看是否领过红包 */
-		$cktab=M('hongbao')->where(array('openid'=>$openid))->find();
+		$cktab=M('hongbao','Wx_')->where(array('openid'=>$openid))->find();
 		
 		/* 设定红包金额 */
 		$hbarr=array(1.01,1.02,1.03,1.04,1.05,1.07,1.08,1.09,1.10,1.11,1.12,1.13,1.14,1.15,1.16,1.17,1.18,1.19,2);
@@ -331,7 +261,7 @@ class WxadminController extends Controller {
 				if($con['result_code']=='SUCCESS'){
 					
 					//更新数据库
-					$uphb=M('hongbao')->where(array('openid'=>$openid))->save($data);
+					$uphb=M('hongbao','Wx_')->where(array('openid'=>$openid))->save($data);
 					if($uphb){
 						$echo='红包已发送，请点击拆开红包！';
 						return $echo;
@@ -366,7 +296,7 @@ class WxadminController extends Controller {
 			if($con['result_code']=='SUCCESS'){
 				//更新数据库
 				$data['openid']=$openid;
-				$addUser=M('hongbao')->data($data)->add();
+				$addUser=M('hongbao','Wx_')->data($data)->add();
 				
 				if($addUser){
 					$echo='红包已发送，请点击拆开红包！';

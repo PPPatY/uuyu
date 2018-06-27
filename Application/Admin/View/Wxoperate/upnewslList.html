@@ -10,6 +10,7 @@
         }
         .table-list th{
             min-width: 100px;
+            padding: 0 5px;
         }
         .table-list tr td{
             text-align: center;
@@ -56,6 +57,33 @@
             font-weight: bold;
             border: 1px solid transparent;
         }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 45%;
+            left: 34%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 130px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
     </style>
     <div class="main-place">
         <span class="main-placetitle"></span>
@@ -68,8 +96,7 @@
     <div class="tab-wrap">
         <div class="tab_nav jstabnav">
             <ul>
-                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >素材</a></li>
-                <!-- <p class="description_text">/*新增说明*/</p> -->
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >永久图文素材</a></li>
             </ul>
         </div>
         <div class="error-tip-box js-show-error-tip-p">
@@ -87,9 +114,9 @@
                         </li>
                         <table border="1" class="table-list" style="margin-left: 50px">
                             <tr>
-                                <th>素材ID</th>
-                                <th>素材标题</th>
-                                <th>素材缩略图id</th>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>thumb_media_id</th>
                                 <th>作者</th>
                                 <th>摘要</th>
                                 <th>是否封面</th>
@@ -148,7 +175,7 @@
         $(document).ready(function () {
             var tabW = $('.table-list').width();
             var selfWidth = $('.form-item').width();
-            var marginL = tabW - selfWidth + 50;
+            var marginL = tabW - selfWidth + 30;
             console.log(marginL);
             $('.form-item').css("margin-left", marginL);
         });
@@ -167,7 +194,7 @@
             // 提交信息
             var data_v = e;
             var sendData = $.ajax({
-                url: "{:U('Wxoperate/upnewslList')}",
+                url: "{:U('Wxoperate/delnewsMeterial')}",
                 method: 'post',
                 data: data_v,
                 dataType: 'json'

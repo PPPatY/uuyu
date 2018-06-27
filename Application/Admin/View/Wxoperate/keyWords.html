@@ -64,15 +64,17 @@
             position: fixed;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
             background-color: rgba(0,0,0,.3);
             text-align: center;
             z-index: 9;
         }
         .tab-wrap .error-tip-box p{
             position: absolute;
-            top: 26%;
+            top: 45%;
             left: 34%;
-            max-width: 308px;
+            max-width: 108px;
             display: inline-block;
             margin: 0 auto;
             padding: 10px 130px;
@@ -163,7 +165,7 @@
         $(document).ready(function () {
             var tabW = $('.table-list').width();
             var selfWidth = $('.form-item').width();
-            var marginL = tabW - selfWidth + 50;
+            var marginL = tabW - selfWidth + 30;
             console.log(marginL);
             $('.form-item').css("margin-left", marginL);
         });

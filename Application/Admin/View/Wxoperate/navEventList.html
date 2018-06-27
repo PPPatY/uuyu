@@ -1,0 +1,239 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <style type="text/css">
+        .form_info li>label{width: 130px;}
+        .form_info li>a{ border-color: transparent;}
+        .form_info li>a:hover{ border-color: transparent; cursor: pointer;}
+        .table-list tr{
+            height: 35px;
+        }
+        .table-list th{
+            min-width: 100px;
+        }
+        .table-list tr td{
+            text-align: center;
+            max-width: 250px;
+            max-height: 60px;
+            padding: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .table-list tr td img{
+            max-width: 120px;
+            max-height: 50px;
+        }
+        .form-item.fenye{
+            display: inline-block;
+            height: 35px;
+            margin-top: 30px;
+        }
+        .form-item.fenye span{
+            /* font-size: 22px; */
+            width: 31px;
+            height: 28px;
+            border: 1px solid #DDD;
+            text-align: center;
+            line-height: 30px;
+            padding: 4px 9px;
+            color: #3C95C8;
+            margin-right: -1px;
+        }
+        .form-item.fenye a{
+            /* font-size: 22px; */
+            width: 31px;
+            height: 28px;
+            border: 1px solid #DDD;
+            text-align: center;
+            line-height: 30px;
+            padding: 4px 9px;
+            color: #3C95C8;
+            margin-right: -1px;
+        }
+        .form-item.fenye a:hover{
+            color: #3C95C8;
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+        .form-item.fenye span{
+            color: #3C95C8;
+            font-weight: bold;
+            border: 1px solid transparent;
+        }
+        .tab-wrap{
+            position: relative;
+        }
+        .tab-wrap .error-tip-box{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            z-index: 9;
+        }
+        .tab-wrap .error-tip-box p{
+            position: absolute;
+            top: 45%;
+            left: 45%;
+            max-width: 108px;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 30px;
+            background: #00000060;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 9;
+        }
+    </style>
+    <div class="main-place">
+        <span class="main-placetitle"></span>
+        <ul class="main-placeul">
+            <li><a href="{:U('Model/index')}">系统</a></li>
+            <li><a href="{:U('Route/lists')}">扩展工具</a></li>
+            <li><a href="#">{$meta_title}</a></li>
+        </ul>
+    </div>
+    <div class="tab-wrap">
+        <div class="tab_nav jstabnav">
+            <ul>
+                <li data-tab="tab1" class="current firsttab"><a href="javascript:void(0);" >菜单导航事件列表</a></li>
+            </ul>
+        </div>
+        <div class="error-tip-box js-show-error-tip-p">
+            <p><span></span></p>
+        </div>
+        <div class="tab-content">
+            <form action="{:U('saveTool')}" class="form-horizontal qq_login form_info_ml">
+                <div id="tab1" class="tab-pane in tab1">
+                    <ul class="form_info ">
+                        <li>
+                            <label style="width: 50px;">列表：</label>
+                            <a href="{:U('Wxoperate/addNavEvent')}">
+                                <input type="button" value="添加" class=""style="padding:5px 20px; margin-left:30px;" >
+                            </a>
+                        </li>
+                        <table border="1" class="table-list" style="margin-left: 50px">
+                            <tr>
+                                <th>ID</th>
+                                <th>eventkey</th>
+                                <th>回复消息类型</th>
+                                <th>文本消息</th>
+                                <th>操作</th>
+                            </tr>
+
+                            <volist name="list" id="eventData">
+                                <tr>
+                                    <td>{$eventData.id}</td>
+                                    <td title="{$eventData.eventkey}">{$eventData.eventkey}</td>
+                                    <td>{$eventData.msgtype}</td>
+                                    <td title="{$eventData.msgcontent}">{$eventData.msgcontent}</td>
+                                    <td>
+                                        <a href="javascript:;" class="js-delete" id="{$eventData.id}" style="margin-right: 15px;">删除</a>
+                                        <a href="?s=/Wxoperate/editNavEvent/id/{$eventData.id}">编辑</a>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </table>
+                    </ul>
+                </div>
+                <div class="form-item fenye">
+                    {$page}
+                </div>
+            </form>
+        </div>
+    </div>
+
+</block>
+
+<block name="script">
+    <script src="__JS__/channel.js"></script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Wechat/index')}');
+        $(function(){
+            //支持tab
+            showTab();
+            $('.firsttab').click();
+        })
+
+    </script>
+    <script>
+        var data = {};
+
+        // 设置分页位置
+        $(document).ready(function () {
+            var tabW = $('.table-list').width();
+            var selfWidth = $('.form-item').width();
+            var marginL = tabW - selfWidth + 30;
+            console.log(marginL);
+            $('.form-item').css("margin-left", marginL);
+        });
+
+        // 点击删除
+        $('.js-delete').on('click',function(){
+            var _t = $(this);
+            data.id = _t.attr("id");
+            // _t.parent().parent('tr').remove();
+            sendDatas(data, _t);
+        });
+
+        // 数据提交函数
+        function sendDatas(e,t){
+            var errorTip = $('.js-show-error-tip-p');
+            // 提交信息
+            var data_v = e;
+            var sendData = $.ajax({
+                url: "{:U('Wxoperate/delNavEvent')}",
+                method: 'post',
+                data: data_v,
+                dataType: 'json'
+            })
+            sendData.done(function (e) {
+                if (!e) {
+                    return;
+                } else if(e.code == 1) {
+                    t.parent().parent('tr').remove();
+                    errorTip.show();
+                    errorTip.find('p span').html('删除成功！');
+                    DialogErrorTip(e.code);
+                } else {
+                    errorTip.show();
+                    errorTip.find('p span').html('删除失败！');
+                    DialogErrorTip(e.code);
+                }
+            });
+            sendData.fail(function () {
+                errorTip.show();
+                errorTip.find('p span').html('删除失败！');
+                DialogErrorTip(0)
+            });
+            console.log(data);
+        }
+
+        // 错误弹框关闭
+        function DialogErrorTip(e){
+            var errorTipP = $('.js-show-error-tip-p');
+            if(e == 1){
+                setTimeout(function(){
+                    errorTipP.hide();
+                    window.location.reload();
+                },1500);
+                errorTipP.click(function () {
+                    errorTipP.hide();
+                    window.location.reload();
+                })
+            } else{
+                setTimeout(function(){
+                    errorTipP.hide();
+                },3500);
+                errorTipP.click(function () {
+                    errorTipP.hide();
+                })
+            }
+        }
+    </script>
+</block>

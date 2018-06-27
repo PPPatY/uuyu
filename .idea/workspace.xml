@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="" />
+    <list default="true" id="f98daae8-1710-402b-a975-deecdef52c50" name="Default" comment="添加git忽略文件">
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addEvent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNavEvent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editEvent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editNavEvent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/eventList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/metelist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/navEventList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/sendMsgToAll.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upMeterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/WxadminController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/WxadminController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/Controller/WxoperateController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/Controller/WxoperateController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNewsMeterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNewsMeterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addkeywords.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addkeywords.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editkeywords.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editkeywords.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editnewsMeterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editnewsMeterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/keyWords.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/keyWords.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/menueSet-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wechat/menueSet-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/menueSet.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/menueSet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/subscribeTxt.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/subscribeTxt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upImgUrl.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upImgUrl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upnewslList.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upnewslList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/urlLists.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Admin/View/Wxoperate/urlLists.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/144e8b70b03d3e863962d97f1b3ac274.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/3c5566b2bfbf6ef00ac5366ba47246fe.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/50122fa2bddc1c4a2751081bf5f0b5dc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/5bc0a4f5ca6fba5034acda4f9a3fcb99.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/658387b01e6b0e3dbb2973f341ec5995.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/676c8e4bfb0e65b104046f845ffb1a51.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/79bde46336f7088c2c4092b8642fe931.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/86c1afd9f847f7f8fafdae785c2f1261.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/9989aae063d538ffcbd6a6b8b2d006c9.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/9bb5e7ead1bbec7c3d970a481af28a6e.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/b595b808c2ebeeeb0478ffc30bb4e87a.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/ed05107d8040b749caf1813b3c1a6170.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Runtime/Cache/Admin/f3fda8e519f84795fec9225f94253089.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThinkPHP/Library/Wx/Wechat.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/ThinkPHP/Library/Wx/Wechat.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatAuth.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatAuth.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatCrypt.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatCrypt.class.php" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -14,55 +54,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="suspension.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
+      <file leaf-file-name="WxoperateController.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/WxoperateController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2919">
-              <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+            <state relative-caret-position="196">
+              <caret line="582" column="48" selection-start-line="582" selection-start-column="48" selection-end-line="582" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_game_error.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Game/edit.html">
+      <file leaf-file-name="navEventList.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/navEventList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1046">
-              <caret line="413" column="73" selection-start-line="413" selection-start-column="73" selection-end-line="413" selection-end-column="73" />
+            <state relative-caret-position="280">
+              <caret line="130" column="91" selection-start-line="130" selection-start-column="70" selection-end-line="130" selection-end-column="91" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#block#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/base.html">
+      <file leaf-file-name="editNavEvent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editNavEvent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+            <state relative-caret-position="334">
+              <caret line="188" column="56" selection-start-line="188" selection-start-column="56" selection-end-line="188" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="editnewsMeterial.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editnewsMeterial.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="108">
+              <caret line="122" column="87" selection-start-line="122" selection-start-column="87" selection-end-line="137" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="suspension.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
+      <file leaf-file-name="editkeywords.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editkeywords.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4137">
-              <caret line="197" column="22" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
+            <state relative-caret-position="2143">
+              <caret line="176" column="109" selection-start-line="176" selection-start-column="109" selection-end-line="176" selection-end-column="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addNavEvent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNavEvent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="155" column="46" selection-end-line="245" />
             </state>
           </provider>
         </entry>
@@ -71,10 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>height</find>
-      <find />
-      <find>butn</find>
-      <find>pop-butn</find>
       <find>continue</find>
       <find>butnlogin</find>
       <find>footrt</find>
@@ -98,6 +138,13 @@
       <find>泛海</find>
       <find>add-child</find>
       <find>upload_picture_introducebg</find>
+      <find>#zx_img</find>
+      <find>up</find>
+      <find>M(</find>
+      <find>del</find>
+      <find>delMeterial</find>
+      <find>key</find>
+      <find>keyW</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,22 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Public/Media/css/game.css" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/common.css" />
-        <option value="$PROJECT_DIR$/Public/Media/css/mall.css" />
-        <option value="$PROJECT_DIR$/Public/Media/css/common.css" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/mall.css" />
-        <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/Application/User/Conf/config.php" />
-        <option value="$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js" />
-        <option value="$PROJECT_DIR$/Application/Media/View/Public/bases.html" />
-        <option value="$PROJECT_DIR$/Application/Mobile/View/Index/allMaster.html" />
-        <option value="$USER_HOME$/Desktop/临时文件夹/allMaster/allMaster.html" />
-        <option value="$PROJECT_DIR$/Application/Mobile/View/Gift/index.html" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/gift.css" />
-        <option value="$PROJECT_DIR$/Application/Mobile/View/Public/bases.html" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/index.css" />
-        <option value="$PROJECT_DIR$/Public/Mobile/css/index-20180606.css" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/index-20180607.css" />
         <option value="$PROJECT_DIR$/Public/Mobile/css/game.css" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Game/detail.html" />
@@ -137,6 +168,42 @@
         <option value="$PROJECT_DIR$/Public/Mobile/css/suspension.css" />
         <option value="$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/menueSet-1.html" />
+        <option value="$PROJECT_DIR$/.gitigion" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/material.html" />
+        <option value="$PROJECT_DIR$/Runtime/Cache/Admin/da8d238155d05fba687eba6d2ec9ae71.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wechat/keyWord.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addMeterial.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/subscribeTxt.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/groupMessage.html" />
+        <option value="$PROJECT_DIR$/Application/Sdk/Controller/WxadminController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Sdk/View/Wxoperate/editnewsMeterial.html" />
+        <option value="$PROJECT_DIR$/Application/Sdk/View/Wxoperate/sendMsgToAll.html" />
+        <option value="$PROJECT_DIR$/Application/Sdk/View/Wxoperate/upMeterial.html" />
+        <option value="$PROJECT_DIR$/Application/Sdk/View/Wxoperate/upnewslList.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNewsMeterial.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editnewsMeterial.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/WxadminController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/sendMsgToAll.html" />
+        <option value="$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatAuth.class.php" />
+        <option value="$PROJECT_DIR$/ThinkPHP/Library/Wx/Wechat.class.php" />
+        <option value="$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatCrypt.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addEvent.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editEvent.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editkeywords.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upImgUrl.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upMeterial.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/menueSet.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/metelist.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addkeywords.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/keyWords.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNavEvent.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/eventList.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/upnewslList.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/urlLists.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/navEventList.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/WxoperateController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Wxoperate/editNavEvent.html" />
       </list>
     </option>
   </component>
@@ -146,13 +213,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2713" />
-    <option name="y" value="-22" />
-    <option name="width" value="1578" />
-    <option name="height" value="929" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="42" />
+    <option name="y" value="16" />
+    <option name="width" value="1726" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <showMembers ProjectPane="false" />
@@ -161,6 +233,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,7 +257,7 @@
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
@@ -192,15 +265,6 @@
               <item name="Application" type="462c0819:PsiDirectoryNode" />
               <item name="Admin" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="Game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
@@ -214,67 +278,51 @@
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
               <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Wxoperate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Application" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="Game" type="462c0819:PsiDirectoryNode" />
+              <item name="ThinkPHP" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
+              <item name="ThinkPHP" type="462c0819:PsiDirectoryNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uuyu-work" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uuyu-work" type="462c0819:PsiDirectoryNode" />
-              <item name="Public" type="462c0819:PsiDirectoryNode" />
-              <item name="Ueditor" type="462c0819:PsiDirectoryNode" />
+              <item name="ThinkPHP" type="462c0819:PsiDirectoryNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
+              <item name="Wx" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="__CSS__&#9;ACTION&#9;null&#10;index-201806070920.css&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/index-201806070920.css&#10;game20180607&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/game20180607.css&#10;game20180607.css&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Mobile/css/game20180607.css&#10;jsloadpic&#9;null&#9;null&#10;register&#9;FILE&#9;file://D:/PHPStudy/PHPTutorial/WWW/uuyu-work/Public/Home/js/register.js&#10;jslogin&#9;null&#9;null&#10;butnlogin&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/A-Work/Vue-mkt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
       <recent name="http://47.100.224.93" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\phpStudy\PHPTutorial\WWW\uuyu-work\Application\Admin\View\Wechat" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -333,6 +381,14 @@
       <workItem from="1528850720904" duration="11350000" />
       <workItem from="1528943481904" duration="4220000" />
       <workItem from="1529027011796" duration="5456000" />
+      <workItem from="1529659653031" duration="188000" />
+      <workItem from="1529659903640" duration="2189000" />
+      <workItem from="1529714332250" duration="18952000" />
+      <workItem from="1529743830117" duration="1044000" />
+      <workItem from="1529887455807" duration="17502000" />
+      <workItem from="1529974559651" duration="15651000" />
+      <workItem from="1530060044849" duration="3376000" />
+      <workItem from="1530079612413" duration="13284000" />
     </task>
     <task id="LOCAL-00001" summary="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改.">
       <created>1528360562008</created>
@@ -341,17 +397,38 @@
       <option name="project" value="LOCAL" />
       <updated>1528360562008</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1.完善用户提示展示。">
+      <created>1529662227151</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1529662227151</updated>
+    </task>
+    <task id="LOCAL-00003" summary="添加git忽略文件">
+      <created>1529662261349</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1529662261349</updated>
+    </task>
+    <task id="LOCAL-00004" summary="增加素材列表页面及其相应逻辑。">
+      <created>1529742146751</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529742146757</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151784000" />
+    <option name="totallyTimeSpent" value="223970000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2552" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="42" y="16" width="1726" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14114584" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1631579" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32765958" />
@@ -378,346 +455,318 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改." />
-    <option name="LAST_COMMIT_MESSAGE" value="1.修改游戏详情开始游戏按钮颜色，位置。&#10;2.图片优化/&#10;3.数据加载优化，修改每次请求的数量。&#10;4.首页修改上传，游戏详情页上传。首页开始游戏点击无效修改." />
+    <MESSAGE value="1.完善用户提示展示。" />
+    <MESSAGE value="添加git忽略文件" />
+    <MESSAGE value="增加素材列表页面及其相应逻辑。" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加素材列表页面及其相应逻辑。" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8085">
-          <caret line="385" column="25" selection-start-line="385" selection-start-column="25" selection-end-line="385" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Media/css/game.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="236" column="1" selection-start-line="236" selection-start-column="1" selection-end-line="236" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/pc.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1022" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mui.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Media/css/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="408" column="35" selection-start-line="408" selection-start-column="35" selection-end-line="408" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Media/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="278" column="25" selection-start-line="278" selection-start-column="25" selection-end-line="278" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/PointShopController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Ueditor/php/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/mall.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10269">
-          <caret line="489" column="1" selection-start-line="489" selection-start-column="1" selection-end-line="489" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Owner/uuyuData.sql" />
-    <entry file="file://$PROJECT_DIR$/Application/User/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/allMaster.html" />
-    <entry file="file://$USER_HOME$/Desktop/临时文件夹/allMaster/allMaster.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Subscriber/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/gift.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="402" column="35" selection-start-line="402" selection-start-column="35" selection-end-line="402" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Gift/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="84" selection-start-line="12" selection-start-column="84" selection-end-line="12" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Owner/SVNuuyu/Application/Mobile/View/Index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/basestow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="24" column="78" selection-start-line="24" selection-start-column="78" selection-end-line="24" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/bases.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="88" column="33" selection-start-line="88" selection-start-column="33" selection-end-line="88" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/Index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="333" column="311" selection-start-line="333" selection-start-column="304" selection-end-line="333" selection-end-column="311" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/static/dist/dropload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Home/js/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="108" column="73" lean-forward="true" selection-start-line="108" selection-start-column="73" selection-end-line="108" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="76" column="20" lean-forward="true" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Common/function11.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20569" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="141" column="77" lean-forward="true" selection-start-line="141" selection-start-column="77" selection-end-line="141" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/weiduan/quanminzhugong/allMaster.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-601">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weiduan/quanminzhugong/allmaster.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/TuiRegister/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="148" column="16" lean-forward="true" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/static/xigusdk/h5sdkajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="347" column="9" selection-start-line="347" selection-start-column="9" selection-end-line="347" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/Public/loginsdk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/loginsdk.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Media/View/Game/suspension.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="43" selection-start-column="30" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Public/bases.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="109" column="58" selection-start-line="109" selection-start-column="58" selection-end-line="109" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/game20180607.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7308">
-          <caret line="348" column="21" selection-start-line="348" selection-start-column="21" selection-end-line="348" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/index-201806070920.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="267" column="1" selection-start-line="267" selection-start-column="1" selection-end-line="267" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/open_game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Admin/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5964">
-          <caret line="284" column="20" selection-start-line="284" selection-start-column="12" selection-end-line="284" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/menuSettings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="535" column="113" selection-start-line="535" selection-start-column="113" selection-end-line="535" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/basic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/suspension.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4137">
-          <caret line="197" column="22" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/suspension.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2919">
+        <state relative-caret-position="2641">
           <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Game/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1046">
-          <caret line="413" column="73" selection-start-line="413" selection-start-column="73" selection-end-line="413" selection-end-column="73" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="167" column="37" lean-forward="true" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
+        <state relative-caret-position="3173">
+          <caret line="167" column="37" selection-start-line="167" selection-start-column="37" selection-end-line="167" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/Application/Mobile/View/Game/user_game_error.html">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Game/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="413" column="73" selection-start-line="413" selection-start-column="73" selection-end-line="413" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitigion">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/sucaiList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/addPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2187" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Runtime/Cache/Admin/2a4741a9feea2e70d551fecc404a8f48.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Runtime/Cache/Admin/da8d238155d05fba687eba6d2ec9ae71.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="310" column="117" lean-forward="true" selection-start-line="310" selection-start-column="117" selection-end-line="310" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/material.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/menueSet-1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1402">
+          <caret line="94" column="37" lean-forward="true" selection-start-line="94" selection-start-column="37" selection-end-line="94" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/menuSettings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="111" column="50" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/WechatController.class.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Sdk/View/Wxoperate/sendMsgToAll.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Sdk/View/Wxoperate/upMeterial.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Sdk/View/Wxoperate/upnewslList.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Sdk/Controller/IndexController.class.php" />
+    <entry file="file://$PROJECT_DIR$/Application/Sdk/Controller/WxoperateController.class.php" />
+    <entry file="file://$PROJECT_DIR$/Application/Sdk/View/Wxoperate/editnewsMeterial.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/WxadminController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatCrypt.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Wx/Wechat.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Wx/WechatAuth.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="173" column="105" selection-start-line="173" selection-start-column="105" selection-end-line="173" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/menuListEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1215" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/groupMessage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-486" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/addSucai.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="57" lean-forward="true" selection-end-line="137" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/keyWord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="82" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/lookedReply.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="72" column="74" lean-forward="true" selection-end-line="138" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wechat/keyWordList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="115" column="4" lean-forward="true" selection-start-line="115" selection-start-column="4" selection-end-line="134" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNewsMeterial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="103" column="81" lean-forward="true" selection-start-line="103" selection-start-column="81" selection-end-line="104" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/addEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="158" column="74" selection-start-line="158" selection-start-column="74" selection-end-line="158" selection-end-column="105" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#form#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#li#0;n#ul#0;n#div#0;n#form#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#form#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#3;n#div#0;n#form#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/metelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="192" column="29" lean-forward="true" selection-end-line="240" />
+          <folding>
+            <element signature="n#style#0;n#block#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/keyWords.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="131" column="40" lean-forward="true" selection-start-line="131" selection-start-column="40" selection-end-line="133" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/addkeywords.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1453">
+          <caret line="147" selection-start-line="147" selection-end-line="151" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/menueSet.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2818">
+          <caret line="280" column="18" selection-start-line="280" selection-start-column="18" selection-end-line="280" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/sendMsgToAll.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#block#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/subscribeTxt.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-962">
+          <caret line="89" column="98" selection-start-line="89" selection-start-column="98" selection-end-line="89" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/upImgUrl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="125" column="102" selection-start-line="125" selection-start-column="102" selection-end-line="125" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/upMeterial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="165" column="102" selection-start-line="165" selection-start-column="102" selection-end-line="165" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/urlLists.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="176" column="46" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/upnewslList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="177" column="46" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#block#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/eventList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="179" column="48" lean-forward="true" selection-start-line="179" selection-start-column="48" selection-end-line="179" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/addNavEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="155" column="46" selection-end-line="245" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/navEventList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="130" column="91" selection-start-line="130" selection-start-column="70" selection-end-line="130" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#block#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editkeywords.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2143">
+          <caret line="176" column="109" selection-start-line="176" selection-start-column="109" selection-end-line="176" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editnewsMeterial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="122" column="87" selection-start-line="122" selection-start-column="87" selection-end-line="137" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Wxoperate/editNavEvent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="188" column="56" selection-start-line="188" selection-start-column="56" selection-end-line="188" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/WxoperateController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="582" column="48" selection-start-line="582" selection-start-column="48" selection-end-line="582" selection-end-column="48" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
