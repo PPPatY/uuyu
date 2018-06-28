@@ -558,6 +558,85 @@ class WxoperateController extends AdminController{
     }
 
 
+    /*菜单导航事件*/
+    public function addNavEvent(){
+        if(IS_POST){
+            $data['eventkey']=$_POST['eventkey'];
+            $data['msgtype']=$_POST['msgtype'];
+            $data['msgcontent']=$_POST['msgcontent'];
+            $res=M('event','wx_')->data($data)->add();
+            if($res){
+                $msg=array('code'=>1,'msg'=>'添加成功！');
+                $this->ajaxReturn($msg);
+            }else{
+                $msg=array('code'=>0,'msg'=>'添加失败！');
+                $this->ajaxReturn($msg);
+            }
+        }else{
+
+            $this->display();
+
+        }
+
+    }
+
+    /*菜单导航事件--列表*/
+    public function navEventList(){
+        $count=M('event','wx_')->count();
+        $Page  = new \Think\Page($count,8);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+        $show  = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = M('event','wx_')->order('id asc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display();
+    }
+
+    /*菜单导航事件--修改*/
+    public function editNavEvent(){
+        if(IS_POST){
+            $data['id']=$_POST['id'];
+            $data['eventkey']=$_POST['eventkey'];
+            $data['msgtype']=$_POST['msgtype'];
+            $data['msgcontent']=$_POST['msgcontent'];
+            $con=M('event','wx_')->save($data);
+            if($con===false){
+                $msg=array('code'=>0,'msg'=>'修改失败！');
+                $this->ajaxReturn($msg);
+            }else{
+
+                $msg=array('code'=>1,'msg'=>'添加成功！');
+                $this->ajaxReturn($msg);
+            }
+
+        }else{
+
+            $id=$_GET['id'];
+            $res=M('event','wx_')->where(array('id' =>$id))->find();
+            $this->assign('info',$res);
+            $this->display();
+        }
+
+    }
+
+    /*菜单导航事件---删除*/
+    public  function delNavEvent(){
+        if(IS_POST){
+            $id=$_POST['id'];
+            $con=M('event','wx_')->where(array('id' => $id))->delete();
+            if($con===false){
+                $msg=array('code'=>-1,'msg'=>'删除失败！');
+                $this->ajaxReturn($msg);
+            }else{
+                $msg=array('code'=>1,'msg'=>'成功删除！');
+                $this->ajaxReturn($msg);
+            }
+        }else{
+            $msg=array('code'=>0,'msg'=>'缺少参数！');
+            $this->ajaxReturn($msg);
+        }
+    }
+
 }
 
 
